@@ -19,6 +19,7 @@ window.addEventListener('load', randomizeCover)
 function randomizeCover() {
   randomizeImage()
   randomizeTitle()  
+  randomizeTag()
 }
 
 function randomizeImage() {
@@ -27,9 +28,13 @@ function randomizeImage() {
 
 function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
-
 }
 
+function randomizeTag() {
+  var tag1 = descriptors[getRandomIndex(descriptors)]
+  var tag2 = descriptors[getRandomIndex(descriptors)]
+  tagLine.innerText = `A tale of ${tag1} and ${tag2}`
+}
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
