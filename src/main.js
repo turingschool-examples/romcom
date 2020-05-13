@@ -18,13 +18,17 @@ window.addEventListener('load', randomizeCover)
 
 function randomizeCover() {
   randomizeImage()
-  coverTitle.innerText = titles[getRandomIndex(titles)]
+  randomizeTitle()  
 }
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
 }
 
+function randomizeTitle() {
+  coverTitle.innerText = titles[getRandomIndex(titles)]
+
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
