@@ -4,7 +4,7 @@ var coverTitle = document.querySelector('.cover-title')
 var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
-var randomizeButton = document.querySelector(".random-cover-button")
+var randomizeButton = document.querySelector('.random-cover-button')
 
 
 // We've provided a few variables below
@@ -15,13 +15,14 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', randomizeCover)
-randomizeButton.addEventListener('click', randomizeCover)
+//randomizeButton.addEventListener('click', createRandomCover)
 // Create your event handlers and other functions here 👇
 
 function randomizeCover() {
   randomizeImage()
   randomizeTitle()
-  randomizeTag()
+  randomizeTag1()
+  randomizeTag2()
 }
 
 function randomizeImage() {
@@ -32,15 +33,23 @@ function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
 }
 
-function randomizeTag() {
-  var tag1 = descriptors[getRandomIndex(descriptors)]
-  var tag2 = descriptors[getRandomIndex(descriptors)]
-  tagLine.innerText = `A tale of ${tag1} and ${tag2}`
+function randomizeTag1() {
+  //var tag1 = descriptors[getRandomIndex(descriptors)]
+  tagLineOne.innerText = descriptors[getRandomIndex(descriptors)]
 }
+
+function randomizeTag2() {
+  //var tag2 = descriptors[getRandomIndex(descriptors)]
+  tagLineTwo.innerText = descriptors[getRandomIndex(descriptors)]
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
- //is this correct?
+//function createRandomCover(){
+//  var newCover = new Cover(
+  //  this.cover = randomizeImage(),
+    //this.tile = randomizeTitle(),
+  //}
