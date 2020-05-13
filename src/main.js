@@ -4,6 +4,8 @@ var coverTitle = document.querySelector('.cover-title')
 var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
+var randomizeButton = document.querySelector(".random-cover-button")
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -13,12 +15,12 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', randomizeCover)
-
+randomizeButton.addEventListener('click', randomizeCover)
 // Create your event handlers and other functions here 👇
 
 function randomizeCover() {
   randomizeImage()
-  randomizeTitle()  
+  randomizeTitle()
   randomizeTag()
 }
 
@@ -39,3 +41,6 @@ function randomizeTag() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+ //is this correct?
