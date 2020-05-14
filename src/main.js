@@ -1,5 +1,9 @@
-// Create variables targetting the relevant DOM elements here 👇
-
+// Create variables targeting the relevant DOM elements here 👇
+var coverTitle = document.querySelector(".cover-title");
+var coverImg = document.querySelector(".cover-image");
+var coverTagline = document.querySelector(".tagline");
+var coverTaglineOne = document.querySelector(".tagline-1");
+var coverTaglineTwo = document.querySelector(".tagline-2");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -10,10 +14,20 @@ var currentCover;
 // Add your event listeners here 👇
 
 
-// Create your eent handlers and other functions here 👇
+// Create your event handlers and other functions here 👇
 
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function newRandomBook() {
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  // coverTagline.innerText = descriptors[getRandomIndex(descriptors)];
+  coverTaglineOne.innerText = descriptors[getRandomIndex(descriptors)];
+  coverTaglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImg.src = covers[getRandomIndex(covers)];
+}
+
+newRandomBook();
