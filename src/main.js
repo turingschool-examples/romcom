@@ -1,9 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-var loadingImg = document.querySelector(".cover-image");
-var loadingTitle = document.querySelector(".cover-title");
-var loadingTagline = document.querySelector(".tagline");
-var loadingTagline1 = document.querySelector(".tagline-1");
-var loadingTagline2 = document.querySelector(".tagline-2");
+var coverImageElement = document.querySelector(".cover-image");
+var title = document.querySelector(".cover-title");
+var tagline = document.querySelector(".tagline");
+var tagline1 = document.querySelector(".tagline-1");
+var tagline2 = document.querySelector(".tagline-2");
 
 
 // We've provided a few variables below
@@ -13,7 +13,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-// document.addEventListener("load", loadFirstCover);
+window.addEventListener("load", makeCover);
 
 // Create your event handlers and other functions here 👇
 // loadingCover = new Cover {
@@ -22,15 +22,25 @@ var currentCover;
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
-  return array[Math.floor(Math.random() * array.length)];
+  return Math.floor(Math.random() * array.length);
 }
 
-var descr1 = getRandomIndex(descriptors);
-var descr2 = getRandomIndex(descriptors);
-var title = getRandomIndex(titles);
-var coverImg = getRandomIndex(covers);
+function makeCover() {
+  var tagline1 = descriptors[getRandomIndex(descriptors)];
+  var tagline2 = descriptors[getRandomIndex(descriptors)];
+  var title = titles[getRandomIndex(titles)];
+  var coverImgSrc = covers[getRandomIndex(covers)];
+  currentCover = new Cover(coverImgSrc, title, tagline1, tagline2);
+  displayCover(currentCover);
+}
 
-console.log(descr1);
+function displayCover(cover) {
+  coverImageElement.setAttribute("src", cover.cover)
+  title.innerText = cover.title;
+  tagline1.innerText = cover.tagline1;
+  tagline2.innerText = cover.tagline2;
+};
+
 
 // use query selector to access img, title, tagline, disc1 and disc2
 // on page load (eventlistener) random title, image and discriptors will appear on the page
