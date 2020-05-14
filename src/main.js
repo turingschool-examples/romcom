@@ -4,6 +4,8 @@ var coverTitle = document.querySelector('.cover-title')
 var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
+var randomizeButton = document.querySelector('.random-cover-button')
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -12,15 +14,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.addEventListener('load', randomizeCover)
-
+window.addEventListener('load', createRandomCover)
+randomizeButton.addEventListener('click', randomizeImageButton)
 // Create your event handlers and other functions here 👇
-
-function randomizeCover() {
-  randomizeImage()
-  randomizeTitle()  
-  randomizeTag()
-}
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
@@ -30,12 +26,39 @@ function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
 }
 
-function randomizeTag() {
-  var tag1 = descriptors[getRandomIndex(descriptors)]
-  var tag2 = descriptors[getRandomIndex(descriptors)]
-  tagLine.innerText = `A tale of ${tag1} and ${tag2}`
+function randomizeTag1() {
+  //var tag1 = descriptors[getRandomIndex(descriptors)]
+  tagLineOne.innerText = descriptors[getRandomIndex(descriptors)]
 }
+
+function randomizeTag2() {
+  //var tag2 = descriptors[getRandomIndex(descriptors)]
+  tagLineTwo.innerText = descriptors[getRandomIndex(descriptors)]
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function createRandomCover(){
+  currentCover = new Cover(
+   randomizeImage(),
+   randomizeTitle(),
+   randomizeTag1(),
+   randomizeTag2()
+ )
+ return currentCover
+}
+
+function randomizeImageButton(){
+createRandomCover()
+//coverImage.src = newCover.cover;
+}
+
+/* when a user clicks on a show new random cover button, we want the screen
+to give us a new title, a now image, and new taglines.
+In order to do this, we need to use functions.
+The hint was to maybe change the currentCover variable?
+how can we use the currentCover variable in our current setup?
+*/
