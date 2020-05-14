@@ -5,6 +5,10 @@ var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
+var savedCoverButton = document.querySelector('.save-cover-button')
+var viewSavedButton = document.querySelector('.view-saved-button')
+var makeNewButton = document.querySelector('.make-new-button')
+var homeButton = document.querySelector('.home-button')
 var makeOwnCover = document.querySelector('.make-new-button')
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
@@ -23,6 +27,7 @@ randomizeButton.addEventListener('click', randomizeImageButton)
 makeOwnCover.addEventListener('click', goToForm)
 
 
+
 // Create your event handlers and other functions here 👇
 function createRandomCover(){
   currentCover = new Cover(
@@ -36,9 +41,16 @@ function createRandomCover(){
 
 function goToForm() {
   formSection.classList.remove('hidden')
+  homeSection.classList.add('hidden')
+  randomizeButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
   // once function is called,
   // get the hidden class, and remove it from form-view
   // then ADD hidden to home-view
+  // locate random-cover-button, remove that button
+  //  // we do this by 
+  // locate save cover button, remove it 
+  // add a home button/create home button variable
 }
 
 function randomizeImage() {
