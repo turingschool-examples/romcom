@@ -14,16 +14,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.addEventListener('load', randomizeCover)
+window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
 // Create your event handlers and other functions here 👇
-
-function randomizeCover() {
-  randomizeImage()
-  randomizeTitle()
-  randomizeTag1()
-  randomizeTag2()
-}
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
@@ -49,13 +42,13 @@ function getRandomIndex(array) {
 }
 
 function createRandomCover(){
-  var newCover = new Cover(
+  currentCover = new Cover(
    randomizeImage(),
    randomizeTitle(),
    randomizeTag1(),
    randomizeTag2()
  )
- return newCover
+ return currentCover
 }
 
 function randomizeImageButton(){
