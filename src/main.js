@@ -15,7 +15,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', randomizeCover)
-//randomizeButton.addEventListener('click', createRandomCover)
+randomizeButton.addEventListener('click', randomizeImageButton)
 // Create your event handlers and other functions here 👇
 
 function randomizeCover() {
@@ -48,8 +48,24 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//function createRandomCover(){
-//  var newCover = new Cover(
-  //  this.cover = randomizeImage(),
-    //this.tile = randomizeTitle(),
-  //}
+function createRandomCover(){
+  var newCover = new Cover(
+   randomizeImage(),
+   randomizeTitle(),
+   randomizeTag1(),
+   randomizeTag2()
+ )
+ return newCover
+}
+
+function randomizeImageButton(){
+createRandomCover()
+//coverImage.src = newCover.cover;
+}
+
+/* when a user clicks on a show new random cover button, we want the screen
+to give us a new title, a now image, and new taglines.
+In order to do this, we need to use functions.
+The hint was to maybe change the currentCover variable?
+how can we use the currentCover variable in our current setup?
+*/
