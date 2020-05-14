@@ -44,6 +44,8 @@ function goToForm() {
   homeSection.classList.add('hidden')
   randomizeButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  savedCoverButton.classList.add('hidden')
+
   // once function is called,
   // get the hidden class, and remove it from form-view
   // then ADD hidden to home-view
