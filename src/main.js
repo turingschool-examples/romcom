@@ -4,6 +4,7 @@ var title = document.querySelector(".cover-title");
 var tagline = document.querySelector(".tagline");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
+var randomCoverButton = document.querySelector(".random-cover-button");
 
 
 // We've provided a few variables below
@@ -15,6 +16,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener("load", makeCover);
+randomCoverButton.addEventListener("click", makeCover);
 
 // Create your event handlers and other functions here 👇
 // loadingCover = new Cover {
