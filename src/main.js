@@ -13,8 +13,8 @@ var currentCover;
 // Add your event listeners here 👇
 
 
-// Create your eent handlers and other functions here 👇
-
+// Create your event handlers and other functions here 👇
+coverTitle.innerText = titles[getRandomIndex(titles)];
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
