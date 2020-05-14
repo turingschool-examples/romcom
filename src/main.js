@@ -5,7 +5,11 @@ var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
-
+var makeOwnCover = document.querySelector('.make-new-button')
+var formSection = document.querySelector('.form-view')
+var homeSection = document.querySelector('.home-view')
+var savedSection = document.querySelector('.saved-view')
+var hidden = document.querySelector('.hidden')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -16,7 +20,26 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
+makeOwnCover.addEventListener('click', goToForm)
+
+
 // Create your event handlers and other functions here 👇
+function createRandomCover(){
+  currentCover = new Cover(
+   randomizeImage(),
+   randomizeTitle(),
+   randomizeTag1(),
+   randomizeTag2()
+  )
+  return currentCover
+}
+
+function goToForm() {
+  formSection.classList.remove('hidden')
+  // once function is called,
+  // get the hidden class, and remove it from form-view
+  // then ADD hidden to home-view
+}
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
@@ -41,20 +64,11 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createRandomCover(){
-  currentCover = new Cover(
-   randomizeImage(),
-   randomizeTitle(),
-   randomizeTag1(),
-   randomizeTag2()
- )
- return currentCover
-}
-
 function randomizeImageButton(){
 createRandomCover()
 //coverImage.src = newCover.cover;
 }
+
 
 /* when a user clicks on a show new random cover button, we want the screen
 to give us a new title, a now image, and new taglines.
