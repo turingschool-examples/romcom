@@ -14,12 +14,16 @@ var currentCover;
 
 
 // Create your event handlers and other functions here 👇
-coverImage.src = covers[getRandomIndex(covers)];
-coverTitle.innerText = titles[getRandomIndex(titles)];
-tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+randomRomCom();
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
+function randomRomCom() {
+  coverImage.src = covers[getRandomIndex(covers)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+};
