@@ -1,7 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var loadCover = document.querySelector('.cover-image');
 var loadTitle = document.querySelector('.cover-title');
-var tag1 = document.querySelector('h3');
+var tagDescriptors = document.querySelector('h3');
 // var tag2 = document.querySelector('.tagline');
 
 // We've provided a few variables below
@@ -13,11 +13,11 @@ var currentCover;
 // Add your event listeners here 👇
 
 
-// Create your eent handlers and other functions here 👇
+// Create your event handlers and other functions here 👇
 // var loadTitle = titles[getRandomIndex(titles)];
 loadCover.src = `${covers[getRandomIndex(covers)]}`
 loadTitle.innerText = `${titles[getRandomIndex(titles)]}`
-tag1.innerText = `${descriptors[getRandomIndex(descriptors)]}`
+tagDescriptors.innerText = `A Tale of ${descriptors[getRandomIndex(descriptors)]} and ${descriptors[getRandomIndex(descriptors)]}`
 // tag2.innerText = `${descriptors[getRandomIndex(descriptors)]}`
 // We've provided one function to get you started
 function getRandomIndex(array) {
