@@ -2,7 +2,10 @@
 var loadCover = document.querySelector('.cover-image');
 var loadTitle = document.querySelector('.cover-title');
 var tagDescriptors = document.querySelector('h3');
-// var tag2 = document.querySelector('.tagline');
+
+
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -11,14 +14,18 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+loadTitle.innerText = `${titles[getRandomIndex(titles)]}`;
+loadCover.src = `${covers[getRandomIndex(covers)]}`;
+tagDiscriptors.innerText =`A tale of ${descriptors[getRandomIndex(descriptors)]} and ${descriptors[getRandomIndex(descriptors)]}`;
 
 
 // Create your event handlers and other functions here 👇
-// var loadTitle = titles[getRandomIndex(titles)];
 loadCover.src = `${covers[getRandomIndex(covers)]}`
 loadTitle.innerText = `${titles[getRandomIndex(titles)]}`
 tagDescriptors.innerText = `A Tale of ${descriptors[getRandomIndex(descriptors)]} and ${descriptors[getRandomIndex(descriptors)]}`
-// tag2.innerText = `${descriptors[getRandomIndex(descriptors)]}`
+
+
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
