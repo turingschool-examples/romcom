@@ -2,6 +2,20 @@
 title: RomCom - Pair
 ---
 
+## PAIRED PROJECT KICKOFF - TUESDAY MAY 12, 2020
+### MOD1-PAIR: Josh Sevey, Steph Sohns
+---
+* Utilizing kanban in the project pages for tracking and organization of project.
+* Tuesday we came together and completed day1 deliverables: 
+primarily the "git" setup(cloning, contributers, etc.), the DTR, and an 
+in-depth review of project spec and provided code(HTML, CSS). 
+Provided project manager with links to DTR and Repo. We also made a
+schedule plan and are currently sticking to it.
+* Wednesday we completed Iteration 0 with driver/navigator(Josh driving), git commits/push/pull.
+* Thursday we completed Iteration 1 with driver/navigator(Steph driving), git commits/push/pull.
+* Today, Friday, we are completing Iteration 2, dirver/navigator(Josh to start). See project pages 
+for Iter2 details.
+
 ## Learning Goals
 
 * Write clean, DRY JavaScript to store our data
