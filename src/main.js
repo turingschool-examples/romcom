@@ -40,21 +40,42 @@ function createRandomCover(){
 }
 
 function goToForm() {
-  formSection.classList.remove('hidden')
-  homeSection.classList.add('hidden')
-  randomizeButton.classList.add('hidden')
-  homeButton.classList.remove('hidden')
-  savedCoverButton.classList.add('hidden')
-
-  // once function is called,
-  // get the hidden class, and remove it from form-view
-  // then ADD hidden to home-view
-  // locate random-cover-button, remove that button
-  //  // we do this by 
-  // locate save cover button, remove it 
-  // add a home button/create home button variable
+  toggleFormSect();
+  toggleHomeButton();
+  toggleRandomizeButton();
+  toggleHomeSect();
+  toggleSavedCoversButton();
 }
 
+function toggleSavedCoversButton() {
+  savedCoverButton.classList.toggle('hidden')
+}
+
+function toggleHomeSect() {
+  homeSection.classList.toggle('hidden')
+}
+
+function toggleHomeButton() {
+  homeButton.classList.toggle('hidden')
+}
+
+function toggleRandomizeButton() {
+  randomizeButton.classList.toggle('hidden')
+}
+
+function toggleHomeSect() {
+  homeSection.classList.toggle('hidden')
+
+}
+
+function toggleFormSect() {
+  formSection.classList.toggle('hidden')
+}
+
+
+function goToSaved() {
+
+}
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
 }
