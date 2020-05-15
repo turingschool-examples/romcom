@@ -5,7 +5,7 @@ var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
-var savedCoverButton = document.querySelector('.save-cover-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
@@ -40,52 +40,55 @@ function createRandomCover(){
 }
 
 function goToForm() {
-  toggleFormSect();
-  toggleHomeButton();
-  toggleRandomizeButton();
-  toggleHomeSect();
-  toggleSavedCoversButton();
+  showFormSect();
+  showHomeButton();
+  hideRandomizeButton();
+  hideHomeSect();
+  hideSaveCoverButton();
 }
 
 function goToSaved() {
-  toggleSavedSection()
-  toggleHomeButton();
-  toggleRandomizeButton();
-  toggleHomeSect();
-  toggleSavedCoversButton();
-  if(!formSection.classList.contains('hidden')) {
-    formSection.classList.add('hidden')
-  }
-  
-  // if form section || home section === hidden, do nothing
+  showSavedSection()
+  showHomeButton();
+  hideRandomizeButton();
+  hideHomeSect();
+  hideSaveCoverButton();
 }
 
-function toggleSavedSection() {
-  savedSection.classList.toggle('hidden')
+function hideSaveCoverButton() {
+  saveCoverButton.classList.add('hidden')
 }
-function toggleSavedCoversButton() {
-  savedCoverButton.classList.toggle('hidden')
+
+function showSavedSection() {
+  savedSection.classList.remove('hidden')
 }
+
+function showHomeButton() {
+  homeButton.classList.remove('hidden')
+}
+
+function hideRandomizeButton() {
+  randomizeButton.classList.add('hidden')
+}
+
+function hideHomeSect() {
+  homeSection.classList.add('hidden')
+}
+
+
+
+
+
+
+
 
 function toggleHomeSect() {
   homeSection.classList.toggle('hidden')
-}
-
-function toggleHomeButton() {
-  homeButton.classList.toggle('hidden')
-}
-
-function toggleRandomizeButton() {
-  randomizeButton.classList.toggle('hidden')
-}
-
-function toggleHomeSect() {
-  homeSection.classList.toggle('hidden')
 
 }
 
-function toggleFormSect() {
-  formSection.classList.toggle('hidden')
+function showFormSect() {
+  formSection.classList.remove('hidden')
 }
 
 
