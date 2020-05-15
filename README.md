@@ -15,7 +15,8 @@ schedule plan and are currently sticking to it.
 * Thursday we completed Iteration 1 with driver/navigator(Steph driving), git commits/push/pull.
 * Today, Friday, we are completing Iteration 2, dirver/navigator(Josh to start). See project pages 
 for Iter2 details.
-![Iter2-details diagram](file:///Users/stephaniesohns/Downloads/Photo%20on%205-15-20%20at%2011.57%20AM.png)
+![Iter2-details diagram](file:///Users/stephaniesohns/Downloads/Photo%20on%205-15-20%20at%2011.57%20AM.png);
+
 
 
 ## Learning Goals
