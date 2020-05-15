@@ -29,7 +29,7 @@ viewSavedButton.addEventListener('click', goToSaved)
 
 
 // Create your event handlers and other functions here 👇
-function createRandomCover(){
+function createRandomCover() {
   currentCover = new Cover(
    randomizeImage(),
    randomizeTitle(),
@@ -42,16 +42,18 @@ function createRandomCover(){
 function goToForm() {
   showFormSect();
   showHomeButton();
+  hideSavedSect();
   hideRandomizeButton();
   hideHomeSect();
   hideSaveCoverButton();
 }
 
 function goToSaved() {
-  showSavedSection()
+  showSavedSect()
+  hideFormSect();
+  hideHomeSect();
   showHomeButton();
   hideRandomizeButton();
-  hideHomeSect();
   hideSaveCoverButton();
 }
 
@@ -59,7 +61,7 @@ function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
 
-function showSavedSection() {
+function showSavedSect() {
   savedSection.classList.remove('hidden')
 }
 
@@ -75,12 +77,9 @@ function hideHomeSect() {
   homeSection.classList.add('hidden')
 }
 
-
-
-
-
-
-
+function hideFormSect() {
+  formSection.classList.add('hidden')
+}
 
 function toggleHomeSect() {
   homeSection.classList.toggle('hidden')
@@ -91,6 +90,9 @@ function showFormSect() {
   formSection.classList.remove('hidden')
 }
 
+function hideSavedSect() {
+  savedSection.classList.add('hidden')
+}
 
 
 function randomizeImage() {
