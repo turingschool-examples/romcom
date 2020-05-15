@@ -25,7 +25,7 @@ var currentCover;
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
 makeOwnCover.addEventListener('click', goToForm)
-
+viewSavedButton.addEventListener('click', goToSaved)
 
 
 // Create your event handlers and other functions here 👇
@@ -47,6 +47,22 @@ function goToForm() {
   toggleSavedCoversButton();
 }
 
+function goToSaved() {
+  toggleSavedSection()
+  toggleHomeButton();
+  toggleRandomizeButton();
+  toggleHomeSect();
+  toggleSavedCoversButton();
+  if(!formSection.classList.contains('hidden')) {
+    formSection.classList.add('hidden')
+  }
+  
+  // if form section || home section === hidden, do nothing
+}
+
+function toggleSavedSection() {
+  savedSection.classList.toggle('hidden')
+}
 function toggleSavedCoversButton() {
   savedCoverButton.classList.toggle('hidden')
 }
@@ -73,9 +89,7 @@ function toggleFormSect() {
 }
 
 
-function goToSaved() {
 
-}
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
 }
