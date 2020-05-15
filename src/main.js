@@ -7,36 +7,25 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button')
 var mainCover = document.querySelector('.main-cover');
 
-var randomIndexes = [];
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover ;
-// = new Cover(randomIndexes[0], randomIndexes[1], randomIndexes[2], randomIndexes[3]);
 
 // Add your event listeners here 👇
 randomizeButton.addEventListener('click', randomizeCovers);
-// randomizeButton.addEventListener('click',console.log(new Cover(randomIndexes[0], randomIndexes[1], randomIndexes[2], randomIndexes[3])));
-// randomizeButton.addEventListener('click', covers[0])
-// Create your eent handlers and other functions here 👇
+
+// Create your event handlers and other functions here 👇
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}//random number
+}
 
-//randomize
 function randomizeCovers() {
 
-  randomIndexes = [
-    covers[getRandomIndex(covers)],
-    titles[getRandomIndex(titles)],
-    descriptors[getRandomIndex(descriptors)],
-    descriptors[getRandomIndex(descriptors)]
-  ]
-
-  currentCover = new Cover(randomIndexes[0], randomIndexes[1], randomIndexes[2], randomIndexes[3]);
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 
   mainCover.innerHTML = `<img class="cover-image" src="${currentCover.cover}">
   <h2 class="cover-title">${currentCover.title}</h2>
@@ -45,10 +34,5 @@ function randomizeCovers() {
   <img class="overlay" src="./assets/overlay.png">
   `
 }
-// var randomizeButton = document.querySelector('.random-cover-button');
 
 randomizeCovers();
-  //coverImage = imageArr.getRandomIndex
-  //.innerHTML
-  //coverTitle
-  //tagline1 & 2
