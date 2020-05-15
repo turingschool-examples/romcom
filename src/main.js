@@ -5,7 +5,15 @@ var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
-
+var savedCoverButton = document.querySelector('.save-cover-button')
+var viewSavedButton = document.querySelector('.view-saved-button')
+var makeNewButton = document.querySelector('.make-new-button')
+var homeButton = document.querySelector('.home-button')
+var makeOwnCover = document.querySelector('.make-new-button')
+var formSection = document.querySelector('.form-view')
+var homeSection = document.querySelector('.home-view')
+var savedSection = document.querySelector('.saved-view')
+var hidden = document.querySelector('.hidden')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -16,7 +24,71 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
+makeOwnCover.addEventListener('click', goToForm)
+viewSavedButton.addEventListener('click', goToSaved)
+
+
 // Create your event handlers and other functions here 👇
+function createRandomCover(){
+  currentCover = new Cover(
+   randomizeImage(),
+   randomizeTitle(),
+   randomizeTag1(),
+   randomizeTag2()
+  )
+  return currentCover
+}
+
+function goToForm() {
+  toggleFormSect();
+  toggleHomeButton();
+  toggleRandomizeButton();
+  toggleHomeSect();
+  toggleSavedCoversButton();
+}
+
+function goToSaved() {
+  toggleSavedSection()
+  toggleHomeButton();
+  toggleRandomizeButton();
+  toggleHomeSect();
+  toggleSavedCoversButton();
+  if(!formSection.classList.contains('hidden')) {
+    formSection.classList.add('hidden')
+  }
+  
+  // if form section || home section === hidden, do nothing
+}
+
+function toggleSavedSection() {
+  savedSection.classList.toggle('hidden')
+}
+function toggleSavedCoversButton() {
+  savedCoverButton.classList.toggle('hidden')
+}
+
+function toggleHomeSect() {
+  homeSection.classList.toggle('hidden')
+}
+
+function toggleHomeButton() {
+  homeButton.classList.toggle('hidden')
+}
+
+function toggleRandomizeButton() {
+  randomizeButton.classList.toggle('hidden')
+}
+
+function toggleHomeSect() {
+  homeSection.classList.toggle('hidden')
+
+}
+
+function toggleFormSect() {
+  formSection.classList.toggle('hidden')
+}
+
+
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
@@ -41,20 +113,11 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createRandomCover(){
-  currentCover = new Cover(
-   randomizeImage(),
-   randomizeTitle(),
-   randomizeTag1(),
-   randomizeTag2()
- )
- return currentCover
-}
-
 function randomizeImageButton(){
 createRandomCover()
 //coverImage.src = newCover.cover;
 }
+
 
 /* when a user clicks on a show new random cover button, we want the screen
 to give us a new title, a now image, and new taglines.
