@@ -18,9 +18,10 @@ https://github.com/users/relyt4me/projects/1
 
 Tuesday May 12, 2020: Forked and cloned RomCom, defined team relationship, read through objectives.
 
-Wednesday May 13, 2020: Completed iteration 0 to load a random cover upon loading the page. Established Git workflow.
-![gif of random cover on page load and click](/readmeAssets/refreshsmall.gif)
-Thursday May 14, 2020: Created README layout.
+Wednesday May 13, 2020: Completed iteration 0 to load a random cover upon loading the page. Established Git workflow.   
+![gif of random cover on page load and click](/readmeAssets/refreshsmall.gif)   
+Thursday May 14, 2020: Created README layout.   
+![gif of random cover on page load and random cover button click](/readmeAssets/randomCoverButton.gif)   
 Friday May 15, 2020:
 Saturday May 16, 2020:
 Sunday May 17, 2020:
