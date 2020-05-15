@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var coverImg = document.querySelector(".cover-image");
+var coverTitle = document.querySelector(".cover-title");
+var coverTaglineOne = document.querySelector(".tagline-1");
+var coverTaglineTwo = document.querySelector(".tagline-2");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -9,6 +13,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+//window.addEventListener("load", randomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -18,14 +23,28 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function changeCover() {
-  currentCover += document.querySelector(".cover-image");
-   = getRandomIndex(covers);
-   // we want to grab info from line 19 and
-   // change it to get random cover
-};
 
-changeCover();
+function randomCover() {
+  var randomCoverImg = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomTaglineOne = descriptors[getRandomIndex(descriptors)];
+  var randomTaglineTwo = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(randomCoverImg, randomTitle, randomTaglineOne, randomTaglineTwo)
+}
+
+function displayCover(currentCover) {
+  coverImg.setAttribute()
+  coverTitle.innerText = randomTitle;
+  taglineOne.innerText = randomTaglineOne;
+  taglineTwo.innerText = randomTaglineTwo;
+
+}
+
+//make new function that changes inner HTML and also!!!
+//passes currentCover as an argument. yea
+//check out set attribute method for 'src'
+
+
 
 
 /*
