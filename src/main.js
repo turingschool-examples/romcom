@@ -19,7 +19,7 @@ var inputCover = document.getElementById('#cover');
 var inputTitle = document.getElementById('#title');
 var inputDesc1 = document.getElementById('#descriptor1');
 var inputDesc2 = document.getElementById('#descriptor2');
-
+var makeBookBtn = document.querySelector('.create-new-book-button');
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -31,7 +31,7 @@ randomCoverBtn.addEventListener('click', showNewRandomCvr);
 makeNewCoverBtn.addEventListener('click' , goToFormView);
 viewSavedBtn.addEventListener('click', goToSavedView);
 viewHomeBtn.addEventListener('click', goToHomeView);
-
+makeBookBtn.addEventListener('click', userCreatedBook);
 
 
 
@@ -70,6 +70,16 @@ function goToHomeView() {
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 }
+
+function userCreatedBook(event) {
+  savedCovers.push(currentCover);
+  var inputCover = coverImgSrc.value;
+  var inputTitle = title.value;
+  var inputDesc1 = descriptor1.value;
+  var inputDesc2 = descriptor2.value;
+  var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
