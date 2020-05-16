@@ -55,6 +55,9 @@ function makeFormCover () {
   pushDesc1();
   pushDesc2();
   displayMyCover();
+  displayMyTitle();
+  displayMyDesc1();
+  displayMyDesc2();
 }
 
 function goToForm() {
@@ -136,6 +139,17 @@ function displayMyCover() {
   coverImage.src = userCoverInput.value
 }
 
+function displayMyTitle() {
+  coverTitle.innerText = userTitleInput.value
+}
+
+function displayMyDesc1() {
+  tagLineOne.innerText = userDesc1.value
+}
+
+function displayMyDesc2() {
+  tagLineTwo.innerText = userDesc2.value
+}
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
@@ -181,6 +195,7 @@ function pushDesc1() {
 function pushDesc2() {
   descriptors.push(userDesc2.value)
 }
+
 
 //ITERATION 3
 //when a user clicks the make my book button,
