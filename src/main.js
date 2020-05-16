@@ -15,6 +15,7 @@ var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
 var hidden = document.querySelector('.hidden')
 var makeNewCover = document.querySelector('.create-new-book-button')
+var userCoverInput = document.querySelector('.user-cover').value
 
 // We've provided a few variables below
 var savedCovers = [
@@ -30,6 +31,7 @@ viewSavedButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
 
+
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
   currentCover = new Cover(
@@ -42,9 +44,10 @@ function createRandomCover() {
 }
 
 function makeFormCover () {
-  makeNewCover.type = "button" 
+  makeNewCover.type = "button"
   showHomeSect();
   hideFormSect();
+  pushCoverArray();
 }
 
 function goToForm() {
@@ -146,11 +149,19 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomizeImageButton(){
+function randomizeImageButton() {
 createRandomCover()
 //coverImage.src = newCover.cover;
 }
 
+function pushCoverArray() {
+  covers.push(userCoverInput)
+  console.log(covers)
+}
+
+function pushTitleArray() {
+
+}
 //ITERATION 3
 //when a user clicks the make my book button,
 ////these things will happen:
