@@ -6,7 +6,7 @@ var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
-var viewSavedButton = document.querySelector('.view-saved-button')
+var viewSavedSectButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
 var makeOwnCover = document.querySelector('.make-new-button')
@@ -30,10 +30,10 @@ var currentCover;
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
 makeOwnCover.addEventListener('click', goToForm)
-viewSavedButton.addEventListener('click', goToSaved)
+viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
-
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -46,13 +46,37 @@ function createRandomCover() {
   return currentCover
 }
 
-function makeFormCover () {
+function makeFormCover() {
   makeNewCover.type = "button"
   showHomeSect();
   hideFormSect();
   pushInputs();
   displayInputs();
-  makeUserCoverObj()
+  makeUserCoverObj();
+  showSaveCoverButton();
+}
+
+function saveCover() {
+  checkForDuplicates(currentCover);
+}
+
+function checkForDuplicates(currentCover){
+  for (var i = 0; i < savedCovers.length; i++){
+    if (currentCover !== savedCovers[i]){
+      savedCovers.push(currentCover);
+    } else {
+      alert("You've already saved this cover!")
+    }
+  }
+console.log(savedCovers)
+}
+
+function showSaveCover() {
+  //when a user clicks on the saved cover button, these two things will happen
+  ////1. it gets pushed to the savedCovers array in data.js.
+  ////2. the poster gets replicated and placed in the savedCovers section (.adjacentHMTL?)
+  ////2a. Consider using css classes of mini-cover and applying it to the covers in the saved cover section
+
 }
 
 function displayInputs() {
@@ -104,18 +128,23 @@ function goToHome() {
   showHomeSect();
   hideHomeButton();
   showRandomizeButton();
-  showSavedButton();
+  showSavedSectButton();
+  showSaveCoverButton();
 }
 //Navigation
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
 
+function showSaveCoverButton() {
+  saveCoverButton.classList.remove('hidden')
+}
+
 function showSavedSect() {
   savedSection.classList.remove('hidden')
 }
 
-function showSavedButton() {
+function showSaveButton() {
   savedButton.classList.remove('hidden')
 }
 
@@ -144,7 +173,11 @@ function hideFormSect() {
 }
 
 function showHomeSect() {
-  homeSection.classList.remove('hidden')
+  homeSection.classList.remove('hidden');
+  hideHomeButton();
+  showRandomizeButton();
+  showSaveCoverButton(); 
+  //should reveal saved button feature
 }
 
 function showFormSect() {
@@ -173,7 +206,7 @@ function displayMyDesc1() {
 
 function displayMyDesc2() {
   tagLineTwo.innerText = userDesc2.value
-  return tagLineTwo.innerText; 
+  return tagLineTwo.innerText;
 }
 
 //Randomizers

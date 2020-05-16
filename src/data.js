@@ -13,6 +13,8 @@ var covers = [
   './assets/windswept.jpg',
 ];
 
+var savedCovers = [];
+
 var titles = [
   "Passionate Moonlight",
   "Love's Misery",
