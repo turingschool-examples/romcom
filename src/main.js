@@ -23,3 +23,10 @@ currentCover.randomRomCom();
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
+function displayCover(coverObject) {
+  coverImage.src = coverObject.cover;
+  coverTitle.innerText = coverObject.title;
+  tagline1.innerText = coverObject.tagline1;
+  tagline2.innerText = coverObject.tagline2;
+};
