@@ -15,7 +15,10 @@ var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
 var hidden = document.querySelector('.hidden')
 var makeNewCover = document.querySelector('.create-new-book-button')
-var userCoverInput = document.querySelector('.user-cover').value
+var userCoverInput = document.querySelector('.user-cover')
+var userTitleInput = document.querySelector('.user-title')
+var userDesc1 = document.querySelector('.user-desc1')
+var userDesc2 = document.querySelector('.user-desc2')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -48,6 +51,9 @@ function makeFormCover () {
   showHomeSect();
   hideFormSect();
   pushCoverArray();
+  pushTitleArray();
+  pushDesc1();
+  pushDesc2();
 }
 
 function goToForm() {
@@ -155,13 +161,22 @@ createRandomCover()
 }
 
 function pushCoverArray() {
-  covers.push(userCoverInput)
+  covers.push(userCoverInput.value)
   console.log(covers)
 }
 
 function pushTitleArray() {
-
+  titles.push(userTitleInput.value)
 }
+
+function pushDesc1() {
+  descriptors.push(userDesc1.value)
+}
+
+function pushDesc2() {
+  descriptors.push(userDesc2.value)
+}
+
 //ITERATION 3
 //when a user clicks the make my book button,
 ////these things will happen:
