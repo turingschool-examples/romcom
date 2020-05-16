@@ -13,13 +13,22 @@ var currentCover= new Cover(coverImage, coverTitle, tagline1, tagline2);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", function() {
-  currentCover.randomRomCom();
+  currentCover.randomizeCover();
+  displayCover(currentCover);
 });
 
 // Create your event handlers and other functions here 👇
-currentCover.randomRomCom();
+currentCover.randomizeCover();
+displayCover(currentCover);
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+};
+
+function displayCover(coverObject) {
+  coverImage.src = coverObject.cover;
+  coverTitle.innerText = coverObject.title;
+  tagline1.innerText = coverObject.tagline1;
+  tagline2.innerText = coverObject.tagline2;
 };
