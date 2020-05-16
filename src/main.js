@@ -36,6 +36,7 @@ homeButton.addEventListener("click", function() {
 
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
+  savedCoversPage.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
@@ -44,6 +45,7 @@ makeNewButton.addEventListener("click", function() {
 
 viewSavedButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
+  formPage.classList.add('hidden');
   savedCoversPage.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
