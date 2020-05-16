@@ -36,6 +36,7 @@ homeButton.addEventListener("click", function() {
 
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
+  savedCoversPage.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
