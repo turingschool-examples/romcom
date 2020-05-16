@@ -50,15 +50,35 @@ function makeFormCover () {
   makeNewCover.type = "button"
   showHomeSect();
   hideFormSect();
-  pushCoverArray();
-  pushTitleArray();
-  pushDesc1();
-  pushDesc2();
+  pushInputs();
+  displayInputs();
+  makeUserCoverObj()
+}
+
+function displayInputs() {
   displayMyCover();
   displayMyTitle();
   displayMyDesc1();
   displayMyDesc2();
 }
+
+function pushInputs() {
+  pushCoverArray();
+  pushTitleArray();
+  pushDesc1();
+  pushDesc2();
+}
+
+function makeUserCoverObj() {
+  currentCover = new Cover(
+    displayMyCover(),
+    displayMyTitle(),
+    displayMyDesc1(),
+    displayMyDesc2()
+  )
+  return currentCover
+}
+
 
 function goToForm() {
   showFormSect();
@@ -153,20 +173,22 @@ function displayMyDesc2() {
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
+  return coverImage.src
 }
 
 function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
+  return coverTitle.innerText
 }
 
 function randomizeTag1() {
-  //var tag1 = descriptors[getRandomIndex(descriptors)]
   tagLineOne.innerText = descriptors[getRandomIndex(descriptors)]
+  return tagLineOne.innerText
 }
 
 function randomizeTag2() {
-  //var tag2 = descriptors[getRandomIndex(descriptors)]
   tagLineTwo.innerText = descriptors[getRandomIndex(descriptors)]
+  return tagLineTwo.innerText
 }
 
 // We've provided one function to get you started
