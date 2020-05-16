@@ -6,10 +6,10 @@ class Cover {
     this.tagline1 = descriptor1;
     this.tagline2 = descriptor2;
   }
-  randomRomCom() {
-    this.cover.src = covers[getRandomIndex(covers)];
-    this.title.innerText = titles[getRandomIndex(titles)];
-    this.tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-    this.tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  randomizeCover()) {
+    this.cover = covers[getRandomIndex(covers)];
+    this.title = titles[getRandomIndex(titles)];
+    this.tagline1 = descriptors[getRandomIndex(descriptors)];
+    this.tagline2 = descriptors[getRandomIndex(descriptors)];
   };
 }
