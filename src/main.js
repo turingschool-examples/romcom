@@ -20,7 +20,9 @@ randomCoverButton.addEventListener("click", function() {
   currentCover.randomizeCover();
   displayCover(currentCover);
 });
-
+makeNewButton.addEventListener("click", function() {
+  
+});
 // Create your event handlers and other functions here 👇
 currentCover.randomizeCover();
 displayCover(currentCover);
