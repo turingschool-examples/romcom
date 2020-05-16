@@ -8,6 +8,7 @@ var userCoverButton = document.querySelector('.make-new-button')
 var mainCover = document.querySelector('.main-cover');
 var formSection = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
+var makeMyBook = document.querySelector('.create-new-book-button');
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -19,6 +20,7 @@ randomizeButton.addEventListener('click', randomizeCovers);
 userCoverButton.addEventListener('click', userCoverPage);
 viewSavedButton.addEventListener('click', viewSavedPage);
 homeButton.addEventListener('click', goHome);
+makeMyBook.addEventListener('click', makeNewBook);
 // Create your event handlers and other functions here 👇
 function userCoverPage() {
 mainCover.classList.add('hidden');
@@ -36,7 +38,7 @@ function viewSavedPage() {
   formSection.classList.add('hidden');
 }
 
-function goHome(){
+function goHome() {
   mainCover.classList.remove('hidden');
   savedCoversPage.classList.add('hidden');
   randomizeButton.classList.remove('hidden');
@@ -45,16 +47,28 @@ function goHome(){
   saveCoverButton.classList.remove('hidden');
 }
 
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function makeNewBook(event) {
+  event.preventDefault();
+  saveUserInput ();
+  createUserCover();
+  callMainCover();
+  goHome();
 }
 
-function randomizeCovers() {
+function saveUserInput() {
+  covers.unshift(document.getElementById('cover').value);
+  titles.unshift(document.getElementById('title').value);
+  descriptors.unshift(document.getElementById('descriptor1').value);
+  descriptors.unshift(document.getElementById('descriptor2').value);
 
-  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+}
 
+function createUserCover() {
+  currentCover = new Cover(covers[0], titles[0], descriptors[1], descriptors[0]);
+
+}
+
+function callMainCover(){
   mainCover.innerHTML = `<img class="cover-image" src="${currentCover.cover}">
   <h2 class="cover-title">${currentCover.title}</h2>
   <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
@@ -63,4 +77,15 @@ function randomizeCovers() {
   `
 }
 
-randomizeCovers();
+// We've provided one function to get you started
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function randomizeCovers() {
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+
+  callMainCover()
+}
+
+ randomizeCovers();
