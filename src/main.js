@@ -54,6 +54,7 @@ function makeFormCover () {
   pushTitleArray();
   pushDesc1();
   pushDesc2();
+  displayMyCover();
 }
 
 function goToForm() {
@@ -129,6 +130,10 @@ function showFormSect() {
 
 function hideSavedSect() {
   savedSection.classList.add('hidden')
+}
+
+function displayMyCover() {
+  coverImage.src = userCoverInput.value
 }
 
 
