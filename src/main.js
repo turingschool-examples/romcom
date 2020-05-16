@@ -25,6 +25,10 @@ randomCoverButton.addEventListener("click", function() {
   displayCover(currentCover);
 });
 
+homeButton.addEventListener("click", function() {
+  homePage.classList.remove('hidden');
+});
+
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
