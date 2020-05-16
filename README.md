@@ -1,9 +1,38 @@
+![GitHub repo size](https://img.shields.io/github/repo-size/JoshSevy/RomCom)
+![GitHub contributors](https://img.shields.io/github/contributors/JoshSevy/RomCom)
+![GitHub stars](https://img.shields.io/github/stars/JoshSevy/RomCom?style=social)
+![GitHub forks](https://img.shields.io/github/forks/JoshSevy/RomCom?style=social)
+
 ---
-title: RomCom - Pair
+Title: RomCom - Pair
 ---
 
+People say that romance novels are formulaic. Well ... maybe that's true. We're going to make an app that generates romance novel covers!
+
+
+## Some Romantic Screen Shots
+---
+
+
+
+
+
+
+
+
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+* [@JoshSevy](https://github.com/JoshSevy)
+* [@StephLSohns](https://github.com/StephLSohns)
+
+
+
+
 ## PAIRED PROJECT KICKOFF - TUESDAY MAY 12, 2020
-### MOD1-PAIR: Josh Sevey, Steph Sohns
+### MOD1-PAIR: Josh Sevy, Steph Sohns
 ---
 * Utilizing kanban in the project pages for tracking and organization of project.
 * Tuesday we came together and completed day1 deliverables: 
@@ -13,7 +42,7 @@ Provided project manager with links to DTR and Repo. We also made a
 schedule plan and are currently sticking to it.
 * Wednesday we completed Iteration 0 with driver/navigator(Josh driving), git commits/push/pull.
 * Thursday we completed Iteration 1 with driver/navigator(Steph driving), git commits/push/pull.
-* Today, Friday, we are completing Iteration 2, dirver/navigator(Josh to start). See project pages 
+* Today, Friday, we are completing Iteration 2, driver/navigator(Josh to start). See project pages 
 for Iter2 details.
 
 
