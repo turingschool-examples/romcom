@@ -106,7 +106,7 @@ function goToHome() {
   showRandomizeButton();
   showSavedButton();
 }
-
+//Navigation
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
@@ -155,22 +155,28 @@ function hideSavedSect() {
   savedSection.classList.add('hidden')
 }
 
+//Display
 function displayMyCover() {
   coverImage.src = userCoverInput.value
+  return coverImage.src;
 }
 
 function displayMyTitle() {
   coverTitle.innerText = userTitleInput.value
+  return coverTitle.innerText;
 }
 
 function displayMyDesc1() {
   tagLineOne.innerText = userDesc1.value
+  return tagLineOne.innerText;
 }
 
 function displayMyDesc2() {
   tagLineTwo.innerText = userDesc2.value
+  return tagLineTwo.innerText; 
 }
 
+//Randomizers
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
   return coverImage.src
@@ -191,16 +197,15 @@ function randomizeTag2() {
   return tagLineTwo.innerText
 }
 
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function randomizeImageButton() {
 createRandomCover()
-//coverImage.src = newCover.cover;
 }
 
+//Push Data
 function pushCoverArray() {
   covers.push(userCoverInput.value)
   console.log(covers)
@@ -217,21 +222,3 @@ function pushDesc1() {
 function pushDesc2() {
   descriptors.push(userDesc2.value)
 }
-
-
-//ITERATION 3
-//when a user clicks the make my book button,
-////these things will happen:
-////the cover input will push the value into the covers array
-////the title input will push the value into the titles array
-////the first descriptor and second descriptor will push into the descriptors array (this will be two functions)
-//these values will be used to reassign currentCover using our Cover class constructor;
-//then we can this variable will be displayed on the home page
-// the makeMyCover button will also hide the form Section and show the home Section
-
-/* when a user clicks on a show new random cover button, we want the screen
-to give us a new title, a now image, and new taglines.
-In order to do this, we need to use functions.
-The hint was to maybe change the currentCover variable?
-how can we use the currentCover variable in our current setup?
-*/
