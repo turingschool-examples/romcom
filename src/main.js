@@ -14,6 +14,7 @@ var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
 var hidden = document.querySelector('.hidden')
+var makeNewCover = document.querySelector('.create-new-book-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -27,6 +28,7 @@ randomizeButton.addEventListener('click', randomizeImageButton)
 makeOwnCover.addEventListener('click', goToForm)
 viewSavedButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
+makeNewCover.addEventListener('click', makeFormCover)
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -37,6 +39,12 @@ function createRandomCover() {
    randomizeTag2()
   )
   return currentCover
+}
+
+function makeFormCover () {
+  makeNewCover.type = "button" 
+  showHomeSect();
+  hideFormSect();
 }
 
 function goToForm() {
@@ -143,6 +151,15 @@ createRandomCover()
 //coverImage.src = newCover.cover;
 }
 
+//ITERATION 3
+//when a user clicks the make my book button,
+////these things will happen:
+////the cover input will push the value into the covers array
+////the title input will push the value into the titles array
+////the first descriptor and second descriptor will push into the descriptors array (this will be two functions)
+//these values will be used to reassign currentCover using our Cover class constructor;
+//then we can this variable will be displayed on the home page
+// the makeMyCover button will also hide the form Section and show the home Section
 
 /* when a user clicks on a show new random cover button, we want the screen
 to give us a new title, a now image, and new taglines.
