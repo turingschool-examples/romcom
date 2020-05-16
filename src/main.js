@@ -32,7 +32,6 @@ function viewSavedPage() {
   mainCover.classList.add('hidden');
   savedCoversPage.classList.remove('hidden');
   randomizeButton.classList.add('hidden');
-  // viewSavedButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formSection.classList.add('hidden');
 }
