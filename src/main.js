@@ -32,6 +32,10 @@ makeNewButton.addEventListener("click", function() {
   homeButton.classList.remove('hidden');
   formPage.classList.remove('hidden');
 });
+
+viewSavedButton.addEventListener("click", function() {
+
+});
 // Create your event handlers and other functions here 👇
 currentCover.randomizeCover();
 displayCover(currentCover);
