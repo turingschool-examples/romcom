@@ -9,6 +9,8 @@ var makeNewButton = document.querySelector(".make-new-button");
 var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
 var homeButton = document.querySelector(".home-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var homeButton = document.querySelector(".home-button");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -42,6 +44,10 @@ function toggleView(element) {
 function showPageHandler() {
   toggleView(homeView);
   toggleView(formView);
+  toggleView(randomCoverButton);
+  toggleView(saveCoverButton);
+  toggleView(homeButton);
+
 }
 
 
