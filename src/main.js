@@ -15,7 +15,10 @@ var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
 var hidden = document.querySelector('.hidden')
 var makeNewCover = document.querySelector('.create-new-book-button')
-var userCoverInput = document.querySelector('.user-cover').value
+var userCoverInput = document.querySelector('.user-cover')
+var userTitleInput = document.querySelector('.user-title')
+var userDesc1 = document.querySelector('.user-desc1')
+var userDesc2 = document.querySelector('.user-desc2')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -47,8 +50,35 @@ function makeFormCover () {
   makeNewCover.type = "button"
   showHomeSect();
   hideFormSect();
-  pushCoverArray();
+  pushInputs();
+  displayInputs();
+  makeUserCoverObj()
 }
+
+function displayInputs() {
+  displayMyCover();
+  displayMyTitle();
+  displayMyDesc1();
+  displayMyDesc2();
+}
+
+function pushInputs() {
+  pushCoverArray();
+  pushTitleArray();
+  pushDesc1();
+  pushDesc2();
+}
+
+function makeUserCoverObj() {
+  currentCover = new Cover(
+    displayMyCover(),
+    displayMyTitle(),
+    displayMyDesc1(),
+    displayMyDesc2()
+  )
+  return currentCover
+}
+
 
 function goToForm() {
   showFormSect();
@@ -125,23 +155,40 @@ function hideSavedSect() {
   savedSection.classList.add('hidden')
 }
 
+function displayMyCover() {
+  coverImage.src = userCoverInput.value
+}
+
+function displayMyTitle() {
+  coverTitle.innerText = userTitleInput.value
+}
+
+function displayMyDesc1() {
+  tagLineOne.innerText = userDesc1.value
+}
+
+function displayMyDesc2() {
+  tagLineTwo.innerText = userDesc2.value
+}
 
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
+  return coverImage.src
 }
 
 function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
+  return coverTitle.innerText
 }
 
 function randomizeTag1() {
-  //var tag1 = descriptors[getRandomIndex(descriptors)]
   tagLineOne.innerText = descriptors[getRandomIndex(descriptors)]
+  return tagLineOne.innerText
 }
 
 function randomizeTag2() {
-  //var tag2 = descriptors[getRandomIndex(descriptors)]
   tagLineTwo.innerText = descriptors[getRandomIndex(descriptors)]
+  return tagLineTwo.innerText
 }
 
 // We've provided one function to get you started
@@ -155,13 +202,23 @@ createRandomCover()
 }
 
 function pushCoverArray() {
-  covers.push(userCoverInput)
+  covers.push(userCoverInput.value)
   console.log(covers)
 }
 
 function pushTitleArray() {
-
+  titles.push(userTitleInput.value)
 }
+
+function pushDesc1() {
+  descriptors.push(userDesc1.value)
+}
+
+function pushDesc2() {
+  descriptors.push(userDesc2.value)
+}
+
+
 //ITERATION 3
 //when a user clicks the make my book button,
 ////these things will happen:
