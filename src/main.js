@@ -9,6 +9,10 @@ var makeNewButton = document.querySelector(".make-new-button");
 var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
 var homeButton = document.querySelector(".home-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var savedView = document.querySelector(".saved-view");
+var viewSavedButton = document.querySelector(".view-saved-button");
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -20,29 +24,47 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener("load", makeCover);
 randomCoverButton.addEventListener("click", makeCover);
-makeNewButton.addEventListener("click", showPageHandler);
-// homeButton.addEventListener("click", showHome);
+homeButton.addEventListener("click", toggleHomeView);
+makeNewButton.addEventListener("click", toggleFormView);
+viewSavedButton.addEventListener("click", toggleSaveView);
 
 
 // Create your event handlers and other functions here 👇
-// loadingCover = new Cover {
-//
-// }
-function toggleView(element) {
-    console.log(element)
-  // var element = /*document.querySelector*/(`.${elementClass}`)
-  if (element.classList.contains("hidden")) {
-    element.classList.remove("hidden");
 
-  } else {
-    element.classList.add("hidden");
-  }
+//optional extension: remove unnecessary functionality of formView button while on form page
+
+
+// create array for pages page views
+// create function to move selected page to array index0
+// pass index numbers as arguments in a toggle function
+
+function toggleHomeView() {
+  homeView.classList.remove("hidden");
+  formView.classList.add("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+    savedView.classList.add("hidden");
 }
 
-function showPageHandler() {
-  toggleView(homeView);
-  toggleView(formView);
+function toggleFormView() {
+  homeView.classList.add("hidden");
+  formView.classList.remove("hidden");
+  homeButton.classList.remove("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  savedView.classList.add("hidden");
 }
+
+function toggleSaveView() {
+  savedView.classList.remove("hidden");
+  homeView.classList.add("hidden");
+  formView.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+}
+
 
 
 // We've provided one function to get you started
