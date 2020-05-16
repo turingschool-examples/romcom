@@ -25,6 +25,9 @@ randomCoverButton.addEventListener("click", function() {
 });
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
 });
 // Create your event handlers and other functions here 👇
 currentCover.randomizeCover();
