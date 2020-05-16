@@ -25,6 +25,15 @@ randomCoverButton.addEventListener("click", function() {
   displayCover(currentCover);
 });
 
+homeButton.addEventListener("click", function() {
+  homePage.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  formPage.classList.add('hidden');
+  savedCoversPage.classList.add('hidden');
+  homeButton.classList.add('hidden');
+});
+
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
