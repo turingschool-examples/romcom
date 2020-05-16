@@ -10,6 +10,7 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
+var savedCoversPage = document.querySelector('.saved-view');
 
 
 // We've provided a few variables below
@@ -23,6 +24,7 @@ randomCoverButton.addEventListener("click", function() {
   currentCover.randomizeCover();
   displayCover(currentCover);
 });
+
 makeNewButton.addEventListener("click", function() {
   homePage.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
