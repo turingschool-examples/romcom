@@ -8,6 +8,9 @@ var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var homePage = document.querySelector('.home-view');
+var formPage = document.querySelector('.form-view');
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,7 +24,7 @@ randomCoverButton.addEventListener("click", function() {
   displayCover(currentCover);
 });
 makeNewButton.addEventListener("click", function() {
-  
+
 });
 // Create your event handlers and other functions here 👇
 currentCover.randomizeCover();
