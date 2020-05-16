@@ -27,6 +27,8 @@ randomCoverButton.addEventListener("click", function() {
 
 homeButton.addEventListener("click", function() {
   homePage.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
 });
 
 makeNewButton.addEventListener("click", function() {
