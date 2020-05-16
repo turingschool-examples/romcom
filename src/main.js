@@ -14,6 +14,11 @@ var viewSavedBtn = document.querySelector('.view-saved-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
+//form variables
+var inputCover = document.getElementById('#cover');
+var inputTitle = document.getElementById('#title');
+var inputDesc1 = document.getElementById('#descriptor1');
+var inputDesc2 = document.getElementById('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
