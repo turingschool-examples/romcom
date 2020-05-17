@@ -42,6 +42,8 @@ schedule plan and are currently sticking to it.
 * Thursday we completed Iteration 1 with driver/navigator(Steph driving), git commits/push/pull.
 * Today, Friday, we are completing Iteration 2, driver/navigator(Josh to start). See project pages 
 for Iter2 details.
+* Saturday we worked from 11:30am to 3:30pm (poms included) on Iteration 3, driver/navigator and a little bit of divide and conquer, research, pseudo-coding our own ideas for the iteration. Coming together and trying various set ups to get the dom/browser working effectively with understandable DRY code in main.js completed the iteration, start on Iteration 4 tomorrow/Sunday.
+
 
 ### Images along our developing way.
 
