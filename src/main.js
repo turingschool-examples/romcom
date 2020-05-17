@@ -33,7 +33,8 @@ makeMyBookButton.addEventListener('click', function(){
   event.preventDefault();
   moveToHomePage();
   addInputToArrays();
-  var newCover = new Cover(coverInput.value, titleInput.value, userDesc1.value, userDesc2.value);
+  var createdCover = new Cover(coverInput.value, titleInput.value, userDesc1.value, userDesc2.value);
+  displayCover(createdCover);
 })
 
 homeButton.addEventListener("click", function(){
