@@ -62,13 +62,12 @@ function saveCover() {
 
 function checkForDuplicates(currentCover){
   for (var i = 0; i < savedCovers.length; i++){
-    if (currentCover !== savedCovers[i]){
-      savedCovers.push(currentCover);
+    if (currentCover === savedCovers[i]){
+      return alert("You've already saved this cover!")
     } else {
-      alert("You've already saved this cover!")
+      savedCovers.push(currentCover);
     }
   }
-console.log(savedCovers)
 }
 
 function showSaveCover() {
@@ -176,7 +175,7 @@ function showHomeSect() {
   homeSection.classList.remove('hidden');
   hideHomeButton();
   showRandomizeButton();
-  showSaveCoverButton(); 
+  showSaveCoverButton();
   //should reveal saved button feature
 }
 
