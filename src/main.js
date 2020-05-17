@@ -31,6 +31,7 @@ randomCoverButton.addEventListener("click", function() {
 
 makeMyBookButton.addEventListener('click', function(){
   moveToHomePage();
+  addInputToArrays();
 })
 
 homeButton.addEventListener("click", function(){
@@ -77,4 +78,10 @@ function moveToHomePage() {
   formPage.classList.add('hidden');
   savedCoversPage.classList.add('hidden');
   homeButton.classList.add('hidden');
+};
+
+function addInputToArrays() {
+    covers.push(coverInput.value);
+    titles.push(titleInput.value);
+    descriptors.push(userDesc1.value, userDesc2.value);
 };
