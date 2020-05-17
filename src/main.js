@@ -97,3 +97,12 @@ function addInputToArrays() {
     titles.push(titleInput.value);
     descriptors.push(userDesc1.value, userDesc2.value);
 };
+
+function isCoverSaved(coverObject) {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === coverObject.id) {
+        return true;
+    };
+  };
+  return false;
+};
