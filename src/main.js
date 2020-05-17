@@ -62,7 +62,9 @@ viewSavedButton.addEventListener("click", function() {
 });
 
 saveCoverButton.addEventListener("click", function() {
-  savedCovers.push(currentCover);
+  if (coverNotSaved(currentCover)) {
+    savedCovers.push(currentCover);
+  };
 });
 // Create your event handlers and other functions here 👇
 
@@ -98,11 +100,11 @@ function addInputToArrays() {
     descriptors.push(userDesc1.value, userDesc2.value);
 };
 
-function isCoverSaved(coverObject) {
+function coverNotSaved(coverObject) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id === coverObject.id) {
-        return true;
+        return false;
     };
   };
-  return false;
+  return true;
 };
