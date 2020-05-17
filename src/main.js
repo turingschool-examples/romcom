@@ -28,6 +28,7 @@ saveCoverButton.addEventListener('click', saveUserFavorite);
 
 // Create your event handlers and other functions here 👇
 function userCoverPage() {
+  savedCoversSection.innerHTML = `<br />`;
   mainCover.classList.add('hidden');
   formSection.classList.remove('hidden');
   randomizeButton.classList.add('hidden');
@@ -44,19 +45,28 @@ function viewSavedPage() {
   formSection.classList.add('hidden');
   savedCoversSection.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
+  injectCoverSection();
 }
 
 function injectCoverSection() {
-    savedCoversSection.innerHTML = `<div class="mini-cover"><img class="mini-cover" src="${savedCovers[0].cover}">
-      <p class="cover-title">${savedCovers[0].title}</p>
-      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3></div>`;
+  savedCoversSection.innerHTML = `<br />`;
+for (i = 0; i < savedCovers.length; i++){
+  savedCoversSection.innerHTML += `<div class="mini-cover"><img class="mini-cover" src="${savedCovers[i].cover}">
+  <p class="cover-title">${savedCovers[i].title}</p>
+  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3></div>`;
+  }
 }
 
 function saveUserFavorite(){
-  //add current current cover to saved covers array
-  //create a conditional that checks if there is already an object in the array that match one in the array and prevents from creating duplictates
-  savedCovers.push(currentCover)
-}
+  //if the array contains an element return true and if not return false
+  //if  an element already exist do not add it and if false add it to the array
+
+  if (savedCovers.includes(currentCover)){
+  } else {
+    savedCovers.push(currentCover)
+  }
+  console.log(savedCovers)
+};
 
 function goHome() {
   mainCover.classList.remove('hidden');
@@ -66,7 +76,7 @@ function goHome() {
   formSection.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   savedCoversSection.classList.add('hidden');
-}
+};
 
 function makeNewBook(event) {
   event.preventDefault();
@@ -110,4 +120,3 @@ function randomizeCovers() {
 }
 
  randomizeCovers();
- injectCoverSection();
