@@ -27,26 +27,29 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverBtn.addEventListener('click', showNewRandomCvr);
-makeNewCoverBtn.addEventListener('click' , goToFormView);
-viewSavedBtn.addEventListener('click', goToSavedView);
-viewHomeBtn.addEventListener('click', goToHomeView);
-makeBookBtn.addEventListener('click', userCreatedBook);
-
-
-
 window.onload = function randomOnloadCvr() {
   showNewRandomCvr();
-}
+};
+
+randomCoverBtn.addEventListener('click', showNewRandomCvr);
+makeNewCoverBtn.addEventListener('click' , goToFormView);
+viewHomeBtn.addEventListener('click', goToHomeView);
+makeBookBtn.addEventListener('click', makeOwnForm);
+viewSavedBtn.addEventListener('click', goToSavedView);
+
+
+
+
+
 
 // Create your event handlers and other functions here 👇
 function showNewRandomCvr() {
-  loadCover.src = `${covers[getRandomIndex(covers)]}`
-  loadTitle.innerText = `${titles[getRandomIndex(titles)]}`
+  loadCover.src = `${covers[getRandomIndex(covers)]}`;
+  loadTitle.innerText = `${titles[getRandomIndex(titles)]}`;
   tag1.innerText = `${descriptors[getRandomIndex(descriptors)]}`;
   tag2.innerText = `${descriptors[getRandomIndex(descriptors)]}`;
 }
-
+//functions for button page displays
 function goToFormView() {
   viewHomeBtn.classList.remove('hidden');
   homeView.classList.add('hidden');
@@ -70,9 +73,17 @@ function goToHomeView() {
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 }
+//functions for user created data makeBookBtn eventlistener
+function makeOwnForm(){
+  event.preventDefault();
+  userCreatedBook();
+  viewUserCreatedBook();
+  goToHomeView();
+  document.querySelector('form').reset();
+}
 
 function userCreatedBook(event) {
-  event.preventDefault();
+  var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
   if(!covers.includes(inputCover.value)){
     covers.push(inputCover.value);
   }
@@ -82,21 +93,14 @@ function userCreatedBook(event) {
   if(!descriptors.includes(inputDesc1.value || inputDesc2.value)){
     descriptors.push(inputDesc1.value, inputDesc2.value);
   }
-
-  var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
-  viewUserCreatedBook();
 }
 
 function viewUserCreatedBook() {
-  loadCover.src = `${inputCover.value}`
-  loadTitle.innerText = `${inputTitle.value}`
-  tag1.innerText = `${inputDesc1.value}`
-  tag2.innerText = `${inputDesc2.value}`
-  goToHomeView();
-  document.querySelector('form').reset();
-
+  loadCover.src = `${inputCover.value}`;
+  loadTitle.innerText = `${inputTitle.value}`;
+  tag1.innerText = `${inputDesc1.value}`;
+  tag2.innerText = `${inputDesc2.value}`;
 }
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
