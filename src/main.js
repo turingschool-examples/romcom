@@ -34,6 +34,7 @@ homeButton.addEventListener("click", toggleHomeView);
 makeNewButton.addEventListener("click", toggleFormView);
 viewSavedButton.addEventListener("click", toggleSaveView);
 createMyBookButton.addEventListener("click", makeUserCover);
+saveCoverButton.addEventListener("click", pushSavedCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -94,26 +95,31 @@ function makeUserCover(event) {
   currentCover = new Cover(coverImgSrc, title, tagline1, tagline2);
   pushUserCover();
   form.reset();
+  toggleHomeView();
   displayCover(currentCover);
 }
 
 function pushUserCover(coverImgSrc, title, tagline1, tagline2) {
   covers.push(userCover.value);
-  titles.push(userCover.value);
+  titles.push(userTitle.value);
   descriptors.push(userDesc1.value);
   descriptors.push(userDesc2.value);
 }
 
 function displayCover(cover) {
-  console.log(cover);
   coverImageElement.setAttribute("src", cover.cover);
   title.innerText = cover.title;
   tagline1.innerText = cover.tagline1;
   tagline2.innerText = cover.tagline2;
 };
 
+function pushSavedCover() {
+  savedCovers.push(currentCover);
+}
 
-// use query selector to access img, title, tagline, disc1 and disc2
-// on page load (eventlistener) random title, image and discriptors will appear on the page
-// function that will insert the selected elements into the framework for the cover
-// function that will insert the framework onto the DOM
+
+
+// When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
+// If a user clicks the “Save Cover” more than once on a single cover, it will still only be saved once (no duplicates)
+// When a user clicks the “View Saved Covers” button, we should see the saved covers section
+// All the covers in the savedCovers array should be displayed in the saved covers section
