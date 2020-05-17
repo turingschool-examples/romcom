@@ -12,6 +12,12 @@ var homeButton = document.querySelector(".home-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var savedView = document.querySelector(".saved-view");
 var viewSavedButton = document.querySelector(".view-saved-button");
+var userCover = document.querySelector(".user-cover");
+var userTitle = document.querySelector(".user-title");
+var userDesc1 = document.querySelector(".user-desc1");
+var userDesc2 = document.querySelector(".user-desc2");
+var createMyBookButton = document.querySelector(".create-new-book-button");
+var form = document.querySelector("form");
 
 
 // We've provided a few variables below
@@ -27,6 +33,7 @@ randomCoverButton.addEventListener("click", makeCover);
 homeButton.addEventListener("click", toggleHomeView);
 makeNewButton.addEventListener("click", toggleFormView);
 viewSavedButton.addEventListener("click", toggleSaveView);
+createMyBookButton.addEventListener("click", makeUserCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -44,7 +51,7 @@ function toggleHomeView() {
   randomCoverButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
   homeButton.classList.add("hidden");
-    savedView.classList.add("hidden");
+  savedView.classList.add("hidden");
 }
 
 function toggleFormView() {
@@ -81,8 +88,28 @@ function makeCover() {
   displayCover(currentCover);
 }
 
+function makeUserCover(event) {
+  event.preventDefault();
+  var tagline1 = userDesc1.value;
+  var tagline2 = userDesc2.value;
+  var title = userTitle.value;
+  var coverImgSrc = userCover.value;
+  currentCover = new Cover(coverImgSrc, title, tagline1, tagline2);
+  pushUserCover();
+  form.reset();
+  displayCover(currentCover);
+}
+
+function pushUserCover(coverImgSrc, title, tagline1, tagline2) {
+  covers.push(userCover.value);
+  titles.push(userCover.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
+}
+
 function displayCover(cover) {
-  coverImageElement.setAttribute("src", cover.cover)
+  console.log(cover);
+  coverImageElement.setAttribute("src", cover.cover);
   title.innerText = cover.title;
   tagline1.innerText = cover.tagline1;
   tagline2.innerText = cover.tagline2;
