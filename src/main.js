@@ -30,16 +30,11 @@ randomCoverButton.addEventListener("click", function() {
 });
 
 makeMyBookButton.addEventListener('click', function(){
-  
+  moveToHomePage();
 })
 
-homeButton.addEventListener("click", function() {
-  homePage.classList.remove('hidden');
-  randomCoverButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-  formPage.classList.add('hidden');
-  savedCoversPage.classList.add('hidden');
-  homeButton.classList.add('hidden');
+homeButton.addEventListener("click", function(){
+  moveToHomePage();
 });
 
 makeNewButton.addEventListener("click", function() {
@@ -73,4 +68,13 @@ function displayCover(coverObject) {
   coverTitle.innerText = coverObject.title;
   tagline1.innerText = coverObject.tagline1;
   tagline2.innerText = coverObject.tagline2;
+};
+
+function moveToHomePage() {
+  homePage.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  formPage.classList.add('hidden');
+  savedCoversPage.classList.add('hidden');
+  homeButton.classList.add('hidden');
 };
