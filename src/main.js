@@ -9,6 +9,7 @@ var mainCover = document.querySelector('.main-cover');
 var formSection = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
 var makeMyBook = document.querySelector('.create-new-book-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -23,11 +24,12 @@ homeButton.addEventListener('click', goHome);
 makeMyBook.addEventListener('click', makeNewBook);
 // Create your event handlers and other functions here 👇
 function userCoverPage() {
-mainCover.classList.add('hidden');
-formSection.classList.remove('hidden');
-randomizeButton.classList.add('hidden');
-saveCoverButton.classList.add('hidden');
-homeButton.classList.remove('hidden');
+  mainCover.classList.add('hidden');
+  formSection.classList.remove('hidden');
+  randomizeButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
 }
 
 function viewSavedPage() {
@@ -36,6 +38,15 @@ function viewSavedPage() {
   randomizeButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formSection.classList.add('hidden');
+  savedCoversSection.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+}
+
+function injectCoverSection() {
+    savedCoversSection.innerHTML = `<div class="mini-cover"><img class="mini-cover" src="${savedCovers[0].cover}">
+      <p class="cover-title">${savedCovers[0].title}</p>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3></div>`;
+
 }
 
 function goHome() {
@@ -45,6 +56,7 @@ function goHome() {
   homeButton.classList.add('hidden');
   formSection.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
 }
 
 function makeNewBook(event) {
@@ -74,7 +86,7 @@ function callMainCover(){
   <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
   <img class="price-tag" src="./assets/price.png">
   <img class="overlay" src="./assets/overlay.png">
-  `
+  `;
 }
 
 // We've provided one function to get you started
@@ -89,3 +101,4 @@ function randomizeCovers() {
 }
 
  randomizeCovers();
+ injectCoverSection();
