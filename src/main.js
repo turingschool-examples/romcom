@@ -1,4 +1,4 @@
-pi// Create variables targetting the relevant DOM elements here 👇
+// Create variables targetting the relevant DOM elements here 👇
 // cover title and tagline variables
 var loadCover = document.querySelector('.cover-image');
 var loadTitle = document.querySelector('.cover-title');
