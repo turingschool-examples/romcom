@@ -29,6 +29,10 @@ randomCoverButton.addEventListener("click", function() {
   displayCover(currentCover);
 });
 
+makeMyBookButton.addEventListener('click', function(){
+  
+})
+
 homeButton.addEventListener("click", function() {
   homePage.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
