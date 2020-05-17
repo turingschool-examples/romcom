@@ -11,7 +11,10 @@ var makeNewButton = document.querySelector('.make-new-button');
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
-
+var coverInput = document.querySelector('.user-cover');
+var titleInput = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
