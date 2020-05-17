@@ -18,7 +18,7 @@ var userDesc1 = document.querySelector(".user-desc1");
 var userDesc2 = document.querySelector(".user-desc2");
 var createMyBookButton = document.querySelector(".create-new-book-button");
 var form = document.querySelector("form");
-
+var savedCoversSection = document.querySelector(".saved-covers-section");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -40,6 +40,8 @@ saveCoverButton.addEventListener("click", pushSavedCover);
 // Create your event handlers and other functions here 👇
 
 //optional extension: remove unnecessary functionality of formView button while on form page
+// optional extension: stop input value from causing duplicates in arrays
+// optional extension: make saved covers smaller
 
 
 
@@ -68,6 +70,7 @@ function toggleSaveView() {
   homeButton.classList.remove("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
+  showSavedCoverArray();
 }
 
 
@@ -114,11 +117,28 @@ function displayCover(cover) {
 };
 
 function pushSavedCover() {
-  savedCovers.push(currentCover);
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
+function showSavedCoverArray() {
+  savedCoversSection.innerText = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+    var newMiniCover = `<section class="main-cover">
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`;
+  savedCoversSection.insertAdjacentHTML("afterbegin", newMiniCover);
+  }
+}
 
-
+// function deleteMiniCover() {
+//   console.log("test");
+// }
 // When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
 // If a user clicks the “Save Cover” more than once on a single cover, it will still only be saved once (no duplicates)
 // When a user clicks the “View Saved Covers” button, we should see the saved covers section
