@@ -21,7 +21,7 @@ var makeMyBookButton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover= new Cover(coverImage, coverTitle, tagline1, tagline2);
+var currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", function() {
@@ -30,8 +30,10 @@ randomCoverButton.addEventListener("click", function() {
 });
 
 makeMyBookButton.addEventListener('click', function(){
+  event.preventDefault();
   moveToHomePage();
   addInputToArrays();
+  var newCover = new Cover(coverInput.value, titleInput.value, userDesc1.value, userDesc2.value);
 })
 
 homeButton.addEventListener("click", function(){
