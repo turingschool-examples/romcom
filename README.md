@@ -27,9 +27,11 @@ Thursday May 14, 2020: Created README layout. Completed Iteration 1 to display a
 ![gif of random cover on page load and random cover button click](/readmeAssets/RandomCoverButton.gif)   
 
 Friday May 15, 2020: Took day off.   
-Saturday May 16, 2020: Completed iteration 2 to switch views by clicking control buttons.   
+Saturday May 16, 2020: Completed iteration 2 to switch views by clicking control buttons. Completed iteration 3 to display form inputs as new cover, and stored cover inputs in respective arrays.  
 
-![gif of random cover on page load and random cover button click](/readmeAssets/iteration2.gif)
+![gif of pages changes from control button clicks](/readmeAssets/iteration2.gif)   
 
-Sunday May 17, 2020:
-Monday May 18, 2020:
+![gif of new cover generation based on form inputs after make new cover button click](/readmeAssets/iteration3.gif)   
+
+Sunday May 17, 2020:   
+Monday May 18, 2020:   
