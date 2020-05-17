@@ -8,7 +8,9 @@ var mainCover = document.querySelector('.main-cover');
 var formSection = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
 var makeMyBook = document.querySelector('.create-new-book-button');
+
 var saveCoverButton = document.querySelector('.save-cover-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -26,11 +28,12 @@ saveCoverButton.addEventListener('click', saveUserFavorite);
 
 // Create your event handlers and other functions here 👇
 function userCoverPage() {
-mainCover.classList.add('hidden');
-formSection.classList.remove('hidden');
-randomizeButton.classList.add('hidden');
-saveCoverButton.classList.add('hidden');
-homeButton.classList.remove('hidden');
+  mainCover.classList.add('hidden');
+  formSection.classList.remove('hidden');
+  randomizeButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
 }
 
 function viewSavedPage() {
@@ -39,6 +42,14 @@ function viewSavedPage() {
   randomizeButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formSection.classList.add('hidden');
+  savedCoversSection.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+}
+
+function injectCoverSection() {
+    savedCoversSection.innerHTML = `<div class="mini-cover"><img class="mini-cover" src="${savedCovers[0].cover}">
+      <p class="cover-title">${savedCovers[0].title}</p>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3></div>`;
 }
 
 function saveUserFavorite(){
@@ -46,6 +57,7 @@ function saveUserFavorite(){
   //create a conditional that checks if there is already an object in the array that match one in the array and prevents from creating duplictates
   savedCovers.push(currentCover)
 }
+
 function goHome() {
   mainCover.classList.remove('hidden');
   savedCoversPage.classList.add('hidden');
@@ -53,6 +65,7 @@ function goHome() {
   homeButton.classList.add('hidden');
   formSection.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
 }
 
 function makeNewBook(event) {
@@ -82,7 +95,7 @@ function callMainCover(){
   <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
   <img class="price-tag" src="./assets/price.png">
   <img class="overlay" src="./assets/overlay.png">
-  `
+  `;
 }
 
 // We've provided one function to get you started
@@ -97,3 +110,4 @@ function randomizeCovers() {
 }
 
  randomizeCovers();
+ injectCoverSection();
