@@ -22,6 +22,8 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+currentCover.randomizeCover();
+displayCover(currentCover);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", function() {
@@ -60,12 +62,10 @@ viewSavedButton.addEventListener("click", function() {
   homeButton.classList.remove('hidden');
 });
 
-saveCoverButton.addEventLisener("click", function() {
-  
+saveCoverButton.addEventListener("click", function() {
+  savedCovers.push(currentCover);
 });
 // Create your event handlers and other functions here 👇
-currentCover.randomizeCover();
-displayCover(currentCover);
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
