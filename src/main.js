@@ -41,9 +41,6 @@ createMyBookButton.addEventListener("click", makeUserCover);
 //optional extension: remove unnecessary functionality of formView button while on form page
 
 
-// create array for pages page views
-// create function to move selected page to array index0
-// pass index numbers as arguments in a toggle function
 
 function toggleHomeView() {
   homeView.classList.remove("hidden");
