@@ -66,23 +66,36 @@ function goToSavedView() {
 function goToHomeView() {
   viewHomeBtn.classList.add('hidden');
   homeView.classList.remove('hidden');
-  formView.classList.remove('hidden');
+  formView.classList.add('hidden');
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 }
 
 function userCreatedBook(event) {
   event.preventDefault();
-  covers.push(inputCover.value);
-  titles.push(inputTitle.value);
-  descriptors.push(inputDesc1.value, inputDesc2.value);
+  if(!covers.includes(inputCover.value)){
+    covers.push(inputCover.value);
+  }
+  if(!titles.includes(inputTitle.value)){
+    titles.push(inputTitle.value);
+  }
+  if(!descriptors.includes(inputDesc1.value || inputDesc2.value)){
+    descriptors.push(inputDesc1.value, inputDesc2.value);
+  }
+
   var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
-
-  console.log(userCover);
-
+  viewUserCreatedBook();
 }
 
+function viewUserCreatedBook() {
+  loadCover.src = `${inputCover.value}`
+  loadTitle.innerText = `${inputTitle.value}`
+  tag1.innerText = `${inputDesc1.value}`
+  tag2.innerText = `${inputDesc2.value}`
+  goToHomeView();
+  document.querySelector('form').reset();
 
+}
 
 
 // We've provided one function to get you started
