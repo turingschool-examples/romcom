@@ -21,13 +21,12 @@ var makeMyBookButton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
-currentCover.randomizeCover();
+var currentCover = randomizedCover();
 displayCover(currentCover);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", function() {
-  currentCover.randomizeCover();
+  currentCover = randomizedCover();
   displayCover(currentCover);
 });
 
@@ -70,6 +69,11 @@ saveCoverButton.addEventListener("click", function() {
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+};
+
+function randomizedCover() {
+  var randomCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  return randomCover;
 };
 
 function displayCover(coverObject) {
