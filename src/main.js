@@ -16,6 +16,7 @@ var titleInput = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -64,6 +65,7 @@ viewSavedButton.addEventListener("click", function() {
 saveCoverButton.addEventListener("click", function() {
   if (coverNotSaved(currentCover)) {
     savedCovers.push(currentCover);
+    showNewSavedCover(currentCover);
   };
 });
 // Create your event handlers and other functions here 👇
@@ -107,4 +109,16 @@ function coverNotSaved(coverObject) {
     };
   };
   return true;
+};
+
+function showNewSavedCover(coverObject) {
+  savedCoversSection.insertAdjacentHTML(
+    'beforeend',
+    `<section class="mini-cover ${coverObject.id}">
+      <img class="cover-image" src=${coverObject.cover}>
+      <h2 class="cover-title">${coverObject.title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${coverObject.tagline1}</span> and <span class="tagline-2">${coverObject.tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>`);
 };
