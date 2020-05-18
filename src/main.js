@@ -112,5 +112,5 @@ function coverNotSaved(coverObject) {
 };
 
 function showNewSavedCover(coverObject) {
-  savedCoversSection.insertAdjacentHTML('beforeend', `<img class="cover-image" src=${coverObject.cover}>`);
+  savedCoversSection.insertAdjacentHTML('beforeend', `<img class="cover-image mini-cover" src=${coverObject.cover}>`);
 };
