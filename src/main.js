@@ -58,10 +58,7 @@ for (i = 0; i < savedCovers.length; i++){
 }
 
 function saveUserFavorite(){
-  //if the array contains an element return true and if not return false
-  //if  an element already exist do not add it and if false add it to the array
-
-  if (savedCovers.includes(currentCover)){
+if (savedCovers.includes(currentCover)){
   } else {
     savedCovers.push(currentCover)
   }
