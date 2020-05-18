@@ -36,7 +36,7 @@ makeNewCoverBtn.addEventListener('click' , goToFormView);
 viewHomeBtn.addEventListener('click', goToHomeView);
 makeBookBtn.addEventListener('click', makeOwnForm);
 viewSavedBtn.addEventListener('click', goToSavedView);
-
+saveCoverBtn.addEventListener('click', saveCover);
 
 
 
@@ -73,6 +73,41 @@ function goToHomeView() {
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 }
+
+function saveCover(event) {
+  event.preventDefault();
+  var coverSaved = new Cover(loadCover.src, loadTitle.innerText, tag1.innerText, tag2.innerText);
+  var noDuplicates = true;
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(areDuplicates(savedCovers[i], coverSaved)) {
+      noDuplicates = false;
+    }
+  }
+  if(noDuplicates) {
+    savedCovers.push(coverSaved);
+  }
+}
+function areDuplicates(covSavedItem, coverSaved) {
+  if(covSavedItem.cover === coverSaved.cover &&
+  covSavedItem.title === coverSaved.title &&
+  covSavedItem.tagline1 === coverSaved.tagline1 &&
+  covSavedItem.tagline2 === coverSaved.tagline2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+
+  // if user clicks more than once - nothing happens
+  // each original novel creation can only be saved ONE time
+  // there are no duplicates
+
+//   if(noDuplicates === false) {
+//   }
+// }
 //functions for user created data makeBookBtn eventlistener
 function makeOwnForm(){
   event.preventDefault();
