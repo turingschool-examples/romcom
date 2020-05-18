@@ -36,11 +36,7 @@ makeNewCoverBtn.addEventListener('click' , goToFormView);
 viewHomeBtn.addEventListener('click', goToHomeView);
 makeBookBtn.addEventListener('click', makeOwnForm);
 viewSavedBtn.addEventListener('click', goToSavedView);
-
-
-
-
-
+saveCoverBtn.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function showNewRandomCvr() {
@@ -53,12 +49,14 @@ function showNewRandomCvr() {
 function goToFormView() {
   viewHomeBtn.classList.remove('hidden');
   homeView.classList.add('hidden');
+  savedView.classList.add('hidden');
   formView.classList.remove('hidden');
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
 }
 
 function goToSavedView() {
+  homeView.classList.add('hidden');
   viewHomeBtn.classList.remove('hidden');
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
@@ -69,11 +67,52 @@ function goToSavedView() {
 function goToHomeView() {
   viewHomeBtn.classList.add('hidden');
   homeView.classList.remove('hidden');
+  savedView.classList.add('hidden');
   formView.classList.add('hidden');
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 }
-//functions for user created data makeBookBtn eventlistener
+
+function saveCover(event) {
+  event.preventDefault();
+  var coverSaved = new Cover(loadCover.src, loadTitle.innerText, tag1.innerText, tag2.innerText);
+  var noDuplicates = true;
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(areDuplicates(savedCovers[i], coverSaved)) {
+      noDuplicates = false;
+    }
+  }
+  if(noDuplicates) {
+    savedCovers.push(coverSaved);
+  }
+  savedViewHtml();
+}
+function areDuplicates(covSavedItem, coverSaved) {
+  if(covSavedItem.cover === coverSaved.cover &&
+    covSavedItem.title === coverSaved.title &&
+    covSavedItem.tagline1 === coverSaved.tagline1 &&
+    covSavedItem.tagline2 === coverSaved.tagline2) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
+function savedViewHtml() {
+  var savedCoversHTML = ""
+  savedCovers.forEach(function(covers) {
+    savedCoversHTML += `
+      <section class="mini-cover">
+      <img class="cover-image" src=${covers.cover}>
+      <h2 class="cover-title">${covers.title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${covers.tagline1}</span> and <span class="tagline-2">${covers.tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>
+    `
+  });
+  savedView.innerHTML = savedCoversHTML;
+}
 function makeOwnForm(){
   event.preventDefault();
   userCreatedBook();
