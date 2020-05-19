@@ -1,14 +1,14 @@
 // Create variables targetting the relevant DOM elements here 👇
 // cover title and tagline variables
-var loadCover = document.querySelector('.cover-image');
+var loadCvr = document.querySelector('.cover-image');
 var loadTitle = document.querySelector('.cover-title');
 var tag1 = document.querySelector('.tagline-1');
 var tag2 = document.querySelector('.tagline-2');
 //btn variables
-var randomCoverBtn = document.querySelector('.random-cover-button');
-var makeNewCoverBtn = document.querySelector('.make-new-button');
+var randomCvrBtn = document.querySelector('.random-cover-button');
+var makeNewCvrBtn = document.querySelector('.make-new-button');
 var viewHomeBtn = document.querySelector('.home-button');
-var saveCoverBtn = document.querySelector('.save-cover-button');
+var saveCvrBtn = document.querySelector('.save-cover-button');
 var viewSavedBtn = document.querySelector('.view-saved-button');
 //page variables
 var homeView = document.querySelector('.home-view');
@@ -22,7 +22,7 @@ var inputDesc2 = document.getElementById('descriptor2');
 var makeBookBtn = document.querySelector('.create-new-book-button');
 // We've provided a few variables below
 var savedCovers = [
-  // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 //var currentCover;
 
@@ -31,17 +31,16 @@ window.onload = function randomOnloadCvr() {
   showNewRandomCvr();
 };
 
-randomCoverBtn.addEventListener('click', showNewRandomCvr);
-makeNewCoverBtn.addEventListener('click' , goToFormView);
+randomCvrBtn.addEventListener('click', showNewRandomCvr);
+makeNewCvrBtn.addEventListener('click' , goToFormView);
 viewHomeBtn.addEventListener('click', goToHomeView);
 makeBookBtn.addEventListener('click', makeOwnForm);
 viewSavedBtn.addEventListener('click', goToSavedView);
-saveCoverBtn.addEventListener('click', saveCover);
-savedView.addEventListener('dblclick', removeOnClick);
-
+saveCvrBtn.addEventListener('click', saveCover);
+savedView.addEventListener('dblclick', deleteSavedCover);
 // Create your event handlers and other functions here 👇
 function showNewRandomCvr() {
-  loadCover.src = `${covers[getRandomIndex(covers)]}`;
+  loadCvr.src = `${covers[getRandomIndex(covers)]}`;
   loadTitle.innerText = `${titles[getRandomIndex(titles)]}`;
   tag1.innerText = `${descriptors[getRandomIndex(descriptors)]}`;
   tag2.innerText = `${descriptors[getRandomIndex(descriptors)]}`;
@@ -52,8 +51,8 @@ function goToFormView() {
   homeView.classList.add('hidden');
   savedView.classList.add('hidden');
   formView.classList.remove('hidden');
-  randomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
+  randomCvrBtn.classList.add('hidden');
+  saveCvrBtn.classList.add('hidden');
 }
 
 function goToSavedView() {
@@ -61,8 +60,8 @@ function goToSavedView() {
   viewHomeBtn.classList.remove('hidden');
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
-  randomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
+  randomCvrBtn.classList.add('hidden');
+  saveCvrBtn.classList.add('hidden');
 }
 
 function goToHomeView() {
@@ -70,13 +69,12 @@ function goToHomeView() {
   homeView.classList.remove('hidden');
   savedView.classList.add('hidden');
   formView.classList.add('hidden');
-  randomCoverBtn.classList.remove('hidden');
-  saveCoverBtn.classList.remove('hidden');
+  randomCvrBtn.classList.remove('hidden');
+  saveCvrBtn.classList.remove('hidden');
 }
 
 function saveCover(event) {
-  //event.preventDefault();
-  var coverSaved = new Cover(loadCover.src, loadTitle.innerText, tag1.innerText, tag2.innerText);
+  var coverSaved = new Cover(loadCvr.src, loadTitle.innerText, tag1.innerText, tag2.innerText);
   var noDuplicates = true;
   for(var i = 0; i < savedCovers.length; i++) {
     if(areDuplicates(savedCovers[i], coverSaved)) {
@@ -88,31 +86,30 @@ function saveCover(event) {
   }
   savedViewHtml();
 }
+
 function areDuplicates(covSavedItem, coverSaved) {
   if(covSavedItem.cover === coverSaved.cover &&
     covSavedItem.title === coverSaved.title &&
     covSavedItem.tagline1 === coverSaved.tagline1 &&
     covSavedItem.tagline2 === coverSaved.tagline2) {
       return true;
-   } //else {
-  //     return false;
-  // }
+   }
 }
 
 function savedViewHtml() {
   var savedCoversHTML = ""
   savedCovers.forEach(function(covers) {
     savedCoversHTML += `
-    <section class="mini-cover">
-      <img class="cover-image" id=${covers.id} src=${covers.cover}>
-      <h2 class="cover-title">${covers.title}</h2>
-      <h3 class="tagline">A tale of <span class="tagline-1">${covers.tagline1}</span> and <span class="tagline-2">${covers.tagline2}</span></h3>
-      <img class="price-tag" src="./assets/price.png">
-      <img class="overlay" src="./assets/overlay.png">
-    </section>
+      <section class="mini-cover">
+        <img class="cover-image" id=${covers.id} src=${covers.cover}>
+        <h2 class="cover-title">${covers.title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${covers.tagline1}</span> and <span class="tagline-2">${covers.tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </section>
     `
   });
-  savedView.innerHTML = savedCoversHTML;
+  document.querySelector('.saved-covers-section').innerHTML = savedCoversHTML;
 }
 
 function makeOwnForm(){
@@ -124,7 +121,6 @@ function makeOwnForm(){
 }
 
 function userCreatedBook(event) {
-  //var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
   if(!covers.includes(inputCover.value)){
     covers.push(inputCover.value);
   }
@@ -137,13 +133,13 @@ function userCreatedBook(event) {
 }
 
 function viewUserCreatedBook() {
-  loadCover.src = `${inputCover.value}`;
+  loadCvr.src = `${inputCover.value}`;
   loadTitle.innerText = `${inputTitle.value}`;
   tag1.innerText = `${inputDesc1.value}`;
   tag2.innerText = `${inputDesc2.value}`;
 }
 
-function removeOnClick(event) {
+function deleteSavedCover(event) {
   var deleteCoverId = parseInt(event.target.id);
   for(var i = 0; i < savedCovers.length; i++){
     if (savedCovers[i].id === deleteCoverId) {
