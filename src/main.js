@@ -92,7 +92,6 @@ function randomizeCover() {
 
 function createUserCover() {
   currentCover = new Cover(covers[0], titles[0], descriptors[1], descriptors[0]);
-
 }
 
 function seeUserBook(event) {
@@ -118,7 +117,6 @@ function saveUserInput() {
   titles.unshift(document.getElementById('title').value);
   descriptors.unshift(document.getElementById('descriptor1').value);
   descriptors.unshift(document.getElementById('descriptor2').value);
-
 }
 
 function saveUserFavorite(){
