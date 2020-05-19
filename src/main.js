@@ -10,6 +10,7 @@ var coverImg = document.querySelector('img');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
+var miniCovers = document.querySelector('.mini-covers')
 // page view sections
 var mainCoverSection = document.querySelector('.main-cover')
 var formSection = document.querySelector('.form-view');
@@ -27,8 +28,9 @@ saveCoverButton.addEventListener('click', saveUserFavorite);
 viewSavedButton.addEventListener('click', viewSavedPage);
 customBookButton.addEventListener('click', viewFormPage);
 makeMyBook.addEventListener('click', seeUserBook);
-// event handlers and other functions
-window.onload = randomizeCover;    //window onload
+savedCoversGallery.addEventListener('dblclick', deleteCover);
+
+window.onload = randomizeCover;
 // page views
 function injectCoverData(){
   coverImg.src = currentCover.cover;
@@ -45,7 +47,7 @@ function goHome() {
   formSection.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   savedCoversGallery.classList.add('hidden');
-};
+}
 
 function viewFormPage() {
   savedCoversGallery.innerHTML = `<br />`;
@@ -69,39 +71,52 @@ function viewSavedPage() {
 }
 
 function injectCoverGallery() {
-  savedCoversGallery.innerHTML = `<br />`;
-for (i = 0; i < savedCovers.length; i++){
-  savedCoversGallery.innerHTML += `<div class="mini-cover"><img class="mini-cover" src="${savedCovers[i].cover}">
-  <p class="cover-title">${savedCovers[i].title}</p>
-  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3></div>`;
+  savedCoversGallery.innerHTML = '';
+for (i = 0; i < savedCovers.length; i++) {
+  savedCoversGallery.innerHTML +=
+  `<div class="mini-cover">
+    <img class="mini-cover" src="${savedCovers[i].cover}" id= "${savedCovers[i].id}">
+    <p class="cover-title">${savedCovers[i].title}</p>
+    <h3 class="tagline">A tale of
+    <span class="tagline-1">${savedCovers[i].tagline1}</span> and
+    <span class="tagline-2">${savedCovers[i].tagline2}</span>
+  </h3></div>`;
   }
 }
 //cover creators
 function randomizeCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 
-  injectCoverData()
+  injectCoverData();
 }
 
 function createUserCover() {
   currentCover = new Cover(covers[0], titles[0], descriptors[1], descriptors[0]);
-
 }
 
 function seeUserBook(event) {
   event.preventDefault();
-  saveUserInput ();
+  saveUserInput();
   createUserCover();
   injectCoverData();
   goHome();
 }
-//data
+
+function deleteCover(event) {
+  var deleteId = parseInt(event.target.id);
+  for (i = 0; i < savedCovers.length; i++){
+    if (deleteId === savedCovers[i].id) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  injectCoverGallery();
+}
+
 function saveUserInput() {
   covers.unshift(document.getElementById('cover').value);
   titles.unshift(document.getElementById('title').value);
   descriptors.unshift(document.getElementById('descriptor1').value);
   descriptors.unshift(document.getElementById('descriptor2').value);
-
 }
 
 function saveUserFavorite(){
@@ -109,7 +124,6 @@ if (savedCovers.includes(currentCover)){
   } else {
     savedCovers.push(currentCover)
   }
-  console.log(savedCovers)
 };
 
 function getRandomIndex(array) {
