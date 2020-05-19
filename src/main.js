@@ -38,7 +38,7 @@ makeBookBtn.addEventListener('click', makeOwnForm);
 viewSavedBtn.addEventListener('click', goToSavedView);
 saveCvrBtn.addEventListener('click', saveCover);
 savedView.addEventListener('dblclick', deleteSavedCvr);
-savedView.addEventListener('click', expandCvr);
+// savedView.addEventListener('click', expandCvr);
 
 // Create your event handlers and other functions here 👇
 function showNewRandomCvr() {
@@ -125,7 +125,7 @@ function makeOwnForm(){
 }
 
 function userCreatedBook(event) {
-  //var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
+  // var userCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
   if(!covers.includes(inputCover.value)){
     covers.push(inputCover.value);
   }
@@ -135,6 +135,7 @@ function userCreatedBook(event) {
   if(!descriptors.includes(inputDesc1.value || inputDesc2.value)){
     descriptors.push(inputDesc1.value, inputDesc2.value);
   }
+    currentCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
 }
 
 function viewUserCreatedBook() {
@@ -154,10 +155,10 @@ function deleteSavedCvr(event) {
   savedViewHtml();
 }
 
-function expandCvr(event) {
-  // event.target.(savedView);
-  savedView.classList.toggle('');
-}
+// function expandCvr(event) {
+//   event.target.(savedView);
+//   savedView.classList.toggle('');
+// }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
