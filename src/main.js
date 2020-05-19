@@ -130,6 +130,7 @@ function userCreatedBook(event) {
   if(!descriptors.includes(inputDesc1.value || inputDesc2.value)){
     descriptors.push(inputDesc1.value, inputDesc2.value);
   }
+    currentCover = new Cover(inputCover.value, inputTitle.value, inputDesc1.value, inputDesc2.value);
 }
 
 function viewUserCreatedBook() {
@@ -148,6 +149,11 @@ function deleteSavedCover(event) {
   }
   savedViewHtml();
 }
+
+// function expandCvr(event) {
+//   event.target.(savedView);
+//   savedView.classList.toggle('');
+// }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
