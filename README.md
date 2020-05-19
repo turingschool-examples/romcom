@@ -20,6 +20,8 @@ People say that romance novels are formulaic. Well ... maybe that's true. We're 
 
 Thanks to the following people who have contributed to this project:
 
+
+* [@LetaKeane](https://github.com/letakeane)
 * [@JoshSevy](https://github.com/JoshSevy)
 * [@StephLSohns](https://github.com/StephLSohns)
 
