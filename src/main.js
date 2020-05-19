@@ -5,8 +5,13 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var customBookButton = document.querySelector('.make-new-button')
 var makeMyBook = document.querySelector('.create-new-book-button');
+// cover elements
+var coverImg = document.querySelector('img');
+var coverTitle = document.querySelector('.cover-title');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
 // page view sections
-var mainCoverSection = document.querySelector('.main-cover');
+var mainCoverSection = document.querySelector('.main-cover')
 var formSection = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
 var savedCoversGallery = document.querySelector('.saved-covers-section');
@@ -25,13 +30,11 @@ makeMyBook.addEventListener('click', seeUserBook);
 // event handlers and other functions
 window.onload = randomizeCover;    //window onload
 // page views
-function callMainCover(){
-  mainCoverSection.innerHTML = `<img class="cover-image" src="${currentCover.cover}">
-  <h2 class="cover-title">${currentCover.title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
-  <img class="price-tag" src="./assets/price.png">
-  <img class="overlay" src="./assets/overlay.png">
-  `;
+function injectCoverData(){
+  coverImg.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
 }
 
 function goHome() {
@@ -77,7 +80,7 @@ for (i = 0; i < savedCovers.length; i++){
 function randomizeCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 
-  callMainCover()
+  injectCoverData()
 }
 
 function createUserCover() {
@@ -89,7 +92,7 @@ function seeUserBook(event) {
   event.preventDefault();
   saveUserInput ();
   createUserCover();
-  callMainCover();
+  injectCoverData();
   goHome();
 }
 //data
