@@ -24,7 +24,13 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
+<<<<<<< HEAD
 window.onload = showNewRandomCvr();
+=======
+window.onload = function randomOnloadCvr() {
+  showNewRandomCvr();
+};
+>>>>>>> 7c43b136c4e53f9fa5071ed54e36285cdef743d7
 
 randomCvrBtn.addEventListener('click', showNewRandomCvr);
 makeNewCvrBtn.addEventListener('click' , goToFormView);
@@ -95,13 +101,13 @@ function savedViewHtml() {
   var savedCoversHTML = ""
   savedCovers.forEach(function(covers) {
     savedCoversHTML += `
-      <section class="mini-cover">
-        <img class="cover-image" id=${covers.id} src=${covers.cover}>
-        <h2 class="cover-title">${covers.title}</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1">${covers.tagline1}</span> and <span class="tagline-2">${covers.tagline2}</span></h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png">
-      </section>
+    <section class="mini-cover">
+      <img class="cover-image" id=${covers.id} src=${covers.cover}>
+      <h2 class="cover-title">${covers.title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${covers.tagline1}</span> and <span class="tagline-2">${covers.tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>
     `
   });
   document.querySelector('.saved-covers-section').innerHTML = savedCoversHTML;
