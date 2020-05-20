@@ -24,13 +24,11 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-<<<<<<< HEAD
 window.onload = showNewRandomCvr();
-=======
+
 window.onload = function randomOnloadCvr() {
   showNewRandomCvr();
 };
->>>>>>> 7c43b136c4e53f9fa5071ed54e36285cdef743d7
 
 randomCvrBtn.addEventListener('click', showNewRandomCvr);
 makeNewCvrBtn.addEventListener('click' , goToFormView);
