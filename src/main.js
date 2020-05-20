@@ -26,10 +26,6 @@ var savedCovers = [
 
 window.onload = showNewRandomCvr();
 
-window.onload = function randomOnloadCvr() {
-  showNewRandomCvr();
-};
-
 randomCvrBtn.addEventListener('click', showNewRandomCvr);
 makeNewCvrBtn.addEventListener('click' , goToFormView);
 viewHomeBtn.addEventListener('click', goToHomeView);
