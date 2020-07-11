@@ -4,6 +4,7 @@ var coverImageMain = document.querySelector('.cover-image');
 var coverTitleMain = document.querySelector('.cover-title');
 var tagline1Main = document.querySelector('.tagline-1');
 var tagline2Main = document.querySelector('.tagline-2');
+var form = document.querySelector('form');
 var newCover = document.querySelector('.user-cover');
 var newTitle = document.querySelector('.user-title');
 var newTagline1 = document.querySelector('.user-desc1');
@@ -34,10 +35,14 @@ var mySavedCovers = JSON.parse(localStorage.getItem('covers'));
 if (localStorage.getItem('covers') == null) {
   localStorage.setItem('covers', JSON.stringify(covers));
 };
+debugger;
 
-// var mySavedBooks = JSON.parse(localStorage.getItem('books') || '[]');
-//
-// localStorage.setItem('books', JSON.stringify(mySavedBooks));
+
+var mySavedBooks = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+
+localStorage.setItem('items', JSON.stringify(mySavedBooks));
+const data = JSON.parse(localStorage.getItem('items'))
+
 
 // var savedCovers = [
 //   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -52,7 +57,7 @@ makeNewButton.addEventListener('click', showMakeForm);
 homeButton.addEventListener('click', showMain);
 viewSavedButton.addEventListener('click', showSaved);
 createNewButton.addEventListener('click', createPoster);
-createNewButton.addEventListener('click', showNew)
+saveButton.addEventListener('click', saveNew)
 // Create your eent handlers and other functions here 👇
 
 
@@ -62,10 +67,10 @@ function getRandomIndex(array) {
 }
 
 function randomPoster() {
-  coverImageMain.src = covers[getRandomIndex(covers)];
-  coverTitleMain.innerHTML= titles[getRandomIndex(titles)];
-  tagline1Main.innerHTML = descriptors[getRandomIndex(descriptors)];
-  tagline2Main.innerHTML= descriptors[getRandomIndex(descriptors)];
+  coverImageMain.src = mySavedCovers[getRandomIndex(mySavedCovers)];
+  coverTitleMain.innerHTML= mySavedTitles[getRandomIndex(mySavedTitles)];
+  tagline1Main.innerHTML = mySavedDescriptors[getRandomIndex(mySavedDescriptors)];
+  tagline2Main.innerHTML= mySavedDescriptors[getRandomIndex(mySavedDescriptors)];
 };
 
 function showMakeForm() {
@@ -102,24 +107,29 @@ function showMain() {
 
 };
 
-function createPoster() {
+var myCover;
+
+function createPoster(e) {
+  e.preventDefault();
   debugger;
   coverImageMain.src = newCover.value;
   coverTitleMain.innerHTML= newTitle.value;
   tagline1Main.innerHTML = newTagline1.value;
   tagline2Main.innerHTML= newTagline2.value;
-  let myCover = new Cover(newCover, newTitle, newTagline1, newTagline2);
-  // mySavedBooks.push(myCover);
-  // localStorage.setItem('books', JSON.stringify(mySavedBooks));
-  covers.push(newCover);
-  localStorage.setItem('covers', JSON.stringify(covers));
-  titles.push(newTitle);
-  localStorage.setItem('titles', JSON.stringify(titles));
-  descriptors.push(newTagline1);
-  descriptors.push(newTagline2);
-  localStorage.setItem('descriptors', JSON.stringify(descriptors))
-
+  myCover = new Cover(coverImageMain.src, coverTitleMain.innerHTML, tagline1Main.innerHTML, tagline2Main.innerHTML);
+  mySavedBooks.push(myCover);
+  covers.push(myCover.cover);
+  titles.push(myCover.title);
+  descriptors.push(myCover.tagline1);
+  descriptors.push(myCover.tagline2);
+  form.reset();
+  showMain();
 };
-function showNew() {
 
+function saveNew() {
+  debugger;
+  localStorage.setItem('items', JSON.stringify(mySavedBooks));
+  localStorage.setItem('covers', JSON.stringify(covers));
+  localStorage.setItem('titles', JSON.stringify(titles));
+  localStorage.setItem('descriptors', JSON.stringify(descriptors));
 }
