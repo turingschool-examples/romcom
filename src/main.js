@@ -9,6 +9,7 @@ var newCover = document.querySelector('.user-cover');
 var newTitle = document.querySelector('.user-title');
 var newTagline1 = document.querySelector('.user-desc1');
 var newTagline2 = document.querySelector('.user-desc2');
+var savedCoversSection = document.querySelector('.saved-covers-section')
 var randomCoverButton = document.querySelector('.random-cover-button');
 var savedView = document.querySelector('.saved-view');
 var makeNewButton = document.querySelector('.make-new-button');
@@ -41,6 +42,7 @@ debugger;
 var mySavedBooks = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
 
 localStorage.setItem('items', JSON.stringify(mySavedBooks));
+
 const data = JSON.parse(localStorage.getItem('items'))
 
 
@@ -48,7 +50,8 @@ const data = JSON.parse(localStorage.getItem('items'))
 //   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 // ];
 
-var currentCover;
+// var currentCover;
+var myCover;
 
 // Add your event listeners here 👇
 document.addEventListener('DOMContentLoaded', randomPoster);
@@ -57,7 +60,9 @@ makeNewButton.addEventListener('click', showMakeForm);
 homeButton.addEventListener('click', showMain);
 viewSavedButton.addEventListener('click', showSaved);
 createNewButton.addEventListener('click', createPoster);
-saveButton.addEventListener('click', saveNew)
+saveButton.addEventListener('click', showNewPoster);
+saveButton.addEventListener('click', saveNewPoster);
+// saveButton.addEventListener('click', addPoster);
 // Create your eent handlers and other functions here 👇
 
 
@@ -81,7 +86,6 @@ function showMakeForm() {
   randomCoverButton.classList.add('hidden');
   makeNewButton.classList.add('hidden');
   savedView.classList.add('hidden');
-
 };
 
 function showSaved() {
@@ -93,6 +97,7 @@ function showSaved() {
   saveButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedButton.classList.add('hidden');
+  displaySaved();
 };
 
 function showMain() {
@@ -104,32 +109,78 @@ function showMain() {
   savedView.classList.add('hidden');
   makeNewButton.classList.remove('hidden');
   viewSavedButton.classList.remove('hidden');
-
 };
-
-var myCover;
 
 function createPoster(e) {
   e.preventDefault();
-  debugger;
   coverImageMain.src = newCover.value;
   coverTitleMain.innerHTML= newTitle.value;
   tagline1Main.innerHTML = newTagline1.value;
   tagline2Main.innerHTML= newTagline2.value;
-  myCover = new Cover(coverImageMain.src, coverTitleMain.innerHTML, tagline1Main.innerHTML, tagline2Main.innerHTML);
-  mySavedBooks.push(myCover);
-  covers.push(myCover.cover);
-  titles.push(myCover.title);
-  descriptors.push(myCover.tagline1);
-  descriptors.push(myCover.tagline2);
   form.reset();
   showMain();
+  showNewPoster();
 };
 
-function saveNew() {
+function showNewPoster() {
+  myCover = new Cover(coverImageMain.src, coverTitleMain.innerHTML, tagline1Main.innerHTML, tagline2Main.innerHTML);
+};
+
+function saveNewPoster() {
   debugger;
-  localStorage.setItem('items', JSON.stringify(mySavedBooks));
-  localStorage.setItem('covers', JSON.stringify(covers));
-  localStorage.setItem('titles', JSON.stringify(titles));
-  localStorage.setItem('descriptors', JSON.stringify(descriptors));
-}
+  var isIncluded = false;
+  for (var i = 0; i < mySavedBooks.length; i++) {
+    if (mySavedBooks[i]['cover'] == myCover['cover'] && mySavedBooks[i]['title'] == myCover['title'] && mySavedBooks[i]['tagline1'] == myCover['tagline1'] && mySavedBooks[i]['tagline2'] == myCover['tagline2']) {
+      isIncluded = true;
+      break;
+    }
+  }
+  if (!isIncluded) {
+    mySavedBooks.push(myCover);
+    localStorage.setItem('items', JSON.stringify(mySavedBooks));
+  };
+  if (!mySavedCovers.includes(myCover['cover'])) {
+    mySavedCovers.push(myCover.cover);
+    localStorage.setItem('covers', JSON.stringify(mySavedCovers));
+    }
+  if (!mySavedTitles.includes(myCover['title'])){
+    mySavedTitles.push(myCover.title);
+    localStorage.setItem('titles', JSON.stringify(mySavedTitles));
+  }
+  if (!mySavedDescriptors.includes(myCover['tagline1'])){
+    mySavedDescriptors.push(myCover.tagline1)
+    }
+  if(!mySavedDescriptors.includes(myCover['tagline2'])) {
+    mySavedDescriptors.push(myCover.tagline2);
+    localStorage.setItem('descriptors', JSON.stringify(mySavedDescriptors))
+  }
+};
+
+function displaySaved() {
+  savedCoversSection.innerHTML = '';
+  mySavedBooks.forEach(item => {
+    let newItem = document.createElement('div')
+    newItem.classList.add('mini-cover')
+    let newMiniImg = document.createElement('img')
+    newMiniImg.classList.add('mini-cover')
+    let newMiniTitle = document.createElement('h2')
+    newMiniTitle.classList.add('cover-title')
+    let miniTagline = document.createElement('h3')
+    miniTagline.classList.add('tagline')
+    miniTagline.innerHTML = "A tale of "
+    let newMiniTagline1 = document.createElement('span');
+    let newMiniTagline2 = document.createElement('span');
+    newMiniTagline1.classList.add('tagline-1')
+    miniTagline.appendChild(newMiniTagline1)
+    newMiniTagline2.classList.add('tagline-2')
+    miniTagline.appendChild(newMiniTagline2)
+    newMiniImg.src = item['cover']
+    newMiniTitle.innerHTML = item['title']
+    newMiniTagline1.innerHTML = item['tagline1'] + ' and '
+    newMiniTagline2.innerHTML = item['tagline2']
+    newItem.appendChild(newMiniImg)
+    newItem.appendChild(newMiniTitle)
+    newItem.appendChild(miniTagline)
+    savedCoversSection.appendChild(newItem)
+  })
+};
