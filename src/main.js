@@ -22,6 +22,10 @@ function displayMainPageCover() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomDescriptor = descriptors[getRandomIndex(descriptors)];
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  coverImage.setAttribute('src', randomCover);
+  coverTitle.innerHTML = randomTitle;
+  discriptorTagLine1.innerText = randomDescriptor;
+  discriptorTagLine2.innerHTML = randomDescriptor2;
 }
 
 function getRandomIndex(array) {
