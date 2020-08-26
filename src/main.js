@@ -3,6 +3,7 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var discriptorTagLine1 = document.querySelector('.tagline-1');
 var discriptorTagLine2 = document.querySelector('.tagline-2');
+var showNewCoverButton = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -11,6 +12,8 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+showNewCoverButton.addEventListener('click', displayMainPageCover);
+
 window.onload = displayMainPageCover;
 
 // Create your event handlers and other functions here 👇
