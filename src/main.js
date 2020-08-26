@@ -12,22 +12,28 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+.addEventListener()
+// we need to have the function running once the page is loaded
+// were looking out for how to use ONLOAD and where
+
+
 
 
 // Create your event handlers and other functions here 👇
 function randomCoverImage() {
-  return covers[getRandomIndex(covers)]
+  return covers[getRandomIndex(covers)];
 }
-
 function randomTitle() {
-  return titles[getRandomIndex(titles)]
+  return titles[getRandomIndex(titles)];
 }
-
-
+function randomTaglineOne () {
+  return descriptors[getRandomIndex(descriptors)];
+}
+function randomTaglineTwo() {
+  return descriptors[getRandomIndex(descriptors)];
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
