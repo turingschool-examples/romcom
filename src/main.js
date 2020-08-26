@@ -1,4 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
+var newCoverImage = document.querySelector('.cover-image');
+var newTitle = document.querySelector("cover-title");
+var newTaglineOne = document.querySelector("tagline-1");
+var newTaglineTwo = document.querySelector("tagline-2");
 
 
 // We've provided a few variables below
@@ -11,9 +15,19 @@ var currentCover;
 
 
 // Create your event handlers and other functions here 👇
+function randomCoverImage() {
+  return covers[getRandomIndex(covers)]
+}
+
+function randomTitle() {
+  return titles[getRandomIndex(titles)]
+}
+
 
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
