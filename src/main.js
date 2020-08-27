@@ -9,11 +9,16 @@ var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
 
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -28,6 +33,7 @@ randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
+createNewBookButton.addEventListener("click", createUserCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -73,8 +79,18 @@ function hideHome() {
   saveCoverButton.classList.add("hidden");
 }
 
+function createUserCover() {
+
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 }
+
+
+//create new instance of cover class that takes in arguments of user inputs
+//push user inputs into data.js arrays
+//toggle views.
+//show created poster.
