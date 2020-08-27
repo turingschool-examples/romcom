@@ -4,6 +4,9 @@ var coverTitle = document.querySelector('.cover-title');
 var discriptorTagLine1 = document.querySelector('.tagline-1');
 var discriptorTagLine2 = document.querySelector('.tagline-2');
 var showNewCoverButton = document.querySelector('.random-cover-button');
+var makeOwnCoverButton = document.querySelector('.make-new-button');
+var mainPageDisplay = document.querySelector('.main-cover');
+var displayUserForm = document.querySelector('.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -13,6 +16,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 showNewCoverButton.addEventListener('click', displayMainPageCover);
+makeOwnCoverButton.addEventListener('click', showUserFormPage);
 
 window.onload = displayMainPageCover;
 
@@ -30,6 +34,12 @@ function displayMainPageCover() {
   coverTitle.innerHTML = randomTitle;
   discriptorTagLine1.innerText = randomDescriptor;
   discriptorTagLine2.innerHTML = randomDescriptor2;
+}
+
+function showUserFormPage() {
+  mainPageDisplay.classList.add('hidden');
+  displayUserForm.classList.remove('hidden');
+
 }
 
 function getRandomIndex(array) {
