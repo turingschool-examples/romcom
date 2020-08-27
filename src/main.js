@@ -2,6 +2,8 @@
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var coverDescriptor = document.querySelector('.tagline')
+var showRandomCover = document.querySelector(`.random-cover-button`)
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -9,31 +11,27 @@ var savedCovers = [
 ];
 var currentCover;
 // Add your event listeners here 👇
-
+showRandomCover.addEventListener('click', displayNewCover);
 
 // Create your event handlers and other functions here 👇
-//Iteration 0
-function getRandomIndex(coverArray, titleArray, descriptorArray) {
-  var randomNum1 = Math.floor(Math.random() * coverArray.length)
-  var randomNum2 = Math.floor(Math.random() * titleArray.length)
-  var randomNum3 = Math.floor(Math.random() * descriptorArray.length)
-  var randomNum4 = Math.floor(Math.random() * descriptorArray.length)
-  coverImage.src = coverArray[randomNum1]
-  coverTitle.textContent = titleArray[randomNum2]
-  if (randomNum3 !== randomNum4) {
-    coverDescriptor.textContent = `A tale of ${descriptorArray[randomNum3]} and ${descriptorArray[randomNum4]}`//come back to fix double names
-  }
-  else if (randomNum3 === randomNum4 && randomNum4 === 24) {
-    randomNum4 - 1
-  }
-  else if (randomNum3 === randomNum4 && randomNum4 >= 0) {
-    randomNum4 + 1
-  }
+
+function getRandomIndex(bookItem) {
+  var randomIndex = Math.floor(Math.random() * bookItem.length)
+  return bookItem[randomIndex]
 }
 
+function createNewCover(){
+  currentCover = new Cover(getRandomIndex(covers), getRandomIndex(titles), getRandomIndex(descriptors), getRandomIndex(descriptors))
+  if (currentCover.tagline1 === currentCover.tagline2) {
+    createNewCover()
+  }
+  return currentCover
+}
 
-getRandomIndex(covers, titles, descriptors)
-//Iteration 1
+function displayNewCover() {
+  coverImage.src = createNewCover().cover
+  coverTitle.textContent = createNewCover().title
+  coverDescriptor.textContent = `A tale of ${createNewCover().tagline1} and ${createNewCover().tagline2}`
+}
 
-
-// We've provided one function to get you started
+displayNewCover()
