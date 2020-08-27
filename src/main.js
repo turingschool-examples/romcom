@@ -1,4 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
+// Here I am declaring these variables and linking them to the HTML element.
 
 
 // We've provided a few variables below
@@ -8,7 +13,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+window.onload = useRandomIndex();
+// Every time the window reloads (window.onload) we are gonna invoke our useRandomIndex
+// function to get new variables.
 
 // Create your event handlers and other functions here 👇
 
@@ -17,3 +24,15 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function useRandomIndex() {
+  var randomImage = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomTagline1 = descriptors[getRandomIndex(descriptors)];
+  var randomTagline2 = descriptors[getRandomIndex(descriptors)];
+  coverImage.src = randomImage;
+  // coverImage.setAttribute('src', randomImage);
+  coverTitle.innerHTML = randomTitle;
+  tagline1.innerHTML = randomTagline1;
+  tagline2.innerHTML = randomTagline2;
+};
