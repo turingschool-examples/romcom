@@ -3,9 +3,18 @@ var newCoverImg = document.querySelector(".cover-image");
 var newTitle = document.querySelector(".cover-title");
 var newDescriptor1 = document.querySelector(".tagline-1");
 var newDescriptor2 = document.querySelector(".tagline-2");
-//Iteration 1: these variables refer to the classes in the HTML document and store their info in the variables defined above, these variables will be used to display the covers as defined in the css sheet
-var randomCoverButton = document.querySelector(".random-cover-button");
 
+var randomCoverButton = document.querySelector('.random-cover-button');
+
+var makeNewButton = document.querySelector('.make-new-button')
+
+var homeButton = document.querySelector('.home-button')
+
+var formPage = document.querySelector('.form-view')
+
+var homeView = document.querySelector('.home-view')
+
+var saveCoverButton = document.querySelector('.save-cover-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -18,7 +27,7 @@ var currentCover;
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", generateRandomCover);
 
-
+makeNewButton.addEventListener("click", viewForm);
 // Create your event handlers and other functions here 👇
 
 
@@ -39,4 +48,11 @@ function generateRandomCover(){
   newDescriptor2.innerText = randomDescriptor2;
 
   currentCover = new Cover (newCoverImg, newTitle, newDescriptor1, newDescriptor2);
+}
+function viewForm() {
+  formPage.classList.remove('hidden')
+  homeView.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 }
