@@ -2,7 +2,8 @@
 var image = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var phrase1 = document.querySelector('.tagline-1');
-var phrase2 = document.querySelector('.tagline-2')
+var phrase2 = document.querySelector('.tagline-2');
+var randomCoverButton = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -13,6 +14,7 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.onload = randomBook;
+document.addEventListener('click', randomBook);
 
 // Create your event handlers and other functions here 👇
 
