@@ -27,6 +27,7 @@ window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
+homeButton.addEventListener("click", showHome);
 
 // Create your event handlers and other functions here 👇
 
@@ -62,13 +63,14 @@ function showSavedCovers() {
   homeButton.classList.remove("hidden");
 }
 
-
-// When a user clicks the “Make Your Own Cover” button, we should see the form, and the homepage view should be hidden
-// create querySelector for button class .make-new-button
-// addEventListener on "click" for "Make your own cover" that invokes new function
-// add querySelector for .home-view
-// add querySelector for .form-View
-// function attached to "make your own cover" EventListener will add hidden class to home-view and remove hidden class form-view
+function showHome() {
+  homeView.classList.remove("hidden");
+  formView.classList.add("hidden");
+  savedView.classList.add("hidden");
+  randomizeButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
