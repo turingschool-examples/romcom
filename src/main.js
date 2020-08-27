@@ -8,6 +8,7 @@ var randomizeButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
 
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
@@ -24,6 +25,7 @@ var randomCover = getRandomIndex(covers);
 window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
+viewSavedButton.addEventListener("click", showSavedCovers);
 
 // Create your event handlers and other functions here 👇
 
@@ -50,6 +52,8 @@ function showForm() {
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
   }
+
+
 
 
 // When a user clicks the “Make Your Own Cover” button, we should see the form, and the homepage view should be hidden
