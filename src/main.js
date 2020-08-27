@@ -32,7 +32,7 @@ makeOwnCoverButton.addEventListener('click', showUserFormPage);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', homeButtonFunction);
 makeABookButton.addEventListener('click', clickHandler);
-
+saveCoverButton.addEventListener('click', saveCoverToArray);
 
 window.onload = displayMainPageCover;
 
@@ -68,6 +68,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   showNewCoverButton.classList.add('hidden');
   displayUserForm.classList.add('hidden');
+  //function to display covers
 }
 
 function homeButtonFunction() {
@@ -105,6 +106,14 @@ function clickHandler(event) {
   createUserPost(event);
   homeFromUserPage();
 }
+
+function saveCoverToArray() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
