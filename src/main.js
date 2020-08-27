@@ -27,7 +27,7 @@ var currentCover;
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", generateRandomCover);
 
-
+makeNewButton.addEventListener("click", viewForm);
 // Create your event handlers and other functions here 👇
 
 
@@ -48,4 +48,11 @@ function generateRandomCover(){
   newDescriptor2.innerText = randomDescriptor2;
 
   currentCover = new Cover (newCoverImg, newTitle, newDescriptor1, newDescriptor2);
+}
+function viewForm() {
+  formPage.classList.remove('hidden')
+  homeView.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 }
