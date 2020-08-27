@@ -7,6 +7,10 @@ var showNewCoverButton = document.querySelector('.random-cover-button');
 var makeOwnCoverButton = document.querySelector('.make-new-button');
 var mainPageDisplay = document.querySelector('.main-cover');
 var displayUserForm = document.querySelector('.form-view');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
+var viewSaveCoversSection = document.querySelector('.saved-view');
+var viewSavedButton = document.querySelector('.view-saved-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,6 +21,8 @@ var currentCover;
 // Add your event listeners here 👇
 showNewCoverButton.addEventListener('click', displayMainPageCover);
 makeOwnCoverButton.addEventListener('click', showUserFormPage);
+viewSavedButton.addEventListener('click', viewSavedCovers);
+homeButton.addEventListener('click', homeButtonFunction);
 
 window.onload = displayMainPageCover;
 
@@ -39,9 +45,28 @@ function displayMainPageCover() {
 function showUserFormPage() {
   mainPageDisplay.classList.add('hidden');
   displayUserForm.classList.remove('hidden');
-
+  showNewCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
 }
 
+function viewSavedCovers() {
+  viewSaveCoversSection.classList.remove('hidden');
+  mainPageDisplay.classList.add('hidden');
+  viewSavedButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  showNewCoverButton.classList.add('hidden');
+  displayUserForm.classList.add('hidden');
+}
+
+function homeButtonFunction() {
+  mainPageDisplay.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden');
+  showNewCoverButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+}
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
