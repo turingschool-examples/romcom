@@ -87,6 +87,7 @@ function createUserCover() {
   var inputTagline2 = userDesc2.value;
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
   displayNewCover(currentCover);
+  showHome();
 }
 
 // We've provided one function to get you started
