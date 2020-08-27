@@ -11,6 +11,14 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSaveCoversSection = document.querySelector('.saved-view');
 var viewSavedButton = document.querySelector('.view-saved-button');
+var userCoverInput = document.querySelector('.user-cover');
+var userTitleInput = document.querySelector('.user-title');
+var userDescriptorInput1 = document.querySelector('.user-desc1');
+var userDescriptorInput2 = document.querySelector('.user-desc2');
+var makeABookButton = document.querySelector('.create-new-book-button')
+
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -23,6 +31,8 @@ showNewCoverButton.addEventListener('click', displayMainPageCover);
 makeOwnCoverButton.addEventListener('click', showUserFormPage);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', homeButtonFunction);
+makeABookButton.addEventListener('click', clickHandler);
+
 
 window.onload = displayMainPageCover;
 
@@ -67,6 +77,35 @@ function homeButtonFunction() {
   showNewCoverButton.classList.remove('hidden');
   viewSavedButton.classList.remove('hidden');
 }
+
+function createUserPost(event) {
+  event.preventDefault();
+  var coverValue = userCoverInput.value;
+  var titleValue = userTitleInput.value;
+  var descriptor1 = userDescriptorInput1.value;
+  var descriptor2 = userDescriptorInput2.value;
+  covers.push(coverValue);
+  titles.push(titleValue);
+  descriptors.push(descriptor1, descriptor2);
+  currentCover = new Cover(coverValue, titleValue, descriptor1, descriptor2)
+  coverImage.setAttribute('src', coverValue);
+  coverTitle.innerHTML = titleValue;
+  discriptorTagLine1.innerText = descriptor1;
+  discriptorTagLine2.innerHTML = descriptor2;
+}
+
+function homeFromUserPage() {
+  mainPageDisplay.classList.remove('hidden');
+  displayUserForm.classList.add('hidden');
+  showNewCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+}
+function clickHandler(event) {
+  createUserPost(event);
+  homeFromUserPage();
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
