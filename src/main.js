@@ -33,7 +33,7 @@ randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
-createNewBookButton.addEventListener("click", createUserCover);
+createNewBookButton.addEventListener("click", createUserCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -80,7 +80,13 @@ function hideHome() {
 }
 
 function createUserCover() {
-
+  event.preventDefault();
+  var inputCoverImage = userCover.value;
+  var inputTitle = userTitle.value;
+  var inputTagline1 = userDesc1.value;
+  var inputTagline2 = userDesc2.value;
+  currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
+  displayNewCover(currentCover);
 }
 
 // We've provided one function to get you started
