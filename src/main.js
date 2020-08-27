@@ -4,7 +4,9 @@ var coverImage = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var randomizeButton = document.querySelector('.random-cover-button');
-
+var makeNewButton = document.querySelector('.make-new-button');
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view');
 
 
 // We've provided a few variables below
@@ -17,7 +19,7 @@ var randomCover = getRandomIndex(covers);
 // Add your event listeners here 👇
 window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
-
+makeNewButton.addEventListener("click", showForm);
 
 // Create your event handlers and other functions here 👇
 
@@ -36,6 +38,17 @@ function displayNewCover(cover) {
   tagline2.innerText = cover.tagline2;
   coverImage.src = cover.cover;
 }
+
+function showForm() {
+
+}
+
+// When a user clicks the “Make Your Own Cover” button, we should see the form, and the homepage view should be hidden
+// create querySelector for button class .make-new-button
+// addEventListener on "click" for "Make your own cover" that invokes new function
+// add querySelector for .home-view
+// add querySelector for .form-View
+// function attached to "make your own cover" EventListener will add hidden class to home-view and remove hidden class form-view
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
