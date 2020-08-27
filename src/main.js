@@ -12,22 +12,28 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
+var randomCover = getRandomIndex(covers);
 
 // Add your event listeners here 👇
-window.addEventListener("load", loadRandom);
-randomizeButton.addEventListener("click", loadRandom);
+window.addEventListener("load", createRandomCover);
+randomizeButton.addEventListener("click", createRandomCover);
 
 
 // Create your event handlers and other functions here 👇
 
-function loadRandom() {
+function createRandomCover() {
+  var randomCoverImage = getRandomIndex(covers);
+  var randomTitle = getRandomIndex(title);
+  var randomTagline1 = getRandomIndex(descriptors);
+  var randomTagline2 = getRandomIndex(descriptors);
+  currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2)
   coverTitle.innerText = getRandomIndex(titles);
   tagline1.innerText = getRandomIndex(descriptors);
   tagline2.innerText = getRandomIndex(descriptors);
   coverImage.src = getRandomIndex(covers);
 }
 
-// We've provided one function to get you started
+// We've provided one functio n to get you started
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
