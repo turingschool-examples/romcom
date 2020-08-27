@@ -1,5 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverChange = document.querySelector('.cover-image');
+var titleChange = document.querySelector('.cover-title');
 
 
 // We've provided a few variables below
@@ -9,7 +10,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+window.onload = generateRandomCover
 
 // Create your event handlers and other functions here 👇
 
@@ -18,6 +19,18 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+function generateRandomCover() {
+  var coverNumber = getRandomIndex(covers);
+  var randomImage = covers[coverNumber];
+  var titleNumber = getRandomIndex(titles);
+  var randomTitle = titles[titleNumber];
+  
+  
+  
+  
+  coverChange.setAttribute("src" , randomImage);
+  titleChange.innerText = randomTitle;
+  surpriseCover = new Cover(randomImage, randomTitle, "", "")
+}
 
-var coverNumber = getRandomIndex(covers);
-  coverChange.setAttribute("src" , covers[coverNumber]);
+
