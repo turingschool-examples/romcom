@@ -26,11 +26,15 @@ function createRandomCover() {
   var randomTitle = getRandomIndex(title);
   var randomTagline1 = getRandomIndex(descriptors);
   var randomTagline2 = getRandomIndex(descriptors);
-  currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2)
-  coverTitle.innerText = getRandomIndex(titles);
-  tagline1.innerText = getRandomIndex(descriptors);
-  tagline2.innerText = getRandomIndex(descriptors);
-  coverImage.src = getRandomIndex(covers);
+  currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2);
+  displayNewCover(currentCover);
+}
+
+function displayNewCover(cover) {
+  coverTitle.innerText = cover.randomTitle;
+  tagline1.innerText = cover.randomTagline1;
+  tagline2.innerText = cover.randomTagline2;
+  coverImage.src = cover.randomCoverImage;
 }
 
 // We've provided one functio n to get you started
