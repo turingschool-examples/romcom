@@ -42,7 +42,9 @@ function displayNewCover(cover) {
 function showForm() {
   homeView.classList.add("hidden");
   formView.classList.remove("hidden");
+  randomizeButton.classList.add("hidden");
 }
+
 
 // When a user clicks the “Make Your Own Cover” button, we should see the form, and the homepage view should be hidden
 // create querySelector for button class .make-new-button
