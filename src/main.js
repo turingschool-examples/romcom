@@ -12,6 +12,7 @@ var currentCover;
 
 
 // Create your event handlers and other functions here 👇
+//Iteration 0
 function getRandomIndex(coverArray, titleArray, descriptorArray) {
   var randomNum1 = Math.floor(Math.random() * coverArray.length)
   var randomNum2 = Math.floor(Math.random() * titleArray.length)
@@ -20,12 +21,19 @@ function getRandomIndex(coverArray, titleArray, descriptorArray) {
   coverImage.src = coverArray[randomNum1]
   coverTitle.textContent = titleArray[randomNum2]
   if (randomNum3 !== randomNum4) {
-  coverDescriptor.textContent = `A tale of ${descriptorArray[randomNum3]} and ${descriptorArray[randomNum4]}`//come back to fix double names
-  } else {
-  randomNum4 = Math.floor(Math.random() * descriptorArray.length)
+    coverDescriptor.textContent = `A tale of ${descriptorArray[randomNum3]} and ${descriptorArray[randomNum4]}`//come back to fix double names
+  }
+  else if (randomNum3 === randomNum4 && randomNum4 === 24) {
+    randomNum4 - 1
+  }
+  else if (randomNum3 === randomNum4 && randomNum4 >= 0) {
+    randomNum4 + 1
   }
 }
 
+
 getRandomIndex(covers, titles, descriptors)
+//Iteration 1
+
 
 // We've provided one function to get you started
