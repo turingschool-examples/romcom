@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-var coverChange = document.querySelector('.cover-image')
+var coverChange = document.querySelector('.cover-image');
 
 
 // We've provided a few variables below
@@ -19,5 +19,5 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var coverNumber = getRandomIndex(covers)
-  coverChange.setAttribute("src" , covers[coverNumber])
+var coverNumber = getRandomIndex(covers);
+  coverChange.setAttribute("src" , covers[coverNumber]);
