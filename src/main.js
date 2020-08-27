@@ -86,8 +86,15 @@ function createUserCover() {
   var inputTagline1 = userDesc1.value;
   var inputTagline2 = userDesc2.value;
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
+  saveUserInputs(currentCover);
   displayNewCover(currentCover);
   showHome();
+}
+
+function saveUserInputs(cover) {
+  covers.unshift(cover.cover);
+  titles.unshift(cover.title);
+  descriptors.splice(0, 0, cover.tagline1, cover.tagline2);
 }
 
 // We've provided one function to get you started
