@@ -23,7 +23,7 @@ randomizeButton.addEventListener("click", createRandomCover);
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
-  var randomTitle = getRandomIndex(title);
+  var randomTitle = getRandomIndex(titles);
   var randomTagline1 = getRandomIndex(descriptors);
   var randomTagline2 = getRandomIndex(descriptors);
   currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2);
@@ -31,13 +31,13 @@ function createRandomCover() {
 }
 
 function displayNewCover(cover) {
-  coverTitle.innerText = cover.randomTitle;
-  tagline1.innerText = cover.randomTagline1;
-  tagline2.innerText = cover.randomTagline2;
-  coverImage.src = cover.randomCoverImage;
+  coverTitle.innerText = cover.title;
+  tagline1.innerText = cover.tagline1;
+  tagline2.innerText = cover.tagline2;
+  coverImage.src = cover.cover;
 }
 
-// We've provided one functio n to get you started
+// We've provided one function to get you started
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
