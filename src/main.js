@@ -12,6 +12,7 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
+var savedView = document.querySelector('.saved-view');
 
 
 // We've provided a few variables below
@@ -55,6 +56,10 @@ function showForm() {
 
 function showSavedCovers() {
   homeView.classList.add("hidden");
+  savedView.classList.remove("hidden");
+  randomizeButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
 }
 
 
