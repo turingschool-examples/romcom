@@ -63,3 +63,11 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
 };
+
+function goHome() {
+  homeView.classList.remove('hidden')
+  savedCoversView.classList.add('hidden')
+  homeButton.classList.add('hidden')
+  saveCoverButton.classList.remove('hidden')
+  randomCoverButton.classList.remove('hidden')
+}
