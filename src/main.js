@@ -19,9 +19,7 @@ var makeABookButton = document.querySelector('.create-new-book-button');
 var savedCoverSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -56,6 +54,8 @@ function showUserFormPage() {
   showNewCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  savedCoverSection.classList.add('hidden');
+  viewSaveCoversSection.classList.add('hidden');
 }
 
 function viewSavedCovers() {
