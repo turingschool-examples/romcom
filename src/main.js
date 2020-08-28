@@ -11,18 +11,24 @@ var homeViewButton = document.querySelector('.home-button');
 var savedViewButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
 
+var userCoverInput = document.querySelector('#cover')
+var userTitleInput = document.querySelector('#title')
+var userDescriptor1Input = document.querySelector('#descriptor1')
+var userDescriptor2Input = document.querySelector('#descriptor2')
+var userCreateNewCoverButton = document.querySelector('.create-new-book-button')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
+var userNewBookCover;
 
 // Add your event listeners here 👇
 showRandomCoverButton.addEventListener('click', displayNewCover);
 makeOwnCover.addEventListener('click', unhideFormView);
 savedViewButton.addEventListener('click', unhideSavedView);
 homeViewButton.addEventListener('click', unhideHomeView);
-
+userCreateNewCoverButton.addEventListener('click', saveUserNewCoverData);
 // Create your event handlers and other functions here 👇
 function getRandomIndex(bookItem) {
   var randomIndex = Math.floor(Math.random() * bookItem.length)
@@ -52,6 +58,7 @@ function unhideFormView() {
   showRandomCoverButton.style.display = 'none'
   saveCoverButton.style.display = 'none'
   homeViewButton.style.display = 'block'
+  clearFields()
 }
 
 function unhideSavedView() {
@@ -70,6 +77,30 @@ function unhideHomeView() {
   saveCoverButton.style.display = 'block'
   homeViewButton.style.display = 'none'
   formView.style.display = 'none'
+}
+
+function clearFields() {
+  userTitleInput.value = ''
+  userCoverInput.value = ''
+  userDescriptor1Input.value = ''
+  userDescriptor2Input.value = ''
+}
+
+function saveUserNewCoverData() {
+  titles.push(userTitleInput.value)
+  covers.push(userCoverInput.value)
+  descriptors.push(userDescriptor1Input.value, userDescriptor2Input.value)
+  createUserNewCover()
+  unhideHomeView()
+  event.preventDefault();
+}
+
+function createUserNewCover() {
+  userNewBookCover = new Cover (covers[covers.length-1], titles[titles.length-1], descriptors[descriptors.length-2], descriptors[descriptors.length-1])
+  coverImage.src = userNewBookCover.cover
+  coverTitle.textContent = userNewBookCover.title
+  coverDescriptor.textContent = `A tale of ${userNewBookCover.tagline1} and ${userNewBookCover.tagline2}`
+  return userNewBookCover
 }
 
 displayNewCover()
