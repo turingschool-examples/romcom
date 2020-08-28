@@ -102,9 +102,3 @@ function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 }
-
-
-//create new instance of cover class that takes in arguments of user inputs
-//push user inputs into data.js arrays
-//toggle views.
-//show created poster.
