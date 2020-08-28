@@ -97,7 +97,9 @@ function saveUserInputs(cover) {
 }
 
 function saveCover() {
-  savedCovers.push(currentCover);
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 
