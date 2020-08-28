@@ -15,10 +15,8 @@ var userCoverInput = document.querySelector('.user-cover');
 var userTitleInput = document.querySelector('.user-title');
 var userDescriptorInput1 = document.querySelector('.user-desc1');
 var userDescriptorInput2 = document.querySelector('.user-desc2');
-var makeABookButton = document.querySelector('.create-new-book-button')
-
-
-
+var makeABookButton = document.querySelector('.create-new-book-button');
+var savedCoverSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -68,7 +66,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   showNewCoverButton.classList.add('hidden');
   displayUserForm.classList.add('hidden');
-  //function to display covers
+  displaySavedCover();
 }
 
 function homeButtonFunction() {
@@ -113,7 +111,20 @@ function saveCoverToArray() {
   }
 }
 
-
+function displaySavedCover() {
+  var coverData = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    var addDom = `
+      <div class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}"/>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>
+      </div>
+    `;
+    coverData += addDom;
+  }
+  savedCoverSection.innerHTML = coverData;
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
