@@ -11,6 +11,11 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var savedCoversButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
+<<<<<<< Updated upstream
+=======
+var saveCoverButton = document.querySelector('.save-cover-button');
+
+>>>>>>> Stashed changes
 
 // Here I am declaring these variables and linking them to the HTML element.
 
@@ -30,7 +35,15 @@ window.onload = useRandomIndex();
 randomCoverButton.addEventListener('click', randomCover);
 makeNewOne.addEventListener('click', makeNewCoverByUser);
 savedCoversButton.addEventListener('click', viewSavedCovers);
+<<<<<<< Updated upstream
 homeButton.addEventListener('click', viewHomeScreen)
+=======
+homeButton.addEventListener('click', viewHomeScreen);
+saveCoverButton.addEventListener('click', saveACover);
+
+
+
+>>>>>>> Stashed changes
 // Create your event handlers and other functions here 👇
 
 
@@ -78,4 +91,8 @@ function viewHomeScreen() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
+}
+
+function saveACover() {
+  console.log('hello');
 }
