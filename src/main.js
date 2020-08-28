@@ -27,6 +27,8 @@ randomCoverButton.addEventListener("click", generateRandomCover);
 
 makeNewButton.addEventListener("click", viewForm);
 
+viewSavedCoversButton.addEventListener("click", viewSavedCovers);
+
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
