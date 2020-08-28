@@ -16,6 +16,10 @@ var homeView = document.querySelector('.home-view');
 var savedCoversView = document.querySelector('.saved-view');
 var savedCoversArray = document.querySelector('.saved-covers-section');
 
+var coverForm = document.querySelector('#cover');
+var titleForm = document.querySeletor('#title');
+var descriptor1Form = document.querySelector('#descriptor1');
+var descriptor2Form = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
