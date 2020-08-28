@@ -20,18 +20,21 @@ function getRandomIndex(bookItem) {
   return bookItem[randomIndex]
 }
 
-function createNewCover(){
+function createNewCover() {
   currentCover = new Cover(getRandomIndex(covers), getRandomIndex(titles), getRandomIndex(descriptors), getRandomIndex(descriptors))
-  if (currentCover.tagline1 === currentCover.tagline2) {
-    createNewCover()
+  var tagline1 = getRandomIndex(descriptors)
+  var tagline2 = getRandomIndex(descriptors)
+  while (tagline1 === tagline2) {
+    tagline2 = getRandomIndex(descriptors)
   }
   return currentCover
 }
 
 function displayNewCover() {
-  coverImage.src = createNewCover().cover
-  coverTitle.textContent = createNewCover().title
-  coverDescriptor.textContent = `A tale of ${createNewCover().tagline1} and ${createNewCover().tagline2}`
+  var newCoverItem = createNewCover()
+  coverImage.src = newCoverItem.cover
+  coverTitle.textContent = newCoverItem.title
+  coverDescriptor.textContent = `A tale of ${newCoverItem.tagline1} and ${newCoverItem.tagline2}`
 }
 
 displayNewCover()
