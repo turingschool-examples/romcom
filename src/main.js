@@ -15,15 +15,11 @@ var userCoverInput = document.querySelector('.user-cover');
 var userTitleInput = document.querySelector('.user-title');
 var userDescriptorInput1 = document.querySelector('.user-desc1');
 var userDescriptorInput2 = document.querySelector('.user-desc2');
-var makeABookButton = document.querySelector('.create-new-book-button')
-
-
-
+var makeABookButton = document.querySelector('.create-new-book-button');
+var savedCoverSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -32,7 +28,7 @@ makeOwnCoverButton.addEventListener('click', showUserFormPage);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', homeButtonFunction);
 makeABookButton.addEventListener('click', clickHandler);
-
+saveCoverButton.addEventListener('click', saveCoverToArray);
 
 window.onload = displayMainPageCover;
 
@@ -58,6 +54,8 @@ function showUserFormPage() {
   showNewCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  savedCoverSection.classList.add('hidden');
+  viewSaveCoversSection.classList.add('hidden');
 }
 
 function viewSavedCovers() {
@@ -68,6 +66,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   showNewCoverButton.classList.add('hidden');
   displayUserForm.classList.add('hidden');
+  displaySavedCover();
 }
 
 function homeButtonFunction() {
@@ -104,6 +103,27 @@ function homeFromUserPage() {
 function clickHandler(event) {
   createUserPost(event);
   homeFromUserPage();
+}
+
+function saveCoverToArray() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
+
+function displaySavedCover() {
+  var coverData = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    var addDom = `
+      <div class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}"/>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>
+      </div>
+    `;
+    coverData += addDom;
+  }
+  savedCoverSection.innerHTML = coverData;
 }
 
 function getRandomIndex(array) {
