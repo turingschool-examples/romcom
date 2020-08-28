@@ -8,6 +8,8 @@ var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeViewButton = document.querySelector('.home-button');
+var savedViewButton = document.querySelector('.view-saved-button');
+var savedView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -18,6 +20,8 @@ var currentCover;
 // Add your event listeners here 👇
 showRandomCoverButton.addEventListener('click', displayNewCover);
 makeOwnCover.addEventListener('click', unhideFormView);
+savedViewButton.addEventListener('click', unhideSavedView);
+homeViewButton.addEventListener('click', unhideHomeView);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(bookItem) {
@@ -48,6 +52,24 @@ function unhideFormView() {
   showRandomCoverButton.style.display = 'none'
   saveCoverButton.style.display = 'none'
   homeViewButton.style.display = 'block'
+}
+
+function unhideSavedView() {
+  savedView.style.display = 'block'
+  homeView.style.display = 'none'
+  showRandomCoverButton.style.display = 'none'
+  saveCoverButton.style.display = 'none'
+  homeViewButton.style.display = 'block'
+  formView.style.display = 'none'
+}
+
+function unhideHomeView() {
+  savedView.style.display = 'none'
+  homeView.style.display = 'block'
+  showRandomCoverButton.style.display = 'block'
+  saveCoverButton.style.display = 'block'
+  homeViewButton.style.display = 'none'
+  formView.style.display = 'none'
 }
 
 displayNewCover()
