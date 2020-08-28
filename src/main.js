@@ -17,7 +17,7 @@ var savedCoversView = document.querySelector('.saved-view');
 var savedCoversArray = document.querySelector('.saved-covers-section');
 
 var coverForm = document.querySelector('#cover');
-var titleForm = document.querySeletor('#title');
+var titleForm = document.querySelector('#title');
 var descriptor1Form = document.querySelector('#descriptor1');
 var descriptor2Form = document.querySelector('#descriptor2');
 
@@ -33,7 +33,7 @@ randomCoverButton.addEventListener('click', generateRandomCover);
 makeNewButton.addEventListener('click', viewForm);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', goHome);
-makemyBookButton.addEventListener('click', makeBook);
+makeMyBookButton.addEventListener('click', makeBook);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -79,5 +79,15 @@ function goHome() {
 };
 
 function makeBook(){
+  var makeCover = covers.push(coverForm.value);
+  var makeTitle = titles.push(titleForm.value);
+  var makeDescriptor1 = descriptors.push(descriptor1Form.value);
+  var makeDescriptor2 = descriptors.push(descriptor2Form.value);
 
-}
+  homePageCover.src = makeCover;
+  homePageTitle.innerText = makeTitle;
+  homePageDescriptor1.innerText = makeDescriptor1;
+  homePageDescriptor2.innerText = makeDescriptor2;
+
+  currentCover = new Cover (homePageCover, homePageCover, homePageDescriptor1, homePageDescriptor2);
+};
