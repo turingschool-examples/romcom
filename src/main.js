@@ -3,19 +3,25 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-// Here I am declaring these variables and linking them to the HTML element.
+var randomCoverButton = document.querySelector('.random-cover-button');
 
+// Here I am declaring these variables and linking them to the HTML element.
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
 var currentCover;
 
-// Add your event listeners here 👇
+// // Add your event listeners here 👇
 window.onload = useRandomIndex();
-// Every time the window reloads (window.onload) we are gonna invoke our useRandomIndex
-// function to get new variables.
+// // Every time the window reloads (window.onload) we are gonna invoke our useRandomIndex
+// // function to get new variables.
+// // Below is another way to do it.
+// window.addEventListener('onload', useRandomIndex());
+randomCoverButton.addEventListener('click', randomCover);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -37,4 +43,8 @@ function useRandomIndex() {
   tagline2.innerHTML = randomTagline2;
 };
 
-// Using this commit to try to get on my new branch
+
+function randomCover() {
+  var randomImage = covers[getRandomIndex(covers)];
+  coverImage.src = randomImage;
+};
