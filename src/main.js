@@ -29,8 +29,8 @@ window.onload = useRandomIndex();
 // window.addEventListener('onload', useRandomIndex());
 randomCoverButton.addEventListener('click', randomCover);
 makeNewOne.addEventListener('click', makeNewCoverByUser);
-
 savedCoversButton.addEventListener('click', viewSavedCovers);
+homeButton.addEventListener('click', viewHomeScreen)
 // Create your event handlers and other functions here 👇
 
 
@@ -70,5 +70,12 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  savedView.classList.remove('hidden');
+  // savedView.classList.remove('hidden');
 };
+
+function viewHomeScreen() {
+  homeView.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+}
