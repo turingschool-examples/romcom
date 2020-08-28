@@ -8,12 +8,12 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
-var viewSavedCoversButton = document.querySelector('view-saved-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
 
 var formPage = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
-var savedCoversView = document.querySelector('saved-view');
-var savedCoversArray = document.querySelector('saved-covers-section');
+var savedCoversView = document.querySelector('.saved-view');
+var savedCoversArray = document.querySelector('.saved-covers-section');
 
 
 // We've provided a few variables below
@@ -24,9 +24,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener("click", generateRandomCover);
-makeNewButton.addEventListener("click", viewForm);
-viewSavedCoversButton.addEventListener("click", viewForm);
+randomCoverButton.addEventListener('click', generateRandomCover);
+makeNewButton.addEventListener('click', viewForm);
+viewSavedButton.addEventListener('click', viewSavedCovers);
 
 
 // Create your event handlers and other functions here 👇
@@ -57,10 +57,6 @@ function viewForm() {
 };
 
 function viewSavedCovers() {
-  savedCoversArray.innerHTML = '';
   savedCoversView.classList.remove('hidden');
   homeView.classList.add('hidden');
-  homeButton.classList.remove('hidden');
 };
-
-//I think we need to use the savedCovers variable declared above
