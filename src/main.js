@@ -25,10 +25,8 @@ var currentCover;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener("click", generateRandomCover);
-
 makeNewButton.addEventListener("click", viewForm);
-
-viewSavedCoversButton.addEventListener("click", viewvSavedCovers);
+viewSavedCoversButton.addEventListener("click", viewForm);
 
 
 // Create your event handlers and other functions here 👇
@@ -64,3 +62,5 @@ function viewSavedCovers() {
   homeView.classList.add('hidden');
   homeButton.classList.remove('hidden');
 };
+
+//I think we need to use the savedCovers variable declared above
