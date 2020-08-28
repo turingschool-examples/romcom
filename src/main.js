@@ -10,7 +10,7 @@ var formView = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var savedCoversButton = document.querySelector('.view-saved-button');
-
+var savedView = document.querySelector('.saved-view');
 
 // Here I am declaring these variables and linking them to the HTML element.
 
@@ -70,7 +70,7 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  // savedView.classList.remove('hidden');
+  savedView.classList.remove('hidden');
 };
 
 function viewHomeScreen() {
