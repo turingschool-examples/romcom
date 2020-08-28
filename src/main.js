@@ -14,7 +14,7 @@ var createNewBookButton = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
-
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
@@ -99,7 +99,7 @@ function saveUserInputs(cover) {
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    savedView.insertAdjacentHTML('afterbegin', `<section class="mini-cover"><img src="./assets/prairie.jpg"><h2>Windswept Hearts</h2><h3>A tale of passion and woe</h3><img src="./assets/price.png"><img class="overlay" src="./assets/overlay.png"></section>`)
+    savedCoversSection.insertAdjacentHTML('afterbegin', `<div class="mini-cover"><img class="mini-cover" src="./assets/prairie.jpg"><h2 class="cover-title first-letter">Windswept Hearts</h2><h3 class="tagline">A tale of passion and woe</h3></div>`)
   }
 }
 
