@@ -44,7 +44,7 @@ function getRandomIndex(array) {
 
 function displayCover(leCover) {
   newCoverImg.src = leCover.cover;
-  newTitle.innerText = leCover.title;
+  newTitle.innerText = leCover.titlegm ;
   newDescriptor1.innerText = leCover.tagline1;
   newDescriptor2.innerText = leCover.tagline2;
 };
@@ -96,4 +96,5 @@ function makeBook() {
   addToArrays();
   currentCover = new Cover (covers[0], titles[0], descriptors[1], descriptors[0]);
   displayCover(currentCover);
+  goHome();
 }
