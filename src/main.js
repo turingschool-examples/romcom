@@ -30,6 +30,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.addEventListener('load', generateRandomCover);
 randomCoverButton.addEventListener('click', generateRandomCover);
 makeNewButton.addEventListener('click', viewForm);
 viewSavedButton.addEventListener('click', viewSavedCovers);
@@ -41,18 +42,21 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function displayCover(leCover) {
+  newCoverImg.src = leCover.cover;
+  newTitle.innerText = leCover.title;
+  newDescriptor1.innerText = leCover.tagline1;
+  newDescriptor2.innerText = leCover.tagline2;
+};
+
 function generateRandomCover(){
   var randomCoverImg = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
 
-  newCoverImg.src = randomCoverImg;
-  newTitle.innerText = randomTitle;
-  newDescriptor1.innerText = randomDescriptor1;
-  newDescriptor2.innerText = randomDescriptor2;
-
-  currentCover = new Cover (newCoverImg, newTitle, newDescriptor1, newDescriptor2);
+  currentCover = new Cover (randomCoverImg, randomTitle, randomDescriptor1, randomDescriptor2);
+  displayCover(currentCover);
 };
 
 function viewForm() {
@@ -91,4 +95,5 @@ function makeBook() {
   event.preventDefault();
   addToArrays();
   currentCover = new Cover (covers[0], titles[0], descriptors[1], descriptors[0]);
+  displayCover(currentCover);
 }
