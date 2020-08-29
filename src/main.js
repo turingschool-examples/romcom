@@ -82,8 +82,13 @@ function goHome() {
 };
 
 function addToArrays() {
-  covers.push(coverForm.value);
-  titles.push(titleForm.value);
-  descriptors.push(descriptor1Form.value);
-  descriptors.push(descriptor2Form.value);
+  covers.unshift(coverForm.value);
+  titles.unshift(titleForm.value);
+  descriptors.unshift(descriptor1Form.value);
+  descriptors.unshift(descriptor2Form.value);
 };
+function makeBook() {
+  event.preventDefault();
+  addToArrays();
+  currentCover = new Cover (covers[0], titles[0], descriptors[1], descriptors[0]);
+}
