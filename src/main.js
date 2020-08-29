@@ -131,7 +131,13 @@ function displaySavedCover() {
 }
 
 function deleteSavedCovers(event) {
-  console.log(event.target.id)
+  var coverId = event.target.id;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (coverId === `${savedCovers[i].id}`) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCover();
 }
 
 function getRandomIndex(array) {
