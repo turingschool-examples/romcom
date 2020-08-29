@@ -68,6 +68,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  formPage.classList.add('hidden');
 };
 
 function goHome() {
