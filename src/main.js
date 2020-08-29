@@ -1,7 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var coverDescriptor = document.querySelector('.tagline');
+var coverTagline = document.querySelector('.tagline');   // changed varname from coverDescription to coverTagline for clarity
 var showRandomCoverButton = document.querySelector('.random-cover-button');
 var makeOwnCover = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
@@ -16,6 +16,10 @@ var userTitleInput = document.querySelector('#title')
 var userDescriptor1Input = document.querySelector('#descriptor1')
 var userDescriptor2Input = document.querySelector('#descriptor2')
 var userCreateNewCoverButton = document.querySelector('.create-new-book-button')
+
+var savedCoversSection = document.querySelector('.saved-covers-section')
+var taglineArray = []
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -29,7 +33,13 @@ makeOwnCover.addEventListener('click', unhideFormView);
 savedViewButton.addEventListener('click', unhideSavedView);
 homeViewButton.addEventListener('click', unhideHomeView);
 userCreateNewCoverButton.addEventListener('click', saveUserNewCoverData);
-saveCoverButton.addEventListener('click', saveUserNewCover);
+saveCoverButton.addEventListener('click',() => {
+  saveCurrentCover();
+  // saveUserNewCover(); // there is an issue with this fxn on click
+  loadSavedCovers();
+  deleteDuplicateCover() // added this to prevent duplicate saves
+});
+
 // Create your event handlers and other functions here 👇
 function getRandomIndex(bookItem) {
   var randomIndex = Math.floor(Math.random() * bookItem.length)
@@ -50,10 +60,11 @@ function displayNewCover() {
   var newCoverItem = createNewCover()
   coverImage.src = newCoverItem.cover
   coverTitle.textContent = newCoverItem.title
-  coverDescriptor.textContent = `A tale of ${newCoverItem.tagline1} and ${newCoverItem.tagline2}`
+  coverTagline.textContent = `A tale of ${newCoverItem.tagline1} and ${newCoverItem.tagline2}`
 }
 
 function unhideFormView() {
+  savedView.style.display = 'none' //gets form view from saved view w/o saved covers on page
   formView.style.display = 'block'
   homeView.style.display = 'none'
   showRandomCoverButton.style.display = 'none'
@@ -100,14 +111,13 @@ function createUserNewCover() {
   userNewBookCover = new Cover (covers[covers.length-1], titles[titles.length-1], descriptors[descriptors.length-2], descriptors[descriptors.length-1])
   coverImage.src = userNewBookCover.cover
   coverTitle.textContent = userNewBookCover.title
-  coverDescriptor.textContent = `A tale of ${userNewBookCover.tagline1} and ${userNewBookCover.tagline2}`
+  coverTagline.textContent = `A tale of ${userNewBookCover.tagline1} and ${userNewBookCover.tagline2}`
   return userNewBookCover
 }
 
 function saveUserNewCover() {
   savedCovers.push(userNewBookCover)
-  unhideSavedView()
-  deleteDuplicateCover()
+  deleteDuplicateCover()      // fixed hiding home on click of save btn
 }
 
 function deleteDuplicateCover() {
@@ -126,11 +136,69 @@ function deleteDuplicateCover() {
   }
 }
 
-displayNewCover()
+function createSavedBookCover(index) {
+    var img = document.createElement('IMG');   // CAPITALIZED to invoke
+    img.src = covers[index];
+    var title = document.createElement('H2');
+    title.innerText = ""
+    var descriptor = document.createElement('H3');
+    descriptor.innerText = ""
+    return img;
+}
 
-// if (savedCovers[i].cover === userNewBookCover.cover
-//   && savedCovers[i].title === userNewBookCover.title
-//   && savedCovers[i].tagline1 === userNewBookCover.tagline1
-//   && savedCovers[i].tagline2 === userNewBookCover.tagline2) {
-//   savedCovers.pop(userNewBookCover)
+// savedCoversSection.appendChild(createSavedBookCover(0))
+
+// function loadSavedCovers() {
+//   var img = document.createElement(‘img’)
+//   var title = document.createElement(‘h2’) 
+//   var descriptor = document.createElement(‘h3’)
+//   for (var i = 0; i < savedCovers.length; i++) { 
+//     img.src = savedCovers[i].cover 
+//     title.innerText = savedCovers[i].title 
+//     descriptor.innerText = `A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}`
+//   }
+//   savedCoversSection.appendChild(loadSavedCovers()) ;
 // }
+
+function loadSavedCovers() {
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.appendChild(createSavedBookCover(i)) 
+  }
+}
+// experimental
+// saveCurrentCover() for saving current homepage cover into savedCovers array
+// splitTagline() pushed descriptors into array, this fxn uses them and
+// then cleans the array out with .splice()
+function saveCurrentCover() {
+  splitTagline();
+  var homeCurrentCover = new Cover(coverImage.src, coverTitle.textContent, taglineArray[0], taglineArray[1])
+  savedCovers.push(homeCurrentCover)
+  return taglineArray.splice(0,2)
+}
+
+// splitTagline() fxn inside of saveCurrentCover(). split tagline to save desc1 and desc2
+function splitTagline() {
+  var taglineWordCount = coverTagline.textContent.split(" ")
+  return taglineArray.push(taglineWordCount[3], taglineWordCount[5])
+}
+
+
+// savedCoversSection.appendChild(createSavedBookCover(22));
+
+// menu.appendChild(createMenuItem('Services'));
+// menu.appendChild(createMenuItem('About Us'));
+
+
+// var test = document.querySelector('#saved-cover')
+// var savedCoverImageSource = covers[9]
+//
+// savedCoversSection.innerHTML =`
+//       <img class="cover-image" id="saved-cover" src="${savedCoverImageSource}">
+//       <h2 class="cover-title"></h2>
+//       <h3 class="tagline">A tale of <span class="tagline-1"></span> and <span class="tagline-2"></span></h3>
+//       <img class="price-tag" src="./assets/price.png">
+//       <img class="overlay" src="./assets/overlay.png">
+// `
+
+displayNewCover();
+loadSavedCovers();
