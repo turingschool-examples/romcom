@@ -68,6 +68,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  formPage.classList.add('hidden');
 };
 
 function goHome() {
@@ -76,6 +77,7 @@ function goHome() {
   homeButton.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
+  formPage.classList.add('hidden');
 };
 
 function makeBook(){
