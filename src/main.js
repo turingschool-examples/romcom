@@ -17,6 +17,7 @@ var userDescriptorInput1 = document.querySelector('.user-desc1');
 var userDescriptorInput2 = document.querySelector('.user-desc2');
 var makeABookButton = document.querySelector('.create-new-book-button');
 var savedCoverSection = document.querySelector('.saved-covers-section');
+var inputFields = document.getElementsByTagName('input');
 
 // We've provided a few variables below
 var savedCovers = [];
@@ -28,6 +29,7 @@ makeOwnCoverButton.addEventListener('click', showUserFormPage);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', homeButtonFunction);
 makeABookButton.addEventListener('click', clickHandler);
+makeABookButton.addEventListener('mouseover', errorMessage);
 saveCoverButton.addEventListener('click', saveCoverToArray);
 savedCoverSection.addEventListener('dblclick', deleteSavedCovers)
 
@@ -58,6 +60,7 @@ function showUserFormPage() {
   showNewCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
   savedCoverSection.classList.add('hidden');
   viewSaveCoversSection.classList.add('hidden');
 }
@@ -104,7 +107,7 @@ function homeFromUserPage() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
 }
-function clickHandler(event) {
+function clickHandler() {
   createUserPost(event);
   homeFromUserPage();
 }
@@ -151,6 +154,32 @@ function dataValidate(data) { 
     } 
   } 
 } 
+
+
+function dataValidate(data) {
+  for (i = 0; i < inputFields.length; i++) {
+    if (inputFields[i].value == '') {
+      makeABookButton.disabled = true;
+      return false;
+    } else {
+      makeABookButton.disabled = false;
+    }
+  }
+}
+
+function errorMessage() {
+  var allowedExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+  var coverValue = userCoverInput.value.split('.');
+  for (var i = 0; i < allowedExtension.length; i++) {
+    for (var j = 0; j < coverValue.length; j++) {
+      if (allowedExtension[i] === coverValue[j]) {
+          return true;
+      }
+    }
+  } alert `Not a valid image type`;
+  return false;
+}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
