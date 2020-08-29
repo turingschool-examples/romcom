@@ -35,7 +35,7 @@ makeNewOne.addEventListener('click', makeNewCoverByUser);
 savedCoversButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', viewHomeScreen);
 makeMyBookButton.addEventListener('click', saveCoverMadeByUser);
-
+saveCoverButton.addEventListener('click', saveCovers);
 // Create your event handlers and other functions here 👇
 
 // We've provided one function to get you started
@@ -115,18 +115,11 @@ var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.va
 // savedCovers.push(coverByUser);
 };
 
+function saveCovers() {
+  savedCovers.push(currentCover);
+  return savedCovers;
+}
 
-// saving the cover made by the user into the savedCovers array
-
-
-//  iteration 3 pseudocoding:
-// We're in the new cover form. The user will input the fields and click make my cover button.
-// We want to save that data into arrays. (cover, title, tagline1. tagline2 )
-//
-// Need to create new instance of the cover class. (First we need a cover class)
-//
-// After the user hits the make my cover we'll be brought back to the main home view.
-// that home view will display the cover they just created. (the instance of our Cover class
 //
 //
 //
