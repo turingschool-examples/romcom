@@ -12,6 +12,7 @@ var homeViewDisplayHtmlElement = document.querySelector('.home-view');
 var formViewDisplayHtmlElement = document.querySelector('.form-view');
 var viewSavedButonHtmlElement = document.querySelector('.view-saved-button');
 var savedCoversDisplayHtmlElement = document.querySelector('.saved-view');
+var createNewBookButtonHtmlElement = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -20,7 +21,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.onload = handleOnLoad;
+// window.onload = handleOnLoad;
 
 makeOwnCoverButtonHtmlElement.addEventListener('click', displayMakeYourOwnCoverForm);
 
@@ -30,6 +31,7 @@ randomCoverButtonHtmlElement.addEventListener('click', handleOnShowNewRandomCove
 
 viewSavedButonHtmlElement.addEventListener('click', displaySavedCovers);
 
+createNewBookButtonHtmlElement.addEventListener('click', developOwnCover)
 // Create your event handlers and other functions here 👇
 function handleOnLoad() {
   var newCover = generateRandomCover();
@@ -93,3 +95,23 @@ function displaySavedCovers() {
   homeViewDisplayHtmlElement.classList.add('hidden');
   savedCoversDisplayHtmlElement.classList.remove('hidden');
 }
+
+function createOwnCover(ownCover) {
+  coverHtmlElement.setAttribute("src" , ownCover.cover);
+  titleHtmlElement.innerText = ownCover.title;
+  tagline1HtmlElement.innerText = ownCover.tagline1;
+  tagline2HtmlElement.innerText = ownCover.tagline2;
+}
+
+function developOwnCover() {
+  event.preventDefault();
+  var userImageInputValue = document.getElementById('cover').value;
+  var userTitleInputValue = document.getElementById('title').value;
+  var userDescriptor1InputValue = document.getElementById('descriptor1').value;
+  var userDescriptor2InputValue = document.getElementById('descriptor2').value;
+  currentCover = new Cover (userImageInputValue, userTitleInputValue, userDescriptor1InputValue, userDescriptor2InputValue);
+  createOwnCover(currentCover); 
+  displayHomePage()
+}
+
+
