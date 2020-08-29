@@ -76,6 +76,7 @@ function goHome() {
   homeButton.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
+  formPage.classList.add('hidden');
 };
 
 function makeBook(){
