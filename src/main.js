@@ -104,7 +104,9 @@ function saveCover() {
 }
 
 function formatSavedCovers() {
-  savedCoversSection.insertAdjacentHTML('afterbegin', `<div class="mini-cover"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`)
+  var miniCover =
+  `<div class="mini-cover"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
 
