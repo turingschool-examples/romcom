@@ -21,6 +21,7 @@ var titleForm = document.querySelector('#title');
 var descriptor1Form = document.querySelector('#descriptor1');
 var descriptor2Form = document.querySelector('#descriptor2');
 
+var defaultCover = document.querySelector(".main-cover")
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -80,16 +81,9 @@ function goHome() {
   formPage.classList.add('hidden');
 };
 
-function makeBook(){
-  var makeCover = covers.push(coverForm.value);
-  var makeTitle = titles.push(titleForm.value);
-  var makeDescriptor1 = descriptors.push(descriptor1Form.value);
-  var makeDescriptor2 = descriptors.push(descriptor2Form.value);
-
-  homePageCover.src = makeCover;
-  homePageTitle.innerText = makeTitle;
-  homePageDescriptor1.innerText = makeDescriptor1;
-  homePageDescriptor2.innerText = makeDescriptor2;
-
-  currentCover = new Cover (homePageCover, homePageCover, homePageDescriptor1, homePageDescriptor2);
+function addToArrays() {
+  covers.push(coverForm.value);
+  titles.push(titleForm.value);
+  descriptors.push(descriptor1Form.value);
+  descriptors.push(descriptor2Form.value);
 };
