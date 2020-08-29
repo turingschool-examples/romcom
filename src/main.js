@@ -13,16 +13,10 @@ var savedCoversButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
-
-
-var coverInput = document.getElementById('cover');
-/// This is gonna be a url though... ^^
-var titleInput = document.getElementById('title');
-var tagline1Input = document.getElementById('descriptor1');
-var tagline2Input = document.getElementById('descriptor2');
-
-
-// Here I am declaring these variables and linking them to the HTML element.
+var coverInput = document.querySelector('.user-cover');
+var titleInput = document.querySelector('.user-title');
+var tagline1Input = document.querySelector('.user-desc1');
+var tagline2Input = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -32,21 +26,17 @@ var savedCovers = [
    "sorrows")
 ];
 
-var currentCover;
-
+var currentCover = useRandomIndex();
 
 // // Add your event listeners here 👇
-window.addEventListener('onload', useRandomIndex());
-randomCoverButton.addEventListener('click', randomCover);
+window.addEventListener('onload', displayCover(currentCover));
+randomCoverButton.addEventListener('click', displayRandomCoverButton);
 makeNewOne.addEventListener('click', makeNewCoverByUser);
 savedCoversButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', viewHomeScreen);
-makeMyBookButton.addEventListener('click', saveCoverMadeByUser)
-
-
+makeMyBookButton.addEventListener('click', saveCoverMadeByUser);
 
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -54,19 +44,29 @@ function getRandomIndex(array) {
 }
 
 function useRandomIndex() {
-  var randomImage = covers[getRandomIndex(covers)];
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomTagline1 = descriptors[getRandomIndex(descriptors)];
-  var randomTagline2 = descriptors[getRandomIndex(descriptors)];
-  coverImage.src = randomImage;
-  coverTitle.innerHTML = randomTitle;
-  tagline1.innerHTML = randomTagline1;
-  tagline2.innerHTML = randomTagline2;
+  var newRandomCover = new Cover (
+    covers[getRandomIndex(covers)],
+    titles[getRandomIndex(titles)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)],
+)
+return newRandomCover;
+};
+
+function displayCover(bookObject) {
+  coverImage.src = bookObject.cover;
+  coverTitle.innerHTML = bookObject.title;
+  tagline1.innerHTML = bookObject.tagline1;
+  tagline2.innerHTML = bookObject.tagline2;
+}
+
+function displayRandomCoverButton() {
+  var bookCover = useRandomIndex();
+  displayCover(bookCover);
 };
 
 function randomCover() {
-  var randomImage = covers[getRandomIndex(covers)];
-  coverImage.src = randomImage;
+  displayRandomCoverButton();
 };
 
 function makeNewCoverByUser() {
@@ -91,39 +91,31 @@ function viewHomeScreen() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
+  formView.classList.add('hidden');
 }
 
 function saveCoverMadeByUser() {
-  // saving the user data into the arrays
-  covers.push(coverInput);
-  titles.push(titleInput);
-  descriptors.push(tagline1Input);
-  descriptors.push(tagline2Input);
-  // these arrays aren't in this main.js file though, will they be pushed then?
+  event.preventDefault()
+  viewHomeScreen();
+coverImage.src = coverInput.value;
+coverTitle.innerHTML = titleInput.value;
+tagline1.innerHTML = tagline1Input.value;
+tagline2.innerHTML = tagline2Input.value;
+};
 
-  // then hide the form view and show the home view
-formView.classList.add('hidden')
-homeView.classList.remove('hidden')
+function addInputToArray() {
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(tagline1Input.value);
+  descriptors.push(tagline2Input.value);
+};
 
-// also need to display the new image in the home view
-coverImage.src = coverInput;
-coverTitle.innerHTML = titleInput;
-tagline1.innerHTML = tagline1Input;
-tagline2.innerHTML = tagline2Input;
+ function addUserCovers() {
+var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+// savedCovers.push(coverByUser);
 };
 
 
-class Cover {
-  constructor(cover, title, tagline1, tagline2) {
-    this.cover = cover;
-    this.title = title;
-    this.tagline1 = tagline1;
-    this.tagline2 = tagline2
-  }
-}
-
-var coverByUser = new Cover(coverInput, titleInput, tagline1Input, tagline2Input);
-savedCovers.push(coverByUser);
 // saving the cover made by the user into the savedCovers array
 
 
