@@ -53,9 +53,8 @@ function displayMainPageCover() {
 }
 
 function showUserFormPage() {
-  for (var i = 0; i < inputFields.length; i++) {
-    inputFields[i].value = null;
-  }
+  for (var i = 0; i < inputFields.length; i++) { 
+     inputFields[i].value = ''   }
   mainPageDisplay.classList.add('hidden');
   displayUserForm.classList.remove('hidden');
   showNewCoverButton.classList.add('hidden');
@@ -145,6 +144,16 @@ function deleteSavedCovers(event) {
   }
   displaySavedCover();
 }
+function dataValidate(data) { 
+  for (i = 0; i < inputFields.length; i++) { 
+    if (inputFields[i].value == '') { 
+      makeABookButton.disabled = true; 
+      return false; 
+       } else { 
+      makeABookButton.disabled = false; 
+    } 
+  } 
+} 
 
 
 function dataValidate(data) {
