@@ -99,14 +99,9 @@ function saveUserInputs(cover) {
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    savedCoversSection.insertAdjacentHTML('afterbegin', `<div class="mini-cover"><img class="mini-cover" src="./assets/prairie.jpg"><h2 class="cover-title first-letter">Windswept Hearts</h2><h3 class="tagline">A tale of passion and woe</h3></div>`)
+    savedCoversSection.insertAdjacentHTML('afterbegin', `<div class="mini-cover"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`)
   }
 }
-
-
-//savedView.insertAdjacentHTML(afterbegin, )
-// in a div class of .mini-cover
-// image title descriptor
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
