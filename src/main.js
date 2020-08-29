@@ -29,6 +29,8 @@ viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', homeButtonFunction);
 makeABookButton.addEventListener('click', clickHandler);
 saveCoverButton.addEventListener('click', saveCoverToArray);
+savedCoverSection.addEventListener('dblclick', deleteSavedCovers)
+
 
 window.onload = displayMainPageCover;
 
@@ -116,14 +118,20 @@ function displaySavedCover() {
   for (var i = 0; i < savedCovers.length; i++) {
     var addDom = `
       <div class="mini-cover" id="${savedCovers[i].id}">
-        <img class="cover-image" src="${savedCovers[i].cover}"/>
-        <h2 class="cover-title">${savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>
+        <img class="cover-image" id="${savedCovers[i].id}" src="${savedCovers[i].cover}"/>
+        <h2 class="cover-title" id="${savedCovers[i].id}">${savedCovers[i].title}</h2>
+        <h3 class="tagline" id="${savedCovers[i].id}">A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" id="${savedCovers[i].id}" src="./assets/price.png">
+        <img class="overlay" id="${savedCovers[i].id}" src="./assets/overlay.png">
       </div>
     `;
     coverData += addDom;
   }
   savedCoverSection.innerHTML = coverData;
+}
+
+function deleteSavedCovers(event) {
+  console.log(event.target.id)
 }
 
 function getRandomIndex(array) {
