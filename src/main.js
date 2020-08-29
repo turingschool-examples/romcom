@@ -21,6 +21,7 @@ var titleForm = document.querySelector('#title');
 var descriptor1Form = document.querySelector('#descriptor1');
 var descriptor2Form = document.querySelector('#descriptor2');
 
+var defaultCover = document.querySelector(".main-cover")
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -29,6 +30,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.addEventListener('load', generateRandomCover);
 randomCoverButton.addEventListener('click', generateRandomCover);
 makeNewButton.addEventListener('click', viewForm);
 viewSavedButton.addEventListener('click', viewSavedCovers);
@@ -40,18 +42,21 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function displayCover(leCover) {
+  newCoverImg.src = leCover.cover;
+  newTitle.innerText = leCover.title;
+  newDescriptor1.innerText = leCover.tagline1;
+  newDescriptor2.innerText = leCover.tagline2;
+};
+
 function generateRandomCover(){
   var randomCoverImg = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
 
-  newCoverImg.src = randomCoverImg;
-  newTitle.innerText = randomTitle;
-  newDescriptor1.innerText = randomDescriptor1;
-  newDescriptor2.innerText = randomDescriptor2;
-
-  currentCover = new Cover (newCoverImg, newTitle, newDescriptor1, newDescriptor2);
+  currentCover = new Cover (randomCoverImg, randomTitle, randomDescriptor1, randomDescriptor2);
+  displayCover(currentCover);
 };
 
 function viewForm() {
@@ -80,16 +85,16 @@ function goHome() {
   formPage.classList.add('hidden');
 };
 
-function makeBook(){
-  var makeCover = covers.push(coverForm.value);
-  var makeTitle = titles.push(titleForm.value);
-  var makeDescriptor1 = descriptors.push(descriptor1Form.value);
-  var makeDescriptor2 = descriptors.push(descriptor2Form.value);
-
-  homePageCover.src = makeCover;
-  homePageTitle.innerText = makeTitle;
-  homePageDescriptor1.innerText = makeDescriptor1;
-  homePageDescriptor2.innerText = makeDescriptor2;
-
-  currentCover = new Cover (homePageCover, homePageCover, homePageDescriptor1, homePageDescriptor2);
+function addToArrays() {
+  covers.unshift(coverForm.value);
+  titles.unshift(titleForm.value);
+  descriptors.unshift(descriptor1Form.value);
+  descriptors.unshift(descriptor2Form.value);
 };
+function makeBook() {
+  event.preventDefault();
+  addToArrays();
+  currentCover = new Cover (covers[0], titles[0], descriptors[1], descriptors[0]);
+  displayCover(currentCover);
+  goHome();
+}
