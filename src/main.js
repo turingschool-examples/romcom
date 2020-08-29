@@ -44,7 +44,7 @@ function getRandomIndex(array) {
 
 function displayCover(leCover) {
   newCoverImg.src = leCover.cover;
-  newTitle.innerText = leCover.titlegm ;
+  newTitle.innerText = leCover.title;
   newDescriptor1.innerText = leCover.tagline1;
   newDescriptor2.innerText = leCover.tagline2;
 };
