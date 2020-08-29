@@ -1,8 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
-var coverChange = document.querySelector('.cover-image');
-var titleChange = document.querySelector('.cover-title');
-var descriptorOneChange = document.querySelector('.tagline-1');
-var descriptorTwoChange = document.querySelector('.tagline-2');
+var coverHtmlElement = document.querySelector('.cover-image');
+var titleHtmlElement = document.querySelector('.cover-title');
+var tagline1HtmlElement = document.querySelector('.tagline-1');
+var tagline2HtmlElement = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -11,10 +11,13 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.onload = generateRandomCover;
+window.onload = handleOnLoad;
 
 // Create your event handlers and other functions here 👇
-
+function handleOnLoad() {
+  var newCover = generateRandomCover();
+  displayNewCover(newCover);
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -27,15 +30,19 @@ function generateRandomCover() {
   var randomTitle = titles[titleNumber];
   
   var descriptorNumberOne = getRandomIndex(descriptors);
-  var descriptorNumberTwo = getRandomIndex(descriptors);
+  var descriptorNumberTwo;
+  do {
+    descriptorNumberTwo = getRandomIndex(descriptors)
+  } while (descriptorNumberOne === descriptorNumberTwo);
   var randomDescriptorOne = descriptors[descriptorNumberOne];
   var randomDescriptorTwo = descriptors[descriptorNumberTwo];
 
-  coverChange.setAttribute("src" , randomImage);
-  titleChange.innerText = randomTitle;
-  descriptorOneChange.innerText = randomDescriptorOne;
-  descriptorTwoChange.innerText = randomDescriptorTwo;
-  surpriseCover = new Cover(randomImage, randomTitle, randomDescriptorOne, randomDescriptorTwo);
+  return new Cover(randomImage, randomTitle, randomDescriptorOne, randomDescriptorTwo);
 }
 
-
+function displayNewCover(newCover) {
+  coverHtmlElement.setAttribute("src" , newCover.cover);
+  titleHtmlElement.innerText = newCover.title;
+  tagline1HtmlElement.innerText = newCover.tagline1;
+  tagline2HtmlElement.innerText = newCover.tagline2;
+}
