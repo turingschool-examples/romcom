@@ -21,7 +21,8 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-// window.onload = handleOnLoad;
+
+window.onload = handleOnLoad;
 
 makeOwnCoverButtonHtmlElement.addEventListener('click', displayMakeYourOwnCoverForm);
 
@@ -31,8 +32,12 @@ randomCoverButtonHtmlElement.addEventListener('click', handleOnShowNewRandomCove
 
 viewSavedButonHtmlElement.addEventListener('click', displaySavedCovers);
 
-createNewBookButtonHtmlElement.addEventListener('click', developOwnCover)
+createNewBookButtonHtmlElement.addEventListener('click', developOwnCover);
+
+saveCoverButtonHtmlElement.addEventListener('click', handleOnSaveCoverClick);
+
 // Create your event handlers and other functions here 👇
+
 function handleOnLoad() {
   var newCover = generateRandomCover();
   displayNewCover(newCover);
@@ -41,6 +46,13 @@ function handleOnLoad() {
 function handleOnShowNewRandomCoverClick() {
   var newCover = generateRandomCover();
   displayNewCover(newCover);
+}
+
+function handleOnSaveCoverClick() {
+  for (var i = 0; i < savedCovers.length; i++);
+    if (savedCovers[i].title !== currentCover.title && currentCover.descriptorNumberOne !== savedCovers[i].tagline1 && currentCover.descriptorNumberTwo !== savedCovers[i].tagline2) {
+    savedCovers.push(currentCover);
+    }
 }
 
 // We've provided one function to get you started
@@ -110,8 +122,16 @@ function developOwnCover() {
   var userDescriptor1InputValue = document.getElementById('descriptor1').value;
   var userDescriptor2InputValue = document.getElementById('descriptor2').value;
   currentCover = new Cover (userImageInputValue, userTitleInputValue, userDescriptor1InputValue, userDescriptor2InputValue);
+
+  covers.push(userImageInputValue);
+  titles.push(userTitleInputValue);
+  descriptors.push(userDescriptor1InputValue);
+  descriptors.push(userDescriptor2InputValue);
+
   createOwnCover(currentCover); 
   displayHomePage()
 }
+
+
 
 
