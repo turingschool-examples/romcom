@@ -100,5 +100,8 @@ function makeBook() {
 };
 
 function saveCover() {
-  savedCovers.unshift(currentCover);
+  if (savedCovers.includes(currentCover)) {
+  } else {
+    savedCovers.unshift(currentCover);
+  }
 };
