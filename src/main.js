@@ -84,16 +84,21 @@ function goHome() {
   formPage.classList.add('hidden');
 };
 
-function addToArrays() {
+function addToFormArrays() {
   covers.unshift(coverForm.value);
   titles.unshift(titleForm.value);
   descriptors.unshift(descriptor1Form.value);
   descriptors.unshift(descriptor2Form.value);
 };
+
 function makeBook() {
   event.preventDefault();
-  addToArrays();
+  addToFormArrays();
   currentCover = new Cover (covers[0], titles[0], descriptors[1], descriptors[0]);
   displayCover(currentCover);
   goHome();
-}
+};
+
+function saveCover() {
+  savedCovers.unshift(currentCover);
+};
