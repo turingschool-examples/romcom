@@ -22,11 +22,9 @@ var descriptor1Form = document.querySelector('#descriptor1');
 var descriptor2Form = document.querySelector('#descriptor2');
 
 var defaultCover = document.querySelector(".main-cover")
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-
 var currentCover;
 
 // Add your event listeners here 👇
@@ -36,6 +34,7 @@ makeNewButton.addEventListener('click', viewForm);
 viewSavedButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', goHome);
 makeMyBookButton.addEventListener('click', makeBook);
+saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
