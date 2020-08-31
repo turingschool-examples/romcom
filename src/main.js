@@ -1,3 +1,5 @@
+ // open index.html
+
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
@@ -17,6 +19,7 @@ var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
+var savedCoversSection = document.querySelector('.saved-covers-section')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -51,6 +54,7 @@ function useRandomIndex() {
     descriptors[getRandomIndex(descriptors)],
 )
 return newRandomCover;
+// why do we need to return this??
 };
 
 function displayCover(bookObject) {
@@ -84,6 +88,8 @@ function viewSavedCovers() {
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   savedView.classList.remove('hidden');
+
+  displaySavedCovers();
 };
 
 function viewHomeScreen() {
@@ -118,7 +124,25 @@ var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.va
 function saveCovers() {
   savedCovers.push(currentCover);
   return savedCovers;
+  // why do we need to return this??
 }
+
+function displaySavedCovers() {
+  var savedCoverData = '';
+  for (var i = 0, i < savedCovers[i].length, i++) {
+    var newData = {
+      <div>
+        <img class="cover-image" src={$savedCovers[i].cover}>
+        <h2 class="cover-title">{$savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class={$savedCovers[i].tagline1}>passion</span> and <span class={$savedCovers[i].tagline2}>woe</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </div>
+  savedCoverData += newData;
+  }
+  savedCoversSection.innerHTML = newData
+ }
+};
 
 //
 //
