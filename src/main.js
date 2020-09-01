@@ -5,21 +5,24 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-var randomCoverButton = document.querySelector('.random-cover-button');
-var makeNewOne = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
-var saveCoverButton = document.querySelector('.save-cover-button');
-var homeButton = document.querySelector('.home-button');
-var savedCoversButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
-var saveCoverButton = document.querySelector('.save-cover-button');
-var makeMyBookButton = document.querySelector('.create-new-book-button');
+var savedCoversSection = document.querySelector('.saved-covers-section')
+
+// Targeting User Inputs
 var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
-var savedCoversSection = document.querySelector('.saved-covers-section')
+
+// Targeting Buttons
+var randomCoverButton = document.querySelector('.random-cover-button');
+var makeNewOne = document.querySelector('.make-new-button');
+var homeButton = document.querySelector('.home-button');
+var savedCoversButton = document.querySelector('.view-saved-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -29,13 +32,13 @@ var savedCovers = [
    "sorrows")
 ];
 
-var currentCover = useRandomIndex();
+var currentCover;
 
 // // Add your event listeners here 👇
-window.addEventListener('onload', randomCover());
-randomCoverButton.addEventListener('click', displayRandomCoverButton);
-makeNewOne.addEventListener('click', makeNewCoverByUser);
-savedCoversButton.addEventListener('click', viewSavedCovers);
+window.addEventListener('load', randomCover);
+randomCoverButton.addEventListener('click', displayNewRandomCoverButton);
+makeNewOne.addEventListener('click', makeNewCoverByUserView);
+savedCoversButton.addEventListener('click', viewSavedCoversSection);
 homeButton.addEventListener('click', viewHomeScreen);
 makeMyBookButton.addEventListener('click', saveCoverMadeByUser);
 saveCoverButton.addEventListener('click', saveCovers);
@@ -46,7 +49,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function useRandomIndex() {
+function useRandomIndexToGenerateCover() {
   var newRandomCover = new Cover (
     covers[getRandomIndex(covers)],
     titles[getRandomIndex(titles)],
@@ -54,27 +57,26 @@ function useRandomIndex() {
     descriptors[getRandomIndex(descriptors)],
 )
 return newRandomCover;
-// why do we need to return this??
 };
 
-function displayCover(bookObject) {
+function displayNewRandomCover(bookObject) {
   coverImage.src = bookObject.cover;
   coverTitle.innerHTML = bookObject.title;
   tagline1.innerHTML = bookObject.tagline1;
   tagline2.innerHTML = bookObject.tagline2;
 }
 
-function displayRandomCoverButton() {
-  var bookCover = useRandomIndex();
+function displayNewRandomCoverButton() {
+  var bookCover = useRandomIndexToGenerateCover();
   currentCover = bookCover;
-  displayCover(bookCover);
+  displayNewRandomCover(bookCover);
 };
 
 function randomCover() {
-  displayRandomCoverButton();
+  displayNewRandomCoverButton();
 };
 
-function makeNewCoverByUser() {
+function makeNewCoverByUserView() {
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
@@ -83,7 +85,7 @@ function makeNewCoverByUser() {
   savedView.classList.add('hidden');
 };
 
-function viewSavedCovers() {
+function viewSavedCoversSection() {
   formView.classList.add('hidden');
   homeView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
@@ -91,7 +93,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   savedView.classList.remove('hidden');
 
-  displaySavedCovers();
+  displaySavedCoversSection();
 };
 
 function viewHomeScreen() {
@@ -104,8 +106,8 @@ function viewHomeScreen() {
 }
 
 function saveCoverMadeByUser() {
-  event.preventDefault()
-  viewHomeScreen();
+event.preventDefault()
+viewHomeScreen();
 coverImage.src = coverInput.value;
 coverTitle.innerHTML = titleInput.value;
 tagline1.innerHTML = tagline1Input.value;
@@ -121,10 +123,9 @@ function addInputToArray() {
   descriptors.push(tagline2Input.value);
 };
 
- function addUserCovers() {
+function addUserCovers() {
 var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
-console.log(coverByUser);
-currentCover = coverByUser;
+savedCovers.push(coverByUser);
 };
 
 function saveCovers() {
@@ -133,7 +134,7 @@ if (!savedCovers.includes(currentCover)) {
 }
 };
 
-function displaySavedCovers() {
+function displaySavedCoversSection() {
   var savedCoverData = '';
   for (var i = 0; i < savedCovers.length; i++) {
     var addData = `
@@ -149,12 +150,3 @@ function displaySavedCovers() {
  }
  savedCoversSection.innerHTML = savedCoverData;
 };
-
-// diable the button after one click
-// savedCoversButton.diabled = true;
-//
-//
-//
-//
-
-// ..
