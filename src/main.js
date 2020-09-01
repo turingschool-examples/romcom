@@ -110,6 +110,8 @@ coverImage.src = coverInput.value;
 coverTitle.innerHTML = titleInput.value;
 tagline1.innerHTML = tagline1Input.value;
 tagline2.innerHTML = tagline2Input.value;
+
+addUserCovers()
 };
 
 function addInputToArray() {
@@ -121,8 +123,8 @@ function addInputToArray() {
 
  function addUserCovers() {
 var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+console.log(coverByUser);
 currentCover = coverByUser;
-savedCovers.push(coverByUser);
 };
 
 function saveCovers() {
