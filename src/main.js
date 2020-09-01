@@ -15,18 +15,11 @@ var formViewDisplayHtmlElement = document.querySelector(".form-view");
 var viewSavedButonHtmlElement = document.querySelector(".view-saved-button");
 var savedCoversDisplayHtmlElement = document.querySelector(".saved-view");
 var createNewBookButtonHtmlElement = document.querySelector(
-  ".create-new-book-button"
-);
+  ".create-new-book-button");
+var savedCoversSectionHtmlElement = document.querySelector(".saved-covers-section");
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  ),
-];
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -49,32 +42,18 @@ viewSavedButonHtmlElement.addEventListener("click", displaySavedCovers);
 
 createNewBookButtonHtmlElement.addEventListener("click", developOwnCover);
 
-saveCoverButtonHtmlElement.addEventListener("click", handleOnSaveCoverClick);
+saveCoverButtonHtmlElement.addEventListener("click", addSavedCoverToSave);
 
 // Create your event handlers and other functions here 👇
 
 function handleOnLoad() {
-  var newCover = generateRandomCover();
-  displayNewCover(newCover);
+  currentCover = generateRandomCover();
+  displayNewCover(currentCover);
 }
 
 function handleOnShowNewRandomCoverClick() {
-  var newCover = generateRandomCover();
-  displayNewCover(newCover);
-}
-
-function handleOnSaveCoverClick() {
-  function compareCovers(currentCover) {
-    return (
-      currentCover.title !== savedCovers.title &&
-      currentCover.tagline1 !== savedCovers.tagline1 &&
-      currentCover.tagline2 !== savedCovers.tagline2
-    );
-  }
-  var isUnique = savedCovers.every(compareCovers);
-  if (isUnique) {
-    savedCovers.push(currentCover);
-  }
+  currentCover = generateRandomCover();
+  displayNewCover(currentCover);
 }
 
 // We've provided one function to get you started
@@ -86,7 +65,6 @@ function generateRandomCover() {
   var randomImage = covers[coverNumber];
   var titleNumber = getRandomIndex(titles);
   var randomTitle = titles[titleNumber];
-
   var descriptorNumberOne = getRandomIndex(descriptors);
   var descriptorNumberTwo;
   do {
@@ -116,6 +94,8 @@ function displayMakeYourOwnCoverForm() {
   homeButtonHtmlElement.classList.remove("hidden");
   formViewDisplayHtmlElement.classList.remove("hidden");
   homeViewDisplayHtmlElement.classList.add("hidden");
+  savedCoversDisplayHtmlElement.classList.add("hidden");
+
 }
 
 function displayHomePage() {
@@ -124,6 +104,7 @@ function displayHomePage() {
   homeButtonHtmlElement.classList.add("hidden");
   formViewDisplayHtmlElement.classList.add("hidden");
   homeViewDisplayHtmlElement.classList.remove("hidden");
+  savedCoversDisplayHtmlElement.classList.add("hidden");
 }
 
 function displaySavedCovers() {
@@ -135,14 +116,7 @@ function displaySavedCovers() {
   savedCoversDisplayHtmlElement.classList.remove("hidden");
 }
 
-function createOwnCover(ownCover) {
-  coverHtmlElement.setAttribute("src", ownCover.cover);
-  titleHtmlElement.innerText = ownCover.title;
-  tagline1HtmlElement.innerText = ownCover.tagline1;
-  tagline2HtmlElement.innerText = ownCover.tagline2;
-}
-
-function developOwnCover(event) {
+function developOwnCover() {
   event.preventDefault();
   var userImageInputValue = document.getElementById("cover").value;
   var userTitleInputValue = document.getElementById("title").value;
@@ -154,14 +128,24 @@ function developOwnCover(event) {
     userDescriptor1InputValue,
     userDescriptor2InputValue
   );
-
   covers.push(userImageInputValue);
   titles.push(userTitleInputValue);
   descriptors.push(userDescriptor1InputValue);
   descriptors.push(userDescriptor2InputValue);
-
-  createOwnCover(currentCover);
+  displayNewCover(currentCover);
   displayHomePage();
 }
+function addSavedCoverToSave() {
+  if (!savedCovers.includes(currentCover)){
+  savedCovers.push(currentCover);
+  createSavedCovers();
+  }
+}
 
-function addSavedCoverToSave
+function createSavedCovers() {
+  var miniCover = `<div class="mini-cover"><id class="hidden">${currentCover.id}</id>
+  <img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title" first-letter">
+  ${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
+  <img class="price-tag" src="./assets/price.png"><img class="overlay" src="./assets/overlay.png"></div>`;
+  savedCoversSectionHtmlElement.insertAdjacentHTML(`afterbegin`, miniCover);
+}
