@@ -14,7 +14,7 @@ var makeMyBookButton = document.querySelector('.create-new-book-button')
 var formPage = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedCoversView = document.querySelector('.saved-view');
-var savedCoversArray = document.querySelector('.saved-covers-section');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var coverForm = document.querySelector('#cover');
 var titleForm = document.querySelector('#title');
@@ -73,6 +73,23 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   formPage.classList.add('hidden');
+
+var miniCovers = ""
+for (var i = 0; i < savedCovers.length; i++) {
+var newSavedCover =
+  `<section class="mini-cover">
+    <img class="mini-cover" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+
+  miniCovers += newSavedCover;
+}
+
+savedCoversSection.innerHTML = miniCovers;
+
 };
 
 function goHome() {
