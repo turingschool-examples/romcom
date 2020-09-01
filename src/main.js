@@ -32,7 +32,7 @@ var savedCovers = [
 var currentCover = useRandomIndex();
 
 // // Add your event listeners here 👇
-window.addEventListener('onload', displayCover(currentCover));
+window.addEventListener('onload', randomCover());
 randomCoverButton.addEventListener('click', displayRandomCoverButton);
 makeNewOne.addEventListener('click', makeNewCoverByUser);
 savedCoversButton.addEventListener('click', viewSavedCovers);
@@ -66,6 +66,7 @@ function displayCover(bookObject) {
 
 function displayRandomCoverButton() {
   var bookCover = useRandomIndex();
+  currentCover = bookCover;
   displayCover(bookCover);
 };
 
@@ -79,6 +80,7 @@ function makeNewCoverByUser() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  savedView.classList.add('hidden');
 };
 
 function viewSavedCovers() {
@@ -98,6 +100,7 @@ function viewHomeScreen() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   formView.classList.add('hidden');
+  savedView.classList.add('hidden');
 }
 
 function saveCoverMadeByUser() {
@@ -118,32 +121,35 @@ function addInputToArray() {
 
  function addUserCovers() {
 var coverByUser = new Cover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
-// savedCovers.push(coverByUser);
+currentCover = coverByUser;
+savedCovers.push(coverByUser);
 };
 
 function saveCovers() {
+if (!savedCovers.includes(currentCover)) {
   savedCovers.push(currentCover);
-  return savedCovers;
-  // why do we need to return this??
 }
+};
 
 function displaySavedCovers() {
   var savedCoverData = '';
-  for (var i = 0, i < savedCovers[i].length, i++) {
-    var newData = {
-      <div>
-        <img class="cover-image" src={$savedCovers[i].cover}>
-        <h2 class="cover-title">{$savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of <span class={$savedCovers[i].tagline1}>passion</span> and <span class={$savedCovers[i].tagline2}>woe</span></h3>
+  for (var i = 0; i < savedCovers.length; i++) {
+    var addData = `
+      <div class="mini-cover">
+        <img class="cover-image" src="${savedCovers[i].cover}"">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
         <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
       </div>
-  savedCoverData += newData;
-  }
-  savedCoversSection.innerHTML = newData
+    `
+  savedCoverData += addData;
  }
+ savedCoversSection.innerHTML = savedCoverData;
 };
 
+// diable the button after one click
+// savedCoversButton.diabled = true;
 //
 //
 //
