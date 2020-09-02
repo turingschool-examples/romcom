@@ -18,6 +18,7 @@ var createNewBookButtonHtmlElement = document.querySelector(
   ".create-new-book-button");
 var savedCoversSectionHtmlElement = document.querySelector(".saved-covers-section");
 
+
 // We've provided a few variables below
 var savedCovers = [];
 var currentCover;
@@ -44,6 +45,7 @@ createNewBookButtonHtmlElement.addEventListener("click", developOwnCover);
 
 saveCoverButtonHtmlElement.addEventListener("click", addSavedCoverToSave);
 
+savedCoversSectionHtmlElement.addEventListener("dblclick", deleteSavedCover);
 // Create your event handlers and other functions here 👇
 
 function handleOnLoad() {
@@ -116,7 +118,7 @@ function displaySavedCovers() {
   savedCoversDisplayHtmlElement.classList.remove("hidden");
 }
 
-function developOwnCover() {
+function developOwnCover(event) {
   event.preventDefault();
   var userImageInputValue = document.getElementById("cover").value;
   var userTitleInputValue = document.getElementById("title").value;
@@ -136,16 +138,49 @@ function developOwnCover() {
   displayHomePage();
 }
 function addSavedCoverToSave() {
-  if (!savedCovers.includes(currentCover)){
+  if (!savedCovers.includes(currentCover.id)){
   savedCovers.push(currentCover);
   createSavedCovers();
   }
 }
 
 function createSavedCovers() {
-  var miniCover = `<div class="mini-cover"><id class="hidden">${currentCover.id}</id>
-  <img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title" first-letter">
-  ${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
-  <img class="price-tag" src="./assets/price.png"><img class="overlay" src="./assets/overlay.png"></div>`;
-  savedCoversSectionHtmlElement.insertAdjacentHTML(`afterbegin`, miniCover);
+  var coverInnerHTML = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    var miniCover = `<div class="mini-cover" id="${savedCovers[i].id}">
+      <id class="hidden">${savedCovers[i].id}</id>
+      <img class="mini-cover" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
+      <h2 class="cover-title" id="${savedCovers[i].id}" "first-letter">${savedCovers[i].title}</h2>
+      <h3 class="tagline" id="${savedCovers[i].id}">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+      </div>`;
+      coverInnerHTML += miniCover
+    savedCoversSectionHtmlElement.innerHTML = coverInnerHTML;
+  }
 }
+function deleteSavedCover() {
+  var deleteID = event.target.id;
+  // var savedCoverArrayHtmlElement = document.querySelectorAll(".saved-covers-section")
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (deleteID === `${savedCovers[i].id}`) {
+      savedCovers.splice(i,1)
+    }
+  } 
+  createSavedCovers();
+}
+// function handleOnSaveCoverClick() {
+  // function compareCovers() {
+  //   return (
+  //     currentCover.title !== savedCovers.title &&
+  //     currentCover.tagline1 !== savedCovers.tagline1 &&
+  //     currentCover.tagline2 !== savedCovers.tagline2
+  //   );
+  // }
+  // var isUnique = savedCovers.every(compareCovers);
+  // if (isUnique) {
+  //   savedCovers.push(currentCover);
+  // }
+// } 
+
+//look at saved covers array. look at id of that cover using a querySelector()
