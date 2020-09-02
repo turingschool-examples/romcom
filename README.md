@@ -19,9 +19,13 @@
     - Generating a random cover once the page loaded  
     - Using querySelector to access HTML elements
 
+    ![Onload gif](/readme_gifs/random_cover_onload_gif.gif)
+
   2. Iteration 1
     - Accessing the Show New Random Cover Button
     - Generating a random cover upon that button click
+
+    ![Random Cover](/readme_gifs/random_button_cover_gif.gif)
 
   3. Iteration 2
     - Working with the other buttons on the page to display the correct contents
@@ -31,12 +35,18 @@
     - Generate a new cover based on user inputs 
     - Display the user generated cover
 
+    ![Make Own Cover](/readme_gifs/make_own_book_gif.gif)
+
   5. Iteration 4
     - Use JavaScript to append HTML elements 
     - Invoke the addSavedCoversToSave and createSavedCovers functions to display the saved covers selected by the user
 
+    ![Save Covers](/readme_gifs/save_covers_gif.gif)
+
   6. Iteration 5 
     - Use an eventListener to remove saved covers when a double click event is triggered
+
+    ![Delete Cover](/readme_gifs/delete_covers_gif.gif)
 
   7. Future Iterations
     - Create personalized profile functionality for a user to store their saved covers for future use
