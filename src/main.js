@@ -6,18 +6,15 @@ var tagline2HtmlElement = document.querySelector(".tagline-2");
 
 var makeOwnCoverButtonHtmlElement = document.querySelector(".make-new-button");
 var saveCoverButtonHtmlElement = document.querySelector(".save-cover-button");
-var randomCoverButtonHtmlElement = document.querySelector(
-  ".random-cover-button"
-);
+var randomCoverButtonHtmlElement = document.querySelector(".random-cover-button");
 var homeButtonHtmlElement = document.querySelector(".home-button");
 var homeViewDisplayHtmlElement = document.querySelector(".home-view");
 var formViewDisplayHtmlElement = document.querySelector(".form-view");
+
 var viewSavedButonHtmlElement = document.querySelector(".view-saved-button");
 var savedCoversDisplayHtmlElement = document.querySelector(".saved-view");
-var createNewBookButtonHtmlElement = document.querySelector(
-  ".create-new-book-button");
+var createNewBookButtonHtmlElement = document.querySelector(".create-new-book-button");
 var savedCoversSectionHtmlElement = document.querySelector(".saved-covers-section");
-
 
 // We've provided a few variables below
 var savedCovers = [];
@@ -26,26 +23,15 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.onload = handleOnLoad;
-
-makeOwnCoverButtonHtmlElement.addEventListener(
-  "click",
-  displayMakeYourOwnCoverForm
-);
-
+makeOwnCoverButtonHtmlElement.addEventListener("click", displayMakeYourOwnCoverForm);
 homeButtonHtmlElement.addEventListener("click", displayHomePage);
-
-randomCoverButtonHtmlElement.addEventListener(
-  "click",
-  handleOnShowNewRandomCoverClick
-);
+randomCoverButtonHtmlElement.addEventListener("click", handleOnShowNewRandomCoverClick);
 
 viewSavedButonHtmlElement.addEventListener("click", displaySavedCovers);
-
 createNewBookButtonHtmlElement.addEventListener("click", developOwnCover);
-
 saveCoverButtonHtmlElement.addEventListener("click", addSavedCoverToSave);
-
 savedCoversSectionHtmlElement.addEventListener("dblclick", deleteSavedCover);
+
 // Create your event handlers and other functions here 👇
 
 function handleOnLoad() {
@@ -97,7 +83,6 @@ function displayMakeYourOwnCoverForm() {
   formViewDisplayHtmlElement.classList.remove("hidden");
   homeViewDisplayHtmlElement.classList.add("hidden");
   savedCoversDisplayHtmlElement.classList.add("hidden");
-
 }
 
 function displayHomePage() {
@@ -138,14 +123,14 @@ function developOwnCover(event) {
   displayHomePage();
 }
 function addSavedCoverToSave() {
-  if (!savedCovers.includes(currentCover.id)){
-  savedCovers.push(currentCover);
-  createSavedCovers();
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    createSavedCovers();
   }
 }
 
 function createSavedCovers() {
-  var coverInnerHTML = '';
+  var coverInnerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     var miniCover = `<div class="mini-cover" id="${savedCovers[i].id}">
       <id class="hidden">${savedCovers[i].id}</id>
@@ -155,32 +140,16 @@ function createSavedCovers() {
       <img class="price-tag" src="./assets/price.png">
       <img class="overlay" src="./assets/overlay.png">
       </div>`;
-      coverInnerHTML += miniCover
-    savedCoversSectionHtmlElement.innerHTML = coverInnerHTML;
+    coverInnerHTML += miniCover;
   }
+  savedCoversSectionHtmlElement.innerHTML = coverInnerHTML;
 }
-function deleteSavedCover() {
+function deleteSavedCover(event) {
   var deleteID = event.target.id;
-  // var savedCoverArrayHtmlElement = document.querySelectorAll(".saved-covers-section")
   for (var i = 0; i < savedCovers.length; i++) {
     if (deleteID === `${savedCovers[i].id}`) {
-      savedCovers.splice(i,1)
+      savedCovers.splice(i, 1);
     }
-  } 
+  }
   createSavedCovers();
 }
-// function handleOnSaveCoverClick() {
-  // function compareCovers() {
-  //   return (
-  //     currentCover.title !== savedCovers.title &&
-  //     currentCover.tagline1 !== savedCovers.tagline1 &&
-  //     currentCover.tagline2 !== savedCovers.tagline2
-  //   );
-  // }
-  // var isUnique = savedCovers.every(compareCovers);
-  // if (isUnique) {
-  //   savedCovers.push(currentCover);
-  // }
-// } 
-
-//look at saved covers array. look at id of that cover using a querySelector()
