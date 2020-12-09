@@ -7,6 +7,7 @@ var savedCovers = [
 ];
 var currentCover;
 var title = document.getElementsByClassName('cover-title')[0];
+
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomTitle)
 
@@ -18,7 +19,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function getRandomTitle(title) {
+function getRandomTitle() {
   var index = getRandomIndex(titles);
   this.title.innerText = titles[index];
 }
