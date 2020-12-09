@@ -12,7 +12,9 @@ var descriptor2 = descriptors[getRandomIndex(descriptors)]
 var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
 
 // Add your event listeners here 👇
+var coverImage = document.querySelector('.cover-image');
 
+coverImage.src = currentCover.cover;
 
 // Create your event handlers and other functions here 👇
 
