@@ -11,6 +11,17 @@ var descriptor2 = descriptors[getRandomIndex(descriptors)]
 
 var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
 
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var firstDescriptor = document.querySelector('.tagline-1');
+var secondDescriptor = document.querySelector('.tagline-2');
+
+coverImage.src = currentCover.cover;
+coverTitle.innerText = currentCover.title;
+firstDescriptor.innerText = currentCover.tagline1;
+secondDescriptor.innerText = currentCover.tagline2;
+
+
 // Add your event listeners here 👇
 
 
