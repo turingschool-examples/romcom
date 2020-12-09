@@ -36,6 +36,9 @@ function getRandomImage() {
 function getRandomTagLines() {
   var index = getRandomIndex(descriptors);
   var index2 = getRandomIndex(descriptors);
+  if (index === index2) {
+    index2 = getRandomIndex(descriptors)
+  }
   this.tagLine1.innerText = descriptors[index];
   this.tagLine2.innerText = descriptors[index2];
 }
