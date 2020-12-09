@@ -12,9 +12,7 @@ var tagLine1 = document.getElementsByClassName('tagline-1')[0];
 var tagLine2 = document.getElementsByClassName('tagline-2')[0];
 
 // Add your event listeners here 👇
-window.addEventListener('load', getRandomTitle);
-window.addEventListener('load', getRandomImage);
-window.addEventListener('load', getRandomTagLines);
+window.addEventListener('load', helper);
 // Create your event handlers and other functions here 👇
 
 
@@ -41,4 +39,11 @@ function getRandomTagLines() {
   }
   this.tagLine1.innerText = descriptors[index];
   this.tagLine2.innerText = descriptors[index2];
+}
+
+
+function helper() {
+  getRandomTitle();
+  getRandomImage();
+  getRandomTagLines();
 }
