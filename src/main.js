@@ -21,6 +21,7 @@ function showNewCover() {
   var newDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var newDescriptor2 = descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover (newImage, newTitle, newDescriptor1, newDescriptor2);
+  displayCover.src = newImage
 }
 
 function displayNewCover() {
