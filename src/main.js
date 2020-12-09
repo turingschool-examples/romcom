@@ -7,9 +7,10 @@ var savedCovers = [
 ];
 var currentCover;
 var title = document.getElementsByClassName('cover-title')[0];
-
+var image = document.getElementsByClassName('cover-image')[0];
 // Add your event listeners here 👇
-window.addEventListener('load', getRandomTitle)
+window.addEventListener('load', getRandomTitle);
+window.addEventListener('load', getRandomImage);
 
 // Create your event handlers and other functions here 👇
 
@@ -22,4 +23,10 @@ function getRandomIndex(array) {
 function getRandomTitle() {
   var index = getRandomIndex(titles);
   this.title.innerText = titles[index];
+}
+
+function getRandomImage() {
+  var index = getRandomIndex(covers);
+  console.log(this.image)
+  this.image.src = covers[index];
 }
