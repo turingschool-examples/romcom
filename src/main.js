@@ -1,5 +1,24 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var randomImage = covers[getRandomIndex(covers)];
+
+var randomTitle = titles[getRandomIndex(titles)];
+
+var descriptor1 = descriptors[getRandomIndex(descriptors)];
+
+var descriptor2 = descriptors[getRandomIndex(descriptors)];
+
+var randomImageGenerator = new Cover(randomImage, randomTitle, descriptor1, descriptor2);
+
+//var nodeImage = document.querySelector('.cover-image');
+
+var nodeTitle = document.querySelector('h2');
+nodeTitle.innerText = randomTitle;
+
+//document.querySelector('h2').innerText = 'hey'
+
+
+nodeImage = randomImageGenerator;
 
 // We've provided a few variables below
 var savedCovers = [
