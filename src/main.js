@@ -8,7 +8,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-document.querySelector('.random-cover-button').click(function(){
+document.querySelector('.random-cover-button').addEventListener('click', function(){
   mainImage.src = covers[getRandomIndex(covers)];
 });
 
