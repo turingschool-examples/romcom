@@ -1,4 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
+//Iteration 0: Main Page
+//  Function to randomly generate new images and title
+//  names sourced from cover.js & data.js
+var mainPage = document.querySelector('.cover-image')
+console.log(mainPage);
 
 
 // We've provided a few variables below
