@@ -2,8 +2,20 @@
 //Iteration 0: Main Page
 //  Function to randomly generate new images and title
 //  names sourced from cover.js & data.js
-var mainPage = document.querySelector('.cover-image')
+var mainPage = document.querySelector('.cover-image');
 console.log(mainPage);
+
+var title = document.querySelector(`.cover-title`);
+console.log(title);
+
+var tagline1 = document.querySelector(`.tagline-1`);
+console.log(tagLine1);
+
+var tagline2 = document.querySelector(`.tagline-2`);
+console.log(tagLine2);
+
+
+
 
 
 // We've provided a few variables below
