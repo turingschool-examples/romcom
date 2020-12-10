@@ -6,10 +6,10 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-var title = document.getElementsByClassName('cover-title')[0];
-var image = document.getElementsByClassName('cover-image')[0];
-var tagLine1 = document.getElementsByClassName('tagline-1')[0];
-var tagLine2 = document.getElementsByClassName('tagline-2')[0];
+var title = document.querySelector('.cover-title');
+var image = document.querySelector('.cover-image');
+var tagLine1 = document.querySelector('.tagline-1');
+var tagLine2 = document.querySelector('.tagline-2');
 
 // Add your event listeners here 👇
 window.addEventListener('load', helper);
