@@ -16,7 +16,7 @@ var currentCover;
 // });
 
 // Create your event handlers and other functions here 👇
-var mainImage = document.querySelector(.`cover-image`);
+var mainImage = document.querySelector(`.cover-image`);
 function getRandomIndex(covers) {
   return Math.floor(Math.random() * covers.length);
 }
