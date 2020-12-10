@@ -12,10 +12,10 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
-var form = document.querySelector('.form-view');
-var home = document.querySelector('.home-view');
-console.log(home)
-
+var makeOwnButton = document.querySelector('.form-view');
+var homePage = document.querySelector('.home-view');
+var homeButton = document.querySelector('.home-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
 // Add your event listeners here 👇
 window.addEventListener('load', helper);
 randomCoverButton.addEventListener('click', helper);
@@ -57,6 +57,9 @@ function helper() {
 }
 
 function showForm() {
-  form.classList.toggle('hidden')
-  home.classList.toggle('hidden')
+  makeOwnButton.classList.toggle('hidden')
+  homePage.classList.toggle('hidden')
+  randomCoverButton.classList.toggle('hidden')
+  saveCoverButton.classList.toggle('hidden')
+  homeButton.classList.toggle('hidden')
 }
