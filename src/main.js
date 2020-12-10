@@ -11,12 +11,15 @@ var image = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
-
+var makeNewButton = document.querySelector('.make-new-button');
+var form = document.querySelector('.form-view');
+var home = document.querySelector('.home-view');
+console.log(home)
 
 // Add your event listeners here 👇
 window.addEventListener('load', helper);
 randomCoverButton.addEventListener('click', helper);
-console.log(title.innerText);
+makeNewButton.addEventListener('click', showForm)
 
 
 // Create your event handlers and other functions here 👇
@@ -51,4 +54,9 @@ function helper() {
   tagline1.innerText = getRandomTagline();
   tagline2.innerText = getRandomTagline();
   currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
+}
+
+function showForm() {
+  form.classList.toggle('hidden')
+  home.classList.toggle('hidden')
 }
