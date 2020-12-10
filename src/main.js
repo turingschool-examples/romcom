@@ -10,12 +10,20 @@ var descriptor2 = descriptors[getRandomIndex(descriptors)];
 
 var randomImageGenerator = new Cover(randomImage, randomTitle, descriptor1, descriptor2);
 
-//var nodeImage = document.querySelector('.cover-image');
+var image = document.querySelector('.src');
 
-var nodeTitle = document.querySelector('h2');
-nodeTitle.innerText = randomTitle;
+image.innerHTML = randomImage;
 
-//document.querySelector('h2').innerText = 'hey'
+var title = document.querySelector('h2');
+title.innerText = randomTitle;
+
+var tagline1 = document.querySelector('.tagline-1');
+tagline1.innerText = descriptor1;
+
+var tagline2 = document.querySelector('.tagline-2');
+tagline2.innerText = descriptor2;
+
+
 
 
 nodeImage = randomImageGenerator;
