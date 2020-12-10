@@ -18,13 +18,20 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var viewSavedPage = document.querySelector('.saved-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDescriptor1 = document.querySelector('#descriptor1');
+var userDescriptor2 = document.querySelector('#descriptor2');
+var createBookButton = document.querySelector('.create-new-book-button');
 // Add your event listeners here 👇
 window.addEventListener('load', helper);
 randomCoverButton.addEventListener('click', helper);
 makeNewButton.addEventListener('click', showForm);
 homeButton.addEventListener('click', goHome);
 viewSavedButton.addEventListener('click', viewSaved);
-// viewSavedButton.addEventListener('click', viewSaved)
+createBookButton.addEventListener('click', createBook);
+
+
 
 // Create your event handlers and other functions here 👇
 
@@ -85,4 +92,17 @@ function viewSaved() {
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   makeOwnPage.classList.add('hidden');
+}
+
+function createBook() {
+  covers.push(userCover.src);
+  image.src = userCover.src;
+  titles.push(userTitle.value);
+  title.innerText = userTitle.value;
+  descriptors.push(userDescriptor1.value, userDescriptor2.value);
+  tagline1.innerText = userDescriptor1.value;
+  tagline2.innerText = userDescriptor2.value;
+  currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
+  goHome();
+  event.preventDefault();
 }
