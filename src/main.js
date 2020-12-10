@@ -5,13 +5,7 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-// var newData = {
-//   cover: getRandomImage(),
-//   title: getRandomTitle(),
-//   tagline1: getRandomTagline(),
-//   tagline2: getRandomTagline()
-// };
-var currentCover;
+var currentCover = {};
 var title = document.querySelector('.cover-title');
 var image = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
@@ -24,10 +18,8 @@ window.addEventListener('load', helper);
 randomCoverButton.addEventListener('click', helper);
 console.log(title.innerText);
 
-// REMOVE LATER currentCover.display
 
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -58,4 +50,5 @@ function helper() {
   image.src = getRandomImage();
   tagline1.innerText = getRandomTagline();
   tagline2.innerText = getRandomTagline();
+  currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
 }
