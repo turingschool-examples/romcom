@@ -2,18 +2,22 @@
 // variables
 var mainPage = document.querySelector('.main-cover');
 var randomCoverButton = document.querySelector('.random-cover-button');
+var makeOwnCoverButton = document.querySelector('.make-new-button');
+var coverForm = document.querySelector('.form-view');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
 
 
 //event listeners
 window.onload = getRandomCover();
 randomCoverButton.addEventListener('click', getRandomCover);
-
+makeOwnCoverButton.addEventListener('click', showMakeOwnCover);
+homeButton.addEventListener('click', goHome); 
 
 var saveCovers = [];
 var currentCover;
 
 //functions
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -36,3 +40,19 @@ mainPage.innerHTML = `
   </section>
   `
 };
+
+function showMakeOwnCover() {
+  mainPage.classList.add('hidden');
+  coverForm.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+function goHome() {
+  mainPage.classList.remove('hidden');
+  coverForm.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+}
