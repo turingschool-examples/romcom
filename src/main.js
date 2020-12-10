@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var randomCover = covers[getRandomIndex(covers)]
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,3 +17,15 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+//
+// class Cover {
+//   constructor(coverImgSrc, title, descriptor1, descriptor2) {
+//     this.id = Date.now();
+//     this.cover = coverImgSrc;
+//     this.title = title;
+//     this.tagline1 = descriptor1;
+//     this.tagline2 = descriptor2;
+//   }
+// }
+https://frontend.turing.io/lessons/module-1/js-intro-to-the-dom.html
