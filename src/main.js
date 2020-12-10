@@ -9,36 +9,25 @@ var button = document.querySelector('.random-cover-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var randomCover = coverImg.src = covers[getRandomIndex(covers)];
-var randomTitle = title.innerText = titles[getRandomIndex(titles)];
-var randomTagline1 = tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-var randomTagline2 = tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 
-var currentCover;
-var currentCover = new Cover(randomCover, randomTitle, randomTagline1, randomTagline2);
-// console.log(currentCover.cover);
-
-function testImage() {
-  //lines 23 - 26 do not work
-  //currentCover.cover
-  // currentCover.title
-  // currentCover.tagline1
-  // currentCover.tagline2
-
-  // var currentCover = new Cover(randomCover, randomTitle, randomTagline1, randomTagline2);
-
-  // lines 31 - 34 work, need refactoring
-  coverImg.src = covers[getRandomIndex(covers)];
-  title.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-
-}
+var currentCover = savedCovers;
 
 // Add your event listeners here 👇
-button.addEventListener('click', testImage);
+button.addEventListener('click', newCoverButton);
 
 // Create your event handlers and other functions here 👇
+//show new random button
+function newCoverButton() {
+  currentCover.cover = covers[getRandomIndex(covers)];
+  currentCover.title = titles[getRandomIndex(titles)];
+  currentCover.tagline1 = descriptors[getRandomIndex(descriptors)];
+  currentCover.tagline2 = descriptors[getRandomIndex(descriptors)];
+  coverImg.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+}
+//change loading page
 coverImg.src = covers[getRandomIndex(covers)];
 title.innerText = titles[getRandomIndex(titles)];
 tagline1.innerText = descriptors[getRandomIndex(descriptors)];
