@@ -8,12 +8,22 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+// document.getElementByClass('random-cover-button').click(function(){
+//   console.log(`clicked that button`);
+// let randomIndex=Math.floor(Math.random()*(data.covers.length-0+1))-1;
+//   data.covers[randomIndex]
+//   document.getElementByClass('cover-image').attr('src', 'someRandoImage');
+// });
 
 // Create your event handlers and other functions here 👇
-
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+var mainImage = document.querySelector(.`cover-image`);
+function getRandomIndex(covers) {
+  return Math.floor(Math.random() * covers.length);
 }
+console.log(mainImage);
+
+//
+// // We've provided one function to get you started
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length);
+// }
