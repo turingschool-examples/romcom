@@ -1,11 +1,12 @@
 
 // variables
 var mainPage = document.querySelector('.main-cover');
+var randomCoverButton = document.querySelector('.random-cover-button');
 
 
 //event listeners
 window.onload = getRandomCover();
-
+randomCoverButton.addEventListener('click', getRandomCover);
 
 
 var saveCovers = [];
