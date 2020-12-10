@@ -20,7 +20,7 @@ var mainImage = document.querySelector(`.cover-image`);
 function getRandomIndex(covers) {
   return Math.floor(Math.random() * covers.length);
 }
-console.log(mainImage);
+mainImage.src = covers[getRandomIndex(covers)];
 
 //
 // // We've provided one function to get you started
