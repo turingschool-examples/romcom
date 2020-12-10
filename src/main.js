@@ -27,12 +27,9 @@ mainImage.src = covers[getRandomIndex(covers)];
 // Make your own cover event
 //change visibility of the form
 document.querySelector('.make-new-button').addEventListener('click',function(){
-  document.getElementsByClassName('random-cover-button')[0].style.visibility = 'collapse'; // 'hidden';
-  // console.log(document.getElementsByClassName('random-cover-button')[0])
-  document.getElementsByClassName('save-cover-button')[0].style.visibility = 'collapse'; // 'hidden';
-  document.getElementsByClassName('home-button')[0].style.visibility = 'visible';
-  // console.log(document.getElementsByClassName('home-button hidden')[0])
-  // console.log(document.getElementsByClassName('view home-view')[0])
-  document.getElementsByClassName('view home-view')[0].style.visibility = 'hidden'
-  document.getElementsByClassName('view form-view hidden')[0].style.visibility = 'inherit'
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('home-button')[0].style.display = 'block';
+  document.getElementsByClassName('view home-view')[0].style.display = 'none';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
 })
