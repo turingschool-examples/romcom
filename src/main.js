@@ -1,5 +1,47 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var randomImage = covers[getRandomIndex(covers)];
+
+var randomTitle = titles[getRandomIndex(titles)];
+
+var descriptor1 = descriptors[getRandomIndex(descriptors)];
+
+var descriptor2 = descriptors[getRandomIndex(descriptors)];
+
+// var randomBookGenerator = new Cover(randomImage, randomTitle, descriptor1, descriptor2);
+/*
+var box = document.querySelector('.call-to-action');
+
+var pageData = {
+  title: "Pizza is Tasty",
+  body: "Yum!"
+}
+
+box.innerHTML = `
+  <h3>${pageData.title}</h3>
+  <p>${pageData.body}</p>
+`;
+*/
+var image = document.querySelector('img')
+image.src = randomImage;
+
+// /image.innerHTML = <img ${randomImage}>;
+
+// document.getElementById('myImage').src='pic_bulbon.gif'
+
+var title = document.querySelector('h2');
+title.innerText = randomTitle;
+
+var tagline1 = document.querySelector('.tagline-1');
+tagline1.innerText = descriptor1;
+
+var tagline2 = document.querySelector('.tagline-2');
+tagline2.innerText = descriptor2;
+
+
+
+
+nodeImage = randomImageGenerator;
 
 // We've provided a few variables below
 var savedCovers = [
