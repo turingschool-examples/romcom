@@ -20,6 +20,7 @@ var saveCoverButton = document.querySelector('.save-cover-button')
 window.addEventListener('load', helper);
 randomCoverButton.addEventListener('click', helper);
 makeNewButton.addEventListener('click', showForm)
+homeButton.addEventListener('click', showForm)
 
 
 // Create your event handlers and other functions here 👇
