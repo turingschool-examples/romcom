@@ -5,14 +5,27 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+// var newData = {
+//   cover: getRandomImage(),
+//   title: getRandomTitle(),
+//   tagline1: getRandomTagline(),
+//   tagline2: getRandomTagline()
+// };
 var currentCover;
 var title = document.querySelector('.cover-title');
 var image = document.querySelector('.cover-image');
-var tagLine1 = document.querySelector('.tagline-1');
-var tagLine2 = document.querySelector('.tagline-2');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
+var randomCoverButton = document.querySelector('.random-cover-button');
+
 
 // Add your event listeners here 👇
 window.addEventListener('load', helper);
+randomCoverButton.addEventListener('click', helper);
+console.log(title.innerText);
+
+// REMOVE LATER currentCover.display
+
 // Create your event handlers and other functions here 👇
 
 
@@ -23,27 +36,26 @@ function getRandomIndex(array) {
 
 function getRandomTitle() {
   var index = getRandomIndex(titles);
-  this.title.innerText = titles[index];
+  return titles[index];
 }
 
 function getRandomImage() {
   var index = getRandomIndex(covers);
-  this.image.src = covers[index];
+  return covers[index];
 }
 
-function getRandomTagLines() {
+function getRandomTagline() {
   var index = getRandomIndex(descriptors);
   var index2 = getRandomIndex(descriptors);
   if (index === index2) {
     index2 = getRandomIndex(descriptors)
   }
-  this.tagLine1.innerText = descriptors[index];
-  this.tagLine2.innerText = descriptors[index2];
+  return descriptors[index];
 }
 
-
 function helper() {
-  getRandomTitle();
-  getRandomImage();
-  getRandomTagLines();
+  title.innerText = getRandomTitle();
+  image.src = getRandomImage();
+  tagline1.innerText = getRandomTagline();
+  tagline2.innerText = getRandomTagline();
 }
