@@ -3,7 +3,14 @@ var coverImg = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-var button = document.querySelector('.random-cover-button');
+var tagline = document.querySelector('.tagline');
+var priceTag = document.querySelector('.price-tag');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var form = document.querySelector('.form-view');
+var save = document.querySelector('.save-cover-button');
+var home = document.querySelector('.home-button');
+var viewSaved = document.querySelector('.view-saved-button');
+var makeNewCover = document.querySelector('.make-new-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -13,7 +20,19 @@ var savedCovers = [
 var currentCover = savedCovers;
 
 // Add your event listeners here 👇
-button.addEventListener('click', newCoverButton);
+randomCoverButton.addEventListener('click', newCoverButton);
+makeNewCover.addEventListener('click', changeToForm);
+
+function changeToForm() {
+  coverImg.classList.add('hidden');
+  title.classList.add('hidden');
+  tagline.classList.add('hidden');
+  priceTag.classList.add('hidden');
+  save.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  form.classList.remove('hidden');
+  home.classList.remove('hidden');
+}
 
 // Create your event handlers and other functions here 👇
 //show new random button
