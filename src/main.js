@@ -22,9 +22,24 @@ var tagline2 = document.querySelector('.tagline-2');
 // tagline2.innerText = descriptor2;
 
 var randomCoverButton = document.querySelector('.random-cover-button')
+var makeCoverButton = document.querySelector('.make-new-button')
+var formViewButton = document.querySelector('.form-view')
+makeCoverButton.addEventListener('click', unhideForm)
 
+function unhideForm() {
+formViewButton.classList.toggle('hidden')
+}
+
+// We've provided a few variables below
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
+var currentCover = new Cover(image, title, tagline1, tagline2)
+
+// Add your event listeners here 👇
 randomCoverButton.addEventListener('click', createCover)
 
+// Create your event handlers and other functions here 👇
 function createCover() {
   var descriptor1 = descriptors[getRandomIndex(descriptors)];
   var descriptor2 = descriptors[getRandomIndex(descriptors)];
@@ -36,33 +51,8 @@ function createCover() {
   tagline2.innerText = descriptor2;
 }
 
-createCover()
-// var currentCover = new Cover(image, title, tagline1, tagline2)
-// class Cover {
-//   constructor(coverImgSrc, title, descriptor1, descriptor2) {
-//     this.id = Date.now();
-//     this.cover = coverImgSrc;
-//     this.title = title;
-//     this.tagline1 = descriptor1;
-//     this.tagline2 = descriptor2;
-//   }
-// }
-
-
-
-// We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-var currentCover = new Cover(image, title, tagline1, tagline2)
-
-// Add your event listeners here 👇
-
-
-// Create your event handlers and other functions here 👇
-
-
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+createCover()
