@@ -13,8 +13,8 @@ var descriptor2 = document.querySelector(`.tagline-2`);
 // Add your event listeners here 👇
 document.querySelector('.random-cover-button').addEventListener('click', function(){
 var randomCover = createRandomCover();
-mainImage.src = randomCovor.cover;
-title.innerText = randomCovor.title;
+mainImage.src = randomCover.cover;
+title.innerText = randomCover.title;
 descriptor1.innerText = randomCover.descriptor1;
 descriptor2.innerText = randomCover.descriptor2;
 });
