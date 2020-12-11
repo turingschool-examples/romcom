@@ -17,7 +17,7 @@ var mainImage = document.querySelector(`.cover-image`);
 function getRandomIndex(covers) {
   return Math.floor(Math.random() * covers.length);
 }
-mainImage.src = covers[getRandomIndex(covers)];
+// mainImage.src = covers[getRandomIndex(covers)];
 
 //
 // // We've provided one function to get you started
@@ -59,7 +59,7 @@ document.querySelector('.home-button').addEventListener('click',function(){
 
 // 1. Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data (Y)
 // 2. Use the values from the inputs to create a new instance of the Cover class (Y)
-// 3. Change back to the main home view (hiding the form view again)
+// 3. Change back to the main home view (hiding the form view again) (Y)
 // 4. Display the newly created cover image, title, and descriptors in the main cover
 
 var cover = document.querySelector('.user-cover');
@@ -68,13 +68,20 @@ var descOne = document.querySelector('.user-desc1');
 var descTwo = document.querySelector('.user-desc2');
 var makeBookButton = document.querySelector('.create-new-book-button');
 
-makeBookButton.addEventListener('click', function() {
+makeBookButton.addEventListener('click', function(event) {
   var newCover = new Cover(cover.value,title.value,descOne.value,descTwo.value);
   covers.push(newCover.cover);
   titles.push(newCover.title);
   descriptors.push(newCover.tagline1, newCover.tagline2);
   // console.log(descriptors)
+  document.getElementsByClassName('view home-view')[0].style.display = 'block';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  
+  // mainImage.src = covers
+
+  event.preventDefault();
 });
+
 
 
 
