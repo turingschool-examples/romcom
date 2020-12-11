@@ -15,8 +15,8 @@ document.querySelector('.random-cover-button').addEventListener('click', functio
 var randomCover = createRandomCover();
 mainImage.src = randomCover.cover;
 title.innerText = randomCover.title;
-descriptor1.innerText = randomCover.descriptor1;
-descriptor2.innerText = randomCover.descriptor2;
+descriptor1.innerText = randomCover.tagline1;
+descriptor2.innerText = randomCover.tagline2;
 });
 
 
@@ -29,8 +29,9 @@ function getRandomIndex(covers) {
 function createRandomCover(){
   var randomImage = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
-  var randomDescriptor = descriptors[getRandomIndex(descriptors)];
-  var randomCover = new Cover(randomImage, randomTitle, randomDescriptor, randomDescriptor)
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  var randomCover = new Cover(randomImage, randomTitle, randomDescriptor1, randomDescriptor2)
   return randomCover
 }
 // // We've provided one function to get you started
