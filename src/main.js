@@ -1,39 +1,42 @@
 // Create variables targetting the relevant DOM elements here 👇
-var image = document.querySelector('img');
-var randomImage = covers[getRandomIndex(covers)];
-image.src = randomImage;
-
-var randomImage = covers[getRandomIndex(covers)];
-
-var randomTitle = titles[getRandomIndex(titles)];
-
-var descriptor1 = descriptors[getRandomIndex(descriptors)];
-
-var descriptor2 = descriptors[getRandomIndex(descriptors)];
-
-var box = document.querySelector('.call-to-action');
+// var randomImage = covers[getRandomIndex(covers)];
+// // image.src = randomImage;
+//
+// var randomImage = covers[getRandomIndex(covers)];
+//
+// var randomTitle = titles[getRandomIndex(titles)];
+//
+// var descriptor1 = descriptors[getRandomIndex(descriptors)];
+//
+// var descriptor2 = descriptors[getRandomIndex(descriptors)];
 
 var image = document.querySelector('img')
-image.src = randomImage;
 
 var title = document.querySelector('h2');
-title.innerText = randomTitle;
+// title.innerText = randomTitle;
 
 var tagline1 = document.querySelector('.tagline-1');
-tagline1.innerText = descriptor1;
+// tagline1.innerText = descriptor1;
 
 var tagline2 = document.querySelector('.tagline-2');
-tagline2.innerText = descriptor2;
+// tagline2.innerText = descriptor2;
 
 var randomCoverButton = document.querySelector('.random-cover-button')
 
 randomCoverButton.addEventListener('click', createCover)
 
 function createCover() {
-  var image = document.querySelector('img');
+  var descriptor1 = descriptors[getRandomIndex(descriptors)];
+  var descriptor2 = descriptors[getRandomIndex(descriptors)];
   var randomImage = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
   image.src = randomImage;
+  title.innerText = randomTitle;
+  tagline1.innerText = descriptor1;
+  tagline2.innerText = descriptor2;
 }
+
+createCover()
 // var currentCover = new Cover(image, title, tagline1, tagline2)
 // class Cover {
 //   constructor(coverImgSrc, title, descriptor1, descriptor2) {
