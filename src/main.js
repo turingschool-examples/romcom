@@ -25,11 +25,32 @@ mainImage.src = covers[getRandomIndex(covers)];
 //   return Math.floor(Math.random() * array.length);
 // }
 // Make your own cover event
-//change visibility of the form
+
+
+//Make your own cover button, iteration 2
 document.querySelector('.make-new-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
   document.getElementsByClassName('home-button')[0].style.display = 'block';
   document.getElementsByClassName('view home-view')[0].style.display = 'none';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
+})
+
+//Saved covers button, iteration 2 
+document.querySelector('.view-saved-button').addEventListener('click',function(){
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('home-button')[0].style.display = 'block';
+  document.getElementsByClassName('view home-view')[0].style.display = 'none';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  document.getElementsByClassName('saved-covers-section')[0].style.display = 'block';
+})
+//Home button, iteration 2 
+document.querySelector('.home-button').addEventListener('click',function(){
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'block';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'block';
+  document.getElementsByClassName('home-button')[0].style.display = 'none';
+  document.getElementsByClassName('view home-view')[0].style.display = 'block';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  document.getElementsByClassName('saved-covers-section')[0].style.display = 'none';
 })
