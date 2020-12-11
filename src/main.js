@@ -40,30 +40,11 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function getRandomTitle() {
-  var index = getRandomIndex(titles);
-  return titles[index];
-}
-
-function getRandomImage() {
-  var index = getRandomIndex(covers);
-  return covers[index];
-}
-
-function getRandomTagline() {
-  var index = getRandomIndex(descriptors);
-  var index2 = getRandomIndex(descriptors);
-  if (index === index2) {
-    index2 = getRandomIndex(descriptors);
-  }
-  return descriptors[index];
-}
-
 function helper() {
-  title.innerText = getRandomTitle();
-  image.src = getRandomImage();
-  tagline1.innerText = getRandomTagline();
-  tagline2.innerText = getRandomTagline();
+  title.innerText = titles[getRandomIndex(titles)];
+  image.src = covers[getRandomIndex(covers)];
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText =descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
 }
 
