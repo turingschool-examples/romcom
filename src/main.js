@@ -27,7 +27,8 @@ var formViewButton = document.querySelector('.form-view')
 makeCoverButton.addEventListener('click', unhideForm)
 
 function unhideForm() {
-formViewButton.classList.toggle('hidden')
+formViewButton.classList.toggle('hidden');
+randomCoverButton.classList.toggle('hidden');
 }
 
 // We've provided a few variables below
