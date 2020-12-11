@@ -29,7 +29,7 @@ function getRandomIndex(covers) {
 function createRandomCover(){
   var randomImage = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
-  var randomDescriptor = descriptor[getRandomIndex(descriptor)];
+  var randomDescriptor = descriptors[getRandomIndex(descriptors)];
   var randomCover = new Cover(randomImage, randomTitle, randomDescriptor, randomDescriptor)
   return randomCover
 }
