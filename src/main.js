@@ -54,3 +54,30 @@ document.querySelector('.home-button').addEventListener('click',function(){
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
   document.getElementsByClassName('saved-covers-section')[0].style.display = 'none';
 })
+
+//Create a new cover  
+
+// 1. Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
+// 2. Use the values from the inputs to create a new instance of the Cover class
+// 3. Change back to the main home view (hiding the form view again)
+// 4. Display the newly created cover image, title, and descriptors in the main cover
+
+var cover = document.querySelector('.user-cover');
+var title = document.querySelector('.user-title');
+var descOne = document.querySelector('.user-desc1');
+var descTwo = document.querySelector('.user-desc2');
+var makeBookButton = document.querySelector('.create-new-book-button');
+
+makeBookButton.addEventListener('click', function() {
+  cover.value
+  title.value
+  descOne.value
+  descTwo.value
+  // console.log(cover.value)
+});
+
+
+
+
+
+
