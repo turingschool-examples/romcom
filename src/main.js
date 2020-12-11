@@ -5,11 +5,9 @@
 // var mainPage = document.querySelector('.cover-image'); //main page
 // console.log(mainPage); - this line of code messed up the whole thing!!
 
-body.onLoad = generateRandomCover;
-
-var tagline1 = document.querySelector('.tagline-1'); //main page
+var tagline1 = document.querySelector('.tagline-1');
 // console.log(tagLine1);
-var tagline2 = document.querySelector('.tagline-2'); // main page
+var tagline2 = document.querySelector('.tagline-2');
 // console.log(tagLine2);
 
 var body = document.querySelector('body');
@@ -22,30 +20,17 @@ var savedCovers = [
 
 var currentCover;
 
-var pageLoad = document.querySelector('html'); //main page
+var pageLoad = document.querySelector('html');
 // console.log(pageLoad);
-
-var coverImage = document.querySelector('.cover-image'); //main page
-// console.log(mainPage);
-
-var title = document.querySelector(`.cover-title`); // main page
+var coverImage = document.querySelector('.cover-image');
+var title = document.querySelector(`.cover-title`);
 // console.log(title);
 
 
 
 
-function generateRandomCover() {
-  title.innerText = getRandomIndex(titles);
-  coverImage.src = getRandomIndex(covers);
-  tagline1.innerText = getRandomIndex(descriptors);
-  tagline2.innerText = getRandomIndex(descriptors);
-}
-
-
-
-
 // Add your event listeners here 👇
-// pageLoad.addEventListener('load', getRandomCover);
+window.addEventListener('load', generateRandomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -56,6 +41,13 @@ function getRandomIndex(array) {
   var randomIndex = array[Math.floor(Math.random() * array.length)];
   }
   return randomIndex;
+}
+
+function generateRandomCover() {
+  title.innerText = getRandomIndex(titles);
+  coverImage.src = getRandomIndex(covers);
+  tagline1.innerText = getRandomIndex(descriptors);
+  tagline2.innerText = getRandomIndex(descriptors);
 }
 
 
