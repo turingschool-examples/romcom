@@ -19,13 +19,6 @@ function getRandomIndex(covers) {
 }
 // mainImage.src = covers[getRandomIndex(covers)];
 
-//
-// // We've provided one function to get you started
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
-// Make your own cover event
-
 
 //Make your own cover button, iteration 2
 document.querySelector('.make-new-button').addEventListener('click',function(){
@@ -62,11 +55,15 @@ document.querySelector('.home-button').addEventListener('click',function(){
 // 3. Change back to the main home view (hiding the form view again) (Y)
 // 4. Display the newly created cover image, title, and descriptors in the main cover
 
+
 var cover = document.querySelector('.user-cover');
 var title = document.querySelector('.user-title');
 var descOne = document.querySelector('.user-desc1');
 var descTwo = document.querySelector('.user-desc2');
 var makeBookButton = document.querySelector('.create-new-book-button');
+var mainTitle = document.querySelector('.cover-title');
+var mainDescOne = document.querySelector('.tagline-1');
+var mainDescTwo = document.querySelector('.tagline-2');
 
 makeBookButton.addEventListener('click', function(event) {
   var newCover = new Cover(cover.value,title.value,descOne.value,descTwo.value);
@@ -77,7 +74,11 @@ makeBookButton.addEventListener('click', function(event) {
   document.getElementsByClassName('view home-view')[0].style.display = 'block';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
   
-  // mainImage.src = covers
+  mainImage.src = cover.value
+  mainTitle.innerHTML = title.value
+  mainDescOne.innerHTML = descOne.value
+  mainDescTwo.innerHTML = descTwo.value
+ 
 
   event.preventDefault();
 });
