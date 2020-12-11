@@ -69,7 +69,6 @@ function changeToHome() {
   homeButton.classList.add('hidden');
   form.classList.add('hidden');
   savedView.classList.add('hidden')
-  console.log(makeBook());
 }
 
 // function makeBook(coverInput, titleInput,firstDescriptorInput, secondDescriptorInput) {
@@ -86,7 +85,6 @@ function newCoverButton() {
   title.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
-  console.log(newBook);
 }
 //change loading page
 coverImg.src = covers[getRandomIndex(covers)];
