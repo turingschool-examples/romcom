@@ -25,10 +25,16 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var makeCoverButton = document.querySelector('.make-new-button')
 var formViewButton = document.querySelector('.form-view')
 makeCoverButton.addEventListener('click', unhideForm)
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
+var homeView = document.querySelector('.home-view')
 
 function unhideForm() {
 formViewButton.classList.toggle('hidden');
 randomCoverButton.classList.toggle('hidden');
+saveCoverButton.classList.toggle('hidden');
+homeButton.classList.toggle('hidden');
+homeView.classList.toggle('hidden');
 }
 
 // We've provided a few variables below
