@@ -14,10 +14,7 @@ var makeNewCover = document.querySelector('.make-new-button');
 var savedView = document.querySelector('.saved-view');
 var coverSection = document.querySelector('.saved-covers-section');
 var mainCover = document.querySelector('.main-cover');
-var saveCovImg = document.createElement('img');
-var saveImgTagline = document.createElement('h3');
-var saveCovTitle = document.createElement('h2');
-var overlay = document.createElement('img');
+
 
 
 // We've provided a few variables below
@@ -48,18 +45,17 @@ function changeToSaveCovers() {
   mainCover.classList.add('hidden');
   save.classList.add('hidden')
   randomCoverButton.classList.add('hidden');
-  savedView.classList.remove('hidden');
   home.classList.remove('hidden');
   coverSection.classList.add('saved-covers-section', 'mini-cover');
   form.classList.add('hidden');
+  savedView.classList.remove('hidden');
+  coverSection.innerHTML = `<section class="mini-cover">
+  <img class="cover-image" src="${savedCovers[0].cover}">
+  <h2 class="cover-title">${savedCovers[0].title}</h2>
+  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
+  <img class="overlay" src="./assets/overlay.png">
+  </section>`;
 
-
-
-  // working with createElement variables made, function not.
-
-  // saveCovImg.src = "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg";
-  coverSection.innerHTML = `<img src= "${savedCovers[0].cover}" class='mini-cover'>`;
-  // coverSection.innerHTML = `<h2>${savedCovers[0].title}</h2>`;
   form.classList.add('hidden');
 }
 
