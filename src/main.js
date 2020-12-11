@@ -24,8 +24,8 @@ var userDescriptor1 = document.querySelector('#descriptor1');
 var userDescriptor2 = document.querySelector('#descriptor2');
 var createBookButton = document.querySelector('.create-new-book-button');
 // Add your event listeners here 👇
-window.addEventListener('load', helper);
-randomCoverButton.addEventListener('click', helper);
+window.addEventListener('load', getRandomCover);
+randomCoverButton.addEventListener('click', getRandomCover);
 makeNewButton.addEventListener('click', showForm);
 homeButton.addEventListener('click', goHome);
 viewSavedButton.addEventListener('click', viewSaved);
@@ -40,7 +40,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function helper() {
+function getRandomCover() {
   title.innerText = titles[getRandomIndex(titles)];
   image.src = covers[getRandomIndex(covers)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
@@ -51,39 +51,39 @@ function helper() {
 function showForm() {
   makeOwnPage.classList.remove('hidden');
   homePage.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   viewSavedPage.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
 }
 
 function goHome() {
   makeOwnPage.classList.add('hidden');
   homePage.classList.remove('hidden');
-  randomCoverButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   viewSavedPage.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
 }
 
 function viewSaved() {
+  makeOwnPage.classList.add('hidden');
   homePage.classList.add('hidden');
+  homeButton.classList.remove('hidden');
   viewSavedPage.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  makeOwnPage.classList.add('hidden');
 }
 
 function createBook() {
-  covers.push(userCover.src);
+  event.preventDefault();
   image.src = userCover.src;
-  titles.push(userTitle.value);
   title.innerText = userTitle.value;
-  descriptors.push(userDescriptor1.value, userDescriptor2.value);
   tagline1.innerText = userDescriptor1.value;
   tagline2.innerText = userDescriptor2.value;
+  covers.push(userCover.src);
+  titles.push(userTitle.value);
+  descriptors.push(userDescriptor1.value, userDescriptor2.value);
   currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
   goHome();
-  event.preventDefault();
 }
