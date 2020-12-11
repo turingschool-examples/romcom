@@ -2,18 +2,107 @@
 
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-var currentCover;
-
+// var savedCovers = [
+//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+// ];
+// var currentCover;
+var mainImage = document.querySelector('.cover-image');
+var title = document.querySelector('.cover-title');
+var descriptor1 = document.querySelector('.tagline-1');
+var descriptor2 = document.querySelector('.tagline-2');
 // Add your event listeners here 👇
+document.querySelector('.random-cover-button').addEventListener('click', function(){
+  var randomCover = createRandomCover();
+  mainImage.src = randomCover.cover;
+  title.innerHTML = randomCover.title;
+  // console.log(title.innerText)
+  descriptor1.innerHTML = randomCover.tagline1;
+  descriptor2.innerHTML = randomCover.tagline2;
+});
 
 
 // Create your event handlers and other functions here 👇
 
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomIndex(covers) {
+  return Math.floor(Math.random() * covers.length);
 }
+
+function createRandomCover(){
+  var randomImage = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  var randomCover = new Cover(randomImage, randomTitle, randomDescriptor1, randomDescriptor2)
+  return randomCover
+}
+
+
+//Change visibility of the form
+document.querySelector('.make-new-button').addEventListener('click',function(){
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('home-button')[0].style.display = 'block';
+  document.getElementsByClassName('view home-view')[0].style.display = 'none';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
+})
+
+//Saved covers button, iteration 2 
+document.querySelector('.view-saved-button').addEventListener('click',function(){
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
+  document.getElementsByClassName('home-button')[0].style.display = 'block';
+  document.getElementsByClassName('view home-view')[0].style.display = 'none';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  document.getElementsByClassName('saved-covers-section')[0].style.display = 'block';
+})
+//Home button, iteration 2 
+document.querySelector('.home-button').addEventListener('click',function(){
+  document.getElementsByClassName('random-cover-button')[0].style.display = 'block';
+  document.getElementsByClassName('save-cover-button')[0].style.display = 'block';
+  document.getElementsByClassName('home-button')[0].style.display = 'none';
+  document.getElementsByClassName('view home-view')[0].style.display = 'block';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  document.getElementsByClassName('saved-covers-section')[0].style.display = 'none';
+})
+
+//Create a new cover  
+
+// 1. Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data (Y)
+// 2. Use the values from the inputs to create a new instance of the Cover class (Y)
+// 3. Change back to the main home view (hiding the form view again) (Y)
+// 4. Display the newly created cover image, title, and descriptors in the main cover
+
+
+var myCover = document.querySelector('.user-cover');
+var newTitle = document.querySelector('.user-title');
+var descOne = document.querySelector('.user-desc1');
+var descTwo = document.querySelector('.user-desc2');
+var makeBookButton = document.querySelector('.create-new-book-button');
+var mainTitle = document.querySelector('.cover-title');
+var mainDescOne = document.querySelector('.tagline-1');
+var mainDescTwo = document.querySelector('.tagline-2');
+
+makeBookButton.addEventListener('click', function(event) {
+  var newCover = new Cover(myCover.value,newTitle.value,descOne.value,descTwo.value);
+  covers.push(newCover.cover);
+  titles.push(newCover.title);
+  descriptors.push(newCover.tagline1, newCover.tagline2);
+  // console.log(descriptors)
+  document.getElementsByClassName('view home-view')[0].style.display = 'block';
+  document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
+  
+  mainImage.src = newCover.cover
+  mainTitle.innerHTML = newCover.title
+  mainDescOne.innerHTML = newCover.tagline1
+  mainDescTwo.innerHTML = newCover.tagline2
+ 
+
+  event.preventDefault();
+});
+
+
+
+
+
+
+
