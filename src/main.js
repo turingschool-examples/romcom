@@ -2,9 +2,9 @@
 
 
 // We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
+var savedCovers = [
+
+];
 // var currentCover;
 var mainImage = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
@@ -46,7 +46,7 @@ document.querySelector('.make-new-button').addEventListener('click',function(){
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
 })
 
-//Saved covers button, iteration 2 
+//Saved covers button, iteration 2
 document.querySelector('.view-saved-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
@@ -55,7 +55,7 @@ document.querySelector('.view-saved-button').addEventListener('click',function()
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
   document.getElementsByClassName('saved-covers-section')[0].style.display = 'block';
 })
-//Home button, iteration 2 
+//Home button, iteration 2
 document.querySelector('.home-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'block';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'block';
@@ -65,7 +65,7 @@ document.querySelector('.home-button').addEventListener('click',function(){
   document.getElementsByClassName('saved-covers-section')[0].style.display = 'none';
 })
 
-//Create a new cover  
+//Create a new cover
 
 // 1. Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data (Y)
 // 2. Use the values from the inputs to create a new instance of the Cover class (Y)
@@ -87,22 +87,25 @@ makeBookButton.addEventListener('click', function(event) {
   covers.push(newCover.cover);
   titles.push(newCover.title);
   descriptors.push(newCover.tagline1, newCover.tagline2);
+  savedCovers.push(newCover);
   // console.log(descriptors)
   document.getElementsByClassName('view home-view')[0].style.display = 'block';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
-  
+
   mainImage.src = newCover.cover
   mainTitle.innerHTML = newCover.title
   mainDescOne.innerHTML = newCover.tagline1
   mainDescTwo.innerHTML = newCover.tagline2
- 
+
 
   event.preventDefault();
 });
-
-
-
-
-
-
-
+var viewSavedCovers = document.querySelector('.view-saved-button');
+viewSavedCovers.addEventListener('click', function(){
+  document.querySelector('.saved-view').style.display = 'block';
+var savedCoversHtml = '';
+  for(i=0;i<savedCovers.length;i++){
+    savedCoversHtml = viewSavedCovers + JSON.stringify(savedCovers[i]);
+  }
+  document.querySelector('.saved-covers-section').innerHTML = savedCoversHTML;
+})
