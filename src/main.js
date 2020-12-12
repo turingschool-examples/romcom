@@ -107,5 +107,5 @@ var savedCoversHtml = '';
   for(i=0;i<savedCovers.length;i++){
     savedCoversHtml = viewSavedCovers + JSON.stringify(savedCovers[i]);
   }
-  document.querySelector('.saved-covers-section').innerHTML = savedCoversHTML;
+  document.querySelector('.saved-covers-section').innerHTML = savedCoversHtml;
 })
