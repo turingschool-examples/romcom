@@ -12,6 +12,8 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var hiddenForm = document.querySelector('.form-view');
 var coverView = document.querySelector('.home-view');
+var homeButton = document.querySelector('.home-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 
 // Add your event listeners here 👇
 window.addEventListener('load', generateRandomCover);
@@ -34,11 +36,15 @@ function generateRandomCover() {
 };
 function showFormPage() {
   hiddenForm.classList.remove('hidden');
+  coverView.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  //makeNewButton.classList.add('hidden');
   // coverImage.classList.add('hidden');
   // title.classList.add('hidden');
   // tagline1.classList.add('hidden');
   // tagline2.classList.add('hidden');
-  coverView.classList.add('hidden');
 };
 
 
