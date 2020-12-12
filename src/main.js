@@ -14,11 +14,14 @@ var hiddenForm = document.querySelector('.form-view');
 var coverView = document.querySelector('.home-view');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var savedCoversPage = document.querySelector('.saved-view');
 
 // Add your event listeners here 👇
 window.addEventListener('load', generateRandomCover);
 randomCoverButton.addEventListener('click', generateRandomCover);
 makeNewButton.addEventListener('click', showFormPage);
+viewSavedButton.addEventListener('click', showSavedCovers);
 
 // Create your event handlers and other functions here 👇
 
@@ -46,7 +49,10 @@ function showFormPage() {
   // tagline1.classList.add('hidden');
   // tagline2.classList.add('hidden');
 };
-
+function showSavedCovers() {
+  savedCoversPage.classList.remove('hidden');
+  coverView.classList.add('hidden');
+}
 
 
 //
