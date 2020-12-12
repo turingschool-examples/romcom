@@ -105,7 +105,14 @@ viewSavedCovers.addEventListener('click', function(){
   document.querySelector('.saved-view').style.display = 'block';
 var savedCoversHtml = '';
   for(i=0;i<savedCovers.length;i++){
-    savedCoversHtml = viewSavedCovers + JSON.stringify(savedCovers[i]);
+    var newCoverHtml = `<section class="main-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagLine1}</span> and <span class="tagline-2">${savedCovers[i].tagLine2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>`;
+    savedCoversHtml = viewSavedCovers + newCoverHtml;
   }
   document.querySelector('.saved-covers-section').innerHTML = savedCoversHtml;
 })
