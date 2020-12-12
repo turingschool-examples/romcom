@@ -47,7 +47,7 @@ function changeToForm() {
 }
 
 function changeToSaveCovers() {
-  coverSection.innerHTML = null
+  coverSection.innerHTML = null;
   mainCover.classList.add('hidden');
   saveCoverButton.classList.add('hidden')
   randomCoverButton.classList.add('hidden');
@@ -107,10 +107,16 @@ function saveCover() {
 }
 
 function removeCover() {
-  // savedCovers.splice((savedCovers.indexOf(/**/)), 1);
-  console.log('This is a test');
-  console.log(savedCovers);
-  console.log(counter);
+  savedCovers.splice(savedCovers.indexOf(event.currentTarget), 1);
+  coverSection.innerHTML = null;
+  for (var i = 0; i < savedCovers.length; i++) {
+      coverSection.innerHTML += `<section class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="overlay" src="./assets/overlay.png">
+      </section>`;
+  }
 }
 
 
