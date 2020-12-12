@@ -19,14 +19,14 @@ var coverInput = document.querySelector('#cover');
 var titleInput = document.querySelector('#title');
 var firstDescriptorInput = document.querySelector('#descriptor1');
 var secondDescriptorInput = document.querySelector('#descriptor2');
+var counter = 0;
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover ;
- // new Cover(coverImg.src, title.innerText, tagline1.innerText, tagline2.innerText);
+var currentCover;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', newCoverButton);
@@ -35,6 +35,7 @@ viewSavedButton.addEventListener('click', changeToSaveCovers);
 homeButton.addEventListener('click', changeToHome);
 makeMyBook.addEventListener('click', makeBook);
 saveCoverButton.addEventListener('click', saveCover);
+// savedView.addEventListener('dblclick', runTest);
 
 // Create your event handlers and other functions here 👇
 function changeToForm() {
@@ -53,13 +54,16 @@ function changeToSaveCovers() {
   homeButton.classList.remove('hidden');
   form.classList.add('hidden');
   savedView.classList.remove('hidden');
+  counter++
   for (var i = 0; i < savedCovers.length; i++) {
-    coverSection.innerHTML += `<section class="mini-cover">
-    <img class="cover-image" src="${savedCovers[i].cover}">
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-    <img class="overlay" src="./assets/overlay.png">
-    </section>`;
+    if (counter <= savedCovers.length){
+      coverSection.innerHTML += `<section class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="overlay" src="./assets/overlay.png">
+      </section>`;
+    }
   }
 }
 
@@ -99,15 +103,16 @@ function makeBook(event) {
   secondDescriptorInput.value = null;
 }
 
-
-
 function saveCover() {
   if (savedCovers.indexOf(currentCover) === -1) {
       savedCovers.push(currentCover);
   }
 }
 
-
+// function removeCover() {
+//   savedCovers.splice((savedCovers.indexOf(/**/)), 1);
+//   return savedCovers;
+// }
 
 
 //change loading page
