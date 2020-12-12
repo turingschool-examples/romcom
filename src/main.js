@@ -15,7 +15,7 @@ var hiddenForm = document.querySelector('.form-view');
 // Add your event listeners here 👇
 window.addEventListener('load', generateRandomCover);
 randomCoverButton.addEventListener('click', generateRandomCover);
-hiddenForm.addEventListener('click', showFormPage);
+makeNewButton.addEventListener('click', showFormPage);
 
 // Create your event handlers and other functions here 👇
 
@@ -32,8 +32,9 @@ function generateRandomCover() {
   tagline2.innerText = getRandomIndex(descriptors);
 };
 function showFormPage() {
-  hiddenForm.remove("hidden");
-  coverImage.add("hidden");
+  hiddenForm.classList.remove("hidden");
+  //coverImage.classList.add("hidden");
+  //title.classList.add("hidden");
 };
 
 
