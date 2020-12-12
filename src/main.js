@@ -8,6 +8,13 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDescriptor1 = document.querySelector('#descriptor1');
+var userDescriptor2 = document.querySelector('#descriptor2');
+var createNewBookButton = document.querySelector('.create-new-book-button');
+var form = document.querySelector('form');
+
 
 //event listeners
 window.onload = getRandomCover();
@@ -15,6 +22,7 @@ randomCoverButton.addEventListener('click', getRandomCover);
 makeOwnCoverButton.addEventListener('click', showMakeOwnCover);
 homeButton.addEventListener('click', goHome);
 viewSavedCoversButton.addEventListener('click', viewSavedCovers);
+createNewBookButton.addEventListener('click', saveMakeOwnCover);
 
 var savedCovers = [];
 var currentCover;
@@ -28,10 +36,11 @@ function getRandomIndex(array) {
 function getRandomCover() {
   var randomCover = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
-  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
-  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];;;
+  currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2);
   //this is assigning the data model to 'a new cover' below
-  currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
+
 
 mainPage.innerHTML = `
   <section class="main-cover">
@@ -42,6 +51,25 @@ mainPage.innerHTML = `
     <img class="overlay" src="./assets/overlay.png">
   </section>
   `
+};
+
+function saveMakeOwnCover() {
+  event.preventDefault()
+
+  currentCover = new Cover(userCover.value, userTitle.value, userDescriptor1.value, userDescriptor2.value)
+
+  mainPage.innerHTML = `
+    <section class="main-cover">
+      <img class="cover-image" src="${currentCover.cover}">
+      <h2 class="cover-title">${currentCover.title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
+      <img class="price-tag" src="">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>
+    `
+    form.classList.add('hidden');
+    mainPage.classList.remove('hidden');
+
 };
 
 function showMakeOwnCover() {
