@@ -25,7 +25,8 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover = savedCovers;
+var currentCover ;
+ // new Cover(coverImg.src, title.innerText, tagline1.innerText, tagline2.innerText);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', newCoverButton);
@@ -33,7 +34,7 @@ makeNewCover.addEventListener('click', changeToForm);
 viewSavedButton.addEventListener('click', changeToSaveCovers);
 homeButton.addEventListener('click', changeToHome);
 makeMyBook.addEventListener('click', makeBook);
-
+saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function changeToForm() {
@@ -52,12 +53,14 @@ function changeToSaveCovers() {
   homeButton.classList.remove('hidden');
   form.classList.add('hidden');
   savedView.classList.remove('hidden');
-  coverSection.innerHTML = `<section class="mini-cover">
-  <img class="cover-image" src="${savedCovers[0].cover}">
-  <h2 class="cover-title">${savedCovers[0].title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
-  <img class="overlay" src="./assets/overlay.png">
-  </section>`;
+  for (var i = 0; i < savedCovers.length; i++) {
+    coverSection.innerHTML += `<section class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].cover}">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="overlay" src="./assets/overlay.png">
+    </section>`;
+  }
 }
 
 function changeToHome() {
@@ -70,6 +73,7 @@ function changeToHome() {
 }
 
 function newCoverButton() {
+  currentCover = new Cover(coverImg.src, title.innerText, tagline1.innerText, tagline2.innerText);
   currentCover.cover = covers[getRandomIndex(covers)];
   currentCover.title = titles[getRandomIndex(titles)];
   currentCover.tagline1 = descriptors[getRandomIndex(descriptors)];
@@ -84,7 +88,6 @@ function makeBook(event) {
   event.preventDefault();
   var newBook = new Cover(coverInput.value, titleInput.value, firstDescriptorInput.value, secondDescriptorInput.value);
   savedCovers.push(newBook);
-  console.log(newBook);
   coverImg.src = newBook.cover;
   title.innerText = newBook.title;
   tagline1.innerText = newBook.tagline1;
@@ -95,6 +98,17 @@ function makeBook(event) {
   firstDescriptorInput.value = null;
   secondDescriptorInput.value = null;
 }
+
+
+
+function saveCover() {
+  if (savedCovers.indexOf(currentCover) === -1) {
+      savedCovers.push(currentCover);
+  }
+}
+
+
+
 
 //change loading page
 coverImg.src = covers[getRandomIndex(covers)];
