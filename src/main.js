@@ -32,24 +32,25 @@ var savedCoversView = document.querySelector('.saved-view');
 var viewSavedButton = document.querySelector('.view-saved-button');
 
 function unhideForm() {
-  formViewButton.classList.toggle('hidden');
-  randomCoverButton.classList.toggle('hidden');
-  saveCoverButton.classList.toggle('hidden');
-  homeButton.classList.toggle('hidden');
-  homeView.classList.toggle('hidden');
+  formViewButton.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  homeView.classList.add('hidden');
 }
 function viewSavedCovers() {
-  homeView.classList.toggle('hidden');
-  savedCoversView.classList.toggle('hidden');
-  saveCoverButton.classList.toggle('hidden');
-  randomCoverButton.classList.toggle('hidden');
-  homeButton.classList.toggle('hidden');
+  homeView.classList.add('hidden');
+  savedCoversView.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  formViewButton.classList.add('hidden');
 }
 function viewHome() {
-  homeView.classList.toggle('hidden');
-  homeButton.classList.toggle('hidden');
-  saveCoverButton.classList.toggle('hidden');
-  randomCoverButton.classList.toggle('hidden');
+  homeView.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
 
 }
 // We've provided a few variables below
