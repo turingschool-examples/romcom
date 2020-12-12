@@ -18,7 +18,6 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 var viewSavedSection = document.querySelector('.saved-view');
 var homeView = document.querySelector('.home-view');
 
-
 //event listeners
 window.onload = getRandomCover();
 randomCoverButton.addEventListener('click', getRandomCover);
@@ -30,7 +29,6 @@ saveCoverButton.addEventListener('click', saveCover);
 
 var savedCovers = [];
 var currentCover;
-
 
 //functions
 function getRandomIndex(array) {
@@ -67,14 +65,18 @@ function saveMakeOwnCover() {
     </section>
     `;
     form.classList.add('hidden');
+    homeButton.classList.add('hidden');
     mainPage.classList.remove('hidden');
+    saveCoverButton.classList.remove('hidden');
+    randomCoverButton.classList.remove('hidden');
+    fixBrokenCover();
 };
 
 function showMakeOwnCover() {
   mainPage.classList.add('hidden');
   coverForm.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 };
 
@@ -86,6 +88,7 @@ function goHome() {
   homeButton.classList.add('hidden');
   viewSavedSection.classList.add('hidden');
   homeView.classList.remove('hidden');
+  getRandomCover();
 };
 
 function viewSavedCovers() {
@@ -95,7 +98,11 @@ function viewSavedCovers() {
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   viewSavedCoversButton.classList.remove('hidden');
-  displayAllSavedCovers()
+  displayAllSavedCovers();
+  if (savedCovers.length === 0 ){
+    alert("You haven't save any covers yet!")
+    window.location.reload();
+  }
 }
 
 function saveCover() {
@@ -116,5 +123,12 @@ function displayAllSavedCovers() {
         <img class="overlay" src="./assets/overlay.png">
       </section>
       `
+  }
+}
+
+function fixBrokenCover() {
+  if (userCover.value === "" && userTitle.value === "" && userDescriptor1.value === "" && userDescriptor2.value === ""){
+  alert("Can't create new cover without all values in each field. Try again!")
+  window.location.reload();
   }
 }
