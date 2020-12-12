@@ -58,6 +58,16 @@ var savedCovers = [
 ];
 var currentCover = new Cover(image, title, tagline1, tagline2)
 
+//after cover is created(makeCover)and displayed(unhidden),
+// if save cover button is clicked
+function saveCover() {
+  savedCovers.unshift(currentCover); //adds to that array for viewing later
+  covers.unshift(currentCover.cover); //these add to arrays for future randomiozing
+  covers.unshift(currentCover.title);
+  covers.unshift(currentCover.tagline1);
+  covers.unshift(currentCover.tagline2);
+}
+
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', createCover)
 makeCoverButton.addEventListener('click', unhideForm)
