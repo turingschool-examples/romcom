@@ -9,12 +9,18 @@ var pageLoad = document.querySelector('html');
 var coverImage = document.querySelector('.cover-image');
 var title = document.querySelector(`.cover-title`);
 var randomCoverButton = document.querySelector('.random-cover-button');
-var makeNewButton = document.querySelector('.make-new-button');
+
+// trying to build a function to toggle between home page & make new cover form
+var makeNewButton = document.querySelector(".make-new-button");
+// var show = document.querySelector(".show");
+//
 
 // Add your event listeners here 👇
 window.addEventListener('load', generateRandomCover);
 randomCoverButton.addEventListener('click', generateRandomCover);
-makeNewButton.addEventListener('click', //swich pages to Make New Cover page//)
+
+// trying to build a function to toggle between home page & make new cover form
+makeNewButton.addEventListener('click', makeNewCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -30,3 +36,14 @@ function generateRandomCover() {
   tagline1.innerText = getRandomIndex(descriptors);
   tagline2.innerText = getRandomIndex(descriptors);
 };
+function makeNewCover() {
+  document.querySelector('.view form-view hidden');
+}
+
+// trying to build a function to toggle between home page & make new cover form
+function toggle(){
+  document.querySelector('.view form-view hidden');
+}
+//
+// var hidebutton = document.querySelector(".togglebutton");
+// hidebutton.onclick = toggle
