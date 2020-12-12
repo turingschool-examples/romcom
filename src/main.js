@@ -19,7 +19,6 @@ var coverInput = document.querySelector('#cover');
 var titleInput = document.querySelector('#title');
 var firstDescriptorInput = document.querySelector('#descriptor1');
 var secondDescriptorInput = document.querySelector('#descriptor2');
-var counter = 0;
 
 // We've provided a few variables below
 var savedCovers = [
@@ -35,7 +34,7 @@ viewSavedButton.addEventListener('click', changeToSaveCovers);
 homeButton.addEventListener('click', changeToHome);
 makeMyBook.addEventListener('click', makeBook);
 saveCoverButton.addEventListener('click', saveCover);
-// savedView.addEventListener('dblclick', runTest);
+savedView.addEventListener('dblclick', removeCover);
 
 // Create your event handlers and other functions here 👇
 function changeToForm() {
@@ -48,22 +47,20 @@ function changeToForm() {
 }
 
 function changeToSaveCovers() {
+  coverSection.innerHTML = null
   mainCover.classList.add('hidden');
   saveCoverButton.classList.add('hidden')
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   form.classList.add('hidden');
   savedView.classList.remove('hidden');
-  counter++
   for (var i = 0; i < savedCovers.length; i++) {
-    if (counter <= savedCovers.length){
       coverSection.innerHTML += `<section class="mini-cover">
       <img class="cover-image" src="${savedCovers[i].cover}">
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       <img class="overlay" src="./assets/overlay.png">
       </section>`;
-    }
   }
 }
 
@@ -109,10 +106,12 @@ function saveCover() {
   }
 }
 
-// function removeCover() {
-//   savedCovers.splice((savedCovers.indexOf(/**/)), 1);
-//   return savedCovers;
-// }
+function removeCover() {
+  // savedCovers.splice((savedCovers.indexOf(/**/)), 1);
+  console.log('This is a test');
+  console.log(savedCovers);
+  console.log(counter);
+}
 
 
 //change loading page
