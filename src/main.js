@@ -36,8 +36,9 @@ function createRandomCover(){
   return randomCover
 }
 
-
+//////////////////////////////////////////
 //Change visibility of the form
+//////////////////////////////////////////
 document.querySelector('.make-new-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
@@ -45,8 +46,9 @@ document.querySelector('.make-new-button').addEventListener('click',function(){
   document.getElementsByClassName('view home-view')[0].style.display = 'none';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
 })
-
+//////////////////////////////////////////
 //Saved covers button, iteration 2
+//////////////////////////////////////////
 document.querySelector('.view-saved-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'none';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'none';
@@ -55,7 +57,9 @@ document.querySelector('.view-saved-button').addEventListener('click',function()
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
   document.getElementsByClassName('saved-view')[0].style.display = 'block';
 })
+//////////////////////////////////////////
 //Home button, iteration 2
+//////////////////////////////////////////
 document.querySelector('.home-button').addEventListener('click',function(){
   document.getElementsByClassName('random-cover-button')[0].style.display = 'block';
   document.getElementsByClassName('save-cover-button')[0].style.display = 'block';
@@ -65,14 +69,9 @@ document.querySelector('.home-button').addEventListener('click',function(){
   document.getElementsByClassName('saved-view')[0].style.display = 'none';
 })
 
-//Create a new cover
-
-// 1. Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data (Y)
-// 2. Use the values from the inputs to create a new instance of the Cover class (Y)
-// 3. Change back to the main home view (hiding the form view again) (Y)
-// 4. Display the newly created cover image, title, and descriptors in the main cover
-
-
+//////////////////////////////////////////
+//Create a new cover, iteration 3
+//////////////////////////////////////////
 var myCover = document.querySelector('.user-cover');
 var newTitle = document.querySelector('.user-title');
 var descOne = document.querySelector('.user-desc1');
@@ -84,7 +83,6 @@ var mainDescTwo = document.querySelector('.tagline-2');
 
 makeBookButton.addEventListener('click', function(event) {
   var newCover = new Cover(myCover.value,newTitle.value,descOne.value,descTwo.value);
-  // console.log(descriptors)
   document.getElementsByClassName('view home-view')[0].style.display = 'block';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
 
@@ -96,14 +94,18 @@ makeBookButton.addEventListener('click', function(event) {
   event.preventDefault();
 
 });
-document.querySelector('.save-cover-button').addEventListener('click', function(){
+
+//////////////////////////////////////////
+//Saving and Viewing Covers, iteration 4 
+//////////////////////////////////////////
+document.querySelector('.save-cover-button').addEventListener('click', function() {
   var newCover = new Cover(mainImage.src,mainTitle.innerHTML,mainDescOne.innerHTML,mainDescTwo.innerHTML);
   var duplicate = false;
   for (var i = 0; i < savedCovers.length; i++) {
       if (savedCovers[i].cover === newCover.cover &&
           savedCovers[i].title === newCover.title &&
           savedCovers[i].tagline1 === newCover.tagline1 &&
-          savedCovers[i].tagline2 === newCover.tagline2)
+          savedCovers[i].tagline2 === newCover.tagline2) 
       {
         duplicate = true;
         break;
@@ -135,3 +137,17 @@ var savedCoversHtml = '';
   }
   document.querySelector('.saved-covers-section').innerHTML = savedCoversHtml;
 })
+
+//////////////////////////////////////////
+//Deleting Saved Covers, iteration 5
+//////////////////////////////////////////
+
+document.addEventListener('dblclick',function(e) {
+  if(e.target && e.target.parentElement.className === "mini-cover" ) {
+    e.target.parentElement.parentElement.removeChild(e.target.parentElement)
+    // console.log("hello " ); 
+  }
+  // console.log(e.target.parentElement.className)
+})
+
+//only manipulating HTML >> need to remove from savedCvers array
