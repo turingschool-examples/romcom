@@ -53,8 +53,25 @@ makeNewBookButton.addEventListener('click', function(){
 
 saveCoverButton.addEventListener('click', saveCover);
 
+savedCoversSection.addEventListener('dblclick', function() {
+  deleteCover()
+});
 
 // Create your event handlers and other functions here 👇
+
+
+function deleteCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    var coverCheck = savedCovers[i].id;
+
+    if (parseInt(event.target.closest('.mini-cover').id) === coverCheck) {
+      savedCovers.splice(i, 1);
+
+    }
+  }
+  showMiniBooks();
+}
+
 
 function saveCover() {
      if (savedCovers.includes(currentCover)){
@@ -113,7 +130,7 @@ function showMiniBooks() {
   savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
-      <section class="mini-cover">
+      <section class="mini-cover" id=${savedCovers[i].id}>
           <img class="cover-image" src="${savedCovers[i].cover}">
           <h2 class="cover-title">${savedCovers[i].title}</h2>
           <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
@@ -125,7 +142,7 @@ function showMiniBooks() {
 }
 
 function viewSavedCovers() {
-  savedCoversSection.classList.remove('hidden')
+  savedCoversSection.classList.remove('hidden');
   homeView.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
@@ -142,10 +159,15 @@ function viewHome() {
   homeButton.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
+  formView.classList.add('hidden');
+
 }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 createCover()
