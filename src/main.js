@@ -92,6 +92,7 @@ makeBookButton.addEventListener('click', function(event) {
   mainTitle.innerHTML = newCover.title;
   mainDescOne.innerHTML = newCover.tagline1;
   mainDescTwo.innerHTML = newCover.tagline2;
+var duplicate = false
   for (var i = 0; i < savedCovers.length; i++) {
       if (savedCovers[i].cover === newCover.cover &&
           savedCovers[i].title === newCover.title &&
