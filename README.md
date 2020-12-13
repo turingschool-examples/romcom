@@ -1,11 +1,25 @@
+
+
+
+
 ---
 title: RomCom - Pair
 ---
+contributors, technologies used, instructions for running and viewing the project, deploy link (gh-pages), images/GIFs if necessary, future additions, etc. Think about what a user needs to understand and get the full picture of the application.
+# Turing School of software design exercise
+## Contributors
+* Joel Thomas
+* Charles Morris
 
-## Learning Goals
+## Technologies used:
+* JavaScript
+* CSS
+* HTML
 
-* Write clean, DRY JavaScript to store our data
-* Use a provided class by creating object instances using the `new` keyword
+
+
+
+
 * Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
 
 ## Overview

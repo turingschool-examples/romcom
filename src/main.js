@@ -59,7 +59,6 @@ savedCoversSection.addEventListener('dblclick', function() {
 
 // Create your event handlers and other functions here 👇
 
-
 function deleteCover() {
   for (var i = 0; i < savedCovers.length; i++) {
     var coverCheck = savedCovers[i].id;
