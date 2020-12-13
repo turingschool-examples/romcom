@@ -105,17 +105,14 @@ function unhideForm() {
 }
 // var savedCoversSection = document.querySelector('.saved-cover-section')//.value;
 function viewSavedCovers() {
-  // savedCoversSectionView.classList.remove('hidden')
-
+  savedCoversSection.classList.remove('hidden')
   homeView.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
-  // savedCoversSection.innerHTML = savedCovers;
-  console.log(savedCoversSection.innerHTML)//.classList.remove('hidden')
-  //savedCoversView.classList.add('mini-cover')
+  savedCoversView.classList.add('mini-cover');
 }
 
 function viewHome() {
