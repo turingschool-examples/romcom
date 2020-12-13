@@ -28,6 +28,8 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 // var desc1Input = document.querySelector('.user-desc2');
 // var desc2Input = document.querySelector('.user-desc2');
 var makeNewBookButton = document.querySelector('.create-new-book-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+var miniCover = document.querySelector('mini-cover')
 
 makeNewBookButton.addEventListener('click', function(){
   event.preventDefault()
@@ -57,6 +59,7 @@ function saveCover() {
   descriptors.unshift(currentCover.tagline1);
   descriptors.unshift(currentCover.tagline2);
 }
+
 function makeBook() {
   var userCover = document.querySelector('.user-cover').value;
   var userTitle = document.querySelector('.user-title').value;
@@ -70,6 +73,7 @@ function makeBook() {
    homeView.classList.remove('hidden')
    formViewButton.classList.remove('hidden')
    saveCoverButton.classList.remove('hidden')
+   formViewButton.classList.add('hidden')
 }
 
 // We've provided a few variables below
@@ -108,14 +112,18 @@ function unhideForm() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
 }
-
+// var savvy = document.querySelector('saved-covers-section');
 function viewSavedCovers() {
+// var savvy = document.querySelector('saved-covers-section');
   homeView.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formViewButton.classList.add('hidden');
+  savedCoversView.classList.remove('hidden')
+  savedCoversView.classList.add('mini-cover')
+  savedCoversSection.innerHTML
 }
 
 function viewHome() {
