@@ -146,8 +146,7 @@ var savedCoversHtml = '';
 document.addEventListener('dblclick',function(e) {
   if(e.target && e.target.parentElement.className === "mini-cover" ) {
     e.target.parentElement.parentElement.removeChild(e.target.parentElement)
-    // console.log(e.target.parentElement); 
-  }
+  };
 
   var clickCover = e.target.parentElement.querySelector('.cover-image').src
   var clickTitle = e.target.parentElement.querySelector('.cover-title').innerHTML;
@@ -168,9 +167,8 @@ document.addEventListener('dblclick',function(e) {
     }
   }
   savedCovers.splice(index, 1)
-})
-  // console.log(savedCovers)
-  // console.log(e.target.parentElement.querySelector('.tagline-1').innerHTML)
+});
+  
 
 
 
@@ -180,6 +178,3 @@ document.addEventListener('dblclick',function(e) {
 
 
 
-
-// console.log(e.target.parentElement.className)
-//only manipulating HTML >> need to remove from savedCvers array
