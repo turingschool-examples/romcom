@@ -13,17 +13,16 @@ var makeCoverButton = document.querySelector('.make-new-button');
 
 var formView = document.querySelector('.form-view');
 
-var saveCoverButton = document.querySelector('.save-cover-button');
-
 var homeButton = document.querySelector('.home-button');
 
 var homeView = document.querySelector('.home-view');
-
+//maybe need?
 var savedCoversView = document.querySelector('.saved-view');
-//var savedCoversSectionView = document.querySelector('.saved-covers-section');
 
 
 var viewSavedButton = document.querySelector('.view-saved-button');
+
+var saveCoverButton = document.querySelector('.save-cover-button');
 
 var makeNewBookButton = document.querySelector('.create-new-book-button');
 
@@ -38,6 +37,7 @@ var currentCover = new Cover(image, title, tagline1, tagline2)
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', createCover);
+//reset current cover & Repopulate
 
 makeCoverButton.addEventListener('click', unhideForm);
 
@@ -56,7 +56,7 @@ saveCoverButton.addEventListener('click', saveCover);
 // Create your event handlers and other functions here 👇
 
 function saveCover() {
-    if (savedCovers.includes(currentCover)) {
+     if (savedCovers.includes(currentCover)){
       console.log('Already Saved!');
     } else {
         savedCovers.unshift(currentCover); //adds to array for viewing later
@@ -83,16 +83,18 @@ function makeBook() {
 }
 
 
-
 function createCover() {
   var descriptor1 = descriptors[getRandomIndex(descriptors)];
   var descriptor2 = descriptors[getRandomIndex(descriptors)];
   var randomImage = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
-  image.src = randomImage;
-  title.innerText = randomTitle;
-  tagline1.innerText = descriptor1;
-  tagline2.innerText = descriptor2;
+  currentCover = new Cover(randomImage, randomTitle, descriptor1, descriptor2);
+  image.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  formView.classList.add('hidden')
+
 }
 
 function unhideForm() {
@@ -102,19 +104,34 @@ function unhideForm() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
 }
-var savedCoversSection = document.querySelector('.saved-cover-section')//.value;
-function viewSavedCovers() {
-  // savedCoversSectionView.classList.remove('hidden')
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
+function showMiniBook() {
+  savedCoversSection.HTML = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+      <section class="mini-cover">
+          <img class="mini-cover" src="${savedCovers[i].cover}">
+          <h2 class="mini-cover > .cover-title">${savedCovers[i].title}</h2>
+          <h3 class="mini-cover > .tagline">A tale of <span class="tagline-1">${savedCovers[i].descriptor1}</span> and <span class="tagline-2">${savedCovers[i].descriptor2}</span></h3>
+          <img class="price-tag" src="./assets/price.png">
+          <img class="overlay" src="./assets/overlay.png">
+      </section>
+  `
+  }
+}
+
+function viewSavedCovers() {
+  savedCoversSection.classList.remove('hidden')
   homeView.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
-  //savedCoversSection.innerHTML = savedCovers;
-  console.log(savedCoversSection)//)//.classList.remove('hidden')
-  //savedCoversView.classList.add('mini-cover')
+
+  showMiniBook();
+
 }
 
 function viewHome() {
