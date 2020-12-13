@@ -53,7 +53,27 @@ makeNewBookButton.addEventListener('click', function(){
 
 saveCoverButton.addEventListener('click', saveCover);
 
+savedCoversSection.addEventListener('dblclick', function() {
+  console.log(savedCovers)
+  deleteCover()
+  console.log(savedCovers)
+});
+
 // Create your event handlers and other functions here 👇
+
+
+function deleteCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    var coverCheck = savedCovers[i].id;
+
+    if (parseInt(event.target.closest('.mini-cover').id) === coverCheck) {
+      savedCovers.splice(i, 1);
+
+    }
+  }
+  showMiniBooks();
+}
+
 
 function saveCover() {
      if (savedCovers.includes(currentCover)){
@@ -112,7 +132,7 @@ function showMiniBooks() {
   savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
-      <section class="mini-cover">
+      <section class="mini-cover" id=${savedCovers[i].id}>
           <img class="cover-image" src="${savedCovers[i].cover}">
           <h2 class="cover-title">${savedCovers[i].title}</h2>
           <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
