@@ -106,7 +106,7 @@ makeBookButton.addEventListener('click', function(event) {
     if (duplicate === false) {
       savedCovers.push(homeCover);
     }
-  })
+  
 
   event.preventDefault();
 });
