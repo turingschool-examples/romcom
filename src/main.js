@@ -1,5 +1,3 @@
-
-// variables
 var mainPage = document.querySelector('.main-cover');
 var coverForm = document.querySelector('.form-view');
 var homeButton = document.querySelector('.home-button');
@@ -18,7 +16,6 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 var viewSavedSection = document.querySelector('.saved-view');
 var homeView = document.querySelector('.home-view');
 
-//event listeners
 window.onload = getRandomCover();
 randomCoverButton.addEventListener('click', getRandomCover);
 makeOwnCoverButton.addEventListener('click', showMakeOwnCover);
@@ -30,7 +27,6 @@ saveCoverButton.addEventListener('click', saveCover);
 var savedCovers = [];
 var currentCover;
 
-//functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -41,6 +37,7 @@ function getRandomCover() {
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];;;
   currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2);
+
 mainPage.innerHTML = `
   <section class="main-cover">
     <img class="cover-image" src="${currentCover.cover}">
@@ -55,6 +52,7 @@ mainPage.innerHTML = `
 function saveMakeOwnCover() {
   event.preventDefault()
   currentCover = new Cover(userCover.value, userTitle.value, userDescriptor1.value, userDescriptor2.value)
+
   mainPage.innerHTML = `
     <section class="main-cover">
       <img class="cover-image" src="${currentCover.cover}">
@@ -63,7 +61,7 @@ function saveMakeOwnCover() {
       <img class="price-tag" src="">
       <img class="overlay" src="./assets/overlay.png">
     </section>
-    `;
+    `
     form.classList.add('hidden');
     homeButton.classList.add('hidden');
     mainPage.classList.remove('hidden');
@@ -99,15 +97,18 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   viewSavedCoversButton.classList.remove('hidden');
   displayAllSavedCovers();
+
   if (savedCovers.length === 0 ){
     alert("You haven't save any covers yet!")
     window.location.reload();
   }
-}
+};
 
-function saveCover() {
-  savedCovers.push(currentCover);
-}
+function saveCover(){
+    if (!savedCovers.includes(currentCover)){
+      savedCovers.push(currentCover);
+  }
+};
 
 function displayAllSavedCovers() {
   viewSavedSection.classList.remove('hidden');
@@ -124,11 +125,11 @@ function displayAllSavedCovers() {
       </section>
       `
   }
-}
+};
 
 function fixBrokenCover() {
   if (userCover.value === "" && userTitle.value === "" && userDescriptor1.value === "" && userDescriptor2.value === ""){
   alert("Can't create new cover without all values in each field. Try again!")
   window.location.reload();
   }
-}
+};
