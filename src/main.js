@@ -8,7 +8,7 @@ var secondDescriptor = document.querySelector('.tagline-2')
 var savedCovers =[];
 var currentCover;
 
-window.onload = displayRandom()
+window.onload = displayRandom();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
