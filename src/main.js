@@ -16,9 +16,8 @@ var formView = document.querySelector('.form-view');
 var homeButton = document.querySelector('.home-button');
 
 var homeView = document.querySelector('.home-view');
-//maybe need?
-var savedCoversView = document.querySelector('.saved-view');
 
+var savedCoversView = document.querySelector('.saved-view');
 
 var viewSavedButton = document.querySelector('.view-saved-button');
 
@@ -59,7 +58,6 @@ savedCoversSection.addEventListener('dblclick', function() {
 
 // Create your event handlers and other functions here 👇
 
-
 function deleteCover() {
   for (var i = 0; i < savedCovers.length; i++) {
     var coverCheck = savedCovers[i].id;
@@ -76,7 +74,7 @@ function deleteCover() {
 function saveCover() {
      if (savedCovers.includes(currentCover)){
       console.log('Already Saved!');
-    } else {
+     } else {
         savedCovers.unshift(currentCover); //adds to array for viewing later
         covers.unshift(currentCover.cover); //add to arrays for randomizing
         titles.unshift(currentCover.title);
