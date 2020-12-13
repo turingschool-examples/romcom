@@ -57,6 +57,7 @@ saveCoverButton.addEventListener('click', saveCover);
 // Create your event handlers and other functions here 👇
 
 function saveCover() {
+<<<<<<< HEAD
   if (savedCovers.includes(currentCover)) {
     console.log(true)
   } else {
@@ -67,6 +68,18 @@ function saveCover() {
       descriptors.unshift(currentCover.tagline2);
   }
 }
+=======
+    if (savedCovers.includes(currentCover)) {
+      console.log('Already Saved!');
+    } else {
+        savedCovers.unshift(currentCover); //adds to array for viewing later
+        covers.unshift(currentCover.cover); //add to arrays for randomizing
+        titles.unshift(currentCover.title);
+        descriptors.unshift(currentCover.tagline1);
+        descriptors.unshift(currentCover.tagline2);
+      }
+    }
+>>>>>>> origin
 
 function makeBook() {
   var userCover = document.querySelector('.user-cover').value;
@@ -112,7 +125,13 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
+<<<<<<< HEAD
   savedCoversView.classList.add('mini-cover');
+=======
+  //savedCoversSection.innerHTML = savedCovers;
+  console.log(savedCoversSection)//)//.classList.remove('hidden')
+  //savedCoversView.classList.add('mini-cover')
+>>>>>>> origin
 }
 
 function viewHome() {
