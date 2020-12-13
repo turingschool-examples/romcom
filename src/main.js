@@ -108,7 +108,7 @@ var duplicate = false;
       savedCovers.push(newCover);
     }
 
-
+event.preventDefault()
 
 });
 var viewSavedCovers = document.querySelector('.view-saved-button');
