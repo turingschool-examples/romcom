@@ -54,39 +54,18 @@ makeNewBookButton.addEventListener('click', function(){
 
 saveCoverButton.addEventListener('click', saveCover);
 
-
 // Create your event handlers and other functions here 👇
 
-// after cover is created(makeCover)and displayed(unhidden),
-// if save save cover button is clicked
 function saveCover() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    //if (JSON.stringify(currentCover) === JSON.stringify(savedCovers[i])) {
-    if (assert.deepEqual(currentCover,savedCover[i]) === true) {
-      console.log('Already Saved!');
-    } else {
-        savedCovers.unshift(currentCover); //adds to array for viewing later
-        covers.unshift(currentCover.cover); //add to arrays for randomizing
-        titles.unshift(currentCover.title);
-        descriptors.unshift(currentCover.tagline1);
-        descriptors.unshift(currentCover.tagline2);
-      }
-    }
-
-  //var currentCoverProps = Object.getOwnPropertyNames(currentCover);
-  //var savedCoversProps;   //.equals(object, 2nd object)
-  // for (var i = 0; i < savedCovers.length; i++) {
-  //     savedCoversProps = Object.getOwnPropertyNames(savedCovers[i]);
-  //     if (currentCoverProps != savedCoversProps[i]) {//(_.isEqual(currentCover, savedCovers[i]) == false) {
-  //       savedCovers.unshift(currentCover); //adds to array for viewing later
-  //       covers.unshift(currentCover.cover); //add to arrays for randomizing
-  //       titles.unshift(currentCover.title);
-  //       descriptors.unshift(currentCover.tagline1);
-  //       descriptors.unshift(currentCover.tagline2);
-  //
-  //     } else console.log('Book already Saved!');
-  //   }
-  console.log(savedCovers)
+  if (savedCovers.includes(currentCover)) {
+    console.log(true)
+  } else {
+      savedCovers.unshift(currentCover);
+      covers.unshift(currentCover.cover);
+      titles.unshift(currentCover.title);
+      descriptors.unshift(currentCover.tagline1);
+      descriptors.unshift(currentCover.tagline2);
+  }
 }
 
 function makeBook() {
@@ -124,7 +103,7 @@ function unhideForm() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
 }
-var savedCoversSection = document.querySelector('.saved-cover-section')//.value;
+// var savedCoversSection = document.querySelector('.saved-cover-section')//.value;
 function viewSavedCovers() {
   // savedCoversSectionView.classList.remove('hidden')
 
@@ -134,7 +113,7 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
-  savedCoversSection.innerHTML = savedCovers;
+  // savedCoversSection.innerHTML = savedCovers;
   console.log(savedCoversSection.innerHTML)//.classList.remove('hidden')
   //savedCoversView.classList.add('mini-cover')
 }
