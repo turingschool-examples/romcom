@@ -26,10 +26,11 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 
 var makeNewBookButton = document.querySelector('.create-new-book-button');
 
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover = new Cover(image, title, tagline1, tagline2)
 
@@ -64,8 +65,8 @@ function saveCover() {
         titles.unshift(currentCover.title);
         descriptors.unshift(currentCover.tagline1);
         descriptors.unshift(currentCover.tagline2);
-      }
     }
+}
 
 function makeBook() {
   var userCover = document.querySelector('.user-cover').value;
@@ -103,17 +104,19 @@ function unhideForm() {
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
+  savedCoversSection.classList.add('hidden');
 }
-var savedCoversSection = document.querySelector('.saved-covers-section');
 
-function showMiniBook() {
-  savedCoversSection.HTML = '';
+
+function showMiniBooks() {
+  savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
       <section class="mini-cover">
           <img class="cover-image" src="${savedCovers[i].cover}">
           <h2 class="cover-title">${savedCovers[i].title}</h2>
-          <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].descriptor1}</span> and <span class="tagline-2">${savedCovers[i].descriptor2}</span></h3>
+          <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
           <img class="price-tag" src="./assets/price.png">
           <img class="overlay" src="./assets/overlay.png">
       </section>
@@ -130,7 +133,7 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
 
-  showMiniBook();
+  showMiniBooks();
 
 }
 
