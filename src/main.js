@@ -55,12 +55,8 @@ saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 
-// after cover is created(makeCover)and displayed(unhidden),
-// if save save cover button is clicked
 function saveCover() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    //if (JSON.stringify(currentCover) === JSON.stringify(savedCovers[i])) {
-    if (assert.deepEqual(currentCover,savedCover[i]) === true) {
+    if (savedCovers.includes(currentCover)) {
       console.log('Already Saved!');
     } else {
         savedCovers.unshift(currentCover); //adds to array for viewing later
@@ -71,21 +67,6 @@ function saveCover() {
       }
     }
 
-  //var currentCoverProps = Object.getOwnPropertyNames(currentCover);
-  //var savedCoversProps;   //.equals(object, 2nd object)
-  // for (var i = 0; i < savedCovers.length; i++) {
-  //     savedCoversProps = Object.getOwnPropertyNames(savedCovers[i]);
-  //     if (currentCoverProps != savedCoversProps[i]) {//(_.isEqual(currentCover, savedCovers[i]) == false) {
-  //       savedCovers.unshift(currentCover); //adds to array for viewing later
-  //       covers.unshift(currentCover.cover); //add to arrays for randomizing
-  //       titles.unshift(currentCover.title);
-  //       descriptors.unshift(currentCover.tagline1);
-  //       descriptors.unshift(currentCover.tagline2);
-  //
-  //     } else console.log('Book already Saved!');
-  //   }
-  console.log(savedCovers)
-}
 function makeBook() {
   var userCover = document.querySelector('.user-cover').value;
   var userTitle = document.querySelector('.user-title').value;
@@ -131,8 +112,8 @@ function viewSavedCovers() {
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
-  savedCoversSection.innerHTML = savedCovers;
-  console.log(savedCoversSection.innerHTML)//.classList.remove('hidden')
+  //savedCoversSection.innerHTML = savedCovers;
+  console.log(savedCoversSection)//)//.classList.remove('hidden')
   //savedCoversView.classList.add('mini-cover')
 }
 
