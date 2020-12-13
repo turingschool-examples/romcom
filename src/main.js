@@ -18,10 +18,7 @@ var homeButton = document.querySelector('.home-button');
 var homeView = document.querySelector('.home-view');
 //maybe need?
 var savedCoversView = document.querySelector('.saved-view');
-<<<<<<< HEAD
-=======
 
->>>>>>> origin
 
 var viewSavedButton = document.querySelector('.view-saved-button');
 
@@ -30,12 +27,6 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewBookButton = document.querySelector('.create-new-book-button');
 
 var savedCoversSection = document.querySelector('.saved-covers-section');
-<<<<<<< HEAD
-
-var miniCover = document.querySelector('mini-cover')
-
-=======
->>>>>>> origin
 
 // We've provided a few variables below
 var savedCovers = [
@@ -65,17 +56,6 @@ saveCoverButton.addEventListener('click', saveCover);
 // Create your event handlers and other functions here 👇
 
 function saveCover() {
-<<<<<<< HEAD
-  if (savedCovers.includes(currentCover)) {
-    console.log(true)
-  } else {
-      savedCovers.unshift(currentCover);
-      covers.unshift(currentCover.cover);
-      titles.unshift(currentCover.title);
-      descriptors.unshift(currentCover.tagline1);
-      descriptors.unshift(currentCover.tagline2);
-  }
-=======
      if (savedCovers.includes(currentCover)){
       console.log('Already Saved!');
     } else {
@@ -85,7 +65,6 @@ function saveCover() {
         descriptors.unshift(currentCover.tagline1);
         descriptors.unshift(currentCover.tagline2);
     }
->>>>>>> origin
 }
 
 function makeBook() {
@@ -103,10 +82,7 @@ function makeBook() {
   saveCoverButton.classList.remove('hidden')
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin
 function createCover() {
   var descriptor1 = descriptors[getRandomIndex(descriptors)];
   var descriptor2 = descriptors[getRandomIndex(descriptors)];
@@ -148,30 +124,16 @@ function showMiniBooks() {
 }
 
 function viewSavedCovers() {
-  savedCoversSection.classList.remove('hidden')
+  savedCoversSection.classList.remove('hidden');
   homeView.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formView.classList.add('hidden');
-<<<<<<< HEAD
-  savedCoversSection.classList.add('mini-cover');
-  savedCoversSection.classList.add('cover-title');
-  savedCoversSection.innerHTML = `
-  <section class="mini-cover">
-    <img class="cover-image" src="./assets/prairie.jpg">
-    <h2 class="cover-title">${savedCovers[0].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-    <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png">
-  </section>
-  `
-=======
 
   showMiniBooks();
 
->>>>>>> origin
 }
 
 function viewHome() {
@@ -179,6 +141,10 @@ function viewHome() {
   homeButton.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
+  savedCoversSection.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
+  formView.classList.add('hidden');
+
 }
 
 // We've provided one function to get you started
