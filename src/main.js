@@ -54,9 +54,7 @@ makeNewBookButton.addEventListener('click', function(){
 saveCoverButton.addEventListener('click', saveCover);
 
 savedCoversSection.addEventListener('dblclick', function() {
-  console.log(savedCovers)
   deleteCover()
-  console.log(savedCovers)
 });
 
 // Create your event handlers and other functions here 👇
