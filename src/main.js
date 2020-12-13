@@ -92,7 +92,13 @@ makeBookButton.addEventListener('click', function(event) {
   mainTitle.innerHTML = newCover.title;
   mainDescOne.innerHTML = newCover.tagline1;
   mainDescTwo.innerHTML = newCover.tagline2;
-var duplicate = false;
+
+  event.preventDefault();
+
+});
+document.querySelector('.save-cover-button').addEventListener('click', function(){
+  var newCover = new Cover(mainImage.src,mainTitle.innerHTML,mainDescOne.innerHTML,mainDescTwo.innerHTML);
+  var duplicate = false;
   for (var i = 0; i < savedCovers.length; i++) {
       if (savedCovers[i].cover === newCover.cover &&
           savedCovers[i].title === newCover.title &&
@@ -109,8 +115,7 @@ var duplicate = false;
     }
 
 event.preventDefault()
-
-});
+})
 var viewSavedCovers = document.querySelector('.view-saved-button');
 viewSavedCovers.addEventListener('click', function(){
   document.querySelector('.saved-view').style.display = 'block';
