@@ -84,19 +84,29 @@ var mainDescTwo = document.querySelector('.tagline-2');
 
 makeBookButton.addEventListener('click', function(event) {
   var newCover = new Cover(myCover.value,newTitle.value,descOne.value,descTwo.value);
-  covers.push(newCover.cover);
-  titles.push(newCover.title);
-  descriptors.push(newCover.tagline1, newCover.tagline2);
-  savedCovers.push(newCover);
   // console.log(descriptors)
   document.getElementsByClassName('view home-view')[0].style.display = 'block';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'none';
 
-  mainImage.src = newCover.cover
-  mainTitle.innerHTML = newCover.title
-  mainDescOne.innerHTML = newCover.tagline1
-  mainDescTwo.innerHTML = newCover.tagline2
+  mainImage.src = newCover.cover;
+  mainTitle.innerHTML = newCover.title;
+  mainDescOne.innerHTML = newCover.tagline1;
+  mainDescTwo.innerHTML = newCover.tagline2;
+  for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers[i].cover === newCover.cover &&
+          savedCovers[i].title === newCover.title &&
+          savedCovers[i].tagline1 === newCover.tagline1 &&
+          savedCovers[i].tagline2 === newCover.tagline2)
+      {
+        duplicate = true;
+        break;
+      }
+    }
 
+    if (duplicate === false) {
+      savedCovers.push(homeCover);
+    }
+  })
 
   event.preventDefault();
 });
@@ -105,7 +115,7 @@ viewSavedCovers.addEventListener('click', function(){
   document.querySelector('.saved-view').style.display = 'block';
 var savedCoversHtml = '';
   for(i=0;i<savedCovers.length;i++){
-    var newCoverHtml = `<section class="main-cover">
+    var newCoverHtml = `<section class="mini-cover">
       <img class="cover-image" src="${savedCovers[i].cover}">
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
