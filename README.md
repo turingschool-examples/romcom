@@ -1,25 +1,25 @@
 # RomCom Cover Generator
 
-##Contributors-
+## Contributors-
 Reggie Thompson
 Aaron Foucheaux
 
-##Motivation-
+## Motivation-
 To continue learning core front-end web development concepts. This serves as practice in manipulating elements through DOM interface and implementing dynamic functionality with vanilla javascript.
 
-##Build Status-
+## Build Status-
 Complete through Iteration 5
 
-##Code Style-
+## Code Style-
 Javascript
 HTML
 CSS
 
-##Deploy linK-
+## Deploy linK-
 https://rdtho2525.github.io/romcom/
 
 
-##Instructions-
+## Instructions-
 Create your own customized romantic novel cover.
 Start by selecting "Show New Random Cover" to generate a new randomized cover.
 When you see one that you like hit "Save Cover" to add it to your list.
@@ -28,6 +28,6 @@ If you don't see one you like just head over to "Make Your Own Cover" to create 
 In this view add an image link of your favorite photo, along with the title and two descriptors into the appropriate fields. When your are done hit "Make My Book".
 
 
-##Future Additions-
+## Future Additions-
 Validation of form covers.
 Reorder saved covers with the drag of the mouse.
