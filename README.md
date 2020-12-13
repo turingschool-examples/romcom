@@ -1,11 +1,3 @@
-
-
-
-
----
-title: RomCom - Pair
----
-contributors, technologies used, instructions for running and viewing the project, deploy link (gh-pages), images/GIFs if necessary, future additions, etc. Think about what a user needs to understand and get the full picture of the application.
 # Turing School of software design exercise
 ## Contributors
 * Joel Thomas
@@ -17,19 +9,27 @@ contributors, technologies used, instructions for running and viewing the projec
 * HTML
 
 ## Deploy link:
-* [here](https://shakikka.github.io/romcom/)
+* ![here](https://shakikka.github.io/romcom/)
 
 ## How to Use:
 
 * When In the Home View, You will see a randomly generated romantic novel cover with a price tag referencing the included files in ./assets folder.
 
+![Cover Image](https://imgur.com/a/FWioYCM "Cover Image")
+
 * You may create more randomly generated covers using the `Show New Random Cover` button in the upper left of the page header.
 
-* Click on `make your own cover` button to create your own cover. Enter your own URL in the _*Cover*_ field to create a book using your own images.  Then enter your own title and descriptor information.
+* Click on `Make Your Own Cover` button in the upper right hand corner to create your own cover. Enter your own URL in the _*Cover*_ field to create a book using your own images.  Then enter your own title and descriptor information.
 
-* Save your covers by clicking the Save Cover button.
+* Save your covers by clicking the `Save Cover button.`
 
-*You may view your saved covers at any time using the `View Saved Covers` button.
+* Feel free to hit the `Show New Random Cover` button. You might see a brand new surprise!                              
+
+* You may view your saved covers at any time using the `View Saved Covers` button.
+
+* If there is a cover in your `Saved Covers` display that you dislike, you can double click them to delete them!
+
+* Be sure to have a great time with these covers!
 
 
 ### Future Additions

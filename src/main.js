@@ -16,9 +16,8 @@ var formView = document.querySelector('.form-view');
 var homeButton = document.querySelector('.home-button');
 
 var homeView = document.querySelector('.home-view');
-//maybe need?
-var savedCoversView = document.querySelector('.saved-view');
 
+var savedCoversView = document.querySelector('.saved-view');
 
 var viewSavedButton = document.querySelector('.view-saved-button');
 
