@@ -59,7 +59,7 @@ saveCoverButton.addEventListener('click', saveCover);
 function saveCover() {
      if (savedCovers.includes(currentCover)){
       console.log('Already Saved!');
-    } else {
+     } else {
         savedCovers.unshift(currentCover); //adds to array for viewing later
         covers.unshift(currentCover.cover); //add to arrays for randomizing
         titles.unshift(currentCover.title);
