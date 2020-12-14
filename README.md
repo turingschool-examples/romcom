@@ -15,7 +15,7 @@
 
 * When In the Home View, You will see a randomly generated romantic novel cover with a price tag referencing the included files in ./assets folder.
 
-[Cover Image](https://imgur.com/a/FWioYCM "Cover Image")
+![Cover Image](https://imgur.com/a/FWioYCM "Cover Image")
 
 * You may create more randomly generated covers using the `Show New Random Cover` button in the upper left of the page header.
 
