@@ -7,3 +7,8 @@ class Cover {
     this.tagline2 = descriptor2;
   }
 }
+// var randomImage = covers[getRandomIndex(covers)];
+// var randomTitle = titles[getRandomIndex(titles)];
+// var randomDescriptor = descripters[getRandomIndex(descripters)];
+// var randomDescriptorTwo = descriptors[getRandomIndex(descriptors)];
+// var randomCover = new Cover(randomImage, randomTitle, randomDescriptor, randomDescriptor)
