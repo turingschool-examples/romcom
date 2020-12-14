@@ -35,10 +35,9 @@ var userDesc1 = document.querySelector('.user-desc1').value;
 
 var userDesc2 = document.querySelector('.user-desc2').value;
 
-var savedCovers = [
-  //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-var currentCover = new Cover(image, title, tagline1, tagline2)
+var savedCovers = [];
+
+var currentCover = new Cover(image, title, tagline1, tagline2);
 
 
 
@@ -114,17 +113,16 @@ function makeBook() {
   userDesc1 = document.querySelector('.user-desc1').value;
   userDesc2 = document.querySelector('.user-desc2').value;
   currentCover = new Cover(userCover, userTitle, userDesc1, userDesc2);
-  image.src = currentCover.cover;
-  title.innerText = currentCover.title;
-  tagline1.innerText = currentCover.tagline1;
-  tagline2.innerText = currentCover.tagline2;
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  saveCoverButton.classList.remove('hidden');
-  userCover = '';
-  userTitle = '';
-  userDesc1 = '';
-  userDesc2 = '';
+  if (userCover === "" || userTitle === "" || userDesc1 === "" || userDesc2 === "") {
+  } else {
+    image.src = currentCover.cover;
+    title.innerText = currentCover.title;
+    tagline1.innerText = currentCover.tagline1;
+    tagline2.innerText = currentCover.tagline2;
+    homeView.classList.remove('hidden');
+    formView.classList.add('hidden');
+    saveCoverButton.classList.remove('hidden');
+  };
 };
 
 

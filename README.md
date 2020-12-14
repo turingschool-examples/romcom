@@ -43,7 +43,6 @@
 
 
 ### Future Additions
-* Implement data validation and error handling into the form (disable the button until all fields are filled, provide error messages if data entered is not correct, etc)
 * When a user single clicks a saved cover, create a modal to view it larger
 * Allow users to drag and drop saved posters into whatever order they want them to appear
 * Add a price tag change
