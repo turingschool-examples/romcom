@@ -1,14 +1,15 @@
-var mainCover = document.querySelector('.main-cover')
-var title = document.querySelector('.cover-title') 
-var cover = document.querySelector('.cover-image')
-var firstDescriptor = document.querySelector('.tagline-1')
-var secondDescriptor = document.querySelector('.tagline-2')
-
+var showRandomButton = document.querySelector('.random-cover-button')
+var mainCover = document.querySelector('.main-cover');
+var title = document.querySelector('.cover-title');
+var cover = document.querySelector('.cover-image');
+var firstDescriptor = document.querySelector('.tagline-1');
+var secondDescriptor = document.querySelector('.tagline-2');
 
 var savedCovers =[];
 var currentCover;
 
-window.onload = displayRandom();
+window.addEventListener('load', displayRandom);
+showRandomButton.addEventListener('click', displayRandom);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
