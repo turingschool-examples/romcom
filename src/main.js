@@ -11,8 +11,6 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 
 var makeCoverButton = document.querySelector('.make-new-button');
 
-var formView = document.querySelector('.form-view');
-
 var homeButton = document.querySelector('.home-button');
 
 var homeView = document.querySelector('.home-view');
@@ -26,6 +24,16 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewBookButton = document.querySelector('.create-new-book-button');
 
 var savedCoversSection = document.querySelector('.saved-covers-section');
+
+var formView = document.querySelector('.form-view');
+
+var userCover = document.querySelector('.user-cover').value;
+
+var userTitle = document.querySelector('.user-title').value;
+
+var userDesc1 = document.querySelector('.user-desc1').value;
+
+var userDesc2 = document.querySelector('.user-desc2').value;
 
 var savedCovers = [
   //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -41,7 +49,7 @@ randomCoverButton.addEventListener('click', createCover);
 
 saveCoverButton.addEventListener('click', saveCover);
 
-makeCoverButton.addEventListener('click', unhideForm);
+makeCoverButton.addEventListener('click', viewForm);
 
 makeNewBookButton.addEventListener('click', function(){
   event.preventDefault()
@@ -72,22 +80,39 @@ function deleteCover() {
 
 
 function saveCover() {
-     if (savedCovers.includes(currentCover)){
-      console.log('Already Saved!');
-     } else {
-        savedCovers.unshift(currentCover);        //adds to array for viewing later
-        covers.unshift(currentCover.cover);      //add to arrays for randomizing
-        titles.unshift(currentCover.title);
-        descriptors.unshift(currentCover.tagline1);
-        descriptors.unshift(currentCover.tagline2);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (currentCover.id === savedCovers[i].id ||
+        currentCover.cover === savedCovers[i].cover &&
+        currentCover.title === savedCover[i].title &&
+        currentCover.tagline1 === savedCover[i].tagline1 &&
+        currentCover.tagline2 === savedCover[i].tagline2) {
+    console.log('Already Saved!');
+    return;
     };
+
+  };
+      savedCovers.unshift(currentCover);
+      covers.unshift(currentCover.cover);
+      titles.unshift(currentCover.title);
+      descriptors.unshift(currentCover.tagline1);
+      descriptors.unshift(currentCover.tagline2);
+};
+
+function viewForm() {
+  formView.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
+  savedCoversSection.classList.add('hidden');
 };
 
 function makeBook() {
-  var userCover = document.querySelector('.user-cover').value;
-  var userTitle = document.querySelector('.user-title').value;
-  var userDesc1 = document.querySelector('.user-desc1').value;
-  var userDesc2 = document.querySelector('.user-desc2').value;
+  userCover = document.querySelector('.user-cover').value;
+  userTitle = document.querySelector('.user-title').value;
+  userDesc1 = document.querySelector('.user-desc1').value;
+  userDesc2 = document.querySelector('.user-desc2').value;
   currentCover = new Cover(userCover, userTitle, userDesc1, userDesc2);
   image.src = currentCover.cover;
   title.innerText = currentCover.title;
@@ -96,6 +121,10 @@ function makeBook() {
   homeView.classList.remove('hidden');
   formView.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
+  userCover = '';
+  userTitle = '';
+  userDesc1 = '';
+  userDesc2 = '';
 };
 
 
@@ -111,17 +140,6 @@ function createCover() {
   tagline2.innerText = currentCover.tagline2;
   formView.classList.add('hidden');
 };
-
-function unhideForm() {
-  formView.classList.remove('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  savedCoversView.classList.add('hidden');
-  savedCoversSection.classList.add('hidden');
-};
-
 
 function showMiniBooks() {
   savedCoversSection.innerHTML = '';
