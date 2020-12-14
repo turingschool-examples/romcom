@@ -45,6 +45,7 @@ document.querySelector('.make-new-button').addEventListener('click',function() {
   document.getElementsByClassName('home-button')[0].style.display = 'block';
   document.getElementsByClassName('view home-view')[0].style.display = 'none';
   document.getElementsByClassName('view form-view hidden')[0].style.display = 'block';
+  document.getElementsByClassName('view saved-view')[0].style.display = 'none';
 });
 
 //////////////////////////////////////////
