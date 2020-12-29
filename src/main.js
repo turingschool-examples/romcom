@@ -27,13 +27,13 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var formView = document.querySelector('.form-view');
 
-var userCover = document.querySelector('.user-cover').value;
-
-var userTitle = document.querySelector('.user-title').value;
-
-var userDesc1 = document.querySelector('.user-desc1').value;
-
-var userDesc2 = document.querySelector('.user-desc2').value;
+// var userCover = document.querySelector('.user-cover').value;
+//
+// var userTitle = document.querySelector('.user-title').value;
+//
+// var userDesc1 = document.querySelector('.user-desc1').value;
+//
+// var userDesc2 = document.querySelector('.user-desc2').value;
 
 var savedCovers = [];
 
@@ -50,16 +50,13 @@ saveCoverButton.addEventListener('click', saveCover);
 
 makeCoverButton.addEventListener('click', viewForm);
 
-makeNewBookButton.addEventListener('click', function(){
-  event.preventDefault()
-  makeBook()
-});
+makeNewBookButton.addEventListener('click', makeNewBook);
+
 
 viewSavedButton.addEventListener('click', viewSavedCovers);
 
-savedCoversSection.addEventListener('dblclick', function() {
-  deleteCover()
-});
+savedCoversSection.addEventListener('dblclick', deleteCover);
+
 
 // Event handlers functions 👇
 function getRandomIndex(array) {
@@ -107,11 +104,16 @@ function viewForm() {
   savedCoversSection.classList.add('hidden');
 };
 
+function makeNewBook() {
+  event.preventDefault()
+  makeBook()
+};
+
 function makeBook() {
-  userCover = document.querySelector('.user-cover').value;
-  userTitle = document.querySelector('.user-title').value;
-  userDesc1 = document.querySelector('.user-desc1').value;
-  userDesc2 = document.querySelector('.user-desc2').value;
+  var userCover = document.querySelector('.user-cover').value;
+  var userTitle = document.querySelector('.user-title').value;
+  var userDesc1 = document.querySelector('.user-desc1').value;
+  var userDesc2 = document.querySelector('.user-desc2').value;
   currentCover = new Cover(userCover, userTitle, userDesc1, userDesc2);
   if (userCover === "" || userTitle === "" || userDesc1 === "" || userDesc2 === "") {
   } else {
@@ -123,6 +125,10 @@ function makeBook() {
     formView.classList.add('hidden');
     saveCoverButton.classList.remove('hidden');
   };
+  userCover = null;
+  userTitle = null;
+  userDesc1 = null;
+  userDesc2 = null;
 };
 
 
