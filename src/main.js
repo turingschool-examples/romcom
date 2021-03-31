@@ -1,5 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var coverImage = document.querySelector('.cover-image');
+var bookTitle = document.querySelector('.cover-title');
+var tagline1 = document.querySelector('.tagline1');
+var tagline2 = document.querySelector('.tagline2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,3 +20,10 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function randomImageCovers(covers) {
+  var x = getRandomIndex(covers)
+  coverImage.src = covers[x];
+  // var x = Math.floor(Math.random() * covers.length);
+}
+randomImageCovers(covers)
