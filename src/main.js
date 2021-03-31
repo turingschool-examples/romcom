@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var coverImage = document.querySelector('.cover-image');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -7,6 +7,7 @@ var savedCovers = [
 ];
 var currentCover;
 
+coverImage.src = covers[getRandomIndex(covers)];
 // Add your event listeners here 👇
 
 
