@@ -21,9 +21,41 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomImageCovers(covers) {
+function randomImageCover(covers) {
   var x = getRandomIndex(covers)
   coverImage.src = covers[x];
-  // var x = Math.floor(Math.random() * covers.length);
 }
-randomImageCovers(covers)
+randomImageCover(covers)
+
+function randomCoverTitle(titles) {
+  var x = getRandomIndex(titles)
+  bookTitle.innerText = titles[x];
+}
+randomCoverTitle(titles)
+
+function randomTagline(descriptors) {
+  var x = getRandomIndex(descriptors);
+  var y = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[x];
+  tagline2.innerText = descriptors[y];
+}
+
+randomTagline(descriptors);
+
+// var z = getRandomIndex(descriptors)
+// function randomTagline1(descriptors) {
+//   tagline1.innerText = 'descriptors[z]'';
+// }
+// randomTagline1(descriptors)
+
+// function randomTaglines(descriptors) {
+//   var x = getRandomIndex(descriptors)
+//   var y = getRandomIndex(descriptors)
+//   tagline1.innerText = descriptors[x];
+//   tagline2.innerText = descriptors[x];
+// }
+// function randomTaglines(descriptors) {
+//   var x = getRandomIndex(descriptors)
+//   tagline1.innerText = descriptors[x];
+// }
+// randomTaglines(descriptors);
