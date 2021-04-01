@@ -15,7 +15,8 @@ var currentCover = new Cover();
 
 // Add your event listeners here 👇
 
-window.addEventListener('load', getRandomCover)
+window.addEventListener('load', getRandomCover);
+window.addEventListener('click', getRandomCover);
 
 
 // Create your event handlers and other functions here 👇
