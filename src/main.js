@@ -23,21 +23,44 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomCover(covers, titles, descriptors) {
-  //shows random cover on refresh
-  var x = getRandomIndex(covers)
-  var y = getRandomIndex(titles)
-  var z = getRandomIndex(descriptors);
-  var zz = getRandomIndex(descriptors);
+function randomCoverImage(covers) {
+  var x = getRandomIndex(covers);
   coverImage.src = covers[x];
-  bookTitle.innerText = titles[y];
-  tagline1.innerText = descriptors[z];
-  tagline2.innerText = descriptors[zz];
+  return covers[x]
+};
 
+
+function randomTitle(titles) {
+  var x = getRandomIndex(titles);
+  return bookTitle.innerText = titles[x];
+  return titles[x]
 }
-randomCover(covers, titles, descriptors);
+
+function randomTagline1(descriptors) {
+  var x = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[x];
+  return descriptors[x]
+}
+
+function randomTagline2(descriptors) {
+  var y = getRandomIndex(descriptors);
+  tagline2.innerText = descriptors[y];
+  return descriptors[y]
+}
+
+
+randomCoverImage(covers);
+randomTitle(titles);
+randomTagline1(descriptors);
+randomTagline2(descriptors);
+
+var cover1 = randomCoverImage(covers);
+var title1 = randomTitle(titles)
+var descriptor1 = randomTagline1(descriptors)
+var descriptor2 = randomTagline2(descriptors)
+
 
 function createRandomCover() {
-  
-  //var cover1 = new Cover (cover, title, taglin1, tag2)
+  currentCover = new Cover (cover1, title1, descriptor1, descriptor2);
+  console.log(currentCover)
 }
