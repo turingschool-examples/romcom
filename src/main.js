@@ -10,7 +10,7 @@ var mainCover = document.querySelector('.main-cover');
 var makeOwnCoverBtn = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
 var homeBtn = document.querySelector('.home-button');
-
+var saveCoverBtn = document.querySelector('.save-cover-button')
 // var savedView = document.querySelector('.view .saved-view .hidden');
 
 
@@ -55,11 +55,8 @@ function showRandomCover() {
 
 function showForm() {
   formView.classList.remove('hidden')
-  console.log("It's there!")
   mainCover.classList.add('hidden')
-  console.log("It's hidden!")
   homeBtn.classList.remove('hidden')
-  console.log("It's visible!")
   newRandomCoverBtn.classList.add('hidden')
-  console.log("It's gone!")
+  saveCoverBtn.classList.add('hidden')
 }
