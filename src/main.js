@@ -3,6 +3,7 @@ var coverImage = document.querySelector('.cover-image');
 var bookTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
+var randomCoverButton = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -11,7 +12,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+randomCoverButton.addEventListener('click', createRandomCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -21,13 +22,51 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomEverything(covers, titles, descriptors) {
-  var x = getRandomIndex(covers)
-  var y = getRandomIndex(titles)
-  var z = getRandomIndex(descriptors);
+
+
+function randomCoverImage(covers) {
+  var x = getRandomIndex(covers);
   coverImage.src = covers[x];
-  bookTitle.innerText = titles[y];
-  tagline1.innerText = descriptors[z];
-  tagline2.innerText = descriptors[z];
+  return coverImage.src
+};
+randomCoverImage(covers);
+var cI = randomCoverImage(covers)
+
+
+
+function randomTitle(titles) {
+  var x = getRandomIndex(titles);
+  bookTitle.innerText = titles[x];
+  return bookTitle.innerText
 }
-randomEverything(covers, titles, descriptors)
+randomTitle(titles);
+var rT = randomTitle(titles)
+
+
+
+function randomTagline1(descriptors) {
+  var x = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[x];
+  return tagline1.innerText
+}
+randomTagline1(descriptors);
+var tL1 = randomTagline1(descriptors)
+
+
+
+function randomTagline2(descriptors) {
+  var y = getRandomIndex(descriptors);
+  tagline2.innerText = descriptors[y];
+  return tagline2.innerText
+}
+randomTagline2(descriptors);
+var tL2 = randomTagline2(descriptors)
+
+
+
+function createRandomCover(){
+    currentCover = [
+      new Cover(cI, rT, tL1, tL2)
+    ];
+    return;
+}
