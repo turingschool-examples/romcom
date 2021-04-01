@@ -8,9 +8,9 @@ var newRandomCoverBtn = document.querySelector('.random-cover-button');
 var makeOwnCoverBtn = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
 var homeBtn = document.querySelector('.home-button');
-var saveCoverBtn = document.querySelector('.save-cover-button')
-
-
+var saveCoverBtn = document.querySelector('.save-cover-button');
+var viewSavedCoverBtn = document.querySelector('.view-saved-button');
+var savedCoverView = document.querySelector('.saved-view');
 
 
 
@@ -29,7 +29,7 @@ var currentCover = getRandomCover()
 
 newRandomCoverBtn.addEventListener('click', showRandomCover)
 makeOwnCoverBtn.addEventListener('click', showForm)
-
+viewSavedCoverBtn.addEventListener('click', showsavedCover)
 
 ////// EVENT HANDLERS AND OTHER FUNCTIONS👇///////////
 
@@ -53,6 +53,15 @@ function showRandomCover() {
 
 function showForm() {
   formView.classList.remove('hidden')
+  mainCover.classList.add('hidden')
+  homeBtn.classList.remove('hidden')
+  newRandomCoverBtn.classList.add('hidden')
+  saveCoverBtn.classList.add('hidden')
+}
+
+function showsavedCover() {
+  savedCoverView.classList.remove('hidden')
+  formView.classList.add('hidden')
   mainCover.classList.add('hidden')
   homeBtn.classList.remove('hidden')
   newRandomCoverBtn.classList.add('hidden')
