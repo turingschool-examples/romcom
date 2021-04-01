@@ -17,6 +17,5 @@ var currentCover;
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
-// returns a random number NOT an index
   return Math.floor(Math.random() * array.length);
 }
