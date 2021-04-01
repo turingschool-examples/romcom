@@ -4,8 +4,11 @@ var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var showRandomCoverBtn = document.querySelector('.random-cover-button');
-
-
+var makeYourOwnCoverBtn = document.querySelector('.make-new-button');
+var formArea = document.querySelector('.form-view');
+var homePageArea = document.querySelector('.home-view');
+var saveCoverBtn = document.querySelector('.save-cover-button');
+var homeBtn = document.querySelector('.home-button');
 // We've provided a few variables below this
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -15,7 +18,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', randomCover);
 showRandomCoverBtn.addEventListener('click', randomCover);
-
+makeYourOwnCoverBtn.addEventListener('click', hideHomePage);
 // Create your event handlers and other functions here 👇
 function randomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
@@ -23,8 +26,17 @@ function randomCover() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+  console.log(currentCover);
 };
 
+
+function hideHomePage() {
+formArea.classList.remove('hidden');
+homePageArea.classList.add('hidden');
+saveCoverBtn.classList.add('hidden');
+showRandomCoverBtn.classList.add('hidden');
+homeBtn.classList.remove('hidden');
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
