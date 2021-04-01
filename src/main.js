@@ -23,7 +23,9 @@ descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 
 randomCoverButton.addEventListener('click', function() {
   coverImage.src = covers[getRandomIndex(covers)];
-  console.log(coverImage.src);
+  title.innerText = titles[getRandomIndex(titles)];
+  descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+  descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 });
 
 
