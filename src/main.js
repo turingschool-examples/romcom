@@ -7,7 +7,7 @@ var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-var makeOwnButton = document.querySelector('.make-new-button');
+var makeCoverButton = document.querySelector('.make-new-button');
 var homeSection = document.querySelector('.home-view');
 var savedSection = document.querySelector('.saved-view');
 var formSection = document.querySelector('.form-view');
@@ -23,7 +23,7 @@ homeButton.addEventListener('click', goHome)
 randomCoverButton.addEventListener('click', createRandomCover)
 // saveCoverButton.addEventListener('click', saveCover)
 viewSavedButton.addEventListener('click', viewSaved)
-makeOwnButton.addEventListener('click', makeNew)
+makeCoverButton.addEventListener('click', makeNew)
 
 // Create your event handlers and other functions here 👇
 
