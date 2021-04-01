@@ -6,25 +6,26 @@ var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
+// var savedCovers = [
+//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+// ];
+//var currentCover = randomCover(covers, titles, descriptors);
 
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
-
-
-
-var currentCover = randomCover(covers, titles, descriptors);
-
-// Add your event listeners here 👇
+//event listeners
 
 
-// Create your event handlers and other functions here 👇
+// event handlers
+function pageLoad(){
+  //randomCover();
+  
+}
 
-
-//We've provided one function to get you started
-function getRandomElement(array) {
-  return array[getRandomIndex(array)]
+function createCover(){
+  var newCover = randomCover();
+  coverImage.src = newCover.cover;
+  coverTitle.innerText = newCover.title;
+  tagline1.innerText = newCover.tagLine1;
+  tagline2.innerText = newCover.tagLine2;
 }
 
 function randomCover(covers, titles, descriptors) {
@@ -33,6 +34,10 @@ function randomCover(covers, titles, descriptors) {
     getRandomElement(titles),
     getRandomElement(descriptors),
     getRandomElement(descriptors))
+}
+
+function getRandomElement(array) {
+  return array[getRandomIndex(array)]
 }
 
 function getRandomIndex(array) {
