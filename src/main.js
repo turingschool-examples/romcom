@@ -28,6 +28,11 @@ function changeTitle() {
   coverTitle.innerHTML = titles[index];
 }
 
+function changeFirstDescriptor() {
+  var index = getRandomIndex(descriptors);
+  firstTagline.innerHTML = descriptors[index];
+}
+
 
 
 
