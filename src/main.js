@@ -34,7 +34,10 @@ function changeCover() {
   //note: for refactoring, include if/else that prevents descriptors from being the same word
 
   //update HTML DOM variables declared above to reflect these random indexes
-  
+  bookCover.src = newCover;
+  bookTitle.innerText = newTitle;
+  bookTagline1.innerText = newDescriptor1;
+  bookTagline2.innerText = newDescriptor2;
   //call our Cover constructor function with the random indexes
   //put new Cover object in our savedCovers array
 }
