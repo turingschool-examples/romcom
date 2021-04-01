@@ -12,41 +12,26 @@ var makeButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-//var currentCover = randomCover(covers, titles, descriptors);
+// var savedCovers = [
+//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+// ];
+// var currentCover; // = randomCover(covers, titles, descriptors);
 
 
 //event listeners
-
-
+window.addEventListener('load', randomCover);
+randomButton.addEventListener('click', randomCover);
 // event handlers
 
-//put in the function to update the cover and show
-randomButton.addEventListener('click', function(){
-  // var newCover = createCover();
-  coverImage.src = getRandomElement(covers);
-  coverTitle.innerText = getRandomElement(titles);
-  tagLine1.innerText = getRandomElement(descriptors);
-  tagLine2.innerText = getRandomElement(descriptors);
-});
-
-
-function pageLoad(){
-  //randomCover();
+function randomCover(){
+  var newCover = createCover(covers,titles,descriptors);
+  console.log(newCover)
+  coverImage.src = newCover.cover;
+  coverTitle.innerText = newCover.title;
+  tagLine1.innerText = newCover.tagline1;
+  tagLine2.innerText = newCover.tagline2;
 }
 
-//swapped function names
-// function randomCover(){
-//   var newCover = createCover();
-//   coverImage.src = newCover.cover;
-//   coverTitle.innerText = newCover.title;
-//   tagline1.innerText = newCover.tagLine1;
-//   tagline2.innerText = newCover.tagLine2;
-// }
-
-//swapped function names
 function createCover(covers, titles, descriptors) {
   return new Cover(
     getRandomElement(covers),
