@@ -6,7 +6,7 @@ var tagline2 = document.querySelector('.tagline-2');
 var showRandomCoverBtn = document.querySelector('.random-cover-button');
 var makeYourOwnCoverBtn = document.querySelector('.make-new-button');
 var formArea = document.querySelector('.form-view');
-
+var homePageArea = document.querySelector('.home-view')
 // We've provided a few variables below this
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -28,6 +28,7 @@ function randomCover() {
 
 function hideHomePage() {
 formArea.classList.remove('hidden')
+homePageArea.classList.add('hidden')
 }
 
 // We've provided one function to get you started
