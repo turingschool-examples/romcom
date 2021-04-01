@@ -69,7 +69,7 @@ randomTagline2(descriptors);
 
 
 function goHome() {
-  homeSection.classList.remove("hidden");
+  homeSection.classList.toggle("hidden");
   formSection.classList.add("hidden");
   randomCoverButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
@@ -111,9 +111,19 @@ function makeNew() {
 }
 
 function makeMyBook (){
-  //save the data to respective arrays
-  covers.push(userCoverField.value);
-  titles.push(userTitleField.value);
-  descriptors.push(userTagline1Field.value);
-  descriptors.push(userTagline1Field.value);
-}
+  event.preventDefault()
+
+  if (userCoverField.value && userTitleField.value && userTagline1Field.value && userTagline2Field.value) {
+    covers.push(userCoverField.value);
+    titles.push(userTitleField.value);
+    descriptors.push(userTagline1Field.value);
+    descriptors.push(userTagline2Field.value);
+  } else {
+    alert("You have some empty fields! Fill em in.")
+  }
+
+  currentCover = new Cover (userCoverField.value, userTitleField.value, userTagline1Field.value, userTagline2Field.value);
+
+  //add in a toggle to go back to view homepage
+  goHome()
+};
