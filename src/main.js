@@ -33,6 +33,10 @@ function changeFirstDescriptor() {
   firstTagline.innerHTML = descriptors[index];
 }
 
+function changeSecondDescriptor() {
+  var index = getRandomIndex(descriptors);
+  secondTagline.innerHTML = descriptors[index];
+}
 
 
 
