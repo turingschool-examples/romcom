@@ -13,7 +13,7 @@ var currentCover = new Cover(coverImage, coverTitle, firstTagline, secondTagline
 
 // Add your event listeners here 👇
 
-
+window.addEventListener('load', getRandomCover);
 
 // Create your event handlers and other functions here 👇
 
