@@ -12,7 +12,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener('click', createRandomCover)
+randomCoverButton.addEventListener('click', addInstance, updateCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -64,9 +64,16 @@ var tL2 = randomTagline2(descriptors)
 
 
 
-function createRandomCover(){
+function addInstance(){
     currentCover = [
       new Cover(cI, rT, tL1, tL2)
     ];
     return;
+}
+
+function updateCover(){
+  coverImage = currentCover[currentCover.length].cover
+  bookTitle = currentCover[currentCover.length].title
+  tagline1 = currentCover[currentCover.length].tagline1
+  tagline2 = currentCover[currentCover.length].tagline2
 }
