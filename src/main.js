@@ -5,17 +5,17 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover = document.querySelector('.random-cover-button');
+
 var htmlImage = document.querySelector('.cover-image');
 var htmlTitle = document.querySelector('.cover-title');
 var htmlTagline1 = document.querySelector('.tagline-1');
 var htmlTagline2 = document.querySelector('.tagline-2');
-var randomCoverButton = document.querySelector('.random-cover-button');
 
 // Add your event listeners here 👇
 
 window.addEventListener("load", displayRandomHomePage);
-
+currentCover.addEventListener("click", displayRandomImage)
 
 // Create your event handlers and other functions here 👇
 
@@ -81,4 +81,3 @@ function displayRandomHomePage() {
 //   htmlTagline1.innerText = currentCover.descriptor1;
 //   htmlTagline2.innerText = currentCover.descriptor2;
 // }
-
