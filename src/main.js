@@ -7,30 +7,6 @@ var savedCovers = [
 ];
 var currentCover;
 
-//ITERATION 1 - "SHOW NEW RANDOM COVER BUTTON"
-/* THIS WORKS DON'T CHANGE IT */
-var randomCoverButton = document.querySelector('.random-cover-button');
-  randomCoverButton.addEventListener("click", displayRandomImage => {
-    var htmlImage = document.querySelector('.cover-image');
-    htmlImage.src = getRandomImage();
-  });
-
-//ITERATION 2 - "MAKE OWN COVER BUTTON SWITCHES TO FORM"
-/* STILL WORKING ON THIS */
-// var makeCoverButton = document.querySelector('.make-new-button');
-//   makeCoverButton.addEventListener("click", function() {
-//     .view-form-view-hidden.innerHTML
-//   }
-
-
-//working on merging variables from below
-// var getRandomIndex = {
-//   cover: covers,
-//   title: titles,
-//   tagline1: descripters,
-//   tagline2: descripters,
-// }
-
 // Add your event listeners here 👇
 window.addEventListener("load", displayRandomHomePage);
 window.addEventListener("load", displayRandomImage);
