@@ -1,5 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var randomCover = document.querySelector('.cover-image')
+var randomSource = covers[getRandomIndex(covers)]
+randomCover.src = randomSource
 
 // We've provided a few variables below
 var savedCovers = [
