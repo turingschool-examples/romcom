@@ -1,8 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector('.cover-image');
 var bookTitle = document.querySelector('.cover-title');
-var tagline1 = document.querySelector('.tagline1');
-var tagline2 = document.querySelector('.tagline2');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,41 +21,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function randomImageCover(covers) {
+function randomEverything(covers, titles, descriptors) {
   var x = getRandomIndex(covers)
+  var y = getRandomIndex(titles)
+  var z = getRandomIndex(descriptors);
   coverImage.src = covers[x];
+  bookTitle.innerText = titles[y];
+  tagline1.innerText = descriptors[z];
+  tagline2.innerText = descriptors[z];
 }
-randomImageCover(covers)
-
-function randomCoverTitle(titles) {
-  var x = getRandomIndex(titles)
-  bookTitle.innerText = titles[x];
-}
-randomCoverTitle(titles)
-
-function randomTagline(descriptors) {
-  var x = getRandomIndex(descriptors);
-  var y = getRandomIndex(descriptors);
-  tagline1.innerText = descriptors[x];
-  tagline2.innerText = descriptors[y];
-}
-
-randomTagline(descriptors);
-
-// var z = getRandomIndex(descriptors)
-// function randomTagline1(descriptors) {
-//   tagline1.innerText = 'descriptors[z]'';
-// }
-// randomTagline1(descriptors)
-
-// function randomTaglines(descriptors) {
-//   var x = getRandomIndex(descriptors)
-//   var y = getRandomIndex(descriptors)
-//   tagline1.innerText = descriptors[x];
-//   tagline2.innerText = descriptors[x];
-// }
-// function randomTaglines(descriptors) {
-//   var x = getRandomIndex(descriptors)
-//   tagline1.innerText = descriptors[x];
-// }
-// randomTaglines(descriptors);
+randomEverything(covers, titles, descriptors)
