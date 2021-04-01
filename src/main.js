@@ -9,6 +9,10 @@ var formArea = document.querySelector('.form-view');
 var homePageArea = document.querySelector('.home-view');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var homeBtn = document.querySelector('.home-button');
+var viewSavedBtn = document.querySelector('.view-saved-button');
+var savedCoversArea = document.querySelector('.saved-view');
+
+
 // We've provided a few variables below this
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -19,6 +23,11 @@ var currentCover;
 window.addEventListener('load', randomCover);
 showRandomCoverBtn.addEventListener('click', randomCover);
 makeYourOwnCoverBtn.addEventListener('click', hideHomePage);
+viewSavedBtn.addEventListener('click', showSavedArea);
+
+
+
+
 // Create your event handlers and other functions here 👇
 function randomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
@@ -36,6 +45,15 @@ homePageArea.classList.add('hidden');
 saveCoverBtn.classList.add('hidden');
 showRandomCoverBtn.classList.add('hidden');
 homeBtn.classList.remove('hidden');
+}
+
+
+function showSavedArea() {
+  homePageArea.classList.add('hidden');
+  savedCoversArea.classList.remove('hidden');
+  showRandomCoverBtn.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
 }
 
 // We've provided one function to get you started
