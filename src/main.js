@@ -13,33 +13,27 @@ var currentCover;
 
 // Add your event listeners here 👇
 
-//call changeCover every time the page loads
 changeCover();
 //call changeCover every time user clicks New Random Cover button
 
 // Create your event handlers and other functions here 👇
 
 function changeCover() {
-  //generate random number using getRandomIndex & the cover array & save in a variable
   var coverIndex = getRandomIndex(covers);
   var newCover = covers[coverIndex];
-  //generate random number using the titles array & save in a variable
   var titleIndex = getRandomIndex(titles);
   var newTitle = titles[titleIndex];
-  //generate two random numbers using the descriptors array & save them in variables
   var descriptorIndex1 = getRandomIndex(descriptors);
   var newDescriptor1 = descriptors[descriptorIndex1];
   var descriptorIndex2 = getRandomIndex(descriptors);
   var newDescriptor2 = descriptors[descriptorIndex2];
   //note: for refactoring, include if/else that prevents descriptors from being the same word
-
-  //update HTML DOM variables declared above to reflect these random indexes
   bookCover.src = newCover;
   bookTitle.innerText = newTitle;
   bookTagline1.innerText = newDescriptor1;
   bookTagline2.innerText = newDescriptor2;
-  //call our Cover constructor function with the random indexes
-  //put new Cover object in our savedCovers array
+  currentCover = new Cover(newCover, newTitle, newDescriptor1, newDescriptor2);
+  return currentCover;
 }
 
 // We've provided one function to get you started
