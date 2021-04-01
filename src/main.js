@@ -17,6 +17,14 @@ window.addEventListener('load', getRandomCover);
 
 // Create your event handlers and other functions here 👇
 
+
+function getRandomCover() {
+  changeCover();
+  changeTitle();
+  changeFirstDescriptor();
+  changeSecondDescriptor();
+}
+
 function changeCover() {
   var index = getRandomIndex(covers);
   coverImage.src = covers[index];
