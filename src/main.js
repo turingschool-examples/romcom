@@ -8,8 +8,8 @@ var tagline2 = document.querySelector('.tagline-2');
 var newRandomCoverBtn = document.querySelector('.random-cover-button');
 var mainCover = document.querySelector('.main-cover');
 var makeOwnCoverBtn = document.querySelector('.make-new-button');
-var formField = document.querySelector('.view .form-view .hidden')
-
+var formView = document.querySelector('.form-view');
+// var savedView = document.querySelector('.view .saved-view .hidden');
 
 
 
@@ -50,9 +50,12 @@ function showRandomCover() {
   getRandomCover()
 
 }
+
 function showForm() {
+  formView.classList.remove('hidden')
+  console.log("It's there!")
   mainCover.classList.add('hidden')
   console.log("It's hidden!")
-  formField.classList.remove('hidden')
-  console.log("It's there!")
+  // savedView.classList.remove('hidden')
+  // console.log("It's there!")
 }
