@@ -26,7 +26,11 @@ randomCoverButton.addEventListener('click', function() {
   // descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   // descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-  console.log(currentCover);
+  savedCovers.unshift(currentCover);
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
 });
 
 
