@@ -6,7 +6,16 @@ var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var newRandomCoverBtn = document.querySelector('.random-cover-button');
+var mainCover = document.querySelector('.main-cover');
+var makeOwnCoverBtn = document.querySelector('.make-new-button');
+var formView = document.querySelector('.form-view');
+var homeBtn = document.querySelector('.home-button');
+var saveCoverBtn = document.querySelector('.save-cover-button')
+// var savedView = document.querySelector('.view .saved-view .hidden');
 
+
+
+///// VARIABLE FOR INPUT FIELDS///////
 
 
 /////////// GLOBAL VARIABLES //////////
@@ -21,7 +30,7 @@ var currentCover = new Cover()
 /////// EVENT LISTENERS👇//////
 
 newRandomCoverBtn.addEventListener('click', showRandomCover)
-
+makeOwnCoverBtn.addEventListener('click', showForm)
 ///////////////////////////////
 
 ////// EVENT HANDLERS AND OTHER FUNCTIONS👇///////////
@@ -39,8 +48,15 @@ function getRandomCover() {
 }
 getRandomCover()
 
-
 function showRandomCover() {
   getRandomCover()
 
+}
+
+function showForm() {
+  formView.classList.remove('hidden')
+  mainCover.classList.add('hidden')
+  homeBtn.classList.remove('hidden')
+  newRandomCoverBtn.classList.add('hidden')
+  saveCoverBtn.classList.add('hidden')
 }
