@@ -15,7 +15,6 @@ var homeButton = document.querySelector('.home-button');
 // ];
 // var currentCover; // = randomCover(covers, titles, descriptors);
 
-
 //Event listeners
 window.addEventListener('load', randomCover);
 randomButton.addEventListener('click', randomCover);
