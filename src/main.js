@@ -19,9 +19,11 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+homeButton.addEventListener('click', goHome)
 randomCoverButton.addEventListener('click', createRandomCover)
-makeOwnButton.addEventListener('click', goToForm)
+// saveCoverButton.addEventListener('click', saveCover)
 viewSavedButton.addEventListener('click', viewSaved)
+makeOwnButton.addEventListener('click', makeNew)
 
 // Create your event handlers and other functions here 👇
 
@@ -61,6 +63,16 @@ randomTitle(titles);
 randomTagline1(descriptors);
 randomTagline2(descriptors);
 
+
+function goHome() {
+  homeSection.classList.remove("hidden");
+  formSection.classList.add("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+}
+
+
 function createRandomCover() {
   var cover1 = randomCoverImage(covers);
   var title1 = randomTitle(titles)
@@ -71,18 +83,24 @@ function createRandomCover() {
 }
 
 
-function goToForm() {
+// function saveCover() {
+//
+// }
+
+
+function viewSaved() {
   homeSection.classList.add("hidden");
-  formSection.classList.remove("hidden");
+  savedSection.classList.remove("hidden");
+  formSection.classList.add("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
 }
 
 
-function viewSaved() {
+function makeNew() {
   homeSection.classList.add("hidden");
-  savedSection.classList.remove("hidden");
+  formSection.classList.remove("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
