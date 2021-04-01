@@ -30,7 +30,7 @@ var currentCover = getRandomCover()
 newRandomCoverBtn.addEventListener('click', showRandomCover)
 makeOwnCoverBtn.addEventListener('click', showForm)
 viewSavedCoverBtn.addEventListener('click', showsavedCover)
-
+homeBtn.addEventListener('click', showMainView)
 ////// EVENT HANDLERS AND OTHER FUNCTIONS👇///////////
 
 function getRandomIndex(array) {
@@ -66,4 +66,13 @@ function showsavedCover() {
   homeBtn.classList.remove('hidden')
   newRandomCoverBtn.classList.add('hidden')
   saveCoverBtn.classList.add('hidden')
+}
+
+function showMainView() {
+  formView.classList.add('hidden')
+  savedCoverView.classList.add('hidden')
+  mainCover.classList.remove('hidden')
+  newRandomCoverBtn.classList.remove('hidden')
+  homeBtn.classList.add('hidden')
+  saveCoverBtn.classList.remove('hidden')
 }
