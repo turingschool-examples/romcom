@@ -12,7 +12,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener('click', addInstance, updateCover)
+randomCoverButton.addEventListener('click', createRandomCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -22,58 +22,41 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
-
 function randomCoverImage(covers) {
-  var x = getRandomIndex(covers);
-  coverImage.src = covers[x];
-  return coverImage.src
+  var coverIndex = getRandomIndex(covers);
+  coverImage.src = covers[coverIndex];
+  return covers[coverIndex]
 };
-randomCoverImage(covers);
-var cI = randomCoverImage(covers)
-
-
 
 function randomTitle(titles) {
-  var x = getRandomIndex(titles);
-  bookTitle.innerText = titles[x];
-  return bookTitle.innerText
+  var titleIndex = getRandomIndex(titles);
+  return bookTitle.innerText = titles[titleIndex];
+  return titles[titleIndex]
 }
-randomTitle(titles);
-var rT = randomTitle(titles)
-
-
 
 function randomTagline1(descriptors) {
-  var x = getRandomIndex(descriptors);
-  tagline1.innerText = descriptors[x];
-  return tagline1.innerText
+  var tagIndex1 = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[tagIndex1];
+  return descriptors[tagIndex1]
 }
-randomTagline1(descriptors);
-var tL1 = randomTagline1(descriptors)
-
-
 
 function randomTagline2(descriptors) {
-  var y = getRandomIndex(descriptors);
-  tagline2.innerText = descriptors[y];
-  return tagline2.innerText
+  var tagIndex2 = getRandomIndex(descriptors);
+  tagline2.innerText = descriptors[tagIndex2];
+  return descriptors[tagIndex2]
 }
+
+
+randomCoverImage(covers);
+randomTitle(titles);
+randomTagline1(descriptors);
 randomTagline2(descriptors);
-var tL2 = randomTagline2(descriptors)
 
-
-
-function addInstance(){
-    currentCover = [
-      new Cover(cI, rT, tL1, tL2)
-    ];
-    return;
-}
-
-function updateCover(){
-  coverImage = currentCover[currentCover.length].cover
-  bookTitle = currentCover[currentCover.length].title
-  tagline1 = currentCover[currentCover.length].tagline1
-  tagline2 = currentCover[currentCover.length].tagline2
+function createRandomCover() {
+  var cover1 = randomCoverImage(covers);
+  var title1 = randomTitle(titles)
+  var descriptor1 = randomTagline1(descriptors)
+  var descriptor2 = randomTagline2(descriptors)
+  currentCover = new Cover (cover1, title1, descriptor1, descriptor2);
+  console.log(currentCover)
 }
