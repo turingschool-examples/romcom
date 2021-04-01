@@ -5,6 +5,8 @@ var descriptor1 = document.querySelector('.tagline-1');
 var descriptor2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeCoverButton = document.querySelector('.make-new-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 
@@ -43,6 +45,9 @@ makeCoverButton.addEventListener('click', changeView);
 function changeView() {
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
 }
 
 // We've provided one function to get you started
