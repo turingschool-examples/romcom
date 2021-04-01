@@ -4,7 +4,6 @@ var bookTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
-console.log(randomCoverButton)
 
 // We've provided a few variables below
 var savedCovers = [
@@ -24,28 +23,27 @@ function getRandomIndex(array) {
 }
 
 function randomCoverImage(covers) {
-  var x = getRandomIndex(covers);
-  coverImage.src = covers[x];
-  return covers[x]
+  var coverIndex = getRandomIndex(covers);
+  coverImage.src = covers[coverIndex];
+  return covers[coverIndex]
 };
 
-
 function randomTitle(titles) {
-  var x = getRandomIndex(titles);
-  return bookTitle.innerText = titles[x];
-  return titles[x]
+  var titleIndex = getRandomIndex(titles);
+  return bookTitle.innerText = titles[titleIndex];
+  return titles[titleIndex]
 }
 
 function randomTagline1(descriptors) {
-  var x = getRandomIndex(descriptors);
-  tagline1.innerText = descriptors[x];
-  return descriptors[x]
+  var tagIndex1 = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[tagIndex1];
+  return descriptors[tagIndex1]
 }
 
 function randomTagline2(descriptors) {
-  var y = getRandomIndex(descriptors);
-  tagline2.innerText = descriptors[y];
-  return descriptors[y]
+  var tagIndex2 = getRandomIndex(descriptors);
+  tagline2.innerText = descriptors[tagIndex2];
+  return descriptors[tagIndex2]
 }
 
 
@@ -54,13 +52,11 @@ randomTitle(titles);
 randomTagline1(descriptors);
 randomTagline2(descriptors);
 
-var cover1 = randomCoverImage(covers);
-var title1 = randomTitle(titles)
-var descriptor1 = randomTagline1(descriptors)
-var descriptor2 = randomTagline2(descriptors)
-
-
 function createRandomCover() {
+  var cover1 = randomCoverImage(covers);
+  var title1 = randomTitle(titles)
+  var descriptor1 = randomTagline1(descriptors)
+  var descriptor2 = randomTagline2(descriptors)
   currentCover = new Cover (cover1, title1, descriptor1, descriptor2);
   console.log(currentCover)
 }
