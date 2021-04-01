@@ -1,8 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 var randomCover = document.querySelector('.cover-image')
-var randomNumber = getRandomIndex(covers)
-var randomSource = covers[randomNumber]
-console.log(randomSource, randomNumber)
+// var randomNumber = getRandomIndex(covers)
+// var randomSource = covers[randomNumber]
+var randomSource = covers[getRandomIndex(covers)]
+// console.log(randomSource)
 randomCover.src = randomSource
 
 // We've provided a few variables below
