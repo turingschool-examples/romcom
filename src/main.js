@@ -83,4 +83,7 @@ function goToForm() {
 function viewSaved() {
   homeSection.classList.add("hidden");
   savedSection.classList.remove("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
 }
