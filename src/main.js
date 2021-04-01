@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var randomCover = document.querySelector('.cover-image')
+var randomNumber = getRandomIndex(covers)
+var randomSource = covers[randomNumber]
+console.log(randomSource, randomNumber)
+randomCover.src = randomSource
 
 // We've provided a few variables below
 var savedCovers = [
@@ -15,5 +19,8 @@ var currentCover;
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
+// returns a random number NOT an index
   return Math.floor(Math.random() * array.length);
 }
+
+//console.log(getRandomIndex(covers))
