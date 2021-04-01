@@ -53,6 +53,7 @@ function showSavedArea() {
   savedCoversArea.classList.remove('hidden');
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
 }
 
 // We've provided one function to get you started
