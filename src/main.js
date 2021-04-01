@@ -23,6 +23,11 @@ function changeCover() {
   // console.log(covers[index]);
 }
 
+function changeTitle() {
+  var index = getRandomIndex(titles);
+  coverTitle.innerHTML = titles[index];
+}
+
 
 
 
