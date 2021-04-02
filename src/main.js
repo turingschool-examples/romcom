@@ -24,6 +24,7 @@ var inputSecondDescriptor = document.querySelector('.user-desc2');
 // var saveCoverView = document.querySelector('.saved-view');
 
 var currentCover;
+var showNewBook;
 
 // Add your event listeners here 👇
 //google add event listener on page load
@@ -32,8 +33,8 @@ randomCoverButton.addEventListener('click', makeRandomCover);
 
 createNewBookButton.addEventListener('click', function() {
   event.preventDefault();
-  createNewBook;
-  showNewBookHome;
+  createNewBook();
+  showNewBookHome();
 });
   // coverImage.src = covers[getRandomIndex(covers)];
   // title.innerText = titles[getRandomIndex(titles)];
@@ -92,7 +93,14 @@ function createNewBook() {
 }
 
 function showNewBookHome() {
-  showNewBook = new Cover()
+  showNewBook = new Cover(inputCover.value, inputTitle.value, inputFirstDescriptor.value, inputSecondDescriptor.value);
+  formView.classList.add('hidden');
+  viewSavedView.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  coverImage.src = showNewBook.cover;
+  title.innerText = showNewBook.title;
+  descriptor1.innerText = showNewBook.tagline1;
+  descriptor2.innerText =showNewBook.tagline2;
 }
 
 // //Reflect changes from above
