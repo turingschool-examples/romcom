@@ -12,7 +12,8 @@ var homeButton = document.querySelector('.home-button');
 
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
-var saveCoverView = document.querySelector('.saved-view');
+// var saveCoverView = document.querySelector('.saved-view');
+var viewSavedView = document.querySelector('.saved-view');
 var viewSavedButton = document.querySelector('.view-saved-button');
 
 var currentCover;
@@ -51,6 +52,9 @@ function changeViewSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  viewSavedView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  formView.classList.add('hidden');
 }
 
 // //Reflect changes from above
