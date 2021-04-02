@@ -23,12 +23,15 @@ var inputFirstDescriptor = document.querySelector('.user-desc1');
 var inputSecondDescriptor = document.querySelector('.user-desc2');
 // var saveCoverView = document.querySelector('.saved-view');
 
+
 var currentCover;
-var showNewBook;
 
 // Add your event listeners here 👇
 //google add event listener on page load
 //Event listener should be 1-3 lines, only if you have an anonymous function...no logic...only FIRE/INVOKE functions
+
+window.addEventListener('load', makeRandomCover);
+
 randomCoverButton.addEventListener('click', makeRandomCover);
 
 createNewBookButton.addEventListener('click', function() {
@@ -93,14 +96,12 @@ function createNewBook() {
 }
 
 function showNewBookHome() {
-  showNewBook = new Cover(inputCover.value, inputTitle.value, inputFirstDescriptor.value, inputSecondDescriptor.value);
-  formView.classList.add('hidden');
-  viewSavedView.classList.add('hidden');
-  homeView.classList.remove('hidden');
-  coverImage.src = showNewBook.cover;
-  title.innerText = showNewBook.title;
-  descriptor1.innerText = showNewBook.tagline1;
-  descriptor2.innerText =showNewBook.tagline2;
+  currentCover = new Cover(inputCover.value, inputTitle.value, inputFirstDescriptor.value, inputSecondDescriptor.value);
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText =currentCover.tagline2;
+  changeHomeView();
 }
 
 // //Reflect changes from above
