@@ -3,6 +3,8 @@ var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var firstTagline = document.querySelector(".tagline-1");
 var secondTagline = document.querySelector(".tagline-2");
+var makeCover = document.querySelector('.make-new-button')
+
 
 
 // We've provided a few variables below
