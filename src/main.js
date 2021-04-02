@@ -39,7 +39,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
 function getRandomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
@@ -61,7 +60,7 @@ function showForm() {
   saveCoverBtn.classList.add('hidden')
 }
 
-function showsavedCover() {
+function showSavedCover() {
   savedCoverView.classList.remove('hidden')
   formView.classList.add('hidden')
   mainCover.classList.add('hidden')
@@ -88,10 +87,8 @@ tagline2.innerText = userDescript2.value
 showMainView()
 currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2)
 console.log(currentCover)
-
 }
 
+function pushNewCover() {
 
-// function pushNewCover() {
-//
-// }
+}
