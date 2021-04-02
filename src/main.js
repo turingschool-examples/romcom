@@ -22,10 +22,9 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
-var savedView = document.querySelector('.save-view');
+var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
-
-
+var savedCoversView = document.querySelector('.saved-covers-section');
 
 
 // Add your event listeners here 👇
@@ -35,7 +34,8 @@ currentCover.addEventListener("click", displayRandomImage);
 
 // ITERATION 2 EVENT LISTENERS
 makeCoverButton.addEventListener("click", makeNewCover);
-
+viewSavedButton.addEventListener("click", viewSaved);
+homeButton.addEventListener("click", viewHome);
 // Create your event handlers and other functions here 👇
 
 
@@ -83,10 +83,29 @@ function displayRandomHomePage() {
   displayRandomTagline2();
 }
 //ITERATION 2 FORM PAGE & MENU UPDATE
+
 function makeNewCover() {
-  homeView.classList.add("hidden");
-  formView.classList.remove("hidden");
-  randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");
+  homeView.classList.add('hidden');
+  formView.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+function viewSaved() {
+  homeView.classList.add('hidden');
+  formView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  savedCoversView.classList.remove('hidden');
+}
+
+function viewHome() {
+  homeButton.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden');
 }
