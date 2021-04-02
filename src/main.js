@@ -69,10 +69,10 @@ function showsavedCover() {
 }
 
 function showMainView() {
+  mainCover.classList.remove('hidden')
   formView.classList.add('hidden')
   savedCoverView.classList.add('hidden')
-  mainCover.classList.remove('hidden')
   newRandomCoverBtn.classList.remove('hidden')
-  homeBtn.classList.add('hidden')
   saveCoverBtn.classList.remove('hidden')
+  homeBtn.classList.add('hidden')
 }
