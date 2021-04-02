@@ -62,6 +62,7 @@ function exposeHomePage() {
   formArea.classList.add('hidden');
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
+  homeBtn.classList.add('hidden');
 };
 
 // We've provided one function to get you started
