@@ -60,6 +60,7 @@ function showSavedArea() {
 function exposeHomePage() {
   homePageArea.classList.remove('hidden');
   formArea.classList.add('hidden');
+  showRandomCoverBtn.classList.remove('hidden');
 
 };
 
