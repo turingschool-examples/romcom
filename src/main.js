@@ -5,17 +5,36 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
+// ITERATION 1 VARIABLES
 var currentCover = document.querySelector('.random-cover-button');
 
+//ITERATION 0 VARIABLES
 var htmlImage = document.querySelector('.cover-image');
 var htmlTitle = document.querySelector('.cover-title');
 var htmlTagline1 = document.querySelector('.tagline-1');
 var htmlTagline2 = document.querySelector('.tagline-2');
 
+// INTERATION 2 VARIABLES
+var homeButton = document.querySelector('.home-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var makeCoverButton = document.querySelector('.make-new-button');
+var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.save-view');
+var formView = document.querySelector('.form-view');
+
+
+
+
 // Add your event listeners here 👇
 
 window.addEventListener("load", displayRandomHomePage);
-currentCover.addEventListener("click", displayRandomImage)
+currentCover.addEventListener("click", displayRandomImage);
+
+// ITERATION 2 EVENT LISTENERS
+makeCoverButton.addEventListener("click", makeNewCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -63,21 +82,11 @@ function displayRandomHomePage() {
   displayRandomTagline1();
   displayRandomTagline2();
 }
-
-
-//
-// function createRandomHomePage() {
-//   var cover = covers[getRandomIndex(covers)];
-//   var title = titles[getRandomIndex(titles)];
-//   var tagline1 = descriptors[getRandomIndex(descriptors)];
-//   var tagline2 = descriptors[getRandomIndex(descriptors)];
-//   currentCover = new Cover(cover, title, tagline1, tagline2);
-//   displayRandomHomePage();
-// }
-//
-// function displayRandomHomePage() {
-//   htmlImage.src = currentCover.coverImgSrc;
-//   htmlTitle.innerText = currentCover.title;
-//   htmlTagline1.innerText = currentCover.descriptor1;
-//   htmlTagline2.innerText = currentCover.descriptor2;
-// }
+//ITERATION 2 FORM PAGE & MENU UPDATE
+function makeNewCover() {
+  homeView.classList.add("hidden");
+  formView.classList.remove("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+}
