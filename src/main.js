@@ -27,15 +27,12 @@ randomCoverButton.addEventListener('click', makeRandomCover);
   // descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   // descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 
-function makeRandomCover() {
-  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-  coverImage.src = currentCover.cover;
-  title.innerText = currentCover.title;
-  descriptor1.innerText = currentCover.tagline1;
-  descriptor2.innerText = currentCover.tagline2;
-}
 
 makeCoverButton.addEventListener('click', changeFormView);
+
+homeButton.addEventListener('click', changeHomeView);
+
+viewSavedButton.addEventListener('click', changeViewSavedView);
 
 // Create your event handlers and other functions here 👇
 function changeFormView() {
@@ -46,7 +43,6 @@ function changeFormView() {
   homeButton.classList.remove('hidden');
 }
 
-viewSavedButton.addEventListener('click', changeViewSavedView);
 
 function changeViewSavedView() {
   randomCoverButton.classList.add('hidden');
@@ -55,6 +51,23 @@ function changeViewSavedView() {
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
+}
+
+function changeHomeView() {
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  viewSavedView.classList.add('.hidden');
+}
+
+function makeRandomCover() {
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
 }
 
 // //Reflect changes from above
