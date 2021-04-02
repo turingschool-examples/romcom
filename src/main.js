@@ -11,18 +11,19 @@ var homeBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var viewSavedCoverBtn = document.querySelector('.view-saved-button');
 var savedCoverView = document.querySelector('.saved-view');
-
-
-
+///////////////////VARIABLE FOR INPUT FIELDS////////////////////
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDescript1 = document.querySelector('#descriptor1');
+var userDescript2 = document.querySelector('#descriptor2');
+var createCoverBtn = document.querySelector('.create-new-book-button');
 
 /////////// GLOBAL VARIABLES //////////
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  new Cover("imageURl", "title", "desc1", "desc2")
 ];
 
 var currentCover = getRandomCover()
-
-
 
 
 /////// EVENT LISTENERS👇//////
@@ -31,6 +32,7 @@ newRandomCoverBtn.addEventListener('click', showRandomCover)
 makeOwnCoverBtn.addEventListener('click', showForm)
 viewSavedCoverBtn.addEventListener('click', showsavedCover)
 homeBtn.addEventListener('click', showMainView)
+createCoverBtn.addEventListener('click', createNewCover)
 ////// EVENT HANDLERS AND OTHER FUNCTIONS👇///////////
 
 function getRandomIndex(array) {
@@ -75,4 +77,12 @@ function showMainView() {
   newRandomCoverBtn.classList.remove('hidden')
   saveCoverBtn.classList.remove('hidden')
   homeBtn.classList.add('hidden')
+}
+
+function createNewCover() {
+ var newCover = new Cover(userCover.value, userTitle.value,userDescript1.value,userDescript2.value)  
+
+ savedCovers.push(newCover)
+ console.log(savedCovers)
+
 }
