@@ -29,6 +29,7 @@ var currentCover;
 //google add event listener on page load
 //Event listener should be 1-3 lines, only if you have an anonymous function...no logic...only FIRE/INVOKE functions
 randomCoverButton.addEventListener('click', makeRandomCover);
+
 createNewBookButton.addEventListener('click', function() {
   event.preventDefault();
   createNewBook;
@@ -81,6 +82,17 @@ function makeRandomCover() {
   title.innerText = currentCover.title;
   descriptor1.innerText = currentCover.tagline1;
   descriptor2.innerText = currentCover.tagline2;
+}
+
+function createNewBook() {
+  covers.push(inputCover.value);
+  titles.push(inputTitle.value);
+  descriptors.push(inputFirstDescriptor.value);
+  descriptors.push(inputSecondDescriptor.value);
+}
+
+function showNewBookHome() {
+  showNewBook = new Cover()
 }
 
 // //Reflect changes from above
