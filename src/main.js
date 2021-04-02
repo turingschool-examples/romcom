@@ -67,30 +67,25 @@ randomTitle(titles);
 randomTagline1(descriptors);
 randomTagline2(descriptors);
 
-
-function goHome() {
-  homeSection.classList.toggle("hidden");
-  formSection.classList.add("hidden");
-  randomCoverButton.classList.remove("hidden");
-  saveCoverButton.classList.remove("hidden");
-  homeButton.classList.add("hidden");
-}
-
-
 function createRandomCover() {
   var cover1 = randomCoverImage(covers);
   var title1 = randomTitle(titles)
   var descriptor1 = randomTagline1(descriptors)
   var descriptor2 = randomTagline2(descriptors)
   currentCover = new Cover (cover1, title1, descriptor1, descriptor2);
-  console.log(currentCover)
 }
-
 
 // function saveCover() {
 //
 // }
 
+function goHome() {
+  homeSection.classList.remove("hidden");
+  formSection.classList.add("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+}
 
 function viewSaved() {
   homeSection.classList.add("hidden");
@@ -100,7 +95,6 @@ function viewSaved() {
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
 }
-
 
 function makeNew() {
   homeSection.classList.add("hidden");
@@ -122,8 +116,14 @@ function makeMyBook (){
     alert("You have some empty fields! Fill em in.")
   }
 
-  currentCover = new Cover (userCoverField.value, userTitleField.value, userTagline1Field.value, userTagline2Field.value);
+  var newUserCover = new Cover (userCoverField.value, userTitleField.value, userTagline1Field.value, userTagline2Field.value);
 
-  //add in a toggle to go back to view homepage
-  goHome()
+  goHome();
+
+  //display our new user cover instance in the main cover
+  coverImage.src = newUserCover.cover;
+  bookTitle.innerText = newUserCover.title;
+  tagline1.innerText = newUserCover.tagline1;
+  tagline2.innerText = newUserCover.tagline2;
+
 };
