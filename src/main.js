@@ -24,6 +24,7 @@ window.addEventListener('load', randomCover);
 showRandomCoverBtn.addEventListener('click', randomCover);
 makeYourOwnCoverBtn.addEventListener('click', hideHomePage);
 viewSavedBtn.addEventListener('click', showSavedArea);
+homeBtn.addEventListener('click', exposeHomePage);
 
 
 
@@ -45,7 +46,7 @@ homePageArea.classList.add('hidden');
 saveCoverBtn.classList.add('hidden');
 showRandomCoverBtn.classList.add('hidden');
 homeBtn.classList.remove('hidden');
-}
+};
 
 
 function showSavedArea() {
@@ -54,7 +55,15 @@ function showSavedArea() {
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
-}
+};
+
+function exposeHomePage() {
+  homePageArea.classList.remove('hidden');
+  formArea.classList.add('hidden');
+  showRandomCoverBtn.classList.remove('hidden');
+  saveCoverBtn.classList.remove('hidden');
+  homeBtn.classList.add('hidden');
+};
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
