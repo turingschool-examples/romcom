@@ -18,8 +18,15 @@ var currentCover = new Cover(coverImage, coverTitle, firstTagline, secondTagline
 window.addEventListener('load', getRandomCover);
 makeCover.addEventListener('click', )
 
+
 // Create your event handlers and other functions here 👇
 
+//  Will need to utilize CSS features so that when the button for "make cover" is clicked, It will hide the
+// -homepage
+// -the "Save cover" button
+// -and "new random cover" button.
+
+// The form to make a new cover should be visable
 
 function getRandomCover() {
   changeCover();
