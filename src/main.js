@@ -30,7 +30,7 @@ var currentCover = getRandomCover()
 
 newRandomCoverBtn.addEventListener('click', showRandomCover)
 makeOwnCoverBtn.addEventListener('click', showForm)
-viewSavedCoverBtn.addEventListener('click', showsavedCover)
+viewSavedCoverBtn.addEventListener('click', showSavedCover)
 homeBtn.addEventListener('click', showMainView)
 createCoverBtn.addEventListener('click', createNewCover)
 ////// EVENT HANDLERS AND OTHER FUNCTIONS👇///////////
@@ -86,9 +86,14 @@ tagline1.innerText = userDescript1.value
 tagline2.innerText = userDescript2.value
 showMainView()
 currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2)
-console.log(currentCover)
+pushNewCover()
 }
 
 function pushNewCover() {
-
+covers.push(userCover.value)
+console.log("covers", covers)
+titles.push(userTitle.value)
+console.log('titles', titles)
+descriptors.push(userDescript1.value, userDescript2.value)
+console.log('descriptors', descriptors)
 }
