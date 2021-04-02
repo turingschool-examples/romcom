@@ -80,9 +80,18 @@ function showMainView() {
 }
 
 function createNewCover() {
- var newCover = new Cover(userCover.value, userTitle.value,userDescript1.value,userDescript2.value)  
-
- savedCovers.push(newCover)
- console.log(savedCovers)
+event.preventDefault()
+coverImage.src = userCover.value
+coverTitle.innerText = userTitle.value
+tagline1.innerText = userDescript1.value
+tagline2.innerText = userDescript2.value
+showMainView()
+currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2)
+console.log(currentCover)
 
 }
+
+
+// function pushNewCover() {
+//
+// }
