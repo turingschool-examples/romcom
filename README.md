@@ -14,15 +14,17 @@
 
 
 ## <a id="how-to-use-app">How to Use App</a>
+### View the App in your Browser
+[Access the latest version here](https://lkessell.github.io/romcom/)
 ### Home View
 ![image](https://user-images.githubusercontent.com/77205456/113491612-29174080-94a0-11eb-8b78-baa2f03f1783.png)  
 When opening the app, you will be taken to the home view. On this page, you will see a randomly generated cover with random title and tagline. You can click the "Show New Random Cover" button to generate a new random cover. If a particular cover strikes your fancy, click the "Save Cover" button to save it. You can click the "View Saved Covers" button to see all of your currently saved covers.
 ### Saved Covers View
 ![image (1)](https://user-images.githubusercontent.com/77205456/113491643-65e33780-94a0-11eb-8faa-1fc3effff294.png)   
-This page displays all of the covers that you have saved. If you would like to delete a cover, double-click on it. (Be careful, though, this is permanent!)\   Feeling creative? Click on the "Make Your Own Cover" button!
+This page displays all of the covers that you have saved. If you would like to delete a cover, double-click on it. (Be careful, though, this is permanent!)   Feeling creative? Click on the "Make Your Own Cover" button!
 ### Make Your Own Cover View
 ![image (2)](https://user-images.githubusercontent.com/77205456/113491656-7abfcb00-94a0-11eb-867f-be6e463d8cc6.png)    
-This form will allow you to create a custom cover to your specifications. Simply add a link to the image of your choice in the Cover field, then add a title and two descriptors for your tagline. After all forms are filled, click the "Make My Book" button to view your new creation.\  
+This form will allow you to create a custom cover to your specifications. Simply add a link to the image of your choice in the Cover field, then add a title and two descriptors for your tagline. After all forms are filled, click the "Make My Book" button to view your new creation.  
 This will take you back to the Home View, where you can save your new cover, or generate new random covers.
 
 
