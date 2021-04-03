@@ -104,3 +104,6 @@
 
 
 <a href="name="how-to-use-app">How to Use App</a>
+
+
+<a href="technologies-used">Technologies Used</a>
