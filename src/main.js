@@ -95,6 +95,14 @@ function hideElement(element) {
   element.classList.add('hidden')
 }
 
+function renderNewCoverPage() {
+  showElement(makeNewCoverPage);
+  showElement(homeButton);
+  hideElement(homePage);
+  hideElement(randomCoverButton);
+  hideElement(saveCoverButton);
+}
+
 // function createCoverDisplay() {
 //   homeButton.classList.add();
 //   saveCoverButton.classList.remove();
