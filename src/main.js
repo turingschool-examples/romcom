@@ -106,7 +106,7 @@ function createCoverDisplay() {
   makeNewCoverPage.classList.add();
   homePage.classList.remove();
 }
-console.log(createCoverDisplay)
+
 
 
 // // We've provided one function to get you started
