@@ -33,7 +33,8 @@ var currentCover = new Cover()
 // Add your event listeners here 👇
 
 window.addEventListener('load', randomizeCover);
-randomCoverButton.addEventListener('click', randomizeCover);
+randomCoverButton.addEventListener('click', randomizeCover
+makeNewCoverButton.addEventListener('click', )
 
 
 // Create your event handlers and other functions here 👇
@@ -82,8 +83,9 @@ function changeSecondDescriptor() {
   var index = getRandomIndex(descriptors);
   secondTagline.innerHTML = descriptors[index];
   currentCover.tagline2 = descriptors[index];
-
 }
+
+
 
 
 
