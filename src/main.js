@@ -30,6 +30,7 @@ makeYourOwnCoverBtn.addEventListener('click', hideHomePage);
 viewSavedBtn.addEventListener('click', showSavedArea);
 homeBtn.addEventListener('click', exposeHomePage);
 createNewBookBtn.addEventListener('click', createNewBook);
+saveCoverBtn.addEventListener('click', addCoverToSaved);
 
 
 
@@ -56,6 +57,15 @@ function createNewBook(event) {
   tagline1.innerText = descriptors.pop();
 }
 
+function addCoverToSaved() {
+  savedCovers.push(currentCover);
+  console.log(savedCovers);
+}
+
+
+
+
+// HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
 function hideHomePage() {
 formArea.classList.remove('hidden');
@@ -64,7 +74,6 @@ saveCoverBtn.classList.add('hidden');
 showRandomCoverBtn.classList.add('hidden');
 homeBtn.classList.remove('hidden');
 };
-
 
 function showSavedArea() {
   homePageArea.classList.add('hidden');
