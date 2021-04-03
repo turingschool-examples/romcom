@@ -11,6 +11,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var createNewBookButton = document.querySelector('.create-new-book-button')
 var viewSavedButton = document.querySelector('.view-saved-button');
+// var deleteSavedCover = document.querySelector('.delete-saved-cover');
 
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
@@ -42,10 +43,6 @@ createNewBookButton.addEventListener('click', function() {
   createNewBook();
   showNewBookHome();
 });
-  // coverImage.src = covers[getRandomIndex(covers)];
-  // title.innerText = titles[getRandomIndex(titles)];
-  // descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
-  // descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 
 
 makeCoverButton.addEventListener('click', changeFormView);
@@ -55,6 +52,8 @@ homeButton.addEventListener('click', changeHomeView);
 viewSavedButton.addEventListener('click', changeViewSavedView);
 
 saveCoverButton.addEventListener('click', saveCurrentCover);
+
+savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 function changeFormView() {
@@ -73,7 +72,6 @@ function changeViewSavedView() {
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
-  showSavedCovers();
 }
 
 function changeHomeView() {
@@ -113,31 +111,27 @@ function showNewBookHome() {
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
+    showSavedCovers();
   }
 }
 
 function showSavedCovers() {
-  for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
       <div class="mini-cover">
-        <img class="mini-cover" src="${savedCovers[i].cover}">
-        <h1 class="cover-title">${savedCovers[i].title}</h1>
-        <h2 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h2>
+        <img class="mini-cover" src="${currentCover.cover}">
+        <h1 class="cover-title">${currentCover.title}</h1>
+        <h2 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h2>
       </div>
     `
   }
+
+function deleteSavedCover() {
+  if (event.target.className === 'mini-cover') {
+    var div = event.target.parentElement;
+    savedCoversSection.removeChild(div);
+  }
 }
 
-// //Reflect changes from above
-// saveCoverButton.addEventListener('click', function() {
-//
-//
-//   randomCoverButton.style.display = "none";
-//   homeView.classList.add('hidden');
-//   saveCoverView.classList.remove('hidden');
-
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
