@@ -17,11 +17,11 @@ var coverField = document.getElementById('cover');
 var titleField = document.getElementById('title');
 var taglineField1 = document.getElementById('descriptor1');
 var taglineField2 = document.getElementById('descriptor2');
+var currentCover;
 
 // BUTTONS
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
-var currentCover = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeCoverButton = document.querySelector('.make-new-button');
@@ -29,11 +29,12 @@ var makeBookButton = document.querySelector('.create-new-book-button');
 
 //EVENT LISTENERS
 window.addEventListener("load", displayRandomHomePage);
-currentCover.addEventListener("click", displayRandomImage);
+randomCoverButton.addEventListener("click", displayRandomImage);
 makeCoverButton.addEventListener("click", makeNewCover);
 viewSavedButton.addEventListener("click", viewSaved);
 homeButton.addEventListener("click", viewHome);
 makeBookButton.addEventListener("click", createBook);
+saveCoverButton.addEventListener("click", saveCreatedCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -87,6 +88,8 @@ function makeNewCover() {
   formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
+
 }
 function viewSaved() {
   homeButton.classList.remove('hidden');
@@ -105,9 +108,6 @@ function viewHome() {
   savedCoversView.classList.add('hidden');
 }
 
-//ITERATION 3 MAKE BOOK INPUT/BUTTON
-
-
 function createBook() {
   event.preventDefault();
   covers.push(coverField.value);
@@ -118,11 +118,23 @@ function createBook() {
   htmlTitle.innerText = titleField.value;
   htmlTagline1.innerText = taglineField1.value;
   htmlTagline2.innerText = taglineField2.value;
+  currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
   viewHome();
 }
 
-// currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
+// when user clicks save cover button, current cover is pushed to savedCovers arrays
+function saveCreatedCover() {
+  if (!savedCovers.includes(currentCover)) {
+      savedCovers.push(currentCover);
+  }
+}
 
+// function displayCurrentCover() {
+//   htmlImage.src = currentCover.coverImgSrc;
+//   htmlTitle.innerText = currentCover.title;
+//   htmlTagline1.innerText = currentCover.descriptor1;
+//   htmlTagline2.innerText = currentCover.descriptor2;
+// }
 // save input values to respective arrays
 // use input values to create a new instance of the Cover class
 // change back to home view (hiding form view)
