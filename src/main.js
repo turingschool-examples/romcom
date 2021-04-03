@@ -50,10 +50,10 @@ function createNewBook(event) {
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
   formArea.classList.add('hidden');
   homePageArea.classList.remove('hidden');
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImage.src = covers.pop();
+  coverTitle.innerText = titles.pop();
+  // tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  // tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 
