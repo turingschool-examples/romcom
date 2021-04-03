@@ -6,8 +6,8 @@
 
 ### Table of Contents
 
-- <a href"#how-to-use-app">How to Use App</a>
-- <a href"#technologies-used">Technologies Used</a>
+- <a href="#how-to-use-app">How to Use App</a>
+- <a href="#technologies-used">Technologies Used</a>
 - Contributors
 - Future Additions
 - Special Thanks
