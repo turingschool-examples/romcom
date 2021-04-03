@@ -5,6 +5,8 @@ var coverTitle = document.querySelector(".cover-title");
 var firstTagline = document.querySelector(".tagline-1");
 var secondTagline = document.querySelector(".tagline-2");
 
+
+// The buttons!
 var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
@@ -24,6 +26,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
+
 var currentCover = new Cover()
 
 
@@ -34,6 +37,7 @@ randomCoverButton.addEventListener('click', randomizeCover);
 makeNewCoverButton.addEventListener('click', renderNewCoverPage);
 homeButton.addEventListener('click', renderHomePage);
 viewSavedButton.addEventListener('click', renderSavedCoversPage)
+makeNewCoverButton.addEventListener('click', createCoverDisplay)
 
 
 // Create your event handlers and other functions here 👇
