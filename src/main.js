@@ -103,6 +103,14 @@ function renderNewCoverPage() {
   hideElement(saveCoverButton);
 }
 
+function renderHomePage() {
+  showElement(homePage);
+  showElement(randomCoverButton);
+  showElement(saveCoverButton);
+  hideElement(makeNewCoverPage);
+  hideElement(homeButton);
+}
+
 // function createCoverDisplay() {
 //   homeButton.classList.add();
 //   saveCoverButton.classList.remove();
