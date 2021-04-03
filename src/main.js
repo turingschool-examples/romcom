@@ -52,7 +52,7 @@ function createNewBook(event) {
   homePageArea.classList.remove('hidden');
   coverImage.src = covers.pop();
   coverTitle.innerText = titles.pop();
-  // tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline1.innerText = descriptors.pop();
   // tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
