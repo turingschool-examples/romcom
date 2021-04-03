@@ -112,7 +112,9 @@ function showNewBookHome() {
 }
 
 function saveCurrentCover() {
-  savedCovers.push(currentCover);
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 // //Reflect changes from above
