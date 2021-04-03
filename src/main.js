@@ -38,14 +38,7 @@ window.addEventListener('load', makeRandomCover);
 
 randomCoverButton.addEventListener('click', makeRandomCover);
 
-createNewBookButton.addEventListener('click', function() {
-  event.preventDefault();
-  if (inputCover.value && inputTitle.value && inputFirstDescriptor.value && inputSecondDescriptor.value) {    
-    createNewBook();
-    showNewBookHome();
-  }
-});
-
+createNewBookButton.addEventListener('click', saveCustomBook);
 
 makeCoverButton.addEventListener('click', changeFormView);
 
@@ -61,6 +54,7 @@ savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 function changeFormView() {
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
+  viewSavedView.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
@@ -71,7 +65,6 @@ function changeViewSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
@@ -133,6 +126,14 @@ function deleteSavedCover() {
   if (event.target.className === 'mini-cover') {
     var div = event.target.parentElement;
     savedCoversSection.removeChild(div);
+  }
+}
+
+function saveCustomBook() {
+  event.preventDefault();
+  if (inputCover.value && inputTitle.value && inputFirstDescriptor.value && inputSecondDescriptor.value) {
+    createNewBook();
+    showNewBookHome();
   }
 }
 
