@@ -77,6 +77,7 @@ function displayRandomHomePage() {
   displayRandomTagline1();
   displayRandomTagline2();
 }
+//
 
 //ITERATION 2 FORM PAGE & MENU UPDATE
 
