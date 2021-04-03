@@ -34,7 +34,7 @@ makeCoverButton.addEventListener("click", makeNewCover);
 viewSavedButton.addEventListener("click", viewSaved);
 homeButton.addEventListener("click", viewHome);
 makeBookButton.addEventListener("click", createBook);
-saveCoverButton.addEventListener("click", saveCreatedCover);
+saveCoverButton.addEventListener("click", saveCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -91,13 +91,33 @@ function makeNewCover() {
   currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
 
 }
+// function viewSaved() {
+//   homeButton.classList.remove('hidden');
+//   homeView.classList.add('hidden');
+//   formView.classList.add('hidden');
+//   randomCoverButton.classList.add('hidden');
+//   saveCoverButton.classList.add('hidden');
+//   savedView.classList.remove('hidden');
+// }
+
 function viewSaved() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-  savedCoversView.classList.remove('hidden');
+  savedView.classList.remove('hidden');
+    for (var i = 0; i < savedCovers.length; i++) {
+      savedCoversView.innerHTML += `
+      <section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </section>
+      `
+  }
 }
 function viewHome() {
   homeButton.classList.add('hidden');
@@ -123,19 +143,14 @@ function createBook() {
 }
 
 // when user clicks save cover button, current cover is pushed to savedCovers arrays
-function saveCreatedCover() {
-  if (!savedCovers.includes(currentCover)) {
-      savedCovers.push(currentCover);
-  }
-}
+function saveCover() {
+var saveCover = htmlImage.src;
+var saveTitle = htmlTitle.innerText;
+var saveTagline1 = htmlTagline1.innerText;
+var saveTagline2 = htmlTagline2.innerText;
+var saveThisCover = new Cover(saveCover, saveTitle, saveTagline1, saveTagline2);
 
-// function displayCurrentCover() {
-//   htmlImage.src = currentCover.coverImgSrc;
-//   htmlTitle.innerText = currentCover.title;
-//   htmlTagline1.innerText = currentCover.descriptor1;
-//   htmlTagline2.innerText = currentCover.descriptor2;
-// }
-// save input values to respective arrays
-// use input values to create a new instance of the Cover class
-// change back to home view (hiding form view)
-// display new cover image, title, descriptors on home page
+if (!savedCovers.includes(saveThisCover)) {
+  return savedCovers.push(saveThisCover);
+}
+}
