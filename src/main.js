@@ -1,5 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
-
 var coverImage = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('.tagline-1');
@@ -11,7 +9,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var createNewBookButton = document.querySelector('.create-new-book-button')
 var viewSavedButton = document.querySelector('.view-saved-button');
-// var deleteSavedCover = document.querySelector('.delete-saved-cover');
+
 
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
@@ -22,7 +20,7 @@ var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
 var inputFirstDescriptor = document.querySelector('.user-desc1');
 var inputSecondDescriptor = document.querySelector('.user-desc2');
-// var saveCoverView = document.querySelector('.saved-view');
+
 
 var savedCoversSection = document.querySelector('.saved-covers-section');
 
@@ -30,20 +28,13 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 var currentCover;
 var savedCovers = [];
 
-// Add your event listeners here 👇
-//google add event listener on page load
-//Event listener should be 1-3 lines, only if you have an anonymous function...no logic...only FIRE/INVOKE functions
+
 
 window.addEventListener('load', makeRandomCover);
 
 randomCoverButton.addEventListener('click', makeRandomCover);
 
-createNewBookButton.addEventListener('click', function() {
-  event.preventDefault();
-  createNewBook();
-  showNewBookHome();
-});
-
+createNewBookButton.addEventListener('click', saveCustomBook);
 
 makeCoverButton.addEventListener('click', changeFormView);
 
@@ -55,15 +46,16 @@ saveCoverButton.addEventListener('click', saveCurrentCover);
 
 savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
-// Create your event handlers and other functions here 👇
+
+
 function changeFormView() {
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
+  viewSavedView.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
-
 
 function changeViewSavedView() {
   randomCoverButton.classList.add('hidden');
@@ -83,7 +75,6 @@ function changeHomeView() {
   viewSavedView.classList.add('hidden');
 }
 
-
 function makeRandomCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   coverImage.src = currentCover.cover;
@@ -97,6 +88,7 @@ function createNewBook() {
   titles.push(inputTitle.value);
   descriptors.push(inputFirstDescriptor.value);
   descriptors.push(inputSecondDescriptor.value);
+  console.log(inputSecondDescriptor.value);
 }
 
 function showNewBookHome() {
@@ -129,6 +121,14 @@ function deleteSavedCover() {
   if (event.target.className === 'mini-cover') {
     var div = event.target.parentElement;
     savedCoversSection.removeChild(div);
+  }
+}
+
+function saveCustomBook() {
+  event.preventDefault();
+  if (inputCover.value && inputTitle.value && inputFirstDescriptor.value && inputSecondDescriptor.value) {
+    createNewBook();
+    showNewBookHome();
   }
 }
 
