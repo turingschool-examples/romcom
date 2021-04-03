@@ -12,6 +12,8 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewCoverButton = document.querySelector('.make-new-button');
+var makeCoverButton = document.querySelector('.create-new-book-button');
+var userCover = document.querySelector('.user-cover');
 
 // different page views
 var homePage = document.querySelector('.home-view');
@@ -37,7 +39,14 @@ randomCoverButton.addEventListener('click', randomizeCover);
 makeNewCoverButton.addEventListener('click', renderNewCoverPage);
 homeButton.addEventListener('click', renderHomePage);
 viewSavedButton.addEventListener('click', renderSavedCoversPage)
-makeNewCoverButton.addEventListener('click', createCoverDisplay)
+// makeNewCoverButton.addEventListener('click', createCoverDisplay)
+makeCoverButton.addEventListener('click', practice)
+
+function practice() {
+  // currentCover = new Cover(userCover.value,)
+  console.log(userCover.value)
+  event.preventDefault()
+}
 
 
 // Create your event handlers and other functions here 👇
