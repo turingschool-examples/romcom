@@ -6,37 +6,12 @@
 
 ### Table of Contents
 
-- <a href="name="how-to-use-app">How to Use App</a>
-- <a name="technologies-used"></a>Technologies Used
+- <a id="facebook_ads_example">How to Use App</a>
+- <a id="technologies-used">Technologies Used</a>
 - Contributors
 - Future Additions
 - Special Thanks
 
-# <a name="team-members"></a>Team Members
-* "J. Jesus. P. Aguinaga" <admin@listforks.com>
-
-
-
-
-
-
-
-<a id="facebook_ads_example">This is the Facebook ad example I want to link to.</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* "Team Members" <admin@listforks.com>
 
 
 
@@ -79,4 +54,53 @@
 
 
 
-<a href="#how-to-use-app">Click here to see the content below.</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="name="how-to-use-app">How to Use App</a>
