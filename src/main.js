@@ -55,15 +55,13 @@ function createNewBook(event) {
   coverTitle.innerText = titles.pop();
   tagline2.innerText = descriptors.pop();
   tagline1.innerText = descriptors.pop();
+  saveCoverBtn.classList.remove('hidden');
 }
 
 function addCoverToSaved() {
   savedCovers.push(currentCover);
   console.log(savedCovers);
 }
-
-
-
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
