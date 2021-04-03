@@ -1,6 +1,6 @@
 var covers = [
   './assets/bluebrocade.jpg',
-  './assets/dance.jpg', 
+  './assets/dance.jpg',
   './assets/embrace.png',
   './assets/fire.png',
   './assets/frock.png',
@@ -53,7 +53,10 @@ var titles = [
   "Stolen Rubies",
   "Emerald Eyes",
   "Sapphire Skies",
-  "Opal Passions"
+  "Opal Passions",
+  "Eye of the Potato",
+  "Hard Harvest",
+  "Left with Crumbs"
 ];
 
 var descriptors = [
@@ -88,5 +91,11 @@ var descriptors = [
   "agony",
   "curses",
   "blessings",
-  "melancholy"
+  "melancholy",
+  "feast",
+  "potatoes",
+  "famine",
+  "filth",
+  "covfefe",
+  "bankruptcy",
 ];
