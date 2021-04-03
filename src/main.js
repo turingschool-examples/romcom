@@ -11,7 +11,11 @@ var saveCoverBtn = document.querySelector('.save-cover-button');
 var homeBtn = document.querySelector('.home-button');
 var viewSavedBtn = document.querySelector('.view-saved-button');
 var savedCoversArea = document.querySelector('.saved-view');
-
+var userCover = document.getElementById('cover');
+var userTitle = document.getElementById('title');
+var userDesc1 = document.getElementById('descriptor1');
+var userDesc2 = document.getElementById('descriptor2');
+var createNewBookBtn = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below this
 var savedCovers = [
@@ -25,7 +29,7 @@ showRandomCoverBtn.addEventListener('click', randomCover);
 makeYourOwnCoverBtn.addEventListener('click', hideHomePage);
 viewSavedBtn.addEventListener('click', showSavedArea);
 homeBtn.addEventListener('click', exposeHomePage);
-
+createNewBookBtn.addEventListener('click', createNewBook);
 
 
 
@@ -36,8 +40,16 @@ function randomCover() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
-  console.log(currentCover);
 };
+
+function createNewBook(event) {
+  event.preventDefault();
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value, userDesc2.value);
+  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+  console.log(currentCover);
+}
 
 
 function hideHomePage() {
