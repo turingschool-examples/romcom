@@ -40,8 +40,10 @@ randomCoverButton.addEventListener('click', makeRandomCover);
 
 createNewBookButton.addEventListener('click', function() {
   event.preventDefault();
-  createNewBook();
-  showNewBookHome();
+  if (inputCover.value && inputTitle.value && inputFirstDescriptor.value && inputSecondDescriptor.value) {    
+    createNewBook();
+    showNewBookHome();
+  }
 });
 
 
@@ -69,6 +71,7 @@ function changeViewSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
@@ -97,6 +100,7 @@ function createNewBook() {
   titles.push(inputTitle.value);
   descriptors.push(inputFirstDescriptor.value);
   descriptors.push(inputSecondDescriptor.value);
+  console.log(inputSecondDescriptor.value);
 }
 
 function showNewBookHome() {
