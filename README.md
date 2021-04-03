@@ -8,9 +8,9 @@
 
 - <a href="#how-to-use-app">How to Use App</a>
 - <a href="#technologies-used">Technologies Used</a>
-- Contributors
-- Future Additions
-- Special Thanks
+- <a href="#contributors">Contributors</a>
+- <a href="#future-additions">Future Additions</a>
+- <a href="#special-thanks">Special Thanks</a>
 
 
 
@@ -103,7 +103,16 @@
 
 
 
-<a id="how-to-use-app">How to Use App</a>
+- <a id="how-to-use-app">How to Use App</a>
 
 
-<a id="technologies-used">Technologies Used</a>
+- <a id="technologies-used">Technologies Used</a>
+
+
+- <a id="contributors">Contributors</a>
+
+
+- <a id="future-additions">Future Additions</a>
+
+
+- <a id="special-thanks">Special Thanks</a>
