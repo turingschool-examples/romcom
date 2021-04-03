@@ -27,9 +27,7 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 
 
 var currentCover;
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 
 // Add your event listeners here 👇
 //google add event listener on page load
@@ -75,6 +73,7 @@ function changeViewSavedView() {
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
+  showSavedCovers();
 }
 
 function changeHomeView() {
@@ -114,6 +113,18 @@ function showNewBookHome() {
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
+  }
+}
+
+function showSavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+      <div class="mini-cover">
+        <img class="mini-cover" src="${savedCovers[i].cover}">
+        <h1 class="cover-title">${savedCovers[i].title}</h1>
+        <h2 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h2>
+      </div>
+    `
   }
 }
 
