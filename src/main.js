@@ -48,7 +48,12 @@ function createNewBook(event) {
   titles.push(userTitle.value);
   descriptors.push(userDesc1.value, userDesc2.value);
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
-  console.log(currentCover);
+  formArea.classList.add('hidden');
+  homePageArea.classList.remove('hidden');
+  coverImage.src = covers[getRandomIndex(covers)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 
