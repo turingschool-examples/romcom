@@ -15,6 +15,8 @@ var makeNewCoverButton = document.querySelector('.make-new-button');
 var homePage = document.querySelector('.home-view');
 var savedPage = document.querySelector('.saved-view');
 var makeNewCoverPage = document.querySelector('.form-view')
+var savedCollection = document.querySelector('.saved-covers-section')
+
 
 
 // We've provided a few variables below
@@ -29,17 +31,13 @@ var currentCover = new Cover()
 
 window.addEventListener('load', randomizeCover);
 randomCoverButton.addEventListener('click', randomizeCover);
-makeNewCoverButton.addEventListener('click', createCoverDisplay)
+makeNewCoverButton.addEventListener('click', renderNewCoverPage);
+homeButton.addEventListener('click', renderHomePage);
+viewSavedButton.addEventListener('click', renderSavedCoversPage)
 
 
 // Create your event handlers and other functions here 👇
 
-//  Will need to utilize CSS features so that when the button for "make cover" is clicked, It will hide the
-// -homepage
-// -the "Save cover" button
-// -and "new random cover" button.
-
-// The form to make a new cover should be visable
 
 // function createRandomCover() {
 //   var currentCover = new Cover(cover[getRandomIndex(covers)],title[getRandomIndex(titles)],
@@ -59,7 +57,7 @@ function randomizeCover() {
   changeTitle();
   changeFirstDescriptor();
   changeSecondDescriptor();
-
+  console.log(currentCover);
 }
 
 
@@ -88,20 +86,21 @@ function changeSecondDescriptor() {
 }
 
 
-// Need to create a funtion createCoverDisplay
-// This function will run in the event listener "makeNewCoverButton"
-// this function will hold the buttons I want to hide (save cover and show new random)
-// and also the button I need to add (home)
-// I need to hide the home home page
-// and display the page with the form to make a new cover
-function createCoverDisplay() {
-  homeButton.classList.add();
-  saveCoverButton.classList.remove();
-  randomCoverButton.classList.remove();
-  makeNewCoverPage.classList.add();
-  homePage.classList.remove();
+
+function showElement(element) {
+  element.classList.remove('hidden')
 }
-console.log(createCoverDisplay)
+
+
+
+// function createCoverDisplay() {
+//   homeButton.classList.add();
+//   saveCoverButton.classList.remove();
+//   randomCoverButton.classList.remove();
+//   makeNewCoverPage.classList.add();
+//   homePage.classList.remove();
+// }
+// console.log(createCoverDisplay, )
 
 
 // // We've provided one function to get you started
