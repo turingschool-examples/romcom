@@ -15,7 +15,7 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var viewSavedView = document.querySelector('.saved-view');
-var viewSavedButton = document.querySelector('.view-saved-button');
+
 
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
@@ -23,12 +23,18 @@ var inputFirstDescriptor = document.querySelector('.user-desc1');
 var inputSecondDescriptor = document.querySelector('.user-desc2');
 // var saveCoverView = document.querySelector('.saved-view');
 
+var savedCoversSection = document.querySelector('.saved-covers-section');
+
+
 var currentCover;
-var showNewBook;
+var savedCovers = [];
 
 // Add your event listeners here 👇
 //google add event listener on page load
 //Event listener should be 1-3 lines, only if you have an anonymous function...no logic...only FIRE/INVOKE functions
+
+window.addEventListener('load', makeRandomCover);
+
 randomCoverButton.addEventListener('click', makeRandomCover);
 
 createNewBookButton.addEventListener('click', function() {
@@ -48,6 +54,8 @@ homeButton.addEventListener('click', changeHomeView);
 
 viewSavedButton.addEventListener('click', changeViewSavedView);
 
+saveCoverButton.addEventListener('click', saveCurrentCover);
+
 // Create your event handlers and other functions here 👇
 function changeFormView() {
   homeView.classList.add('hidden');
@@ -65,6 +73,7 @@ function changeViewSavedView() {
   viewSavedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
+  showSavedCovers();
 }
 
 function changeHomeView() {
@@ -73,7 +82,7 @@ function changeHomeView() {
   saveCoverButton.classList.remove('hidden');
   homeView.classList.remove('hidden');
   formView.classList.add('hidden');
-  viewSavedView.classList.add('.hidden');
+  viewSavedView.classList.add('hidden');
 }
 
 
@@ -93,14 +102,30 @@ function createNewBook() {
 }
 
 function showNewBookHome() {
-  showNewBook = new Cover(inputCover.value, inputTitle.value, inputFirstDescriptor.value, inputSecondDescriptor.value);
-  formView.classList.add('hidden');
-  viewSavedView.classList.add('hidden');
-  homeView.classList.remove('hidden');
-  coverImage.src = showNewBook.cover;
-  title.innerText = showNewBook.title;
-  descriptor1.innerText = showNewBook.tagline1;
-  descriptor2.innerText =showNewBook.tagline2;
+  currentCover = new Cover(inputCover.value, inputTitle.value, inputFirstDescriptor.value, inputSecondDescriptor.value);
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
+  changeHomeView();
+}
+
+function saveCurrentCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
+
+function showSavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+      <div class="mini-cover">
+        <img class="mini-cover" src="${savedCovers[i].cover}">
+        <h1 class="cover-title">${savedCovers[i].title}</h1>
+        <h2 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h2>
+      </div>
+    `
+  }
 }
 
 // //Reflect changes from above
