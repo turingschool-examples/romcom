@@ -13,6 +13,7 @@ var viewSavedCoverBtn = document.querySelector('.view-saved-button');
 var savedCoverView = document.querySelector('.saved-view');
 var saveCoverBtn = document.querySelector('.save-cover-button')
 ///////////////////VARIABLE FOR INPUT FIELDS////////////////////
+
 var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
 var userDescript1 = document.querySelector('#descriptor1');
@@ -87,20 +88,23 @@ function createNewCover() {
   coverTitle.innerText = userTitle.value
   tagline1.innerText = userDescript1.value
   tagline2.innerText = userDescript2.value
-  showMainView()
   currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2)
+  showMainView()
   pushNewCover()
 }
 
 function pushNewCover() {
   covers.push(userCover.value)
-  // console.log("covers", covers)
   titles.push(userTitle.value)
-  // console.log('titles', titles)
   descriptors.push(userDescript1.value, userDescript2.value)
-  // console.log('descriptors', descriptors)
 }
 
 function saveCurrentCover() {
-  console.log('its clicking')
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  if (savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+    console.log(savedCovers)
+  }
+  // console.log('its clicking')
+
 }
