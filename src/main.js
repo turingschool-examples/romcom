@@ -40,7 +40,7 @@ randomButton.addEventListener('click', randomizeCover)
 makeButton.addEventListener('click', viewForm)
 viewSaveButton.addEventListener('click', viewSave)
 homeButton.addEventListener('click', viewHome)
-createButton.addEventListener('click', save)
+createButton.addEventListener('click', saveData)
 // Event Handler
 function randomizeCover() {
   title.innerText = titles[getRandomIndex(titles)]
@@ -68,5 +68,15 @@ function viewHome() {
   randomButton.classList.remove('hidden')
   saveButton.classList.remove('hidden')
 }
+function saveData() {
+  //push all info to existing arrays, create a new instance with info, and display instance
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  descriptors.push(userDesc1.value, userDesc2.value)
 
+var newCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+title.innerText = newCover.titles
+cover.innerText = newCover.cover
+tagline1.innerText = newCover.tagline1
+tagline2.innerText = newCover.tagline2
 }
