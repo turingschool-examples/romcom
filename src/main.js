@@ -11,7 +11,6 @@ var homeBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var viewSavedCoverBtn = document.querySelector('.view-saved-button');
 var savedCoverView = document.querySelector('.saved-view');
-var saveCoverBtn = document.querySelector('.save-cover-button')
 ///////////////////VARIABLE FOR INPUT FIELDS////////////////////
 
 var userCover = document.querySelector('#cover');
@@ -21,16 +20,14 @@ var userDescript2 = document.querySelector('#descriptor2');
 var createCoverBtn = document.querySelector('.create-new-book-button');
 
 /////////// GLOBAL VARIABLES //////////
+var currentCover = null;
 
 var savedCovers = [
   new Cover('http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows"')
 ];
 
-var currentCover = getRandomCover()
-
-
 /////// EVENT LISTENERS👇//////
-
+window.onload = getRandomCover
 newRandomCoverBtn.addEventListener('click', showRandomCover)
 makeOwnCoverBtn.addEventListener('click', showForm)
 viewSavedCoverBtn.addEventListener('click', showSavedCover)
@@ -48,9 +45,10 @@ function getRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+
 }
+
 
 function showRandomCover() {
   getRandomCover()
@@ -88,7 +86,8 @@ function createNewCover() {
   coverTitle.innerText = userTitle.value
   tagline1.innerText = userDescript1.value
   tagline2.innerText = userDescript2.value
-  currentCover = new Cover(coverImage, coverTitle, tagline1, tagline2)
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  console.log(currentCover)
   showMainView()
   pushNewCover()
 }
@@ -100,11 +99,8 @@ function pushNewCover() {
 }
 
 function saveCurrentCover() {
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
-  if (savedCovers.includes(currentCover)) {
+  if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
     console.log(savedCovers)
   }
-  // console.log('its clicking')
-
 }
