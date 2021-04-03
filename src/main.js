@@ -33,8 +33,8 @@ var currentCover = new Cover()
 // Add your event listeners here 👇
 
 window.addEventListener('load', randomizeCover);
-randomCoverButton.addEventListener('click', randomizeCover
-makeNewCoverButton.addEventListener('click', )
+randomCoverButton.addEventListener('click', randomizeCover);
+makeNewCoverButton.addEventListener('click', createCoverDisplay)
 
 
 // Create your event handlers and other functions here 👇
@@ -86,7 +86,20 @@ function changeSecondDescriptor() {
 }
 
 
-
+// Need to create a funtion createCoverDisplay
+// This function will run in the event listener "makeNewCoverButton"
+// this function will hold the buttons I want to hide (save cover and show new random)
+// and also the button I need to add (home)
+// I need to hide the home home page
+// and display the page with the form to make a new cover
+function createCoverDisplay() {
+  homeButton.classList.add();
+  saveCoverButton.classList.remove();
+  randomCoverButton.classList.remove();
+  makeNewCoverPage.classList.add();
+  homePage.classList.remove();
+}
+console.log(createCoverDisplay)
 
 
 // // We've provided one function to get you started
