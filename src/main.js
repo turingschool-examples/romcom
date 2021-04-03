@@ -111,6 +111,16 @@ function renderHomePage() {
   hideElement(homeButton);
 }
 
+function renderSavedCoversPage() {
+  showElement(savedPage);
+  showElement(homeButton);
+  showElement(savedCollection)
+  hideElement(homePage);
+  hideElement(makeNewCoverPage)
+  hideElement(randomCoverButton);
+  hideElement(saveCoverButton);
+}
+
 // function createCoverDisplay() {
 //   homeButton.classList.add();
 //   saveCoverButton.classList.remove();
