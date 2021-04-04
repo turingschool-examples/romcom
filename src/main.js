@@ -3,19 +3,23 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-var showRandomCoverBtn = document.querySelector('.random-cover-button');
-var makeYourOwnCoverBtn = document.querySelector('.make-new-button');
-var formArea = document.querySelector('.form-view');
-var homePageArea = document.querySelector('.home-view');
-var saveCoverBtn = document.querySelector('.save-cover-button');
-var homeBtn = document.querySelector('.home-button');
-var viewSavedBtn = document.querySelector('.view-saved-button');
-var savedCoversArea = document.querySelector('.saved-view');
 var userCover = document.getElementById('cover');
 var userTitle = document.getElementById('title');
 var userDesc1 = document.getElementById('descriptor1');
 var userDesc2 = document.getElementById('descriptor2');
+
+//BUTTON VARS
+var showRandomCoverBtn = document.querySelector('.random-cover-button');
+var makeYourOwnCoverBtn = document.querySelector('.make-new-button');
+var viewSavedBtn = document.querySelector('.view-saved-button');
+var saveCoverBtn = document.querySelector('.save-cover-button');
 var createNewBookBtn = document.querySelector('.create-new-book-button');
+var homeBtn = document.querySelector('.home-button');
+
+//PAGE AREA VARS
+var formArea = document.querySelector('.form-view');
+var homePageArea = document.querySelector('.home-view');
+var savedCoversArea = document.querySelector('.saved-view');
 
 // We've provided a few variables below this
 var savedCovers = [
@@ -69,19 +73,15 @@ function addCoverToSaved() {
   }
 };
 
-function deleteSavedCover(event) {
-  event.preventDefault();
+function deleteSavedCover() {
   var coverToTrash = event.target.closest('.mini-cover');
-  console.log(coverToTrash);
-  console.log(savedCovers)
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id === Number(coverToTrash.id)) {
-      (savedCovers.splice([i], 1)
-      console.log(Number(coverToTrash.id));
-      console.log(savedCovers);
+      savedCovers.splice([i], 1);
+      savedCoversArea.innerHTML = '';
+      displaySavedCovers(savedCovers);
     }
   }
-  displaySavedCovers(savedCovers);
 };
 
 function displaySavedCovers(savedCovers) {
