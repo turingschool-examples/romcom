@@ -1,4 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
+
 var htmlImage = document.querySelector('.cover-image');
 var htmlTitle = document.querySelector('.cover-title');
 var htmlTagline1 = document.querySelector('.tagline-1');
@@ -8,6 +9,7 @@ var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
 var savedCoversView = document.querySelector('.saved-view');
 var savedCoversSection = document.querySelector('.saved-covers-section');
+
 // BUTTONS
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
@@ -28,8 +30,6 @@ var savedCovers = [
 ];
 
 var currentCover = null;
-
-
 
 //EVENT LISTENERS
 window.addEventListener("load", displayRandomHomePage);
@@ -87,16 +87,15 @@ function displayRandomHomePage() {
 //ITERATION 2 FORM PAGE & MENU UPDATE
 
 function makeNewCover() {
-  event.preventDefault();
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   savedCoversView.classList.add('hidden');
-  currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
-
+  // currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
 }
+
 // function viewSaved() {
 //   homeButton.classList.remove('hidden');
 //   homeView.classList.add('hidden');
@@ -112,16 +111,16 @@ function viewSaved() {
   formView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-  savedView.classList.remove('hidden');
+  savedCoversView.classList.remove('hidden');
     for (var i = 0; i < savedCovers.length; i++) {
       savedCoversView.innerHTML +=
-      `<section class="mini-cover" id="${savedCovers[i].id}">
-        <img class="cover-image" src="${savedCovers[i].cover}">
+      `<section class="mini-cover">
+        <img class="mini-cover" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
         <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
-      </section>`
+      </section>`;
   }
 }
 
@@ -136,15 +135,16 @@ function viewHome() {
 
 function createBook() {
   event.preventDefault();
-  covers.push(coverField.value);
-  titles.push(titleField.value);
-  descriptors.push(taglineField1.value);
-  descriptors.push(taglineField2.value);
+  // covers.push(coverField.value);
+  // titles.push(titleField.value);
+  // descriptors.push(taglineField1.value);
+  // descriptors.push(taglineField2.value);
   htmlImage.src = coverField.value;
   htmlTitle.innerText = titleField.value;
   htmlTagline1.innerText = taglineField1.value;
   htmlTagline2.innerText = taglineField2.value;
   currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
+  // currentCover = new Cover(coverField.src, titleField.innerText, taglineField1.innerText, tagLineField2.innerText);
   viewHome();
 }
 
