@@ -84,6 +84,7 @@ function displayRandomHomePage() {
 //ITERATION 2 FORM PAGE & MENU UPDATE
 
 function makeNewCover() {
+  event.preventDefault();
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
