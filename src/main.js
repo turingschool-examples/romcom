@@ -135,12 +135,22 @@ function saveCoverBtnRemoveHidden() {
   saveCoverBtn.classList.remove('hidden');
 };
 
+function showRandomCoverBtnAddHidden() {
+  showRandomCoverBtn.classList.add('hidden');
+};
+
+function showRandomCoverBtnRemoveHidden() {
+  showRandomCoverBtn.classList.remove('hidden');
+};
+
+
+
 function hideHomePage() {
   homeAddHidden();
   formRemoveHidden();
   savedAreaAddHidden();
   saveCoverBtnAddHidden();
-  showRandomCoverBtn.classList.add('hidden');
+  showRandomCoverBtnAddHidden();
   homeBtn.classList.remove('hidden');
 };
 
@@ -148,7 +158,7 @@ function showSavedArea() {
   homeAddHidden();
   savedAreaRemoveHidden();
   formAddHidden();
-  showRandomCoverBtn.classList.add('hidden');
+  showRandomCoverBtnAddHidden();
   saveCoverBtnAddHidden();
   homeBtn.classList.remove('hidden');
   savedCoversArea.classList.add('mini-cover');
@@ -160,6 +170,6 @@ function exposeHomePage() {
   formAddHidden();
   savedAreaAddHidden();
   saveCoverBtnRemoveHidden();
-  showRandomCoverBtn.classList.remove('hidden');
+  showRandomCoverBtnRemoveHidden();
   homeBtn.classList.add('hidden');
 };
