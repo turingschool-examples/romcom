@@ -59,9 +59,10 @@ function createNewBook(event) {
 }
 
 function addCoverToSaved() {
-  savedCovers.push(currentCover);
-  console.log(savedCovers);
-}
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    }
+  }
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
