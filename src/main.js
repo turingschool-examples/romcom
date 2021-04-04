@@ -71,7 +71,7 @@ function displaySavedPosters(savedCovers) {
   for (var i = 0; i < savedCovers.length; i++) {
     var savedMiniCover =
       `
-      <section class="saved-covers-section" "mini-cover" id=${savedCovers[i].id}>
+      <section class="saved-covers-section mini-cover" id=${savedCovers[i].id}>
         <img class="cover-image" id=${savedCovers[i].id} src=${savedCovers[i].cover}>
         <h2 class="cover-title" id=${savedCovers[i].id}>${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1" id=${savedCovers[i].id}>${savedCovers[i].tagline1}</span> and <span class="tagline-2" id=${savedCovers[i].id}>${savedCovers[i].tagline2}</span></h3>
