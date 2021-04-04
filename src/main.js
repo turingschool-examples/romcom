@@ -1,82 +1,106 @@
-// Variables
-//Cover
-
-var title = document.querySelector('.cover-title')
-var img = document.querySelector('.cover-image')
-var tagline = document.querySelector('.tagline')
-var tagline1 = document.querySelector('.tagline-1')
-var tagline2 = document.querySelector('.tagline-2')
-var priceTag = document.querySelector('.price-tag')
-// Button
+// Cover Variables
+var coverTitle = document.querySelector('.cover-title')
+var coverImage = document.querySelector('.cover-image')
+var coverTagline = document.querySelector('.tagline')
+var coverDesc1 = document.querySelector('.tagline-1')
+var coverDesc2 = document.querySelector('.tagline-2')
+// Header Buttons
 var homeButton = document.querySelector('.home-button')
-var randomButton = document.querySelector('.random-cover-button')
-var saveButton = document.querySelector('.save-cover-button')
-var viewSaveButton = document.querySelector('.view-saved-button')
-var makeButton = document.querySelector('.make-new-button')
-// Form
-var coverForm = document.querySelector('.form-view')
-var userCover = document.querySelector('.user-title')
+var randomCoverButton = document.querySelector('.random-cover-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var viewSavedButton = document.querySelector('.view-saved-button')
+var makeNewButton = document.querySelector('.make-new-button')
+//Form Variables
+var formView = document.querySelector('.form-view')
+var createNewBookButton = document.querySelector('.create-new-book-button')
+// User Input (Form) Variable
+var userCover = document.querySelector('.user-cover')
 var userTitle = document.querySelector('.user-title')
 var userDesc1 = document.querySelector('.user-desc1')
 var userDesc2 = document.querySelector('.user-desc2')
-var userBook = (userCover, userTitle, userDesc1, userDesc2)
-var createButton = document.querySelector('.create-new-book-button')
-// Views
+// Home Variables
 var homeView = document.querySelector('.home-view')
-var saveView = document.querySelector('.saved-covers-section')
-// Saved Books
-var coverArr = []
-var titleArr = []
-var taglineArr1 = []
-var taglineArr2 = []
-
-var savedCovers = [
-  new Cover('http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg','Sunsets and Sorrows', 'sunsets', 'sorrows')
-]
-var currentCover;
+// Saved Variables
+var savedView = document.querySelector('.saved-view')
+var savedCoverSection = document.querySelector('.saved-covers-section')
+// Saved Covers Variable
+var savedCovers = []
 // Event Listeners
 window.addEventListener('load', randomizeCover)
-randomButton.addEventListener('click', randomizeCover)
-makeButton.addEventListener('click', viewForm)
-viewSaveButton.addEventListener('click', viewSave)
+randomCoverButton.addEventListener('click', randomizeCover)
+makeNewButton.addEventListener('click', viewForm)
 homeButton.addEventListener('click', viewHome)
-createButton.addEventListener('click', saveData)
-// Event Handler
-function randomizeCover() {
-  title.innerText = titles[getRandomIndex(titles)]
-  img.src = covers[getRandomIndex(covers)]
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)]
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)]
-}
+viewSavedButton.addEventListener('click', viewSave)
+createNewBookButton.addEventListener('click', pushCover)
+saveCoverButton.addEventListener('click', saveCover)
+// Helper Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
+function randomizeCover() {
+  coverTitle.innerText = titles[getRandomIndex(titles)]
+  coverImage.src = covers[getRandomIndex(covers)]
+  coverDesc1.innerText = descriptors[getRandomIndex(descriptors)]
+  coverDesc2.innerText = descriptors[getRandomIndex(descriptors)]
+}
+function pushCover(e) {
+  e.preventDefault()
+  var savedCovers = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value)
+  covers.push(savedCovers.title)
+  titles.push(savedCovers.cover)
+  descriptors.push(savedCovers.tagline1)
+  descriptors.push(savedCovers.tagline2)
+  makeNewCover(savedCovers)
+  viewHome()
+}
+function makeNewCover(cover) {
+  coverTitle.innerText = cover.title
+  coverImage.src = cover.cover
+  coverDesc1.innerText = cover.tagline1
+  coverDesc2.innerText = cover.tagline2
+}
+// Event Handlers
 function viewForm() {
+  savedView.classList.add('hidden')
   homeView.classList.add('hidden')
-  coverForm.classList.remove('hidden')
+  formView.classList.remove('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 }
 function viewSave() {
   homeView.classList.add('hidden')
-  saveButton.classList.add('hidden')
-  randomButton.classList.add('hidden')
-  saveView.classList.remove('hidden')
-  homeButton.classList.remove('hidden')
+  randomCoverButton.classList.add('hidden')
+  savedView.classList.remove('hidden')
+  formView.classList.add('hidden')
 }
+function updateSavedCovers() {
+  for (let i = 0; i < savedCovers.length; i++) {
+    var coversGenerated = []
+if (coversGenerated.includes(savedCovers[i]) {
+      coversGenerated.push(savedCovers[i])
+}
+      savedCoverSection.innerHTML += `<section class="main-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>`
+    }
+  }
 function viewHome() {
+  saveCoverButton.classList.remove('hidden')
   homeView.classList.remove('hidden')
+  formView.classList.add('hidden')
   homeButton.classList.add('hidden')
-  randomButton.classList.remove('hidden')
-  saveButton.classList.remove('hidden')
+  randomCoverButton.classList.remove('hidden')
 }
-function saveData() {
-  //push all info to existing arrays, create a new instance with info, and display instance
-  covers.push(userCover.value)
-  titles.push(userTitle.value)
-  descriptors.push(userDesc1.value, userDesc2.value)
-
-var newCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
-title.innerText = newCover.titles
-cover.innerText = newCover.cover
-tagline1.innerText = newCover.tagline1
-tagline2.innerText = newCover.tagline2
+function saveCover() {
+  var currentCover = new Cover(coverImage.src, coverTitle.innerText, coverDesc1.innerText
+,coverDesc2.innerText)
+if (!savedCovers.includes(currentCover)){
+  savedCovers.push(currentCover)
+  updateSavedCovers()
+  }
 }
