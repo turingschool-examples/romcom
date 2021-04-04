@@ -14,7 +14,7 @@ View Browser
 
 Please follow [this link](https://github.com/natalia2103/romcom.git) and follow the instructions below:
   -
-  
+
 
 
 You can now open this browser by running open index.html in your terminal
@@ -22,7 +22,7 @@ You can now open this browser by running open index.html in your terminal
 Future Additions
 --------------------
 
-In the future, I would like to add more functionality to the page. Improvements can be made by adding functionality to the form under the "Make You Own Cover" view. This would make it possible for users to get really creative and come up with the themes for their own romance novel and save that cover to their other fantastic covers under the "View Covers" view by clicking "Make My Book".
+In the future, I would like to add more functionality to the page.  save that cover to their other fantastic covers under the "View Covers" view by clicking "Make My Book".
 
 
 The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
