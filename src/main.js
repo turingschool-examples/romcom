@@ -32,8 +32,6 @@ homeBtn.addEventListener('click', exposeHomePage);
 createNewBookBtn.addEventListener('click', createNewBook);
 saveCoverBtn.addEventListener('click', addCoverToSaved);
 
-
-
 // Create your event handlers and other functions here 👇
 function randomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
@@ -59,9 +57,24 @@ function createNewBook(event) {
 }
 
 function addCoverToSaved() {
+  if(!savedCovers.includes(currentCover)) {
   savedCovers.push(currentCover);
-  console.log(savedCovers);
-}
+  savedCoversArea.classList.add('mini-cover');
+  for (var i = 0; i < savedCovers.length; i++) {
+    var savedMiniCover =
+    `
+    <section class="saved-covers-section">
+    <img class="cover-image" id=${savedCovers[i].id} src=${savedCovers[i].src}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+    </section>
+    `
+    }
+  }
+  savedCoversArea.insertAdjacentHTML('afterbegin', savedMiniCover);
+};
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
