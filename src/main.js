@@ -12,12 +12,13 @@ var htmlTagline2 = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
-var savedCoversView = document.querySelector('.saved-covers-section');
+var savedCoversView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var coverField = document.getElementById('cover');
 var titleField = document.getElementById('title');
 var taglineField1 = document.getElementById('descriptor1');
 var taglineField2 = document.getElementById('descriptor2');
-var currentCover;
+var currentCover = null;
 
 // BUTTONS
 var randomCoverButton = document.querySelector('.random-cover-button');
@@ -88,6 +89,7 @@ function makeNewCover() {
   formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  savedCoversView.classList.add('hidden');
   currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
 
 }
@@ -144,13 +146,13 @@ function createBook() {
 
 // when user clicks save cover button, current cover is pushed to savedCovers arrays
 function saveCover() {
-var saveCover = htmlImage.src;
-var saveTitle = htmlTitle.innerText;
-var saveTagline1 = htmlTagline1.innerText;
-var saveTagline2 = htmlTagline2.innerText;
-var saveThisCover = new Cover(saveCover, saveTitle, saveTagline1, saveTagline2);
+  var saveCover = htmlImage.src;
+  var saveTitle = htmlTitle.innerText;
+  var saveTagline1 = htmlTagline1.innerText;
+  var saveTagline2 = htmlTagline2.innerText;
+  var saveThisCover = new Cover(saveCover, saveTitle, saveTagline1, saveTagline2);
 
-if (!savedCovers.includes(saveThisCover)) {
+  if (!savedCovers.includes(saveThisCover)) {
   return savedCovers.push(saveThisCover);
-}
+  }
 }
