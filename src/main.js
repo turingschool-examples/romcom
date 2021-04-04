@@ -33,6 +33,11 @@ createNewBookBtn.addEventListener('click', createNewBook);
 saveCoverBtn.addEventListener('click', addCoverToSaved);
 
 // Create your event handlers and other functions here 👇
+// We've provided one function to get you started
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
 function randomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
@@ -59,21 +64,23 @@ function createNewBook(event) {
 function addCoverToSaved() {
   if(!savedCovers.includes(currentCover)) {
   savedCovers.push(currentCover);
-  savedCoversArea.classList.add('mini-cover');
+  }
+};
+
+function displaySavedPosters(savedCovers) {
   for (var i = 0; i < savedCovers.length; i++) {
     var savedMiniCover =
-    `
-    <section class="saved-covers-section">
-    <img class="cover-image" id=${savedCovers[i].id} src=${savedCovers[i].src}>
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-    <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png">
-    </section>
-    `
-    }
-  }
-  savedCoversArea.insertAdjacentHTML('afterbegin', savedMiniCover);
+      `
+      <section class="saved-covers-section" "mini-cover" id=${savedCovers[i].id}>
+        <img class="cover-image" id=${savedCovers[i].id} src=${savedCovers[i].cover}>
+        <h2 class="cover-title" id=${savedCovers[i].id}>${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1" id=${savedCovers[i].id}>${savedCovers[i].tagline1}</span> and <span class="tagline-2" id=${savedCovers[i].id}>${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </section>
+     `
+     savedCoversArea.insertAdjacentHTML('afterbegin', savedMiniCover);
+   }
 };
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
@@ -92,6 +99,8 @@ function showSavedArea() {
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
+  savedCoversArea.classList.add('mini-cover');
+  displaySavedPosters(savedCovers);
 };
 
 function exposeHomePage() {
@@ -100,9 +109,4 @@ function exposeHomePage() {
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
   homeBtn.classList.add('hidden');
-};
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
 };
