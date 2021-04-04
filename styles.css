@@ -50,6 +50,7 @@ body {
 .overlay {
   object-fit: cover;
   height: 100%;
+  position: absolute;
   width: 100%;
 }
 
