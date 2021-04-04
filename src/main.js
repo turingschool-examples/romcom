@@ -103,23 +103,22 @@ function displaySavedCovers(savedCovers) {
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
-// function toggleFormArea() {
-// formArea.classList.toggle('hidden');
+// function toggleHomePage() {
+//   homePageArea.classList.toggle('hidden');
 // };
-function toggleHomePage() {
-  homePageArea.classList.toggle('hidden');
-}
 
 function hideHomePage() {
-  toggleHomePage();
-formArea.classList.remove('hidden');
-saveCoverBtn.classList.add('hidden');
-showRandomCoverBtn.classList.add('hidden');
-homeBtn.classList.remove('hidden');
+  // toggleHomePage();
+  homePageArea.classList.add('hidden')
+  formArea.classList.remove('hidden');
+  saveCoverBtn.classList.add('hidden');
+  showRandomCoverBtn.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
 };
 
 function showSavedArea() {
-  toggleHomePage();
+  // toggleHomePage();
+  homePageArea.classList.add('hidden')
   savedCoversArea.classList.remove('hidden');
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
@@ -129,7 +128,8 @@ function showSavedArea() {
 };
 
 function exposeHomePage() {
-  toggleHomePage();
+  // toggleHomePage();
+  homePageArea.classList.remove('hidden')
   formArea.classList.add('hidden');
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
