@@ -52,19 +52,31 @@ function randomCover(event) {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
 };
 
+function disableMakeMyBookBtn() {
+  createNewBookBtn.disabled = true;
+};
+
+function enableMakeMyBookBtn() {
+  createNewBookBtn.disable = false;
+};
+
 function createNewBook(event) {
   event.preventDefault();
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(userDesc1.value, userDesc2.value);
-  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
-  formArea.classList.add('hidden');
-  homePageArea.classList.remove('hidden');
-  coverImage.src = covers.pop();
-  coverTitle.innerText = titles.pop();
-  tagline2.innerText = descriptors.pop();
-  tagline1.innerText = descriptors.pop();
-  saveCoverBtn.classList.remove('hidden');
+  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+    covers.push(userCover.value);
+    titles.push(userTitle.value);
+    descriptors.push(userDesc1.value, userDesc2.value);
+    currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+    formAddHidden();
+    homeRemoveHidden();
+    saveCoverBtnRemoveHidden();
+    coverImage.src = covers.pop();
+    coverTitle.innerText = titles.pop();
+    tagline2.innerText = descriptors.pop();
+    tagline1.innerText = descriptors.pop();
+  } else {
+    alert('PLEASE FILL OUT ALL FORM FIELDS!!')
+  }
 }
 
 function addCoverToSaved() {
@@ -109,41 +121,69 @@ function homeAddHidden() {
 
 function homeRemoveHidden() {
   homePageArea.classList.remove('hidden');
-}
+};
 
 function formAddHidden() {
   formArea.classList.add('hidden');
-}
+};
 
 function formRemoveHidden() {
   formArea.classList.remove('hidden');
-}
+};
 
 function savedAreaAddHidden() {
   savedCoversArea.classList.add('hidden');
-}
+};
 
 function savedAreaRemoveHidden() {
   savedCoversArea.classList.remove('hidden');
-}
+};
+
+function saveCoverBtnAddHidden() {
+  saveCoverBtn.classList.add('hidden');
+};
+
+function saveCoverBtnRemoveHidden() {
+  saveCoverBtn.classList.remove('hidden');
+};
+
+function showRandomCoverBtnAddHidden() {
+  showRandomCoverBtn.classList.add('hidden');
+};
+
+function showRandomCoverBtnRemoveHidden() {
+  showRandomCoverBtn.classList.remove('hidden');
+};
+
+function homeBtnAddHidden() {
+  homeBtn.classList.add('hidden');
+};
+
+function homeBtnRemoveHidden() {
+  homeBtn.classList.remove('hidden');
+};
+
+function addMiniClassToSavedCoversArea() {
+  savedCoversArea.classList.add('mini-cover');
+};
 
 function hideHomePage() {
   homeAddHidden();
   formRemoveHidden();
   savedAreaAddHidden();
-  saveCoverBtn.classList.add('hidden');
-  showRandomCoverBtn.classList.add('hidden');
-  homeBtn.classList.remove('hidden');
+  homeBtnRemoveHidden();
+  saveCoverBtnAddHidden();
+  showRandomCoverBtnAddHidden();
 };
 
 function showSavedArea() {
+  addMiniClassToSavedCoversArea();
   homeAddHidden();
   savedAreaRemoveHidden();
   formAddHidden();
-  showRandomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
-  homeBtn.classList.remove('hidden');
-  savedCoversArea.classList.add('mini-cover');
+  showRandomCoverBtnAddHidden();
+  saveCoverBtnAddHidden();
+  homeBtnRemoveHidden();
   displaySavedCovers(savedCovers);
 };
 
@@ -151,7 +191,7 @@ function exposeHomePage() {
   homeRemoveHidden();
   formAddHidden();
   savedAreaAddHidden();
-  showRandomCoverBtn.classList.remove('hidden');
-  saveCoverBtn.classList.remove('hidden');
-  homeBtn.classList.add('hidden');
+  saveCoverBtnRemoveHidden();
+  showRandomCoverBtnRemoveHidden();
+  homeBtnAddHidden();
 };
