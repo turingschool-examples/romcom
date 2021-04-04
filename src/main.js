@@ -109,4 +109,5 @@ function exposeHomePage() {
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
   homeBtn.classList.add('hidden');
+  savedCoversArea.classList.add('hidden');
 };
