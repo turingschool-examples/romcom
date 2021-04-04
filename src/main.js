@@ -103,23 +103,43 @@ function displaySavedCovers(savedCovers) {
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
-// function toggleHomePage() {
-//   homePageArea.classList.toggle('hidden');
-// };
+function homeAddHidden() {
+  homePageArea.classList.add('hidden');
+};
+
+function homeRemoveHidden() {
+  homePageArea.classList.remove('hidden');
+}
+
+function formAddHidden() {
+  formArea.classList.add('hidden');
+}
+
+function formRemoveHidden() {
+  formArea.classList.remove('hidden');
+}
+
+function savedAreaAddHidden() {
+  savedCoversArea.classList.add('hidden');
+}
+
+function savedAreaRemoveHidden() {
+  savedCoversArea.classList.remove('hidden');
+}
 
 function hideHomePage() {
-  // toggleHomePage();
-  homePageArea.classList.add('hidden')
-  formArea.classList.remove('hidden');
+  homeAddHidden();
+  formRemoveHidden();
+  savedAreaAddHidden();
   saveCoverBtn.classList.add('hidden');
   showRandomCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
 };
 
 function showSavedArea() {
-  // toggleHomePage();
-  homePageArea.classList.add('hidden')
-  savedCoversArea.classList.remove('hidden');
+  homeAddHidden();
+  savedAreaRemoveHidden();
+  formAddHidden();
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
@@ -128,11 +148,10 @@ function showSavedArea() {
 };
 
 function exposeHomePage() {
-  // toggleHomePage();
-  homePageArea.classList.remove('hidden')
-  formArea.classList.add('hidden');
+  homeRemoveHidden();
+  formAddHidden();
+  savedAreaAddHidden();
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
   homeBtn.classList.add('hidden');
-  savedCoversArea.classList.add('hidden');
 };
