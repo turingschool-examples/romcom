@@ -59,18 +59,16 @@ function createCover() {
   console.log(currentCover);
   renderHomePage();
   return currentCover;
+  pushValues();
+  console.log(titles, descriptors)
 }
 
-function pushNewImage() {
-  currentCover
-  // pushing value of what is being reassigned
-  // cover.src = userCover.value;
-  // cover.innerText = userTitle.value;
-  // cover.innerText = userDesc1.value;
-  // cover.innerText = userDesc2.value;
+function pushValues() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value, userDesc2.value);
 
 }
-
 
 // Random cover functions
 function randomizeCover() {
