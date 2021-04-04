@@ -109,29 +109,37 @@ function homeAddHidden() {
 
 function homeRemoveHidden() {
   homePageArea.classList.remove('hidden');
-}
+};
 
 function formAddHidden() {
   formArea.classList.add('hidden');
-}
+};
 
 function formRemoveHidden() {
   formArea.classList.remove('hidden');
-}
+};
 
 function savedAreaAddHidden() {
   savedCoversArea.classList.add('hidden');
-}
+};
 
 function savedAreaRemoveHidden() {
   savedCoversArea.classList.remove('hidden');
-}
+};
+
+function saveCoverBtnAddHidden() {
+  saveCoverBtn.classList.add('hidden');
+};
+
+function saveCoverBtnRemoveHidden() {
+  saveCoverBtn.classList.remove('hidden');
+};
 
 function hideHomePage() {
   homeAddHidden();
   formRemoveHidden();
   savedAreaAddHidden();
-  saveCoverBtn.classList.add('hidden');
+  saveCoverBtnAddHidden();
   showRandomCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
 };
@@ -141,7 +149,7 @@ function showSavedArea() {
   savedAreaRemoveHidden();
   formAddHidden();
   showRandomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
+  saveCoverBtnAddHidden();
   homeBtn.classList.remove('hidden');
   savedCoversArea.classList.add('mini-cover');
   displaySavedCovers(savedCovers);
@@ -151,7 +159,7 @@ function exposeHomePage() {
   homeRemoveHidden();
   formAddHidden();
   savedAreaAddHidden();
+  saveCoverBtnRemoveHidden();
   showRandomCoverBtn.classList.remove('hidden');
-  saveCoverBtn.classList.remove('hidden');
   homeBtn.classList.add('hidden');
 };
