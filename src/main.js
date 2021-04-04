@@ -69,9 +69,20 @@ function addCoverToSaved() {
 };
 
 function deleteSavedCover() {
+  var coverToTrash = event.target.closest('.mini-cover');
+  console.log(coverToTrash)
   //If the double click is on an instance of a saved cover
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === coverToTrash.id) {
+      savedCovers.splice([i], 1)
+    }
+    // if (savedCovers[i] === coverToTrash) {
+    //   savedCovers.splice([i], 1);
+    //}
+  }
   //delete that instance from the saved covers view
   //call displaySavedCovers
+  displaySavedCovers(savedCovers)
 }
 
 function displaySavedCovers(savedCovers) {
