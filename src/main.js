@@ -31,6 +31,7 @@ viewSavedBtn.addEventListener('click', showSavedArea);
 homeBtn.addEventListener('click', exposeHomePage);
 createNewBookBtn.addEventListener('click', createNewBook);
 saveCoverBtn.addEventListener('click', addCoverToSaved);
+savedCoversArea.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 // We've provided one function to get you started
@@ -67,14 +68,32 @@ function addCoverToSaved() {
   }
 };
 
-function displaySavedPosters(savedCovers) {
+function deleteSavedCover() {
+  var coverToTrash = event.target.closest('.mini-cover');
+  console.log(coverToTrash.id)
+  //If the double click is on an instance of a saved cover
+  for (var i = 0; i < savedCovers.length; i++) {
+    console.log(savedCovers[i].id)
+    if (savedCovers[i].id === coverToTrash.id) {
+      savedCovers.splice([i], 1)
+    }
+    // if (savedCovers[i] === coverToTrash) {
+    //   savedCovers.splice([i], 1);
+    //}
+  }
+  //delete that instance from the saved covers view
+  //call displaySavedCovers
+  displaySavedCovers(savedCovers)
+}
+
+function displaySavedCovers(savedCovers) {
   for (var i = 0; i < savedCovers.length; i++) {
     var savedMiniCover =
       `
       <section class="saved-covers-section mini-cover" id=${savedCovers[i].id}>
-        <img class="cover-image" id=${savedCovers[i].id} src=${savedCovers[i].cover}>
-        <h2 class="cover-title" id=${savedCovers[i].id}>${savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1" id=${savedCovers[i].id}>${savedCovers[i].tagline1}</span> and <span class="tagline-2" id=${savedCovers[i].id}>${savedCovers[i].tagline2}</span></h3>
+        <img class="cover-image" src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
         <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
       </section>
@@ -100,7 +119,7 @@ function showSavedArea() {
   saveCoverBtn.classList.add('hidden');
   homeBtn.classList.remove('hidden');
   savedCoversArea.classList.add('mini-cover');
-  displaySavedPosters(savedCovers);
+  displaySavedCovers(savedCovers);
 };
 
 function exposeHomePage() {
@@ -109,4 +128,5 @@ function exposeHomePage() {
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
   homeBtn.classList.add('hidden');
+  savedCoversArea.classList.add('hidden');
 };
