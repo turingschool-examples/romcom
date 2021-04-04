@@ -143,25 +143,35 @@ function showRandomCoverBtnRemoveHidden() {
   showRandomCoverBtn.classList.remove('hidden');
 };
 
+function homeBtnAddHidden() {
+  homeBtn.classList.add('hidden');
+};
 
+function homeBtnRemoveHidden() {
+  homeBtn.classList.remove('hidden');
+};
+
+function addMiniClassToSavedCoversArea() {
+  savedCoversArea.classList.add('mini-cover');
+};
 
 function hideHomePage() {
   homeAddHidden();
   formRemoveHidden();
   savedAreaAddHidden();
+  homeBtnRemoveHidden();
   saveCoverBtnAddHidden();
   showRandomCoverBtnAddHidden();
-  homeBtn.classList.remove('hidden');
 };
 
 function showSavedArea() {
+  addMiniClassToSavedCoversArea();
   homeAddHidden();
   savedAreaRemoveHidden();
   formAddHidden();
   showRandomCoverBtnAddHidden();
   saveCoverBtnAddHidden();
-  homeBtn.classList.remove('hidden');
-  savedCoversArea.classList.add('mini-cover');
+  homeBtnRemoveHidden();
   displaySavedCovers(savedCovers);
 };
 
@@ -171,5 +181,5 @@ function exposeHomePage() {
   savedAreaAddHidden();
   saveCoverBtnRemoveHidden();
   showRandomCoverBtnRemoveHidden();
-  homeBtn.classList.add('hidden');
+  homeBtnAddHidden();
 };
