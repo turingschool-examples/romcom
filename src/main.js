@@ -39,7 +39,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function randomCover() {
+function randomCover(event) {
+  event.preventDefault();
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
@@ -68,14 +69,19 @@ function addCoverToSaved() {
   }
 };
 
-function deleteSavedCover() {
+function deleteSavedCover(event) {
+  event.preventDefault();
   var coverToTrash = event.target.closest('.mini-cover');
+  console.log(coverToTrash);
+  console.log(savedCovers)
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id === Number(coverToTrash.id)) {
-      savedCovers.splice([i], 1)
+      (savedCovers.splice([i], 1)
+      console.log(Number(coverToTrash.id));
+      console.log(savedCovers);
     }
   }
-  displaySavedCovers(savedCovers)
+  displaySavedCovers(savedCovers);
 };
 
 function displaySavedCovers(savedCovers) {
