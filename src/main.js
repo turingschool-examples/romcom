@@ -85,6 +85,7 @@ function deleteSavedCover() {
 };
 
 function displaySavedCovers(savedCovers) {
+  savedCoversArea.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     var savedMiniCover =
       `
