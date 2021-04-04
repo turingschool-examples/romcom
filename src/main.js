@@ -1,10 +1,4 @@
 // Create variables targetting the relevant DOM elements here 👇
-
-
-// VARIABLES
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
 var htmlImage = document.querySelector('.cover-image');
 var htmlTitle = document.querySelector('.cover-title');
 var htmlTagline1 = document.querySelector('.tagline-1');
@@ -14,12 +8,6 @@ var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
 var savedCoversView = document.querySelector('.saved-view');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-var coverField = document.getElementById('cover');
-var titleField = document.getElementById('title');
-var taglineField1 = document.getElementById('descriptor1');
-var taglineField2 = document.getElementById('descriptor2');
-var currentCover = null;
-
 // BUTTONS
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
@@ -27,6 +15,21 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var makeBookButton = document.querySelector('.create-new-book-button');
+
+// INPUT VARIABLES
+var coverField = document.getElementById('cover');
+var titleField = document.getElementById('title');
+var taglineField1 = document.getElementById('descriptor1');
+var taglineField2 = document.getElementById('descriptor2');
+
+// GLOBAL VARIABLES
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
+
+var currentCover = null;
+
+
 
 //EVENT LISTENERS
 window.addEventListener("load", displayRandomHomePage);
@@ -111,17 +114,17 @@ function viewSaved() {
   saveCoverButton.classList.add('hidden');
   savedView.classList.remove('hidden');
     for (var i = 0; i < savedCovers.length; i++) {
-      savedCoversView.innerHTML += `
-      <section class="mini-cover" id="${savedCovers[i].id}">
+      savedCoversView.innerHTML +=
+      `<section class="mini-cover" id="${savedCovers[i].id}">
         <img class="cover-image" src="${savedCovers[i].cover}">
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
         <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
-      </section>
-      `
+      </section>`
   }
 }
+
 function viewHome() {
   homeButton.classList.add('hidden');
   homeView.classList.remove('hidden');
