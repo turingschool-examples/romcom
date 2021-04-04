@@ -34,7 +34,7 @@ var currentCover = null;
 //EVENT LISTENERS
 window.addEventListener("load", displayRandomHomePage);
 randomCoverButton.addEventListener("click", displayRandomImage);
-makeCoverButton.addEventListener("click", makeNewCover);
+makeCoverButton.addEventListener("click", formPage);
 viewSavedButton.addEventListener("click", viewSaved);
 homeButton.addEventListener("click", viewHome);
 makeBookButton.addEventListener("click", createBook);
@@ -86,13 +86,14 @@ function displayRandomHomePage() {
 
 //ITERATION 2 FORM PAGE & MENU UPDATE
 
-function makeNewCover() {
+function formPage() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   savedCoversView.classList.add('hidden');
+  savedCoversSection.innerHTML = ``;
   // currentCover = new Cover(htmlImage.src, htmlTitle.innerText, htmlTagline1.innerText, htmlTagline2.innerText);
 }
 
@@ -113,9 +114,9 @@ function viewSaved() {
   saveCoverButton.classList.add('hidden');
   savedCoversView.classList.remove('hidden');
     for (var i = 0; i < savedCovers.length; i++) {
-      savedCoversView.innerHTML +=
-      `<section class="mini-cover">
-        <img class="mini-cover" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
+      savedCoversSection.innerHTML +=
+      `<section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}">
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
         <img class="price-tag" src="./assets/price.png">
