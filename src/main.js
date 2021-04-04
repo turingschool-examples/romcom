@@ -52,19 +52,31 @@ function randomCover(event) {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
 };
 
+function disableMakeMyBookBtn() {
+  createNewBookBtn.disabled = true;
+};
+
+function enableMakeMyBookBtn() {
+  createNewBookBtn.disable = false;
+};
+
 function createNewBook(event) {
   event.preventDefault();
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(userDesc1.value, userDesc2.value);
-  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
-  formArea.classList.add('hidden');
-  homePageArea.classList.remove('hidden');
-  coverImage.src = covers.pop();
-  coverTitle.innerText = titles.pop();
-  tagline2.innerText = descriptors.pop();
-  tagline1.innerText = descriptors.pop();
-  saveCoverBtn.classList.remove('hidden');
+  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+    covers.push(userCover.value);
+    titles.push(userTitle.value);
+    descriptors.push(userDesc1.value, userDesc2.value);
+    currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+    formAddHidden();
+    homeRemoveHidden();
+    saveCoverBtnRemoveHidden();
+    coverImage.src = covers.pop();
+    coverTitle.innerText = titles.pop();
+    tagline2.innerText = descriptors.pop();
+    tagline1.innerText = descriptors.pop();
+  } else {
+    alert('PLEASE FILL OUT ALL FORM FIELDS!!')
+  }
 }
 
 function addCoverToSaved() {
