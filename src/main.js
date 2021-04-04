@@ -85,6 +85,7 @@ function deleteSavedCover() {
 };
 
 function displaySavedCovers(savedCovers) {
+  savedCoversArea.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     var savedMiniCover =
       `
@@ -102,16 +103,22 @@ function displaySavedCovers(savedCovers) {
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
+// function toggleHomePage() {
+//   homePageArea.classList.toggle('hidden');
+// };
+
 function hideHomePage() {
-formArea.classList.remove('hidden');
-homePageArea.classList.add('hidden');
-saveCoverBtn.classList.add('hidden');
-showRandomCoverBtn.classList.add('hidden');
-homeBtn.classList.remove('hidden');
+  // toggleHomePage();
+  homePageArea.classList.add('hidden')
+  formArea.classList.remove('hidden');
+  saveCoverBtn.classList.add('hidden');
+  showRandomCoverBtn.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
 };
 
 function showSavedArea() {
-  homePageArea.classList.add('hidden');
+  // toggleHomePage();
+  homePageArea.classList.add('hidden')
   savedCoversArea.classList.remove('hidden');
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
@@ -121,7 +128,8 @@ function showSavedArea() {
 };
 
 function exposeHomePage() {
-  homePageArea.classList.remove('hidden');
+  // toggleHomePage();
+  homePageArea.classList.remove('hidden')
   formArea.classList.add('hidden');
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
