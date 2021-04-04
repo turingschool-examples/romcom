@@ -11,11 +11,17 @@ var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-var makeNewCoverButton = document.querySelector('.make-new-button');
-var makeCoverButton = document.querySelector('.create-new-book-button');
-var userCover = document.querySelector('.user-cover');
+var makeOwnCoverButton = document.querySelector('.make-new-button');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 
-// different page views
+//Target the home page display
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
+
+
+// Different page views
 var homePage = document.querySelector('.home-view');
 var savedPage = document.querySelector('.saved-view');
 var makeNewCoverPage = document.querySelector('.form-view')
@@ -36,48 +42,51 @@ var currentCover = new Cover()
 
 window.addEventListener('load', randomizeCover);
 randomCoverButton.addEventListener('click', randomizeCover);
-makeNewCoverButton.addEventListener('click', renderNewCoverPage);
+makeOwnCoverButton.addEventListener('click', renderNewCoverPage);
 homeButton.addEventListener('click', renderHomePage);
-viewSavedButton.addEventListener('click', renderSavedCoversPage)
-// makeNewCoverButton.addEventListener('click', createCoverDisplay)
-makeCoverButton.addEventListener('click', practice)
+viewSavedButton.addEventListener('click', renderSavedCoversPage);
+makeMyBookButton.addEventListener('click', createCover);
 
-function practice() {
-  // currentCover = new Cover(userCover.value,)
-  console.log(userCover.value)
-  event.preventDefault()
-}
+
 
 
 // Create your event handlers and other functions here 👇
 
+//Create cover functions
+function createCover() {
+  event.preventDefault();
+  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+  console.log(currentCover);
+  renderHomePage();
+  return currentCover;
+}
 
-// function createRandomCover() {
-//   var currentCover = new Cover(cover[getRandomIndex(covers)],title[getRandomIndex(titles)],
-// tagline1[getRandomIndex(descriptors)], tagline2[getRandomIndex(descriptors)]);
-//   displayCover();
-// }
-//
-//
-// function displayCover() {
-//   var coverImage.src = covers[index],
-//   var coverTitle.innerText = titles[index],
-//   var firstTagline.innerText = descriptors[index],
-//   var secondTagline.innerText = descriptors[index],
-// }
+function pushNewImage() {
+  currentCover
+  // pushing value of what is being reassigned
+  // cover.src = userCover.value;
+  // cover.innerText = userTitle.value;
+  // cover.innerText = userDesc1.value;
+  // cover.innerText = userDesc2.value;
+
+}
+
+
+// Random cover functions
 function randomizeCover() {
   changeCoverImage();
   changeTitle();
   changeFirstDescriptor();
   changeSecondDescriptor();
-  console.log(currentCover);
-}
 
+}
 
 function changeCoverImage() {
   var index = getRandomIndex(covers);
   coverImage.src = covers[index];
   currentCover.cover = covers[index];
+  console.log(currentCover)
+
 }
 
 function changeTitle() {
@@ -98,7 +107,7 @@ function changeSecondDescriptor() {
   currentCover.tagline2 = descriptors[index];
 }
 
-
+// Page View Functions
 
 function showElement(element) {
   element.classList.remove('hidden')
@@ -134,14 +143,6 @@ function renderSavedCoversPage() {
   hideElement(saveCoverButton);
 }
 
-// function createCoverDisplay() {
-//   homeButton.classList.add();
-//   saveCoverButton.classList.remove();
-//   randomCoverButton.classList.remove();
-//   makeNewCoverPage.classList.add();
-//   homePage.classList.remove();
-// }
-// console.log(createCoverDisplay, )
 
 
 // // We've provided one function to get you started
