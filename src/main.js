@@ -60,22 +60,32 @@ function enableMakeMyBookBtn() {
   createNewBookBtn.disable = false;
 };
 
+function popDescriptor1() {
+  tagline1.innerText = descriptors.pop();
+}
+
+function popDescriptor2() {
+  tagline2.innerText = descriptors.pop();
+}
+
+function saveUserValuesToRespectiveArrays() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value, userDesc2.value);
+}
+
 function createNewBook(event) {
   event.preventDefault();
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
-    covers.push(userCover.value);
-    titles.push(userTitle.value);
-    descriptors.push(userDesc1.value, userDesc2.value);
+    saveUserValuesToRespectiveArrays();
     currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
     formAddHidden();
     homeRemoveHidden();
     saveCoverBtnRemoveHidden();
     coverImage.src = covers.pop();
     coverTitle.innerText = titles.pop();
-    tagline2.innerText = descriptors.pop();
-    tagline1.innerText = descriptors.pop();
-  } else {
-    alert('PLEASE FILL OUT ALL FORM FIELDS!!')
+    popDescriptor2();
+    popDescriptor1();
   }
 }
 
