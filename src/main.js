@@ -103,16 +103,23 @@ function displaySavedCovers(savedCovers) {
 
 // HIDE PAGE AREA FUNCTIONS TO REFACTOR
 
+// function toggleFormArea() {
+// formArea.classList.toggle('hidden');
+// };
+function toggleHomePage() {
+  homePageArea.classList.toggle('hidden');
+}
+
 function hideHomePage() {
+  toggleHomePage();
 formArea.classList.remove('hidden');
-homePageArea.classList.add('hidden');
 saveCoverBtn.classList.add('hidden');
 showRandomCoverBtn.classList.add('hidden');
 homeBtn.classList.remove('hidden');
 };
 
 function showSavedArea() {
-  homePageArea.classList.add('hidden');
+  toggleHomePage();
   savedCoversArea.classList.remove('hidden');
   showRandomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
@@ -122,7 +129,7 @@ function showSavedArea() {
 };
 
 function exposeHomePage() {
-  homePageArea.classList.remove('hidden');
+  toggleHomePage();
   formArea.classList.add('hidden');
   showRandomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
