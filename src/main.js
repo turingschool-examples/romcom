@@ -10,6 +10,7 @@ var saveCoverButton = document.querySelector(".save-cover-button")
 var homeButton = document.querySelector(".home-button")
 var homePage = document.querySelector(".home-view");
 var newCoverForm = document.querySelector(".form-view");
+var savedCoverForm = document.querySelector(".saved-view");
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -21,6 +22,8 @@ var currentCover;
 window.addEventListener("load", pageLoadCover);
 showRandomButton.addEventListener("click", pageLoadCover);
 makeOwnCoverButton.addEventListener("click", makeNewForm);
+viewSavedButton.addEventListener("click", viewSavedCoversPage);
+homeButton.addEventListener("click", pageLoadCover);
 
 // viewSavedButton.addEventListener("click", )
 // Create your event handlers and other functions here 👇
@@ -49,6 +52,15 @@ function makeNewForm() {
   newCoverForm.classList.remove('hidden');
   showRandomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden')
+  homeButton.classList.remove('hidden');
+  savedCoverForm.classList.add('hidden');
 };
+
+function viewSavedCoversPage() {
+  homePage.classList.add('hidden');
+  showRandomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  savedCoverForm.classList.remove('hidden');
+  homeButton.classList.remove('hidden');
+}
 
