@@ -23,14 +23,16 @@ var savedCovers = [
 var currentCover;
 
 //Programming is fun...?
-
-
-
-
-
-
-
 // Add your event listeners here 👇
+window.addEventListener("load", selectBook);
+randomCoverButton.addEventListener("click", selectBook);
+viewSavedButton.addEventListener("click", viewCoversSaved);
+myoCoverButton.addEventListener("click", userCoverForm);
+saveCoverButton.addEventListener("click", addSavedCover);
+homeButton.addEventListener("click", displayHomeView);
+makeMyBookButton.addEventListener("click", createNewBook);
+savedCoversLocation.addEventListener('click', removeSaved);
+
 
 
 // Create your event handlers and other functions here 👇
