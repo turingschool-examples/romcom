@@ -10,7 +10,6 @@ var saveCoverButton = document.querySelector(".save-cover-button");
 var homeButton = document.querySelector(".home-button");
 var homePage = document.querySelector(".home-view");
 var newCoverForm = document.querySelector(".form-view");
-<<<<<<< HEAD
 var saveCoverForm = document.querySelector(".saved-view");
 var makeMyBookButton = document.querySelector(".create-new-book-button");
 var userCoverInputBox = document.querySelector("#cover");
@@ -23,9 +22,7 @@ var savedCoversGrid = document.querySelector(".saved-covers-section");
 
 
 
-=======
-var savedCoverForm = document.querySelector(".saved-view");
->>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -38,15 +35,12 @@ var currentCover;
 window.addEventListener("load", pageLoadCover);
 showRandomButton.addEventListener("click", pageLoadCover);
 makeOwnCoverButton.addEventListener("click", makeNewForm);
-<<<<<<< HEAD
 viewSavedButton.addEventListener("click", loadSavedPage);
 homeButton.addEventListener("click", loadHomePage);
 makeMyBookButton.addEventListener("click", makeMyBook);
 saveCoverButton.addEventListener("click", saveCurrentCover);
-=======
-viewSavedButton.addEventListener("click", viewSavedCoversPage);
-homeButton.addEventListener("click", pageLoadCover);
->>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
+savedCoversGrid.addEventListener("dblclick", deleteSavedCover);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -92,7 +86,6 @@ function makeNewForm() {
   newCoverForm.classList.remove('hidden');
   showRandomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-<<<<<<< HEAD
   homeButton.classList.remove('hidden')
   saveCoverForm.classList.add("hidden")
 }
@@ -134,45 +127,30 @@ function pushToSavedCovers() {
 function saveCurrentCover(){
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
-    displaySaved();
   }
 }
 
 function displaySaved() {
   savedCoversGrid.innerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
-    // var cover = savedCovers[i];
     savedCoversGrid.innerHTML += `
       <section class="mini-cover" id="${savedCovers[i].id}">
-        <img class="cover-image" src="${savedCovers[i].cover}">
-        <h2 class="cover-title">${savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png">
+        <img id="${savedCovers[i].id}" class="cover-image" src="${savedCovers[i].cover}">
+        <h2 id="${savedCovers[i].id}" class="cover-title">${savedCovers[i].title}</h2>
+        <h3 id="${savedCovers[i].id}" class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img id="${savedCovers[i].id}" class="price-tag" src="./assets/price.png">
+        <img id="${savedCovers[i].id}" class="overlay" src="./assets/overlay.png">
       </section>`;
-    // document.querySelector(`#${savedCovers[i]}`).addEventListener('click', deleteSavedCover);
   }
 }
-// ********* I think I have a work around so we only have to use 1 ID. I will explain tomorrow! *********
+
 function deleteSavedCover(event) {
+  console.log(event.target.id)
   for(var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id == event.currentTarget.id) {
+    if (savedCovers[i].id == event.target.id) {
+      console.log('I am running!')
       savedCovers.splice(i, 1);
     }
   }
   displaySaved();
 }
-=======
-  homeButton.classList.remove('hidden');
-  savedCoverForm.classList.add('hidden');
-};
-
-function viewSavedCoversPage() {
-  homePage.classList.add('hidden');
-  showRandomButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  savedCoverForm.classList.remove('hidden');
-  homeButton.classList.remove('hidden');
-}
-
->>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
