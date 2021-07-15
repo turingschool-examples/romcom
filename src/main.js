@@ -22,6 +22,8 @@ var savedCovers = [
 ];
 var currentCover;
 
+
+//git branch test 2
 //Programming is fun...?
 // Add your event listeners here 👇
 window.addEventListener("load", selectBook);
