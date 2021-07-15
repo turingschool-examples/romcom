@@ -106,16 +106,32 @@ var savedCovers = [
 var currentCover;
 
 var randomCoverButton = document.querySelector('.random-cover-button');
-
+var makeYourOwnCoverButton = document.querySelector('.make-new-button');
+var homeView = document.querySelector('.home-view');
+var form = document.querySelector('.form-view');
+var showNewRandomCoverButton = document.querySelector('.random-cover-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var homeButton = document.querySelector('.home-button');
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click',function(){
   generateCover(coverImages, coverTitles, descriptors)
 });
 
+makeYourOwnCoverButton.addEventListener('click', toggleToForm);
 
 
 // Create your event handlers and other functions here 👇
+function toggleToForm(){
+  homeView.classList.add('hidden');
+  form.classList.remove('hidden');
+  showNewRandomCoverButton.classList.add('hidden');
+  viewSavedCoversButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+};
+
+
+
 
 
 
