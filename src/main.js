@@ -1,7 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-//var coverTitle the h2 tag for Cover-Title
-//`A tale of ${tagline1} and ${tagline2}`
-//newPageTitle = 'The title has changed!';
+
 
 var coverImages = [
   "./assets/bluebrocade.jpg",
@@ -96,10 +94,7 @@ var descriptors = [
   "melancholy"
 ];
 
-/*
-document.querySelector('h2').textContent = "Nadia's Tale";
-document.querySelector('.cover-title').textContent = "Nalle's Tale";
-*/
+
 
 
 
@@ -110,23 +105,27 @@ var savedCovers = [
 ];
 var currentCover;
 
+var randomCoverButton = document.querySelector('.random-cover-button');
+
+
 // Add your event listeners here 👇
+randomCoverButton.addEventListener('click',function(){
+  generateCover(coverImages, coverTitles, descriptors)
+});
 
 
 
 // Create your event handlers and other functions here 👇
 
 
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
 function generateCover(listOfImages, listOfTitles, listOfDescriptors) {
+  console.log(listOfImages, listOfTitles, listOfDescriptors);
   var randomImage = listOfImages[Math.floor(Math.random() * listOfImages.length)];
   var randomTitle = listOfTitles[Math.floor(Math.random() * listOfTitles.length)];
   var randomDescriptor1 = listOfDescriptors[Math.floor(Math.random() * listOfDescriptors.length)];
   var randomDescriptor2 = listOfDescriptors[Math.floor(Math.random() * listOfDescriptors.length)];
+
 
     document.querySelector('.cover-image').src = randomImage;
     document.querySelector('.cover-title').textContent = randomTitle;
@@ -136,3 +135,5 @@ function generateCover(listOfImages, listOfTitles, listOfDescriptors) {
 
 
 generateCover(coverImages, coverTitles, descriptors);
+
+// ..........................................................................
