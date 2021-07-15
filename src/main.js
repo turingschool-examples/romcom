@@ -128,9 +128,9 @@ function generateCover(listOfImages, listOfTitles, listOfDescriptors) {
 
 
     document.querySelector('.cover-image').src = randomImage;
-    document.querySelector('.cover-title').textContent = randomTitle;
-    document.querySelector('.tagline-1').textContent = randomDescriptor1;
-    document.querySelector('.tagline-2').textContent = randomDescriptor2;
+    document.querySelector('.cover-title').innerText = randomTitle;
+    document.querySelector('.tagline-1').innerText = randomDescriptor1;
+    document.querySelector('.tagline-2').innerText = randomDescriptor2;
 }
 
 
