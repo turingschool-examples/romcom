@@ -1,9 +1,11 @@
 let cover = document.querySelector('.cover-image');
 let title = document.querySelector('.cover-title');
-let tagline = document.querySelector('.tagline');
+let tagline1 = document.querySelector('.tagline-1');
+let tagline2 = document.querySelector('.tagline-2');
 let randomCoversIndex = getRandomIndex(covers);
 let randomTitlesIndex = getRandomIndex(titles);
-console.log(randomTitlesIndex);
+let randomDescriptorIndex1 = getRandomIndex(descriptors);
+let randomDescriptorIndex2 = getRandomIndex(descriptors);
 
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -13,6 +15,10 @@ var currentCover = cover;
 cover.src = covers[randomCoversIndex];
 
 title.innerText = titles[randomTitlesIndex];
+
+tagline1.innerText = descriptors[randomDescriptorIndex1];
+
+tagline2.innerText = descriptors[randomDescriptorIndex2];
 
 // Add your event listeners here 👇
 
