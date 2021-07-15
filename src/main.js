@@ -7,8 +7,10 @@ var randomButton = document.querySelector('.random-cover-button');
 var form = document.querySelector('.form-view');
 var home = document.querySelector('.home-view');
 var newCoverButton = document.querySelector('.make-new-button');
-var saveCover = document.querySelector('.save-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
+var savedCoversView = document.querySelector('.saved-view');
+var viewSavedButton = document.querySelector('.view-saved-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -18,7 +20,9 @@ var currentCover;
 
 // Add your event listeners here 👇
 randomButton.onclick = newCover;
-newCoverButton.onclick = customCover;
+newCoverButton.onclick = viewForm;
+viewSavedButton.onclick = viewSavedCover;
+homeButton.onclick = viewHome;
 
 // Create your event handlers and other functions here 👇
 function newCover() {
@@ -29,12 +33,33 @@ function newCover() {
  coverTagline2.innerText = currentCover.tagline2;
 }
 
-function customCover() {
+function viewForm() {
   form.style.display = "block";
   home.style.display = "none";
-  saveCover.style.display = "none";
+  saveCoverButton.style.display = "none";
   randomButton.style.display = "none";
   homeButton.style.display = "block";
+  newCoverButton.style.display = "none";
+}
+
+function viewSavedCover() {
+  home.style.display = "none";
+  homeButton.style.display = "block";
+  saveCoverButton.style.display = "none";
+  savedCoversView.style.display = "block";
+  randomButton.style.display = "none";
+  viewSavedButton.style.display = "none";
+}
+
+function viewHome() {
+  home.style.display = "block";
+  form.style.display = "none";
+  savedCoversView.style.display = "none";
+  randomButton.style.display = "block";
+  viewSavedButton.style.display = "block";
+  saveCoverButton.style.display = "block";
+  homeButton.style.display = "none";
+  newCoverButton.style.display = "block";
 }
 
 coverImage.src = covers[getRandomIndex(covers)];
