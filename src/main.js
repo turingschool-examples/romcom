@@ -3,7 +3,7 @@ var cover = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var title = document.querySelector('.cover-title');
-
+var randomCoverBttn = document.querySelector('.random-cover-button');
 
 
 // We've provided a few variables below
@@ -29,13 +29,23 @@ tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 title.innerText = titles[getRandomIndex(titles)];
 
 
-// Iteration 0
+// Iteration 1
+// Make Show New Random Cover button interactive to display new random cover when clicked
 
-// Goal - When the page loads, we want a random cover to appear on the page.
+// Data needed:
+  // Class,
+  // currentCover variable,
+  // random-cover-button,
+  // function for when button is clicked
 
-// Data needed: Cover with random image, title, tagline and 2 random descriptors
-// Images = covers array
+// OUTPUT:
+// The cover should re-generate only when the button is clicked.
 
-// We want it to be random every time the page loads.  So the fcn is running every time the page reloads.
+// STEPS:
+// Access the button c query querySelector
+// create event listener functions
+// function is invoked to update DOM
+//
 
-// Fcn pull image, title, 2 descriptors and have a tagline.
+// Questions:
+// Why do we need to update or use the currentCover variable, where does it come into play?
