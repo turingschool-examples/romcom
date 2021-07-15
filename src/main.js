@@ -1,11 +1,35 @@
-// Create variables targetting the relevant DOM elements here 👇
+var mainCover = document.quertySelector(".main-cover");
+var formView = document.quertySelector(".form-view");
+var savedView = document.quertySelector(".saved-view");
+var savedCoverSection = document.quertySelector(".saved-covers-section");
+var coverImage = document.quertySelector(".coverimage");
+var coverTitle = document.quertySelector(".cover-title");
+var descriptor = document.quertySelector(".tagline-1");
+var descriptor2 = document.querySelector(".selector");
+var randomCoverButton = document.querySelector(".random-cover-button");
+var makeNewCoverButton = document.querySelector(".make-new-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var homeButton = document.querySelector(".home-button");
+var viewSavedButton = document.querySelector(".view-saved-button");
+var createNewButton = document.querySelector(".create-new-button");
+var coverInput = document.querySelector("#cover");
+var titleInput = document.querySelector("#title");
+var descriptorInput1 = document.querySelector("#descriptor1");
+var descriptorInput2 = document.querySelector("#descriptor2");
 
 
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
+
+
+
+
+
+
+
+
 
 // Add your event listeners here 👇
 
