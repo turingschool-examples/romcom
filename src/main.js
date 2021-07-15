@@ -10,6 +10,7 @@ var saveCoverButton = document.querySelector(".save-cover-button");
 var homeButton = document.querySelector(".home-button");
 var homePage = document.querySelector(".home-view");
 var newCoverForm = document.querySelector(".form-view");
+<<<<<<< HEAD
 var saveCoverForm = document.querySelector(".saved-view");
 var makeMyBookButton = document.querySelector(".create-new-book-button");
 var userCoverInputBox = document.querySelector("#cover");
@@ -22,6 +23,9 @@ var savedCoversGrid = document.querySelector(".saved-covers-section");
 
 
 
+=======
+var savedCoverForm = document.querySelector(".saved-view");
+>>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -34,10 +38,15 @@ var currentCover;
 window.addEventListener("load", pageLoadCover);
 showRandomButton.addEventListener("click", pageLoadCover);
 makeOwnCoverButton.addEventListener("click", makeNewForm);
+<<<<<<< HEAD
 viewSavedButton.addEventListener("click", loadSavedPage);
 homeButton.addEventListener("click", loadHomePage);
 makeMyBookButton.addEventListener("click", makeMyBook);
 saveCoverButton.addEventListener("click", saveCurrentCover);
+=======
+viewSavedButton.addEventListener("click", viewSavedCoversPage);
+homeButton.addEventListener("click", pageLoadCover);
+>>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
 
 // Create your event handlers and other functions here 👇
 
@@ -83,6 +92,7 @@ function makeNewForm() {
   newCoverForm.classList.remove('hidden');
   showRandomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+<<<<<<< HEAD
   homeButton.classList.remove('hidden')
   saveCoverForm.classList.add("hidden")
 }
@@ -152,3 +162,17 @@ function deleteSavedCover(event) {
   }
   displaySaved();
 }
+=======
+  homeButton.classList.remove('hidden');
+  savedCoverForm.classList.add('hidden');
+};
+
+function viewSavedCoversPage() {
+  homePage.classList.add('hidden');
+  showRandomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  savedCoverForm.classList.remove('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+>>>>>>> 3dd388f32dacc219445fbb9d3730ed6f6df680f6
