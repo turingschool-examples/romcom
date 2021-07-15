@@ -1,14 +1,14 @@
 // Create variables targetting the relevant DOM elements here 👇
 
-var coverImgSrc = getRandomIndex(covers);
-var title = getRandomIndex(titles);
-var descriptor1 = getRandomIndex(descriptors);
-var descriptor2 = getRandomIndex(descriptors);
+var coverImgSrc = getRandomCover(covers); //random img source from covers array
+var title = getRandomTitle(titles); //random title from titles array
+var descriptor1 = getRandomDescriptor(descriptors); //random first descriptor from array
+var descriptor2 = getRandomDescriptor(descriptors); //random second descriptor from array
 
-var changeCover = document.querySelector('.cover-image');
-var changeTitle = document.querySelector('.cover-title');
-var changeDescriptor1 = document.querySelector('.tagline1');
-var changeDescriptor2 = document.querySelector('.tagline2');
+var changeCover = document.querySelector('img');
+var changeTitle = document.querySelector('h2');
+var changeDescriptor1 = document.querySelector('.tagline-1');
+var changeDescriptor2 = document.querySelector('.tagline-2');
 
 
 // We've provided a few variables below
@@ -17,9 +17,8 @@ var savedCovers = [
 ];
 var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
 
-changeCover.innerHTML = `<img src>${this.cover}</img>`;
-
-changeTitle.innerText = this.title;
+changeCover.src = currentCover.cover;
+changeTitle.innerText = currentCover.title;
 changeDescriptor1.innerText = this.descriptor1;
 changeDescriptor2.innerText = this.descriptor2;
 
@@ -30,17 +29,17 @@ changeDescriptor2.innerText = this.descriptor2;
 
 
 // We've provided one function to get you started
-function getRandomIndex(coversArray) {
+function getRandomCover(coversArray) {
   var random = Math.floor(Math.random() * covers.length);
   return covers[random];
 }
 
-function getRandomIndex(titlesArray) {
+function getRandomTitle(titlesArray) {
   var random = Math.floor(Math.random() * titles.length);
   return titles[random];
 }
 
-function getRandomIndex(descriptorsArray) {
+function getRandomDescriptor(descriptorsArray) {
     var random = Math.floor(Math.random() * descriptors.length);
     return descriptors[random];
 }
