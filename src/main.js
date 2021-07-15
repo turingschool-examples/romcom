@@ -1,5 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var bookTitle = document.querySelector('.cover-title');
+var bookTagline = document.querySelector('.tagline');
+var imageSource = document.querySelector('.cover-image');
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -7,11 +12,17 @@ var savedCovers = [
 ];
 var currentCover;
 
+
 // Add your event listeners here 👇
 
+// event listener that incorporates the onLoad event
+
+window.addEventListener('load', function(?)) {
+};
+
+function changeWindow();
 
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
