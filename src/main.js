@@ -1,4 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
+var homeSection = document.querySelector('.home-view');
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
 
 
 // We've provided a few variables below
@@ -17,3 +22,6 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+// getRandom cover its going to create a new instance of cover
+// displayCurrentCover that will edit HTML(innerHTML)
