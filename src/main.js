@@ -1,22 +1,61 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var bookTitle = document.querySelector('.cover-title');
+var bookTagline = document.querySelector('.tagline');
+var coverImage = document.querySelector('.cover-image');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
+
+// BUTTONS //
+
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var makeCoverButton = document.querySelector('.make-new.button');
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover = {
+  title: title,
+  tagline1: tagline1,
+  tagline2: tagline2,
+  cover: cover,
+};
+
 
 // Add your event listeners here 👇
+randomCoverButton.addEventListener('click', generateRandomPoster);
 
+// event listener that incorporates the onLoad event
+
+window.addEventListener('load', generateRandomPoster);
+
+// function changeWindow();
 
 // Create your event handlers and other functions here 👇
 
+function generateRandomPoster() {
+  bookTitle.innerText = titles[getRandomIndex(titles)];
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImage.src = covers[getRandomIndex(covers)];
+  updateCurrentCover();
+};
+
+function updateCurrentCover() {
+  currentCover.title = bookTitle.innerText;
+  currentCover.tagline1 = tagline1.innerText;
+  currentCover.tagline2 = tagline2.innerText;
+  currentCover.cover = coverImage.src;
+};
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
 
 
 // ITERATION 0: MAIN PAGE
