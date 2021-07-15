@@ -26,14 +26,14 @@ var savedCovers = [
 var homeCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2);
 
 
-function assignCover(cover) {
+function assignCover() {
     coverImage.src = randomCover; 
     coverTitle.innerText = randomTitle;
     tagline1.innerText = randomDescriptor1;
     tagline2.innerText = randomDescriptor2;
 };
 
-assignCover(homeCover);
+assignCover();
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', assignCover(homeCover));
