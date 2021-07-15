@@ -25,6 +25,7 @@ var currentCover = {
 };
 
 
+
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', generateRandomPoster);
 
@@ -34,7 +35,10 @@ window.addEventListener('load', generateRandomPoster);
 
 // function changeWindow();
 
-// Create your event handlers and other functions here 👇
+window.addEventListener('load', function(?)) {
+};
+
+function changeWindow();
 
 function generateRandomPoster() {
   bookTitle.innerText = titles[getRandomIndex(titles)];
