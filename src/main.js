@@ -110,7 +110,7 @@ var makeYourOwnCoverButton = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var showNewRandomCoverButton = document.querySelector('.random-cover-button');
-var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var viewSavedCoversButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 
 // Add your event listeners here 👇
