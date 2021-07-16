@@ -13,16 +13,36 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverBttn.addEventListener('click', changeRandomCover);
+randomCoverBttn.addEventListener('click', displayRandomCover);
 
 // Create your event handlers and other functions here 👇
 
-function changeRandomCover() {
-  cover.src = covers[getRandomIndex(covers)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  title.innerText = titles[getRandomIndex(titles)];
+function getRandomPoster() {
+  currentCover = new Cover(
+    covers[getRandomIndex(covers)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)],
+    titles[getRandomIndex(titles)],
+  )
 }
+
+
+function displayRandomCover() {
+  getRandomPoster();
+  cover.src = currentCover.cover;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  title.innerText = currentCover.title;
+}
+
+
+// function changeRandomCover() {
+//   cover.src = covers[getRandomIndex(covers)];
+//   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+//   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+//   title.innerText = titles[getRandomIndex(titles)];
+//   // currentCover = new Cover
+// }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -35,23 +55,8 @@ tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 title.innerText = titles[getRandomIndex(titles)];
 
 
-// Iteration 1
-// Make Show New Random Cover button interactive to display new random cover when clicked
+// Iteration 2
+// To be able to switch the views when the appropriate buttons are clicked.
+// and HIDE certain buttons.
 
-// Data needed:
-  // Class,
-  // currentCover variable,
-  // random-cover-button,
-  // function for when button is clicked
-
-// OUTPUT:
-// The cover should re-generate only when the button is clicked.
-
-// STEPS:
-// Access the button c query querySelector
-// create event listener functions
-// function is invoked to update DOM
 //
-
-// Questions:
-// Why do we need to update or use the currentCover variable, where does it come into play?
