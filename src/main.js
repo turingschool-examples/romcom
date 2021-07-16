@@ -23,8 +23,9 @@ var savedCovers = [
 var currentCover;
 
 
-//git branch test 2
+//git branch test
 //Programming is fun...?
+
 // Add your event listeners here 👇
 window.addEventListener("load", selectBook);
 randomCoverButton.addEventListener("click", selectBook);
@@ -34,6 +35,7 @@ saveCoverButton.addEventListener("click", addSavedCover);
 homeButton.addEventListener("click", displayHomeView);
 makeMyBookButton.addEventListener("click", createNewBook);
 savedCoversLocation.addEventListener('click', removeSaved);
+
 
 
 
