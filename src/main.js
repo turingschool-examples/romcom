@@ -1,9 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 
-var coverImgSrc = getRandomCover(covers); //random img source from covers array
-var title = getRandomTitle(titles); //random title from titles array
-var descriptor1 = getRandomDescriptor1(descriptors); //random first descriptor from array
-var descriptor2 = getRandomDescriptor2(descriptors); //random second descriptor from array
+var coverImgSrc = getRandomCover(covers); 
+var title = getRandomTitle(titles);
+var descriptor1 = getRandomDescriptor1(descriptors);
+var descriptor2 = getRandomDescriptor2(descriptors);
 
 var changeCover = document.querySelector('img');
 var changeTitle = document.querySelector('h2');
