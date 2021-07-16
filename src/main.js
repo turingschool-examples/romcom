@@ -78,7 +78,7 @@ function viewSavedCover() {
   //this is what creates all the saved covers
   for (var i=0; i<savedCovers.length; i++) { //iterates every index in the saved covers
     var span = document.createElement("span"); // this creates a span for each cover
-    savedCoversSection.append(div); // this adds that span to the saved covers page
+    savedCoversSection.append(span); // this adds that span to the saved covers page
       span.classList.add("mini-cover"); //this adds the css style to the span we created
       span.innerHTML =`
         <img class = "cover-image" src=${savedCovers[i].cover}>
@@ -119,7 +119,7 @@ function generateCustomCover() {
   viewHome();
 }
 
-function saveCover() { //this saves the current cover as long as it's unique 
+function saveCover() { //this saves the current cover as long as it's unique
   for (var i=0; i<savedCovers.length; i++) {
     if (savedCovers.indexOf(currentCover) === -1) {
       savedCovers.unshift(currentCover);
