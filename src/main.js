@@ -23,16 +23,11 @@ var savedCovers = [
 var currentCover;
 
 
-//git branch test 2
+//git branch test
 //Programming is fun...?
 
-
-
-
-
-
-
 // Add your event listeners here 👇
+
 
 
 // Create your event handlers and other functions here 👇
