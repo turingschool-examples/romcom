@@ -1,7 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-//var coverTitle the h2 tag for Cover-Title
-//`A tale of ${tagline1} and ${tagline2}`
-//newPageTitle = 'The title has changed!';
+
 
 var coverImages = [
   "./assets/bluebrocade.jpg",
@@ -96,10 +94,7 @@ var descriptors = [
   "melancholy"
 ];
 
-/*
-document.querySelector('h2').textContent = "Nadia's Tale";
-document.querySelector('.cover-title').textContent = "Nalle's Tale";
-*/
+
 
 
 
@@ -110,17 +105,50 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+var randomCoverButton = document.querySelector('.random-cover-button');
+var makeYourOwnCoverButton = document.querySelector('.make-new-button');
+var homeView = document.querySelector('.home-view');
+var form = document.querySelector('.form-view');
+var savedCoversView = document.querySelector('.saved-view')
+var showNewRandomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button')
 
+// Add your event listeners here 👇
+randomCoverButton.addEventListener('click',function(){
+  generateCover(coverImages, coverTitles, descriptors)
+});
+
+makeYourOwnCoverButton.addEventListener('click', toggleToForm);
+
+viewSavedCoversButton.addEventListener('click', displaySavedCovers);
+
+homeButton.addEventListener('click', toggleToHome);
 
 
 // Create your event handlers and other functions here 👇
+function toggleToForm(){
+  homeView.classList.add('hidden');
+  form.classList.remove('hidden');
+  showNewRandomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+};
 
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function displaySavedCovers() {
+  savedCoversView.classList.remove('hidden');
+  form.classList.add('hidden');
 }
+
+function toggleToHome() {
+  homeView.classList.remove('hidden');
+  savedCoversView.classList.add('hidden');
+  showNewRandomCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden')
+}
+
 
 function generateCover(listOfImages, listOfTitles, listOfDescriptors) {
   var randomImage = listOfImages[Math.floor(Math.random() * listOfImages.length)];
@@ -128,11 +156,14 @@ function generateCover(listOfImages, listOfTitles, listOfDescriptors) {
   var randomDescriptor1 = listOfDescriptors[Math.floor(Math.random() * listOfDescriptors.length)];
   var randomDescriptor2 = listOfDescriptors[Math.floor(Math.random() * listOfDescriptors.length)];
 
+
     document.querySelector('.cover-image').src = randomImage;
-    document.querySelector('.cover-title').textContent = randomTitle;
-    document.querySelector('.tagline-1').textContent = randomDescriptor1;
-    document.querySelector('.tagline-2').textContent = randomDescriptor2;
+    document.querySelector('.cover-title').innerText = randomTitle;
+    document.querySelector('.tagline-1').innerText = randomDescriptor1;
+    document.querySelector('.tagline-2').innerText = randomDescriptor2;
 }
 
 
 generateCover(coverImages, coverTitles, descriptors);
+
+// ..........................................................................
