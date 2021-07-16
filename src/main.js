@@ -4,7 +4,7 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var title = document.querySelector('.cover-title');
 var makeCoverBttn = document.querySelector('.make-new-button');
-
+var randomCoverBttn = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -31,7 +31,7 @@ tagline1.innerText = descriptors[getRandomIndex(descriptors)];
 tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 title.innerText = titles[getRandomIndex(titles)];
 
-function getRandomPoster() {
+function getRandomCover() {
   currentCover = new Cover(
     covers[getRandomIndex(covers)],
     descriptors[getRandomIndex(descriptors)],
@@ -41,13 +41,16 @@ function getRandomPoster() {
 }
 
 function displayRandomCover() {
-  getRandomPoster();
+  getRandomCover();
   cover.src = currentCover.cover;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
   title.innerText = currentCover.title;
 }
 
+function displayFormView() {
+
+};
 
 // Iteration 2
 // To be able to switch the views when the appropriate buttons are clicked.
@@ -59,7 +62,5 @@ function displayRandomCover() {
 // We need check if the home page and show cover and save cover buttons are still visible
 // On the home page we should see all buttons except home bttn
 
-// Steps: Create query selector for form/ make your own cover bttn
-      //  Create event listeners for the form/make your own cover bttn
-      //  Create a fcn that will handle event.  This fcn will hide home page and show New
+// Steps: Create a fcn that will handle event.  This fcn will hide home page and show New
       //  new random cover and save cover button, but we will now see the home page bttn.
