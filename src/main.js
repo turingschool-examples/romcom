@@ -3,7 +3,7 @@ var cover = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var title = document.querySelector('.cover-title');
-var randomCoverBttn = document.querySelector('.random-cover-button');
+
 
 
 // We've provided a few variables below
@@ -13,6 +13,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+
 randomCoverBttn.addEventListener('click', displayRandomCover);
 
 // Create your event handlers and other functions here 👇
@@ -25,6 +26,12 @@ function getRandomPoster() {
     titles[getRandomIndex(titles)],
   )
 }
+
+
+
+// Create your event handlers and other functions here 👇
+
+
 
 
 function displayRandomCover() {
@@ -55,8 +62,21 @@ tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 title.innerText = titles[getRandomIndex(titles)];
 
 
+
 // Iteration 2
 // To be able to switch the views when the appropriate buttons are clicked.
 // and HIDE certain buttons.
 
 //
+
+// Iteration 0
+
+// Goal - When the page loads, we want a random cover to appear on the page.
+
+// Data needed: Cover with random image, title, tagline and 2 random descriptors
+// Images = covers array
+
+// We want it to be random every time the page loads.  So the fcn is running every time the page reloads.
+
+// Fcn pull image, title, 2 descriptors and have a tagline.
+
