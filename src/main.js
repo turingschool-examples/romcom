@@ -12,24 +12,26 @@ var changeDescriptor2 = document.querySelector('.tagline-2');
 var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
 
 // We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
 
 
 function createCover() {
   changeCover.src = currentCover.cover;
   changeTitle.innerText = currentCover.title;
-  changeDescriptor1.innerText = currentCover.descriptor1;
-  changeDescriptor2.innerText = currentCover.descriptor2;
+  changeDescriptor1.innerText = currentCover.tagline1;
+  changeDescriptor2.innerText = currentCover.tagline2;
 };
 
 // Add your event listeners here 👇
-var pageLoad = document.querySelector('body');
+document.addEventListener("DOMContentLoaded", createCover);
+
+var randomButton = document.querySelector('.random-cover-button'); // access random cover button part of html
 
 // Create your event handlers and other functions here 👇
-pageLoad.addEventListener('load', createCover);
-// randomButton.addEventListener('click', createCover);
+
+randomButton.addEventListener("click", createCover);
 
 // We've provided one function to get you started
 function getRandomCover(coversArray) {
