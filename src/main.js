@@ -14,9 +14,42 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+randomCoverBttn.addEventListener('click', displayRandomCover);
 
 // Create your event handlers and other functions here 👇
 
+function getRandomPoster() {
+  currentCover = new Cover(
+    covers[getRandomIndex(covers)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)],
+    titles[getRandomIndex(titles)],
+  )
+}
+
+
+
+// Create your event handlers and other functions here 👇
+
+
+
+
+function displayRandomCover() {
+  getRandomPoster();
+  cover.src = currentCover.cover;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  title.innerText = currentCover.title;
+}
+
+
+// function changeRandomCover() {
+//   cover.src = covers[getRandomIndex(covers)];
+//   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+//   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+//   title.innerText = titles[getRandomIndex(titles)];
+//   // currentCover = new Cover
+// }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -29,6 +62,13 @@ tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 title.innerText = titles[getRandomIndex(titles)];
 
 
+
+// Iteration 2
+// To be able to switch the views when the appropriate buttons are clicked.
+// and HIDE certain buttons.
+
+//
+
 // Iteration 0
 
 // Goal - When the page loads, we want a random cover to appear on the page.
@@ -39,3 +79,4 @@ title.innerText = titles[getRandomIndex(titles)];
 // We want it to be random every time the page loads.  So the fcn is running every time the page reloads.
 
 // Fcn pull image, title, 2 descriptors and have a tagline.
+
