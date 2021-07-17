@@ -12,7 +12,11 @@ var homeButton = document.querySelector('.home-button');
 var createOwnCoverButton = document.querySelector('.make-new-button');
 var savedCoverButton = document.querySelector('.save-cover-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
-
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDescriptor1 = document.querySelector('#descriptor1');
+var userDescriptor2 = document.querySelector('#descriptor2');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 
 
@@ -26,15 +30,13 @@ var currentCover;
 
 // Add your event listeners here 👇
 
-//This will load a random cover when page loads
-window.addEventListener('load', createRandomCover);
 
-//this will create a random cover when button "show new random cover" is clicked.
+window.addEventListener('load', createRandomCover);
 randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
 homeButton.addEventListener('click', displayHomeView);
-
+makeMyBookButton.addEventListener('submit', createUserCover);
 
 
 
@@ -62,7 +64,6 @@ function displayFormView() {
   homeButton.classList.remove('hidden');
 }
 
-
 function displaySavedCoversView() {
   savedView.classList.remove('hidden');
   savedCoverSection.classList.remove('hidden');
@@ -78,6 +79,18 @@ function displayHomeView() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   savedCoverButton.classList.remove('hidden');
+}
+
+//In the new cover form view, users should be able to fill out the four input fields and then hit the save button
+
+function createUserCover() {
+  var coverInput = userCover.value;
+  var titleInput = userTitle.value;
+  var userDescriptor1Input = userDescriptor1.value;
+  var userDescriptor2Input = userDescriptor2.value;
+  // Use the values from the inputs to create a new instance of the Cover class
+    currentCover = new Cover(coverInput, titleInput, userDescriptor1Input, userDescriptor2Input);
+
 }
 
 
