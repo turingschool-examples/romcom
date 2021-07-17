@@ -1,18 +1,12 @@
-// Create variables targetting the relevant DOM elements here 👇
+// Create variables targeting the relevant DOM elements here 👇
+// variables accessing book cover HTML elements
+var coverOnLoad = document.querySelector('img');
+var titleOnLoad = document.querySelector('h2');
+var firstDescriptorOnLoad = document.querySelector('.tagline-1');
+var secondDescriptorOnLoad = document.querySelector('.tagline-2');
 
-var coverImgSrc = getRandomCover(covers);
-var title = getRandomTitle(titles);
-var descriptor1 = getRandomDescriptor1(descriptors);
-var descriptor2 = getRandomDescriptor2(descriptors);
-
-var changeCover = document.querySelector('img');
-var changeTitle = document.querySelector('h2');
-var changeDescriptor1 = document.querySelector('.tagline-1');
-var changeDescriptor2 = document.querySelector('.tagline-2');
-
-var currentCover;
-
-// var currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
+// Button variables
+var randomButton = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -20,39 +14,21 @@ var savedCovers = [
 ];
 
 function createCover() {
-  currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2);
-  changeCover.src = currentCover.cover;
-  changeTitle.innerText = currentCover.title;
-  changeDescriptor1.innerText = currentCover.tagline1;
-  changeDescriptor2.innerText = currentCover.tagline2;
-};
+  var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverOnLoad.src = currentCover.cover;
+  titleOnLoad.innerText = currentCover.title;
+  firstDescriptorOnLoad.innerText = currentCover.tagline1;
+  secondDescriptorOnLoad.innerText = currentCover.tagline2;
+}
 
 // Add your event listeners here 👇
-/*1*/ document.addEventListener("DOMContentLoaded", createCover);
-
-var randomButton = document.querySelector('.random-cover-button'); // access random cover button part of html
+document.addEventListener("DOMContentLoaded", createCover);
 
 // Create your event handlers and other functions here 👇
 
 randomButton.addEventListener("click", createCover);
 
 // We've provided one function to get you started
-function getRandomCover(covers) {
-  var random = Math.floor(Math.random() * covers.length);
-  return covers[random];
-};
-
-function getRandomTitle(titles) {
-  var random = Math.floor(Math.random() * titles.length);
-  return titles[random];
-};
-
-function getRandomDescriptor1(descriptors) {
-    var random = Math.floor(Math.random() * descriptors.length);
-    return descriptors[random];
-};
-
-function getRandomDescriptor2(descriptors) {
-    var random = Math.floor(Math.random() * descriptors.length);
-    return descriptors[random];
-};
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
