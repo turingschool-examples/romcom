@@ -24,9 +24,34 @@ function createCover() {
 // Add your event listeners here 👇
 document.addEventListener("DOMContentLoaded", createCover);
 
-// Create your event handlers and other functions here 👇
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+viewSavedCoversButton.addEventListener('click', togglePage);
 
+var makeCoverButton = document.querySelector('.make-new-button');
+makeCoverButton.addEventListener('click', makeCoverPage);
+
+// Create your event handlers and other functions here 👇
 randomButton.addEventListener("click", createCover);
+
+// var saveCoverButton = document.querySelector('.save-cover-button');
+// saveCoverButton.addEventListener('click', togglePage);
+
+function makeCoverPage() {
+  var hidePage = document.querySelector('.view home-view hidden');
+  hidePage.classList.remove('view');
+
+  var showPage = document.querySelector('.view form-view hidden');
+  showPage.classList.remove('hidden');
+
+  var hideButton = document.querySelector('.random-cover-button');
+  hideButton.classList.add('hidden');
+
+  var hideButton1 = document.querySelector('.save-cover-button');
+  hideButton1.classList.add('hidden');
+
+  var showButton = document.querySelector('.view home-button hidden');
+  showButton.classList.remove('hidden');
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
