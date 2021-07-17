@@ -21,12 +21,6 @@ window.addEventListener('load', createRandomCover);
 //this will create a random cover when button "show new random cover" is clicked.
 randomCoverButton.addEventListener('click', createRandomCover);
 
-  // This is generates a random cover, title, tagline on load
-  // basically our "home"
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 
 /*________________________________________ Create your event handlers and other functions here 👇________*/
 //Will randomize elements in the array in class ****stuff***.
