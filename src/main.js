@@ -1,10 +1,18 @@
 // Create variables targetting the relevant DOM elements here 👇
-var homeSection = document.querySelector('.home-view');
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var currentDescription1 = document.querySelector('.tagline-1'); //<--changed variable name
-var currentDescription2 = document.querySelector('.tagline-2'); //<--changed variable name
-var randomCoverButton = document.querySelector('.random-cover-button'); //<--added variable
+var currentDescription1 = document.querySelector('.tagline-1');
+var currentDescription2 = document.querySelector('.tagline-2');
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var homeButton = document.querySelector('.home-button');
+var createOwnCoverButton = document.querySelector('.make-new-button');
+var savedCoverButton = document.querySelector('.save-cover-button');
+
+
+
+
 
 // We've provided a few variables below
 var savedCovers = [
