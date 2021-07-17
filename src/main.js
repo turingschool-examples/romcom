@@ -73,4 +73,13 @@ function displayCover(cover) {
   title.innerText = cover.title;
   tgLine2.innerText = cover.tgLine2;
   tgLine3.innerText = cover.tgLine3;
-};
+}
+
+function flipHomeView() {
+  homeView.classList.remove("hidden");
+  formView.classList.add("hidden");
+  randomCoverImage.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  savedView.classList.add("hidden");
+}
