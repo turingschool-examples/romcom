@@ -40,7 +40,7 @@ makeBookButton.addEventListener("click", createUsrCover);
 viewSavedButton.addEventListener("click", toggleSaveView);
 savedCoversSection.addEventListener("dblclick", deleteMiniCover);
 
-
+// Create your event handlers and other functions here 👇
 function toggleSaveView() {
   savedView.classList.remove("hidden");
   homeView.classList.add("hidden");
@@ -60,7 +60,14 @@ function createCover() {
   displayCover(currentCover);
 }
 
-// Create your event handlers and other functions here 👇
+function displayCover(cover) {
+  coverImageElement.setAttribute("src", cover.cover);
+  title.innerText = cover.title;
+  tgLine2.innerText = cover.tgLine2;
+  tgLine3.innerText = cover.tgLine3;
+};
+
+
 
 //optional extension: remove unnecessary functionality of formView button while on form page
 // optional extension: stop input value from causing duplicates in arrays
