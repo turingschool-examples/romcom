@@ -83,3 +83,16 @@ function flipHomeView() {
   homeButton.classList.add("hidden");
   savedView.classList.add("hidden");
 }
+
+function createUsrCover(event) {
+  event.preventDefault();
+  var tgLine2 = usrDesc.value;
+  var tgLine3 = usrDesc2.value;
+  var title = userTitle.value;
+  var coverImgSrc = userCover.value;
+  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
+  pushUserCover();
+  form.reset();
+  flipHomeView();
+  displayCover(currentCover);
+}
