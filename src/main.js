@@ -31,6 +31,7 @@ var currentCover;
 //Programming is fun...?
 
 // Add your event listeners here 👇
+
 window.addEventListener("load", createCover);
 randomCoverImage.addEventListener("click", createCover);
 homeButton.addEventListener("click", flipHomeView);
@@ -60,6 +61,16 @@ function createCover() {
   displayCover(currentCover);
 }
 
+window.addEventListener("load", selectBook);
+randomCoverButton.addEventListener("click", selectBook);
+viewSavedButton.addEventListener("click", viewCoversSaved);
+myoCoverButton.addEventListener("click", userCoverForm);
+saveCoverButton.addEventListener("click", addSavedCover);
+homeButton.addEventListener("click", displayHomeView);
+makeMyBookButton.addEventListener("click", createNewBook);
+// savedCoversLocation.addEventListener('click', removeSaved);
+
+
 function displayCover(cover) {
   coverImageElement.setAttribute("src", cover.cover);
   title.innerText = cover.title;
@@ -73,6 +84,25 @@ function displayCover(cover) {
 // optional extension: stop input value from causing duplicates in arrays
 // optional extension: make saved covers smaller
 
+function newCover() {
+  coverImage.src = getRandomIndex(covers);
+  coverTitle.innerText = getRandomIndex(titles);
+  descriptorInput1.innerText = getRandomIndex(descriptors);
+  descriptorInput2.innerText = getRandomIndex(descriptors);
+};
+
+function addToSaved() {
+  var currentCover = new Cover(coverImage.src, coverTitle.innerText, descriptorInput1.innerText, descriptorInput2.innerText);
+  var hasDuplicate = false;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].cover === coverImage.src && savedCovers[i].title === coverTitle.innerText && savedCovers[i].tagline1 === descriptor1.innerText && savedCovers[i].tagline2 === descriptor2.innerText) {
+      hasDuplicate = true;
+    }
+  }
+  if (hasDuplicate === false) {
+    savedCovers.push(currentCover);
+  }
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
