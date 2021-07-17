@@ -3,9 +3,12 @@ var cover = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var title = document.querySelector('.cover-title');
-var makeCoverBttn = document.querySelector('.make-new-button');
 var randomCoverBttn = document.querySelector('.random-cover-button');
-
+var makeCoverBttn = document.querySelector('.make-new-button');
+var homePage = document.querySelector('.home-view');
+var formPage = document.querySelector('.form-view');
+var saveCover = document.querySelector('.save-cover-button');
+var homeBttn = document.querySelector('.home-button');
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -49,7 +52,11 @@ function displayRandomCover() {
 }
 
 function displayFormView() {
-
+  formPage.classList.toggle('hidden');
+  homePage.classList.toggle('hidden');
+  saveCover.classList.toggle('hidden');
+  randomCoverBttn.classList.toggle('hidden');
+  homeBttn.classList.toggle('hidden');
 };
 
 // Iteration 2
@@ -62,5 +69,9 @@ function displayFormView() {
 // We need check if the home page and show cover and save cover buttons are still visible
 // On the home page we should see all buttons except home bttn
 
-// Steps: Create a fcn that will handle event.  This fcn will hide home page and show New
-      //  new random cover and save cover button, but we will now see the home page bttn.
+// Steps:
+// [X]Create a fcn that will handle event.
+// [X]This fcn will hide home page and show the form.
+// []It will hide the "show new random cover" and "save cover" bttns.
+// []but we will now see the home page bttn.
+//
