@@ -29,17 +29,6 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.addEventListener("load", createCover);
-randomCoverImage.addEventListener("click", createCover);
-homeButton.addEventListener("click", flipHomeView);
-makeNewButton.addEventListener("click", flipFormView);
-saveCoverButton.addEventListener("click", pushSavedCover);
-makeBookButton.addEventListener("click", createUsrCover);
-viewSavedButton.addEventListener("click", toggleSaveView);
-savedCoversSection.addEventListener("dblclick", deleteMiniCover);
-
-
-// Add your event listeners here 👇
 
 window.addEventListener("load", createCover);
 randomCoverImage.addEventListener("click", createCover);
@@ -51,54 +40,22 @@ viewSavedButton.addEventListener("click", toggleSaveView);
 savedCoversSection.addEventListener("dblclick", deleteMiniCover);
 
 // Create your event handlers and other functions here 👇
-function toggleSaveView() {
-  savedView.classList.remove("hidden");
-  homeView.classList.add("hidden");
-  formView.classList.add("hidden");
-  homeButton.classList.remove("hidden");
-  randomCoverImage.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  showSavedCoverArray();
-}
-
-function createCover() {
-  var tgLine2 = descriptors[getRandomIndex(descriptors)];
-  var tgLine3 = descriptors[getRandomIndex(descriptors)];
-  var title = titles[getRandomIndex(titles)];
-  var coverImgSrc = covers[getRandomIndex(covers)];
-  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
-  displayCover(currentCover);
-}
-
-window.addEventListener("load", selectBook);
-randomCoverButton.addEventListener("click", selectBook);
-viewSavedButton.addEventListener("click", viewCoversSaved);
-myoCoverButton.addEventListener("click", userCoverForm);
-saveCoverButton.addEventListener("click", addSavedCover);
-homeButton.addEventListener("click", displayHomeView);
-makeMyBookButton.addEventListener("click", createNewBook);
-// savedCoversLocation.addEventListener('click', removeSaved);
 
 //optional extension: remove unnecessary functionality of formView button while on form page
 // optional extension: stop input value from causing duplicates in arrays
 // optional extension: make saved covers smaller
 
-function flipHomeView() {
-  homeView.classList.remove("hidden");
-  formView.classList.add("hidden");
-  randomCoverImage.classList.remove("hidden");
-  saveCoverButton.classList.remove("hidden");
-  homeButton.classList.add("hidden");
-  savedView.classList.add("hidden");
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
-function flipFormView() {
-  homeView.classList.add("hidden");
-  formView.classList.remove("hidden");
-  homeButton.classList.remove("hidden");
-  randomCoverImage.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  savedView.classList.add("hidden");
+function createCover() {
+  var tgLine2 = descriptors[getRandomIndex(descriptors)];
+  var tgLine3 = descriptors[getRandomIndex(descriptors)];
+  var title = titles[getRandomIndex(titles)];
+  var coverImgSrc = covers[getRandomIndex(covers)];
+  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
+  displayCover(currentCover);
 }
 
 function toggleSaveView() {
@@ -109,39 +66,6 @@ function toggleSaveView() {
   randomCoverImage.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   showSavedCoverArray();
-}
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-//
-function createCover() {
-  var tgLine2 = descriptors[getRandomIndex(descriptors)];
-  var tgLine3 = descriptors[getRandomIndex(descriptors)];
-  var title = titles[getRandomIndex(titles)];
-  var coverImgSrc = covers[getRandomIndex(covers)];
-  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
-  displayCover(currentCover);
-}
-
-function createUsrCover(event) {
-  event.preventDefault();
-  var tgLine2 = usrDesc.value;
-  var tgLine3 = usrDesc2.value;
-  var title = userTitle.value;
-  var coverImgSrc = userCover.value;
-  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
-  pushUserCover();
-  form.reset();
-  flipHomeView();
-  displayCover(currentCover);
-}
-
-function pushUserCover(coverImgSrc, title, tgLine2, tgLine3) {
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(usrDesc.value);
-  descriptors.push(usrDesc2.value);
 }
 
 function displayCover(cover) {
@@ -150,37 +74,3 @@ function displayCover(cover) {
   tgLine2.innerText = cover.tgLine2;
   tgLine3.innerText = cover.tgLine3;
 };
-
-function pushSavedCover() {
-  if (!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover);
-  }
-}
-
-function showSavedCoverArray() {
-  savedCoversSection.innerText = "";
-  for (var i = 0; i < savedCovers.length; i++) {
-    var newMiniCover = `
-      <section class="main-cover" data-id=${savedCovers[i].id}>
-        <img class="cover-image" src=${savedCovers[i].cover}>
-        <h2 class="cover-title">${savedCovers[i].title}</h2>
-        <h3 class="tagLine1">A tale of <span class="tagLine1-1">${savedCovers[i].tgLine2}</span> and <span class="tagLine1-2">${savedCovers[i].tgLine3}</span></h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png">
-      </section>
-    `;
-    savedCoversSection.insertAdjacentHTML("afterbegin", newMiniCover);
-  }
-}
-
-function deleteMiniCover(event) {
-  if (event.target.closest(".main-cover")) {
-    var selectedCoverHTML = event.target.closest(".main-cover");
-    for (var i = 0; i < savedCovers.length; i++) {
-      if (savedCovers[i].id === Number(selectedCoverHTML.dataset.id)) {
-        savedCovers.splice(i, 1);
-      }
-    }
-    showSavedCoverArray();
-  }
-}
