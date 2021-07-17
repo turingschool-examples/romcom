@@ -1,11 +1,12 @@
 var mainCover = document.quertySelector(".main-cover");
 var formView = document.quertySelector(".form-view");
+//var homeView  = document.querySelector(".home-view");
 var savedView = document.quertySelector(".saved-view");
 var savedCoverSection = document.quertySelector(".saved-covers-section");
 var coverImage = document.quertySelector(".coverimage");
 var coverTitle = document.quertySelector(".cover-title");
 var descriptor = document.quertySelector(".tagline-1");
-var descriptor2 = document.querySelector(".selector");
+var descriptor2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var makeNewCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
@@ -35,6 +36,8 @@ saveCoverButton.addEventListener("click", addSavedCover);
 homeButton.addEventListener("click", displayHomeView);
 makeMyBookButton.addEventListener("click", createNewBook);
 savedCoversLocation.addEventListener('click', removeSaved);
+//makeNewCoverButton.addEventListener('click', newCoverButton);
+//savedCoversButton.addEventListener('click' saveCover)
 
 
 
