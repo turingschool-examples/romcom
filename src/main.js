@@ -1,10 +1,21 @@
 // Create variables targetting the relevant DOM elements here 👇
-var homeSection = document.querySelector('.home-view');
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var currentDescription1 = document.querySelector('.tagline-1'); //<--changed variable name
-var currentDescription2 = document.querySelector('.tagline-2'); //<--changed variable name
-var randomCoverButton = document.querySelector('.random-cover-button'); //<--added variable
+var currentDescription1 = document.querySelector('.tagline-1');
+var currentDescription2 = document.querySelector('.tagline-2');
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view');
+var savedView = document.querySelector('.saved-view');
+var savedCoverSection = document.querySelector('.saved-covers-section');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var homeButton = document.querySelector('.home-button');
+var createOwnCoverButton = document.querySelector('.make-new-button');
+var savedCoverButton = document.querySelector('.save-cover-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+
+
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -20,6 +31,11 @@ window.addEventListener('load', createRandomCover);
 
 //this will create a random cover when button "show new random cover" is clicked.
 randomCoverButton.addEventListener('click', createRandomCover);
+createOwnCoverButton.addEventListener('click', displayFormView);
+viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
+homeButton.addEventListener('click', displayHomeView);
+
+
 
 
 /*________________________________________ Create your event handlers and other functions here 👇________*/
@@ -36,6 +52,34 @@ function createRandomCover() {
   currentDescription1.innerText = currentCover.tagline1;
   currentDescription2.innerText = currentCover.tagline2;
 }
+
+
+function displayFormView() {
+  formView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  savedCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+
+function displaySavedCoversView() {
+  savedView.classList.remove('hidden');
+  savedCoverSection.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  savedCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
+
+function displayHomeView() {
+  formView.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  savedCoverButton.classList.remove('hidden');
+}
+
 
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
 -----and the homepage view should be hidden*/
