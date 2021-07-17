@@ -1,4 +1,4 @@
-//
+// Create variables targetting the relevant DOM elements here 👇
 var coverImageElement = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var mainCover = document.querySelector(".main-cover");
@@ -21,14 +21,12 @@ var userTitle = document.querySelector(".user-title");
 var form = document.querySelector("form");
 var savedCoversSection = document.querySelector(".saved-covers-section");
 
+// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
 var currentCover;
-
-
-//git branch test
-//Programming is fun...?
 
 // Add your event listeners here 👇
 
@@ -42,14 +40,13 @@ viewSavedButton.addEventListener("click", toggleSaveView);
 savedCoversSection.addEventListener("dblclick", deleteMiniCover);
 
 // Create your event handlers and other functions here 👇
-function toggleSaveView() {
-  savedView.classList.remove("hidden");
-  homeView.classList.add("hidden");
-  formView.classList.add("hidden");
-  homeButton.classList.remove("hidden");
-  randomCoverImage.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  showSavedCoverArray();
+
+//optional extension: remove unnecessary functionality of formView button while on form page
+// optional extension: stop input value from causing duplicates in arrays
+// optional extension: make saved covers smaller
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 function createCover() {
@@ -61,49 +58,28 @@ function createCover() {
   displayCover(currentCover);
 }
 
-window.addEventListener("load", selectBook);
-randomCoverButton.addEventListener("click", selectBook);
-viewSavedButton.addEventListener("click", viewCoversSaved);
-myoCoverButton.addEventListener("click", userCoverForm);
-saveCoverButton.addEventListener("click", addSavedCover);
-homeButton.addEventListener("click", displayHomeView);
-makeMyBookButton.addEventListener("click", createNewBook);
-// savedCoversLocation.addEventListener('click', removeSaved);
-
+function toggleSaveView() {
+  savedView.classList.remove("hidden");
+  homeView.classList.add("hidden");
+  formView.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  randomCoverImage.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  showSavedCoverArray();
+}
 
 function displayCover(cover) {
   coverImageElement.setAttribute("src", cover.cover);
   title.innerText = cover.title;
   tgLine2.innerText = cover.tgLine2;
   tgLine3.innerText = cover.tgLine3;
-};
-
-
-
-//optional extension: remove unnecessary functionality of formView button while on form page
-// optional extension: stop input value from causing duplicates in arrays
-// optional extension: make saved covers smaller
-
-function newCover() {
-  coverImage.src = getRandomIndex(covers);
-  coverTitle.innerText = getRandomIndex(titles);
-  descriptorInput1.innerText = getRandomIndex(descriptors);
-  descriptorInput2.innerText = getRandomIndex(descriptors);
-};
-
-function addToSaved() {
-  var currentCover = new Cover(coverImage.src, coverTitle.innerText, descriptorInput1.innerText, descriptorInput2.innerText);
-  var hasDuplicate = false;
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].cover === coverImage.src && savedCovers[i].title === coverTitle.innerText && savedCovers[i].tagline1 === descriptor1.innerText && savedCovers[i].tagline2 === descriptor2.innerText) {
-      hasDuplicate = true;
-    }
-  }
-  if (hasDuplicate === false) {
-    savedCovers.push(currentCover);
-  }
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function flipHomeView() {
+  homeView.classList.remove("hidden");
+  formView.classList.add("hidden");
+  randomCoverImage.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  savedView.classList.add("hidden");
 }
