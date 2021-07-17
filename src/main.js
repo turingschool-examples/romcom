@@ -5,10 +5,13 @@ var currentDescription1 = document.querySelector('.tagline-1');
 var currentDescription2 = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
+var savedView = document.querySelector('.saved-view');
+var savedCoverSection = document.querySelector('.saved-covers-section');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var createOwnCoverButton = document.querySelector('.make-new-button');
 var savedCoverButton = document.querySelector('.save-cover-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
 
 
 
@@ -29,6 +32,8 @@ window.addEventListener('load', createRandomCover);
 //this will create a random cover when button "show new random cover" is clicked.
 randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
+viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
+
 
 
 
@@ -47,13 +52,23 @@ function createRandomCover() {
   currentDescription2.innerText = currentCover.tagline2;
 }
 
+
 function displayFormView() {
   formView.classList.remove('hidden');
-  homeView.classList.add('hidden')
+  homeView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   savedCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
 
+
+function displaySavedCoversView() {
+  savedView.classList.remove('hidden');
+  savedCoverSection.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  savedCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
 -----and the homepage view should be hidden*/
