@@ -33,6 +33,7 @@ window.addEventListener('load', createRandomCover);
 randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
+homeButton.addEventListener('click', displayHomeView);
 
 
 
@@ -70,5 +71,15 @@ function displaySavedCoversView() {
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
+
+function displayHomeView() {
+  formView.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  savedCoverButton.classList.remove('hidden');
+}
+
+
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
 -----and the homepage view should be hidden*/
