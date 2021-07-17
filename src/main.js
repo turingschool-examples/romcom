@@ -28,6 +28,8 @@ window.addEventListener('load', createRandomCover);
 
 //this will create a random cover when button "show new random cover" is clicked.
 randomCoverButton.addEventListener('click', createRandomCover);
+createOwnCoverButton.addEventListener('click', displayFormView);
+
 
 
 /*________________________________________ Create your event handlers and other functions here 👇________*/
@@ -43,6 +45,14 @@ function createRandomCover() {
   coverTitle.innerText = currentCover.title;
   currentDescription1.innerText = currentCover.tagline1;
   currentDescription2.innerText = currentCover.tagline2;
+}
+
+function displayFormView() {
+  formView.classList.remove('hidden');
+  homeView.classList.add('hidden')
+  randomCoverButton.classList.add('hidden');
+  savedCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
 }
 
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
