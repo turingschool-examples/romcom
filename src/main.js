@@ -57,24 +57,20 @@ function displayRandomCover() {
 }
 
 function displayFormView() {
-  if (homePage.classList !== 'hidden') {
     formPage.classList.remove('hidden');
     homePage.classList.add('hidden');
     saveCoverBttn.classList.add('hidden');
     randomCoverBttn.classList.add('hidden');
     homeBttn.classList.remove('hidden');
-  } else {
-    savedCoversPage.classList.add('hidden');
-    formPage.classList.remove('hidden');
-  }
-};
+  };
 
 function displaySavedCovers() {
-  savedCoversPage.classList.remove('hidden');
-  homePage.classList.add('hidden');
-  saveCoverBttn.classList.add('hidden');
-  randomCoverBttn.classList.add('hidden');
-  homeBttn.classList.remove('hidden');
+    savedCoversPage.classList.remove('hidden');
+    homePage.classList.add('hidden');
+    saveCoverBttn.classList.add('hidden');
+    randomCoverBttn.classList.add('hidden');
+    homeBttn.classList.remove('hidden');
+    formPage.classList.add('hidden');
 };
 
 function displayHomeView() {
