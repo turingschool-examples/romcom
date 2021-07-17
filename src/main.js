@@ -36,7 +36,7 @@ randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
 homeButton.addEventListener('click', displayHomeView);
-makeMyBookButton.addEventListener('submit', createUserCover);
+makeMyBookButton.addEventListener('click', createUserCover);
 
 
 
@@ -84,13 +84,21 @@ function displayHomeView() {
 //In the new cover form view, users should be able to fill out the four input fields and then hit the save button
 
 function createUserCover() {
+  event.preventDefault();
   var coverInput = userCover.value;
   var titleInput = userTitle.value;
   var userDescriptor1Input = userDescriptor1.value;
   var userDescriptor2Input = userDescriptor2.value;
-  // Use the values from the inputs to create a new instance of the Cover class
-    currentCover = new Cover(coverInput, titleInput, userDescriptor1Input, userDescriptor2Input);
-
+  currentCover = new Cover(coverInput, titleInput, userDescriptor1Input, userDescriptor2Input);
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  currentDescription1.innerText = currentCover.tagline1;
+  currentDescription2.innerText = currentCover.tagline2;
+  covers.push(coverInput);
+  titles.push(titleInput);
+  descriptors.push(userDescriptor1);
+  descriptors.push(userDescriptor2);
+  displayHomeView();
 }
 
 
