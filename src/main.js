@@ -96,3 +96,9 @@ function createUsrCover(event) {
   flipHomeView();
   displayCover(currentCover);
 }
+
+function pushSavedCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
