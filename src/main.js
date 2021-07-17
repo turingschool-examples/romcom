@@ -39,7 +39,45 @@ viewSavedButton.addEventListener("click", toggleSaveView);
 savedCoversSection.addEventListener("dblclick", deleteMiniCover);
 
 
+// Add your event listeners here 👇
+
+window.addEventListener("load", createCover);
+randomCoverImage.addEventListener("click", createCover);
+homeButton.addEventListener("click", flipHomeView);
+makeNewButton.addEventListener("click", flipFormView);
+saveCoverButton.addEventListener("click", pushSavedCover);
+makeBookButton.addEventListener("click", createUsrCover);
+viewSavedButton.addEventListener("click", toggleSaveView);
+savedCoversSection.addEventListener("dblclick", deleteMiniCover);
+
 // Create your event handlers and other functions here 👇
+function toggleSaveView() {
+  savedView.classList.remove("hidden");
+  homeView.classList.add("hidden");
+  formView.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  randomCoverImage.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  showSavedCoverArray();
+}
+
+function createCover() {
+  var tgLine2 = descriptors[getRandomIndex(descriptors)];
+  var tgLine3 = descriptors[getRandomIndex(descriptors)];
+  var title = titles[getRandomIndex(titles)];
+  var coverImgSrc = covers[getRandomIndex(covers)];
+  currentCover = new Cover(coverImgSrc, title, tgLine2, tgLine3);
+  displayCover(currentCover);
+}
+
+window.addEventListener("load", selectBook);
+randomCoverButton.addEventListener("click", selectBook);
+viewSavedButton.addEventListener("click", viewCoversSaved);
+myoCoverButton.addEventListener("click", userCoverForm);
+saveCoverButton.addEventListener("click", addSavedCover);
+homeButton.addEventListener("click", displayHomeView);
+makeMyBookButton.addEventListener("click", createNewBook);
+// savedCoversLocation.addEventListener('click', removeSaved);
 
 //optional extension: remove unnecessary functionality of formView button while on form page
 // optional extension: stop input value from causing duplicates in arrays
