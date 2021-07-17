@@ -5,8 +5,8 @@ var savedView = document.quertySelector(".saved-view");
 var savedCoverSection = document.quertySelector(".saved-covers-section");
 var coverImage = document.quertySelector(".coverimage");
 var coverTitle = document.quertySelector(".cover-title");
-var descriptor = document.quertySelector(".tagline-1");
-var descriptor2 = document.querySelector(".tagline-2");
+var descriptor1 = document.quertySelector(".tagline-1");
+var descriptor2 = document.querySelector(".tagLine-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var makeNewCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
@@ -44,6 +44,25 @@ savedCoversLocation.addEventListener('click', removeSaved);
 
 // Create your event handlers and other functions here 👇
 
+function newCover() {
+  coverImage.src = getRandomIndex(covers);
+  coverTitle.innerText = getRandomIndex(titles);
+  descriptorInput1.innerText = getRandomIndex(descriptors);
+  descriptorInput2.innerText = getRandomIndex(descriptors);
+};
+
+function addToSaved() {
+  var currentCover = new Cover(coverImage.src, coverTitle.innerText, descriptorInput1.innerText, descriptorInput2.innerText);
+  var hasDuplicate = false;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].cover === coverImage.src && savedCovers[i].title === coverTitle.innerText && savedCovers[i].tagline1 === descriptor1.innerText && savedCovers[i].tagline2 === descriptor2.innerText) {
+      hasDuplicate = true;
+    }
+  }
+  if (hasDuplicate === false) {
+    savedCovers.push(currentCover);
+  }
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
