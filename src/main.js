@@ -17,7 +17,7 @@ var currentCover;
 // Create your event handlers and other functions here 👇
 
   // This is generates a random cover, title, tagline on load
-  // basically our "home" 
+  // basically our "home"
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
