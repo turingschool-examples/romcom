@@ -57,12 +57,16 @@ function displayRandomCover() {
 }
 
 function displayFormView() {
-  formPage.classList.remove('hidden');
-  homePage.classList.add('hidden');
-  saveCoverBttn.classList.add('hidden');
-  randomCoverBttn.classList.add('hidden');
-  homeBttn.classList.remove('hidden');
-  makeCoverBttn.disabled = true;
+  if (homePage.classList !== 'hidden') {
+    formPage.classList.remove('hidden');
+    homePage.classList.add('hidden');
+    saveCoverBttn.classList.add('hidden');
+    randomCoverBttn.classList.add('hidden');
+    homeBttn.classList.remove('hidden');
+  } else {
+    savedCoversPage.classList.add('hidden');
+    formPage.classList.remove('hidden');
+  }
 };
 
 function displaySavedCovers() {
@@ -81,14 +85,14 @@ function displayHomeView() {
     saveCoverBttn.classList.remove('hidden');
     randomCoverBttn.classList.remove('hidden');
     homeBttn.classList.add('hidden');
-    makeCoverBttn.disabled = false;
+
   } else {
     savedCoversPage.classList.add('hidden');
     homePage.classList.remove('hidden');
     saveCoverBttn.classList.remove('hidden');
     randomCoverBttn.classList.remove('hidden');
     homeBttn.classList.add('hidden');
-  } 
+  }
 }
 
 
