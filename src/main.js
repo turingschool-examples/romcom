@@ -14,6 +14,7 @@ var makeNewCoverButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('form');
 
 var currentPage = 'home-view';
+var currentCover;
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,9 +22,9 @@ var savedCovers = [
 ];
 
 // Add your event listeners here 👇
-document.addEventListener("DOMContentLoaded", createCover);
+document.addEventListener("DOMContentLoaded", randomizeCover);
 
-randomButton.addEventListener("click", createCover);
+randomButton.addEventListener("click", randomizeCover);
 
 homeButton.addEventListener('click', function() {
   changePage('home-view', currentPage);
@@ -47,8 +48,8 @@ makeNewCoverButton.addEventListener('click', function() {
 
 
 // Create your event handlers and other functions here 👇
-function createCover() {
-  var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+function randomizeCover() {
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   coverOnLoad.src = currentCover.cover;
   titleOnLoad.innerText = currentCover.title;
   firstDescriptorOnLoad.innerText = currentCover.tagline1;
@@ -97,3 +98,40 @@ function changeButton2(newButton1, newButton2, removeButton) {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+var userCover = document.querySelector('#cover').value;
+var userTitle = document.querySelector('#title').value;
+var userDescriptor1 = document.querySelector('#descriptor1').value;
+var userDescriptor2 = document.querySelector('#descriptor2').value;
+var makeMyBookButton = document.querySelector('.create-new-book-button');
+
+makeMyBookButton.addEventListener('click', createBook);
+
+function createBook() {
+  currentCover = new Cover(userCover, userTitle, userDescriptor1, userDescriptor2);
+  coverOnLoad.src = currentCover.cover;
+  titleOnLoad.innerText = currentCover.title;
+  firstDescriptorOnLoad.innerText = currentCover.tagline1;
+  secondDescriptorOnLoad.innerText = currentCover.tagline2;
+}
+
+// {
+//   saveInputToArrays(userCover.value, userTitle.value, userDescriptor1.value, userDescriptor2.value);
+//   userCreatedCover(covers[covers.length - 1], titles[titles.length - 1], descriptors[descriptors.length - 1], descriptors[descriptors.length - 1]);
+// });
+
+// function saveInputToArrays(userCover, userTitle, userDescriptor1, userDescriptor2) {
+//   covers.push(userCover.value);
+//   titles.push(userTitle.value);
+//   descriptors.push(userDescriptor1.value);
+//   descriptors.push(userDescriptor2.value);
+//   userCreatedCover(covers[covers.length - 1], titles[titles.length - 1], descriptors[descriptors.length - 1], descriptors[descriptors.length - 1])
+// }
+//
+// function userCreatedCover(userCover, userTitle, userDescriptor1, userDescriptor2) {
+//   var userBook = new Cover(userCover, userTitle, userDescriptor1, userDescriptor2);
+//   coverOnLoad.src = userCover;
+//   titleOnLoad.innerText = userTitle;
+//   firstDescriptorOnLoad.innerText = userDescriptor1;
+//   secondDescriptorOnLoad.innerText = userDescriptor2;
+// }
