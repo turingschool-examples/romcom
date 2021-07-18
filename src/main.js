@@ -4,6 +4,7 @@ var cover = document.querySelector('img');
 var title = document.querySelector('h2');
 var firstDescriptor = document.querySelector('.tagline-1');
 var secondDescriptor = document.querySelector('.tagline-2');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 // var userCover = document.querySelector('.user-cover');
 // var userTitle = document.querySelector('.user-title');
 // var userDescriptor1 = document.querySelector('.user-desc1');
@@ -73,15 +74,6 @@ function saveCover(currentCover) {
     savedCovers.push(currentCover);
   }
 }
-// function saveCover(currentCover) {
-//   for (var i = 0; i < savedCovers.length; i++) {
-//     if (currentCover === savedCovers[i]) {
-//       alert("No motherfucker");
-//     }else {
-//       return savedCovers.push(currentCover);
-//     }
-//   }
-// }
 
 function savedPage() {
   savedCoverView.classList.remove('hidden');
@@ -116,7 +108,15 @@ function createBook() {
   secondDescriptor.innerText = currentCover.tagline2;
 }
 
-
+function showSavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML(
+      `<img class="mini-cover" src="${savedCovers[i].cover}">
+      <h2 class="mini-cover">${savedCovers[i].title}</h2>
+      <h3 class="mini-cover">A tale of <span class="mini-cover>${savedCovers[i].tagline1}</span> and <span class="mini-cover">${savedCovers[i].tagline2}</span></h3>`
+    );
+  }
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
