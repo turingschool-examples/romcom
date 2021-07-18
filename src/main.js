@@ -67,8 +67,21 @@ function homePage() {
 }
 
 function saveCover(currentCover) {
-  savedCovers.push(currentCover);
+  if (savedCovers.includes(currentCover)) {
+    alert('No motherfucker');
+  }else {
+    savedCovers.push(currentCover);
+  }
 }
+// function saveCover(currentCover) {
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     if (currentCover === savedCovers[i]) {
+//       alert("No motherfucker");
+//     }else {
+//       return savedCovers.push(currentCover);
+//     }
+//   }
+// }
 
 function savedPage() {
   savedCoverView.classList.remove('hidden');
@@ -102,6 +115,8 @@ function createBook() {
   firstDescriptor.innerText = currentCover.tagline1;
   secondDescriptor.innerText = currentCover.tagline2;
 }
+
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
