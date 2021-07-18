@@ -33,6 +33,9 @@ makeCoverBttn.addEventListener('click', displayFormView);
 viewSavedCoversBttn.addEventListener('click', displaySavedCovers);
 homeBttn.addEventListener('click', displayHomeView);
 createBookBttn.addEventListener('click', createNewBook);
+saveCoverBttn.addEventListener('click', function() {
+  saveCurrentCover(currentCover);
+});
 
 function createNewBook() {
   event.preventDefault();
@@ -47,7 +50,7 @@ function createNewBook() {
 
 function saveNewBook(cover, title, descriptor1, descriptor2) {
   covers.push(cover);
-  titles.unshift(title);
+  titles.push(title);
   descriptors.push(descriptor1);
   descriptors.push(descriptor2);
 }
@@ -73,6 +76,10 @@ function displayCreatedCover() {
   tagline2.innerText = currentCover.tagline2;
   title.innerText = currentCover.title;
 }
+
+function saveCurrentCover(currentCover) {
+  savedCovers.push(currentCover);
+};
 
 // Create your event handlers and other functions here 👇
 
@@ -137,21 +144,21 @@ function displayHomeView() {
   }
 }
 
-// Iteration 3
-// GOAL:
-//Creates a new cover - on the "formPage"
-// -fill out 4 input fields AND hit the save button
+
+//Iteratoin 4
+//GOAL:
+//Get the save cover button to add the current cover to the savedCovers array
+//When we click the view saved covers button we should see the saved covers
+//  section WITH the savedCovers array
 
 //DATA NEEDED:
-// INPUT:
-//[X]Event listener for "make my book"(save bttn) button on form page.
-//[X]collect data from the user input fields on formPage.
-//
-//OUTPUT:
-//[X]Create new instance of the class COVER
-//[X]save new input into data.js file (arrays)
-//[]newly created cover displays on homePagex
+// input: currentCover,
+// output: savedCovers
 
 //CONDITIONS:
-//Confirm new image is stored in data.js.
+//save button hit multiple times will not save duplicates in savedCoversPage
+//when we click the view saved cover button we should see ALL the saved covers.
+// STEPS:
+// Create a new fcn
+// create addEventListener - to add currentCover to savedCovers
 //
