@@ -1,24 +1,29 @@
 // Create variables targetting the relevant DOM elements here 👇
 var cover = document.querySelector('.cover-image');
+var title = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-var title = document.querySelector('.cover-title');
+var viewSavedCoversBttn = document.querySelector('.view-saved-button');
 var randomCoverBttn = document.querySelector('.random-cover-button');
 var makeCoverBttn = document.querySelector('.make-new-button');
-var homePage = document.querySelector('.home-view');
-var formPage = document.querySelector('.form-view');
 var saveCoverBttn = document.querySelector('.save-cover-button');
 var homeBttn = document.querySelector('.home-button');
-var viewSavedCoversBttn = document.querySelector('.view-saved-button');
+var homePage = document.querySelector('.home-view');
+var formPage = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
 
+var createBookBttn = document.querySelector('.create-new-book-button');
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDesc1 = document.querySelector('#descriptor1');
+var userDesc2 = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
 
+var currentCover;
 
 
 // Add your event listeners here 👇
@@ -27,6 +32,47 @@ randomCoverBttn.addEventListener('click', displayRandomCover);
 makeCoverBttn.addEventListener('click', displayFormView);
 viewSavedCoversBttn.addEventListener('click', displaySavedCovers);
 homeBttn.addEventListener('click', displayHomeView);
+createBookBttn.addEventListener('click', createNewBook);
+
+function createNewBook() {
+  event.preventDefault();
+  var cover = userCover.value;
+  var title = userTitle.value;
+  var descriptor1 = userDesc1.value;
+  var descriptor2 = userDesc2.value;
+  updateCurrentCover(cover, title, descriptor1, descriptor2);
+  saveNewBook(cover, title, descriptor1, descriptor2);
+  displayCreatedCover();
+}
+
+function saveNewBook(cover, title, descriptor1, descriptor2) {
+  covers.push(cover);
+  titles.unshift(title);
+  descriptors.push(descriptor1);
+  descriptors.push(descriptor2);
+}
+
+function updateCurrentCover(cover, title, descriptor1, descriptor2) {
+  currentCover = new Cover(
+    cover,
+    title,
+    descriptor1,
+    descriptor2,
+  )
+}
+
+function displayCreatedCover() {
+  formPage.classList.add('hidden');
+  homePage.classList.remove('hidden');
+  savedCoversPage.classList.add('hidden');
+  saveCoverBttn.classList.remove('hidden');
+  randomCoverBttn.classList.remove('hidden');
+  homeBttn.classList.add('hidden');
+  cover.src = currentCover.cover;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  title.innerText = currentCover.title;
+}
 
 // Create your event handlers and other functions here 👇
 
@@ -91,28 +137,21 @@ function displayHomeView() {
   }
 }
 
+// Iteration 3
+// GOAL:
+//Creates a new cover - on the "formPage"
+// -fill out 4 input fields AND hit the save button
 
-// Iteration 2
-// To be able to switch the views when the appropriate buttons are clicked.
-// and HIDE certain buttons.
+//DATA NEEDED:
+// INPUT:
+//[X]Event listener for "make my book"(save bttn) button on form page.
+//[X]collect data from the user input fields on formPage.
+//
+//OUTPUT:
+//[X]Create new instance of the class COVER
+//[X]save new input into data.js file (arrays)
+//[]newly created cover displays on homePagex
 
-// query selectors for buttons, event listeners for buttons, something to
-// hide the home page and the buttons and make the form appear
-
-// We need check if the home page and show cover and save cover buttons are still visible
-// On the home page we should see all buttons except home bttn
-
-// Steps:
-// Form view-
-// [X]Create a fcn that will handle event.
-// [X]This fcn will hide home page and show the form.
-// [X]It will hide the "show new random cover" and "save cover" bttns.
-// [X]but we will now see the home page bttn.
-// Saved covers view:
-// []Create a fcn that will display saved cover views and hide homepage view.
-// []Hide "show new random cover" and "save cover" bttns.
-// []"Home" bttn should be visible.
-// NEED:
-// []function
-// []view saved covers button querySelector
-// []addEventListener for bttn "saved covers", "home"
+//CONDITIONS:
+//Confirm new image is stored in data.js.
+//
