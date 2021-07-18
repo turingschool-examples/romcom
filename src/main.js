@@ -16,7 +16,7 @@ var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
 var userDescriptor1 = document.querySelector('#descriptor1');
 var userDescriptor2 = document.querySelector('#descriptor2');
-var makeMyBookButton = document.querySelector('form');
+var makeMyBookButton = document.querySelector('create-new-book-button');
 
 
 
@@ -36,8 +36,8 @@ randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
 homeButton.addEventListener('click', displayHomeView);
-makeMyBookButton.addEventListener('submit', createUserCover);
-savedCoverButton.addEventListener('click', displaySavedCoversView)
+makeMyBookButton.addEventListener('click', createUserCover);
+savedCoverButton.addEventListener('click', saveUserCover);
 
 
 
@@ -57,30 +57,28 @@ function createRandomCover() {
 }
 
 function displayFormView() {
-  formView.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
-  savedCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
+  formView.classList.remove(‘hidden’);
+  homeView.classList.add(‘hidden’);
+  randomCoverButton.classList.add(‘hidden’);
+  savedCoverButton.classList.add(‘hidden’);
+  homeButton.classList.remove(‘hidden’);
 }
 
 function displaySavedCoversView() {
-  savedView.classList.remove('hidden');
-  savedCoverSection.classList.innerHTML = '';
-  homeView.classList.remove('hidden');
-  formView.classList.remove('hidden');
-  savedCoverButton.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
+  savedView.classList.remove(‘hidden’);
+  savedCoverSection.classList.remove(‘hidden’);
+  homeView.classList.remove(‘hidden’);
+  savedCoverButton.classList.add(‘hidden’);
+  randomCoverButton.classList.add(‘hidden’);
+  homeButton.classList.remove(‘hidden’);
 }
 
 function displayHomeView() {
-  formView.classList.add('hidden');
-  homeView.classList.remove('hidden');
-  homeButton.classList.add('hidden');
-  randomCoverButton.classList.remove('hidden');
-  savedCoverButton.classList.remove('hidden');
-  savedView.classList.add('hidden');
+  formView.classList.add(‘hidden’);
+  homeView.classList.remove(‘hidden’);
+  homeButton.classList.add(‘hidden’);
+  randomCoverButton.classList.remove(‘hidden’);
+  savedCoverButton.classList.remove(‘hidden’);
 }
 
 //In the new cover form view, users should be able to fill out the four input fields and then hit the save button
@@ -112,6 +110,10 @@ function displayCover() {
   currentDescription2.innerText = currentCover.tagline2;
 }
 
+// When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
+// If a user clicks the “Save Cover” more than once on a single cover, it will still only be saved once (no duplicates)
+// When a user clicks the “View Saved Covers” button, we should see the saved covers section
+// All the covers in the savedCovers array should be displayed in the saved covers section
 
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
 -----and the homepage view should be hidden*/
