@@ -24,33 +24,46 @@ function createCover() {
 // Add your event listeners here 👇
 document.addEventListener("DOMContentLoaded", createCover);
 
-var viewSavedCoversButton = document.querySelector('.view-saved-button');
-viewSavedCoversButton.addEventListener('click', togglePage);
+// var saveCoverButton = document.querySelector('.save-cover-button');
+// saveCoverButton.addEventListener('click', saveCover);
 
-var makeCoverButton = document.querySelector('.make-new-button');
-makeCoverButton.addEventListener('click', makeCoverPage);
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+viewSavedCoversButton.addEventListener('click', function() {
+  changePage('saved-view', 'home-view');
+  changeButton('home-button', 'random-cover-button', 'save-cover-button');
+});
+
+var makeNewCoverButton = document.querySelector('.make-new-button');
+makeNewCoverButton.addEventListener('click', function() {
+  changePage('form-view', 'home-view');
+  changeButton('home-button', 'random-cover-button', 'save-cover-button');
+});
 
 // Create your event handlers and other functions here 👇
 randomButton.addEventListener("click", createCover);
 
-// var saveCoverButton = document.querySelector('.save-cover-button');
-// saveCoverButton.addEventListener('click', togglePage);
-
-function makeCoverPage() {
-  var hidePage = document.querySelector('.view home-view hidden');
-  hidePage.classList.remove('view');
-
-  var showPage = document.querySelector('.view form-view hidden');
+function changePage(newPage, currentPage) {
+  var showPage = document.querySelector(`.${newPage}`);
+  showPage.classList.add('view');
   showPage.classList.remove('hidden');
 
-  var hideButton = document.querySelector('.random-cover-button');
-  hideButton.classList.add('hidden');
+  var hidePage = document.querySelector(`.${currentPage}`);
+  hidePage.classList.add('hidden');
+  hidePage.classList.remove('view');
+}
 
-  var hideButton1 = document.querySelector('.save-cover-button');
-  hideButton1.classList.add('hidden');
-
-  var showButton = document.querySelector('.view home-button hidden');
+function changeButton(newButton, removeButton1, removeButton2) {
+  var showButton = document.querySelector(`'.${newButton}`);
+  showButton.classList.add('view');
   showButton.classList.remove('hidden');
+
+  var hideButton1 = document.querySelector(`.${removeButton1}`);
+  hideButton1.classList.add('hidden');
+  hidebutton1.classList.remove('view');
+
+  var hideButton2 = document.querySelector(`.${removeButton2}`);
+  hideButton2.classList.add('hidden');
+  hideButton2.classList.remove('view');
 }
 
 // We've provided one function to get you started
