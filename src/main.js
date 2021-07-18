@@ -16,7 +16,7 @@ var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
 var userDescriptor1 = document.querySelector('#descriptor1');
 var userDescriptor2 = document.querySelector('#descriptor2');
-var makeMyBookButton = document.querySelector('.create-new-book-button');
+var makeMyBookButton = document.querySelector('form');
 
 
 
@@ -36,7 +36,8 @@ randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
 homeButton.addEventListener('click', displayHomeView);
-makeMyBookButton.addEventListener('click', createUserCover);
+makeMyBookButton.addEventListener('submit', createUserCover);
+savedCoverButton.addEventListener('click', displaySavedCoversView)
 
 
 
@@ -55,7 +56,6 @@ function createRandomCover() {
   currentDescription2.innerText = currentCover.tagline2;
 }
 
-
 function displayFormView() {
   formView.classList.remove('hidden');
   homeView.classList.add('hidden');
@@ -66,8 +66,9 @@ function displayFormView() {
 
 function displaySavedCoversView() {
   savedView.classList.remove('hidden');
-  savedCoverSection.classList.remove('hidden');
+  savedCoverSection.classList.innerHTML = '';
   homeView.classList.remove('hidden');
+  formView.classList.remove('hidden');
   savedCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
@@ -79,10 +80,12 @@ function displayHomeView() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   savedCoverButton.classList.remove('hidden');
+  savedView.classList.add('hidden');
 }
 
 //In the new cover form view, users should be able to fill out the four input fields and then hit the save button
 
+//------SPLIT createUserCover starting here______________
 function createUserCover() {
   event.preventDefault();
   var coverInput = userCover.value;
@@ -90,16 +93,19 @@ function createUserCover() {
   var userDescriptor1Input = userDescriptor1.value;
   var userDescriptor2Input = userDescriptor2.value;
   currentCover = new Cover(coverInput, titleInput, userDescriptor1Input, userDescriptor2Input);
-  coverImage.src = currentCover.cover;
-  coverTitle.innerText = currentCover.title;
-  currentDescription1.innerText = currentCover.tagline1;
-  currentDescription2.innerText = currentCover.tagline2;
-  covers.push(coverInput);
-  titles.push(titleInput);
-  descriptors.push(userDescriptor1);
-  descriptors.push(userDescriptor2);
   displayHomeView();
+  displayCover();
+  saveUserInput();
 }
+
+function saveUserInput() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDescriptor1.value);
+  descriptors.push(userDescriptor2.value);
+}
+
+
 
 
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
