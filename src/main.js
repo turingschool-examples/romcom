@@ -40,19 +40,40 @@ function createNewBook() {
   var title = userTitle.value;
   var descriptor1 = userDesc1.value;
   var descriptor2 = userDesc2.value;
-  console.log(cover);
+  updateCurrentCover(cover, title, descriptor1, descriptor2);
+  saveNewBook(cover, title, descriptor1, descriptor2);
   displayCreatedCover();
 }
 
-function displayCreatedCover() {
+function saveNewBook(cover, title, descriptor1, descriptor2) {
+  covers.push(cover);
+  titles.unshift(title);
+  descriptors.push(descriptor1);
+  descriptors.push(descriptor2);
+}
+
+function updateCurrentCover(cover, title, descriptor1, descriptor2) {
   currentCover = new Cover(
     cover,
-    title.value,
-    descriptor1.value,
-    descriptor2.value,
+    title,
+    descriptor1,
+    descriptor2,
   )
-  console.log(title, descriptor1, descriptor2);
 }
+
+function displayCreatedCover() {
+  formPage.classList.add('hidden');
+  homePage.classList.remove('hidden');
+  savedCoversPage.classList.add('hidden');
+  saveCoverBttn.classList.remove('hidden');
+  randomCoverBttn.classList.remove('hidden');
+  homeBttn.classList.add('hidden');
+  cover.src = currentCover.cover;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  title.innerText = currentCover.title;
+}
+
 // Create your event handlers and other functions here 👇
 
 function getRandomIndex(array) {
@@ -124,12 +145,12 @@ function displayHomeView() {
 //DATA NEEDED:
 // INPUT:
 //[X]Event listener for "make my book"(save bttn) button on form page.
-//[]collect data from the user input fields on formPage.
+//[X]collect data from the user input fields on formPage.
 //
 //OUTPUT:
-//Create new instance of the class COVER
-//save new input into data.js file (arrays)
-//newly created cover displays on homePagex
+//[X]Create new instance of the class COVER
+//[X]save new input into data.js file (arrays)
+//[]newly created cover displays on homePagex
 
 //CONDITIONS:
 //Confirm new image is stored in data.js.
