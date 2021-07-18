@@ -105,7 +105,12 @@ function saveUserInput() {
   descriptors.push(userDescriptor2.value);
 }
 
-
+function displayCover() {
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  currentDescription1.innerText = currentCover.tagline1;
+  currentDescription2.innerText = currentCover.tagline2;
+}
 
 
 /*---When a user clicks the “Make Your Own Cover” button, we should see the form,
