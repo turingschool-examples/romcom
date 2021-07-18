@@ -35,6 +35,10 @@ randomButton.addEventListener("click", randomizeCover);
 
 homeButton.addEventListener('click', homePage);
 
+saveCoverButton.addEventListener('click', function() {
+  saveCover(currentCover);
+});
+
 viewSavedCoversButton.addEventListener('click', savedPage);
 
 makeNewCoverButton.addEventListener('click', makePage);
@@ -62,6 +66,10 @@ function homePage() {
   formView.classList.add('hidden');
 }
 
+function saveCover(currentCover) {
+  savedCovers.push(currentCover);
+}
+
 function savedPage() {
   savedCoverView.classList.remove('hidden');
   homeView.classList.add('hidden');
@@ -77,13 +85,6 @@ function makePage() {
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
-}
-
-function addUserInputToArrays() {
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(userDescriptor1.value);
-  descriptors.push(userDescriptor2.value);
 }
 
 function createBook() {
