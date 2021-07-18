@@ -14,6 +14,7 @@ var makeNewCoverButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('form');
 
 var currentPage = 'home-view';
+var currentCover;
 
 // We've provided a few variables below
 var savedCovers = [
@@ -48,7 +49,7 @@ makeNewCoverButton.addEventListener('click', function() {
 
 // Create your event handlers and other functions here 👇
 function randomizeCover() {
-  var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   coverOnLoad.src = currentCover.cover;
   titleOnLoad.innerText = currentCover.title;
   firstDescriptorOnLoad.innerText = currentCover.tagline1;
@@ -106,11 +107,12 @@ var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 makeMyBookButton.addEventListener('click', createBook);
 
-function createBook(userCover, userTitle, userDescriptor1, userDescriptor2) {
-  coverOnLoad.src = userCover;
-  titleOnLoad.innerText = userTitle;
-  firstDescriptorOnLoad.innerText = userDescriptor1;
-  secondDescriptorOnLoad.innerText = userDescriptor2;
+function createBook() {
+  currentCover = new Cover(userCover, userTitle, userDescriptor1, userDescriptor2);
+  coverOnLoad.src = currentCover.cover;
+  titleOnLoad.innerText = currentCover.title;
+  firstDescriptorOnLoad.innerText = currentCover.tagline1;
+  secondDescriptorOnLoad.innerText = currentCover.tagline2;
 }
 
 // {
