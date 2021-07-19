@@ -33,6 +33,17 @@ createBookBttn.addEventListener('click', createNewBook);
 saveCoverBttn.addEventListener('click', function() {
   saveCurrentCover(currentCover);
 });
+savedCoversSection.addEventListener('dblclick', deleteSavedCover);
+
+function deleteSavedCover(event) {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id == event.target.parentNode.id) {
+      console.log(savedCovers[i].id);
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCovers();
+}
 
 function createNewBook() {
   event.preventDefault();
@@ -77,18 +88,7 @@ function displayCreatedCover() {
 
 function saveCurrentCover(currentCover) {
   if (savedCovers.indexOf(currentCover) === -1) {
-  savedCovers.push(currentCover);
-  // for (var i = 0; i <= savedCovers.length; i++) {
-  //   savedCoversSection.innerHTML = `
-  //   <section class="main-cover">
-  //   <img class="cover-image" src="${savedCovers[i].cover}">
-  //   <h2 class="cover-title">${savedCovers[i].title}</h2>
-  //   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-  //   <img class="price-tag" src="./assets/price.png">
-  //   <img class="overlay" src="./assets/overlay.png">
-  //   </section>
-  //   `
-  //   }
+    savedCovers.push(currentCover);
   }
 };
 
@@ -134,7 +134,7 @@ function displaySavedCovers() {
   var savedHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     savedHTML += `<section class="main-cover">
-      <img class="cover-image" src="${savedCovers[i].cover}">
+      <img class="cover-image" src="${savedCovers[i].cover}")>
       <h2 class="cover-title"> ${savedCovers[i].title} </h2>
       <h3 class="tagline">A tale of <span class="tagline-1"> ${savedCovers[i].tagline1} </span> and <span class="tagline-2"> ${savedCovers[i].tagline2} </span></h3>
       <img class="price-tag" src="./assets/price.png">
@@ -168,21 +168,17 @@ function displayHomeView() {
   }
 }
 
+//Iteration 5
 
-//Iteratoin 4
-//GOAL:
-//Get the save cover button to add the current cover to the savedCovers array
-//When we click the view saved covers button we should see the saved covers
-//  section WITH the savedCovers array
+//GOAL: Delete a saved cover with a double click
+
 
 //DATA NEEDED:
-// input: currentCover,
-// output: savedCovers
+//Input: Double click
+//Output: Delete specific saved cover
 
-//CONDITIONS:
-//save button hit multiple times will not save duplicates in savedCoversPage
-//[X]when we click the view saved cover button we should see ALL the saved covers.
-// STEPS:
-// Create a new fcn
-// create addEventListener - to add currentCover to savedCovers
-//
+//CONDITIONS:  Mouse needs to be clicked twice.  Needs to be removed from the savedCovers array
+
+
+// STEPS: We need to query a specific displayed cover.
+      // Create event listener and fcn to remove specific cover from array
