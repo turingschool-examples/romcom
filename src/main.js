@@ -16,7 +16,7 @@ var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
 var userDescriptor1 = document.querySelector('#descriptor1');
 var userDescriptor2 = document.querySelector('#descriptor2');
-var makeMyBookButton = document.querySelector('create-new-book-button');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 
 
@@ -26,18 +26,17 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover;
-
 // Add your event listeners here 👇
 
 
-window.addEventListener('load', createRandomCover);
+createRandomCover();
 randomCoverButton.addEventListener('click', createRandomCover);
 createOwnCoverButton.addEventListener('click', displayFormView);
-viewSavedCoversButton.addEventListener('click', displaySavedCoversView);
+viewSavedCoversButton.addEventListener('click', displaySavedView);
 homeButton.addEventListener('click', displayHomeView);
 makeMyBookButton.addEventListener('click', createUserCover);
-savedCoverButton.addEventListener('click', saveUserCover);
+//savedCoverButton.addEventListener('click', saveUserCover);
+savedCoverButton.onclick = saveUserCover;
 
 
 
@@ -57,35 +56,48 @@ function createRandomCover() {
 }
 
 function displayFormView() {
-  formView.classList.remove(‘hidden’);
-  homeView.classList.add(‘hidden’);
-  randomCoverButton.classList.add(‘hidden’);
-  savedCoverButton.classList.add(‘hidden’);
-  homeButton.classList.remove(‘hidden’);
+  formView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  savedCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
 }
 
-function displaySavedCoversView() {
-  savedView.classList.remove(‘hidden’);
-  savedCoverSection.classList.remove(‘hidden’);
-  homeView.classList.remove(‘hidden’);
-  savedCoverButton.classList.add(‘hidden’);
-  randomCoverButton.classList.add(‘hidden’);
-  homeButton.classList.remove(‘hidden’);
+function displaySavedView() {
+  savedView.classList.remove('hidden');
+  savedCoverSection.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  savedCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+
+
+  savedCoverSection.innerHTML = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+      document.querySelector('.saved-covers-section').innerHTML += `
+        <section class = "mini-cover" id = ${savedCovers[i].id}>
+          <img class = "cover-image" src = ${savedCovers[i].cover}>
+          <h2 class = "cover-title">${savedCovers[i].title}</h2>
+          <h3 class = "tagline">A tale of <span "tagline-1">${savedCovers[i].tagline1}</span> and <span class = "tagline-2">${savedCovers[i].tagline2}
+          </span></h3>
+          <img class = "price-tag" src = "./assets/price.png">
+          <img class = "overlay" src = "./assets/overlay.png">
+        </section>`;
+  }
 }
 
 function displayHomeView() {
-  formView.classList.add(‘hidden’);
-  homeView.classList.remove(‘hidden’);
-  homeButton.classList.add(‘hidden’);
-  randomCoverButton.classList.remove(‘hidden’);
-  savedCoverButton.classList.remove(‘hidden’);
+  formView.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  savedCoverButton.classList.remove('hidden');
 }
 
 //In the new cover form view, users should be able to fill out the four input fields and then hit the save button
 
 //------SPLIT createUserCover starting here______________
 function createUserCover() {
-  event.preventDefault();
   var coverInput = userCover.value;
   var titleInput = userTitle.value;
   var userDescriptor1Input = userDescriptor1.value;
@@ -94,6 +106,7 @@ function createUserCover() {
   displayHomeView();
   displayCover();
   saveUserInput();
+  event.preventDefault();
 }
 
 function saveUserInput() {
@@ -110,10 +123,25 @@ function displayCover() {
   currentDescription2.innerText = currentCover.tagline2;
 }
 
-// When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
-// If a user clicks the “Save Cover” more than once on a single cover, it will still only be saved once (no duplicates)
-// When a user clicks the “View Saved Covers” button, we should see the saved covers section
-// All the covers in the savedCovers array should be displayed in the saved covers section
 
-/*---When a user clicks the “Make Your Own Cover” button, we should see the form,
------and the homepage view should be hidden*/
+function saveUserCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers.indexOf(currentCover) === -1) {  //<---!savedCovers before
+      savedCovers.push(currentCover);
+    }
+  }
+}
+
+
+/*function displaySavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    var miniSavedCovers = `
+    <section class ='mini-cover' id =${savedCovers[i].id}>
+    <img class ='cover-image' src =${savedCovers[i].cover}>
+    <h2 class ='${savedCovers[i].title}'</h2>
+    <h3 class ='tagline'>A tale of <span 'tagline1'>${savedCovers[i].tagline1}</span> and <span class ='tagline2'>${savedCovers[i].tagline2}
+    </section>`;
+
+    savedCoverSection.insertAdjacentHTML('afterbegin', miniSavedCovers);
+  }
+}*/
