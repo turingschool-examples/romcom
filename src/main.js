@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var currentDescription1 = document.querySelector('.tagline-1');
@@ -17,16 +16,9 @@ var userTitle = document.querySelector('#title');
 var userDescriptor1 = document.querySelector('#descriptor1');
 var userDescriptor2 = document.querySelector('#descriptor2');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
-
-
-
-
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-
-// Add your event listeners here 👇
 
 
 createRandomCover();
@@ -35,18 +27,14 @@ createOwnCoverButton.addEventListener('click', displayFormView);
 viewSavedCoversButton.addEventListener('click', displaySavedView);
 homeButton.addEventListener('click', displayHomeView);
 makeMyBookButton.addEventListener('click', createUserCover);
-//savedCoverButton.addEventListener('click', saveUserCover);
-savedCoverButton.onclick = saveUserCover;
+savedCoverButton.addEventListener('click', saveUserCover);
 
 
-
-/*________________________________________ Create your event handlers and other functions here 👇________*/
-//Will randomize elements in the array in class ****stuff***.
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//function declared that will be called when button is clicked for Show New Random Cover
+
 function createRandomCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   coverImage.src = currentCover.cover;
@@ -54,6 +42,7 @@ function createRandomCover() {
   currentDescription1.innerText = currentCover.tagline1;
   currentDescription2.innerText = currentCover.tagline2;
 }
+
 
 function displayFormView() {
   formView.classList.remove('hidden');
@@ -63,6 +52,7 @@ function displayFormView() {
   homeButton.classList.remove('hidden');
 }
 
+
 function displaySavedView() {
   savedView.classList.remove('hidden');
   savedCoverSection.classList.remove('hidden');
@@ -70,8 +60,6 @@ function displaySavedView() {
   savedCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-
-
   savedCoverSection.innerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
       document.querySelector('.saved-covers-section').innerHTML += `
@@ -86,6 +74,7 @@ function displaySavedView() {
   }
 }
 
+
 function displayHomeView() {
   formView.classList.add('hidden');
   homeView.classList.remove('hidden');
@@ -94,9 +83,7 @@ function displayHomeView() {
   savedCoverButton.classList.remove('hidden');
 }
 
-//In the new cover form view, users should be able to fill out the four input fields and then hit the save button
 
-//------SPLIT createUserCover starting here______________
 function createUserCover() {
   var coverInput = userCover.value;
   var titleInput = userTitle.value;
@@ -109,6 +96,7 @@ function createUserCover() {
   event.preventDefault();
 }
 
+
 function saveUserInput() {
   covers.push(userCover.value);
   titles.push(userTitle.value);
@@ -116,15 +104,18 @@ function saveUserInput() {
   descriptors.push(userDescriptor2.value);
 }
 
+
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   currentDescription1.innerText = currentCover.tagline1;
   currentDescription2.innerText = currentCover.tagline2;
 }
+
+
 function saveUserCover() {
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers.indexOf(currentCover) === -1) {  //<---!savedCovers before
+    if (savedCovers.indexOf(currentCover) === -1) {
       savedCovers.push(currentCover);
     }
   }
