@@ -18,13 +18,10 @@ var userTitle = document.querySelector('#title');
 var userDesc1 = document.querySelector('#descriptor1');
 var userDesc2 = document.querySelector('#descriptor2');
 
+var savedCoversSection = document.querySelector('.saved-covers-section');
+
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
-var currentCover;
-
+var savedCovers = [];
 
 // Add your event listeners here 👇
 
@@ -62,6 +59,7 @@ function updateCurrentCover(cover, title, descriptor1, descriptor2) {
     descriptor1,
     descriptor2,
   )
+  console.log(currentCover);
 }
 
 function displayCreatedCover() {
@@ -78,7 +76,20 @@ function displayCreatedCover() {
 }
 
 function saveCurrentCover(currentCover) {
+  if (savedCovers.indexOf(currentCover) === -1) {
   savedCovers.push(currentCover);
+  // for (var i = 0; i <= savedCovers.length; i++) {
+  //   savedCoversSection.innerHTML = `
+  //   <section class="main-cover">
+  //   <img class="cover-image" src="${savedCovers[i].cover}">
+  //   <h2 class="cover-title">${savedCovers[i].title}</h2>
+  //   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+  //   <img class="price-tag" src="./assets/price.png">
+  //   <img class="overlay" src="./assets/overlay.png">
+  //   </section>
+  //   `
+  //   }
+  }
 };
 
 // Create your event handlers and other functions here 👇
@@ -87,26 +98,28 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-cover.src = covers[getRandomIndex(covers)];
-tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-title.innerText = titles[getRandomIndex(titles)];
+var currentCover = new Cover (
+cover.src = covers[getRandomIndex(covers)],
+title.innerText = titles[getRandomIndex(titles)],
+tagline1.innerText = descriptors[getRandomIndex(descriptors)],
+tagline2.innerText = descriptors[getRandomIndex(descriptors)]
+)
 
 function getRandomCover() {
   currentCover = new Cover(
     covers[getRandomIndex(covers)],
-    descriptors[getRandomIndex(descriptors)],
-    descriptors[getRandomIndex(descriptors)],
     titles[getRandomIndex(titles)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)],
   )
 }
 
 function displayRandomCover() {
   getRandomCover();
   cover.src = currentCover.cover;
+  title.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
-  title.innerText = currentCover.title;
 }
 
 function displayFormView() {
@@ -118,6 +131,17 @@ function displayFormView() {
   };
 
 function displaySavedCovers() {
+  var savedHTML = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedHTML += `<section class="main-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title"> ${savedCovers[i].title} </h2>
+      <h3 class="tagline">A tale of <span class="tagline-1"> ${savedCovers[i].tagline1} </span> and <span class="tagline-2"> ${savedCovers[i].tagline2} </span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+    </section>`
+  savedCoversSection.innerHTML = savedHTML;
+  }
     savedCoversPage.classList.remove('hidden');
     homePage.classList.add('hidden');
     saveCoverBttn.classList.add('hidden');
@@ -157,7 +181,7 @@ function displayHomeView() {
 
 //CONDITIONS:
 //save button hit multiple times will not save duplicates in savedCoversPage
-//when we click the view saved cover button we should see ALL the saved covers.
+//[X]when we click the view saved cover button we should see ALL the saved covers.
 // STEPS:
 // Create a new fcn
 // create addEventListener - to add currentCover to savedCovers
