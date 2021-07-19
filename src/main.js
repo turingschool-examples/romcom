@@ -36,9 +36,10 @@ saveCoverBttn.addEventListener('click', function() {
 savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 function deleteSavedCover(event) {
+  console.log("target", event.target.id);
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id == event.target.parentNode.id) {
-      console.log(savedCovers[i].id);
+    console.log("saved cover", savedCovers[i].id);
+    if (savedCovers[i].id == event.target.id) {
       savedCovers.splice(i, 1);
     }
   }
@@ -134,7 +135,7 @@ function displaySavedCovers() {
   var savedHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     savedHTML += `<section class="main-cover">
-      <img class="cover-image" src="${savedCovers[i].cover}")>
+      <img class="cover-image" src="${savedCovers[i].cover}" id="${savedCovers[i].id}")>
       <h2 class="cover-title"> ${savedCovers[i].title} </h2>
       <h3 class="tagline">A tale of <span class="tagline-1"> ${savedCovers[i].tagline1} </span> and <span class="tagline-2"> ${savedCovers[i].tagline2} </span></h3>
       <img class="price-tag" src="./assets/price.png">
