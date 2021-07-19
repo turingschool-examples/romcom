@@ -35,10 +35,10 @@ saveCoverBttn.addEventListener('click', function() {
 });
 savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
+
+
 function deleteSavedCover(event) {
-  console.log("target", event.target.id);
   for (var i = 0; i < savedCovers.length; i++) {
-    console.log("saved cover", savedCovers[i].id);
     if (savedCovers[i].id == event.target.id) {
       savedCovers.splice(i, 1);
     }
@@ -168,18 +168,3 @@ function displayHomeView() {
     homeBttn.classList.add('hidden');
   }
 }
-
-//Iteration 5
-
-//GOAL: Delete a saved cover with a double click
-
-
-//DATA NEEDED:
-//Input: Double click
-//Output: Delete specific saved cover
-
-//CONDITIONS:  Mouse needs to be clicked twice.  Needs to be removed from the savedCovers array
-
-
-// STEPS: We need to query a specific displayed cover.
-      // Create event listener and fcn to remove specific cover from array
