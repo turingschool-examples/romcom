@@ -1,57 +1,45 @@
 # RomCom
-<img width="127" alt="idea-box-logo" src="https://user-images.githubusercontent.com/80136642/121270129-f6117480-c875-11eb-9dfa-89e1beaaa762.png">
 
 ## Table of Contents
   - [Introduction](#introduction)
   - [Technologies](#technologies)
   - [Features](#features)
-  - [Illustrations](#illustrations)
   - [Deployed Page](#deployed-page)
   - [Possible Future Extensions](#possible-future-extensions)
   - [Set Up](#set-up)
-  - [Organizational Resources](#organizational-resources)
   - [Sources](#sources)
   - [Contributors](#contributors)
   - [Project Specs](#project-specs)
 
 ## Introduction
 
-  Visit IdeaBox to store all your useful and not so useful ideas. Ideas to impress your friends with, ideas with purpose for later use, or just random thoughts; you've got a one stop shop for future reference.
+  On your loneliness of days. When you are halfway through a tub of ice cream, you can immerse yourself in fantasy and comedy to wash away your lacking and non-   existant social life. 
 
 ## Technologies
   - Javascript
   - HTML
   - CSS
 
-## Features
-
-   - You are able to create and locally store ideas to return to at a later date.
-   - You can create a title and a body for your idea.
-   - If you have an idea you really like, then click the star on the right corner of the idea to favorite it.
-   - Also, if you have already fulfilled an idea or just don't like it anymore, you can delete it.
-
-## Illustrations
-
-![IdeaBox gif](https://user-images.githubusercontent.com/80136642/121288832-d770a500-c898-11eb-92bc-f449b748259a.gif)
+##Features
+  -You are able to view a new random book cover, title, and tagline with descriptors
+  -You are able to create your own custom book cover that meets your desires
+  -Ability to view saved book covers & their associated titles
 
 ## Deployed Page
 
-Visit our published IdeaBox page [here](https://wil-huffman.github.io/romcom/)
+Visit our published romcom page [here](https://wil-huffman.github.io/romcom/)
 
 ## Possible Future Extensions
 
-  - Create a favorites section to view all of favorited ideas.
-  - Create search bar functionality to filter through and sort ideas.
+  - You can create a title and a body for your idea.
+  - Create a favorites section to view all of favorited book covers.
+  - Create search bar functionality to filter through and sort book covers.
 
 ## Set Up
 
 1. Fork this repo  
 2. Clone the repo to your local machine
 3. View the project in the browser by running open index.html in your terminal
-
-## Organizational Resources
-- [Trello Board](https://trello.com/b/aq7mVHoQ/ideabox)
-- [Wireframe](https://miro.com/app/board/o9J_lBUsMVU=/)
 
 ## Sources
   - [MDN](http://developer.mozilla.org/en-US/)
