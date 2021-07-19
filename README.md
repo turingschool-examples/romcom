@@ -13,7 +13,7 @@
 
 ## Introduction
 
-  On your loneliness of days. When you are halfway through a tub of ice cream, you can immerse yourself in fantasy and comedy to wash away your lacking and non-   existant social life. 
+  On your loneliness of days. When you are halfway through a tub of ice cream, you can immerse yourself in fantasy & comedy, to wash away your wanting and non-   existant social life. 
 
 ## Technologies
   - Javascript
@@ -22,7 +22,7 @@
 
 ##Features
   -You are able to view a new random book cover, title, and tagline with descriptors
-  -You are able to create your own custom book cover that meets your desires
+  -Create a favorites section to view all of favorited book covers
   -Ability to view saved book covers & their associated titles
 
 ## Deployed Page
@@ -32,7 +32,6 @@ Visit our published romcom page [here](https://wil-huffman.github.io/romcom/)
 ## Possible Future Extensions
 
   - You can create a title and a body for your idea.
-  - Create a favorites section to view all of favorited book covers.
   - Create search bar functionality to filter through and sort book covers.
 
 ## Set Up
