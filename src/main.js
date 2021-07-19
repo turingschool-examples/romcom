@@ -5,10 +5,6 @@ var title = document.querySelector('h2');
 var firstDescriptor = document.querySelector('.tagline-1');
 var secondDescriptor = document.querySelector('.tagline-2');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-// var userCover = document.querySelector('.user-cover');
-// var userTitle = document.querySelector('.user-title');
-// var userDescriptor1 = document.querySelector('.user-desc1');
-// var userDescriptor2 = document.querySelector('.user-desc2');
 
 // Button variables
 var randomButton = document.querySelector('.random-cover-button');
@@ -65,6 +61,7 @@ function homePage() {
   randomButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   formView.classList.add('hidden');
+  savedCoverView.classList.add('hidden');
 }
 
 function saveCover(currentCover) {
@@ -82,6 +79,7 @@ function savedPage() {
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  showSavedCovers();
 }
 
 function makePage() {
@@ -90,6 +88,7 @@ function makePage() {
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  savedCoverView.classList.add('hidden');
 }
 
 function createBook() {
@@ -109,12 +108,14 @@ function createBook() {
 }
 
 function showSavedCovers() {
+  savedCoversSection.innerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
-    savedCoversSection.innerHTML(
-      `<img class="mini-cover" src="${savedCovers[i].cover}">
-      <h2 class="mini-cover">${savedCovers[i].title}</h2>
-      <h3 class="mini-cover">A tale of <span class="mini-cover>${savedCovers[i].tagline1}</span> and <span class="mini-cover">${savedCovers[i].tagline2}</span></h3>`
-    );
+    savedCoversSection.innerHTML += `
+      <section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        </section>`;
   }
 }
 
