@@ -122,8 +122,6 @@ function displayCover() {
   currentDescription1.innerText = currentCover.tagline1;
   currentDescription2.innerText = currentCover.tagline2;
 }
-
-
 function saveUserCover() {
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers.indexOf(currentCover) === -1) {  //<---!savedCovers before
@@ -131,17 +129,3 @@ function saveUserCover() {
     }
   }
 }
-
-
-/*function displaySavedCovers() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    var miniSavedCovers = `
-    <section class ='mini-cover' id =${savedCovers[i].id}>
-    <img class ='cover-image' src =${savedCovers[i].cover}>
-    <h2 class ='${savedCovers[i].title}'</h2>
-    <h3 class ='tagline'>A tale of <span 'tagline1'>${savedCovers[i].tagline1}</span> and <span class ='tagline2'>${savedCovers[i].tagline2}
-    </section>`;
-
-    savedCoverSection.insertAdjacentHTML('afterbegin', miniSavedCovers);
-  }
-}*/
