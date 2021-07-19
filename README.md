@@ -1,13 +1,53 @@
 # RomCom
 
-A boilerplate repo. 
+## Table of Contents
+  - [Introduction](#introduction)
+  - [Technologies](#technologies)
+  - [Features](#features)
+  - [Deployed Page](#deployed-page)
+  - [Possible Future Extensions](#possible-future-extensions)
+  - [Set Up](#set-up)
+  - [Sources](#sources)
+  - [Contributors](#contributors)
+  - [Project Specs](#project-specs)
+
+## Introduction
+
+  On your loneliness of days. When you are halfway through a tub of ice cream, you can immerse yourself in fantasy & comedy, to wash away your wanting and non-   existant social life. 
+
+## Technologies
+  - Javascript
+  - HTML
+  - CSS
+
+##Features
+  -You are able to view a new random book cover, title, and tagline with descriptors
+  -Create a favorites section to view all of favorited book covers
+  -Ability to view saved book covers & their associated titles
+
+## Deployed Page
+
+Visit our published romcom page [here](https://wil-huffman.github.io/romcom/)
+
+## Possible Future Extensions
+
+  - You can create a title and a body for your idea.
+  - Create search bar functionality to filter through and sort book covers.
 
 ## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
 
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+1. Fork this repo  
+2. Clone the repo to your local machine
+3. View the project in the browser by running open index.html in your terminal
+
+## Sources
+  - [MDN](http://developer.mozilla.org/en-US/)
+  - [W3Schools](https://www.w3schools.com/)
+  - [CSS-TRICKS](https://css-tricks.com/)
+
+## Contributors
+  - [Wil Huffman](https://github.com/Wil-Huffman)
+  - [Christian Smucker](https://gist.github.com/csmucker83)
+
+## Project Specs
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/romcom-pair.html)
