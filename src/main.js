@@ -1,12 +1,16 @@
 // Create variables targetting the relevant DOM elements here 👇
-var coverImg = document.querySelector("cover-image");
-var coverTitle = document.querySelector("cover-title");
-//coverTitle.innerText = getRandomIndex(titles);
-var tagline1 = document.querySelector("tagline-1");
-//tagline1.innerText = getRandomIndex(descriptors);
-var tagline2 = document.querySelector("tagline-2");
-//tagline2.innerText = getRandomIndex(descriptors);
-// Must connect these to randomize function next
+var coverImg = document.querySelector(".cover-image");
+coverImg.src = covers[getRandomIndex(covers)];
+var coverTitle = document.querySelector(".cover-title");
+coverTitle.innerText = titles[getRandomIndex(titles)];
+var tagline1 = document.querySelector(".tagline-1");
+tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+var tagline2 = document.querySelector(".tagline-2");
+tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+var newCoverButton = document.querySelector(".random-cover-button");
+//var formButton = document.querySelector(".make-new-button");
+//var form = document.querySelector("form");
+//
 
 // We've provided a few variables below
 var savedCovers = [
@@ -20,6 +24,15 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+newCoverButton.onclick = function getNewCover() {
+  coverImg.src = covers[getRandomIndex(covers)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+};
+
+// formButton.onclick = function swapToForm() {
+//   form.toggle();
 
 // Create your event handlers and other functions here 👇
 
