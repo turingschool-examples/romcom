@@ -11,6 +11,7 @@ tagline1.innerText = descriptors[getRandomIndex(descriptors)];
 var tagline2 = document.querySelector(".tagline-2");
 tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 
+//
 // Must connect these to randomize function next
 
 // We've provided a few variables below
