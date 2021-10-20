@@ -1,4 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
+var image = document.querySelector('img');
+image.innerText = covers[4];
+
 
 
 // We've provided a few variables below
