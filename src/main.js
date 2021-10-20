@@ -1,15 +1,27 @@
-// Create variables targetting the relevant DOM elements here 👇
 var image = document.querySelector('img');
-image.innerText = covers[4];
+
+image.innerText = covers[ranNum1];
 
 var bookTitle = document.querySelector('h2');
-bookTitle.innerText = titles[7];
+
+bookTitle.innerText = titles[ranNum];
 
 var descriptor1 = document.querySelector('.tagline-1');
-descriptor1.innerText = descriptors[9];
+
+descriptor1.innerText = descriptors[ranNum2];
 
 var descriptor2 = document.querySelector('.tagline-2');
-descriptor2.innerText = descriptors[2];
+
+descriptor2.innerText = descriptors[ranNum2];
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+var ranNum2 = getRandomIndex(descriptors);
+var ranNum1 = getRandomIndex(covers);
+var ranNum = getRandomIndex(titles);
+
 
 
 // We've provided a few variables below
@@ -19,12 +31,8 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
-
-// Create your event handlers and other functions here 👇
-
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+// window.addEventListener("load",  )
+//
+// function whateverName () {
+//
+// }
