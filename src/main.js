@@ -14,12 +14,24 @@ var tagline = document.querySelector('.tagline');
 var taglineOne = document.querySelector('.tagline-1');
 var taglineTwo = document.querySelector('.tagline-2');
 
-//view
+//view section
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
 
+// view sub section
+var mainCover = document.querySelector('.main-cover');
+var savedCover = document.querySelector('.saved-covers-section');
+var customForm = document.querySelector('form');
 
+//custom user section
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userTaglineOne = document.querySelector('.user-desc1');
+var userTaglineTwo = document.querySelector('.user-desc2');
+
+//custom user button
+var userSubmitButton = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 var savedCovers = [
