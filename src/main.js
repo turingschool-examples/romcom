@@ -6,6 +6,7 @@ var tagline1 = document.querySelector("tagline-1");
 //tagline1.innerText = getRandomIndex(descriptors);
 var tagline2 = document.querySelector("tagline-2");
 //tagline2.innerText = getRandomIndex(descriptors);
+// Must connect these to randomize function next
 
 // We've provided a few variables below
 var savedCovers = [
