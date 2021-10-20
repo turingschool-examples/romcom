@@ -1,5 +1,27 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+// Here we need to target every selector in the index.html that we'll be changing
+ // e.g. var title = document.querySelector('.cover-title')
+
+//home-button
+//random-cover-button
+//save-cover-button
+//make-new-button
+//cover-image
+//cover-title
+//tageline-1
+//tageline-2
+//home-view
+//form-view
+//saved-view
+//saved-cover-section
+//user-cover
+//user-title
+//user-desc1
+//user-desc2
+//create-new-book-button
+
+
 
 // We've provided a few variables below
 var savedCovers = [
