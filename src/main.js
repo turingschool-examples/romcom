@@ -2,6 +2,10 @@
 var image = document.querySelector('img');
 image.innerText = covers[4];
 
+var bookTitle = document.querySelector('h2');
+bookTitle.innerText = titles[7];
+
+var 
 
 
 // We've provided a few variables below
