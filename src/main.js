@@ -16,6 +16,8 @@ coverButton.addEventListener('click', changeCover);
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
   currentCover.title.innerText = titles[getRandomIndex(titles)];
+  currentCover.tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover.tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 // We've provided one function to get you started
