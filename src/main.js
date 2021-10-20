@@ -1,5 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var homeButton = document.querySelector('.home-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,6 +11,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+
 
 
 // Create your event handlers and other functions here 👇
