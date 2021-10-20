@@ -1,4 +1,32 @@
-// Create variables targetting the relevant DOM elements here 👇
+
+
+//Create variables targetting the relevant DOM elements here 👇
+var tagline1 = document.querySelector(".tagline-1");
+var tagline2 = document.querySelector(".tagline-2");
+var coverTitle = document.querySelector(".cover-title");
+var coverImage = document.querySelector(".cover-image");
+
+var randomButton = document.querySelector(".random-cover-button");
+var homeButton = document.querySelector(".home-button");
+var makeNewButton = document.querySelector(".make-new-button");
+var viewSavedButton = document.querySelector(".view-saved-cover");
+
+var homeView = document.querySelector(".home-view");
+var formView = document.querySelector(".form-view");
+var savedView = document.querySelector(".saved-view")
+
+var saveCoverButton = document.querySelector(".save-cover-button");
+var savedCoversSection = document.querySelector(".saved-covers-section");
+var viewSavedCoversButton = document.querySelector(".view-saved-button");
+
+var formMakeMyBookButton = document.querySelector(".create-new-book-button");
+var formUserCoverInput = document.querySelector(".user-cover");
+var formUserTitleInput = document.querySelector(".user-title");
+var formUserDescriptor1Input = document.querySelector(".user-desc1");
+var formUserDescriptor2Input = document.querySelector(".user-desc2");
+
+var savedCovers = [];
+var currentCover;
 
 
 // We've provided a few variables below
@@ -8,9 +36,22 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.onload = randomCoverGenerator;
 
+randomButton.addEventListener("click", randomCoverGenerator);
 
 // Create your event handlers and other functions here 👇
+function randomCoverGenerator() {
+  var coverIndex = getRandomIndex(covers);
+  coverImage.src = covers[coverIndex];
+  var titleIndex = getRandomIndex(titles);
+  coverTitle.innerText = titles[titleIndex];
+  var tag1Index = getRandomIndex(descriptors);
+  tagline1.innerText = descriptors[tag1Index];
+  var tag2Index = getRandomIndex(descriptors);
+  tagline2.innerText = descriptors[tag2Index];
+  currentCover = new Cover(covers[coverIndex], titles[titleIndex], descriptors[tag1Index], descriptors[tag2Index]);
+  }
 
 
 // We've provided one function to get you started
