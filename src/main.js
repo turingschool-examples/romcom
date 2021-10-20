@@ -5,7 +5,8 @@ image.innerText = covers[4];
 var bookTitle = document.querySelector('h2');
 bookTitle.innerText = titles[7];
 
-var 
+var descriptor1 = document.querySelector('.tagline-1');
+descriptor1.innerText = descriptors[9];
 
 
 // We've provided a few variables below
