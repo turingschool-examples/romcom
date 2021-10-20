@@ -7,3 +7,5 @@ class Cover {
     this.tagline2 = descriptor2;
   }
 }
+
+module.exports = Cover;
