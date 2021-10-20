@@ -8,6 +8,9 @@ bookTitle.innerText = titles[7];
 var descriptor1 = document.querySelector('.tagline-1');
 descriptor1.innerText = descriptors[9];
 
+var descriptor2 = document.querySelector('.tagline-2');
+descriptor2.innerText = descriptors[2];
+
 
 // We've provided a few variables below
 var savedCovers = [
