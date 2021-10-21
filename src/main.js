@@ -1,95 +1,3 @@
-var covers = [
-  './assets/bluebrocade.jpg',
-  './assets/dance.jpg',
-  './assets/embrace.png',
-  './assets/fire.png',
-  './assets/frock.png',
-  './assets/glorious.jpg',
-  './assets/golden.jpg',
-  './assets/maskedmeeting.jpg',
-  './assets/masquerade.jpg',
-  './assets/moonlitmeadow.jpg',
-  './assets/office.png',
-  './assets/picnic.jpg',
-  './assets/pirate.jpg',
-  './assets/prairie.jpg',
-  './assets/redrenaissance.jpg',
-  './assets/regency.jpg',
-  './assets/ribbons.jpg',
-  './assets/roses.jpg',
-  './assets/ruffles.jpg',
-  './assets/scroll.jpg',
-  './assets/shine.png',
-  './assets/smolder.png',
-  './assets/snow.jpg',
-  './assets/sparkles.jpg',
-  './assets/stripes.png',
-  './assets/wildwest.jpg',
-  './assets/windswept.jpg',
-];
-
-var titles = [
-  "Passionate Moonlight",
-  "Love's Misery",
-  "Roses and Flame",
-  "Innocent Roses",
-  "Silk and Sense",
-  "Hearts Aflame",
-  "Fiery Passion",
-  "Stolen Hearts",
-  "Secrets and Silk",
-  "Dreams of Fire",
-  "Lovers and Enemies",
-  "Passion's Embrace",
-  "Harbinger by Moonlight",
-  "Rouge Red",
-  "Moonlit Mysteries",
-  "Crimson Roses",
-  "Destiny's Fires",
-  "Proposals and Passion",
-  "Silk Wedding",
-  "Masked Seduction",
-  "Crimson Masquerade",
-  "Stolen Rubies",
-  "Emerald Eyes",
-  "Sapphire Skies",
-  "Opal Passions"
-];
-
-var descriptors = [
-  "passion",
-  "glory",
-  "romance",
-  "woe",
-  "sorrow",
-  "pain",
-  "ardor",
-  "devotion",
-  "excitement",
-  "fervor",
-  "rage",
-  "spirit",
-  "zeal",
-  "ecstasy",
-  "fire",
-  "storms",
-  "tempests",
-  "rapture",
-  "ire",
-  "jealousy",
-  "exhilaration",
-  "bliss",
-  "enchantment",
-  "paradise",
-  "calamity",
-  "disaster",
-  "heartache",
-  "misfortune",
-  "agony",
-  "curses",
-  "blessings",
-  "melancholy"
-];
 // Create variables targetting the relevant DOM elements here 👇
 var randomButton = document.querySelector(".random-cover-button");
 var coverImage = document.querySelector(".cover-image");
@@ -97,8 +5,12 @@ var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var makeCoverButton = document.querySelector(".make-new-button");
-
-
+var homeCover = document.querySelector('.home-view');
+var form = document.querySelector('.form-view');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
+var viewSaveButton = document.querySelector('.view-saved-button');
+var savedView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 //var savedCovers = [
@@ -109,6 +21,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * (array.length))
 }
 
+randomButton.addEventListener("click", createRandomCover)
+
 function createRandomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
@@ -117,9 +31,37 @@ function createRandomCover() {
 }
 createRandomCover();
 
+
 // Add your event listeners here 👇
 
-randomButton.addEventListener("click", createRandomCover)
+makeCoverButton.addEventListener('click', showForm)
+
+function showForm() {
+  homeCover.classList.add('hidden')
+  form.classList.remove('hidden')
+  randomButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+}
+
+
+viewSaveButton.addEventListener('click', showSavedCovers)
+
+function showSavedCovers() {
+  homeCover.classList.add('hidden')
+  form.classList.add('hidden')
+  savedView.classList.remove('hidden')
+  randomButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+}
+
+homeButton.addEventListener('click', goHome)
+
+function goHome() {
+  homeCover.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
+}
 
 
 //add comment to test commit
