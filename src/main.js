@@ -121,8 +121,8 @@ function getRandomIndex(array) {
 
 
 function generateRandomCoverButton() {
-  currentCover = new Cover(images[getRandomIndex(covers)], title[getRandomIndex(titles)], tagline1[getRandomIndex(descriptors)], tagline2[getRandomIndex(descriptors)]);
-  
+  currentCover = new Cover(getRandomIndex(covers), getRandomIndex(titles), getRandomIndex(descriptors), getRandomIndex(descriptors));
+
   coverImage.src = currentCover.cover
   coverTitle.innerText = currentCover.title
   tagline1.innerText = currentCover.tagline1
