@@ -28,6 +28,9 @@ descriptor1.innerText = descriptors[ranNum2];
 
 var descriptor2 = document.querySelector('.tagline-2');
 descriptor2.innerText = descriptors[ranNum1];
+
+var button = document.querySelector('.random-cover-button')
+<button class="random-cover-button">Show New Random Cover</button>
 //
 //
 //
@@ -61,7 +64,7 @@ descriptor2.innerText = descriptors[ranNum1];
 // var currentCover;
 //
 // // Add your event listeners here 👇
-// // window.addEventListener("load",  )
+window.addEventListener("click",  )
 // //
 // // function whateverName () {
 // //
