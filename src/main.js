@@ -14,20 +14,26 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-//title innerText, plug in the array of titles set the random function for that
 title.addEventListener('load', changeTitle(title));
-coverImg.addEventListener('load', changeCoverImg(coverImg))
+coverImg.addEventListener('load', changeCoverImg(coverImg));
+tagline1.addEventListener('load', changeTagline(tagline1));
+tagline2.addEventListener('load', changeTagline(tagline2));
 
 // Create your event handlers and other functions here 👇
-var romCom = new Cover(coverImg, title, tagline1, tagline2)
+
 
 function changeTitle(title) {
   title.innerText = titles[getRandomIndex(titles)];
 }
 
 function changeCoverImg(coverImg) {
-  coverImg.src = covers[getRandomIndex(covers)]
+  coverImg.src = covers[getRandomIndex(covers)];
 }
+
+function changeTagline(descriptor) {
+  descriptor.innerText = descriptors[getRandomIndex(descriptors)];
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
