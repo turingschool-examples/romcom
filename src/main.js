@@ -7,6 +7,24 @@ var savedCovers = [
 ];
 var currentCover;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var homeButton = document.querySelector('.home-button')
 
 var homeView = document.querySelector('.home-view')
