@@ -1,32 +1,32 @@
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
-
-
 }
 var ranNum2 = getRandomIndex(descriptors);
 var ranNum1 = getRandomIndex(covers);
 var ranNum = getRandomIndex(titles);
-//
-//
+// 1. create object instance using our class cover
+// 2. use class cover with addEventListener (access button)
+
+
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
+var currentCover = [
+  new Cover(covers[ranNum1], titles[ranNum], descriptors[ranNum2], descriptors[ranNum1])
+];
+
+console.log(currentCover);
 
 var image = document.querySelector('img');
-
-
 image.src = covers[ranNum1];
 
-
-console.log(covers[2]);
-
 var bookTitle = document.querySelector('h2');
-
 bookTitle.innerText = titles[ranNum];
 
 var descriptor1 = document.querySelector('.tagline-1');
-
 descriptor1.innerText = descriptors[ranNum2];
 
 var descriptor2 = document.querySelector('.tagline-2');
-
 descriptor2.innerText = descriptors[ranNum1];
 //
 //
