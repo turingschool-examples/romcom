@@ -102,11 +102,11 @@ var descriptors = [
   "melancholy"
 ];
 
-var randomCoverButton = document.querySelector(".random-cover-button")
-var coverImage = document.querySelector(".cover-image")
-var coverTitle = document.querySelector(".cover-title")
-var tagline1 = document.querySelector(".tagline-1")
-var tagline2 = document.querySelector(".tagline-2")
+var randomCoverButton = document.querySelector('.random-cover-button')
+var coverImage = document.querySelector('.cover-image')
+var coverTitle = document.querySelector('.cover-title')
+var tagline1 = document.querySelector('.tagline-1')
+var tagline2 = document.querySelector('.tagline-2')
 
 
 var savedCovers = [
@@ -121,9 +121,9 @@ function getRandomIndex(array) {
 
 
 function generateRandomCoverButton() {
-  currentCover = new Cover(images[getRandomIndex(images)], title[getRandomIndex(titles)], tagline1[getRandomIndex(descriptors)], tagline2[getRandomIndex(descriptors)]);
-
-  coverImage.src = currentCover.imageURL
+  currentCover = new Cover(images[getRandomIndex(covers)], title[getRandomIndex(titles)], tagline1[getRandomIndex(descriptors)], tagline2[getRandomIndex(descriptors)]);
+  
+  coverImage.src = currentCover.cover
   coverTitle.innerText = currentCover.title
   tagline1.innerText = currentCover.tagline1
   tagline2.innerText = currentCover.tagline2
