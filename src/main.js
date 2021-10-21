@@ -55,6 +55,10 @@ function hideHome() {
   homeView.style.display = 'none';
 }
 
+function displayHomeView() {
+  homeView.style.display = 'initial';
+}
+
 function hideCoverButton() {
   coverButton.style.display = 'none';
 }
