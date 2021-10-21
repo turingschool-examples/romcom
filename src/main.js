@@ -1,4 +1,5 @@
 // Create variables targetting the relevant DOM elements here :point_down:
+
 var getRandomCoverButton = document.querySelector(".random-cover-button")
 var currentImage = document.querySelector(".cover-image");
 var currentTitle = document.querySelector(".cover-title");
@@ -14,7 +15,8 @@ var currentCover;
 
 
 // Add your event listeners here :point_down:
-getRandomCoverButton.addEventListener("click", createRandomCover)
+window.addEventListener("load", createRandomCover);
+getRandomCoverButton.addEventListener("click", createRandomCover);
 
 // Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
