@@ -1,13 +1,17 @@
 // Create variables targetting the relevant DOM elements here :point_down:
 var getRandomCoverButton = document.querySelector(".random-cover-button")
 var currentImage = document.querySelector(".cover-image");
-/// i think follow this guideline for the rest of the classes
+var currentTitle = document.querySelector(".cover-title");
+var currentTag1 = document.querySelector(".tagline-1");
+var currentTag2 = document.querySelector(".tagline-2");
+
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
+
 
 // Add your event listeners here :point_down:
 getRandomCoverButton.addEventListener("click", createRandomCover)
@@ -24,6 +28,8 @@ function createRandomCover() {
   var newTagline1 = descriptors[getRandomIndex(descriptors)];
   var newTagline2 = descriptors[getRandomIndex(descriptors)];
   var cover = new Cover(newCover, newTitle, newTagline1, newTagline2);
-  currentImage.src = cover.cover
-  // use innerTEXT for the rest -
+  currentImage.src = cover.cover;
+  currentTitle.innerText = cover.title;
+  currentTag1.innerText = cover.tagline1;
+  currentTag2.innerText = cover.tagline2;
 }
