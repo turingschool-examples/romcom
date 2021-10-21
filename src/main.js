@@ -35,6 +35,7 @@ makeCoverButton.addEventListener('click', showForm)
 
 function showForm() {
   homeCover.classList.add('hidden')
+  form.classList.remove('hidden')
 }
 
 
