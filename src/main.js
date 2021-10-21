@@ -18,6 +18,9 @@ document.addEventListener('click', displayForm)
 // Create your event handlers and other functions here 👇
 function displayForm(){
   form.style.display = 'initial'
+  displayHomeButton()
+  hideHome()
+  hideCoverButton()
 }
 
 function displayHomeButton(){
