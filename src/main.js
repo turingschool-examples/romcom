@@ -22,6 +22,7 @@ var currentCover;
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCover);
 makeCoverButton.addEventListener("click", changeVisibility);
+homeButton.addEventListener("click", )
 
 // Create your event handlers and other functions here 👇
 
@@ -44,17 +45,19 @@ function makeRandomCover() {
   coverTagline2.innerText = currentCover.tagline2;
 }
 
+function hideVariable(variable){
+  variable.classList.add("hidden")
+
+}
+
+function showVariable(variable){
+  variable.classList.remove("hidden")
+}
+
 function changeVisibility(){
-  randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  mainPage.classList.add("hidden");
-  homeButton.classList.remove("hidden")
-  formPage.classList.remove("hidden")
-
-  console.log('hello');
-
-  //we want to show the home buttons
-  // we want to hide the main page, and show the form.
-
-  //js: need to access
+  hideVariable(randomCoverButton);
+  hideVariable(saveCoverButton);
+  hideVariable(mainPage);
+  showVariable(homeButton);
+  showVariable(formPage);
 }
