@@ -42,12 +42,10 @@ function displayForm() {
   hideSaveCoverButton();
 }
 
-function displaySavedView() {
-  savedView.style.display = 'initial';
-  displayHomeButton();
-  hideHome();
-  hideCoverButton();
+function displaySaved() {
+
 }
+
 
 function displayHomeButton() {
   homeButton.style.display = 'initial';
