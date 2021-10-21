@@ -13,10 +13,10 @@ var homeView = document.querySelector('.home-view')
 var form = document.querySelector('.form-view')
 
 // Add your event listeners here 👇
-document.addEventListener('click', displaySavedForm)
+document.addEventListener('click', displayForm)
 
 // Create your event handlers and other functions here 👇
-function displaySavedForm(){
+function displayForm(){
   form.style.display = 'initial'
 }
 
@@ -26,6 +26,10 @@ function displayHomeButton(){
 
 function hideHome(){
   homeView.style.display = 'none'
+}
+
+function hideCoverButton(){
+  coverButton.style.display = 'none'
 }
 
 // We've provided one function to get you started
