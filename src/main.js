@@ -24,6 +24,8 @@ coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
 
 viewSavedButton.addEventListener('click', displaySavedView);
+
+homeButton.addEventListener('click', displayHomeView);
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
