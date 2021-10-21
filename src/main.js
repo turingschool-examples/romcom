@@ -3,13 +3,14 @@ var coverImageSource = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
+var savedView = document.querySelector('.saved-view')
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 
 var coverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
-var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,6 +22,8 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 coverButton.addEventListener('click', changeCover);
 
 makeNewButton.addEventListener('click', displayForm);
+
+viewSavedButton.addEventListener('click', displaySavedView);
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
@@ -35,6 +38,13 @@ function displayForm() {
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
+}
+
+function displaySavedView() {
+  savedView.style.display = 'initial';
+  displayHomeButton();
+  hideHome();
+  hideCoverButton();
 }
 
 function displayHomeButton() {
