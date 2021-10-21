@@ -36,6 +36,9 @@ var homeButton = document.querySelector(".home-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var homePage = document.querySelector(".home-view");
 var formPage = document.querySelector(".form-view");
+var viewSavedButton = document.querySelector(".view-saved-button")
+var savedPage = document.querySelector(".saved-view")
+var showNewButton = document.querySelector(".random-cover-button")
 
 clickOwnButton.addEventListener("click", switchToForm);
 
@@ -45,7 +48,10 @@ function switchToForm() {
   newCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
   saveCoverButton.classList.add("hidden");
+  //view and make own buttons still show, as instructions say but we wanna make it prettier
 }
+
+homeButton.addEventListener("click", goHome);
 
 function goHome() {
   formPage.classList.add("hidden");
@@ -55,7 +61,18 @@ function goHome() {
   saveCoverButton.classList.remove("hidden");
 }
 
-homeButton.addEventListener("click", goHome);
+viewSavedButton.addEventListener("click", viewSavedCovers);
+
+function viewSavedCovers() {
+  homePage.classList.add("hidden");
+  savedPage.classList.remove("hidden");
+  saveCoverButton.classList.add("hidden");
+  showNewButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+}
+
+
+
 // Create your event handlers and other functions here 👇
 
 // We've provided one function to get you started
