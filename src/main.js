@@ -1,20 +1,11 @@
 // Create variables targetting the relevant DOM elements here 👇
 //Iteration 0
 var coverImg = document.querySelector(".cover-image");
-coverImg.src = covers[getRandomIndex(covers)];
-
 var coverTitle = document.querySelector(".cover-title");
-coverTitle.innerText = titles[getRandomIndex(titles)];
-
 var tagline1 = document.querySelector(".tagline-1");
-tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-
 var tagline2 = document.querySelector(".tagline-2");
-tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 
-//var formButton = document.querySelector(".make-new-button");
-//var form = document.querySelector("form");
-//
+generateNewBook();
 
 // We've provided a few variables below
 //Didn't use for Iteration 1
@@ -31,30 +22,40 @@ var currentCover;
 //Iteration 1
 var newCoverButton = document.querySelector(".random-cover-button");
 
-newCoverButton.onclick = function getNewCover() {
+function generateNewBook() {
   coverImg.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-};
-
-// formButton.onclick = function swapToForm() {
-//   form.toggle();
+}
+newCoverButton.addEventListener("click", generateNewBook);
 
 //Iteration 2
-var clickOwnButton = document.querySelector(".make-new-button")
+var clickOwnButton = document.querySelector(".make-new-button");
+var homeButton = document.querySelector(".home-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var homePage = document.querySelector(".home-view");
+var formPage = document.querySelector(".form-view");
 
-var homePage = document.querySelector(".view home-view")
+clickOwnButton.addEventListener("click", switchToForm);
 
-var formPage = document.querySelector(".view form-view hidden")
-
-clickOwnButton.onclick = function switchToForm() {
+function switchToForm() {
   formPage.classList.remove("hidden");
-  homePage.classList.add("hidden")
-
+  homePage.classList.add("hidden");
+  newCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  saveCoverButton.classList.add("hidden");
 }
 
+function goHome() {
+  formPage.classList.add("hidden");
+  homePage.classList.remove("hidden");
+  newCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  saveCoverButton.classList.remove("hidden");
+}
 
+homeButton.addEventListener("click", goHome);
 // Create your event handlers and other functions here 👇
 
 // We've provided one function to get you started
