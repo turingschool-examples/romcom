@@ -43,6 +43,9 @@ var currentCover;
 
 window.onload = newRandomCover();
 randomCoverButton.addEventListener("click", newRandomCover)
+
+makeNewButton.addEventListener('click', toggleFormView)
+
 // Create your event handlers and other functions here 👇
 
 function newRandomCover() {
@@ -59,6 +62,14 @@ function displayCover() {
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
+}
+
+function toggleFormView() {
+  formView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
 }
 
 
