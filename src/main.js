@@ -16,9 +16,9 @@ var form = document.querySelector('.form-view')
 document.addEventListener('click', displaySavedForm)
 
 // Create your event handlers and other functions here 👇
-// function displaySavedForm(){
-//   form.style.display = 'initial'
-// }
+function displaySavedForm(){
+  form.style.display = 'initial'
+}
 
 function displayHomeButton(){
   homeButton.style.display = 'initial'
