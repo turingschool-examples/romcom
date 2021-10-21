@@ -4,8 +4,8 @@
 
 var coverImg = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
-var tagline1 = document.querySelector('.tagline-1');
-var tagline2 = document.querySelector('.tagline-2');
+var descriptor1 = document.querySelector('.tagline-1');
+var descriptor2 = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -16,8 +16,8 @@ var currentCover;
 // Add your event listeners here 👇
 title.addEventListener('load', changeTitle(title));
 coverImg.addEventListener('load', changeCoverImg(coverImg));
-tagline1.addEventListener('load', changeTagline(tagline1));
-tagline2.addEventListener('load', changeTagline(tagline2));
+descriptor1.addEventListener('load', changeTagline(descriptor1));
+descriptor2.addEventListener('load', changeTagline(descriptor2));
 
 // Create your event handlers and other functions here 👇
 
