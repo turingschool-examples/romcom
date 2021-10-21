@@ -42,9 +42,14 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.onload = newRandomCover();
-randomCoverButton.addEventListener("click", newRandomCover)
 
-makeNewButton.addEventListener('click', toggleFormView)
+randomCoverButton.addEventListener("click", newRandomCover);
+
+makeNewButton.addEventListener('click', toggleFormView);
+
+viewSavedButton.addEventListener('click', toggleSavedView);
+
+homeButton.addEventListener('click', toggleHomeView);
 
 // Create your event handlers and other functions here 👇
 
@@ -67,9 +72,28 @@ function displayCover() {
 function toggleFormView() {
   formView.classList.remove('hidden');
   homeView.classList.add('hidden');
+  savedView.classList.add('hidden');
   homeButton.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
+}
+
+function toggleSavedView() {
+  homeView.classList.add('hidden');
+  savedView.classList.remove('hidden');
+  formView.classList.add('hidden')
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden')
+}
+
+function toggleHomeView() {
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden')
 }
 
 
