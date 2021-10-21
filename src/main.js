@@ -5,7 +5,8 @@ var coverTagline1 = document.querySelector(".tagline-1");
 var coverTagline2 = document.querySelector(".tagline-2");
 
 //buttons
-var randomCoverButton = document.querySelector(".random-cover-button")
+var randomCoverButton = document.querySelector(".random-cover-button");
+var makeCoverButton = document.querySelector(".make-new-button");
 
 
 // We've provided a few variables below
@@ -17,6 +18,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener("load", randomCover);
 randomCoverButton.addEventListener("click", randomCover);
+makeCoverButton.addEventListener("click", )
 
 // Create your event handlers and other functions here 👇
 
@@ -38,5 +40,4 @@ function randomCover() {
   coverTagline1.innerText = currentCover.tagline1;
   coverTagline2.innerText = currentCover.tagline2;
 
-  console.log(currentCover);
 }
