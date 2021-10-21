@@ -1,5 +1,7 @@
-// Create variables targetting the relevant DOM elements here 👇
-
+// Create variables targetting the relevant DOM elements here :point_down:
+var getRandomCoverButton = document.querySelector(".random-cover-button")
+var currentImage = document.querySelector(".cover-image");
+/// i think follow this guideline for the rest of the classes
 
 // We've provided a few variables below
 var savedCovers = [
@@ -7,13 +9,21 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+// Add your event listeners here :point_down:
+getRandomCoverButton.addEventListener("click", createRandomCover)
 
-
-// Create your event handlers and other functions here 👇
-
-
+// Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function createRandomCover() {
+  var newCover = covers[getRandomIndex(covers)];
+  var newTitle = titles[getRandomIndex(titles)];
+  var newTagline1 = descriptors[getRandomIndex(descriptors)];
+  var newTagline2 = descriptors[getRandomIndex(descriptors)];
+  var cover = new Cover(newCover, newTitle, newTagline1, newTagline2);
+  currentImage.src = cover.cover
+  // use innerTEXT for the rest -
 }
