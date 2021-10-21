@@ -17,9 +17,12 @@ document.addEventListener('click', displaySavedForm)
 
 // Create your event handlers and other functions here 👇
 // function displaySavedForm(){
-//   homeButton.style.display = 'initial'
-//
+//   form.style.display = 'initial'
 // }
+
+function displayHomeButton(){
+  homeButton.style.display = 'initial'
+}
 
 function hideHome(){
   homeView.style.display = 'none'
