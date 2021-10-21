@@ -7,11 +7,23 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+var homeButton = document.querySelector('.home-button')
 
+var homeView = document.querySelector('.home-view')
+var form = document.querySelector('.form-view')
+
+// Add your event listeners here 👇
+document.addEventListener('click', displaySavedForm)
 
 // Create your event handlers and other functions here 👇
+// function displaySavedForm(){
+//   homeButton.style.display = 'initial'
+//
+// }
 
+function hideHome(){
+  homeView.style.display = 'none'
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
