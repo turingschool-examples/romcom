@@ -28,6 +28,7 @@ var createNewBookButton = document.querySelector(".create-new-book-button");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+console.log(savedCovers)
 var currentCover;
 
 
@@ -37,6 +38,7 @@ makeNewCoverButton.addEventListener("click", makeYourOwnCoverClicked);
 viewSavedCoversButton.addEventListener("click", viewSavedCoversClicked);
 homeButton.addEventListener("click", homeButtonClicked);
 createNewBookButton.addEventListener("click", createNewCover);
+saveCoverButton.addEventListener("click", saveCover)
 
 
 function getRandomCover() {
@@ -85,17 +87,38 @@ function homeButtonClicked() {
   viewSavedCoversButton.classList.remove('hidden');
 }
 
-function saveCoverClicked(){
-  //check to see if cover is already in array
-  //if not push cover into saved array
-  // else alert("Cover already exist!")
+
+
+function showSavedCovers(){
+  var len = savedCovers.length
+  for(var i=0;i<len;i++){
+    savedCoverSection.innerHTML += `
+    <section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      </section>
+    `
+  }
 }
 
-function setCoverValues(){
-// set form values to cover
-
+function saveCover(){
+  var currentCoverImage = coverImage.src
+  var currentTitle = coverTitle.innerText
+  var currentDisc1 = tagline1.innerText
+  var currentDsic2 = tagline2.innerText
+  currentCover = new Cover(currentCoverImage,currentTitle,currentDisc1,currentDsic2)
+  
+  if(savedCovers.includes(currentCover)){
+    alert("Cover already saved!")
+  } else {
+    savedCovers.push(currentCover)
+  }
+  console.log(currentCover)
+  console.log(savedCovers)
 }
-//Maybe both of these can be one function
+
+
 function createNewCover(){
   event.preventDefault();
 
