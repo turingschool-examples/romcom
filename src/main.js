@@ -13,7 +13,7 @@ var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
 var savedView = document.querySelector(".saved-view");
 
-var savedCoverSection = document.querySelector(".saved-covers-section");
+var savedCoverSection = document.querySelector(".saved-covers-section"); // accessing this variable to change HTML in the section
 
 var userCover = document.querySelector(".user-cover");
 var userTitle = document.querySelector(".user-title");
@@ -32,23 +32,19 @@ var currentCover;
 
 
 document.addEventListener("DOMContentLoaded", getRandomCover);
-
 randomCoverButton.addEventListener("click", getRandomCover);
-
 makeNewCoverButton.addEventListener("click", makeYourOwnCoverClicked);
-
 viewSavedCoversButton.addEventListener("click", viewSavedCoversClicked);
-
 homeButton.addEventListener("click", homeButtonClicked);
 
 
 function getRandomCover() {
-  var randomCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   // if statement to make sure descriptors are different
-  coverImage.src = randomCover.cover;
-  coverTitle.innerText = randomCover.title;
-  tagline1.innerText = randomCover.tagline1;
-  tagline2.innerText = randomCover.tagline2;
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
 };
 
 function makeYourOwnCoverClicked(){
@@ -72,6 +68,9 @@ function viewSavedCoversClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
+  //create 
+  //for loop to loop through savedCovers variable
+  //use inner.HTML to build a cover and display the covers
 };
 
 function homeButtonClicked() {
@@ -85,8 +84,27 @@ function homeButtonClicked() {
   viewSavedCoversButton.classList.remove('hidden');
 }
 
-function saveCoverClicked() {
-  
+function saveCoverClicked(){
+  //check to see if cover is already in array
+  //if not push cover into saved array
+  // else alert("Cover already exist!")
+}
+
+function setCoverValues(){
+// set form values to cover
+
+}
+//Maybe both of these can be one function
+function createNewCover(){
+// make sure all fields are filled then
+// setCover values
+//homeview
+}
+
+function removeCover(){
+  // access cover ID
+  //if cover id === saved covers id
+  //splice
 }
 
 // We've provided one function to get you started
