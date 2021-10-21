@@ -1,3 +1,4 @@
+
 // Create variables targetting the relevant DOM elements here 👇
 //Iteration 0
 var coverImg = document.querySelector(".cover-image");
@@ -72,6 +73,30 @@ function viewSavedCovers() {
 }
 
 
+//Iteration 3
+var coverInput = document.querySelector(".user-cover");
+var titleInput = document.querySelector(".user-title");
+var desc1Input = document.querySelector(".user-desc1");
+var desc2Input = document.querySelector(".user-desc2");
+var customCoverInput = coverInput.value;
+var customTitleInput = titleInput.value;
+var customDesc1Input = desc1Input.value;
+var customDesc2Input = desc2Input.value;
+var makeBookButton = document.querySelector(".create-new-book-button");
+
+makeBookButton.addEventListener("click", function() {
+  makeNewBook(coverImgSrc, title, descriptor1, descriptor2);
+}
+);
+
+function makeNewBook() {
+  covers.push(customCoverInput);
+  titles.push(customTitleInput);
+  descriptors.push(desc1Input);
+  descriptors.push(desc2Input);
+  var newCustomCover = new Cover(customCoverInput, customTitleInput, customDesc1Input, customDesc2Input);
+
+}
 
 // Create your event handlers and other functions here 👇
 
