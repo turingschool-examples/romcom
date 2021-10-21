@@ -50,6 +50,9 @@ viewSaveButton.addEventListener('click', showSavedCovers)
 function showSavedCovers() {
   homeCover.classList.add('hidden')
   savedView.classList.remove('hidden')
+  randomButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 }
 
 
