@@ -46,10 +46,10 @@ window.onload = newRandomCover();
 
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
-  coverImage.src = './assets/frock.png';
-  coverTitle.innerText = "Romance Novel";
-  taglineOne.innerText = "Heat";
-  taglineTwo.innerText = "Passion";
+  coverImage.src = covers[getRandomIndex(covers)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
+  taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 
