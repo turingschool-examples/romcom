@@ -43,15 +43,23 @@ var currentCover;
 
 window.onload = newRandomCover();
 
-
 // Create your event handlers and other functions here 👇
+
 function newRandomCover() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
-  taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+  var coverImg = covers[getRandomIndex(covers)];
+  var coverTitle = titles[getRandomIndex(titles)];
+  var descOne = descriptors[getRandomIndex(descriptors)];
+  var descTwo = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(coverImg, coverTitle, descOne, descTwo);
+  displayCover(currentCover);
 }
 
+function displayCover() {
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  taglineOne.innerText = currentCover.tagline1;
+  taglineTwo.innerText = currentCover.tagline2;
+}
 
 
 // We've provided one function to get you started
