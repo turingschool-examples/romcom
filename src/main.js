@@ -15,10 +15,10 @@ var makeNewCover = document.querySelector(".make-new-button")
 var coverImage = document.querySelector(".cover-image")
 //cover-title
 var coverTitle = document.querySelector(".cover-title")
-//tageline-1
-var tagline1 = document.querySelector(".tageline-1")
-//tageline-2
-var tagline2 = document.querySelector(".tageline-2")
+//tagline-1
+var tagline1 = document.querySelector(".tagline-1")
+//tagline-2
+var tagline2 = document.querySelector(".tagline-2")
 //home-view
 var homeView = document.querySelector(".home-view")
 //form-view
@@ -47,10 +47,19 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+document.addEventListener("DOMContentLoaded", getRandomCover);
 
+randomCoverButton.addEventListener("click", getRandomCover);
 
 // Create your event handlers and other functions here 👇
-
+function getRandomCover() {
+  var randomCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  // if statement to make sure descriptors are different
+  coverImage.src = randomCover.cover;
+  coverTitle.innerText = randomCover.title;
+  tagline1.innerText = randomCover.tagline1;
+  tagline2.innerText = randomCover.tagline2;
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
