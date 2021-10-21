@@ -22,10 +22,10 @@ function getRandomIndex(array) {
 }
 
 function generateBook() {
-   currentCover = new Cover(cover[getRandomIndex(covers)], title[getRandomIndex(titles)], tagLine1[getRandomIndex(descriptors)], tagLine2[getRandomIndex(descriptors)]);
+   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 
-   coverImage.src = currentCover.coverImgSrc;
+   coverImage.src = currentCover.cover;
    coverTitle.innerText = currentCover.title;
-   tagLine1.innerText = currentCover.tagLine1;
-   tagLine2.innerText = currentCover.tagLine2;
+   tagLine1.innerText = currentCover.tagline1;
+   tagLine2.innerText = currentCover.tagline2;
 }
