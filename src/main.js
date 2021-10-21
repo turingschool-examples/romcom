@@ -8,7 +8,7 @@ var makeCoverButton = document.querySelector(".make-new-button");
 var homeCover = document.querySelector('.home-view')
 var form = document.querySelector('.form-view')
 var saveCoverButton = document.querySelector('.save-cover-button')
-
+var homeButton = document.querySelector('.home-button')
 
 console.log(homeCover)
 // We've provided a few variables below
@@ -40,6 +40,7 @@ function showForm() {
   form.classList.remove('hidden')
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 }
 
 
