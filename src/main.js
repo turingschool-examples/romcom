@@ -1,5 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+
+
 var coverImg = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
@@ -12,11 +14,20 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+//title innerText, plug in the array of titles set the random function for that
+title.addEventListener('load', changeTitle(title));
+coverImg.addEventListener('load', changeCoverImg(coverImg))
 
 // Create your event handlers and other functions here 👇
+var romCom = new Cover(coverImg, title, tagline1, tagline2)
 
+function changeTitle(title) {
+  title.innerText = titles[getRandomIndex(titles)];
+}
 
+function changeCoverImg(coverImg) {
+  coverImg.src = covers[getRandomIndex(covers)]
+}
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
