@@ -1,3 +1,6 @@
+
+
+//RANDOMIZE COVER WHEN PAGE LOADS
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
 
@@ -28,8 +31,23 @@ descriptor1.innerText = descriptors[ranNum2];
 var descriptor2 = document.querySelector('.tagline-2');
 
 descriptor2.innerText = descriptors[ranNum1];
-//
-//
+
+function randomCover() {
+  image.src = covers[ranNum1];
+  bookTitle.innerText = titles[ranNum];
+  descriptor1.innerText = descriptors[ranNum2];
+}
+
+//RANDOMIZE COVER WITH BUTTON
+var button = document.querySelector('.random-cover-button');
+
+console.log(button);
+
+
+
+//<button class="random-cover-button">Show New Random Cover</button>
+
+
 //
 // /*function randomizeIt () {
 //   //var image = document.querySelector('img');
@@ -54,12 +72,13 @@ descriptor2.innerText = descriptors[ranNum1];
 //
 // //<img class="cover-image" src="./assets/prairie.jpg">
 //
-// //We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
-// var currentCover;
-//
+//We've provided a few variables below
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
+
+var currentCover;
+
 // // Add your event listeners here 👇
 // // window.addEventListener("load",  )
 // //
