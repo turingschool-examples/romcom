@@ -15,10 +15,10 @@ var savedView = document.querySelector(".saved-view");
 
 var savedCoverSection = document.querySelector(".saved-covers-section"); // accessing this variable to change HTML in the section
 
-var userCover = document.querySelector(".user-cover");
-var userTitle = document.querySelector(".user-title");
-var userDesc1 = document.querySelector(".user-desc1");
-var userDesc2 = document.querySelector(".user-desc2");
+var userInputCover = document.querySelector(".user-cover");
+var userInputTitle = document.querySelector(".user-title");
+var userInputDesc1 = document.querySelector(".user-desc1");
+var userInputDesc2 = document.querySelector(".user-desc2");
 var createNewBookButton = document.querySelector(".create-new-book-button");
 
 
@@ -36,6 +36,7 @@ randomCoverButton.addEventListener("click", getRandomCover);
 makeNewCoverButton.addEventListener("click", makeYourOwnCoverClicked);
 viewSavedCoversButton.addEventListener("click", viewSavedCoversClicked);
 homeButton.addEventListener("click", homeButtonClicked);
+createNewBookButton.addEventListener("click", createNewCover);
 
 
 function getRandomCover() {
@@ -68,7 +69,7 @@ function viewSavedCoversClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
-  //create 
+  //create
   //for loop to loop through savedCovers variable
   //use inner.HTML to build a cover and display the covers
 };
@@ -96,10 +97,30 @@ function setCoverValues(){
 }
 //Maybe both of these can be one function
 function createNewCover(){
-// make sure all fields are filled then
-// setCover values
-//homeview
-}
+  event.preventDefault();
+
+  if(!userInputCover.value || !userInputTitle.value || !userInputDesc1.value || !userInputDesc2.value) {
+    alert("Please fill out all fields");
+  } else {
+      coverImage.src = userInputCover.value;
+      coverTitle.innerText = userInputTitle.value;
+      tagline1.innerText = userInputDesc1.value;
+      tagline2.innerText = userInputDesc2.value;
+
+      currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+
+      covers.push(userInputCover.value);
+      titles.push(userInputTitle.value);
+      descriptors.push(userInputDesc1.value);
+      descriptors.push(userInputDesc2.value);
+
+      homeButtonClicked();
+
+      document.querySelector("form").reset();
+    };
+};
+
+
 
 function removeCover(){
   // access cover ID
