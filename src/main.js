@@ -12,34 +12,42 @@ var ranNum = getRandomIndex(titles);
 //
 //
 
-var image = document.querySelector('img');
+// var image = document.querySelector('img');
+// image.src = covers[ranNum1];
+//
+// var bookTitle = document.querySelector('h2');
+// bookTitle.innerText = titles[ranNum];
+//
+// var descriptor1 = document.querySelector('.tagline-1');
+// descriptor1.innerText = descriptors[ranNum2];
+//
+// var descriptor2 = document.querySelector('.tagline-2');
+// descriptor2.innerText = descriptors[ranNum1];
+//
+var button = document.querySelector('.random-cover-button');
 
-
-image.src = covers[ranNum1];
-
-
-console.log(covers[2]);
-
-var bookTitle = document.querySelector('h2');
-
-bookTitle.innerText = titles[ranNum];
-
-var descriptor1 = document.querySelector('.tagline-1');
-
-descriptor1.innerText = descriptors[ranNum2];
-
-var descriptor2 = document.querySelector('.tagline-2');
-
-descriptor2.innerText = descriptors[ranNum1];
-
-function randomCover() {
-  image.src = covers[ranNum1];
-  bookTitle.innerText = titles[ranNum];
-  descriptor1.innerText = descriptors[ranNum2];
-}
 
 //RANDOMIZE COVER WITH BUTTON
-var button = document.querySelector('.random-cover-button');
+button.addEventListener('click', randomCover);
+function randomCover() {
+  var image = document.querySelector('img');
+  image.src = covers[ranNum1];
+  var bookTitle = document.querySelector('h2');
+  bookTitle.innerText = titles[ranNum];
+  var descriptor1 = document.querySelector('.tagline-1');
+  descriptor1.innerText = descriptors[ranNum2];
+  var descriptor2 = document.querySelector('.tagline-2');
+  descriptor2.innerText = descriptors[ranNum1];
+
+  //var button = document.querySelector('.random-cover-button');
+
+}
+
+function newCov () {
+return "You're the best"
+}
+
+
 
 console.log(button);
 
