@@ -42,7 +42,7 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.onload = newRandomCover();
-
+randomCoverButton.addEventListener("click", newRandomCover)
 // Create your event handlers and other functions here 👇
 
 function newRandomCover() {
