@@ -1,44 +1,26 @@
-// Create variables targetting the relevant DOM elements here 👇
-
-// Here we need to target every selector in the index.html that we'll be changing
- // e.g. var title = document.querySelector('.cover-title')
-
-//home-button
 var homeButton = document.querySelector(".home-button");
-//random-cover-button
 var randomCoverButton = document.querySelector(".random-cover-button");
-//save-cover-button
 var saveCoverButton = document.querySelector(".save-cover-button");
-//view-saved-button
 var viewSavedCoversButton = document.querySelector(".view-saved-button");
-//make-new-button
-var makeNewCover = document.querySelector(".make-new-button");
-//cover-image
+var makeNewCoverButton = document.querySelector(".make-new-button");
+
 var coverImage = document.querySelector(".cover-image");
-//cover-title
 var coverTitle = document.querySelector(".cover-title");
-//tagline-1
 var tagline1 = document.querySelector(".tagline-1");
-//tagline-2
 var tagline2 = document.querySelector(".tagline-2");
-//home-view
+
 var homeView = document.querySelector(".home-view");
-//form-view
 var formView = document.querySelector(".form-view");
-//saved-view
 var savedView = document.querySelector(".saved-view");
-//saved-cover-section
-var savedCoverSection = document.querySelector(".saved-cover-section");
-//user-cover
+
+var savedCoverSection = document.querySelector(".saved-covers-section");
+
 var userCover = document.querySelector(".user-cover");
-//user-title
 var userTitle = document.querySelector(".user-title");
-//user-desc1
 var userDesc1 = document.querySelector(".user-desc1");
-//user-desc2
 var userDesc2 = document.querySelector(".user-desc2");
-//create-new-book-button
 var createNewBookButton = document.querySelector(".create-new-book-button");
+
 
 
 
@@ -53,7 +35,7 @@ document.addEventListener("DOMContentLoaded", getRandomCover);
 
 randomCoverButton.addEventListener("click", getRandomCover);
 
-makeNewCover.addEventListener("click", makeYourOwnCoverClicked);
+makeNewCoverButton.addEventListener("click", makeYourOwnCoverClicked);
 
 viewSavedCoversButton.addEventListener("click", viewSavedCoversClicked);
 
@@ -75,7 +57,7 @@ function makeYourOwnCoverClicked(){
   savedView.classList.add('hidden');
   homeButton.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
-  makeNewCover.classList.remove('hidden');
+  makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
 
@@ -87,7 +69,7 @@ function viewSavedCoversClicked() {
   savedView.classList.remove('hidden');
   homeButton.classList.remove('hidden');
   saveCoverButton.classList.add('hidden');
-  makeNewCover.classList.remove('hidden');
+  makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
 };
@@ -98,7 +80,7 @@ function homeButtonClicked() {
   savedView.classList.add('hidden');
   homeButton.classList.add('hidden');
   saveCoverButton.classList.remove('hidden');
-  makeNewCover.classList.remove('hidden');
+  makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
   viewSavedCoversButton.classList.remove('hidden');
 }
