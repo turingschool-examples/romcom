@@ -41,9 +41,17 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+window.onload = newRandomCover();
 
 
 // Create your event handlers and other functions here 👇
+function newRandomCover() {
+  coverImage.src = './assets/frock.png';
+  coverTitle.innerText = "Romance Novel";
+  taglineOne.innerText = "Heat";
+  taglineTwo.innerText = "Passion";
+}
+
 
 
 // We've provided one function to get you started
