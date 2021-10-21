@@ -49,10 +49,18 @@ viewSaveButton.addEventListener('click', showSavedCovers)
 
 function showSavedCovers() {
   homeCover.classList.add('hidden')
+  form.classList.add('hidden')
   savedView.classList.remove('hidden')
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+}
+
+homeButton.addEventListener('click', goHome)
+
+function goHome() {
+  homeCover.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
 }
 
 
