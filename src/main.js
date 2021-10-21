@@ -5,12 +5,13 @@ var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var makeCoverButton = document.querySelector(".make-new-button");
-var homeCover = document.querySelector('.home-view')
-var form = document.querySelector('.form-view')
-var saveCoverButton = document.querySelector('.save-cover-button')
-var homeButton = document.querySelector('.home-button')
+var homeCover = document.querySelector('.home-view');
+var form = document.querySelector('.form-view');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
+var viewSaveButton = document.querySelector('.view-saved-button');
+var savedView = document.querySelector('.saved-view');
 
-console.log(homeCover)
 // We've provided a few variables below
 //var savedCovers = [
   //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -41,6 +42,14 @@ function showForm() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+}
+
+
+viewSaveButton.addEventListener('click', showSavedCovers)
+
+function showSavedCovers() {
+  homeCover.classList.add('hidden')
+  savedView.classList.remove('hidden')
 }
 
 
