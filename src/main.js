@@ -116,7 +116,8 @@ var currentCover;
 
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
 }
 
 
