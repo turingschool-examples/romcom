@@ -84,4 +84,7 @@ function createCustomCover(event) {
   tagLine1.innerText = descriptor1.value;
   tagLine2.innerText = descriptor2.value;
 
+  homePage.classList.remove('hidden');
+  coverForm.classList.add('hidden');
+
 }
