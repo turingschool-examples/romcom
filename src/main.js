@@ -1,324 +1,9 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Create variables targetting the relevant DOM elements here 👇
 var coverImageSource = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
+var savedView = document.querySelector('.saved-view');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var mainCover = document.querySelector('.main-cover');
@@ -326,6 +11,7 @@ var mainCover = document.querySelector('.main-cover');
 var coverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
 
@@ -344,6 +30,8 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
 createNewBookButton.addEventListener('click', getUserData);
+viewSavedButton.addEventListener('click', displaySaved);
+homeButton.addEventListener('click', displayHome);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
@@ -354,27 +42,63 @@ function changeCover() {
 }
 
 function displayForm() {
-  form.style.display = 'initial';
+  form.classList.remove('hidden');
   displayHomeButton();
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
 }
 
+function displaySaved() {
+  savedView.classList.remove('hidden');
+  displayHomeButton();
+  hideForm();
+  hideHome();
+  hideCoverButton();
+  hideSaveCoverButton();
+}
+
+function displayHome() {
+  homeView.classList.remove('hidden');
+  hideHomeButton();
+  displaySaveCoverButton();
+  displayCoverButton();
+}
+
 function displayHomeButton() {
-  homeButton.style.display = 'initial';
+  homeButton.classList.remove('hidden');
+}
+
+function displayHomeView() {
+  homeView.classList.remove('hidden');
+}
+
+function displaySaveCoverButton() {
+  saveCoverButton.classList.remove('hidden');
+}
+
+function displayCoverButton() {
+  coverButton.classList.remove('hidden');
+}
+
+function hideForm() {
+  form.classList.add('hidden');
+}
+
+function hideHomeButton() {
+  homeButton.classList.add('hidden');
 }
 
 function hideHome() {
-  homeView.style.display = 'none';
+  homeView.classList.add('hidden');
 }
 
 function hideCoverButton() {
-  coverButton.style.display = 'none';
+  coverButton.classList.add('hidden');
 }
 
 function hideSaveCoverButton() {
-  saveCoverButton.style.display = 'none';
+  saveCoverButton.classList.add('hidden');
 }
 
 function storeCoverInputValue() {
