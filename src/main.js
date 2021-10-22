@@ -11,6 +11,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSaveButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
+var makeBookButton = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 //var savedCovers = [
@@ -42,6 +43,7 @@ function showForm() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  makeBookButton.disabled = true
 }
 
 
@@ -69,8 +71,10 @@ function goHome() {
   //get input from each of the form fields
   //change our imagecover.src
   //change our innerText taglines and titles.
+  //disable make my book button until form is filled homeButton
 //then hide homeview, so that new book will show
 //hide formview too.
+
 
 
 
