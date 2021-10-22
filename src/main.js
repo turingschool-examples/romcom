@@ -1,112 +1,15 @@
-// Create variables targetting the relevant DOM elements here 👇
-
-/*var covers = require('../src/data')
-
-var titles = require('../src/data')
-
-var descriptors = require('../src/data')
-
-console.log(covers);
-console.log(titles);
-console.log(descriptors);*/
-var covers = [
-  './assets/bluebrocade.jpg',
-  './assets/dance.jpg',
-  './assets/embrace.png',
-  './assets/fire.png',
-  './assets/frock.png',
-  './assets/glorious.jpg',
-  './assets/golden.jpg',
-  './assets/maskedmeeting.jpg',
-  './assets/masquerade.jpg',
-  './assets/moonlitmeadow.jpg',
-  './assets/office.png',
-  './assets/picnic.jpg',
-  './assets/pirate.jpg',
-  './assets/prairie.jpg',
-  './assets/redrenaissance.jpg',
-  './assets/regency.jpg',
-  './assets/ribbons.jpg',
-  './assets/roses.jpg',
-  './assets/ruffles.jpg',
-  './assets/scroll.jpg',
-  './assets/shine.png',
-  './assets/smolder.png',
-  './assets/snow.jpg',
-  './assets/sparkles.jpg',
-  './assets/stripes.png',
-  './assets/wildwest.jpg',
-  './assets/windswept.jpg',
-];
-
-var titles = [
-  "Passionate Moonlight",
-  "Love's Misery",
-  "Roses and Flame",
-  "Innocent Roses",
-  "Silk and Sense",
-  "Hearts Aflame",
-  "Fiery Passion",
-  "Stolen Hearts",
-  "Secrets and Silk",
-  "Dreams of Fire",
-  "Lovers and Enemies",
-  "Passion's Embrace",
-  "Harbinger by Moonlight",
-  "Rouge Red",
-  "Moonlit Mysteries",
-  "Crimson Roses",
-  "Destiny's Fires",
-  "Proposals and Passion",
-  "Silk Wedding",
-  "Masked Seduction",
-  "Crimson Masquerade",
-  "Stolen Rubies",
-  "Emerald Eyes",
-  "Sapphire Skies",
-  "Opal Passions"
-];
-
-var descriptors = [
-  "passion",
-  "glory",
-  "romance",
-  "woe",
-  "sorrow",
-  "pain",
-  "ardor",
-  "devotion",
-  "excitement",
-  "fervor",
-  "rage",
-  "spirit",
-  "zeal",
-  "ecstasy",
-  "fire",
-  "storms",
-  "tempests",
-  "rapture",
-  "ire",
-  "jealousy",
-  "exhilaration",
-  "bliss",
-  "enchantment",
-  "paradise",
-  "calamity",
-  "disaster",
-  "heartache",
-  "misfortune",
-  "agony",
-  "curses",
-  "blessings",
-  "melancholy"
-];
 
 var randomCoverButton = document.querySelector('.random-cover-button')
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tagline1 = document.querySelector('.tagline-1')
 var tagline2 = document.querySelector('.tagline-2')
+var makeYourOwnCoverButton = document.querySelector('.make-new-button')
+var mainCover = document.querySelector('.main-cover')
+var form = document.querySelector('.form-view')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
+var viewSavedCoversButton = document.querySelector('.view-saved-button')
 
 
 var savedCovers = [
@@ -130,5 +33,27 @@ function generateRandomCoverButton() {
   tagline2.innerText = currentCover.tagline2
 }
 
+function showForm() {
+  mainCover.classList.add('hidden')
+  form.classList.remove('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+};
+
+function showSavedCovers() {
+  form.classList.add('hidden')
+};
+
+function showHomePage() {
+  homeButton.classList.add('hidden')
+  randomCoverButton.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
+  mainCover.classList.remove('hidden')
+
+};
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
+makeYourOwnCoverButton.addEventListener("click", showForm);
+viewSavedCoversButton.addEventListener("click", showSavedCovers);
+homeButton.addEventListener("click", showHomePage);
