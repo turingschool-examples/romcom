@@ -10,6 +10,10 @@ var form = document.querySelector('.form-view')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedCoversButton = document.querySelector('.view-saved-button')
+var customImageInput = document.querySelector('.user-cover')
+var customTitleInput = document.querySelector('.user-title')
+var customDescriptor1 = document.querySelector('.user-desc1')
+var customDescriptor2 = document.querySelector('.user-desc2')
 
 
 var savedCovers = [
@@ -52,6 +56,10 @@ function showHomePage() {
   mainCover.classList.remove('hidden')
 
 };
+
+function createCustomBook() {
+  currentCover = new Cover(covers, titles, descriptors, descriptors)
+}
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
 makeYourOwnCoverButton.addEventListener("click", showForm);
