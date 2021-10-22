@@ -61,7 +61,7 @@ function displayHomeView() {
 }
 
 function hideCoverButton() {
-  coverButton.style.display = 'none';
+  coverButton.classList.add('hidden');
 }
 
 function hideSaveCoverButton() {
