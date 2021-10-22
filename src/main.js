@@ -23,6 +23,7 @@ window.addEventListener('load', generateBook);
 randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
+homeButton.addEventListener('click',returnToMain);
 
 // Create your event handlers and other functions here :point_down:
 function getRandomIndex(array) {
@@ -48,5 +49,15 @@ function showForm() {
 function showSavedCovers() {
   homePage.classList.add('hidden');
   savedView.classList.remove('hidden');
+  saveCoverButton.classList.add('hidden');
+  randomButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+}
 
+function returnToMain() {
+  homePage.classList.remove('hidden');
+  randomButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  coverForm.classList.add('hidden');
 }
