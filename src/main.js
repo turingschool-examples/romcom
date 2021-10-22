@@ -6,7 +6,8 @@ var tagline1 = document.querySelector('.tagline-1')
 var tagline2 = document.querySelector('.tagline-2')
 var makeYourOwnCoverButton = document.querySelector('.make-new-button')
 var mainCover = document.querySelector('.main-cover')
-var form = document.querySelector('form')
+var form = document.querySelector('.form-view')
+
 
 
 var savedCovers = [
