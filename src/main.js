@@ -46,6 +46,7 @@ function displayForm() {
 function displaySaved() {
   savedView.classList.remove('hidden');
   displayHomeButton();
+  hideForm();
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
@@ -58,13 +59,9 @@ function displayHome() {
   displayCoverButton();
 }
 
-
-
-
 function displayHomeButton() {
   homeButton.classList.remove('hidden');
 }
-
 
 function displayHomeView() {
   homeView.classList.remove('hidden');
@@ -76,6 +73,10 @@ function displaySaveCoverButton() {
 
 function displayCoverButton() {
   coverButton.classList.remove('hidden');
+}
+
+function hideForm() {
+  form.classList.add('hidden');
 }
 
 function hideHomeButton() {
