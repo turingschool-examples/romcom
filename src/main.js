@@ -63,6 +63,16 @@ function goHome() {
   saveCoverButton.classList.remove('hidden')
 }
 
+//queryselect make my book button
+//make eventlistener for make my book button
+//create a function
+  //get input from each of the form fields
+  //change our imagecover.src
+  //change our innerText taglines and titles.
+//then hide homeview, so that new book will show
+//hide formview too.
+
+
 
 //add comment to test commit
 //? will this randomizer function work if I insert the variable covers from data.js
