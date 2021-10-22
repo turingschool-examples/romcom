@@ -74,4 +74,5 @@ function createNewCover() {
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(descriptor1.value, descriptor2.value);
+
 }
