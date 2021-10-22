@@ -7,7 +7,8 @@ var tagline2 = document.querySelector('.tagline-2')
 var makeYourOwnCoverButton = document.querySelector('.make-new-button')
 var mainCover = document.querySelector('.main-cover')
 var form = document.querySelector('.form-view')
-
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
 
 
 var savedCovers = [
@@ -34,6 +35,9 @@ function generateRandomCoverButton() {
 function showForm() {
   mainCover.classList.add('hidden')
   form.classList.remove('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
 };
 
 
