@@ -1,6 +1,7 @@
 function getRandomIndex(array) {
    return Math.floor(Math.random() * array.length);
 }
+var ranNum3 = getRandomIndex(descriptors);
 var ranNum2 = getRandomIndex(descriptors);
 var ranNum1 = getRandomIndex(covers);
 var ranNum = getRandomIndex(titles);
@@ -12,7 +13,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover = [
-  new Cover(covers[ranNum1], titles[ranNum], descriptors[ranNum2], descriptors[ranNum1])
+  new Cover(covers[ranNum1], titles[ranNum], descriptors[ranNum2], descriptors[ranNum3])
 ];
 
 console.log(currentCover);
@@ -27,10 +28,17 @@ var descriptor1 = document.querySelector('.tagline-1');
 descriptor1.innerText = descriptors[ranNum2];
 
 var descriptor2 = document.querySelector('.tagline-2');
-descriptor2.innerText = descriptors[ranNum1];
+descriptor2.innerText = descriptors[ranNum3];
 
 var button = document.querySelector('.random-cover-button')
-<button class="random-cover-button">Show New Random Cover</button>
+button.addEventListener('click', changeCover);
+
+function changeCover() {
+  image.src = currentCover.cover;
+  bookTitle.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
+}
 //
 //
 //
