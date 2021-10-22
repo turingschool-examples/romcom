@@ -6,12 +6,50 @@ var makeNewButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var viewSavedButton = document.querySelector(".view-saved-button");
 var viewHomeButton = document.querySelector(".home-button");
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-;
 
-currentCover.src = covers[Math.floor(Math.random() * covers.length)];
-currentTitle.innerText = titles[Math.floor(Math.random() * titles.length)];
-currentDescriptors.innerText = "A tale of " + descriptors[Math.floor(Math.random() * descriptors.length)] + " and " + descriptors[Math.floor(Math.random() * descriptors.length)];
+
+
+// Iteration 3
+var newFormCoverImage = document.querySelector(".user-cover");
+var newFormTitleText = document.querySelector(".user-title");
+var newDescriptorText = document.querySelector(".user-desc1");
+var new2ndDescriptorText = document.querySelector(".user-desc2");
+var createBookButton = document.querySelector(".create-new-book-button");
+
+createBookButton.addEventListener("click", addCoverText);
+
+function addCoverText() {
+  // coverButton.addEventListener("click", changeCover);
+
+// Stretch Goal for empty text box fields
+
+  // if (!newFormCoverValue || !newFormTitleText || !newDescriptorText || !new2ndDesscriptorText.value) {
+  //   return “You need to fill out all the forms!“;
+  //   } else {
+  //   whatever it’s supposed to do when all forms are filled out
+
+  currentCover.src = newFormCoverImage.value;
+  currentTitle.innerText = newFormTitleText.value;
+  currentDescriptors.innerText = "A tale of " + newDescriptorText.value + " and " + new2ndDescriptorText.value;
+}
+
+
+//***This should work! Syntax error for '{' - storing object
+// new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows") {
+//   constructor(newFormCoverImage.value, newFormTitleText.value, newDescriptorText.value, new2ndDescriptorText.value) {
+//     this.coverText = newFormCoverImage.value;
+//     this.formTitleText = newFormTitleText.value;
+//     this.firstDescriptorText = newDescriptorText.value;
+//     this.secondDescriptorText = new2ndDescriptorText.value;
+//   }
+// }
+
+
+
+
+// currentCover.src = covers[Math.floor(Math.random() * covers.length)];
+// currentTitle.innerText = titles[Math.floor(Math.random() * titles.length)];
+// currentDescriptors.innerText = "A tale of " + descriptors[Math.floor(Math.random() * descriptors.length)] + " and " + descriptors[Math.floor(Math.random() * descriptors.length)];
 
 coverButton.addEventListener("click", changeCover);
   function changeCover() {
@@ -48,6 +86,7 @@ viewHomeButton.addEventListener("click", viewHomePage);
 }
 
 // Add your event listeners here 👇 (*********ADD FALSE IF IT DOESN'T WORK)
+
 
 
 // Create your event handlers and other functions here 👇
