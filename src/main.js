@@ -94,6 +94,16 @@ function getUserData() {
   storeTitleInputValue();
   storeDescriptorOneInputValue();
   storeDescriptorTwoInputValue();
+  makeNewCover();
+}
+
+function makeNewCover() {
+  var newCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+
+  newCover.cover.src = covers[covers.length - 1];
+  newCover.title.innerText = titles[titles.length - 1];
+  newCover.tagline1.innerText = descriptors[descriptors.length - 2];
+  newCover.tagline2.innerText = descriptors[descriptors.length - 1];
 }
 
 // We've provided one function to get you started
