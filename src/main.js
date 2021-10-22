@@ -10,6 +10,9 @@ var makeCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var homeButton = document.querySelector(".home-button");
 var viewForm = document.querySelector(".form-view");
+var homeView = document.querySelector(".home-view");
+
+var savedCoversView = document.querySelector(".saved-covers-section");
 
 
 
@@ -26,6 +29,7 @@ getRandomCoverButton.addEventListener("click", createRandomCover);
 
 makeCoverButton.addEventListener("click", hideAndShow);
 
+saveCoverButton.addEventListener("click", viewSavedPage);
 
 // Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
@@ -48,7 +52,19 @@ function createRandomCover() {
 function hideAndShow() {
   getRandomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  viewCoverForm();
+}
 
+function viewCoverForm() {
+  viewForm.classList.remove("hidden");
+  homeView.classList.add("hidden");
+
+}
+
+function viewSavedPage() {
+  viewForm.classList.add("hidden");
+  savedCoversView.classList.remove("hidden");
 }
 
 // 1. create a variable targeting make your own cover button
