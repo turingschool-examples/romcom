@@ -26,7 +26,7 @@ makeNewButton.addEventListener('click', displayForm);
 
 viewSavedButton.addEventListener('click', displaySaved);
 
-homeButton.addEventListener('click', displayHomeView);
+homeButton.addEventListener('click', displayHome);
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
@@ -51,17 +51,34 @@ function displaySaved() {
   hideSaveCoverButton();
 }
 
+function displayHome() {
+  homeView.classList.remove('hidden');
+  hideHomeButton();
+  displaySaveCoverButton();
+}
+
+
+
 
 function displayHomeButton() {
   homeButton.classList.remove('hidden');
 }
 
-function hideHome() {
-  homeView.classList.add('hidden');
-}
 
 function displayHomeView() {
   homeView.classList.remove('hidden');
+}
+
+function displaySaveCoverButton() {
+  saveCoverButton.classList.remove('hidden');
+}
+
+function hideHomeButton() {
+  homeButton.classList.add('hidden');
+}
+
+function hideHome() {
+  homeView.classList.add('hidden');
 }
 
 function hideCoverButton() {
