@@ -9,7 +9,9 @@ var homePage = document.querySelector('.home-view');
 var coverForm = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
-
+var viewSavedButton = document.querySelector('.view-saved-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+var savedView = document.querySelector('.saved-view');
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -20,6 +22,7 @@ var currentCover;
 window.addEventListener('load', generateBook);
 randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
+viewSavedButton.addEventListener('click', showSavedCovers);
 
 // Create your event handlers and other functions here :point_down:
 function getRandomIndex(array) {
@@ -40,4 +43,10 @@ function showForm() {
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+}
+
+function showSavedCovers() {
+  homePage.classList.add('hidden');
+  savedView.classList.remove('hidden');
+
 }
