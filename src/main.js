@@ -16,7 +16,9 @@ var currentCover = new Cover(coverImg, title, tagline1, tagline2);
 
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover(currentCover));
-
+buttonRandomCover.addEventListener('click', function() {
+  createRandomCover(currentCover);
+});
 
 
 // Create your event handlers and other functions here 👇
