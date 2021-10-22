@@ -61,6 +61,9 @@ function newRandomCover() {
 
 function newUserCover() {
   event.preventDefault();
+  if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
+    alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
+  } else {
   coverImage.src = userCover.value;
   coverTitle.innerText = userTitle.value;
   taglineOne.innerText = userTaglineOne.value;
@@ -68,6 +71,7 @@ function newUserCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
   toggleHomeView();
   customForm.reset();
+  }
 }
 
 function displayCover() {
