@@ -27,7 +27,7 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 // Add your event listeners here 👇
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
-createNewBookButton.addEventListener('click', storeDescriptorTwoInputValue);
+createNewBookButton.addEventListener('click', getUserData);
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
@@ -84,6 +84,15 @@ function storeDescriptorOneInputValue() {
 function storeDescriptorTwoInputValue() {
   var descriptorTwoValue = secondDescriptorInputValue.value;
   descriptors.push(descriptorTwoValue);
+
+  event.preventDefault();
+}
+
+function getUserData() {
+  storeCoverInputValue();
+  storeTitleInputValue();
+  storeDescriptorOneInputValue();
+  storeDescriptorTwoInputValue();
 
   event.preventDefault();
 }
