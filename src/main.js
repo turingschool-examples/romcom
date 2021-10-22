@@ -73,7 +73,14 @@ function returnToMain() {
 function createNewCover() {
   currentCover = new Cover(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
 
-  covers.unshift(userCover.value);
-  titles.unshift(userTitle.value);
-  descriptors.unshift(descriptor1.value, descriptor2.value);
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(descriptor1.value, descriptor2.value);
+
+  coverImage.src = userCover.value;
+  coverTitle.innerText = userTitle.value;
+  tagLine1.innerText = descriptor1.value;
+  tagLine2.innerText = descriptor2.value;
+
+
 }
