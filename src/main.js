@@ -60,12 +60,25 @@ function showHomePage() {
 };
 
 function createCustomBook(event) {
-event.preventDefault()
+event.preventDefault();
 
 currentCover = new Cover(customImageInput.value, customTitleInput.value, customDescriptor1.value, customDescriptor2.value)
 
-mainCover.classList.add('hidden')
-console.log("hellloo")
+covers.push(customImageInput.value);
+titles.push(customTitleInput.value);
+descriptors.push(customDescriptor1.value, customDescriptor2.value );
+
+coverImage.src = currentCover.cover
+coverTitle.innerText = currentCover.title
+tagline1.innerText = currentCover.tagline1
+tagline2.innerText = currentCover.tagline2
+
+
+form.classList.add('hidden')
+homeButton.classList.add('hidden')
+randomCoverButton.classList.remove('hidden')
+saveCoverButton.classList.remove('hidden')
+mainCover.classList.remove('hidden')
 
 }
 
