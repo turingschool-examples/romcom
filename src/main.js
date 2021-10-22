@@ -9,6 +9,7 @@ var mainCover = document.querySelector('.main-cover')
 var form = document.querySelector('.form-view')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
+var viewSavedCoversButton = document.querySelector('.view-saved-button')
 
 
 var savedCovers = [
@@ -40,6 +41,19 @@ function showForm() {
   homeButton.classList.remove('hidden')
 };
 
+function showSavedCovers() {
+  form.classList.add('hidden')
+};
+
+function showHomePage() {
+  homeButton.classList.add('hidden')
+  randomCoverButton.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
+  mainCover.classList.remove('hidden')
+
+};
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
-makeYourOwnCoverButton.addEventListener("click", showForm)
+makeYourOwnCoverButton.addEventListener("click", showForm);
+viewSavedCoversButton.addEventListener("click", showSavedCovers);
+homeButton.addEventListener("click", showHomePage);
