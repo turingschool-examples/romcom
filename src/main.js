@@ -12,11 +12,17 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var savedCoversSection = document.querySelector('.saved-covers-section');
 var savedView = document.querySelector('.saved-view');
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var descriptor1 = document.querySelector('#descriptor1');
+var descriptor2 = document.querySelector('#descriptor2');
+var customBookButton = document.querySelector('.create-new-book-button');
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
 
 // Add your event listeners here :point_down:
 window.addEventListener('load', generateBook);
@@ -24,6 +30,7 @@ randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click',returnToMain);
+customBookButton.addEventListener('click', createCustomCover);
 
 // Create your event handlers and other functions here :point_down:
 function getRandomIndex(array) {
@@ -31,7 +38,7 @@ function getRandomIndex(array) {
 }
 
 function generateBook() {
-   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+   var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
    coverImage.src = currentCover.cover;
    coverTitle.innerText = currentCover.title;
    tagLine1.innerText = currentCover.tagline1;
@@ -60,4 +67,23 @@ function returnToMain() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   coverForm.classList.add('hidden');
+}
+
+function createCustomCover(event) {
+  event.preventDefault();
+
+  currentCover = new Cover(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
+
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(descriptor1.value, descriptor2.value);
+
+  coverImage.src = userCover.value;
+  coverTitle.innerText = userTitle.value;
+  tagLine1.innerText = descriptor1.value;
+  tagLine2.innerText = descriptor2.value;
+
+  homePage.classList.remove('hidden');
+  coverForm.classList.add('hidden');
+
 }
