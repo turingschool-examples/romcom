@@ -16,6 +16,7 @@ var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
 var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
+var customBookButton = document.querySelector('.create-new-book-button');
 
 
 // We've provided a few variables below
@@ -30,6 +31,7 @@ randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click',returnToMain);
+customBookButton.addEventListener('click', createNewCover);
 
 // Create your event handlers and other functions here :point_down:
 function getRandomIndex(array) {
@@ -69,10 +71,9 @@ function returnToMain() {
 }
 
 function createNewCover() {
-  currentCover = new Poster(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
+  currentCover = new Cover(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
 
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(descriptor1.value, descriptor2.value);
-
+  covers.unshift(userCover.value);
+  titles.unshift(userTitle.value);
+  descriptors.unshift(descriptor1.value, descriptor2.value);
 }
