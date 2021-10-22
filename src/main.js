@@ -41,15 +41,12 @@ var currentCover;
 
 // Add your event listeners here 👇
 
-window.onload = newRandomCover();
-
+document.onload = newRandomCover();
 randomCoverButton.addEventListener("click", newRandomCover);
-
 makeNewButton.addEventListener('click', toggleFormView);
-
 viewSavedButton.addEventListener('click', toggleSavedView);
-
 homeButton.addEventListener('click', toggleHomeView);
+userSubmitButton.addEventListener('click', newUserCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -62,12 +59,36 @@ function newRandomCover() {
   displayCover(currentCover);
 }
 
+function newUserCover() {
+  document.onload.preventDefault();
+  coverImage.src = userCover.value;
+  coverTitle.innerText = userTitle.value;
+  taglineOne.innerText = userTaglineOne.value;
+  taglineTwo.innerText = userTaglineTwo.value;
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
+  toggleHomeView();
+  // displayCover(currentCover);
+  console.log(currentCover.src);
+}
+
+// function newUserCover() {
+//   window.onload.preventDefault()
+//   var customImage = userCover.value;
+//   var customTitle = userTitle.value;
+//   var customDescOne = userTaglineOne.value;
+//   var customDescTwo = userTaglineTwo.value;
+//   currentCover = new Cover(customImage, customTitle, customDescOne, customDescTwo);
+//   toggleHomeView();
+//   displayCover(currentCover);
+// }
+
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
 }
+
 
 function toggleFormView() {
   formView.classList.remove('hidden');
@@ -95,6 +116,9 @@ function toggleHomeView() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden')
 }
+
+
+
 
 
 // We've provided one function to get you started
