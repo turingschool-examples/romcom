@@ -28,7 +28,7 @@ var createNewBookButton = document.querySelector(".create-new-book-button");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover = {};
 
 
 document.addEventListener("DOMContentLoaded", getRandomCover);
@@ -37,6 +37,8 @@ makeNewCoverButton.addEventListener("click", makeYourOwnCoverClicked);
 viewSavedCoversButton.addEventListener("click", viewSavedCoversClicked);
 homeButton.addEventListener("click", homeButtonClicked);
 createNewBookButton.addEventListener("click", createNewCover);
+saveCoverButton.addEventListener("click", saveCover);
+savedCoverSection.addEventListener("dblclick", removeCover);
 
 
 function getRandomCover() {
@@ -69,6 +71,8 @@ function viewSavedCoversClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
+  savedCoverSection.innerHTML = ``;
+  showSavedCovers();
   //create
   //for loop to loop through savedCovers variable
   //use inner.HTML to build a cover and display the covers
@@ -83,19 +87,44 @@ function homeButtonClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
   viewSavedCoversButton.classList.remove('hidden');
+  savedCoverSection.innerHTML = ``;
 }
 
-function saveCoverClicked(){
-  //check to see if cover is already in array
-  //if not push cover into saved array
-  // else alert("Cover already exist!")
+
+
+function showSavedCovers(){
+  var len = savedCovers.length
+  for(var i=0;i<len;i++){
+    savedCoverSection.innerHTML += `
+    <section class="mini-cover">
+        <img class="cover-image" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      </section>
+    `
+  }
 }
 
-function setCoverValues(){
-// set form values to cover
-
+function saveCover(){
+  var savedCoverImage = coverImage.src
+  var savedTitle = coverTitle.innerText
+  var savedDesc1 = tagline1.innerText
+  var savedDesc2 = tagline2.innerText
+  var savedCover = new Cover(savedCoverImage,savedTitle,savedDesc1,savedDesc2)
+  
+  var originalCover = true
+  for(var i = 0 ; i < savedCovers.length ; i++) {
+    if(savedCoverImage === savedCovers[i].cover && savedTitle === savedCovers[i].title && savedDesc1 === savedCovers[i].tagline1 && savedDesc2 === savedCovers[i].tagline2) {
+        originalCover = false;
+        alert("This Cover has already been saved!")
+    }
+  }
+  if (originalCover === true) {
+    savedCovers.push(savedCover);
+  }
 }
-//Maybe both of these can be one function
+
+
 function createNewCover(){
   event.preventDefault();
 
@@ -122,13 +151,18 @@ function createNewCover(){
 
 
 
-function removeCover(){
-  // access cover ID
-  //if cover id === saved covers id
-  //splice
+function removeCover(event){
+  var coverId = event.target.id
+
+  for(var i=0;i<savedCovers.length;i++){
+    if(coverId === `${savedCovers[i].id}`){
+      savedCovers.splice(i,1)
+    }
+  }
+viewSavedCoversClicked();
+
 }
 
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
