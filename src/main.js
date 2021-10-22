@@ -87,6 +87,10 @@ function getUserData() {
   storeTitleInputValue();
   storeDescriptorOneInputValue();
   storeDescriptorTwoInputValue();
+
+  homeView.style.display = 'initial';
+  form.style.display = 'none';
+  coverButton.style.display = 'initial';
 }
 
 // We've provided one function to get you started
