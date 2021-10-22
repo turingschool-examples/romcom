@@ -102,6 +102,7 @@ function makeNewCover() {
   var newCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
 
   // Consider using .slice(-1) to get last value from array
+  // Consider applying default values for edge cases including empty values
   newCover.cover.src = covers[covers.length - 1];
   newCover.title.innerText = titles[titles.length - 1];
   newCover.tagline1.innerText = descriptors[descriptors.length - 2];
