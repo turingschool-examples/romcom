@@ -80,17 +80,20 @@ function storeDescriptorTwoInputValue() {
   descriptors.push(descriptorTwoValue);
 }
 
+function viewHomePageFromMakeCoverPage() {
+  homeView.style.display = 'initial';
+  form.style.display = 'none';
+  coverButton.style.display = 'initial';
+}
+
 function getUserData() {
   event.preventDefault();
 
+  viewHomePageFromMakeCoverPage();
   storeCoverInputValue();
   storeTitleInputValue();
   storeDescriptorOneInputValue();
   storeDescriptorTwoInputValue();
-
-  homeView.style.display = 'initial';
-  form.style.display = 'none';
-  coverButton.style.display = 'initial';
 }
 
 // We've provided one function to get you started
