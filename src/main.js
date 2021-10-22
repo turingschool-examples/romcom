@@ -35,7 +35,8 @@ function changeCover() {
 }
 
 function displayForm() {
-  form.style.display = 'initial';
+  form.classList.remove('hidden')
+  // form.style.display = 'initial';
   displayHomeButton();
   hideHome();
   hideCoverButton();
@@ -52,7 +53,7 @@ function displayHomeButton() {
 }
 
 function hideHome() {
-  homeView.style.display = 'none';
+  homeView.classList.add("hidden")
 }
 
 function displayHomeView() {
