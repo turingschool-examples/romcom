@@ -57,7 +57,7 @@ function hideHome() {
 }
 
 function displayHomeView() {
-  homeView.style.display = 'initial';
+  homeView.classList.remove('hidden');
 }
 
 function hideCoverButton() {
