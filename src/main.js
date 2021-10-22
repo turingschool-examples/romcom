@@ -1,33 +1,43 @@
-function getRandomIndex(array) {
-   return Math.floor(Math.random() * array.length);
 
+var ranCover = covers[getRandomIndex(covers)];
+var ranTitles = titles[getRandomIndex(titles)];
+var ranDes1 = descriptors[getRandomIndex(descriptors)];
+var ranDes2 = descriptors[getRandomIndex(descriptors)];
+// 1. create object instance using our class cover
+// 2. use class cover with addEventListener (access button)
 
-}
-var ranNum2 = getRandomIndex(descriptors);
-var ranNum1 = getRandomIndex(covers);
-var ranNum = getRandomIndex(titles);
-//
-//
-
-var image = document.querySelector('img');
-
-
-image.src = covers[ranNum1];
-
-
-console.log(covers[2]);
-
-var bookTitle = document.querySelector('h2');
-
-bookTitle.innerText = titles[ranNum];
-
+var button = document.querySelector('.random-cover-button')
+var image = document.querySelector('.cover-image');
+var bookTitle = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('.tagline-1');
-
-descriptor1.innerText = descriptors[ranNum2];
-
 var descriptor2 = document.querySelector('.tagline-2');
 
-descriptor2.innerText = descriptors[ranNum1];
+window.addEventListener('load', pageLoad);
+//document.addEventListener('DOMContentLoaded', pageLoad);
+//document.onload = pageLoad();
+//window.onload = pageLoad();
+button.addEventListener('click', pageLoad);
+
+
+
+function pageLoad() {
+  image.src = covers[getRandomIndex(covers)];
+  bookTitle.innerText = titles[getRandomIndex(titles)];
+  descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+  descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
+};
+
+
+// function pageLoad() {
+// currentCover = new Cover (ranCover, ranTitles, ranDes1, ranDes2);
+// image.src = currentCover.cover;
+// bookTitle.innerText = currentCover.title;
+// descriptor1.innerText = currentCover.tagline1;
+// descriptor2.innerText = currentCover.tagline2;
+// };
+
+console.log(pageLoad);
+
 //
 //
 //
@@ -52,17 +62,17 @@ descriptor2.innerText = descriptors[ranNum1];
 // //How do we hardcode change the photo?
 // //How do we make it dynamic?
 //
-// //<img class="cover-image" src="./assets/prairie.jpg">
 //
 // //We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
-// var currentCover;
+var savedCovers = [
+new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+var currentCover;
 //
 // // Add your event listeners here 👇
-// // window.addEventListener("load",  )
-// //
-// // function whateverName () {
-// //
-// // }
+
+
+
+
+function getRandomIndex(array) {
+   return Math.floor(Math.random() * array.length);
+}
