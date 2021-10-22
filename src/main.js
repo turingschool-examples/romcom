@@ -28,6 +28,7 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
 createNewBookButton.addEventListener('click', getUserData);
+
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
