@@ -5,12 +5,14 @@ var coverTagline1 = document.querySelector(".tagline-1");
 var coverTagline2 = document.querySelector(".tagline-2");
 var mainPage = document.querySelector(".home-view");
 var formPage = document.querySelector(".form-view");
+var savedCoversPage = document.querySelector(".saved-view");
+
 //buttons
 var randomCoverButton = document.querySelector(".random-cover-button");
 var makeCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var homeButton = document.querySelector(".home-button");
-
+var viewSavedCoversButton = document.querySelector(".view-saved-button");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,8 +23,9 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCover);
-makeCoverButton.addEventListener("click", changeVisibility);
-homeButton.addEventListener("click", loadHome)
+makeCoverButton.addEventListener("click", showForm);
+homeButton.addEventListener("click", loadHome);
+viewSavedCoversButton.addEventListener("click", showSavedCovers);
 
 // Create your event handlers and other functions here 👇
 
@@ -37,7 +40,7 @@ function makeRandomCover() {
   var randomTaglineOne = descriptors[getRandomIndex(descriptors)];
   var randomTaglineTwo = descriptors[getRandomIndex(descriptors)];
 
-  var currentCover = new Cover(randomImage, randomTitle, randomTaglineOne, randomTaglineTwo);
+  currentCover = new Cover(randomImage, randomTitle, randomTaglineOne, randomTaglineTwo);
 
   coverTitle.innerText = currentCover.title;
   coverImage.src = currentCover.cover;
@@ -54,7 +57,7 @@ function showVariable(variable){
   variable.classList.remove("hidden")
 }
 
-function changeVisibility(){
+function showForm(){
   hideVariable(randomCoverButton);
   hideVariable(saveCoverButton);
   hideVariable(mainPage);
@@ -68,4 +71,12 @@ function loadHome() {
   showVariable(mainPage);
   hideVariable(homeButton);
   hideVariable(formPage);
+}
+
+function showSavedCovers() {
+  hideVariable(mainPage);
+  showVariable(savedCoversPage);
+  hideVariable(randomCoverButton);
+  hideVariable(saveCoverButton);
+  showVariable(homeButton);
 }
