@@ -1,6 +1,7 @@
 var currentCover = document.querySelector(".cover-image");
 var currentTitle = document.querySelector(".cover-title");
 var currentDescriptors = document.querySelector(".tagline");
+var coverButton = document.querySelector(".random-cover-button");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -10,10 +11,10 @@ currentTitle.innerText = titles[Math.floor(Math.random() * titles.length)];
 currentDescriptors.innerText = "A tale of " + descriptors[Math.floor(Math.random() * descriptors.length)] + " and " + descriptors[Math.floor(Math.random() * descriptors.length)];
 
 // just need to target the button in place of current.Cover below
-// currentCover.addEventListener("click", changeCover);
-// function changeCover() {
-//     currentCover.src = covers[Math.floor(Math.random() * covers.length)];
-// }
+coverButton.addEventListener("click", changeCover);
+function changeCover() {
+    currentCover.src = covers[Math.floor(Math.random() * covers.length)];
+}
 
 
 // Add your event listeners here 👇 (*********ADD FALSE IF IT DOESN'T WORK)
