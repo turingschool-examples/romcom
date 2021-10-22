@@ -65,7 +65,7 @@ function hideCoverButton() {
 }
 
 function hideSaveCoverButton() {
-  saveCoverButton.style.display = 'none';
+  saveCoverButton.classList.add('hidden')
 }
 // We've provided one function to get you started
 function getRandomIndex(array) {
