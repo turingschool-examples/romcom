@@ -28,7 +28,6 @@ var createNewBookButton = document.querySelector(".create-new-book-button");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-console.log(savedCovers)
 var currentCover;
 
 
@@ -71,6 +70,7 @@ function viewSavedCoversClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.add('hidden');
   viewSavedCoversButton.classList.remove('hidden');
+  showSavedCovers();
   //create
   //for loop to loop through savedCovers variable
   //use inner.HTML to build a cover and display the covers
@@ -85,6 +85,7 @@ function homeButtonClicked() {
   makeNewCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove('hidden');
   viewSavedCoversButton.classList.remove('hidden');
+  savedCoverSection.innerHTML = ``;
 }
 
 
@@ -103,19 +104,22 @@ function showSavedCovers(){
 }
 
 function saveCover(){
-  var currentCoverImage = coverImage.src
-  var currentTitle = coverTitle.innerText
-  var currentDisc1 = tagline1.innerText
-  var currentDsic2 = tagline2.innerText
-  currentCover = new Cover(currentCoverImage,currentTitle,currentDisc1,currentDsic2)
+  var savedCoverImage = coverImage.src
+  var savedTitle = coverTitle.innerText
+  var savedDesc1 = tagline1.innerText
+  var savedDesc2 = tagline2.innerText
+  var savedCover = new Cover(savedCoverImage,savedTitle,savedDesc1,savedDesc2)
   
-  if(savedCovers.includes(currentCover)){
-    alert("Cover already saved!")
-  } else {
-    savedCovers.push(currentCover)
+  var originalCover = true
+  for(var i = 0 ; i < savedCovers.length ; i++) {
+    if(savedCoverImage === savedCovers[i].cover && savedTitle === savedCovers[i].title && savedDesc1 === savedCovers[i].tagline1 && savedDesc2 === savedCovers[i].tagline2) {
+        originalCover = false;
+        alert("This Cover has already been saved!")
+    }
   }
-  console.log(currentCover)
-  console.log(savedCovers)
+  if (originalCover === true) {
+    savedCovers.push(savedCover);
+  }
 }
 
 
