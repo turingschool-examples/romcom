@@ -61,13 +61,25 @@ function newRandomCover() {
 
 function newUserCover() {
   event.preventDefault();
+  if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
+    alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
+  } else {
   coverImage.src = userCover.value;
   coverTitle.innerText = userTitle.value;
   taglineOne.innerText = userTaglineOne.value;
   taglineTwo.innerText = userTaglineTwo.value;
   currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
+  storeUserSubmission();
   toggleHomeView();
   customForm.reset();
+  }
+}
+
+function storeUserSubmission() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userTaglineOne.value);
+  descriptors.push(userTaglineTwo.value);
 }
 
 function displayCover() {
@@ -103,6 +115,8 @@ function toggleHomeView() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
 }
+
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
