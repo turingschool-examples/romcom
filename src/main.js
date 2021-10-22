@@ -63,29 +63,21 @@ function hideSaveCoverButton() {
 function storeCoverInputValue() {
   var coverValue = coverInputValue.value;
   covers.push(coverValue);
-
-  event.preventDefault();
 }
 
 function storeTitleInputValue() {
   var titleValue = titleInputValue.value;
   titles.push(titleValue);
-
-  event.preventDefault();
 }
 
 function storeDescriptorOneInputValue() {
   var descriptorOneValue = firstDescriptorInputValue.value;
   descriptors.push(descriptorOneValue);
-
-  event.preventDefault();
 }
 
 function storeDescriptorTwoInputValue() {
   var descriptorTwoValue = secondDescriptorInputValue.value;
   descriptors.push(descriptorTwoValue);
-
-  event.preventDefault();
 }
 
 function getUserData() {
@@ -93,6 +85,7 @@ function getUserData() {
   storeTitleInputValue();
   storeDescriptorOneInputValue();
   storeDescriptorTwoInputValue();
+  displayHomeView();
 
   event.preventDefault();
 }
