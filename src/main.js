@@ -12,6 +12,12 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var savedCoversSection = document.querySelector('.saved-covers-section');
 var savedView = document.querySelector('.saved-view');
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var descriptor1 = document.querySelector('#descriptor1');
+var descriptor2 = document.querySelector('#descriptor2');
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -60,4 +66,12 @@ function returnToMain() {
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   coverForm.classList.add('hidden');
+}
+
+function createNewCover() {
+  currentCover = new Poster(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
+
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(descriptor1.value, descriptor2.value);
 }
