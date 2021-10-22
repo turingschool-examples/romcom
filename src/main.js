@@ -23,7 +23,6 @@ var customBookButton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
 
 // Add your event listeners here :point_down:
 window.addEventListener('load', generateBook);
@@ -39,7 +38,7 @@ function getRandomIndex(array) {
 }
 
 function generateBook() {
-   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+   var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
    coverImage.src = currentCover.cover;
    coverTitle.innerText = currentCover.title;
    tagLine1.innerText = currentCover.tagline1;
