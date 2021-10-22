@@ -94,17 +94,24 @@ function showSavedCovers() {
 }
 
 function createCustomCover() {
-  //we need to accept the new information that the user will be inputting into these fields
-  //we use .value to get the user input
-  //we want to inject our values from the form into our main-cover
+  event.preventDefault()
+
   var coverForm = formCover.value;
   var titleForm = formTitle.value;
   var descriptor1Form = formDescriptor1.value;
-  var descriptor2Form = formDescriptor2.valule;
+  var descriptor2Form = formDescriptor2.value;
 
   covers.push(coverForm);
   titles.push(titleForm);
   descriptors.push(descriptor1Form);
   descriptors.push(descriptor2Form);
-  console.log(titles, covers, descriptors);
+
+  currentCover = new Cover(coverForm, titleForm, descriptor1Form, descriptor2Form);
+
+  coverTitle.innerText = currentCover.title;
+  coverImage.src = currentCover.cover;
+  coverTagline1.innerText = currentCover.tagline1;
+  coverTagline2.innerText = currentCover.tagline2;
+
+  loadHome();
 }
