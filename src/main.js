@@ -22,7 +22,7 @@ var currentCover;
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCover);
 makeCoverButton.addEventListener("click", changeVisibility);
-homeButton.addEventListener("click", )
+homeButton.addEventListener("click", loadHome)
 
 // Create your event handlers and other functions here 👇
 
@@ -60,4 +60,12 @@ function changeVisibility(){
   hideVariable(mainPage);
   showVariable(homeButton);
   showVariable(formPage);
+}
+
+function loadHome() {
+  showVariable(randomCoverButton);
+  showVariable(saveCoverButton);
+  showVariable(mainPage);
+  hideVariable(homeButton);
+  hideVariable(formPage);
 }
