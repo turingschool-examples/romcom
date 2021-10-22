@@ -73,18 +73,15 @@ function returnToMain() {
 function createCustomCover(event) {
   event.preventDefault();
 
-  console.log("Crazy")
   currentCover = new Cover(userCover.value, userTitle.value, descriptor1.value, descriptor2.value);
-  console.log("New book drop")
+
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(descriptor1.value, descriptor2.value);
-  console.log("What's the deal with arrays?")
 
   coverImage.src = userCover.value;
   coverTitle.innerText = userTitle.value;
   tagLine1.innerText = descriptor1.value;
   tagLine2.innerText = descriptor2.value;
-  console.log("Fresh off the press. Can't touch it rn, too hot.")
 
 }
