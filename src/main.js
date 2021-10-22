@@ -81,13 +81,12 @@ function storeDescriptorTwoInputValue() {
 }
 
 function getUserData() {
+  event.preventDefault();
+
   storeCoverInputValue();
   storeTitleInputValue();
   storeDescriptorOneInputValue();
   storeDescriptorTwoInputValue();
-  displayHomeView();
-
-  event.preventDefault();
 }
 
 // We've provided one function to get you started
