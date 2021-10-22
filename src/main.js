@@ -10,6 +10,7 @@ var form = document.querySelector('.form-view')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedCoversButton = document.querySelector('.view-saved-button')
+var generateCustomBookButton = document.querySelector('.create-new-book-button')
 var customImageInput = document.querySelector('.user-cover')
 var customTitleInput = document.querySelector('.user-title')
 var customDescriptor1 = document.querySelector('.user-desc1')
@@ -26,6 +27,7 @@ function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 }
+
 
 
 function generateRandomCoverButton() {
@@ -57,11 +59,21 @@ function showHomePage() {
 
 };
 
-function createCustomBook() {
-  currentCover = new Cover(covers, titles, descriptors, descriptors)
+function createCustomBook(event) {
+event.preventDefault()
+
+currentCover = new Cover(customImageInput.value, customTitleInput.value, customDescriptor1.value, customDescriptor2.value)
+
+mainCover.classList.add('hidden')
+console.log("hellloo")
+
 }
+
+
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
 makeYourOwnCoverButton.addEventListener("click", showForm);
 viewSavedCoversButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHomePage);
+generateCustomBookButton.addEventListener("click", createCustomBook);
+window.addEventListener("load", generateRandomCoverButton)
