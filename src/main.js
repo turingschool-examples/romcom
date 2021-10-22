@@ -67,6 +67,13 @@ function storeCoverInputValue() {
   event.preventDefault();
 }
 
+function storeTitleInputValue() {
+  var titleValue = titleInputValue.value;
+  titles.push(titleValue);
+
+  event.preventDefault();
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
