@@ -81,6 +81,13 @@ function storeDescriptorOneInputValue() {
   event.preventDefault();
 }
 
+function storeDescriptorTwoInputValue() {
+  var descriptorTwoValue = secondDescriptorInputValue.value;
+  descriptors.push(descriptorTwoValue);
+
+  event.preventDefault();
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
