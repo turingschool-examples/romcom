@@ -27,7 +27,7 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 // Add your event listeners here 👇
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
-createNewBookButton.addEventListener('click', makeMyBook);
+createNewBookButton.addEventListener('click', storeTitleInputValue);
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
@@ -60,19 +60,11 @@ function hideSaveCoverButton() {
   saveCoverButton.style.display = 'none';
 }
 
-function makeMyBook() {
-  displayForm();
-  covers.push(coverInputValue.value);
-  titles.push(titleInputValue.value);
-  descriptors.push(firstDescriptorInputValue.value);
-  descriptors.push(secondDescriptorInputValue.value);
+function storeCoverInputValue() {
+  var coverValue = coverInputValue.value;
+  covers.push(coverValue);
 
-  currentCover.cover.src = covers[covers.length - 1];
-  currentCover.title.innerText = titles[titles.length - 1];
-  currentCover.tagline1.innerText = descriptors[descriptors.length - 2];
-  currentCover.tagline2.innerText = descriptors[descriptors.length -1];
-
-  mainCover.style.display = 'inherit';
+  event.preventDefault();
 }
 
 // We've provided one function to get you started
