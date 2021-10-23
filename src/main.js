@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here :point_down:
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagLine1 = document.querySelector('.tagline-1');
@@ -18,13 +17,11 @@ var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
 var customBookButton = document.querySelector('.create-new-book-button');
 
-
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-// Add your event listeners here :point_down:
+
 window.addEventListener('load', generateBook);
 randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
@@ -32,7 +29,8 @@ viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click',returnToMain);
 customBookButton.addEventListener('click', createCustomCover);
 saveCoverButton.addEventListener('click', saveCover);
-// Create your event handlers and other functions here :point_down:
+savedCoversSection.addEventListener('dblclick', deleteCover);
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -95,16 +93,25 @@ function saveCover() {
     savedCovers.push(currentCover);
   }
 }
-function displaySavedCovers() {
 
+function displaySavedCovers() {
   savedCoversSection.innerHTML = '';
-  for(var i = 0; i < savedCovers.length; i++){
-    savedCoversSection.innerHTML += `
-      <section class="mini-cover">
+  for(var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML +=
+    ` <section class="mini-cover">
         <img class="cover-image" src="${savedCovers[i].cover}">
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       </section>
       `
   }
+}
+
+function deleteCover() {
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(savedCovers[i].id === Number(event.target.parentNode.id)) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCovers();
 }
