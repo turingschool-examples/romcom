@@ -4,6 +4,7 @@ var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
 var savedView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var mainCover = document.querySelector('.main-cover');
@@ -27,6 +28,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.addEventListener('load', changeCover);
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
 createNewBookButton.addEventListener('click', getUserData);
@@ -36,12 +38,21 @@ saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
-  currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+  currentCover = new Cover(
+    covers[getRandomIndex(covers)],
+    titles[getRandomIndex(titles)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)]
+  );
 
-  currentCover.cover.src = covers[getRandomIndex(covers)];
-  currentCover.title.innerText = titles[getRandomIndex(titles)];
-  currentCover.tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover.tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImageSource.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptorOne.innerText = currentCover.tagline1;
+  descriptorTwo.innerText = currentCover.tagline2;
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 function displayForm() {
@@ -50,15 +61,21 @@ function displayForm() {
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
+  hideSavedCoversPage();
 }
 
 function displaySaved() {
   savedView.classList.remove('hidden');
+  displaySavedCovers();
   displayHomeButton();
   hideForm();
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
+}
+
+function hideSavedCoversPage() {
+  savedView.classList.add('hidden');
 }
 
 function displayHome() {
@@ -67,6 +84,7 @@ function displayHome() {
   displaySaveCoverButton();
   displayCoverButton();
   hideForm();
+  hideSavedCoversPage();
 }
 
 function displayHomeButton() {
@@ -123,7 +141,6 @@ function storeDescriptorTwoInputValue() {
 
 function getUserData() {
   event.preventDefault();
-
   displayHome();
   storeCoverInputValue();
   storeTitleInputValue();
@@ -133,14 +150,17 @@ function getUserData() {
 }
 
 function makeNewCover() {
-  var newCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+  currentCover = new Cover(
+    covers[covers.length - 1],
+    titles[titles.length - 1],
+    descriptors[descriptors.length - 2],
+    descriptors[descriptors.length - 1]
+  );
 
-  // Consider using .slice(-1) to get last value from array
-  // Consider applying default values for edge cases including empty values
-  newCover.cover.src = covers[covers.length - 1];
-  newCover.title.innerText = titles[titles.length - 1];
-  newCover.tagline1.innerText = descriptors[descriptors.length - 2];
-  newCover.tagline2.innerText = descriptors[descriptors.length - 1];
+  coverImageSource.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptorOne.innerText = currentCover.tagline1;
+  descriptorTwo.innerText = currentCover.tagline2;
 }
 
 function saveCover() {
@@ -149,7 +169,14 @@ function saveCover() {
   }
 }
 
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function displaySavedCovers() {
+  var savedCoversSectionHTML = ``;
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSectionHTML += `<section class="mini-cover">
+    <img class="mini-cover" src=${savedCovers[i].cover} alt="No Image Available">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    </section>`
+  }
+  savedCoversSection.innerHTML = savedCoversSectionHTML;
 }
