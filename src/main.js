@@ -190,4 +190,5 @@ function removeCover(event) {
       savedCovers.splice(i, 1);
     }
   }
+  displaySavedCovers();
 }
