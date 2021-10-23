@@ -142,26 +142,26 @@ function pushMyBook(event) {
 //       }
 //     }
 //   };
-
-function showSaved(savedCovers) {
-var reformattedCovers = [];
-for(var i = 0; i < savedCovers.length; i++) {
-  var coversHTML = `
-    <article id="${savedCovers[i].id}" class="saved-covers-section"article>
-    <img class="cover-image" src="${savedCovers[i].imageURL}" class="mini-cover">
-    <h2 class="cover-title"> ${savedCovers[i].title} class="mini-cover cover-title"</h2>
-    <h3 class="tagline-1"> ${savedCovers[i].tagline1} class="mini-cover tagline">
-    <h3 class="tagline-2"> ${savedCovers[i].tagline2} class="mini-cover tagline"</h3>
-    </article>`;
-
-    reformattedCovers.push(coversHTML)
-
-      //allSavedCovers += coversHTML;
 //
-//   }
+// function showSaved(savedCovers) {
+// var reformattedCovers = [];
+// for(var i = 0; i < savedCovers.length; i++) {
+//   var coversHTML = `
+//     <article id="${savedCovers[i].id}" class="saved-covers-section"article>
+//     <img class="cover-image" src="${savedCovers[i].imageURL}" class="mini-cover">
+//     <h2 class="cover-title"> ${savedCovers[i].title} class="mini-cover cover-title"</h2>
+//     <h3 class="tagline-1"> ${savedCovers[i].tagline1} class="mini-cover tagline">
+//     <h3 class="tagline-2"> ${savedCovers[i].tagline2} class="mini-cover tagline"</h3>
+//     </article>`;
 //
-     savedCoverSection.innerHTML = reformattedCovers;
-// }
+//     reformattedCovers.push(coversHTML)
+//
+//       //allSavedCovers += coversHTML;
+// //
+// //   }
+// //
+//      savedCoverSection.innerHTML = reformattedCovers;
+// // }
 
 function saveCover() {
     if(!savedCovers.includes(currentCover)) {
