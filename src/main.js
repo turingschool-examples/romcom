@@ -118,6 +118,13 @@ function createCustomCover() {
 }
 
 function saveCovers() {
-  event.preventDefault()
+  event.preventDefault();
   savedCovers.push(currentCover);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers.includes(currentCovers)) {
+      return savedCovers;
+    } else {
+      savedCovers.push(currentCover);
+    }
+  }
 }
