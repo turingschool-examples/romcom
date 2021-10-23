@@ -47,9 +47,11 @@ function showForm() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
-  // makeBookButton.disabled = true
-  enableMakeBookButton();
+  makeBookButton.disabled = true
+
 }
+
+document.addEventListener('keyup', enableMakeBookButton)
 
 function enableMakeBookButton() {
   if(coverInput.value && titleInput.value && desc1Input.value && desc2Input.value) {
