@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
 var randomButton = document.querySelector(".random-cover-button");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -11,12 +10,13 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSaveButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
+var makeBookButton = document.querySelector('.create-new-book-button');
 
-// We've provided a few variables below
-//var savedCovers = [
-  //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-//];
-//var randomCover = new Cover(covers[coversIndex], titles[titlesIndex], descriptors[descriptorsIndex], descriptors[descriptorsIndex]);
+var coverInput = document.querySelector('.user-cover')
+var titleInput = document.querySelector('.user-title')
+var desc1Input = document.querySelector('.user-desc1')
+var desc2Input = document.querySelector('.user-desc2')
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * (array.length))
 }
@@ -31,9 +31,6 @@ function createRandomCover() {
 }
 createRandomCover();
 
-
-// Add your event listeners here 👇
-
 makeCoverButton.addEventListener('click', showForm)
 
 function showForm() {
@@ -42,6 +39,16 @@ function showForm() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  makeBookButton.disabled = true
+
+}
+
+document.addEventListener('keyup', enableMakeBookButton)
+
+function enableMakeBookButton() {
+  if(coverInput.value && titleInput.value && desc1Input.value && desc2Input.value) {
+    makeBookButton.disabled = false
+  }
 }
 
 
@@ -64,16 +71,23 @@ function goHome() {
 }
 
 
-//add comment to test commit
-//? will this randomizer function work if I insert the variable covers from data.js
-//need access the make cover button .querySelector
-//need to access the form
-//create event listener for the make cover button
-//when event listener is clicked, change to form
 
+makeBookButton.addEventListener('click', makeNewBook, saveNewBookData)
 
-
-// Create your event handlers and other functions here 👇
-
-
-// We've provided one function to get you started
+function saveNewBookData() {
+  event.preventDefault()
+  covers.push(coverInput.value)
+  titles.push(titleInput.value)
+  descriptors.push(desc1Input.value)
+  descriptors.push(desc2Input.value)
+}
+function makeNewBook() {
+  event.preventDefault()
+  var newBook = new Cover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value)
+  goHome()
+  form.classList.add('hidden')
+  coverImage.src = newBook.cover
+  coverTitle.innerText = newBook.title
+  tagline1.innerText = newBook.tagline1
+  tagline2.innerText = newBook.tagline2
+}
