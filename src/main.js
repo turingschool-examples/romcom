@@ -182,3 +182,12 @@ function displaySavedCovers() {
     </section>`
   }
 }
+
+function removeCover(event) {
+  var something = event.target.id;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (`${savedCovers[i].id}` === something) {
+      savedCovers.splice(i, 1);
+    }
+  }
+}
