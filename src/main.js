@@ -59,6 +59,7 @@ function showSavedCovers() {
   saveCoverButton.classList.add('hidden');
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  displaySavedCovers();
 }
 
 function returnToMain() {
@@ -95,10 +96,15 @@ function saveCover() {
   }
 }
 function displaySavedCovers() {
+
+  savedCoversSection.innerHTML = '';
   for(var i = 0; i < savedCovers.length; i++){
-    coverImage.src = savedCovers[i].cover;
-    coverTitle.innerText = savedCovers[i].title;
-    tagLine1.innerText = savedCovers[i].tagline1;
-    tagLine2.innerText = savedCovers[i].tagline2;
+    savedCoversSection.innerHTML += `
+      <section class="mini-cover">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      </section>
+      `
   }
 }
