@@ -88,7 +88,28 @@ function goHome() {
 //then hide homeview, so that new book will show
 //hide formview too.
 
+// add listener for makemybookbutton
+//input.value of all 4 lines are entered, push that info into respective arrays
+// take those values and create a new instance of a cover
+//in eventlistener, show homeview and hide form view
+//display new instance of cover.
 
+makeBookButton.addEventListener('click', makeNewBook)
+
+function makeNewBook() {
+  event.preventDefault()
+  covers.push(coverInput.value)
+  titles.push(titleInput.value)
+  descriptors.push(desc1Input.value)
+  descriptors.push(desc2Input.value)
+  var newBook = new Cover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value)
+  goHome()
+  form.classList.add('hidden')
+  coverImage.src = newBook.cover
+  coverTitle.innerText = newBook.title
+  tagline1.innerText = newBook.tagline1
+  tagline2.innerText = newBook.tagline2
+}
 
 
 //add comment to test commit
