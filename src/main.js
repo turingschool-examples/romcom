@@ -6,12 +6,19 @@ var descriptorTwo = document.querySelector('.tagline-2');
 var savedView = document.querySelector('.saved-view');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
+var mainCover = document.querySelector('.main-cover');
 
 var coverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
+
+var coverInputValue = document.querySelector('.user-cover');
+var titleInputValue = document.querySelector('.user-title');
+var firstDescriptorInputValue = document.querySelector('.user-desc1');
+var secondDescriptorInputValue = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,12 +28,11 @@ var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descri
 
 // Add your event listeners here 👇
 coverButton.addEventListener('click', changeCover);
-
 makeNewButton.addEventListener('click', displayForm);
-
+createNewBookButton.addEventListener('click', getUserData);
 viewSavedButton.addEventListener('click', displaySaved);
-
 homeButton.addEventListener('click', displayHome);
+
 // Create your event handlers and other functions here 👇
 function changeCover() {
   currentCover.cover.src = covers[getRandomIndex(covers)];
@@ -57,14 +63,11 @@ function displayHome() {
   hideHomeButton();
   displaySaveCoverButton();
   displayCoverButton();
+  hideForm();
 }
 
 function displayHomeButton() {
   homeButton.classList.remove('hidden');
-}
-
-function displayHomeView() {
-  homeView.classList.remove('hidden');
 }
 
 function displaySaveCoverButton() {
@@ -94,6 +97,49 @@ function hideCoverButton() {
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden');
 }
+
+function storeCoverInputValue() {
+  var coverValue = coverInputValue.value;
+  covers.push(coverValue);
+}
+
+function storeTitleInputValue() {
+  var titleValue = titleInputValue.value;
+  titles.push(titleValue);
+}
+
+function storeDescriptorOneInputValue() {
+  var descriptorOneValue = firstDescriptorInputValue.value;
+  descriptors.push(descriptorOneValue);
+}
+
+function storeDescriptorTwoInputValue() {
+  var descriptorTwoValue = secondDescriptorInputValue.value;
+  descriptors.push(descriptorTwoValue);
+}
+
+function getUserData() {
+  event.preventDefault();
+
+  displayHome();
+  storeCoverInputValue();
+  storeTitleInputValue();
+  storeDescriptorOneInputValue();
+  storeDescriptorTwoInputValue();
+  makeNewCover();
+}
+
+function makeNewCover() {
+  var newCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+
+  // Consider using .slice(-1) to get last value from array
+  // Consider applying default values for edge cases including empty values
+  newCover.cover.src = covers[covers.length - 1];
+  newCover.title.innerText = titles[titles.length - 1];
+  newCover.tagline1.innerText = descriptors[descriptors.length - 2];
+  newCover.tagline2.innerText = descriptors[descriptors.length - 1];
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
