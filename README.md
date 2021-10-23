@@ -4,15 +4,20 @@
 
   Kayla Durrett & Emily Corcoran
 
-# Technologies used:
+# Technologies used
 
-instructions for running and viewing the project:
+  JavaScript, HTML, CSS
 
-deploy link (gh-pages):
 
-images/GIFs if necessary:
+#Instructions for running and viewing the project
 
-future additions:
+
+
+#Deploy link (gh-pages)
+
+#Images/GIFs
+
+#Future additions
 
 Think about what a user needs to understand and get the full picture of the application
 
