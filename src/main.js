@@ -24,7 +24,7 @@ var secondDescriptorInputValue = document.querySelector('.user-desc2');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+var currentCover;
 
 // Add your event listeners here 👇
 coverButton.addEventListener('click', changeCover);
@@ -32,9 +32,12 @@ makeNewButton.addEventListener('click', displayForm);
 createNewBookButton.addEventListener('click', getUserData);
 viewSavedButton.addEventListener('click', displaySaved);
 homeButton.addEventListener('click', displayHome);
+saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
+  currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+
   currentCover.cover.src = covers[getRandomIndex(covers)];
   currentCover.title.innerText = titles[getRandomIndex(titles)];
   currentCover.tagline1.innerText = descriptors[getRandomIndex(descriptors)];
@@ -138,6 +141,12 @@ function makeNewCover() {
   newCover.title.innerText = titles[titles.length - 1];
   newCover.tagline1.innerText = descriptors[descriptors.length - 2];
   newCover.tagline2.innerText = descriptors[descriptors.length - 1];
+}
+
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 // We've provided one function to get you started
