@@ -70,6 +70,9 @@ homeButton.addEventListener('click', goHome)
 function goHome() {
   homeCover.classList.remove('hidden')
   saveCoverButton.classList.remove('hidden')
+  homeButton.classList.add('hidden')
+  randomButton.classList.remove('hidden')
+
 }
 
 
@@ -85,13 +88,13 @@ function saveNewBookData() {
 }
 function makeNewBook() {
   event.preventDefault()
-  var newBook = new Cover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value)
+  randomBook = new Cover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value)
   goHome()
   form.classList.add('hidden')
-  coverImage.src = newBook.cover
-  coverTitle.innerText = newBook.title
-  tagline1.innerText = newBook.tagline1
-  tagline2.innerText = newBook.tagline2
+  coverImage.src = randomBook.cover
+  coverTitle.innerText = randomBook.title
+  tagline1.innerText = randomBook.tagline1
+  tagline2.innerText = randomBook.tagline2
 }
 
 //var savedCovers = [
@@ -122,13 +125,14 @@ function saveCover() {
   console.log(savedCovers)
 }
 
+//Why does this work? Why are we able to compare objects?
 // function saveCover() {
 // if (!savedCovers.includes(randomBook)) {
 //   savedCovers.push(randomBook)
 //   console.log(savedCovers)
 // }
 // }
-//This is the good function/////////////
+
 
 
 
