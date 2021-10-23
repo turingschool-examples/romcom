@@ -21,7 +21,7 @@ var formView = document.querySelector('.form-view');
 
 // view sub section
 var mainCover = document.querySelector('.main-cover');
-var savedCover = document.querySelector('.saved-covers-section');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var customForm = document.querySelector('form');
 
 //custom user section
@@ -47,6 +47,7 @@ makeNewButton.addEventListener('click', toggleFormView);
 viewSavedButton.addEventListener('click', toggleSavedView);
 homeButton.addEventListener('click', toggleHomeView);
 userSubmitButton.addEventListener('click', newUserCover);
+saveCoverButton.addEventListener('click', saveCurrentCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -75,13 +76,6 @@ function newUserCover() {
   }
 }
 
-function storeUserSubmission() {
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(userTaglineOne.value);
-  descriptors.push(userTaglineTwo.value);
-}
-
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
@@ -105,6 +99,7 @@ function toggleSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+
 }
 
 function toggleHomeView() {
@@ -116,8 +111,29 @@ function toggleHomeView() {
   homeButton.classList.add('hidden');
 }
 
+function storeUserSubmission() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userTaglineOne.value);
+  descriptors.push(userTaglineTwo.value);
+}
 
+function saveCurrentCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    addToSavedView()
+  }
+}
 
+//This comment is to allow me to git commit again after I accidentally git pushed to the turing branch
+function addToSavedView() {
+  savedCoversSection.innerHTML += `
+  <section class="mini-cover">
+    <img class="cover-image" src="${currentCover.cover}">
+    <h2 class="cover-title">${currentCover.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h2>
+  </section>`
+}
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
