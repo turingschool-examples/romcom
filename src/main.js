@@ -4,6 +4,7 @@ var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
 var savedView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var mainCover = document.querySelector('.main-cover');
@@ -36,12 +37,17 @@ saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
-  currentCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+  currentCover = new Cover(
+    covers[getRandomIndex(covers)],
+    titles[getRandomIndex(titles)],
+    descriptors[getRandomIndex(descriptors)],
+    descriptors[getRandomIndex(descriptors)]
+  );
 
-  currentCover.cover.src = covers[getRandomIndex(covers)];
-  currentCover.title.innerText = titles[getRandomIndex(titles)];
-  currentCover.tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover.tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImageSource.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptorOne.innerText = currentCover.tagline1;
+  descriptorTwo.innerText = currentCover.tagline2;
 }
 
 function displayForm() {
@@ -59,6 +65,7 @@ function displaySaved() {
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
+  displaySavedCovers();
 }
 
 function displayHome() {
@@ -146,6 +153,12 @@ function makeNewCover() {
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
+  }
+}
+
+function displaySavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++){
+    savedCoversSection.innerHTML += `<div class="mini-cover"><img class="cover-image" src="${savedCovers[i].cover}"><h2 class="cover-title">${savedCovers[i].title}</h2><h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3></div>`
   }
 }
 
