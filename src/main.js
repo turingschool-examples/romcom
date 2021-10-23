@@ -143,6 +143,12 @@ function makeNewCover() {
   newCover.tagline2.innerText = descriptors[descriptors.length - 1];
 }
 
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
