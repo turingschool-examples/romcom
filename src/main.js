@@ -81,14 +81,13 @@ function showHomePage() {
 
 function createCustomBook(event) {
   event.preventDefault();
-  currentCover = new Cover(customImageInput.value, customTitleInput.value, customDescriptor1.value, customDescriptor2.value);
   covers.push(customImageInput.value);
   titles.push(customTitleInput.value);
   descriptors.push(customDescriptor1.value, customDescriptor2.value);
-  coverImage.src = currentCover.cover;
-  coverTitle.innerText = currentCover.title;
-  tagline1.innerText = currentCover.tagline1;
-  tagline2.innerText = currentCover.tagline2;
+  coverImage.src = customImageInput.value;
+  coverTitle.innerText = customTitleInput.value;
+  tagline1.innerText = customDescriptor1.value;
+  tagline2.innerText = customDescriptor2.value;
   form.classList.add('hidden');
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
