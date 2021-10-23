@@ -17,12 +17,10 @@ var customDescriptor1 = document.querySelector('.user-desc1')
 var customDescriptor2 = document.querySelector('.user-desc2')
 var showSavedCoversView = document.querySelector('.saved-view')
 var displaySavedCoversGrid = document.querySelector('.saved-covers-section')
-// var savedIndividualCovers = document.querySelectorAll('.mini-cover')
 
 
-var savedCovers = [
 
-];
+var savedCovers = [];
 var currentCover;
 
 
@@ -77,6 +75,7 @@ function showHomePage() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   mainCover.classList.remove('hidden');
+  form.classList.add('hidden')
 };
 
 function createCustomBook(event) {
@@ -105,8 +104,13 @@ function saveCover() {
 };
 
 function deleteCover() {
-
-}
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === Number(event.target.parentNode.id)) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCoverPage();
+};
 
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
