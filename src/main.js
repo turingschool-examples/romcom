@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here :point_down:
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagLine1 = document.querySelector('.tagline-1');
@@ -18,13 +17,11 @@ var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
 var customBookButton = document.querySelector('.create-new-book-button');
 
-
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-// Add your event listeners here :point_down:
+
 window.addEventListener('load', generateBook);
 randomButton.addEventListener('click', generateBook);
 makeNewButton.addEventListener('click', showForm);
@@ -32,8 +29,8 @@ viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click',returnToMain);
 customBookButton.addEventListener('click', createCustomCover);
 saveCoverButton.addEventListener('click', saveCover);
-savedView.addEventListener('dblclick', deleteCover);
-// Create your event handlers and other functions here :point_down:
+savedCoversSection.addEventListener('dblclick', deleteCover);
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -96,6 +93,7 @@ function saveCover() {
     savedCovers.push(currentCover);
   }
 }
+
 function displaySavedCovers() {
   savedCoversSection.innerHTML = '';
   for(var i = 0; i < savedCovers.length; i++) {
@@ -111,9 +109,9 @@ function displaySavedCovers() {
 
 function deleteCover() {
   for(var i = 0; i < savedCovers.length; i++) {
-    if(savedCover[i].id === event.target.parentNode.id) {
+    if(savedCovers[i].id === Number(event.target.parentNode.id)) {
       savedCovers.splice(i, 1);
     }
   }
-  showSavedCovers();
+  displaySavedCovers();
 }
