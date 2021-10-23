@@ -115,3 +115,7 @@ function createCustomCover() {
 
   loadHome();
 }
+
+function saveCovers() {
+  
+}
