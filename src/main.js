@@ -173,13 +173,13 @@ function saveCover() {
 function displaySavedCovers() {
   var savedCoversSectionHTML = ``;
 
-//   for (var i = 0; i < savedCovers.length; i++) {
-//     savedCoversSectionHTML += `<section class="mini-cover">
-//                                 <img class="mini-cover" src=${savedCovers[i].cover} alt="No Image Available">
-//                                 <h2 class="cover-title">${savedCovers[i].title}</h2>
-//                                 <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-//                                </section>`
-//   }
-//
-//   savedCoversSection.innerHTML = savedCoversSectionHTML;
-// }
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSectionHTML += `<section class="mini-cover">
+                                <img class="mini-cover" src=${savedCovers[i].cover} alt="No Image Available">
+                                <h2 class="cover-title">${savedCovers[i].title}</h2>
+                                <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+                               </section>`
+  }
+
+  savedCoversSection.innerHTML = savedCoversSectionHTML;
+}
