@@ -13,6 +13,10 @@ var viewSaveButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
 var makeBookButton = document.querySelector('.create-new-book-button');
 
+var coverInput = document.querySelector('.user-cover')
+var titleInput = document.querySelector('.user-title')
+var desc1Input = document.querySelector('.user-desc1')
+var desc2Input = document.querySelector('.user-desc2')
 // We've provided a few variables below
 //var savedCovers = [
   //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -43,7 +47,14 @@ function showForm() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
-  makeBookButton.disabled = true
+  // makeBookButton.disabled = true
+  enableMakeBookButton();
+}
+
+function enableMakeBookButton() {
+  if(coverInput.value && titleInput.value && desc1Input.value && desc2Input.value) {
+    makeBookButton.disabled = false
+  }
 }
 
 
