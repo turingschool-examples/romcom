@@ -28,6 +28,7 @@ function createRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  //return homeViewBook
 }
 createRandomCover();
 
@@ -92,16 +93,65 @@ function makeNewBook() {
   tagline2.innerText = newBook.tagline2
 }
 
-var savedCovers = []
+var savedCovers = [
+  new Cover(
+    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+    "Sunsets and Sorrows",
+    "sunsets",
+    "sorrows"
+  )
+];
+
 
 saveCoverButton.addEventListener('click', saveCover)
 
+var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 function saveCover() {
-  var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  savedCovers.push(homeViewBook)
+  // if (!savedCovers.includes(homeViewBook)) {
+  //     savedCovers.push(homeViewBook)
+      console.log(savedCovers)
 }
-//create savedCovers array
-//event listener for Save cover homeButton
-//function organize the home view elements into a class
+
+
+
+
+  //     if(savedCovers.includes(homeViewBook)) {
+  //       return `can't save cover`
+  //     } else {
+  //     savedCovers.push(homeViewBook)
+  //     console.log(savedCovers)
+  //   savedCovers.push(homeViewBook)
+  // }
+
+  // for (var i = 0; i < savedCovers.length; i++) {
+  //   if(homeViewBook === savedCovers[i]) {
+  //     console.log(savedCovers)
+  //     console.log("Can't save this book")
+  //   }
+  // }
+
+//     if(savedCovers.includes(homeViewBook)) {
+//       return `can't save cover`
+//     } else {
+//     savedCovers.push(homeViewBook)
+//     console.log(savedCovers)
+//   }
+// }
+//   }
+//console.log(savedCovers)
+
+// console.log(savedCovers)
+// console.log("Can't save this book")
+// } else {
+// savedCovers.push(homeViewBook)
+
 //pushes the class to the saved covers array
 //add if statement to function that checks if instance is included in array
 //add display covers in the view saved covers covers event listener
+
+// for(var i = 0; i < savedCovers.length; i++) {
+//   if(homeViewBook == savedCovers[i]) {
+// } else {
+//  savedCovers.push(homeViewBook)
+// }
