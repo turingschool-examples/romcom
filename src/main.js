@@ -121,32 +121,18 @@ function storeUserSubmission() {
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    addToSavedDisplay()
+    addToSavedView()
   }
 }
 
-// function displaySavedCovers() {
-//   for (var i = 0; i < savedCovers.length; i++) {
-//     savedCoversSection.innerHTML += `
-//     <section class="mini-cover">
-//       <img class="cover-image" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
-//       <h2 class="cover-title">${savedCovers[i].title}</h2>
-//       <h3 class="tag-line">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline">${savedCovers[i].tagline2}</span></h2>
-//     </section>`
-//   }
-// }
-
-//function to be toggled by "save cover"
-function addToSavedDisplay() {
+function addToSavedView() {
   savedCoversSection.innerHTML += `
   <section class="mini-cover">
-    <img class="cover-image" id="${currentCover.id}" src="${currentCover.cover}">
+    <img class="cover-image" src="${currentCover.cover}">
     <h2 class="cover-title">${currentCover.title}</h2>
-    <h3 class="tag-line">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline">${currentCover.tagline2}</span></h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h2>
   </section>`
 }
-
-
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
