@@ -94,3 +94,11 @@ function saveCover() {
     savedCovers.push(currentCover);
   }
 }
+function displaySavedCovers() {
+  for(var i = 0; i < savedCovers.length; i++){
+    coverImage.src = savedCovers[i].cover;
+    coverTitle.innerText = savedCovers[i].title;
+    tagLine1.innerText = savedCovers[i].tagline1;
+    tagLine2.innerText = savedCovers[i].tagline2;
+  }
+}
