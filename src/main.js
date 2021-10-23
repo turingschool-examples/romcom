@@ -125,6 +125,7 @@ function saveCurrentCover() {
   }
 }
 
+//This comment is to allow me to git commit again after I accidentally git pushed to the turing branch
 function addToSavedView() {
   savedCoversSection.innerHTML += `
   <section class="mini-cover">
