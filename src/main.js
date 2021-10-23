@@ -91,3 +91,17 @@ function makeNewBook() {
   tagline1.innerText = newBook.tagline1
   tagline2.innerText = newBook.tagline2
 }
+
+var savedCovers = []
+
+saveCoverButton.addEventListener('click', saveCover)
+
+function saveCover() {
+  var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+}
+//create savedCovers array
+//event listener for Save cover homeButton
+//function organize the home view elements into a class
+//pushes the class to the saved covers array
+//add if statement to function that checks if instance is included in array
+//add display covers in the view saved covers covers event listener
