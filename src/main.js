@@ -28,6 +28,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.addEventListener('load', changeCover);
 coverButton.addEventListener('click', changeCover);
 makeNewButton.addEventListener('click', displayForm);
 createNewBookButton.addEventListener('click', getUserData);
@@ -50,22 +51,31 @@ function changeCover() {
   descriptorTwo.innerText = currentCover.tagline2;
 }
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 function displayForm() {
   form.classList.remove('hidden');
   displayHomeButton();
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
+  hideSavedCoversPage();
 }
 
 function displaySaved() {
   savedView.classList.remove('hidden');
+  displaySavedCovers();
   displayHomeButton();
   hideForm();
   hideHome();
   hideCoverButton();
   hideSaveCoverButton();
-  displaySavedCovers();
+}
+
+function hideSavedCoversPage() {
+  savedView.classList.add('hidden');
 }
 
 function displayHome() {
@@ -74,6 +84,7 @@ function displayHome() {
   displaySaveCoverButton();
   displayCoverButton();
   hideForm();
+  hideSavedCoversPage();
 }
 
 function displayHomeButton() {
@@ -140,14 +151,17 @@ function getUserData() {
 }
 
 function makeNewCover() {
-  var newCover = new Cover(coverImageSource, coverTitle, descriptorOne, descriptorTwo);
+  currentCover = new Cover(
+    covers[covers.length - 1],
+    titles[titles.length - 1],
+    descriptors[descriptors.length - 2],
+    descriptors[descriptors.length - 1]
+  );
 
-  // Consider using .slice(-1) to get last value from array
-  // Consider applying default values for edge cases including empty values
-  newCover.cover.src = covers[covers.length - 1];
-  newCover.title.innerText = titles[titles.length - 1];
-  newCover.tagline1.innerText = descriptors[descriptors.length - 2];
-  newCover.tagline2.innerText = descriptors[descriptors.length - 1];
+  coverImageSource.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptorOne.innerText = currentCover.tagline1;
+  descriptorTwo.innerText = currentCover.tagline2;
 }
 
 function saveCover() {
@@ -157,12 +171,15 @@ function saveCover() {
 }
 
 function displaySavedCovers() {
-  for (var i = 0; i < savedCovers.length; i++){
-    savedCoversSection.innerHTML += `<div class="mini-cover"><img class="cover-image" src="${savedCovers[i].cover}"><h2 class="cover-title">${savedCovers[i].title}</h2><h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3></div>`
-  }
-}
+  var savedCoversSectionHTML = ``;
 
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     savedCoversSectionHTML += `<section class="mini-cover">
+//                                 <img class="mini-cover" src=${savedCovers[i].cover} alt="No Image Available">
+//                                 <h2 class="cover-title">${savedCovers[i].title}</h2>
+//                                 <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+//                                </section>`
+//   }
+//
+//   savedCoversSection.innerHTML = savedCoversSectionHTML;
+// }
