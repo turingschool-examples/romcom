@@ -1,6 +1,8 @@
 # RomCom - Paired Project
 
-# Contributors: Kayla Durrett & Emily Corcoran
+# Contributors 
+
+  Kayla Durrett & Emily Corcoran
 
 # Technologies used:
 
