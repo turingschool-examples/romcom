@@ -118,5 +118,6 @@ function createCustomCover() {
 }
 
 function saveCovers() {
-  
+  event.preventDefault()
+  savedCovers.push(currentCover);
 }
