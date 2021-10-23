@@ -1,6 +1,20 @@
-# RomCom
+# RomCom - Paired Project
 
-A boilerplate repo. 
+# Contributors: Kayla Durrett & Emily Corcoran
+
+# Technologies used:
+
+instructions for running and viewing the project:
+
+deploy link (gh-pages):
+
+images/GIFs if necessary:
+
+future additions:
+
+Think about what a user needs to understand and get the full picture of the application
+
+
 
 ## Set Up
 1. ONE teammate: fork this boilerplate repository 
