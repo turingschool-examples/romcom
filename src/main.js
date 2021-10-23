@@ -16,6 +16,7 @@ var coverInput = document.querySelector('.user-cover')
 var titleInput = document.querySelector('.user-title')
 var desc1Input = document.querySelector('.user-desc1')
 var desc2Input = document.querySelector('.user-desc2')
+var randomBook;
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * (array.length))
@@ -28,7 +29,7 @@ function createRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  //return homeViewBook
+  randomBook = new Cover (coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 }
 createRandomCover();
 
@@ -93,25 +94,95 @@ function makeNewBook() {
   tagline2.innerText = newBook.tagline2
 }
 
-var savedCovers = [
-  new Cover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  )
-];
+//var savedCovers = [
+  //new Cover(
+    //"http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+//     "Sunsets and Sorrows",
+//     "sunsets",
+//     "sorrows"
+//   )
+// ];
 
+var savedCovers = []
+//var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 
 saveCoverButton.addEventListener('click', saveCover)
-
-var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 function saveCover() {
-  savedCovers.push(homeViewBook)
-  // if (!savedCovers.includes(homeViewBook)) {
-  //     savedCovers.push(homeViewBook)
-      console.log(savedCovers)
+  if (savedCovers.length === 0) {
+    savedCovers.push(randomBook)
+  } else {
+    var idList = [];
+    for (var i = 0; i < savedCovers.length; i++) {
+      idList.push(savedCovers[i].id)
+    }
+    if (!idList.includes(randomBook.id)) {
+      savedCovers.push(randomBook)
+    }
+  }
+  console.log(savedCovers)
 }
+
+// function saveCover() {
+// if (!savedCovers.includes(randomBook)) {
+//   savedCovers.push(randomBook)
+//   console.log(savedCovers)
+// }
+// }
+//This is the good function/////////////
+
+
+
+
+
+    // for (var i = 0; i < savedCovers.length; i++) {
+    //   if (randomBook.id !== savedCovers[i].id) {
+    //     savedCovers.push(randomBook)
+    //   }
+    //}
+  //}
+  //console.log(savedCovers)
+//
+
+// for (var i = 0; i < savedCovers.length; i++) {
+//     if (homeViewBook.id !== savedCovers[i].id) {
+//       savedCovers.push(homeViewBook)
+//     }
+//   } console.log(savedCovers)
+
+
+
+
+
+  // for(var i = 0; i < savedCovers.length; i++)
+  // console.log(savedCovers)
+  //     if((savedCovers.length > 0) && (savedCovers[i].id !== homeViewBook.id)) {
+  //     savedCovers.push(homeViewBook)
+  //     console.log(savedCovers)
+  //   }
+  // }
+  //     for(var i = 0; i < savedCovers.length; i++) {
+  //        if(homeViewBook === savedCovers[i]) {
+  //      } else {
+  //       savedCovers.push(homeViewBook)
+  //     }
+  //   }
+  // }
+    //} else {
+    //savedCovers.push(homeViewBook)
+    //console.log(savedCovers)
+    //}
+//}
+//}
+ //else if {
+//      for(var i = 0; i < savedCovers.length; i++) {
+//         if(homeViewBook === savedCovers[i]) {
+//        return savedCovers.unshift(homeViewBook)
+//      } console.log(savedCovers)
+//     }
+//   }
+// }
+
+
 
 
 
