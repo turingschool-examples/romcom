@@ -48,6 +48,7 @@ viewSavedButton.addEventListener('click', toggleSavedView);
 homeButton.addEventListener('click', toggleHomeView);
 userSubmitButton.addEventListener('click', newUserCover);
 saveCoverButton.addEventListener('click', saveCurrentCover);
+savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -99,7 +100,7 @@ function toggleSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-
+  addToSavedView();
 }
 
 function toggleHomeView() {
@@ -121,19 +122,30 @@ function storeUserSubmission() {
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    addToSavedView()
   }
 }
 
-//This comment is to allow me to git commit again after I accidentally git pushed to the turing branch
 function addToSavedView() {
+  savedCoversSection.innerHTML = ``;
+  for(var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML += `
-  <section class="mini-cover">
-    <img class="cover-image" src="${currentCover.cover}">
-    <h2 class="cover-title">${currentCover.title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h2>
-  </section>`
+    <section class="mini-cover">
+      <img class="cover-image" id="${savedCovers[i].id}" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h2>
+    </section>`
+  }
 }
+
+function deleteSavedCover() {
+  for(var i = 0; i < savedCovers.length; i++) {
+    if (event.target.id === `${savedCovers[i].id}`) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  addToSavedView();
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
