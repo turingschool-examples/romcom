@@ -63,14 +63,11 @@ function displayHome() {
   hideHomeButton();
   displaySaveCoverButton();
   displayCoverButton();
+  hideForm();
 }
 
 function displayHomeButton() {
   homeButton.classList.remove('hidden');
-}
-
-function displayHomeView() {
-  homeView.classList.remove('hidden');
 }
 
 function displaySaveCoverButton() {
@@ -121,16 +118,10 @@ function storeDescriptorTwoInputValue() {
   descriptors.push(descriptorTwoValue);
 }
 
-function viewHomePageFromMakeCoverPage() {
-  homeView.style.display = 'initial';
-  form.style.display = 'none';
-  coverButton.style.display = 'initial';
-}
-
 function getUserData() {
   event.preventDefault();
 
-  viewHomePageFromMakeCoverPage();
+  displayHome();
   storeCoverInputValue();
   storeTitleInputValue();
   storeDescriptorOneInputValue();
