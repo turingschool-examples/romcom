@@ -20,9 +20,7 @@ var displaySavedCoversGrid = document.querySelector('.saved-covers-section')
 
 
 
-var savedCovers = [
-  // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 
 
@@ -62,7 +60,7 @@ function displaySavedCoverPage() {
   displaySavedCoversGrid.innerHTML = ``;
   for (var i =0; i < savedCovers.length; i++) {
     displaySavedCoversGrid.innerHTML += `
-      <div class="mini-cover">
+      <div class="mini-cover" id=${savedCovers[i].id}>
       <img class="mini-cover" src="${savedCovers[i].cover}" alt="cover image">
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
@@ -77,6 +75,7 @@ function showHomePage() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   mainCover.classList.remove('hidden');
+  form.classList.add('hidden')
 };
 
 function createCustomBook(event) {
@@ -104,6 +103,16 @@ function saveCover() {
   }
 };
 
+function deleteCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === Number(event.target.parentNode.id)) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCoverPage();
+};
+
+
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
 makeYourOwnCoverButton.addEventListener("click", showForm);
 viewSavedCoversButton.addEventListener("click", showSavedCovers);
@@ -111,3 +120,4 @@ homeButton.addEventListener("click", showHomePage);
 generateCustomBookButton.addEventListener("click", createCustomBook);
 window.addEventListener("load", generateRandomCoverButton);
 saveCoverButton.addEventListener("click", saveCover);
+displaySavedCoversGrid.addEventListener("dblclick", deleteCover)
