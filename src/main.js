@@ -23,7 +23,7 @@ var customBookButton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-
+var currentCover;
 // Add your event listeners here :point_down:
 window.addEventListener('load', generateBook);
 randomButton.addEventListener('click', generateBook);
@@ -31,14 +31,14 @@ makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click',returnToMain);
 customBookButton.addEventListener('click', createCustomCover);
-
+saveCoverButton.addEventListener('click', saveCover);
 // Create your event handlers and other functions here :point_down:
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function generateBook() {
-   var currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
    coverImage.src = currentCover.cover;
    coverTitle.innerText = currentCover.title;
    tagLine1.innerText = currentCover.tagline1;
@@ -59,6 +59,7 @@ function showSavedCovers() {
   saveCoverButton.classList.add('hidden');
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  displaySavedCovers();
 }
 
 function returnToMain() {
@@ -85,5 +86,25 @@ function createCustomCover(event) {
 
   homePage.classList.remove('hidden');
   coverForm.classList.add('hidden');
+}
 
+function saveCover() {
+  if(savedCovers.includes(currentCover)) {
+    return currentCover
+  } else {
+    savedCovers.push(currentCover);
+  }
+}
+function displaySavedCovers() {
+
+  savedCoversSection.innerHTML = '';
+  for(var i = 0; i < savedCovers.length; i++){
+    savedCoversSection.innerHTML += `
+      <section class="mini-cover">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      </section>
+      `
+  }
 }
