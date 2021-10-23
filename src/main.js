@@ -1,19 +1,26 @@
 // Create variables targetting the relevant DOM elements here :point_down:
 
 var homeButton = document.querySelector(".home-button");
-var getRandomCoverButton = document.querySelector(".random-cover-button")
+var randomCoverButton = document.querySelector(".random-cover-button")
 var saveCoverButton = document.querySelector(".save-cover-button");
 var viewSavedButton = document.querySelector(".view-saved-button");
-var makeCoverButton = document.querySelector(".make-new-button");
+var makeNewButton = document.querySelector(".make-new-button");
 
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 var viewForm = document.querySelector(".form-view");
+
+var formCover = document.querySelector(".user-cover");
+var formTitle = document.querySelector(".user-title");
+var formDescriptor1 = document.querySelector(".user-desc1");
+var formDescriptor2 = document.querySelector(".user-desc2");
+
+var makeMyBook = document.querySelector("#create-new-book-button");
+
 var currentImage = document.querySelector(".cover-image");
 var currentTitle = document.querySelector(".cover-title");
 var currentTag1 = document.querySelector(".tagline-1");
 var currentTag2 = document.querySelector(".tagline-2");
-
 
 
 
@@ -26,13 +33,19 @@ var currentCover;
 
 // Add your event listeners here :point_down:
 window.addEventListener("load", createRandomCover);
-getRandomCoverButton.addEventListener("click", createRandomCover);
+randomCoverButton.addEventListener("click", createRandomCover);
 
-makeCoverButton.addEventListener("click", hideAndShow);
+makeNewButton.addEventListener("click", hideAndShow);
 
 viewSavedButton.addEventListener("click", viewSavedPage);
 
-homeButton.addEventListener("click", viewHomePage)
+homeButton.addEventListener("click", viewHomePage);
+
+makeMyBook.addEventListener("click", pushMyBook);
+
+
+
+
 
 // Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
@@ -53,7 +66,7 @@ function createRandomCover() {
 }
 
 function hideAndShow() {
-  getRandomCoverButton.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
   viewCoverForm();
@@ -66,25 +79,41 @@ function viewCoverForm() {
 }
 
 function viewSavedPage() {
-  getRandomCoverButton.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
+  homeView.classList.add("hidden");
   viewForm.classList.add("hidden");
   savedCoversView.classList.remove("hidden");
 }
 
 function viewHomePage() {
-  getRandomCoverButton.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
   homeButton.classList.add("hidden");
   homeView.classList.remove("hidden");
   viewForm.classList.add("hidden");
 }
 
-// 1. create a variable targeting make your own cover button
-// 2. when button is clicked, the homepage view should be hidden and the
-// create your own cover form should be shown - create event listener and function
-// 3. when the click happens, the show new random cover and save cover buttons should be hidden -
-// 4. home button should still be visible
-// 5. set up event listener for view saved covers button
-// 6.
+function pushMyBook(event) {
+  event.preventDefault();
+  var formCoverValue = formCover.value;
+  var formTitleValue = formTitle.value;
+  var formDescriptor1Value = formDescriptor1.value;
+  var formDescriptor2Value = formDescriptor2.value;
+
+  covers.push(formCoverValue);
+  titles.push(formTitleValue);
+  descriptors.push(formDescriptor1Value);
+  descriptors.push(formDescriptor2Value);
+
+  var customCover = new Cover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
+
+  currentImage.src = customCover.cover;
+  currentTitle.innerText = customCover.title;
+  currentTag1.innerText = customCover.tagline1;
+  currentTag2.innerText = customCover.tagline2;
+
+  viewHomePage();
+
+}
