@@ -94,14 +94,17 @@ function goHome() {
 //in eventlistener, show homeview and hide form view
 //display new instance of cover.
 
-makeBookButton.addEventListener('click', makeNewBook)
+makeBookButton.addEventListener('click', makeNewBook, saveNewBookData)
 
-function makeNewBook() {
+function saveNewBookData() {
   event.preventDefault()
   covers.push(coverInput.value)
   titles.push(titleInput.value)
   descriptors.push(desc1Input.value)
   descriptors.push(desc2Input.value)
+}
+function makeNewBook() {
+  event.preventDefault()
   var newBook = new Cover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value)
   goHome()
   form.classList.add('hidden')
