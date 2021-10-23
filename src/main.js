@@ -16,6 +16,7 @@ var customTitleInput = document.querySelector('.user-title')
 var customDescriptor1 = document.querySelector('.user-desc1')
 var customDescriptor2 = document.querySelector('.user-desc2')
 var showSavedCoversView = document.querySelector('.saved-view')
+var displaySavedCoversGrid = document.querySelector('.saved-covers-section')
 
 
 
@@ -52,7 +53,21 @@ function showSavedCovers() {
   form.classList.add('hidden');
   mainCover.classList.add('hidden');
   showSavedCoversView.classList.remove('hidden');
+  displaySavedCoverPage();
+};
 
+function displaySavedCoverPage() {
+  displaySavedCoversGrid.innerHTML = ``;
+  for (var i =0; i < savedCovers.length; i++) {
+    displaySavedCoversGrid.innerHTML += `
+      <div class="mini-cover">
+      <img class="mini-cover" src="${savedCovers[i].cover}" alt="cover image">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+      </div>`
+    };
 };
 
 function showHomePage() {
@@ -85,8 +100,6 @@ function saveCover() {
   } else {
     savedCovers.push(currentCover);
   }
-  console.log(savedCovers);
-
 };
 
 randomCoverButton.addEventListener("click", generateRandomCoverButton);
