@@ -49,6 +49,18 @@ makeMyBook.addEventListener("click", pushMyBook);
 
 // Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
+
+function displayNewCover(coverValue, titleValue, descriptor1Value, descriptor2Value) {
+
+var customCover = new Cover(coverValue, titleValue, descriptor1Value, descriptor2Value);
+
+currentImage.src = customCover.cover;
+currentTitle.innerText = customCover.title;
+currentTag1.innerText = customCover.tagline1;
+currentTag2.innerText = customCover.tagline2;
+}
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -58,12 +70,10 @@ function createRandomCover() {
   var newTitle = titles[getRandomIndex(titles)];
   var newTagline1 = descriptors[getRandomIndex(descriptors)];
   var newTagline2 = descriptors[getRandomIndex(descriptors)];
-  var cover = new Cover(newCover, newTitle, newTagline1, newTagline2);
-  currentImage.src = cover.cover;
-  currentTitle.innerText = cover.title;
-  currentTag1.innerText = cover.tagline1;
-  currentTag2.innerText = cover.tagline2;
+
+  displayNewCover(newCover, newTitle, newTagline1, newTagline2);
 }
+
 
 function hideAndShow() {
   randomCoverButton.classList.add("hidden");
@@ -107,13 +117,8 @@ function pushMyBook(event) {
   descriptors.push(formDescriptor1Value);
   descriptors.push(formDescriptor2Value);
 
-  var customCover = new Cover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
-
-  currentImage.src = customCover.cover;
-  currentTitle.innerText = customCover.title;
-  currentTag1.innerText = customCover.tagline1;
-  currentTag2.innerText = customCover.tagline2;
-
   viewHomePage();
+
+  displayNewCover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
 
 }
