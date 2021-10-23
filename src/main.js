@@ -88,5 +88,9 @@ function createCustomCover(event) {
 }
 
 function saveCover() {
-  savedCovers.push(currentCover);
+  if(savedCovers.includes(currentCover)) {
+    return currentCover
+  } else {
+    savedCovers.push(currentCover);
+  }
 }
