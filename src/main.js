@@ -38,6 +38,7 @@ makeCoverButton.addEventListener("click", showForm);
 homeButton.addEventListener("click", loadHome);
 viewSavedCoversButton.addEventListener("click", showSavedCovers);
 makeBookButton.addEventListener("click", createCustomCover);
+saveCoverButton.addEventListener("click", saveCovers);
 
 // Create your event handlers and other functions here 👇
 
