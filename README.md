@@ -9,15 +9,15 @@
   JavaScript, HTML, CSS
 
 
-#Instructions for running and viewing the project
+# Instructions for running and viewing the project
 
 
 
-#Deploy link (gh-pages)
+# Deploy link (gh-pages)
 
-#Images/GIFs
+# Images/GIFs
 
-#Future additions
+# Future additions
 
 Think about what a user needs to understand and get the full picture of the application
 
