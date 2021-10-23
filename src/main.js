@@ -9,13 +9,14 @@ var makeNewButton = document.querySelector(".make-new-button");
 var homeView = document.querySelector(".home-view");
 var savedCoversView = document.querySelector(".saved-view");
 var viewForm = document.querySelector(".form-view");
+var savedCoverSection = document.querySelector(".saved-covers-section");
 
 var formCover = document.querySelector(".user-cover");
 var formTitle = document.querySelector(".user-title");
 var formDescriptor1 = document.querySelector(".user-desc1");
 var formDescriptor2 = document.querySelector(".user-desc2");
 
-var makeMyBook = document.querySelector("#create-new-book-button");
+var makeMyBook = document.querySelector(".create-new-book-button");
 
 var currentImage = document.querySelector(".cover-image");
 var currentTitle = document.querySelector(".cover-title");
@@ -43,12 +44,33 @@ homeButton.addEventListener("click", viewHomePage);
 
 makeMyBook.addEventListener("click", pushMyBook);
 
+saveCoverButton.addEventListener("click", saveCover);
+
+
+
 
 
 
 
 // Create your event handlers and other functions here :point_down:
 // We've provided one function to get you started
+
+function displayNewCover(coverValue, titleValue, descriptor1Value, descriptor2Value) {
+
+currentCover = new Cover(coverValue, titleValue, descriptor1Value, descriptor2Value);
+
+currentImage.src = currentCover.cover;
+currentTitle.innerText = currentCover.title;
+currentTag1.innerText = currentCover.tagline1;
+currentTag2.innerText = currentCover.tagline2;
+
+console.log(currentCover);
+
+};
+
+
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -58,12 +80,11 @@ function createRandomCover() {
   var newTitle = titles[getRandomIndex(titles)];
   var newTagline1 = descriptors[getRandomIndex(descriptors)];
   var newTagline2 = descriptors[getRandomIndex(descriptors)];
-  var cover = new Cover(newCover, newTitle, newTagline1, newTagline2);
-  currentImage.src = cover.cover;
-  currentTitle.innerText = cover.title;
-  currentTag1.innerText = cover.tagline1;
-  currentTag2.innerText = cover.tagline2;
+
+  displayNewCover(newCover, newTitle, newTagline1, newTagline2);
+
 }
+
 
 function hideAndShow() {
   randomCoverButton.classList.add("hidden");
@@ -107,13 +128,53 @@ function pushMyBook(event) {
   descriptors.push(formDescriptor1Value);
   descriptors.push(formDescriptor2Value);
 
-  var customCover = new Cover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
-
-  currentImage.src = customCover.cover;
-  currentTitle.innerText = customCover.title;
-  currentTag1.innerText = customCover.tagline1;
-  currentTag2.innerText = customCover.tagline2;
-
   viewHomePage();
 
+  displayNewCover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
+
 }
+
+// function saveCover(currentCover) {
+//   for(var i = 0; i < savedCovers.length; i++) {
+//     if(instanceof(!currentCover)) {
+//         savedCovers.push(currentCover);
+//         savedCoverSection.innerHTML = savedCovers;
+//       }
+//     }
+//   };
+//
+// function showSaved(savedCovers) {
+// var reformattedCovers = [];
+// for(var i = 0; i < savedCovers.length; i++) {
+//   var coversHTML = `
+//     <article id="${savedCovers[i].id}" class="saved-covers-section"article>
+//     <img class="cover-image" src="${savedCovers[i].imageURL}" class="mini-cover">
+//     <h2 class="cover-title"> ${savedCovers[i].title} class="mini-cover cover-title"</h2>
+//     <h3 class="tagline-1"> ${savedCovers[i].tagline1} class="mini-cover tagline">
+//     <h3 class="tagline-2"> ${savedCovers[i].tagline2} class="mini-cover tagline"</h3>
+//     </article>`;
+//
+//     reformattedCovers.push(coversHTML)
+//
+//       //allSavedCovers += coversHTML;
+// //
+// //   }
+// //
+//      savedCoverSection.innerHTML = reformattedCovers;
+// // }
+
+function saveCover() {
+    if(!savedCovers.includes(currentCover)) {
+        savedCovers.push(currentCover);
+
+  showSaved(savedCovers);
+    }
+};
+
+
+
+//event listener for save cover button
+//create a function
+//to add custom covers to saved covers array
+  //Only saves once with no duplicates
+//All covers in saved cover array to display on saved cover page
