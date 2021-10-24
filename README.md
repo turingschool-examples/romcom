@@ -17,12 +17,8 @@
 
   https://krdurrett.github.io/romcom/
   
-# Images/GIFs
+# Example user generated cover:
 
+![Screen Shot 2021-10-24 at 10 10 44 AM](https://user-images.githubusercontent.com/88299275/138602703-c28e8149-67f3-4091-8cc8-336b13184292.png)
 
-
-# Future additions
-
-
-
-
+# Future Additions
