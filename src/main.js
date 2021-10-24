@@ -148,6 +148,16 @@ function displaySavedCovers() {
   }
 }
 
+
+var miniCoverClass = document.querySelector('.mini-cover')
+
+miniCoverClass.addEventListener('dblclick', deleteBook)
+
+function deleteBook() {
+for(var i = 0; i < .length; i++) {
+  savedCovers.remove()
+ }
+
 // function saveCover() {
 //     if (randomBook.id !== savedCovers[savedCovers.length-1].id) {
 //   	savedCovers.push(randomBook)
