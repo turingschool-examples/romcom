@@ -1,4 +1,4 @@
-// Create variables targetting the relevant DOM elements here :point_down:
+// Create variables targetting the relevant DOM elements here 👇
 
 var homeButton = document.querySelector(".home-button");
 var randomCoverButton = document.querySelector(".random-cover-button")
@@ -32,7 +32,7 @@ var savedCovers = [
 // var currentCover;
 
 
-// Add your event listeners here :point_down:
+// Add your event listeners here 👇
 window.addEventListener("load", createRandomCover);
 
 randomCoverButton.addEventListener("click", createRandomCover);
@@ -47,15 +47,9 @@ makeMyBook.addEventListener("click", pushMyBook);
 
 saveCoverButton.addEventListener("click", saveCover);
 
+removeSavedCover.addEventListener("dblclick", removeCover)
 
-
-
-
-
-
-// Create your event handlers and other functions here :point_down:
-// We've provided one function to get you started
-
+// Create your event handlers and other functions here 👇
 function displayNewCover(coverValue, titleValue, descriptor1Value, descriptor2Value) {
 
 currentCover = new Cover(coverValue, titleValue, descriptor1Value, descriptor2Value);
@@ -65,9 +59,6 @@ currentTitle.innerText = currentCover.title;
 currentTag1.innerText = currentCover.tagline1;
 currentTag2.innerText = currentCover.tagline2;
 };
-
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -82,16 +73,14 @@ function createRandomCover() {
   displayNewCover(newCover, newTitle, newTagline1, newTagline2);
 }
 
-
-function viewCoverForm() {
-  randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");
-  viewForm.classList.remove("hidden");
-  homeView.classList.add("hidden");
+function viewHomePage() {
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  homeView.classList.remove("hidden");
+  viewForm.classList.add("hidden");
   savedCoversView.classList.add("hidden");
 }
-
 
 function viewSavedPage() {
   randomCoverButton.classList.add("hidden");
@@ -104,12 +93,13 @@ function viewSavedPage() {
   showSaved();
 }
 
-function viewHomePage() {
-  randomCoverButton.classList.remove("hidden");
-  saveCoverButton.classList.remove("hidden");
-  homeButton.classList.add("hidden");
-  homeView.classList.remove("hidden");
-  viewForm.classList.add("hidden");
+function viewCoverForm() {
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  homeView.classList.add("hidden");
+  viewForm.classList.remove("hidden");
+  savedCoversView.classList.add("hidden");
 }
 
 function pushMyBook(event) {
@@ -127,41 +117,27 @@ function pushMyBook(event) {
   viewHomePage();
 
   displayNewCover(formCoverValue, formTitleValue, formDescriptor1Value, formDescriptor2Value);
-
-}
+};
 
 
 function showSaved() {
-
-for(var i = 0; i < savedCovers.length; i++) {
-
-  savedCoverSection.innerHTML += `
-
-    <section id="${savedCovers[i].id}" class="mini-cover">
-    <img class="cover-image" src="${savedCovers[i].cover}">
-    <h2 class="cover-title"> ${savedCovers[i].title}</h2>
-    <h3 class="tagline">A Tale of <span class="tagline-1"> ${savedCovers[i].tagline1}</span> and <span class="tagline-2"> ${savedCovers[i].tagline2}</span></h3>
-    </section>`;
-
-    // allSavedCovers += coversHTML;
+  savedCoverSection.innerHTML = ``
+  for(var i = 0; i < savedCovers.length; i++) {
+    savedCoverSection.innerHTML += `
+      <section id="${savedCovers[i].id}" class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title"> ${savedCovers[i].title}</h2>
+      <h3 class="tagline">A Tale of <span class="tagline-1"> ${savedCovers[i].tagline1}</span> and <span class="tagline-2"> ${savedCovers[i].tagline2}</span></h3>
+      </section>`;
    }
-
- }
+};
 
 function saveCover() {
-    if(!savedCovers.includes(currentCover)) {
-        savedCovers.push(currentCover);
-    }
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 };
 
 function removeCover() {
-  
-}
 
-
-
-//event listener for save cover button
-//create a function
-//to add custom covers to saved covers array
-  //Only saves once with no duplicates
-//All covers in saved cover array to display on saved cover page
+};
