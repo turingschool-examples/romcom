@@ -7,7 +7,6 @@ var savedView = document.querySelector('.saved-view');
 var savedCoversSection = document.querySelector('.saved-covers-section');
 var homeView = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
-var mainCover = document.querySelector('.main-cover');
 
 var coverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
