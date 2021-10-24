@@ -28,12 +28,12 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', changeCover);
-coverButton.addEventListener('click', changeCover);
-makeNewButton.addEventListener('click', displayForm);
-createNewBookButton.addEventListener('click', getUserData);
-viewSavedButton.addEventListener('click', displaySaved);
 homeButton.addEventListener('click', displayHome);
+coverButton.addEventListener('click', changeCover);
 saveCoverButton.addEventListener('click', saveCover);
+makeNewButton.addEventListener('click', displayForm);
+viewSavedButton.addEventListener('click', displaySaved);
+createNewBookButton.addEventListener('click', getUserData);
 savedCoversSection.addEventListener('dblclick', removeCover);
 
 // Create your event handlers and other functions here 👇
