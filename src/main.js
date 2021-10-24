@@ -28,7 +28,7 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+// Event listeners
 window.addEventListener('load', changeCover);
 homeButton.addEventListener('click', displayHome);
 coverButton.addEventListener('click', changeCover);
@@ -38,7 +38,7 @@ viewSavedButton.addEventListener('click', displaySaved);
 createNewBookButton.addEventListener('click', getUserData);
 savedCoversSection.addEventListener('dblclick', removeCover);
 
-// Create your event handlers and other functions here 👇
+// Calculates a random index number
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
