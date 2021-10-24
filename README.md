@@ -8,10 +8,10 @@
 
   JavaScript, HTML, CSS
 
-
 # Instructions for running and viewing the project
 
-
+  Our project can be accessed using GitHub pages. See link below!
+  Click around the site to see randomly generated Romance Novel covers, save your favorite covers, you can even make your own cover!
 
 # Deploy link (gh-pages)
 
@@ -19,9 +19,10 @@
   
 # Images/GIFs
 
+
+
 # Future additions
 
-Think about what a user needs to understand and get the full picture of the application
 
 
 
