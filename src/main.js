@@ -44,6 +44,7 @@ function showForm() {
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   makeBookButton.disabled = true
+  miniCover.classList.add('hidden')
 
 }
 
@@ -124,15 +125,10 @@ function saveCover() {
       savedCovers.push(randomBook)
     }
   }
-  console.log(savedCovers)
 }
 
 
-var newElementP = document.createElement("img")
-var newElementSection = document.createElement("section")
-var newElementH2 = document.createElement("h2")
-var newElementH3 = document.createElement("h3")
-var savedCoversSection = document.querySelector('.saved-covers-section')
+
 var miniCover = document.querySelector('.saved-covers-section')
 
 viewSaveButton.addEventListener('click', displaySavedCovers)
@@ -140,8 +136,6 @@ viewSaveButton.addEventListener('click', displaySavedCovers)
 function displaySavedCovers() {
   miniCover.innerHTML = ``
   savedView.classList.remove('hidden')
-  //savedCoversSection.classList.add('saved-covers-section')
-  //savedCoversSection.classList.add('mini-cover')
   for(var i = 0; i < savedCovers.length; i++) {
   miniCover.innerHTML += `<article class="mini-cover" id=${savedCovers[i].id}>
                         <img class="cover-image" src=${savedCovers[i].cover}>
