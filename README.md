@@ -15,6 +15,8 @@
 
 # Deploy link (gh-pages)
 
+  https://krdurrett.github.io/romcom/
+  
 # Images/GIFs
 
 # Future additions
