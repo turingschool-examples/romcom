@@ -17,6 +17,8 @@ var titleInput = document.querySelector('.user-title')
 var desc1Input = document.querySelector('.user-desc1')
 var desc2Input = document.querySelector('.user-desc2')
 var randomBook;
+var savedCoversSection = document.querySelector('.saved-covers-section')
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * (array.length))
@@ -42,6 +44,7 @@ function showForm() {
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   makeBookButton.disabled = true
+  miniCover.classList.add('hidden')
 
 }
 
@@ -122,8 +125,34 @@ function saveCover() {
       savedCovers.push(randomBook)
     }
   }
-  console.log(savedCovers)
 }
+
+
+
+var miniCover = document.querySelector('.saved-covers-section')
+
+viewSaveButton.addEventListener('click', displaySavedCovers)
+
+function displaySavedCovers() {
+  miniCover.innerHTML = ``
+  savedView.classList.remove('hidden')
+  for(var i = 0; i < savedCovers.length; i++) {
+  miniCover.innerHTML += `<article class="mini-cover" id=${savedCovers[i].id}>
+                        <img class="cover-image" src=${savedCovers[i].cover}>
+                        <h2 class="cover-title">${savedCovers[i].title}</h2>
+                        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+                        <img class="price-tag" src="./assets/price.png">
+                        <img class="overlay" src="./assets/overlay.png">
+                        </article>`
+
+  }
+}
+
+// function saveCover() {
+//     if (randomBook.id !== savedCovers[savedCovers.length-1].id) {
+//   	savedCovers.push(randomBook)
+//   }
+// }
 
 //Why does this work? Why are we able to compare objects?
 // function saveCover() {
