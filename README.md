@@ -1,4 +1,4 @@
-# RomCom - Paired Project
+# RomCom - Paired Project 
 
 ## Contributors 
 
@@ -31,4 +31,13 @@
 
 ## Future Additions
 
+ - Implement data validation and error handling into the form
+ - When a user single clicks a saved cover, create a modal to view it larger
+
 ## Team wins 
+
+- Collaborated and communicated towards each others learning styles and personal needs
+- Expanded knowledge of inner workings of the DOM by manipulating HTML and CSS elements using Javascript
+- Time management
+- Created methods for user interaction and customization
+- Honored and upheld our teams DTR 
