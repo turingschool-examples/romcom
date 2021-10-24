@@ -29,14 +29,15 @@ var currentTag2 = document.querySelector(".tagline-2");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+// var currentCover;
 
 
 // Add your event listeners here :point_down:
 window.addEventListener("load", createRandomCover);
+
 randomCoverButton.addEventListener("click", createRandomCover);
 
-makeNewButton.addEventListener("click", hideAndShow);
+makeNewButton.addEventListener("click", viewCoverForm);
 
 viewSavedButton.addEventListener("click", viewSavedPage);
 
@@ -63,9 +64,6 @@ currentImage.src = currentCover.cover;
 currentTitle.innerText = currentCover.title;
 currentTag1.innerText = currentCover.tagline1;
 currentTag2.innerText = currentCover.tagline2;
-
-console.log(currentCover);
-
 };
 
 
@@ -82,22 +80,18 @@ function createRandomCover() {
   var newTagline2 = descriptors[getRandomIndex(descriptors)];
 
   displayNewCover(newCover, newTitle, newTagline1, newTagline2);
-
 }
 
 
-function hideAndShow() {
+function viewCoverForm() {
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
-  viewCoverForm();
-}
-
-function viewCoverForm() {
   viewForm.classList.remove("hidden");
   homeView.classList.add("hidden");
-
+  savedCoversView.classList.add("hidden");
 }
+
 
 function viewSavedPage() {
   randomCoverButton.classList.add("hidden");
@@ -159,6 +153,10 @@ function saveCover() {
         savedCovers.push(currentCover);
     }
 };
+
+function removeCover() {
+  
+}
 
 
 
