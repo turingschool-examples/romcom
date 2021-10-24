@@ -33,6 +33,7 @@
 
  - Implement data validation and error handling into the form
  - When a user single clicks a saved cover, create a modal to view it larger
+ - Use of flexbox in the CSS to accomodate for various image file sizes
 
 ## Team wins 
 
@@ -40,4 +41,4 @@
 - Expanded knowledge of inner workings of the DOM by manipulating HTML and CSS elements using Javascript
 - Time management
 - Created methods for user interaction and customization
-- Honored and upheld our teams DTR 
+- Honored and upheld our team DTR 
