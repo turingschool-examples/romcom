@@ -149,123 +149,16 @@ function displaySavedCovers() {
 }
 
 
-var miniCoverClass = document.querySelector('.mini-cover')
+var viewSavedView = document.querySelector('.saved-view')
 
-miniCoverClass.addEventListener('dblclick', deleteBook)
+viewSavedView.addEventListener('dblclick', deleteBook)
+
 
 function deleteBook() {
-for(var i = 0; i < .length; i++) {
-  savedCovers.remove()
- }
-
-// function saveCover() {
-//     if (randomBook.id !== savedCovers[savedCovers.length-1].id) {
-//   	savedCovers.push(randomBook)
-//   }
-// }
-
-//Why does this work? Why are we able to compare objects?
-// function saveCover() {
-// if (!savedCovers.includes(randomBook)) {
-//   savedCovers.push(randomBook)
-//   console.log(savedCovers)
-// }
-// }
-
-
-
-
-
-
-    // for (var i = 0; i < savedCovers.length; i++) {
-    //   if (randomBook.id !== savedCovers[i].id) {
-    //     savedCovers.push(randomBook)
-    //   }
-    //}
-  //}
-  //console.log(savedCovers)
-//
-
-// for (var i = 0; i < savedCovers.length; i++) {
-//     if (homeViewBook.id !== savedCovers[i].id) {
-//       savedCovers.push(homeViewBook)
-//     }
-//   } console.log(savedCovers)
-
-
-
-
-
-  // for(var i = 0; i < savedCovers.length; i++)
-  // console.log(savedCovers)
-  //     if((savedCovers.length > 0) && (savedCovers[i].id !== homeViewBook.id)) {
-  //     savedCovers.push(homeViewBook)
-  //     console.log(savedCovers)
-  //   }
-  // }
-  //     for(var i = 0; i < savedCovers.length; i++) {
-  //        if(homeViewBook === savedCovers[i]) {
-  //      } else {
-  //       savedCovers.push(homeViewBook)
-  //     }
-  //   }
-  // }
-    //} else {
-    //savedCovers.push(homeViewBook)
-    //console.log(savedCovers)
-    //}
-//}
-//}
- //else if {
-//      for(var i = 0; i < savedCovers.length; i++) {
-//         if(homeViewBook === savedCovers[i]) {
-//        return savedCovers.unshift(homeViewBook)
-//      } console.log(savedCovers)
-//     }
-//   }
-// }
-
-
-
-
-
-
-  //     if(savedCovers.includes(homeViewBook)) {
-  //       return `can't save cover`
-  //     } else {
-  //     savedCovers.push(homeViewBook)
-  //     console.log(savedCovers)
-  //   savedCovers.push(homeViewBook)
-  // }
-
-  // for (var i = 0; i < savedCovers.length; i++) {
-  //   if(homeViewBook === savedCovers[i]) {
-  //     console.log(savedCovers)
-  //     console.log("Can't save this book")
-  //   }
-  // }
-
-//     if(savedCovers.includes(homeViewBook)) {
-//       return `can't save cover`
-//     } else {
-//     savedCovers.push(homeViewBook)
-//     console.log(savedCovers)
-//   }
-// }
-//   }
-//console.log(savedCovers)
-
-// console.log(savedCovers)
-// console.log("Can't save this book")
-// } else {
-// savedCovers.push(homeViewBook)
-
-//pushes the class to the saved covers array
-//add if statement to function that checks if instance is included in array
-//add display covers in the view saved covers covers event listener
-
-// for(var i = 0; i < savedCovers.length; i++) {
-//   if(homeViewBook == savedCovers[i]) {
-// } else {
-//  savedCovers.push(homeViewBook)
-// }
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (`${savedCovers[i].id}` === event.target.parentNode.id) {
+      savedCovers.splice(i, 1)
+    }
+  }
+    displaySavedCovers();
+}
