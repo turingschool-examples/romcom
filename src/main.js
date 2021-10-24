@@ -1,20 +1,22 @@
-// Create variables targetting the relevant DOM elements here 👇
-var coverImageSource = document.querySelector('.cover-image');
+// Variables that target DOM elements
+var form = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
 var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
-var savedView = document.querySelector('.saved-view');
+var coverImageSource = document.querySelector('.cover-image');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-var homeView = document.querySelector('.home-view');
-var form = document.querySelector('.form-view');
 
-var coverButton = document.querySelector('.random-cover-button');
+// Variables that target HTML button elements
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var coverButton = document.querySelector('.random-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
 
+// Variables that target input fields
 var coverInputValue = document.querySelector('.user-cover');
 var titleInputValue = document.querySelector('.user-title');
 var firstDescriptorInputValue = document.querySelector('.user-desc1');
@@ -37,6 +39,12 @@ createNewBookButton.addEventListener('click', getUserData);
 savedCoversSection.addEventListener('dblclick', removeCover);
 
 // Create your event handlers and other functions here 👇
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+// Randomly selects values from the respective arrays 
+// applys them to a class and inserts them on the DOM
 function changeCover() {
   currentCover = new Cover(
     covers[getRandomIndex(covers)],
@@ -51,10 +59,23 @@ function changeCover() {
   descriptorTwo.innerText = currentCover.tagline2;
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+// Applies values from the arrays to an
+// instantied class and inserts them on the DOM
+function makeNewCover() {
+  currentCover = new Cover(
+    covers[covers.length - 1],
+    titles[titles.length - 1],
+    descriptors[descriptors.length - 2],
+    descriptors[descriptors.length - 1]
+  );
+
+  coverImageSource.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptorOne.innerText = currentCover.tagline1;
+  descriptorTwo.innerText = currentCover.tagline2;
 }
 
+// Displays 'form' page
 function displayForm() {
   form.classList.remove('hidden');
   displayHomeButton();
@@ -64,6 +85,7 @@ function displayForm() {
   hideSavedCoversPage();
 }
 
+// Displays 'saved covers' page
 function displaySaved() {
   savedView.classList.remove('hidden');
   displaySavedCovers();
@@ -74,10 +96,7 @@ function displaySaved() {
   hideSaveCoverButton();
 }
 
-function hideSavedCoversPage() {
-  savedView.classList.add('hidden');
-}
-
+// Display 'home' page
 function displayHome() {
   homeView.classList.remove('hidden');
   hideHomeButton();
@@ -87,6 +106,19 @@ function displayHome() {
   hideSavedCoversPage();
 }
 
+// Applies the user's input to create a new cover
+function getUserData(event) {
+  event.preventDefault();
+
+  displayHome();
+  storeCoverInputValue();
+  storeTitleInputValue();
+  storeDescriptorOneInputValue();
+  storeDescriptorTwoInputValue();
+  makeNewCover();
+}
+
+// Funcitons that show/hide various elements
 function displayHomeButton() {
   homeButton.classList.remove('hidden');
 }
@@ -119,6 +151,11 @@ function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden');
 }
 
+function hideSavedCoversPage() {
+  savedView.classList.add('hidden');
+}
+
+// Functions that collect user input and push the data into their arrays
 function storeCoverInputValue() {
   var coverValue = coverInputValue.value;
   covers.push(coverValue);
@@ -139,37 +176,14 @@ function storeDescriptorTwoInputValue() {
   descriptors.push(descriptorTwoValue);
 }
 
-function getUserData(event) {
-  event.preventDefault();
-
-  displayHome();
-  storeCoverInputValue();
-  storeTitleInputValue();
-  storeDescriptorOneInputValue();
-  storeDescriptorTwoInputValue();
-  makeNewCover();
-}
-
-function makeNewCover() {
-  currentCover = new Cover(
-    covers[covers.length - 1],
-    titles[titles.length - 1],
-    descriptors[descriptors.length - 2],
-    descriptors[descriptors.length - 1]
-  );
-
-  coverImageSource.src = currentCover.cover;
-  coverTitle.innerText = currentCover.title;
-  descriptorOne.innerText = currentCover.tagline1;
-  descriptorTwo.innerText = currentCover.tagline2;
-}
-
+// Does not add the cover to the array if one already exists
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
 }
 
+// Creates mini sized covers and displays them on the 'saved covers' page
 function displaySavedCovers() {
   savedCoversSection.innerHTML = ``;
   for (var i = 0; i < savedCovers.length; i++) {
@@ -182,6 +196,7 @@ function displaySavedCovers() {
   }
 }
 
+// Removes a cover when the user double clicks it
 function removeCover(event) {
   var something = event.target.id;
   for (var i = 0; i < savedCovers.length; i++) {
