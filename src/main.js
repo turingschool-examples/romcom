@@ -1,4 +1,4 @@
-var currentCoverImage = document.querySelector('.cover-image');
+var currentCoverImage = document.querySelector('.cover-image'); 
 var currentTitle = document.querySelector('.cover-title');
 var currentDescriptors = document.querySelector('.tagline');
 var currentDescriptor1 = document.querySelector('.tagline-1');
