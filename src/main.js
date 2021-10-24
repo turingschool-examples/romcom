@@ -6,7 +6,6 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var tagline = document.querySelector('.tagline');
 var taglineOne = document.querySelector('.tagline-1');
 var taglineTwo = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
@@ -14,7 +13,7 @@ var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
 var mainCover = document.querySelector('.main-cover');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-var customForm = document.querySelector('form');
+var userForm = document.querySelector('form');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userTaglineOne = document.querySelector('.user-desc1');
@@ -39,11 +38,7 @@ savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
-  var coverImg = covers[getRandomIndex(covers)];
-  var coverTitle = titles[getRandomIndex(titles)];
-  var descOne = descriptors[getRandomIndex(descriptors)];
-  var descTwo = descriptors[getRandomIndex(descriptors)];
-  currentCover = new Cover(coverImg, coverTitle, descOne, descTwo);
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   displayCover(currentCover);
 };
 
@@ -52,14 +47,11 @@ function newUserCover() {
   if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
     alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
   } else {
-  coverImage.src = userCover.value;
-  coverTitle.innerText = userTitle.value;
-  taglineOne.innerText = userTaglineOne.value;
-  taglineTwo.innerText = userTaglineTwo.value;
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
-  storeUserSubmission();
-  toggleHomeView();
-  customForm.reset();
+    currentCover = new Cover(userCover.value, userTitle.value, userTaglineOne.value, userTaglineTwo.value);
+    displayCover(currentCover);
+    storeUserSubmission();
+    toggleHomeView();
+    userForm.reset();
   }
 };
 
@@ -86,7 +78,7 @@ function toggleSavedView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  addToSavedView();
+  displaySavedCovers();
 };
 
 function toggleHomeView() {
@@ -111,7 +103,7 @@ function saveCurrentCover() {
   }
 };
 
-function addToSavedView() {
+function displaySavedCovers() {
   savedCoversSection.innerHTML = ``;
   for(var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML += `
@@ -129,7 +121,7 @@ function deleteSavedCover() {
       savedCovers.splice(i, 1);
     }
   };
-  addToSavedView();
+  displaySavedCovers();
 };
 
 function getRandomIndex(array) {
