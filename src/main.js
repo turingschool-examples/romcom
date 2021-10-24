@@ -57,6 +57,7 @@ function showSavedCovers() {
   saveCoverButton.classList.add('hidden');
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+
   displaySavedCovers();
 }
 
@@ -64,6 +65,7 @@ function returnToMain() {
   homePage.classList.remove('hidden');
   randomButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
+  savedView.classList.add('hidden');
   homeButton.classList.add('hidden');
   coverForm.classList.add('hidden');
 }
@@ -82,8 +84,7 @@ function createCustomCover(event) {
   tagLine1.innerText = descriptor1.value;
   tagLine2.innerText = descriptor2.value;
 
-  homePage.classList.remove('hidden');
-  coverForm.classList.add('hidden');
+  returnToMain();
 }
 
 function saveCover() {
