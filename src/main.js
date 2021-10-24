@@ -198,9 +198,9 @@ function displaySavedCovers() {
 
 // Removes a cover when the user double clicks it
 function removeCover(event) {
-  var something = event.target.id;
+  var coverId = event.target.id;
   for (var i = 0; i < savedCovers.length; i++) {
-    if (`${savedCovers[i].id}` === something) {
+    if (`${savedCovers[i].id}` === coverId) {
       savedCovers.splice(i, 1);
     }
   }
