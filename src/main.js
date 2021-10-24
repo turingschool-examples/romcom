@@ -27,13 +27,13 @@ function getRandomIndex(array) {
 randomButton.addEventListener("click", createRandomCover)
 
 function createRandomCover() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  coverImage.src = covers[getRandomIndex(covers)]
+  coverTitle.innerText = titles[getRandomIndex(titles)]
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)]
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)]
   randomBook = new Cover (coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 }
-createRandomCover();
+createRandomCover()
 
 makeCoverButton.addEventListener('click', showForm)
 
@@ -44,14 +44,14 @@ function showForm() {
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   makeBookButton.disabled = true
-  miniCover.classList.add('hidden')
+  savedView.classList.add('hidden')
 
 }
 
 document.addEventListener('keyup', enableMakeBookButton)
 
 function enableMakeBookButton() {
-  if(coverInput.value && titleInput.value && desc1Input.value && desc2Input.value) {
+  if (coverInput.value && titleInput.value && desc1Input.value && desc2Input.value) {
     makeBookButton.disabled = false
   }
 }
@@ -100,17 +100,7 @@ function makeNewBook() {
   tagline2.innerText = randomBook.tagline2
 }
 
-//var savedCovers = [
-  //new Cover(
-    //"http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-//     "Sunsets and Sorrows",
-//     "sunsets",
-//     "sorrows"
-//   )
-// ];
-
 var savedCovers = []
-//var homeViewBook = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 
 saveCoverButton.addEventListener('click', saveCover)
 function saveCover() {
@@ -127,32 +117,23 @@ function saveCover() {
   }
 }
 
-
-
-var miniCover = document.querySelector('.saved-covers-section')
-
 viewSaveButton.addEventListener('click', displaySavedCovers)
 
 function displaySavedCovers() {
-  miniCover.innerHTML = ``
+  savedCoversSection.innerHTML = ``
   savedView.classList.remove('hidden')
-  for(var i = 0; i < savedCovers.length; i++) {
-  miniCover.innerHTML += `<article class="mini-cover" id=${savedCovers[i].id}>
+  for (var i = 0; i < savedCovers.length; i++) {
+  savedCoversSection.innerHTML += `<article class="mini-cover" id=${savedCovers[i].id}>
                         <img class="cover-image" src=${savedCovers[i].cover}>
                         <h2 class="cover-title">${savedCovers[i].title}</h2>
                         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
                         <img class="price-tag" src="./assets/price.png">
                         <img class="overlay" src="./assets/overlay.png">
                         </article>`
-
   }
 }
 
-
-var viewSavedView = document.querySelector('.saved-view')
-
-viewSavedView.addEventListener('dblclick', deleteBook)
-
+savedView.addEventListener('dblclick', deleteBook)
 
 function deleteBook() {
   for (var i = 0; i < savedCovers.length; i++) {
@@ -160,5 +141,5 @@ function deleteBook() {
       savedCovers.splice(i, 1)
     }
   }
-    displaySavedCovers();
+    displaySavedCovers()
 }
