@@ -84,7 +84,8 @@ Contributors: Chad DeGange, Jessica Fatta, Eric Matlock
 - Site is built as a single HTML page utilizing several CSS classes, which are shown or hidden as needed using JavaScript.
 - Saved covers array stores all saved books for the saved covers view.
 - When a cover is saved, we built a function pushMyBook to push the book object properties into the savedCovers array. A second function then passes those same object properties as arguments into a pre-formatted html, accessing the relevant class properties as needed to format the cover for the saved covers view. Finally, those objects are
-- For future updates, we would like to include additional functionality like:
+- For future updates, we would like to include additional functionality such as:
+    - Ability to delete a cover from the saved covers view via doubleclick.
     - Persistent storage of saved covers, using an account or cookies to remember the user and store the save covers array into cache.
     - Ability to view the saved cover in an enlarged view upon clicking the desired cover.
     - Ability to drag and drop order of covers in the saved covers view.
