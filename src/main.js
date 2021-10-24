@@ -106,6 +106,8 @@ function viewSavedPage() {
   homeView.classList.add("hidden");
   viewForm.classList.add("hidden");
   savedCoversView.classList.remove("hidden");
+
+  showSaved();
 }
 
 function viewHomePage() {
@@ -134,40 +136,27 @@ function pushMyBook(event) {
 
 }
 
-// function saveCover(currentCover) {
-//   for(var i = 0; i < savedCovers.length; i++) {
-//     if(instanceof(!currentCover)) {
-//         savedCovers.push(currentCover);
-//         savedCoverSection.innerHTML = savedCovers;
-//       }
-//     }
-//   };
-//
-// function showSaved(savedCovers) {
-// var reformattedCovers = [];
-// for(var i = 0; i < savedCovers.length; i++) {
-//   var coversHTML = `
-//     <article id="${savedCovers[i].id}" class="saved-covers-section"article>
-//     <img class="cover-image" src="${savedCovers[i].imageURL}" class="mini-cover">
-//     <h2 class="cover-title"> ${savedCovers[i].title} class="mini-cover cover-title"</h2>
-//     <h3 class="tagline-1"> ${savedCovers[i].tagline1} class="mini-cover tagline">
-//     <h3 class="tagline-2"> ${savedCovers[i].tagline2} class="mini-cover tagline"</h3>
-//     </article>`;
-//
-//     reformattedCovers.push(coversHTML)
-//
-//       //allSavedCovers += coversHTML;
-// //
-// //   }
-// //
-//      savedCoverSection.innerHTML = reformattedCovers;
-// // }
+
+function showSaved() {
+
+for(var i = 0; i < savedCovers.length; i++) {
+
+  savedCoverSection.innerHTML += `
+
+    <section id="${savedCovers[i].id}" class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].cover}">
+    <h2 class="cover-title"> ${savedCovers[i].title}</h2>
+    <h3 class="tagline">A Tale of <span class="tagline-1"> ${savedCovers[i].tagline1}</span> and <span class="tagline-2"> ${savedCovers[i].tagline2}</span></h3>
+    </section>`;
+
+    // allSavedCovers += coversHTML;
+   }
+
+ }
 
 function saveCover() {
     if(!savedCovers.includes(currentCover)) {
         savedCovers.push(currentCover);
-
-  showSaved(savedCovers);
     }
 };
 
