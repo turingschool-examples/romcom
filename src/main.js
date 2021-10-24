@@ -15,7 +15,6 @@ var savedView = document.querySelector(".saved-view")
 var tempBook;
 
 // ITERATION 0: This code randomizes book on home page load, currently turned off to troubleshoot iteration 3:
-
 window.addEventListener("load", changeCover);
 
 // ITERATION 1:
@@ -52,6 +51,18 @@ function viewSavedPage() {
   saveCoverButton.classList.add("hidden")
   showNewRandomCoverButton.classList.add("hidden")
   viewHomeButton.classList.remove("hidden")
+//ITERATION 4 STUFF:
+  document.querySelector(".saved-covers-section").innerHTML = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+    document.querySelector(".saved-covers-section").insertAdjacentHTML('beforeend', `
+      <div class="mini-cover cover-${[i]}">
+        <img class="mini-cover" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="overlay" src="./assets/overlay.png">
+      </div>
+      `)
+  }
 };
 
 viewHomeButton.addEventListener("click", viewHomePage);
@@ -64,7 +75,7 @@ function viewHomePage() {
   viewHomeButton.classList.add("hidden")
 }
 
-// Iteration 3
+// ITERATION 3
 var formNewCoverImage = document.querySelector(".user-cover");
 var formNewTitleText = document.querySelector(".user-title");
 var formNewFirstDescriptorText = document.querySelector(".user-desc1");
@@ -92,6 +103,12 @@ function createFormMakeBook() {
   word2 = descriptors[descriptors.length - 1]
   currentDescriptors.innerText = "A tale of " + word1 + " and " + word2;
 
+  //OPTIONAL STRETCH GOAL
+  //   //if (!formNewCoverImage || !formNewTitleText || !formNewFirstDescriptorText || !formNewSecondDescriptorText) {
+  //   //  window.alert("You need to fill out all the forms");
+  //   //} else {
+  // }
+
   viewHomePage()
 
 }
@@ -99,14 +116,19 @@ function createFormMakeBook() {
 // ITERATION 4
 saveCoverButton.addEventListener("click", saveCover);
 function saveCover() {
-  savedCovers.push(tempBook)
-}
+  var isDuplicate = false;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].title === tempBook.title || savedCovers[i].cover === tempBook.cover || savedCovers[i].tagline1 === tempBook.tagline1 || savedCovers[i].tagline2 === tempBook.tagline2) {
+        console.log("You cannot save duplicate book covers. Confused on how this application works? Check out the Read Me!")
+        isDuplicate = true;
+      }
+    }
+  if (!isDuplicate) {
+      savedCovers.push(tempBook)
+    }
+  }
 
-//   //if (!formNewCoverImage || !formNewTitleText || !formNewFirstDescriptorText || !formNewSecondDescriptorText) {
-//   //  window.alert("You need to fill out all the forms");
-//   //} else {
-// }
-
+///We never ended up using this variable below, why is it here?
 var currentCover;
 
 // Add your event listeners here 👇 (*********ADD FALSE IF IT DOESN'T WORK)
