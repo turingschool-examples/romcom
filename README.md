@@ -1,8 +1,8 @@
 CONTENTS OF THIS FILE
 ---------------------
  * Introduction
- * Maintainers
  * Instructions
+ * Maintainers
  * Deploy Link
 
 
@@ -14,14 +14,17 @@ This is a repo of the romcom project for Turing School of Design and Software. W
 - When user clicks the button, "Make Your Own Cover Button", user is able to input values for their own cover and display their made cover.
 - On the button, "Save Cover", user is able to save the current cover on screen.
 - User can view saved covers when the button, "View Saved Covers" is selected.
-
+- On view saved covers, user can delete books with double click.
 
 INSTRUCTIONS
 ------------
-- Fork this repo:
-- download and install npm
-- open text editor
-- open index.html for real time update of code.
+- Fork this boilerplate repository
+- Clone down your new, forked repo
+- cd into the repository
+- Open it in your text editor
+- View the project in the browser by running open index.html in your terminal
+
+
 -----------
 Current maintainers:
  Jasmyn Hicks - https://www.linkedin.com/in/jasmyn-hicks-b7923095/
