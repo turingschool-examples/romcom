@@ -35,6 +35,7 @@ createNewBookButton.addEventListener('click', getUserData);
 viewSavedButton.addEventListener('click', displaySaved);
 homeButton.addEventListener('click', displayHome);
 saveCoverButton.addEventListener('click', saveCover);
+savedCoversSection.addEventListener('dblclick', removeCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
@@ -139,8 +140,9 @@ function storeDescriptorTwoInputValue() {
   descriptors.push(descriptorTwoValue);
 }
 
-function getUserData() {
+function getUserData(event) {
   event.preventDefault();
+
   displayHome();
   storeCoverInputValue();
   storeTitleInputValue();
@@ -170,13 +172,23 @@ function saveCover() {
 }
 
 function displaySavedCovers() {
-  var savedCoversSectionHTML = ``;
+  savedCoversSection.innerHTML = ``;
   for (var i = 0; i < savedCovers.length; i++) {
-    savedCoversSectionHTML += `<section class="mini-cover">
-    <img class="mini-cover" src=${savedCovers[i].cover} alt="No Image Available">
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    savedCoversSection.innerHTML += 
+    `<section class="mini-cover">
+      <img class="cover-image" id=${savedCovers[i].id} src="${savedCovers[i].cover}" alt="No Image Available">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     </section>`
   }
-  savedCoversSection.innerHTML = savedCoversSectionHTML;
+}
+
+function removeCover(event) {
+  var something = event.target.id;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (`${savedCovers[i].id}` === something) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCovers();
 }
