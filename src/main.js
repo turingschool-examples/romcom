@@ -1,21 +1,22 @@
-// Create variables targetting the relevant DOM elements here 👇
-var coverImageSource = document.querySelector('.cover-image');
+// Variables that target DOM elements
+var form = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
 var coverTitle = document.querySelector('.cover-title');
 var descriptorOne = document.querySelector('.tagline-1');
 var descriptorTwo = document.querySelector('.tagline-2');
-var savedView = document.querySelector('.saved-view');
+var coverImageSource = document.querySelector('.cover-image');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-var homeView = document.querySelector('.home-view');
-var form = document.querySelector('.form-view');
-var mainCover = document.querySelector('.main-cover');
 
-var coverButton = document.querySelector('.random-cover-button');
+// Variables that target HTML button elements
 var homeButton = document.querySelector('.home-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var coverButton = document.querySelector('.random-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
 
+// Variables that target input fields
 var coverInputValue = document.querySelector('.user-cover');
 var titleInputValue = document.querySelector('.user-title');
 var firstDescriptorInputValue = document.querySelector('.user-desc1');
@@ -27,17 +28,23 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+// Event listeners
 window.addEventListener('load', changeCover);
-coverButton.addEventListener('click', changeCover);
-makeNewButton.addEventListener('click', displayForm);
-createNewBookButton.addEventListener('click', getUserData);
-viewSavedButton.addEventListener('click', displaySaved);
 homeButton.addEventListener('click', displayHome);
+coverButton.addEventListener('click', changeCover);
 saveCoverButton.addEventListener('click', saveCover);
+makeNewButton.addEventListener('click', displayForm);
+viewSavedButton.addEventListener('click', displaySaved);
 savedCoversSection.addEventListener('dblclick', removeCover);
+createNewBookButton.addEventListener('click', displayCustomCover);
 
-// Create your event handlers and other functions here 👇
+// Calculates a random index number
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+// Randomly selects values from the respective arrays, 
+// applys them to a class and inserts them on the DOM
 function changeCover() {
   currentCover = new Cover(
     covers[getRandomIndex(covers)],
@@ -52,105 +59,8 @@ function changeCover() {
   descriptorTwo.innerText = currentCover.tagline2;
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function displayForm() {
-  form.classList.remove('hidden');
-  displayHomeButton();
-  hideHome();
-  hideCoverButton();
-  hideSaveCoverButton();
-  hideSavedCoversPage();
-}
-
-function displaySaved() {
-  savedView.classList.remove('hidden');
-  displaySavedCovers();
-  displayHomeButton();
-  hideForm();
-  hideHome();
-  hideCoverButton();
-  hideSaveCoverButton();
-}
-
-function hideSavedCoversPage() {
-  savedView.classList.add('hidden');
-}
-
-function displayHome() {
-  homeView.classList.remove('hidden');
-  hideHomeButton();
-  displaySaveCoverButton();
-  displayCoverButton();
-  hideForm();
-  hideSavedCoversPage();
-}
-
-function displayHomeButton() {
-  homeButton.classList.remove('hidden');
-}
-
-function displaySaveCoverButton() {
-  saveCoverButton.classList.remove('hidden');
-}
-
-function displayCoverButton() {
-  coverButton.classList.remove('hidden');
-}
-
-function hideForm() {
-  form.classList.add('hidden');
-}
-
-function hideHomeButton() {
-  homeButton.classList.add('hidden');
-}
-
-function hideHome() {
-  homeView.classList.add('hidden');
-}
-
-function hideCoverButton() {
-  coverButton.classList.add('hidden');
-}
-
-function hideSaveCoverButton() {
-  saveCoverButton.classList.add('hidden');
-}
-
-function storeCoverInputValue() {
-  var coverValue = coverInputValue.value;
-  covers.push(coverValue);
-}
-
-function storeTitleInputValue() {
-  var titleValue = titleInputValue.value;
-  titles.push(titleValue);
-}
-
-function storeDescriptorOneInputValue() {
-  var descriptorOneValue = firstDescriptorInputValue.value;
-  descriptors.push(descriptorOneValue);
-}
-
-function storeDescriptorTwoInputValue() {
-  var descriptorTwoValue = secondDescriptorInputValue.value;
-  descriptors.push(descriptorTwoValue);
-}
-
-function getUserData(event) {
-  event.preventDefault();
-
-  displayHome();
-  storeCoverInputValue();
-  storeTitleInputValue();
-  storeDescriptorOneInputValue();
-  storeDescriptorTwoInputValue();
-  makeNewCover();
-}
-
+// Applies values from the arrays to an
+// instantied class and inserts them on the DOM
 function makeNewCover() {
   currentCover = new Cover(
     covers[covers.length - 1],
@@ -165,28 +75,146 @@ function makeNewCover() {
   descriptorTwo.innerText = currentCover.tagline2;
 }
 
+// Displays 'Form' view
+function displayForm() {
+  form.classList.remove('hidden');
+  displayHomeButton();
+  hideHome();
+  hideCoverButton();
+  hideSaveCoverButton();
+  hideSavedCoversPage();
+}
+
+// Displays 'Saved Covers' view
+function displaySaved() {
+  savedView.classList.remove('hidden');
+  displaySavedCovers();
+  displayHomeButton();
+  hideForm();
+  hideHome();
+  hideCoverButton();
+  hideSaveCoverButton();
+}
+
+// Display 'Home' view
+function displayHome() {
+  homeView.classList.remove('hidden');
+  hideHomeButton();
+  displaySaveCoverButton();
+  displayCoverButton();
+  hideForm();
+  hideSavedCoversPage();
+}
+
+// Applies the user's input to create a new cover and displays it
+function displayCustomCover(event) {
+  event.preventDefault();
+  displayHome();
+  storeCoverInputValue();
+  storeTitleInputValue();
+  storeDescriptorOneInputValue();
+  storeDescriptorTwoInputValue();
+  makeNewCover();
+}
+
+// Displays the 'Home' button
+function displayHomeButton() {
+  homeButton.classList.remove('hidden');
+}
+
+// Displays the 'Save Cover' button
+function displaySaveCoverButton() {
+  saveCoverButton.classList.remove('hidden');
+}
+
+// Displays the 'Show New Random Cover' button
+function displayCoverButton() {
+  coverButton.classList.remove('hidden');
+}
+
+// Hides the 'Form' view
+function hideForm() {
+  form.classList.add('hidden');
+}
+
+// Hides the 'Home' button
+function hideHomeButton() {
+  homeButton.classList.add('hidden');
+}
+
+// Hides the 'Home' view
+function hideHome() {
+  homeView.classList.add('hidden');
+}
+
+// Hides the 'Show New Random Cover' button
+function hideCoverButton() {
+  coverButton.classList.add('hidden');
+}
+
+// Hides the 'Save Cover' button
+function hideSaveCoverButton() {
+  saveCoverButton.classList.add('hidden');
+}
+
+// Hides the 'Saved Covers' view
+function hideSavedCoversPage() {
+  savedView.classList.add('hidden');
+}
+
+// Gets the value from the 'Cover' input field
+// and stores it in the covers array
+function storeCoverInputValue() {
+  var coverValue = coverInputValue.value;
+  covers.push(coverValue);
+}
+
+// Gets the value fom the 'Title' input field
+// and stores it in the titles array
+function storeTitleInputValue() {
+  var titleValue = titleInputValue.value;
+  titles.push(titleValue);
+}
+
+// Gets the value from the 'First descriptor' input
+// field and stores it in the descriptors array 
+function storeDescriptorOneInputValue() {
+  var descriptorOneValue = firstDescriptorInputValue.value;
+  descriptors.push(descriptorOneValue);
+}
+
+// Gets the value from the 'Second descriptor' input
+// field and stores it in the descriptors array
+function storeDescriptorTwoInputValue() {
+  var descriptorTwoValue = secondDescriptorInputValue.value;
+  descriptors.push(descriptorTwoValue);
+}
+
+// Does not add the cover to the 'savedCovers' array if one already exists (prevents duplicates)
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
 }
 
+// Creates mini sized covers and displays them on the 'Saved Covers' view
 function displaySavedCovers() {
   savedCoversSection.innerHTML = ``;
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += 
     `<section class="mini-cover">
-      <img class="cover-image" id=${savedCovers[i].id} src="${savedCovers[i].cover}" alt="No Image Available">
-      <h2 class="cover-title">${savedCovers[i].title}</h2>
-      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-    </section>`
+       <img class="cover-image" id="${savedCovers[i].id}" src="${savedCovers[i].cover}" alt="No Image Available">
+       <h2 class="cover-title">"${savedCovers[i].title}"</h2>
+       <h3 class="tagline">A tale of <span class="tagline-1">"${savedCovers[i].tagline1}"</span> and <span class="tagline-2">"${savedCovers[i].tagline2}"</span></h3>
+     </section>`
   }
 }
 
+// Removes a cover when the user double clicks it
 function removeCover(event) {
-  var something = event.target.id;
+  var coverId = event.target.id;
   for (var i = 0; i < savedCovers.length; i++) {
-    if (`${savedCovers[i].id}` === something) {
+    if (`${savedCovers[i].id}` === coverId) {
       savedCovers.splice(i, 1);
     }
   }
