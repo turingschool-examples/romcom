@@ -1,6 +1,6 @@
 # RomCom: Paired Project
 
-## Overview
+## Overview:
 
 This was our first paired project as part of the Turing Front-End coding program.
 
@@ -14,13 +14,13 @@ The site allows the user to:
 * Display the collection of saved covers
 * Delete an individual saved cover upon double click
 
-### Generate a Random Cover
+## Generate a Random Cover:
 
 The website will generate a random cover upon page-load and each unique refresh. If a user wants to generate a random cover they can also click the "Show New Random Cover" button.
 
-<iframe src="https://giphy.com/embed/tELUI1cEAHcGWGgojq" width="480" height="224" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/romance-novel-cover-tELUI1cEAHcGWGgojq"></a></p>
+![Gif of generating random covers](https://media.giphy.com/media/tELUI1cEAHcGWGgojq/giphy.gif)
 
-### Generate a Custom Novel Cover
+## Generate a Custom Novel Cover:
 
 A user can also design their own novel covers. To do this a user will:
 
@@ -31,28 +31,28 @@ A user can also design their own novel covers. To do this a user will:
 
 In addition to generating the user's custom cover, this form will also save each constituent piece in their respective arrays. This allows for future clicks of "Show New Random Cover" to display their suggestions.
 
-<iframe src="https://giphy.com/embed/n7IPIyoyJcoyv2SnfS" width="480" height="230" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/romance-novel-cover-n7IPIyoyJcoyv2SnfS"></a></p>
+![Gif of making custom novel cover](https://media.giphy.com/media/n7IPIyoyJcoyv2SnfS/giphy.gif)
 
-### Save Novel Cover
+## Save Novel Cover:
 
 A user can save either a custom or randomly generated cover by clicking the "Save Cover" button. This will save the cover currently displayed, and allow them to see their favorites later by clicking the "View Saved Covers" button.
 
 If a user wishes to remove a saved cover, they can do so by double clicking the cover that has fallen out of favor.
 
-<iframe src="https://giphy.com/embed/3cQSnQARDSxpyUzR6U" width="480" height="224" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/romance-novel-cover-3cQSnQARDSxpyUzR6U"></a></p>
+![Gif of saving novel cover](https://media.giphy.com/media/3cQSnQARDSxpyUzR6U/giphy.gif)
 
-### Future Features
+## Future Features:
 
 * Shows larger cover model on click of a saved cover
 * The ability for changes to persist upon page reload
 * Allows user to rearrange saved covers as they wish
 
-### Contributors
+## Contributors:
 
 Alex Fritz - https://github.com/alexmfritz
 Daniel O'Connell - https://github.com/Daniel-OC
 
-### Links
+## Links:
 
 Deploy link: https://daniel-oc.github.io/romcom/
 
