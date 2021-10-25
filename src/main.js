@@ -5,16 +5,20 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var coverTitle = document.querySelector(".cover-title");
 var coverImage = document.querySelector(".cover-image");
+
 var randomButton = document.querySelector(".random-cover-button");
 var homeButton = document.querySelector(".home-button");
 var makeYourOwnCoverButton = document.querySelector(".make-new-button");
 var viewSavedCoverButton = document.querySelector(".view-saved-cover");
+
 var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
 var savedView = document.querySelector(".saved-view")
+
 var saveCoverButton = document.querySelector(".save-cover-button");
 var savedCoversSection = document.querySelector(".saved-covers-section");
 var viewSavedCoversButton = document.querySelector(".view-saved-button");
+
 var formMakeMyBookButton = document.querySelector(".create-new-book-button");
 var formUserCoverInput = document.querySelector(".user-cover");
 var formUserTitleInput = document.querySelector(".user-title");
@@ -58,6 +62,67 @@ function saveHomeCover() {
   }
 }
 
+function saveCover(cover, title, descriptor1, descriptor2) {
+  for (i = 0; i < savedCovers.length; i++) {
+    if (currentCover === savedCovers[i]) {
+      return;
+    }
+  }
+  savedCovers.push(currentCover);
+}
+  
+  /*savedCovers.push(new Cover(cover, title, descriptor1, descriptor2));
+  displaySavedCovers();
+}
+*/
+function displaySavedCovers() {
+  var coverHTML = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+    coverHTML +=
+    `<section class="saved-covers-section">
+    <section class="mini-cover" data-id=${savedCovers[i].id}>
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    </section>
+    </section>`
+  }
+  savedCoversSection.innerHTML = coverHTML;
+}
+
+function makeCustomBook(event) {
+  event.preventDefault();
+  var userCover = formUserCoverInput.value;
+  var userTitle = formUserTitleInput.value;
+  var userDescriptor1 = formUserDescriptor1Input.value;
+  var userDescriptor2 = formUserDescriptor2Input.value;
+  pushCover(userCover, userTitle, userDescriptor1, userDescriptor2);
+  displayCover(userCover, userTitle, userDescriptor1, userDescriptor2);
+  clearForm();
+  makeAHome();
+  currentCover = new Cover(userCover, userTitle, userDescriptor1, userDescriptor2);
+}
+
+function pushCover(cover, title, descriptor1, descriptor2) {
+  covers.push(cover);
+  titles.push(title);
+  descriptors.push(descriptor1);
+  descriptors.push(descriptor2);
+}
+
+function displayCover(cover, title, descriptor1, descriptor2) {
+    coverImage.src = cover;
+    coverTitle.innerText = title;
+    tagline1.innerText = descriptor1;
+    tagline2.innerText = descriptor2;
+  }
+
+function clearForm() {
+    formUserCoverInput.value = "";
+    formUserTitleInput.value = "";
+    formUserDescriptor1Input.value = "";
+    formUserDescriptor2Input.value = "";
+  }
 
 function makeAHome() {
   homeView.classList.remove("hidden");
