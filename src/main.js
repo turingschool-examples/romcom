@@ -15,6 +15,7 @@ var formDescriptor2 = document.querySelector("#descriptor2");
 
 //Saved Covers Page
 var savedCoversPage = document.querySelector(".saved-view");
+var savedCoversSection = document.querySelector(".saved-covers-section");
 
 //buttons
 var randomCoverButton = document.querySelector(".random-cover-button");
@@ -63,11 +64,11 @@ function makeRandomCover() {
 }
 
 function hideVariable(variable){
-  variable.classList.add("hidden")
+  variable.classList.add("hidden");
 }
 
 function showVariable(variable){
-  variable.classList.remove("hidden")
+  variable.classList.remove("hidden");
 }
 
 function showForm(){
@@ -92,10 +93,18 @@ function showSavedCovers() {
   hideVariable(randomCoverButton);
   hideVariable(saveCoverButton);
   showVariable(homeButton);
+
+  savedCoversSection.innerHTML = "";
+  savedCoversSection =
+    ` <img class="cover-image" src="./assets/prairie.jpg">
+    <h2 class="cover-title">Windswept Hearts</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png"> `
 }
 
 function createCustomCover() {
-  event.preventDefault()
+  event.preventDefault();
 
   var coverForm = formCover.value;
   var titleForm = formTitle.value;
@@ -118,13 +127,7 @@ function createCustomCover() {
 }
 
 function saveCovers() {
-  event.preventDefault();
-  savedCovers.push(currentCover);
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers.includes(currentCovers)) {
-      return savedCovers;
-    } else {
+    if (!savedCovers.includes(currentCover)) {
       savedCovers.push(currentCover);
     }
-  }
-}
+ }
