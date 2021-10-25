@@ -37,7 +37,7 @@ window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCover);
 makeCoverButton.addEventListener("click", showForm);
 homeButton.addEventListener("click", loadHome);
-viewSavedCoversButton.addEventListener("click", showSavedCovers);
+viewSavedCoversButton.addEventListener("click", savedCoversButton);
 makeBookButton.addEventListener("click", createCustomCover);
 saveCoverButton.addEventListener("click", saveCovers);
 
@@ -93,19 +93,10 @@ function showSavedCovers() {
   hideVariable(randomCoverButton);
   hideVariable(saveCoverButton);
   showVariable(homeButton);
-
-  savedCoversSection.innerHTML = "";
-  savedCoversSection =
-    ` <img class="cover-image" src="./assets/prairie.jpg">
-    <h2 class="cover-title">Windswept Hearts</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-    <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png"> `
 }
 
 function createCustomCover() {
   event.preventDefault();
-
   var coverForm = formCover.value;
   var titleForm = formTitle.value;
   var descriptor1Form = formDescriptor1.value;
@@ -130,4 +121,10 @@ function saveCovers() {
     if (!savedCovers.includes(currentCover)) {
       savedCovers.push(currentCover);
     }
+ }
+
+
+ function savedCoversButton() {
+   showSavedCovers();
+
  }
