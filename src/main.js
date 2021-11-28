@@ -62,32 +62,40 @@ function displayCover() {
   taglineTwo.innerText = currentCover.tagline2;
 };
 
+function show(element) {
+	element.classList.remove('hidden')
+}
+
+function hide(element) {
+	element.classList.add('hidden')
+}
+
 function toggleFormView() {
-  formView.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  saveCoverButton.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
+	show(formView)
+	show(homeButton)
+	hide(homeView)
+	hide(savedView)
+	hide(saveCoverButton)
+	hide(randomCoverButton)
 };
 
 function toggleSavedView() {
-  homeView.classList.add('hidden');
-  savedView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
+	show(savedView)
+	show(homeButton)
+	hide(homeView)
+	hide(formView)
+	hide(randomCoverButton)
+	hide(saveCoverButton)
   displaySavedCovers();
 };
 
 function toggleHomeView() {
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  randomCoverButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-  homeButton.classList.add('hidden');
+	show(homeView)
+	show(randomCoverButton)
+	show(saveCoverButton)
+	hide(formView)
+	hide(savedView)
+	hide(homeButton)
 };
 
 function storeUserSubmission() {
