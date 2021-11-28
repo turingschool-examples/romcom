@@ -123,14 +123,15 @@ function displaySavedCovers() {
 	});
 }
 
-function deleteSavedCover() {
-  for(var i = 0; i < savedCovers.length; i++) {
-    if (event.target.id === `${savedCovers[i].id}`) {
-      savedCovers.splice(i, 1);
-    }
-  };
-  displaySavedCovers();
-};
+function deleteSavedCover(event) {
+	savedCovers.forEach((item, i) => {
+		if (event.target.id === `${savedCovers[i].id}`) {
+			savedCovers.splice(i,1);
+		}
+		displaySavedCovers();
+	})
+}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
