@@ -11,7 +11,6 @@ var taglineTwo = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
-var mainCover = document.querySelector('.main-cover');
 var savedCoversSection = document.querySelector('.saved-covers-section');
 var userForm = document.querySelector('form');
 var userCover = document.querySelector('.user-cover');
@@ -38,11 +37,12 @@ savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
-  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-  displayCover(currentCover);
-};
+	currentCover = new Cover(covers[getRandomIndex(covers)], 
+	titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+	displayCover(currentCover);
+}
 
-function newUserCover() {
+function newUserCover(event) {
   event.preventDefault();
   if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
     alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
@@ -53,14 +53,14 @@ function newUserCover() {
     toggleHomeView();
     userForm.reset();
   }
-};
+}
 
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
-};
+}
 
 function show(element) {
 	element.classList.remove('hidden')
@@ -77,7 +77,7 @@ function toggleFormView() {
 	hide(savedView)
 	hide(saveCoverButton)
 	hide(randomCoverButton)
-};
+}
 
 function toggleSavedView() {
 	show(savedView)
@@ -87,7 +87,7 @@ function toggleSavedView() {
 	hide(randomCoverButton)
 	hide(saveCoverButton)
   displaySavedCovers();
-};
+}
 
 function toggleHomeView() {
 	show(homeView)
@@ -96,20 +96,20 @@ function toggleHomeView() {
 	hide(formView)
 	hide(savedView)
 	hide(homeButton)
-};
+}
 
 function storeUserSubmission() {
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(userTaglineOne.value);
   descriptors.push(userTaglineTwo.value);
-};
+}
 
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
-};
+}
 
 function displaySavedCovers() {
 	savedCoversSection.innerHTML = ``;
@@ -126,13 +126,13 @@ function displaySavedCovers() {
 function deleteSavedCover(event) {
 	savedCovers.forEach((item, i) => {
 		if (event.target.id === `${savedCovers[i].id}`) {
-			savedCovers.splice(i,1);
+			savedCovers.splice(i, 1);
 		}
 		displaySavedCovers();
-	})
+  })
 }
 
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-};
+}
