@@ -16,7 +16,7 @@
 *Hot Tip: Create a new branch using `git checkout -b` to categorize additions to the code base.*
 
 #### Wanna see it in action? click [here](https://stephanie-roe.github.io/romcom/)
-![](file:///Users/steph/turing/mod1/projects/romcom/assets/prairie.jpg)
+![image](https://user-images.githubusercontent.com/96928474/153109623-84fe2cb8-27eb-40f3-868a-b5611bf36ea1.png)
 
 ### Application Forecast
 -Blurb about what we'd like to add (features, images, etc.)
