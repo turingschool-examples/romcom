@@ -4,7 +4,7 @@
 -JS
 -DOM, CSS, HTML
 ### Collaborators
-🐧 **Jacob Lavarine** *(he/him)* @jlavarine | 🍒 **Steph Roe** *(she/her)* @stephanie-roe
+🐧 **Jacob Lavarine** *(he/him)* @jlavarine **//** 🍒 **Steph Roe** *(she/her)* @stephanie-roe
 
 ### Installation Steps
 1. Fork this repo to create your own copy.
@@ -20,4 +20,3 @@
 
 ### Application Forecast
 -Blurb about what we'd like to add (features, images, etc.)
-  
