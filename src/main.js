@@ -16,6 +16,7 @@ var currentRomCom;
 
 // Add your event listeners here 👇
 
+randomCover.onclick = function() {randomRomCom()};
 
 // Create your event handlers and other functions here 👇
 
@@ -37,7 +38,7 @@ function randomRomCom() {
 //  if (firstDescriptor === secondDescriptor) {
 //    return secondDescriptor.innerText = getRandomIndex(descriptors);
 //  };
-  storeCover();
+  // storeCover();
 
 };
 
