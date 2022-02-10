@@ -22,8 +22,13 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 document.querySelector('.random-cover-button').onclick = function() {randomBook()};
-document.querySelector('.view-saved-button').onclick = function() {savedCovers()};
-document.querySelector('.make-new-button').onclick = function() {makeNewCover()};
+document.querySelector('.view-saved-button').onclick = function() {
+  hideEverything();
+  savedCovers()
+  };
+document.querySelector('.make-new-button').onclick = function() {
+  hideEverything();
+  makeNewCover()};
 
 
 
@@ -36,25 +41,19 @@ function randomBook() {
 }
 
 function makeNewCover() {
-
-
  document.querySelector('.form-view').classList.remove('hidden');
  document.querySelector('.home-button').classList.remove('hidden');
-
-  // elements = document.getElementsByClassName("hidden");
-  // console.log(elements);
-  // elements[0].classList.remove('hidden');
-  // elements[1].classList.remove('hidden');
 }
 
 function hideEverything () {
   document.querySelector('.main-cover').hidden = true;
   document.querySelector('.random-cover-button').hidden = true;
   document.querySelector('.save-cover-button').hidden = true;
+  document.querySelector('.form-view').classList.add('hidden');
 }
 
   function savedCovers(){
-
+  document.querySelector('.home-button').classList.remove('hidden');
   }
 
 
