@@ -5,10 +5,15 @@ document.querySelector('.tagline-1').innerText = descriptors[getRandomIndex(desc
 document.querySelector('.tagline-2').innerText = descriptors[getRandomIndex(descriptors)];
 document.querySelector('.cover-image').src = covers[getRandomIndex(covers)];
 
-document.querySelector('.random-cover-button').addEventListener("click", function(){
-  console.log(new Cover (currentCover, currentTitle, currentTagLine1, currentTagLine2))
-})
+document.querySelector('.random-cover-button').onclick = function() {randomBook()};
 
+function randomBook() {
+  document.querySelector('.cover-title').innerText = titles[getRandomIndex(titles)];
+  document.querySelector('.tagline-1').innerText = descriptors[getRandomIndex(descriptors)];
+  document.querySelector('.tagline-2').innerText = descriptors[getRandomIndex(descriptors)];
+  document.querySelector('.cover-image').src = covers[getRandomIndex(covers)];
+
+}
 
 
 // We've provided a few variables below
