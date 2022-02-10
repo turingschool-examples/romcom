@@ -33,13 +33,13 @@ function getRandomTitle(titles) {
      return titles[Math.floor(Math.random() * titles.length)];
 }
 
-function getRandomCover(covers) {
-     return covers[Math.floor(Math.random() * covers.length)];
-}
-
-function getRandomDescriptor(descriptors) {
-     return descriptors[Math.floor(Math.random() * descriptors.length)];
-}
+// function getRandomCover(covers) {
+//      return covers[Math.floor(Math.random() * covers.length)];
+// }
+//
+// function getRandomDescriptor(descriptors) {
+//      return descriptors[Math.floor(Math.random() * descriptors.length)];
+//}
 //SHANE- I commented out the 2nd line below because it is already displaying
 //in the proper place. reassigning location not necessary
 //idk about the first but i dont think we need it anymore
@@ -82,10 +82,10 @@ var currentCover;
 //   return Math.floor(Math.random() * array.length);
 // }
 
-function getRandomIndex(titles) {
-     return titles[Math.floor(Math.random() * titles.length)];
-}
-document.body
+// function getRandomIndex(titles) {
+//      return titles[Math.floor(Math.random() * titles.length)];
+// }
+// document.body
 //SHANE GENERAL NOTES
 
 //I NOTICED IN THE ELEMENTS TAB OF THE CONSOLE WAY AT THE BOTTOM
