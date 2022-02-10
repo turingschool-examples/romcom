@@ -12,11 +12,11 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover = covers[getRandomIndex(covers)]
-var currentTitle = titles[getRandomIndex(titles)];
-var currentTagLine1 =descriptors[getRandomIndex(descriptors)];
-var currentTagLine2 = descriptors[getRandomIndex(descriptors)];
-
+// var currentCover = covers[getRandomIndex(covers)]
+// var currentTitle = titles[getRandomIndex(titles)];
+// var currentTagLine1 =descriptors[getRandomIndex(descriptors)];
+// var currentTagLine2 = descriptors[getRandomIndex(descriptors)];
+//
 
 
 
@@ -37,20 +37,25 @@ function randomBook() {
 }
 
 function makeNewCover() {
+
+
+ document.querySelector('.form-view').classList.remove('hidden');
+ document.querySelector('.home-button').classList.remove('hidden');
+
+  // elements = document.getElementsByClassName("hidden");
+  // console.log(elements);
+  // elements[0].classList.remove('hidden');
+  // elements[1].classList.remove('hidden');
+}
+
+function hideEverything () {
   document.querySelector('.main-cover').hidden = true;
   document.querySelector('.random-cover-button').hidden = true;
   document.querySelector('.save-cover-button').hidden = true;
-
-  elements = document.getElementsByClassName("hidden");
-  console.log(elements);
-  elements[0].classList.remove('hidden');
-  elements[1].classList.remove('hidden');
 }
 
   function savedCovers(){
-    elements = document.getElementsByClassName("hidden");
-    console.log(elements);
-    elements[1].classList.remove('hidden');
+
   }
 
 
