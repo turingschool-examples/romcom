@@ -19,7 +19,7 @@ var savedCovers = [
 // Add your event listeners here 👇
 
 newRandomCoverButton.addEventListener('click', generateRandomCover);
-
+window.addEventListener('load', generateRandomCover);
 // Create your event handlers and other functions here 👇
 
 
@@ -34,8 +34,3 @@ function generateRandomCover() {
   taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 }
-
-coverImage.src = covers[getRandomIndex(covers)];
-mainTitle.innerText = titles[getRandomIndex(titles)];
-taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
-taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];

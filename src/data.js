@@ -1,6 +1,6 @@
 var covers = [
   './assets/bluebrocade.jpg',
-  './assets/dance.jpg', 
+  './assets/dance.jpg',
   './assets/embrace.png',
   './assets/fire.png',
   './assets/frock.png',
@@ -27,6 +27,7 @@ var covers = [
   './assets/wildwest.jpg',
   './assets/windswept.jpg',
 ];
+
 
 var titles = [
   "Passionate Moonlight",
