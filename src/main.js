@@ -7,6 +7,8 @@ var mainTitle = document.querySelector("h2.cover-title");
 var tagline = document.querySelector("h2.tagline");
 var taglineDescriptor1 = document.querySelector("span.tagline-1");
 var taglineDescriptor2 = document.querySelector("span.tagline-2");
+var newRandomCoverButton = document.querySelector(".random-cover-button");
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -16,6 +18,7 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 
+newRandomCoverButton.addEventListener('click', generateRandomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -23,6 +26,13 @@ var savedCovers = [
 // We've provided one function to get you started. This function pulls just the index number.
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function generateRandomCover() {
+  coverImage.src = covers[getRandomIndex(covers)];
+  mainTitle.innerText = titles[getRandomIndex(titles)];
+  taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+  taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 coverImage.src = covers[getRandomIndex(covers)];
