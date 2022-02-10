@@ -27,6 +27,56 @@ function displayNewCover() {
   secondDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
+//Iteration 2: 
+
+
+function toggleHome() {
+  document.querySelector('.view-saved-button').style.visibility = 'hidden';
+}
+
+
+//Test in console. Possibly different targeter? 
+function toggleMakeOwn() {
+  document.querySelector('.random-cover-button').style.visibility = 'hidden';
+  document.querySelector('.save-cover-button').style.visibility = 'hidden';
+  document.querySelector('.home-button').style.visibility = 'visible';
+  document.querySelector('.view home-view').style.visibility = 'hidden'
+}
+
+
+
+var makeNewButton = document.querySelector('.make-new-button');
+makeNewButton.addEventListener('click', toggleMakeOwn);
+var homeButton = document.querySelector('.random-cover-button');
+homeButton.addEventListener('click', toggleHome);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// we need to be able to click buttons. the buttons need to toggle elements between hidden not hidden
+// {element}.hidden === true/false use in conditional to link pages hidden and shown features. 
+// We are just going to make it work. 
+// our first step will be accessing the home 
+
+
+// Hidden Syntax: 
+// document.getElementById("okButton")
+//         .addEventListener("click", function() {
+//   document.getElementById("welcome").hidden = true;
+//   document.getElementById("awesome").hidden = false;
+// }, false);
 
 
 
