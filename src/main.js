@@ -14,6 +14,29 @@ var currentCover;
 
 
 // We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length);
+// }
+
+class RomCom {
+  constructor() {
+
+  }
+}
+
+var currentTitle = document.querySelector('.cover-title');
+currentTitle.innerText = getRandomBookInfo(titles);
+
+var currentImageSrc = document.querySelector('.cover-image').src = getRandomBookInfo(covers);
+currentImageSrc.innerText = getRandomBookInfo(covers);
+
+var currentTagLine1 = document.querySelector('.tagline-1');
+var currentTagLine2 = document.querySelector('.tagline-2');
+currentTagLine1.innerText = getRandomBookInfo(descriptors);
+currentTagLine2.innerText = getRandomBookInfo(descriptors);
+
+
+
+function getRandomBookInfo(bookInfo) {
+  return bookInfo[Math.floor(Math.random() * bookInfo.length)];
 }
