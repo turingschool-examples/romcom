@@ -1,4 +1,3 @@
-
 // Create variables targetting the relevant DOM elements here 👇
 document.querySelector('.cover-title').innerText = titles[getRandomIndex(titles)];
 document.querySelector('.tagline-1').innerText = descriptors[getRandomIndex(descriptors)];
