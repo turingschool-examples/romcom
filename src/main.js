@@ -10,14 +10,22 @@ var tagLine1 = document.querySelector(".tagline-1");
 var tagLine2 = document.querySelector(".tagline-2");
 var randomCover = document.querySelector(".random-cover-button")
 var makeYourOwn = document.querySelector(".make-new-button")
+var formView = document.querySelector(".view form-view hidden")
+var homeView = document.querySelector(".view home-view")
 // Add your event listeners here 👇
 
 randomCover.addEventListener('click', showNewRandomCover)
-makeYourOwn.addEventListener('click', )
+makeYourOwn.addEventListener('click', showForm)
+
+
 // Create your event handlers and other functions here 👇
+function hideCover() {
+
+}
 
 function showForm() {
-  
+  // formView.classList.toggle("hidden")
+  homeView.classList.toggle("hidden")
 }
 function showNewRandomCover() {
 coverTitle.innerText = titles[getRandomIndex(titles)]
