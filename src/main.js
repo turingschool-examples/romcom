@@ -12,10 +12,13 @@ var secondDescriptor = document.querySelector(".tagline-2")
 
 // We've provided a few variables below
 var savedRomCom = [];
-var currentRomCom;
+var currentRomCom = new Cover(coverImage.src, coverTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText)
 
 // Add your event listeners here 👇
 
+randomCover.addEventListener('click', randomRomCom);
+
+window.addEventListener('load', randomRomCom);
 
 // Create your event handlers and other functions here 👇
 
@@ -25,9 +28,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function storeCover() {
-  currentRomCom = new Cover(coverImage.src, coverTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText)
-};
+
 
 function randomRomCom() {
   coverImage.src = covers[getRandomIndex(covers)];
@@ -37,8 +38,5 @@ function randomRomCom() {
 //  if (firstDescriptor === secondDescriptor) {
 //    return secondDescriptor.innerText = getRandomIndex(descriptors);
 //  };
-  storeCover();
-
+  // storeCover();
 };
-
-randomRomCom();
