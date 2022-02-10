@@ -10,7 +10,7 @@ var randomButton = document.querySelector('.random-cover-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-// var currentCover;
+// var currentCover = new Cover()
 // Add your event listeners here 👇
 randomButton.addEventListener("click", displayNewCover);
 window.addEventListener("load", displayNewCover);
@@ -37,11 +37,14 @@ function toggleHome() {
 
 //Test in console. Possibly different targeter? 
 function toggleMakeOwn() {
-  document.querySelector('.random-cover-button').style.visibility = 'hidden';
-  document.querySelector('.save-cover-button').style.visibility = 'hidden';
-  document.querySelector('.home-button').style.visibility = 'visible';
-  document.querySelector('.view home-view').style.visibility = 'hidden'
+  document.querySelector('.random-cover-button').classList.add('hidden');
+  document.querySelector('.save-cover-button').classList.add('hidden');
+  document.querySelector('.home-button').classList.remove('hidden');
+  document.querySelector('.home-view').classList.add('hidden');
+  document.querySelector('.form-view').classList.remove('hidden');
 }
+
+
 
 
 
