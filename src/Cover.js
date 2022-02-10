@@ -7,3 +7,5 @@ class Cover {
     this.tagline2 = descriptor2;
   }
 }
+// maybe Date (a class) , maybe now (a new method is representing each time a
+//user clicks the refersh button)
