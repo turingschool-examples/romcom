@@ -11,8 +11,8 @@ var homeSection = document.querySelector('.view home-view')
 var makeRandomCoverButton = document.querySelector('.random-cover-button');
 var makeOwnCoverButton = document.querySelector('.make-new-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
-var viewSavedCoverButton = document.querySelector('.view-save-button')
-var homeButton = document.querySelector('.home-button hidden')
+var viewSavedCoverButton = document.querySelector('.view-saved-button')
+var homeButton = document.querySelector('.home-button')
 
 // Form section
 var formSection = document.querySelector('.view form-view hidden')
@@ -34,9 +34,20 @@ var savedCovers = [
 window.addEventListener('load', newCover);
 
 makeRandomCoverButton.addEventListener('click', newCover);
-makeOwnCoverButton.addEventListener('click')
+makeOwnCoverButton.addEventListener('click', function(){
+  document.querySelector('.form-view').classList.remove('hidden')
+  document.querySelector('.home-view').classList.add('hidden')
+  document.querySelector('.random-cover-button').classList.add('hidden')
+  document.querySelector('.save-cover-button').classList.add('hidden')
+  document.querySelector('.home-button').classList.remove('hidden')
+})
+
 saveCoverButton.addEventListener('click')
-viewSavedCoverButton.addEventListener('click')
+
+viewSavedCoverButton.addEventListener('click', function(){
+  document.querySelector('.saved-view').classList.remove('hidden')
+  document.querySelector('.home-view').classList.add('hidden')
+})
 homeButton.addEventListener('click')
 
 
