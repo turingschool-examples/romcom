@@ -5,19 +5,11 @@ var firstDescriptor = document.querySelector('.tagline-1');
 var secondDescriptor = document.querySelector('.tagline-2');
 var randomButton = document.querySelector('.random-cover-button');
 
-
-
 // We've provided a few variables below
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", 
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
   "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover; 
-
-
-function() {
-  
-}
 
 // Add your event listeners here 👇
 randomButton.addEventListener("click", displayNewCover);
@@ -28,7 +20,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function displayNewCover() {  
+var currentCover;
+function displayNewCover() {
   bookCover.src = covers[getRandomIndex(covers)];
   bookTitle.innerText = titles[getRandomIndex(titles)];
   firstDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
@@ -36,7 +29,7 @@ function displayNewCover() {
   currentCover = new Cover(bookCover.src, bookTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText);
 }
 
-//Iteration 2: 
+//Iteration 2:
 
 
 //Form-View Functionality:
@@ -89,6 +82,19 @@ function toggleHomeButton() {
 // var savedCoversButton = document.querySelector('.save-cover-button');
 // savedCoversButton.addEventListener('click', )
 
+//Iteration 4:
+//We need to target the saved-covers-section
+//We need to push the current cover to the savedCovers array when the Save Cover
+//button is clicked
+//We'll need a for loop that loops through each cover in our savedCovers array
+
+// var savedCoversView = document.querySelector('.saved-covers-section');
+
+//Make ANOTHER loop(?) (try to do this in one loop) to append [i] to the html element
+//look for append(like)
+//We need to find an attribute that will allow us to add ___ between the tags
+
+
 
 
 
@@ -102,26 +108,26 @@ function toggleHomeButton() {
 // document.querySelector('.form-view').classList.remove('hidden');
 
 // we need to be able to click buttons. the buttons need to toggle elements between hidden not hidden
-// {element}.hidden === true/false use in conditional to link pages hidden and shown features. 
-// We are just going to make it work. 
-// our first step will be accessing the home 
+// {element}.hidden === true/false use in conditional to link pages hidden and shown features.
+// We are just going to make it work.
+// our first step will be accessing the home
 
 // var homeButton = document.querySelector('.random-cover-button');
 // homeButton.addEventListener('click', toggleHome);
 
-// Hidden Syntax: 
+// Hidden Syntax:
 // document.getElementById("okButton")
 //         .addEventListener("click", function() {
   //   document.getElementById("welcome").hidden = true;
   //   document.getElementById("awesome").hidden = false;
   // }, false);
-  
+
   // function toggleHome() {
   //   document.querySelector('.view-saved-button').style.visibility = 'hidden';
   // }
-  
-  
-  
+
+
+
 
 
 
