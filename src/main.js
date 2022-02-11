@@ -18,7 +18,10 @@ var homeButton = document.querySelector(".home-button")
 var savedView = document.querySelector(".view-saved-button")
 var savedSection = document.querySelector(".saved-view")
 var makeBookButton = document.querySelector(".create-new-book-button")
-
+var customCover = document.querySelector("#cover")
+var customTitle = document.querySelector("#title")
+var customTagLine1 = document.querySelector("#descriptor1")
+var customTagLine2 = document.querySelector("#descriptor2")
 
 // Add your event listeners here 👇
 
@@ -30,13 +33,20 @@ makeBookButton.addEventListener("click", makeBook)
 
 // Create your event handlers and other functions here 👇
 function makeBook(){
-  coverTitle.innerText =
-  coverImage.src =
-  tagLine1.innerText =
-  tagLine2.innerText =
+  coverTitle.innerText = customTitle.value;
+  coverImage.src = customCover.value;
+  tagLine1.innerText = customTagLine1.value;
+  tagLine2.innerText = customTagLine2.value;
 
+  storeBook()
 }
 
+function storeBook(){
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
+  titles.push();
+  covers.push();
+  descriptors.push();
+}
 
 function viewSaved(){
   homeView.classList.toggle("hidden")
