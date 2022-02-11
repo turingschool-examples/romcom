@@ -9,7 +9,7 @@ var coverTitle = document.querySelector(".cover-title");
 var tagLine1 = document.querySelector(".tagline-1");
 var tagLine2 = document.querySelector(".tagline-2");
 var randomCover = document.querySelector(".random-cover-button")
-var makeYourOwn = document.querySelector(".make-new-button")
+var makeYourOwnButton = document.querySelector(".make-new-button")
 var formView = document.querySelector(".form-view")
 var homeView = document.querySelector(".main-cover")
 var showRandomButton = document.querySelector('#random-cover-button')
@@ -17,15 +17,27 @@ var saveButton = document.querySelector(".save-cover-button")
 var homeButton = document.querySelector(".home-button")
 var savedView = document.querySelector(".view-saved-button")
 var savedSection = document.querySelector(".saved-view")
+var makeBookButton = document.querySelector(".create-new-book-button")
+
 
 // Add your event listeners here 👇
 
 randomCover.addEventListener("click", showNewRandomCover)
-makeYourOwn.addEventListener("click", showForm)
+makeYourOwnButton.addEventListener("click", showForm)
 savedView.addEventListener("click", viewSaved)
 homeButton.addEventListener("click", viewHome)
+makeBookButton.addEventListener("click", makeBook)
 
 // Create your event handlers and other functions here 👇
+function makeBook(){
+  coverTitle.innerText =
+  coverImage.src =
+  tagLine1.innerText =
+  tagLine2.innerText =
+
+}
+
+
 function viewSaved(){
   homeView.classList.toggle("hidden")
   savedSection.classList.toggle("hidden")
