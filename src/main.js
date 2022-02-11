@@ -5,7 +5,6 @@ var title = document.querySelector('h2');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var image = document.querySelector('.cover-image');
-var homeSection = document.querySelector('.view home-view')
 
 // Buttons
 var makeRandomCoverButton = document.querySelector('.random-cover-button');
@@ -14,15 +13,6 @@ var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedCoverButton = document.querySelector('.view-saved-button')
 var homeButton = document.querySelector('.home-button')
 
-// Form section
-var formSection = document.querySelector('.view form-view hidden')
-
-
-// Saved view section
-var savedSection = document.querySelector('.view saved-view hidden')
-
-
-// add varible to define body
 var currentCover;
 
 var savedCovers = [
@@ -34,26 +24,41 @@ var savedCovers = [
 window.addEventListener('load', newCover);
 
 makeRandomCoverButton.addEventListener('click', newCover);
-makeOwnCoverButton.addEventListener('click', function(){
-  document.querySelector('.form-view').classList.remove('hidden')
-  document.querySelector('.home-view').classList.add('hidden')
-  document.querySelector('.random-cover-button').classList.add('hidden')
-  document.querySelector('.save-cover-button').classList.add('hidden')
-  document.querySelector('.home-button').classList.remove('hidden')
-})
 
-saveCoverButton.addEventListener('click')
+makeOwnCoverButton.addEventListener('click', function(){
+  document.querySelector('.form-view').classList.remove('hidden');
+  document.querySelector('.home-view').classList.add('hidden');
+  document.querySelector('.saved-view').classList.add('hidden');
+  document.querySelector('.random-cover-button').classList.add('hidden');
+  document.querySelector('.save-cover-button').classList.add('hidden');
+  document.querySelector('.home-button').classList.remove('hidden');
+  document.querySelector('.view-saved-button').classList.remove('hidden');
+  document.querySelector('.make-new-button').classList.remove('hidden');
+});
 
 viewSavedCoverButton.addEventListener('click', function(){
-  document.querySelector('.saved-view').classList.remove('hidden')
-  document.querySelector('.home-view').classList.add('hidden')
-})
-homeButton.addEventListener('click')
+  document.querySelector('.saved-view').classList.remove('hidden');
+  document.querySelector('.home-view').classList.add('hidden');
+  document.querySelector('.form-view').classList.add('hidden');
+  document.querySelector('.random-cover-button').classList.add('hidden');
+  document.querySelector('.save-cover-button').classList.add('hidden');
+  document.querySelector('.home-button').classList.remove('hidden');
+  document.querySelector('.view-saved-button').classList.remove('hidden');
+  document.querySelector('.make-new-button').classList.remove('hidden');
+});
 
+homeButton.addEventListener('click', function(){
+  document.querySelector('.home-view').classList.remove('hidden');
+  document.querySelector('.form-view').classList.add('hidden');
+  document.querySelector('.saved-view').classList.add('hidden');
+  document.querySelector('.random-cover-button').classList.remove('hidden');
+  document.querySelector('.save-cover-button').classList.remove('hidden');
+  document.querySelector('.home-button').classList.add('hidden');
+  document.querySelector('.view-saved-button').classList.remove('hidden');
+  document.querySelector('.make-new-button').classList.remove('hidden');
+});
 
-// add addEventListeners for new buttons
-// add addEventListeners to hide specific buttons when other button are clicked
-// add addEventListener to change body
+saveCoverButton.addEventListener('click');
 
 // Create your event handlers and other functions here 👇
 
@@ -66,8 +71,5 @@ function newCover() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
   image.src = covers[getRandomIndex(covers)];
-  currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText)
+  currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
 }
-
-// create new funtions for buttons
-// creat funtion to reveal/hide HTML
