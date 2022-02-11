@@ -1,11 +1,28 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+// Cover section
 var title = document.querySelector('h2');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var image = document.querySelector('.cover-image');
-var button = document.querySelector('.random-cover-button');
+var homeSection = document.querySelector('.view home-view')
 
+// Buttons
+var makeRandomCoverButton = document.querySelector('.random-cover-button');
+var makeOwnCoverButton = document.querySelector('.make-new-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var viewSavedCoverButton = document.querySelector('.view-save-button')
+var homeButton = document.querySelector('.home-button hidden')
+
+// Form section
+var formSection = document.querySelector('.view form-view hidden')
+
+
+// Saved view section
+var savedSection = document.querySelector('.view saved-view hidden')
+
+
+// add varible to define body
 var currentCover;
 
 var savedCovers = [
@@ -14,12 +31,21 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 
-button.addEventListener('click', newCover);
 window.addEventListener('load', newCover);
+
+makeRandomCoverButton.addEventListener('click', newCover);
+makeOwnCoverButton.addEventListener('click')
+saveCoverButton.addEventListener('click')
+viewSavedCoverButton.addEventListener('click')
+homeButton.addEventListener('click')
+
+
+// add addEventListeners for new buttons
+// add addEventListeners to hide specific buttons when other button are clicked
+// add addEventListener to change body
 
 // Create your event handlers and other functions here 👇
 
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -29,4 +55,8 @@ function newCover() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
   image.src = covers[getRandomIndex(covers)];
+  currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText)
 }
+
+// create new funtions for buttons
+// creat funtion to reveal/hide HTML
