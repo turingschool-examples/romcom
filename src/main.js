@@ -29,7 +29,10 @@ randomCover.addEventListener("click", showNewRandomCover)
 makeYourOwnButton.addEventListener("click", showForm)
 savedView.addEventListener("click", viewSaved)
 homeButton.addEventListener("click", viewHome)
-makeBookButton.addEventListener("click", makeBook)
+makeBookButton.addEventListener("click", function(event) {
+  event.preventDefault()
+  makeBook()
+})
 
 // Create your event handlers and other functions here 👇
 function makeBook(){
@@ -38,15 +41,20 @@ function makeBook(){
   tagLine1.innerText = customTagLine1.value;
   tagLine2.innerText = customTagLine2.value;
 
-  storeBook()
+  storeBook();
+  showForm();
+  viewHome();
 }
 
 function storeBook(){
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
-  titles.push();
-  covers.push();
-  descriptors.push();
+  titles.push(customTitle.value);
+  covers.push(customCover.value);
+  descriptors.push(customTagLine1.value, customTagLine2.value);
+  console.log(titles)
 }
+console.log(titles)
+
 
 function viewSaved(){
   homeView.classList.toggle("hidden")
