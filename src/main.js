@@ -13,7 +13,7 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 randomButton.addEventListener("click", displayNewCover);
-// window.addEventListener("load", displayNewCover);
+window.addEventListener("load", displayNewCover);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -21,11 +21,11 @@ function getRandomIndex(array) {
 }
 
 var currentCover;
-function displayNewCover() {
-  bookCover.src = covers[getRandomIndex(covers)];
-  bookTitle.innerText = titles[getRandomIndex(titles)];
-  firstDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
-  secondDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
+function displayNewCover(placeHolder) {
+  bookCover.src = placeHolder.cover || covers[getRandomIndex(covers)];
+  bookTitle.innerText = placeHolder.title || titles[getRandomIndex(titles)];
+  firstDescriptor.innerText = placeHolder.tagline1 || descriptors[getRandomIndex(descriptors)];
+  secondDescriptor.innerText = placeHolder.tagline2 || descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(bookCover.src, bookTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText);
   }
 
@@ -83,23 +83,27 @@ function toggleHomeButton() {
 // Iteration 3:
 var makeNewBookButton = document.querySelector('.create-new-book-button');
 makeNewButton.type = "button";
-makeNewBookButton.addEventListener('click', makeNewBook);
+makeNewBookButton.addEventListener('click', function() {
+  event.preventDefault();
+  makeNewBook();
+  toggleHomeButton();
+  displayNewCover(currentCover);
+});
 
 function makeNewBook() {
   var coverInput = document.querySelector('.user-cover').value;
   var titleInput = document.querySelector('.user-title').value;
   var userDescriptor1 = document.querySelector('.user-desc1').value;
   var userDescriptor2 = document.querySelector('.user-desc2').value;
-  switchToHome(coverInput, titleInput, userDescriptor1, userDescriptor2);
+  addToArrays(coverInput, titleInput, userDescriptor1, userDescriptor2);
 }
 
-function switchToHome(coverInput, titleInput, userDescriptor1, userDescriptor2) {
+function addToArrays(coverInput, titleInput, userDescriptor1, userDescriptor2) {
   covers.unshift(coverInput);
   titles.unshift(titleInput);
   descriptors.unshift(userDescriptor1);
   descriptors.unshift(userDescriptor2);
-  currentCover = new Cover(covers[0], titles[0], descriptors[0], descriptors[1]);
-  // toggleHomeButton();
+  currentCover = new Cover(covers[0], titles[0], descriptors[1], descriptors[0]);
 }
 //Could we add in functionality here at the toggle home
 
