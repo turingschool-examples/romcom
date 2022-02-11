@@ -61,7 +61,7 @@ function toggleSavedCovers() {
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.home-view').classList.add('hidden');
   document.querySelector('.form-view').classList.add('hidden');
-  document.querySelector('.saved-covers-section').classList.add('mini-cover', 'main-cover')
+  document.querySelector('.saved-covers-section').classList.add('mini-cover', 'main-cover');
 }
 
 //Home Button Functionality
@@ -82,14 +82,14 @@ function toggleHomeButton() {
 
 // Iteration 3:
 var makeNewBookButton = document.querySelector('.create-new-book-button');
-makeNewButton.type = "button";
+
 makeNewBookButton.addEventListener('click', function() {
   event.preventDefault();
   makeNewBook();
   toggleHomeButton();
   displayNewCover(currentCover);
 });
-
+// 
 function makeNewBook() {
   var coverInput = document.querySelector('.user-cover').value;
   var titleInput = document.querySelector('.user-title').value;
@@ -121,20 +121,75 @@ function addToArrays(coverInput, titleInput, userDescriptor1, userDescriptor2) {
 
 
 //Iteration 4:
-//We need to target the saved-covers-section
 //We need to push the current cover to the savedCovers array when the Save Cover
 //button is clicked
-//We'll need a for loop that loops through each cover in our savedCovers array
+var savedCoversButton = document.querySelector('.save-cover-button');
+savedCoversButton.addEventListener('click', saveCurrentCover);
 
+function saveCurrentCover() {
+  for(var i = 0; i <= savedCovers.length; i++) {
+    if(savedCovers[i] !== currentCover) {
+      return savedCovers.unshift(currentCover)
+    } else {
+      return savedCovers
+    }   
+}
+}
+
+
+
+// function saveReview(newReview, reviews) {
+//   for (var i = 0; i <= reviews.length; i++) {
+//     if (reviews[i] !== newReview) {
+//       return reviews.push(newReview)
+//     } else {
+//       return reviews
+//     }
+//   }
+// }
+
+
+
+
+
+
+// For Loop for adding an array of objects to an html element:
+// for(var i = 0; i < someArray.length; i++) {
+//   element.innerHTML += `${someArray[i].key}`;
+//  };
+// <li> will create bullet points so we probably dont need this
+// <ul> <ul> creates an unordered list
+// <ol> <ol> creates an ordered list
 // var savedCoversView = document.querySelector('.saved-covers-section');
-
 //Make ANOTHER loop(?) (try to do this in one loop) to append [i] to the html element
 //look for append(like)
-//We need to find an attribute that will allow us to add ___ between the tags
 
 
-// var savedCoversButton = document.querySelector('.save-cover-button');
-// savedCoversButton.addEventListener('click', )
+
+
+// Pseudocode: 
+//We need to target the saved-covers-section
+//We'll need a for loop that loops through each cover in our savedCovers array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
