@@ -9,6 +9,7 @@ var taglineDescriptor1 = document.querySelector("span.tagline-1");
 var taglineDescriptor2 = document.querySelector("span.tagline-2");
 var newRandomCoverButton = document.querySelector(".random-cover-button");
 var makeYourOwnCoverButton = document.querySelector(".make-new-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
 var homeView = document.querySelector("section.view.home-view");
 var formView = document.querySelector("section.view.form-view.hidden");
 
@@ -28,7 +29,7 @@ makeYourOwnCoverButton.addEventListener('click', function(){
   hideHomeView();
   // showHomeButton();
   hideShowNewRandomCoverButton();
-  // hideSaveCoverButton();
+  hideSaveCoverButton();
 });
 
 
@@ -57,4 +58,8 @@ function hideHomeView(){
 
 function hideShowNewRandomCoverButton(){
   newRandomCoverButton.className = "random-cover-button hidden"
-}
+};
+
+function hideSaveCoverButton(){
+  saveCoverButton.className = "save-cover-button hidden"
+};
