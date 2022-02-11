@@ -7,7 +7,7 @@ var mainTitle = document.querySelector("h2.cover-title");
 var tagline = document.querySelector("h2.tagline");
 var taglineDescriptor1 = document.querySelector("span.tagline-1");
 var taglineDescriptor2 = document.querySelector("span.tagline-2");
-
+//BUTTONS
 var newRandomCoverButton = document.querySelector(".random-cover-button");
 var newRandomCoverButtonHidden = document.querySelector(".random-cover-button.hidden");
 var makeYourOwnCoverButton = document.querySelector(".make-new-button");
@@ -16,7 +16,7 @@ var saveCoverButtonHidden = document.querySelector(".save-cover-button.hidden");
 var homeButtonHidden = document.querySelector(".home-button.hidden");
 var homeButton = document.querySelector(".home-button");
 var viewSavedCoversButton = document.querySelector(".view-saved-button");
-
+//VIEWS
 var homeView = document.querySelector("section.view.home-view");
 var homeViewHidden = document.querySelector("section.view.home-view.hidden");
 var formViewHidden = document.querySelector("section.view.form-view.hidden");
@@ -58,9 +58,12 @@ viewSavedCoversButton.addEventListener('click', function(){
 homeButton.addEventListener('click', function(){
   showHomeView();
   hideHomeButton();
-  showShowNewRandomCoverButton(); // this function isn't firing?
-  showSaveCoverButton(); // this function isn't firing?
+  hideFormView();
+  hideSavedCoversView();
+  showShowNewRandomCoverButton();
+  showSaveCoverButton();
 })
+
 // Create your event handlers and other functions here 👇
 
 
@@ -105,6 +108,7 @@ function hideShowNewRandomCoverButton(){
 };
 
 function showShowNewRandomCoverButton(){
+  var newRandomCoverButtonHidden = document.querySelector(".random-cover-button.hidden");
   newRandomCoverButtonHidden.className = "random-cover-button"
 };
 
@@ -113,6 +117,7 @@ function hideSaveCoverButton(){
 };
 
 function showSaveCoverButton(){
+  var saveCoverButtonHidden = document.querySelector(".save-cover-button.hidden");
   saveCoverButtonHidden.className = "save-cover-button"
 };
 
