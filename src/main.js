@@ -4,10 +4,13 @@ var grabCover = document.querySelector('.cover-image')
 var grabTagline1 = document.querySelector('.tagline-1')
 var grabTagline2 = document.querySelector('.tagline-2')
 
-grabTitle.innerText = titles[getRandomIndex(titles)];
-grabCover.src = covers[getRandomIndex(covers)];
-grabTagline1.innerText = descriptors[getRandomIndex(descriptors)];
-grabTagline2.innerText = descriptors[getRandomIndex(descriptors)];
+
+
+
+// grabTitle.innerText = titles[getRandomIndex(titles)];
+// grabCover.src = covers[getRandomIndex(covers)];
+// grabTagline1.innerText = descriptors[getRandomIndex(descriptors)];
+// grabTagline2.innerText = descriptors[getRandomIndex(descriptors)];
 
 
 // We've provided a few variables below
@@ -32,11 +35,19 @@ document.querySelector('.home-button').onclick = function() {
 document.querySelector('.create-new-book-button').onclick = function() {
   makeMyBook();
 };
+document.querySelector('.save-cover-button').onclick = function() {
+  saveCurrentCover();
+};
 
 
 // Create your event handlers and other functions here 👇
+randomBook();
+
 function randomBook() {
    var newRandomBook = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+   console.log(newRandomBook, 'book that is random on home page');
+   currentCover.push(newRandomBook);
+   if (currentCover.length > 1) { currentCover.shift(); }
 
    grabCover.src = newRandomBook.cover;
    grabTitle.innerText = newRandomBook.title;
@@ -76,7 +87,7 @@ function makeMyBook(){
   var userDescriptor1 = document.querySelector('.user-desc1').value;
   var userDescriptor2 = document.querySelector('.user-desc2').value;
 
-  currentCover.unshift(new Cover(userCover, userTitle, userDescriptor1, userDescriptor2));
+  currentCover.push(new Cover(userCover, userTitle, userDescriptor1, userDescriptor2));
   displayUserBook();
   homeButton();
 }
@@ -87,8 +98,14 @@ function displayUserBook() {
   grabTagline1.innerText = currentCover[0].tagline1;
   grabTagline2.innerText = currentCover[0].tagline2;
 }
+function saveCurrentCover (){
+  savedCovers.push(currentCover[0]);
+  currentCover.shift()
+  console.log(savedCovers, 'savedCovers');
+  console.log(currentCover, `currentCover`);
+}
 
-console.log(currentCover)
+console.log(currentCover, 'currentCover')
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
