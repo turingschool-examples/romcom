@@ -1,36 +1,48 @@
 // Create variables targetting the relevant DOM elements here 👇
-var randomCover = document.querySelector(".random-cover-button");
-var saveCover = document.querySelector(".save-cover-button");
-var viewSaved = document.querySelector(".view-saved-button");
-var makeNewCover = document.querySelector(".make-new-button");
-var homeButton = document.querySelector(".home-button");
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var makeCoverButton = document.querySelector('.make-new-button');
+var homeButton = document.querySelector('.home-button');
+var makeBookButton = document.querySelector('.create-new-book-button');
 
-var coverImage = document.querySelector(".cover-image")
-var coverTitle = document.querySelector(".cover-title")
-var firstDescriptor = document.querySelector(".tagline-1")
-var secondDescriptor = document.querySelector(".tagline-2")
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var firstDescriptor = document.querySelector('.tagline-1');
+var secondDescriptor = document.querySelector('.tagline-2');
 
-var homeView = document.querySelector(".home-view");
-var formView = document.querySelector(".form-view");
-var savedView = document.querySelector(".saved-view");
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view');
+var savedView = document.querySelector('.saved-view');
 
+var coverInput = document.querySelector('#cover');
+var titleInput = document.querySelector('#title');
+var firstDescriptorInput = document.querySelector('#descriptor1');
+var secondDescriptorInput = document.querySelector('#descriptor2');
 
+var newCovers = [];
+var newTitles = [];
+var newDescriptors = [];
+
+var allCovers = [];
+var allTitles = [];
+var allDescriptors = [];
 
 // We've provided a few variables below
-var savedRomCom = [];
-var currentRomCom = new Cover(coverImage.src, coverTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText)
-
+var savedRomComs = [];
 // Add your event listeners here 👇
 
-randomCover.addEventListener('click', randomRomCom);
+window.addEventListener('load', randomRomComReload);
 
-window.addEventListener('load', randomRomCom);
+randomCoverButton.addEventListener('click', randomRomComButton);
 
-makeNewCover.addEventListener('click', switchFormView);
+makeCoverButton.addEventListener('click', switchFormView);
 
 homeButton.addEventListener('click', returnHome);
 
-viewSaved.addEventListener('click', switchSavedView);
+viewSavedButton.addEventListener('click', switchSavedView);
+
+makeBookButton.addEventListener('click', submitNewRomCom);
 
 // Create your event handlers and other functions here 👇
 
@@ -40,38 +52,68 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function addAllRomComs() {
+  allCovers = covers.concat(newCovers);
+  allTitles = titles.concat(newTitles);
+  allDescriptors = descriptors.concat(newDescriptors);
+}
+
 function switchFormView() {
   homeView.className = 'view home-view hidden';
   formView.className = 'view form-view';
-  randomCover.className = 'random-cover-button hidden';
-  saveCover.className = 'save-cover-button hidden';
+  randomCoverButton.className = 'random-cover-button hidden';
+  saveCoverButton.className = 'save-cover-button hidden';
   homeButton.className = 'home-button';
-}
+};
 
 function switchSavedView() {
   homeView.className = 'view home-view hidden';
   savedView.className = 'view saved-view';
   formView.className = 'view form-view hidden';
-  randomCover.className = 'random-cover-button hidden';
-  saveCover.className = 'save-cover-button hidden';
+  randomCoverButton.className = 'random-cover-button hidden';
+  saveCoverButton.className = 'save-cover-button hidden';
   homeButton.className = 'home-button';
-}
+};
 
 function returnHome() {
   homeView.className = 'view home-view';
   formView.className = 'view form-view hidden';
-  randomCover.className = 'random-cover-button';
-  saveCover.className = 'save-cover-button';
+  randomCoverButton.className = 'random-cover-button';
+  saveCoverButton.className = 'save-cover-button';
   homeButton.className = 'home-button hidden';
+};
+
+function submitNewRomCom(event) {
+  event.preventDefault();
+  var submittedRomCom = new Cover(coverInput.value, titleInput.value, firstDescriptorInput.value, secondDescriptorInput.value);
+  newCovers.push(submittedRomCom.cover);
+  newTitles.push(submittedRomCom.title);
+  newDescriptors.push(submittedRomCom.tagline1, submittedRomCom.tagline2);
+  addAllRomComs();
+  returnHome();
+  displayNewRomCom();
+};
+
+function displayNewRomCom() {
+  coverImage.src = coverInput.value;
+  coverTitle.innerText = titleInput.value;
+  firstDescriptor.innerText = firstDescriptorInput.value;
+  secondDescriptor.innerText = secondDescriptorInput.value;
 }
 
-function randomRomCom() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  firstDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
-  secondDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
-//  if (firstDescriptor === secondDescriptor) {
-//    return secondDescriptor.innerText = getRandomIndex(descriptors);
-//  };
-  // storeCover();
+function randomRomComReload() {
+  var currentRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = currentRomCom.cover;
+  coverTitle.innerText = currentRomCom.title;
+  firstDescriptor.innerText = currentRomCom.tagline1;
+  secondDescriptor.innerText = currentRomCom.tagline2;
+};
+
+function randomRomComButton() {
+  addAllRomComs();
+  var allRomCom = new Cover(allCovers[getRandomIndex(allCovers)], allTitles[getRandomIndex(allTitles)], allDescriptors[getRandomIndex(allDescriptors)], allDescriptors[getRandomIndex(allDescriptors)]);
+  coverImage.src = allRomCom.cover;
+  coverTitle.innerText = allRomCom.title;
+  firstDescriptor.innerText = allRomCom.tagline1;
+  secondDescriptor.innerText = allRomCom.tagline2;
 };
