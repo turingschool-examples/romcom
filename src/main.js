@@ -7,7 +7,10 @@ var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var diyCover = document.querySelector(".make-new-button");
 //var homeView = document.querySelector(".home-view", ".form-view");
+//var homeButton = document.querySelector(".home-button");
 //var formView = document.querySelector(".form-view");
+//var showRandCover = document.querySelector(".random-cover-button");
+//var saveCover = document.querySelector(".save-cover-button");
 var currentCover = new Cover();
 
 //savedCovers will be used in  ITERATION 2
@@ -29,8 +32,11 @@ randomCoverButton.addEventListener("click", makeRandomBook);
 //   document.querySelector(".view form-view hidden").hidden = false;
 // });
 diyCover.addEventListener("click", function () {
-  hideElement(document.querySelector(".home-view"));
   viewElement(document.querySelector(".form-view"));
+  viewElement(document.querySelector(".home-button"));
+  hideElement(document.querySelector(".home-view"));
+  hideElement(document.querySelector(".random-cover-button"));
+  hideElement(document.querySelector(".save-cover-button"));
 });
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
