@@ -1,8 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -22,12 +20,16 @@ var customCover = document.querySelector("#cover")
 var customTitle = document.querySelector("#title")
 var customTagLine1 = document.querySelector("#descriptor1")
 var customTagLine2 = document.querySelector("#descriptor2")
+var grid = document.querySelector(".saved-covers-section")
 
 // Add your event listeners here 👇
-
+saveButton.addEventListener("click", saveCover)
 randomCover.addEventListener("click", showNewRandomCover)
 makeYourOwnButton.addEventListener("click", showForm)
-savedView.addEventListener("click", viewSaved)
+savedView.addEventListener("click", function () {
+  viewSaved()
+  showGrid()
+})
 homeButton.addEventListener("click", viewHome)
 makeBookButton.addEventListener("click", function(event) {
   event.preventDefault()
@@ -35,7 +37,27 @@ makeBookButton.addEventListener("click", function(event) {
 })
 
 // Create your event handlers and other functions here 👇
-function makeBook(){
+function showGrid() {
+  var htmlElem = '';
+
+  for (var i = 0; i < savedCovers.length; i++) {
+   htmlElem += `
+    <section id="${savedCovers[i].id}" class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].cover}" alt="images">
+    <h2 class="cover-title"> ${savedCovers[i].title}</h2>
+    <h3 class="tagline"> A tale of <span class="tagline-1"> ${savedCovers[i].tagline1}</span> and <span class="tagline-2"> ${savedCovers[i].tagline2}</span></h3>
+    </section>`
+
+  grid.innerHTML = htmlElem;
+ }
+}
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+ }
+}
+
+function makeBook() {
   viewHome();
   storeBook();
   showForm();
@@ -44,21 +66,16 @@ function makeBook(){
   coverImage.src = customCover.value;
   tagLine1.innerText = customTagLine1.value;
   tagLine2.innerText = customTagLine2.value;
-
-
-
 }
 
-function storeBook(){
+function storeBook() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
   titles.push(customTitle.value);
   covers.push(customCover.value);
   descriptors.push(customTagLine1.value, customTagLine2.value);
 }
 
-
-
-function viewSaved(){
+function viewSaved() {
   homeView.classList.toggle("hidden")
   savedSection.classList.toggle("hidden")
   showRandomButton.classList.toggle("hidden")
@@ -66,16 +83,12 @@ function viewSaved(){
   homeButton.classList.toggle("hidden")
 }
 
-function viewHome(){
+function viewHome() {
   homeView.classList.toggle("hidden")
   savedSection.classList.toggle("hidden")
   showRandomButton.classList.toggle("hidden")
   saveButton.classList.toggle("hidden")
   homeButton.classList.toggle("hidden")
-}
-
-function hideCover() {
-
 }
 
 function showForm() {
@@ -98,7 +111,7 @@ newRandomCover()
 
  function newRandomCover() {
    currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
- }
+}
 showNewRandomCover();
 
 function getRandomIndex(array) {
