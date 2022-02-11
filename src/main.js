@@ -12,13 +12,37 @@ var randomCover = document.querySelector(".random-cover-button")
 var makeYourOwn = document.querySelector(".make-new-button")
 var formView = document.querySelector(".form-view")
 var homeView = document.querySelector(".main-cover")
+var showRandomButton = document.querySelector('#random-cover-button')
+var saveButton = document.querySelector(".save-cover-button")
+var homeButton = document.querySelector(".home-button")
+var savedView = document.querySelector(".view-saved-button")
+var savedSection = document.querySelector(".saved-view")
+
 // Add your event listeners here 👇
 
-randomCover.addEventListener('click', showNewRandomCover)
-makeYourOwn.addEventListener('click', showForm)
-
+randomCover.addEventListener("click", showNewRandomCover)
+makeYourOwn.addEventListener("click", showForm)
+savedView.addEventListener("click", viewSaved)
+homeButton.addEventListener("click", viewHome)
 
 // Create your event handlers and other functions here 👇
+function viewSaved(){
+  homeView.classList.toggle("hidden")
+  savedSection.classList.toggle("hidden")
+  showRandomButton.classList.toggle("hidden")
+  saveButton.classList.toggle("hidden")
+  homeButton.classList.toggle("hidden")
+}
+
+function viewHome(){
+  homeView.classList.toggle("hidden")
+  savedSection.classList.toggle("hidden")
+  showRandomButton.classList.toggle("hidden")
+  saveButton.classList.toggle("hidden")
+  homeButton.classList.toggle("hidden")
+
+}
+
 function hideCover() {
 
 }
@@ -26,6 +50,9 @@ function hideCover() {
 function showForm() {
   formView.classList.toggle("hidden")
   homeView.classList.toggle("hidden")
+  showRandomButton.classList.toggle("hidden")
+  saveButton.classList.toggle("hidden")
+  homeButton.classList.toggle("hidden")
 }
 function showNewRandomCover() {
 coverTitle.innerText = titles[getRandomIndex(titles)]
