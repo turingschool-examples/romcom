@@ -27,7 +27,7 @@ makeYourOwnCoverButton.addEventListener('click', function(){
   showFormView();
   hideHomeView();
   // showHomeButton();
-  // hideShowNewRandomCoverButton();
+  hideShowNewRandomCoverButton();
   // hideSaveCoverButton();
 });
 
@@ -54,3 +54,7 @@ function showFormView() {
 function hideHomeView(){
   homeView.className = "view form-view hidden"
 };
+
+function hideShowNewRandomCoverButton(){
+  newRandomCoverButton.className = "random-cover-button hidden"
+}
