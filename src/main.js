@@ -5,6 +5,8 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeCoverButton = document.querySelector('.make-new-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var homeButton = document.querySelector('.home-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -16,6 +18,8 @@ tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', makeNewCover);
 makeCoverButton.addEventListener('click', clickMakeCoverButton);
+viewSavedButton.addEventListener('click', clickViewSavedCovers);
+homeButton.addEventListener('click', clickHomeButton);
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -43,4 +47,22 @@ function clickMakeCoverButton() {
   document.querySelector('.home-view').classList.add('hidden');
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.form-view').classList.remove('hidden');
+};
+
+function clickViewSavedCovers() {
+  document.querySelector('.home-view').classList.add('hidden');
+  document.querySelector('.save-cover-button').classList.add('hidden');
+  document.querySelector('.saved-view').classList.remove('hidden');
+  document.querySelector('.random-cover-button').classList.add('hidden');
+  document.querySelector('.home-button').classList.remove('hidden');
+  document.querySelector('.form-view').classList.add('hidden');
+};
+
+function clickHomeButton() {
+  document.querySelector('.home-view').classList.remove('hidden');
+  document.querySelector('.save-cover-button').classList.remove('hidden');
+  document.querySelector('.saved-view').classList.add('hidden');
+  document.querySelector('.random-cover-button').classList.remove('hidden');
+  document.querySelector('.home-button').classList.add('hidden');
+  document.querySelector('.form-view').classList.add('hidden');
 };
