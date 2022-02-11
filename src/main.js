@@ -39,7 +39,9 @@ makeYourOwnCoverButton.addEventListener('click', function(){
 viewSavedCoversButton.addEventListener('click', function(){
   showSavedCoversView();
   hideHomeView();
-
+  hideShowNewRandomCoverButton();
+  hideSaveCoverButton();
+  showHomeButton();
 });
 // Create your event handlers and other functions here 👇
 
