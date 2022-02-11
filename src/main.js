@@ -13,7 +13,7 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 randomButton.addEventListener("click", displayNewCover);
-window.addEventListener("load", displayNewCover);
+// window.addEventListener("load", displayNewCover);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -27,13 +27,15 @@ function displayNewCover() {
   firstDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
   secondDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = new Cover(bookCover.src, bookTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText);
-}
+  }
+
+// if (2 > 1) {
+//   currentCover = new Cover(covers[0], titles[0], descriptors[0], descriptors[1]);
+// } else {
 
 //Iteration 2:
 
-
 //Form-View Functionality:
-
 var makeNewButton = document.querySelector('.make-new-button');
 makeNewButton.addEventListener('click', toggleMakeOwn);
 
@@ -62,7 +64,6 @@ function toggleSavedCovers() {
   document.querySelector('.saved-covers-section').classList.add('mini-cover', 'main-cover')
 }
 
-
 //Home Button Functionality
 
 var homeButton = document.querySelector('.home-button');
@@ -75,12 +76,45 @@ function toggleHomeButton() {
   document.querySelector('.save-cover-button').classList.remove('hidden');
   document.querySelector('.home-button').classList.add('hidden');
   document.querySelector('.home-view').classList.remove('hidden');
+  document.querySelector('.form-view').classList.add('hidden');
 }
 
-// Iteration 3:
 
-// var savedCoversButton = document.querySelector('.save-cover-button');
-// savedCoversButton.addEventListener('click', )
+// Iteration 3:
+var makeNewBookButton = document.querySelector('.create-new-book-button');
+makeNewButton.type = "button";
+makeNewBookButton.addEventListener('click', makeNewBook);
+
+function makeNewBook() {
+  var coverInput = document.querySelector('.user-cover').value;
+  var titleInput = document.querySelector('.user-title').value;
+  var userDescriptor1 = document.querySelector('.user-desc1').value;
+  var userDescriptor2 = document.querySelector('.user-desc2').value;
+  switchToHome(coverInput, titleInput, userDescriptor1, userDescriptor2);
+}
+
+function switchToHome(coverInput, titleInput, userDescriptor1, userDescriptor2) {
+  covers.unshift(coverInput);
+  titles.unshift(titleInput);
+  descriptors.unshift(userDescriptor1);
+  descriptors.unshift(userDescriptor2);
+  currentCover = new Cover(covers[0], titles[0], descriptors[0], descriptors[1]);
+  // toggleHomeButton();
+}
+//Could we add in functionality here at the toggle home
+
+//We'll be targeting the inputs in the form-view section
+//We'll likely be pushing inputs into data.js arrays
+//maybe consider adding to beginning of array
+//These inputs will (maybe) be passed into the Cover class as arguments
+// to make a new instance
+//When we switch back to home view, the newest instance should be the cover
+
+//Save inputs as separate variables
+//Push each variable to beginning of respective array
+//Create new Cover instance with arguments (cover[0], title[0],...)
+
+
 
 //Iteration 4:
 //We need to target the saved-covers-section
@@ -95,6 +129,8 @@ function toggleHomeButton() {
 //We need to find an attribute that will allow us to add ___ between the tags
 
 
+// var savedCoversButton = document.querySelector('.save-cover-button');
+// savedCoversButton.addEventListener('click', )
 
 
 
