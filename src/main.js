@@ -36,13 +36,18 @@ var makeMyBookButton = document.querySelector('.create-new-book-button');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+var currentCover
+// Why couldn't we run the below new Cover variable instead of undefined variable?
+//new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 
 // Add your event listeners here 👇
 
 newRandomCoverButton.addEventListener('click', generateRandomCover);
 
-window.addEventListener('load', generateRandomCover);
+window.addEventListener('load', function() {
+generateRandomCover();
+currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+});
 
 makeYourOwnCoverButton.addEventListener('click', function(){
   showFormView();
@@ -74,6 +79,11 @@ homeButton.addEventListener('click', function(){
 makeMyBookButton.addEventListener('click', function(){
   event.preventDefault();
   saveInputFormInformation();
+  showHomeView();
+  hideFormView();
+  hideSavedCoversView();
+  createNewCover();
+  currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 });
 
 // Create your event handlers and other functions here 👇
@@ -89,7 +99,8 @@ function generateRandomCover() {
   mainTitle.innerText = titles[getRandomIndex(titles)];
   taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
-}
+
+};
 
 function showFormView() {
   formViewHidden.className = "view form-view"
@@ -141,14 +152,16 @@ function hideHomeButton(){
   homeButton.className = "home-button hidden"
 };
 
-function saveInputFormInformation (){
-  var coverInput = document.querySelector('#cover');
-  var titleInput = document.querySelector('#title');
-  var firstDescriptorInput = document.querySelector('#descriptor1');
-  var secondDescriptorInput= document.querySelector('#descriptor2');
-
+function saveInputFormInformation(){
   covers.push(coverInput.value);
   titles.push(titleInput.value);
   descriptors.push(firstDescriptorInput.value);
   descriptors.push(secondDescriptorInput.value);
+};
+
+function createNewCover(){
+  coverImage.src = coverInput.value;
+  mainTitle.innerText = titleInput.value;
+  taglineDescriptor1.innerText = firstDescriptorInput.value;
+  taglineDescriptor2.innerText = secondDescriptorInput.value;
 };
