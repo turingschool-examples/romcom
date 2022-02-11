@@ -6,6 +6,7 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var diyCover = document.querySelector(".make-new-button");
+var viewSaved = document.querySelector(".view-saved-button");
 //var homeView = document.querySelector(".home-view", ".form-view");
 //var homeButton = document.querySelector(".home-button");
 //var formView = document.querySelector(".form-view");
@@ -32,7 +33,15 @@ randomCoverButton.addEventListener("click", makeRandomBook);
 //   document.querySelector(".view form-view hidden").hidden = false;
 // });
 diyCover.addEventListener("click", function () {
-  viewElement(document.querySelector(".form-view"));
+  document.querySelector(".form-view").classList.remove("hidden"));
+  document.querySelector(".home-button").classList.remove("hidden"));
+  hideElement(document.querySelector(".home-view"));
+  hideElement(document.querySelector(".random-cover-button"));
+  hideElement(document.querySelector(".save-cover-button"));
+});
+//..........TRY AN ARRAY? for dryer code since we're repeating ourselves..?
+viewSaved.addEventListener("click", function () {
+  viewElement(document.querySelector(".saved-view"));
   viewElement(document.querySelector(".home-button"));
   hideElement(document.querySelector(".home-view"));
   hideElement(document.querySelector(".random-cover-button"));
