@@ -9,8 +9,10 @@ var taglineDescriptor1 = document.querySelector("span.tagline-1");
 var taglineDescriptor2 = document.querySelector("span.tagline-2");
 
 var newRandomCoverButton = document.querySelector(".random-cover-button");
+var newRandomCoverButtonHidden = document.querySelector(".random-cover-button.hidden");
 var makeYourOwnCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
+var saveCoverButtonHidden = document.querySelector(".save-cover-button.hidden");
 var homeButtonHidden = document.querySelector(".home-button.hidden");
 var homeButton = document.querySelector(".home-button");
 var viewSavedCoversButton = document.querySelector(".view-saved-button");
@@ -55,6 +57,9 @@ viewSavedCoversButton.addEventListener('click', function(){
 
 homeButton.addEventListener('click', function(){
   showHomeView();
+  hideHomeButton();
+  showShowNewRandomCoverButton(); // this function isn't firing?
+  showSaveCoverButton(); // this function isn't firing?
 })
 // Create your event handlers and other functions here 👇
 
@@ -99,10 +104,22 @@ function hideShowNewRandomCoverButton(){
   newRandomCoverButton.className = "random-cover-button hidden"
 };
 
+function showShowNewRandomCoverButton(){
+  newRandomCoverButtonHidden.className = "random-cover-button"
+};
+
 function hideSaveCoverButton(){
   saveCoverButton.className = "save-cover-button hidden"
 };
 
+function showSaveCoverButton(){
+  saveCoverButtonHidden.className = "save-cover-button"
+};
+
 function showHomeButton(){
   homeButtonHidden.className = "home-button"
+};
+
+function hideHomeButton(){
+  homeButton.className = "home-button hidden"
 };
