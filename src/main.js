@@ -29,14 +29,16 @@ var currentRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIn
 
 window.addEventListener('load', randomRomCom);
 
+randomCoverButton.addEventListener('click', randomRomCom);
+
 makeCoverButton.addEventListener('click', switchFormView);
 
 homeButton.addEventListener('click', returnHome);
 
 viewSavedButton.addEventListener('click', switchSavedView);
 
-makeBookButton.addEventListener('click', submitNewBook)
-//https://media.istockphoto.com/photos/book-cover-for-a-vampire-novel-three-attractive-vampires-picture-id685834128?k=20&m=685834128&s=612x612&w=0&h=zmBYDVHfG7l2FpCy5PH5J25lLTFuPCQSHqe-LW5yZlk=
+makeBookButton.addEventListener('click', submitNewRomCom);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -70,16 +72,19 @@ function returnHome() {
   homeButton.className = 'home-button hidden';
 };
 
-function submitNewBook() {
-  covers.shift(currentRomCom.cover);
-  titles.shift(currentRomCom.title);
-  descriptors.shift(currentRomCom.tagline1);
-  descriptors.shift(currentRomCom.tagline2);
+function submitNewRomCom(e) {
+  var submittedRomCom = new Cover(coverInput.value, titleInput.value, firstDescriptorInput.value, secondDescriptorInput.value);
+  covers[covers.length] = submittedRomCom.cover;
+  titles[covers.length] = submittedRomCom.title;
+  descriptors[descriptors.length] = submittedRomCom.tagline1;
+  descriptors[descriptors.length] = submittedRomCom.tagline2;
+  e.preventDefault();
 };
 
 function randomRomCom() {
-coverImage.src = currentRomCom.cover;
-coverTitle.innerText = currentRomCom.title;
-firstDescriptor.innerText = currentRomCom.tagline1;
-secondDescriptor.innerText = currentRomCom.tagline2;
+  var currentRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = currentRomCom.cover;
+  coverTitle.innerText = currentRomCom.title;
+  firstDescriptor.innerText = currentRomCom.tagline1;
+  secondDescriptor.innerText = currentRomCom.tagline2;
 };
