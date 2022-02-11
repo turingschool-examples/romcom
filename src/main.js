@@ -36,14 +36,17 @@ makeBookButton.addEventListener("click", function(event) {
 
 // Create your event handlers and other functions here 👇
 function makeBook(){
+  viewHome();
+  storeBook();
+  showForm();
+  viewSaved();
   coverTitle.innerText = customTitle.value;
   coverImage.src = customCover.value;
   tagLine1.innerText = customTagLine1.value;
   tagLine2.innerText = customTagLine2.value;
 
-  storeBook();
-  showForm();
-  viewHome();
+
+
 }
 
 function storeBook(){
@@ -51,9 +54,8 @@ function storeBook(){
   titles.push(customTitle.value);
   covers.push(customCover.value);
   descriptors.push(customTagLine1.value, customTagLine2.value);
-  console.log(titles)
 }
-console.log(titles)
+
 
 
 function viewSaved(){
@@ -70,7 +72,6 @@ function viewHome(){
   showRandomButton.classList.toggle("hidden")
   saveButton.classList.toggle("hidden")
   homeButton.classList.toggle("hidden")
-
 }
 
 function hideCover() {
@@ -84,14 +85,17 @@ function showForm() {
   saveButton.classList.toggle("hidden")
   homeButton.classList.toggle("hidden")
 }
+
+//split into two, generatecover
+//
 function showNewRandomCover() {
 coverTitle.innerText = titles[getRandomIndex(titles)]
 coverImage.src = covers[getRandomIndex(covers)]
 tagLine1.innerText = descriptors[getRandomIndex(descriptors)]
 tagLine2.innerText = descriptors[getRandomIndex(descriptors)]
-
- newRandomCover()
+newRandomCover()
 }
+
  function newRandomCover() {
    currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
  }
