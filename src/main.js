@@ -6,13 +6,10 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 //we want to use the outcome of makeRandomBook as the arguments for var currentCover which instanciates
-var currentCover = new Cover (coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+var currentCover = new Cover();
+//= new Cover (coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
 
 //when a user clicks the random cover button we want to assign the variable
-//need to use the currentCover
-
-
-console.log(currentCover);
 //currentCover.push()
 
 //savedCovers will be used in  ITERATION 2
@@ -30,6 +27,8 @@ console.log(currentCover);
 //should we change this to eventlistener
 window.onload = makeRandomBook();
 //every time
+
+//maybe we need to add the currentCover var into this random cover
 randomCoverButton.addEventListener("click", makeRandomBook);
 
 // Create your event handlers and other functions here 👇
@@ -37,14 +36,29 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 // do we need return values, that we can use as the arguments for instanciating the Cover class
+// function makeRandomBook() {
+//   coverImage.src = covers[getRandomIndex(covers)];
+//   coverTitle.innerText = titles[getRandomIndex(titles)];
+//   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+//   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+// }
+//maybe translate to
 function makeRandomBook() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  var randImage = covers[getRandomIndex(covers)];
+  var randTitle = titles[getRandomIndex(titles)];
+  var randDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  createCover(randImage, randTitle, randDescriptor1, randDescriptor2)
 }
-//console.log(makeRandomBook)
-// We've provided a few variables below
+
+function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
+  currentCover = new Cover(randImage, randTitle, randDescriptor1, randDescriptor2);
+  coverImage.src = randImage;
+  coverTitle.innerText = randTitle;
+  tagline1.innerText = randDescriptor1;
+  tagline2.innerText = randDescriptor2;
+}
+console.log(currentCover);
 
 
 //console.log(savedCovers);
