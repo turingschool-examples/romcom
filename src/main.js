@@ -11,7 +11,8 @@ var taglineDescriptor2 = document.querySelector("span.tagline-2");
 var newRandomCoverButton = document.querySelector(".random-cover-button");
 var makeYourOwnCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
-var homeButton = document.querySelector(".home-button.hidden")
+var homeButtonHidden = document.querySelector(".home-button.hidden");
+var homeButton = document.querySelector(".home-button");
 var viewSavedCoversButton = document.querySelector(".view-saved-button");
 
 var homeView = document.querySelector("section.view.home-view");
@@ -51,6 +52,10 @@ viewSavedCoversButton.addEventListener('click', function(){
   hideSaveCoverButton();
   showHomeButton();
 });
+
+homeButton.addEventListener('click', function(){
+  showHomeView();
+})
 // Create your event handlers and other functions here 👇
 
 
@@ -99,5 +104,5 @@ function hideSaveCoverButton(){
 };
 
 function showHomeButton(){
-  homeButton.className = "home-button"
+  homeButtonHidden.className = "home-button"
 };
