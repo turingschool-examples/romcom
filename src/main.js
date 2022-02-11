@@ -23,10 +23,11 @@ var customTagLine2 = document.querySelector("#descriptor2")
 var grid = document.querySelector(".saved-covers-section")
 
 // Add your event listeners here 👇
+window.addEventListener("load", showNewRandomCover)
 saveButton.addEventListener("click", saveCover)
 randomCover.addEventListener("click", showNewRandomCover)
 makeYourOwnButton.addEventListener("click", showForm)
-savedView.addEventListener("click", function () {
+savedView.addEventListener("click", function() {
   viewSaved()
   showGrid()
 })
@@ -100,7 +101,7 @@ function showForm() {
 }
 
 //split into two, generatecover
-//
+
 function showNewRandomCover() {
 coverTitle.innerText = titles[getRandomIndex(titles)]
 coverImage.src = covers[getRandomIndex(covers)]
@@ -112,7 +113,7 @@ newRandomCover()
  function newRandomCover() {
    currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
 }
-showNewRandomCover();
+// showNewRandomCover();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
