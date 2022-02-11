@@ -25,11 +25,14 @@ document.querySelector('.random-cover-button').onclick = function() {randomBook(
 document.querySelector('.view-saved-button').onclick = function() {
   hideEverything();
   savedCovers()
-  };
+};
 document.querySelector('.make-new-button').onclick = function() {
   hideEverything();
-  makeNewCover()};
-
+  makeNewCover()
+};
+document.querySelector('.home-button').onclick = function() {
+  homeButton();
+};
 
 
 // Create your event handlers and other functions here 👇
@@ -52,12 +55,18 @@ function hideEverything () {
   document.querySelector('.form-view').classList.add('hidden');
 }
 
-  function savedCovers(){
+function savedCovers() {
   document.querySelector('.home-button').classList.remove('hidden');
   }
 
-
-
+function homeButton() {
+  document.querySelector('.form-view').classList.add('hidden')
+  document.querySelector('.home-button').classList.add('hidden')
+  document.querySelector('.save-cover-button').hidden = false
+  document.querySelector('.main-cover').hidden = false
+  document.querySelector('.random-cover-button').hidden = false;
+  document.querySelector('.home-button').hidden = false;
+};
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
