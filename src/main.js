@@ -23,11 +23,12 @@ var currentCover = [];
 document.querySelector('.random-cover-button').onclick = function() {randomBook()};
 document.querySelector('.view-saved-button').onclick = function() {
   hideEverything();
-  viewSavedCovers()
+  viewSavedCovers();
+  addClassToArray();
 };
 document.querySelector('.make-new-button').onclick = function() {
   hideEverything();
-  makeNewCoverForm()
+  makeNewCoverForm();
 };
 document.querySelector('.home-button').onclick = function() {
   homeButton();
@@ -103,6 +104,20 @@ function saveCurrentCover (){
   currentCover.shift()
   console.log(savedCovers, 'savedCovers');
   console.log(currentCover, `currentCover`);
+}
+
+function addClassToArray() {
+  document.querySelector('.saved-view').classList.remove('hidden');
+  var section = document.querySelector(".saved-covers-section")
+
+ section.innerHTML +=`
+<section class="main-cover">
+ <img class="cover-image" src="./assets/prairie.jpg">
+ <h2 class="cover-title">Windswept Hearts</h2>
+ <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+ <img class="price-tag" src="./assets/price.png">
+ <img class="overlay" src="./assets/overlay.png">
+ `
 }
 
 console.log(currentCover, 'currentCover')
