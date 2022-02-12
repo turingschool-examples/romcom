@@ -20,21 +20,15 @@ var titleInput = document.querySelector('#title');
 var firstDescriptorInput = document.querySelector('#descriptor1');
 var secondDescriptorInput = document.querySelector('#descriptor2');
 
-var newCovers = [];
-var newTitles = [];
-var newDescriptors = [];
-
-var allCovers = [];
-var allTitles = [];
-var allDescriptors = [];
+var saveGrid = document.querySelector('.saved-covers-section')
 
 var savedRomComs = [];
 
-// Add your event listeners here 👇
+var currentRomCom;
 
-window.addEventListener('load', randomRomComReload);
+window.addEventListener('load', randomRomCom);
 
-randomCoverButton.addEventListener('click', randomRomComButton);
+randomCoverButton.addEventListener('click', randomRomCom);
 
 makeCoverButton.addEventListener('click', switchFormView);
 
@@ -44,7 +38,7 @@ viewSavedButton.addEventListener('click', switchSavedView);
 
 makeBookButton.addEventListener('click', submitNewRomCom);
 
-saveCoverButton.addEventListener('click', saveCover);
+saveCoverButton.addEventListener('click', saveRomCom);
 
 // Create your event handlers and other functions here 👇
 
@@ -54,44 +48,36 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function addAllRomComs() {
-  allCovers = covers.concat(newCovers);
-  allTitles = titles.concat(newTitles);
-  allDescriptors = descriptors.concat(newDescriptors);
-};
-
 function switchFormView() {
-  homeView.className = 'view home-view hidden';
-  formView.className = 'view form-view';
-  randomCoverButton.className = 'random-cover-button hidden';
-  saveCoverButton.className = 'save-cover-button hidden';
-  homeButton.className = 'home-button';
+  homeView.classList.toggle('hidden');
+  formView.classList.toggle('hidden');
+  randomCoverButton.classList.toggle('hidden');
+  saveCoverButton.classList.toggle('hidden');
+  homeButton.classList.toggle("hidden");
 };
 
 function switchSavedView() {
-  homeView.className = 'view home-view hidden';
-  savedView.className = 'view saved-view';
-  formView.className = 'view form-view hidden';
-  randomCoverButton.className = 'random-cover-button hidden';
-  saveCoverButton.className = 'save-cover-button hidden';
-  homeButton.className = 'home-button';
+  homeView.classList.toggle('hidden');
+  savedView.classList.toggle('hidden');
+  randomCoverButton.classList.toggle('hidden');
+  saveCoverButton.classList.toggle('hidden');
+  homeButton.classList.toggle('hidden');
 };
 
 function returnHome() {
-  homeView.className = 'view home-view';
-  formView.className = 'view form-view hidden';
-  randomCoverButton.className = 'random-cover-button';
-  saveCoverButton.className = 'save-cover-button';
-  homeButton.className = 'home-button hidden';
+  homeView.classList.toggle('hidden');
+  savedView.classList.toggle('hidden');
+  randomCoverButton.classList.toggle('hidden');
+  saveCoverButton.classList.toggle('hidden');
+  homeButton.classList.toggle('hidden');
 };
 
 function submitNewRomCom(event) {
   event.preventDefault();
   var submittedRomCom = new Cover(coverInput.value, titleInput.value, firstDescriptorInput.value, secondDescriptorInput.value);
-  newCovers.push(submittedRomCom.cover);
-  newTitles.push(submittedRomCom.title);
-  newDescriptors.push(submittedRomCom.tagline1, submittedRomCom.tagline2);
-  addAllRomComs();
+  covers.push(submittedRomCom.cover);
+  titles.push(submittedRomCom.title);
+  descriptors.push(submittedRomCom.tagline1, submittedRomCom.tagline2);
   returnHome();
   displayNewRomCom();
 };
@@ -103,38 +89,16 @@ function displayNewRomCom() {
   secondDescriptor.innerText = secondDescriptorInput.value;
 };
 
-function hasExistingCover() {
-  if () {
-
-  }
-
+function saveRomCom() {
+  if (!savedRomComs.includes(currentRomCom)) {
+    savedRomComs.push(currentRomCom);
+  };
 };
 
-function saveCover() {
-  var currentRomCom = new Cover(coverImage.src, coverTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText);
-  delete currentRomCom.id;
-  if (!savedRomComs.length) {
-    currentRomCom.id = Date.now();
-    return savedRomComs.push(currentRomCom);
-  } else {
-
-      }
-    }
-};
-
-function randomRomComReload() {
-  var newRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-  coverImage.src = newRomCom.cover;
-  coverTitle.innerText = newRomCom.title;
-  firstDescriptor.innerText = newRomCom.tagline1;
-  secondDescriptor.innerText = newRomCom.tagline2;
-};
-
-function randomRomComButton() {
-  addAllRomComs();
-  var allRomCom = new Cover(allCovers[getRandomIndex(allCovers)], allTitles[getRandomIndex(allTitles)], allDescriptors[getRandomIndex(allDescriptors)], allDescriptors[getRandomIndex(allDescriptors)]);
-  coverImage.src = allRomCom.cover;
-  coverTitle.innerText = allRomCom.title;
-  firstDescriptor.innerText = allRomCom.tagline1;
-  secondDescriptor.innerText = allRomCom.tagline2;
+function randomRomCom() {
+  currentRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = currentRomCom.cover;
+  coverTitle.innerText = currentRomCom.title;
+  firstDescriptor.innerText = currentRomCom.tagline1;
+  secondDescriptor.innerText = currentRomCom.tagline2;
 };
