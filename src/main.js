@@ -29,16 +29,16 @@ var titleInput = document.querySelector('#title');
 var firstDescriptorInput = document.querySelector('#descriptor1');
 var secondDescriptorInput= document.querySelector('#descriptor2');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
-var savedCoverViewSection = document.querySelector('.saved-covers-section');
-var savedMiniCoverViewSection = document.querySelector('.mini-cover')
+
+
 
 // We've provided a few variables below
 var savedCovers = [
-  // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover
-// = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 // Why couldn't we run the below new Cover variable instead of undefined variable?
+//new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 
 // Add your event listeners here 👇
 
@@ -46,7 +46,7 @@ newRandomCoverButton.addEventListener('click', generateRandomCover);
 
 window.addEventListener('load', function() {
 generateRandomCover();
-
+currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 });
 
 makeYourOwnCoverButton.addEventListener('click', function(){
@@ -65,11 +65,6 @@ viewSavedCoversButton.addEventListener('click', function(){
   hideShowNewRandomCoverButton();
   hideSaveCoverButton();
   showHomeButton();
-  showAllSavedCovers();
-});
-
-saveCoverButton.addEventListener('click', function(){
-  saveCurrentCover();
 });
 
 homeButton.addEventListener('click', function(){
@@ -88,7 +83,6 @@ makeMyBookButton.addEventListener('click', function(){
   hideFormView();
   hideSavedCoversView();
   createNewCover();
-  showSaveCoverButton();
   currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 });
 
@@ -105,7 +99,7 @@ function generateRandomCover() {
   mainTitle.innerText = titles[getRandomIndex(titles)];
   taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+
 };
 
 function showFormView() {
@@ -197,5 +191,3 @@ function showAllSavedCovers(){
   console.log(htmlAdd);
 };
 
-//Hey we need this branch to merge please merge!!
-var commitBrance = "COMMITT THIS BRANCH";
