@@ -3,9 +3,9 @@
 // Global Variables
 var currentCover;
 
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
+
+var savedCoverDisplay = document.querySelector('.saved-covers-section')
 
 // Cover section
 var title = document.querySelector('h2');
@@ -40,17 +40,22 @@ viewSavedCoverButton.addEventListener('click', savedCoverView);
 
 homeButton.addEventListener('click', homeButtonView);
 
+saveCoverButton.addEventListener('click', saveCover);
+
+// target the HTML elements in the saved covers
+// var deleteCover = document.querySelector('________');
+
+// deleteCover.addEventListener('dblclick', _________);
+
+// pull in savedCovers array
+// remove index position of object from array using splice
+// reload saved cover page
+
 makeMyBookButton.addEventListener('click', function(){
   saveToArray();
   myCover();
   event.preventDefault();
   homeButtonView();
-});
-
-saveCoverButton.addEventListener('click', function(){
-  // current cover is added to the savedCovers arrays
-  // no duplicates, it will only save the cover once
-  // saved covers should display in the saved covers section
 });
 
 // FUNCTIONS __________________________________
@@ -87,6 +92,7 @@ function savedCoverView(){
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.view-saved-button').classList.remove('hidden');
   document.querySelector('.make-new-button').classList.remove('hidden');
+  loadSavedCovers()
 };
 
 function homeButtonView() {
@@ -106,6 +112,27 @@ function myCover() {
   tagline2.innerText = userDesc2.value;
   image.src = userCover.value;
   currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
+};
+
+function loadSavedCovers() {
+  var currentCoverDisplay = [];
+  for (var i = 0; i < savedCovers.length; i++) {
+    currentCoverDisplay += `<section class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].cover}">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    </section>`
+  }
+  savedCoverDisplay.innerHTML = currentCoverDisplay;
+};
+
+function saveCover() {
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers.includes(currentCover)) {
+        splice(savedCovers[i], 1);
+      }
+    }
+    savedCovers.unshift(currentCover);
 };
 
 function saveToArray() {
