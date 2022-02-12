@@ -4,6 +4,7 @@ var bookTitle = document.querySelector('.cover-title');
 var firstDescriptor = document.querySelector('.tagline-1');
 var secondDescriptor = document.querySelector('.tagline-2');
 var randomButton = document.querySelector('.random-cover-button');
+var savedCoversSection = document.querySelector('.saved-covers-section')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -49,10 +50,13 @@ function toggleMakeOwn() {
   document.querySelector('.saved-view').classList.add('hidden');
 }
 
+ 
+
 //Save-Cover Functionality:
 
 var savedCoversButton = document.querySelector('.view-saved-button');
-savedCoversButton.addEventListener('click', toggleSavedCovers);
+savedCoversButton.addEventListener('click', clickViewSave);
+
 
 function toggleSavedCovers() {
   document.querySelector('.saved-view').classList.remove('hidden');
@@ -61,7 +65,6 @@ function toggleSavedCovers() {
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.home-view').classList.add('hidden');
   document.querySelector('.form-view').classList.add('hidden');
-  document.querySelector('.saved-covers-section').classList.add('mini-cover', 'main-cover');
 }
 
 //Home Button Functionality
@@ -126,37 +129,56 @@ function addToArrays(coverInput, titleInput, userDescriptor1, userDescriptor2) {
 var savedCoversButton = document.querySelector('.save-cover-button');
 savedCoversButton.addEventListener('click', saveCurrentCover);
 
+function clickViewSave() {
+  toggleSavedCovers();
+  displaySavedCovers();
+
+}
+
 function saveCurrentCover() {
-  for(var i = 0; i <= savedCovers.length; i++) {
-    if(savedCovers[i] !== currentCover) {
-      return savedCovers.unshift(currentCover)
-    } else {
-      return savedCovers
-    }   
-}
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
-
-
-// function saveReview(newReview, reviews) {
-//   for (var i = 0; i <= reviews.length; i++) {
-//     if (reviews[i] !== newReview) {
-//       return reviews.push(newReview)
+// function saveCurrentCover() {
+//   for(var i = 0; i <= savedCovers.length; i++) {
+//     if(savedCovers[i] !== currentCover) {
+//       return savedCovers.unshift(currentCover)
 //     } else {
-//       return reviews
-//     }
+//       return savedCovers
+//     }   
 //   }
 // }
 
+// We need a functionality that keeps this function from running if toggle saved covers button is run
+// function displaySavedCovers(savedCovers) {  
+//   for(var i = 0; i < savedCovers.length; i++) {
+//     if(savedCovers[i] )
+//     savedCoversSection.innerHTML += `<img class='mini-cover' src=${savedCovers[i].cover}>`
+//     savedCoversSection.innerHTML += `<h2 class='mini-cover cover-title' >${savedCovers[i].title}</h2>`
+//     savedCoversSection.innerHTML += `<h3 class='mini-cover tagline'>A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>`;     
+//    };
+// }
 
+
+// saved classes
+function displaySavedCovers() {  
+  var display = "";
+  for(var i = 0; i < savedCovers.length; i++) {
+    display += 
+    `<section class='mini-cover'> <img class='cover-image' src=${savedCovers[i].cover}>
+    <h2 class='cover-title'>${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png"></section>`;     
+   }; savedCoversSection.innerHTML = display;
+}
 
 
 
 
 // For Loop for adding an array of objects to an html element:
-// for(var i = 0; i < someArray.length; i++) {
-//   element.innerHTML += `${someArray[i].key}`;
-//  };
 // <li> will create bullet points so we probably dont need this
 // <ul> <ul> creates an unordered list
 // <ol> <ol> creates an ordered list
