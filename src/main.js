@@ -21,7 +21,7 @@ var saveInputTitle = document.querySelector(".user-title");
 var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 
-var currentCover = new Cover();
+var currentCover = [new Cover(),];
 
 var savedCovers = [
 //can change this or the arguments passed through
@@ -58,14 +58,15 @@ viewSavedB.addEventListener("click", function () {
   hideElement(formView)
 });
 
-homeB.addEventListener("click", function () {
-  viewElement(homeView);
-  viewElement(saveCoverB);
-  viewElement(randomCoverB);
-  hideElement(homeB);
-  hideElement(formView);
-  hideElement(savedView);
-});
+homeB.addEventListener("click", showHomeView);
+//was a an anonymous function
+  // viewElement(homeView);
+  // viewElement(saveCoverB);
+  // viewElement(randomCoverB);
+  // hideElement(homeB);
+  // hideElement(formView);
+  // hideElement(savedView);
+// });
 
 //Iteration 3: create an eventlistener that createNewBook
 // createNewBookB.addEventListener('click', function() {
@@ -74,10 +75,11 @@ homeB.addEventListener("click", function () {
 //   dataArrays()
 // })
 createNewBookB.addEventListener('click', storeUserInput);
-//need to access the four data files
-//covers.push or unshift to the data.js arrays
-//input or keydown could be the event we are listening for
-//submit / click for make  my cover,
+//ITERATION 3 NEXT STEPS
+//view home page again and display the most recent cover they made
+//later we need to savedCover[0]
+
+
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -119,16 +121,17 @@ function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
 //
 //
 function storeUserInput() {
-  //event.preventDefault();
+  event.preventDefault();
   currentCover = new Cover(
     saveInputCover.value,
     saveInputTitle.value,
     saveInputDesc1.value,
-    saveInputDesc2.value,);
-  savedCovers.push(currentCover);
+    saveInputDesc2.value);
+  //savedCovers.push(currentCover);
   dataArrays();
+  showHomeView();
   //delete this console.log later
-  console.log(savedCovers);
+  console.log(currentCover);
 }
 
 
@@ -160,3 +163,12 @@ function hideElement(classToEdit) {
 }
 //arrays we need: covers, titles, descriptors
 //console.log(savedCovers);
+
+function showHomeView() {
+  viewElement(homeView);
+  viewElement(saveCoverB);
+  viewElement(randomCoverB);
+  hideElement(homeB);
+  hideElement(formView);
+  hideElement(savedView);
+};
