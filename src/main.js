@@ -5,14 +5,6 @@ var grabTagline1 = document.querySelector('.tagline-1')
 var grabTagline2 = document.querySelector('.tagline-2')
 
 
-
-
-// grabTitle.innerText = titles[getRandomIndex(titles)];
-// grabCover.src = covers[getRandomIndex(covers)];
-// grabTagline1.innerText = descriptors[getRandomIndex(descriptors)];
-// grabTagline2.innerText = descriptors[getRandomIndex(descriptors)];
-
-
 // We've provided a few variables below
 var savedCovers = [];
 var currentCover = [];
@@ -24,7 +16,6 @@ document.querySelector('.random-cover-button').onclick = function() {randomBook(
 document.querySelector('.view-saved-button').onclick = function() {
   hideEverything();
   viewSavedCovers();
-  addClassToArray();
 };
 document.querySelector('.make-new-button').onclick = function() {
   hideEverything();
@@ -46,9 +37,8 @@ randomBook();
 
 function randomBook() {
    var newRandomBook = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
-   console.log(newRandomBook, 'book that is random on home page');
-   currentCover.push(newRandomBook);
-   if (currentCover.length > 1) { currentCover.shift(); }
+   currentCover.unshift(newRandomBook);
+   if (currentCover.length > 3) { currentCover.pop(); }
 
    grabCover.src = newRandomBook.cover;
    grabTitle.innerText = newRandomBook.title;
@@ -65,12 +55,8 @@ function hideEverything () {
   document.querySelector('.main-cover').hidden = true;
   document.querySelector('.random-cover-button').hidden = true;
   document.querySelector('.save-cover-button').hidden = true;
-  document.querySelector('.form-view').classList.add('hidden');
+  document.querySelector('.saved-view').classList.add('hidden');
 }
-
-function viewSavedCovers() {
-  document.querySelector('.home-button').classList.remove('hidden');
-  }
 
 function homeButton() {
   document.querySelector('.form-view').classList.add('hidden')
@@ -88,7 +74,7 @@ function makeMyBook(){
   var userDescriptor1 = document.querySelector('.user-desc1').value;
   var userDescriptor2 = document.querySelector('.user-desc2').value;
 
-  currentCover.push(new Cover(userCover, userTitle, userDescriptor1, userDescriptor2));
+  currentCover.unshift(new Cover(userCover, userTitle, userDescriptor1, userDescriptor2));
   displayUserBook();
   homeButton();
 }
@@ -100,24 +86,28 @@ function displayUserBook() {
   grabTagline2.innerText = currentCover[0].tagline2;
 }
 function saveCurrentCover (){
-  savedCovers.push(currentCover[0]);
-  currentCover.shift()
-  console.log(savedCovers, 'savedCovers');
-  console.log(currentCover, `currentCover`);
+  if (!savedCovers.includes(currentCover[0])) {
+      savedCovers.push(currentCover[0]);
+      // currentCover.shift()
+  }
+    console.log(savedCovers, 'savedCovers');
+    console.log(currentCover, `currentCover`);
 }
 
-function addClassToArray() {
+function viewSavedCovers() {
   document.querySelector('.saved-view').classList.remove('hidden');
+  document.querySelector('.home-button').classList.remove('hidden')
   var section = document.querySelector(".saved-covers-section")
-
+    for (var i = 0; i < savedCovers.length; i++) {
  section.innerHTML +=`
-<section class="main-cover">
- <img class="cover-image" src="./assets/prairie.jpg">
- <h2 class="cover-title">Windswept Hearts</h2>
- <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+ <section class="mini-cover">
+ <img class="cover-image" src="${savedCovers[i].cover}">
+ <h2 class="cover-title">${savedCovers[i].title}</h2>
+ <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
  <img class="price-tag" src="./assets/price.png">
  <img class="overlay" src="./assets/overlay.png">
  `
+ }
 }
 
 console.log(currentCover, 'currentCover')
