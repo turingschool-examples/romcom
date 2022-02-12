@@ -97,5 +97,7 @@ function displayCustomCover(cover) {
 };
 
 function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
   savedCovers.push(currentCover);
+} return
 };
