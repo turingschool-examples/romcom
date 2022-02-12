@@ -37,8 +37,8 @@ var savedCovers = [
   // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover
+// = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 // Why couldn't we run the below new Cover variable instead of undefined variable?
-//new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 
 // Add your event listeners here 👇
 
@@ -46,7 +46,7 @@ newRandomCoverButton.addEventListener('click', generateRandomCover);
 
 window.addEventListener('load', function() {
 generateRandomCover();
-currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+
 });
 
 makeYourOwnCoverButton.addEventListener('click', function(){
@@ -87,6 +87,7 @@ makeMyBookButton.addEventListener('click', function(){
   hideFormView();
   hideSavedCoversView();
   createNewCover();
+  showSaveCoverButton();
   currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 });
 
@@ -103,7 +104,7 @@ function generateRandomCover() {
   mainTitle.innerText = titles[getRandomIndex(titles)];
   taglineDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
   taglineDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
-
+  currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
 };
 
 function showFormView() {
@@ -171,6 +172,11 @@ function createNewCover(){
 };
 
 function saveCurrentCover(){
-  currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
-  savedCovers.push(currentCover);
+  //currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+  if (savedCovers.length > 0 && !savedCovers.includes(currentCover)){
+    savedCovers.push(currentCover);
+  }
+  if (savedCovers.length === 0){
+    savedCovers.push(currentCover);
+  }
 };
