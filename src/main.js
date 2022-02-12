@@ -34,7 +34,7 @@ var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  // new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover
 // Why couldn't we run the below new Cover variable instead of undefined variable?
@@ -65,6 +65,10 @@ viewSavedCoversButton.addEventListener('click', function(){
   hideShowNewRandomCoverButton();
   hideSaveCoverButton();
   showHomeButton();
+});
+
+saveCoverButton.addEventListener('click', function(){
+  saveCurrentCover();
 });
 
 homeButton.addEventListener('click', function(){
@@ -164,4 +168,9 @@ function createNewCover(){
   mainTitle.innerText = titleInput.value;
   taglineDescriptor1.innerText = firstDescriptorInput.value;
   taglineDescriptor2.innerText = secondDescriptorInput.value;
+};
+
+function saveCurrentCover(){
+  currentCover = new Cover(coverImage.src, mainTitle.innerText, taglineDescriptor1.innerText, taglineDescriptor2.innerText);
+  savedCovers.push(currentCover);
 };
