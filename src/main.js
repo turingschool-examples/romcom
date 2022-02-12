@@ -12,6 +12,7 @@ var coverInput = document.querySelector("#cover");
 var titleInput = document.querySelector("#title");
 var descriptor1Input = document.querySelector("#descriptor1");
 var descriptor2Input = document.querySelector("#descriptor2");
+var saveCoverButton = document.querySelector(".save-cover-button");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -26,6 +27,7 @@ makeCoverButton.addEventListener('click', clickMakeCoverButton);
 viewSavedButton.addEventListener('click', clickViewSavedCovers);
 homeButton.addEventListener('click', clickHomeButton);
 makeMyBookButton.addEventListener("click", addUserValue);
+saveCoverButton.addEventListener("click", saveCover);
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -74,7 +76,6 @@ function clickHomeButton() {
   displayCustomCover(currentCover);
 };
 
-//Perhaps we can split these into two functions.
 function addUserValue() {
   event.preventDefault();
   covers.push(coverInput.value);
@@ -93,4 +94,8 @@ function displayCustomCover(cover) {
   coverTitle.innerText = cover.title;
   tagline1.innerText = cover.tagline1;
   tagline2.innerText = cover.tagline2;
+};
+
+function saveCover() {
+  savedCovers.push(currentCover);
 };
