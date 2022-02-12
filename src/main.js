@@ -196,3 +196,6 @@ function showAllSavedCovers(){
   savedCoverViewSection.innerHTML = htmlAdd;
   console.log(htmlAdd);
 };
+
+//Hey we need this branch to merge please merge!!
+var commitBrance = "COMMITT THIS BRANCH";
