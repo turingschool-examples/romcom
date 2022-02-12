@@ -28,8 +28,8 @@ var allCovers = [];
 var allTitles = [];
 var allDescriptors = [];
 
-// We've provided a few variables below
 var savedRomComs = [];
+
 // Add your event listeners here 👇
 
 window.addEventListener('load', randomRomComReload);
@@ -44,6 +44,8 @@ viewSavedButton.addEventListener('click', switchSavedView);
 
 makeBookButton.addEventListener('click', submitNewRomCom);
 
+saveCoverButton.addEventListener('click', saveCover);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -56,7 +58,7 @@ function addAllRomComs() {
   allCovers = covers.concat(newCovers);
   allTitles = titles.concat(newTitles);
   allDescriptors = descriptors.concat(newDescriptors);
-}
+};
 
 function switchFormView() {
   homeView.className = 'view home-view hidden';
@@ -99,14 +101,33 @@ function displayNewRomCom() {
   coverTitle.innerText = titleInput.value;
   firstDescriptor.innerText = firstDescriptorInput.value;
   secondDescriptor.innerText = secondDescriptorInput.value;
-}
+};
+
+function hasExistingCover() {
+  if () {
+
+  }
+
+};
+
+function saveCover() {
+  var currentRomCom = new Cover(coverImage.src, coverTitle.innerText, firstDescriptor.innerText, secondDescriptor.innerText);
+  delete currentRomCom.id;
+  if (!savedRomComs.length) {
+    currentRomCom.id = Date.now();
+    return savedRomComs.push(currentRomCom);
+  } else {
+
+      }
+    }
+};
 
 function randomRomComReload() {
-  var currentRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-  coverImage.src = currentRomCom.cover;
-  coverTitle.innerText = currentRomCom.title;
-  firstDescriptor.innerText = currentRomCom.tagline1;
-  secondDescriptor.innerText = currentRomCom.tagline2;
+  var newRomCom = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = newRomCom.cover;
+  coverTitle.innerText = newRomCom.title;
+  firstDescriptor.innerText = newRomCom.tagline1;
+  secondDescriptor.innerText = newRomCom.tagline2;
 };
 
 function randomRomComButton() {
