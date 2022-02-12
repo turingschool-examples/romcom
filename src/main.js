@@ -13,6 +13,7 @@ var titleInput = document.querySelector("#title");
 var descriptor1Input = document.querySelector("#descriptor1");
 var descriptor2Input = document.querySelector("#descriptor2");
 var saveCoverButton = document.querySelector(".save-cover-button");
+var savedCoversSection = document.querySelector(".saved-covers-section");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -23,6 +24,7 @@ tagline1.innerText = descriptors[getRandomIndex(descriptors)];
 tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', makeNewCover);
+window.addEventListener("load", makeNewCover);
 makeCoverButton.addEventListener('click', clickMakeCoverButton);
 viewSavedButton.addEventListener('click', clickViewSavedCovers);
 homeButton.addEventListener('click', clickHomeButton);
@@ -55,6 +57,7 @@ function clickMakeCoverButton() {
   document.querySelector('.home-view').classList.add('hidden');
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.form-view').classList.remove('hidden');
+  document.querySelector('.saved-view').classList.add('hidden');
 };
 
 function clickViewSavedCovers() {
@@ -64,6 +67,7 @@ function clickViewSavedCovers() {
   document.querySelector('.random-cover-button').classList.add('hidden');
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.form-view').classList.add('hidden');
+  displayMiniCover();
 };
 
 function clickHomeButton() {
@@ -100,4 +104,18 @@ function saveCover() {
   if (!savedCovers.includes(currentCover)) {
   savedCovers.push(currentCover);
 } return
+};
+
+function displayMiniCover() {
+  var displayedCovers = [];
+  savedCoversSection.innerHTML = displayedCovers;
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `<section class="mini-cover">
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+    </section>`
+  }
 };
