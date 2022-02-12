@@ -21,6 +21,8 @@ var saveInputTitle = document.querySelector(".user-title");
 var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 
+var savedCoverSect = document.querySelector(".saved-covers-section");
+
 var currentCover = new Cover();
 
 var savedCovers = [
@@ -37,6 +39,7 @@ window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
 viewSavedB.addEventListener("click", showSavedView);
+savedCoverSect.addEventListener("click", displaySavedCovers);
 homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
@@ -93,6 +96,13 @@ function dataArrays() {
 }
 var displayUserCover = document.querySelector(".main-cover");
 
+function displaySavedCovers() {
+  savedCoverSect.innerHTML = "saved-covers-section";
+  //pull properties and display
+  //need the from savedCovers array , we need to see new covers first displayed
+  //where in html the info is showing up / savedC
+}
+
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
@@ -118,11 +128,13 @@ function showHomeView() {
 }
 function showSavedView() {
   viewElement(savedView);
+  //also want showSavedView to display content of savedCovers array
   viewElement(homeB);
   hideElement(homeView);
   hideElement(randomCoverB);
   hideElement(saveCoverB);
   hideElement(formView);
+  savedCovers;
 }
 function showFormView() {
   viewElement(formView);
