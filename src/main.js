@@ -14,58 +14,33 @@ var homeB = document.querySelector(".home-button");
 var randomCoverB = document.querySelector(".random-cover-button");
 var makeNewB = document.querySelector(".make-new-button");
 var saveCoverB = document.querySelector(".save-cover-button");
+var createNewBookB = document.querySelector(".create-new-book-button");
+
+var saveInputCover = document.querySelector(".user-cover");
+var saveInputTitle = document.querySelector(".user-title");
+var saveInputDesc1 = document.querySelector(".user-desc1");
+var saveInputDesc2 = document.querySelector(".user-desc2");
 
 var currentCover = new Cover();
 
-//savedCovers will be used in  ITERATION 2
-// var savedCovers = [
-// //can change this or the arguments passed through
-// new Cover(
-// "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-// "Sunsets and Sorrows",
-// "sunsets",
-// "sorrows"
-// ),
-// ];
+var savedCovers = [
+  new Cover(
+  "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+  "Sunsets and Sorrows",
+  "sunsets",
+  "sorrows"
+  ),
+];
 
 // Add your event listeners here 👇
 window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
-// diyCover.addEventListener("click", function () {
-//   document.querySelector(".view home-view").hidden = true;
-//   document.querySelector(".view form-view hidden").hidden = false;
-// });
-makeNewB.addEventListener("click", function () {
-  viewElement(formView);
-  viewElement(homeB);
-  hideElement(homeView);
-  hideElement(randomCoverB);
-  hideElement(saveCoverB);
-});
-//..........TRY AN ARRAY? for dryer code since we're repeating ourselves..?
-viewSavedB.addEventListener("click", function () {
-  viewElement(savedView);
-  viewElement(homeB);
-  hideElement(homeView);
-  hideElement(randomCoverB);
-  hideElement(saveCoverB);
-  hideElement(formView)
-});
-
-homeB.addEventListener("click", function () {
-  viewElement(homeView);
-  viewElement(saveCoverB);
-  viewElement(randomCoverB);
-  hideElement(homeB);
-  hideElement(formView);
-  hideElement(savedView);
-});
+makeNewB.addEventListener("click", showFormView);
+viewSavedB.addEventListener("click", showSavedView);
+homeB.addEventListener("click", showHomeView);
+createNewBookB.addEventListener('click', storeUserInput);
 
 // Create your event handlers and other functions here 👇
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
 function makeRandomBook() {
   var randImage = covers[getRandomIndex(covers)];
   var randTitle = titles[getRandomIndex(titles)];
@@ -85,13 +60,68 @@ function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
   coverTitle.innerText = randTitle;
   tagline1.innerText = randDescriptor1;
   tagline2.innerText = randDescriptor2;
-  //console.log(currentCover)
-}
-function viewElement(removeDisplay) {
-  removeDisplay.classList.remove("hidden");
 }
 
-function hideElement(addDisplay) {
-  addDisplay.classList.add("hidden");
+function storeUserInput() {
+  event.preventDefault();
+  currentCover = new Cover(
+    saveInputCover.value,
+    saveInputTitle.value,
+    saveInputDesc1.value,
+    saveInputDesc2.value);
+  dataArrays();
+  showHomeView();
+  displayCover();
 }
-//console.log(savedCovers);
+
+
+function dataArrays() {
+  covers.unshift(saveInputCover.value);
+  titles.unshift(saveInputTitle.value);
+  descriptors.unshift(saveInputDesc1.value);
+  descriptors.unshift(saveInputDesc2.value);
+}
+var displayUserCover = document.querySelector('.main-cover');
+
+function displayCover() {
+ coverImage.src = currentCover.cover;
+ coverTitle.innerText = currentCover.title;
+ tagline1.innerText = currentCover.tagline1;
+ tagline2.innerText = currentCover.tagline2;
+};
+
+function viewElement(classToEdit) {
+  classToEdit.classList.remove("hidden");
+}
+
+function hideElement(classToEdit) {
+  classToEdit.classList.add("hidden");
+}
+
+function showHomeView() {
+  viewElement(homeView);
+  viewElement(saveCoverB);
+  viewElement(randomCoverB);
+  hideElement(homeB);
+  hideElement(formView);
+  hideElement(savedView);
+};
+function showSavedView() {
+  viewElement(savedView);
+  viewElement(homeB);
+  hideElement(homeView);
+  hideElement(randomCoverB);
+  hideElement(saveCoverB);
+  hideElement(formView)
+};
+function showFormView() {
+  viewElement(formView);
+  viewElement(homeB);
+  hideElement(homeView);
+  hideElement(randomCoverB);
+  hideElement(saveCoverB);
+};
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
