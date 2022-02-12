@@ -7,6 +7,10 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
+// var savedCovers = ['pizza', 'candy', 'cheeseburger'];
+
+var savedCoverDisplay = document.querySelector('.saved-covers-section')
+
 // Cover section
 var title = document.querySelector('h2');
 var tagline1 = document.querySelector('.tagline-1');
@@ -47,9 +51,16 @@ makeMyBookButton.addEventListener('click', function(){
   homeButtonView();
 });
 
+// no duplicates, it will only save the cover once
 saveCoverButton.addEventListener('click', function(){
+  savedCovers.unshift(currentCover)
+  for (var i = 0; i < savedCovers.length; i++) {
+  if (currentCover === savedCovers[i]) {
+    splice(savedCovers[i], 1)
+  }
+}
+
   // current cover is added to the savedCovers arrays
-  // no duplicates, it will only save the cover once
   // saved covers should display in the saved covers section
 });
 
@@ -87,6 +98,7 @@ function savedCoverView(){
   document.querySelector('.home-button').classList.remove('hidden');
   document.querySelector('.view-saved-button').classList.remove('hidden');
   document.querySelector('.make-new-button').classList.remove('hidden');
+  loadSavedCovers()
 };
 
 function homeButtonView() {
@@ -106,6 +118,16 @@ function myCover() {
   tagline2.innerText = userDesc2.value;
   image.src = userCover.value;
   currentCover = new Cover(image.src, title.innerText, tagline1.innerText, tagline2.innerText);
+};
+
+function loadSavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoverDisplay.innerHTML += `<img class="mini-cover" src="${savedCovers[i].cover}">`;
+    savedCoverDisplay.innerHTML += `<h2 class="">${savedCovers[i].title}</h2>`;
+    savedCoverDisplay.innerHTML += `<h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`;
+    // savedCoverDisplay.innerHTML += `<img class="price-tag" src="./assets/price.png">`
+    // savedCoverDisplay.innerHTML += `<img class="overlay" src="./assets/overlay.png">`
+  }
 };
 
 function saveToArray() {
