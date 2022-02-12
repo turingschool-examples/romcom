@@ -21,10 +21,9 @@ var saveInputTitle = document.querySelector(".user-title");
 var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 
-var currentCover = [new Cover(),];
+var currentCover = new Cover();
 
 var savedCovers = [
-//can change this or the arguments passed through
   new Cover(
   "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
   "Sunsets and Sorrows",
@@ -33,59 +32,15 @@ var savedCovers = [
   ),
 ];
 
-
 // Add your event listeners here 👇
 window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
-// diyCover.addEventListener("click", function () {
-//   document.querySelector(".view home-view").hidden = true;
-//   document.querySelector(".view form-view hidden").hidden = false;
-// });
-makeNewB.addEventListener("click", function () {
-  viewElement(formView);
-  viewElement(homeB);
-  hideElement(homeView);
-  hideElement(randomCoverB);
-  hideElement(saveCoverB);
-});
-//..........TRY AN ARRAY? for dryer code since we're repeating ourselves..?
-viewSavedB.addEventListener("click", function () {
-  viewElement(savedView);
-  viewElement(homeB);
-  hideElement(homeView);
-  hideElement(randomCoverB);
-  hideElement(saveCoverB);
-  hideElement(formView)
-});
-
+makeNewB.addEventListener("click", showFormView);
+viewSavedB.addEventListener("click", showSavedView);
 homeB.addEventListener("click", showHomeView);
-//was a an anonymous function
-  // viewElement(homeView);
-  // viewElement(saveCoverB);
-  // viewElement(randomCoverB);
-  // hideElement(homeB);
-  // hideElement(formView);
-  // hideElement(savedView);
-// });
-
-//Iteration 3: create an eventlistener that createNewBook
-// createNewBookB.addEventListener('click', function() {
-//   event.preventDefault();
-//   iteration3();
-//   dataArrays()
-// })
 createNewBookB.addEventListener('click', storeUserInput);
-//ITERATION 3 NEXT STEPS
-//view home page again and display the most recent cover they made
-//later we need to savedCover[0]
-
-
 
 // Create your event handlers and other functions here 👇
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
 function makeRandomBook() {
   var randImage = covers[getRandomIndex(covers)];
   var randTitle = titles[getRandomIndex(titles)];
@@ -105,21 +60,8 @@ function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
   coverTitle.innerText = randTitle;
   tagline1.innerText = randDescriptor1;
   tagline2.innerText = randDescriptor2;
-
-  //console.log(currentCover)
 }
-//ITERATION 3 Attempts:
-// function saveUserCover(){
-//   createCover(randImage, randTitle, randDescriptor1, randDescriptor2);
-//   document.querySelector('.user-cover').value) = randImage;
-//   // document.querySelector('.user-title').value) = randTitle;
-//   // tagline1.innerText = randDescriptor1;
-//   // tagline2.innerText = randDescriptor2;
-//   console.log(currentCover)
-// }
-//
-//
-//
+
 function storeUserInput() {
   event.preventDefault();
   currentCover = new Cover(
@@ -127,11 +69,9 @@ function storeUserInput() {
     saveInputTitle.value,
     saveInputDesc1.value,
     saveInputDesc2.value);
-  //savedCovers.push(currentCover);
   dataArrays();
   showHomeView();
-  //delete this console.log later
-  console.log(currentCover);
+  displayCover();
 }
 
 
@@ -141,18 +81,14 @@ function dataArrays() {
   descriptors.unshift(saveInputDesc1.value);
   descriptors.unshift(saveInputDesc2.value);
 }
+var displayUserCover = document.querySelector('.main-cover');
 
-// function saveUserData() {
-//   // document.querySelectorAll('input')
-//   covers.unshift(document.querySelector('.user-cover').value);
-//   titles.unshift(document.querySelector('.user-title').value);
-//   descriptors.unshift(document.querySelector('.user-desc1').value);
-//   descriptors.unshift(document.querySelector('.user-desc2').value);
-//   event.preventDefault()
-//
-//   console.log(saveData())
-//
-// }
+function displayCover() {
+ coverImage.src = currentCover.cover;
+ coverTitle.innerText = currentCover.title;
+ tagline1.innerText = currentCover.tagline1;
+ tagline2.innerText = currentCover.tagline2;
+};
 
 function viewElement(classToEdit) {
   classToEdit.classList.remove("hidden");
@@ -161,8 +97,6 @@ function viewElement(classToEdit) {
 function hideElement(classToEdit) {
   classToEdit.classList.add("hidden");
 }
-//arrays we need: covers, titles, descriptors
-//console.log(savedCovers);
 
 function showHomeView() {
   viewElement(homeView);
@@ -172,3 +106,22 @@ function showHomeView() {
   hideElement(formView);
   hideElement(savedView);
 };
+function showSavedView() {
+  viewElement(savedView);
+  viewElement(homeB);
+  hideElement(homeView);
+  hideElement(randomCoverB);
+  hideElement(saveCoverB);
+  hideElement(formView)
+};
+function showFormView() {
+  viewElement(formView);
+  viewElement(homeB);
+  hideElement(homeView);
+  hideElement(randomCoverB);
+  hideElement(saveCoverB);
+};
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
