@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
 
 var savedCovers = [];
 var currentCover;
@@ -22,7 +21,7 @@ var customTagLine1 = document.querySelector("#descriptor1")
 var customTagLine2 = document.querySelector("#descriptor2")
 var grid = document.querySelector(".saved-covers-section")
 
-// Add your event listeners here 👇
+
 window.addEventListener("load", showNewRandomCover)
 saveButton.addEventListener("click", saveCover)
 randomCover.addEventListener("click", showNewRandomCover)
@@ -37,7 +36,7 @@ makeBookButton.addEventListener("click", function(event) {
   makeBook()
 })
 
-// Create your event handlers and other functions here 👇
+
 function showGrid() {
   var htmlElem = '';
 
@@ -100,7 +99,7 @@ function showForm() {
   homeButton.classList.toggle("hidden")
 }
 
-//split into two, generatecover
+
 
 function showNewRandomCover() {
 coverTitle.innerText = titles[getRandomIndex(titles)]
@@ -113,7 +112,7 @@ newRandomCover()
  function newRandomCover() {
    currentCover = new Cover(coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
 }
-// showNewRandomCover();
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);

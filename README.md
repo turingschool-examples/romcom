@@ -1,13 +1,22 @@
-# RomCom
+# Emma and Kyles RomCom
 
-A boilerplate repo. 
+## make your own romantic comedy book cover
 
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
+## Table of contents
 
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+1. Contributors
+ -Emma
+ -Kyle
+
+2. Technologies used
+- Javascript
+- html
+
+3. Instructions on how to run
+- click show random for Random
+- click save to save
+- click make your own to make a custom book cover
+- home button to return to home
+
+4. deployable link
+ [click here](https://emmacbd.github.io/romcom/)
