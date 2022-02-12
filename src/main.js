@@ -14,19 +14,25 @@ var homeB = document.querySelector(".home-button");
 var randomCoverB = document.querySelector(".random-cover-button");
 var makeNewB = document.querySelector(".make-new-button");
 var saveCoverB = document.querySelector(".save-cover-button");
+var createNewBookB = document.querySelector(".create-new-book-button");
+
+var saveInputCover = document.querySelector(".user-cover");
+var saveInputTitle = document.querySelector(".user-title");
+var saveInputDesc1 = document.querySelector(".user-desc1");
+var saveInputDesc2 = document.querySelector(".user-desc2");
 
 var currentCover = new Cover();
 
-//savedCovers will be used in  ITERATION 2
-// var savedCovers = [
-// //can change this or the arguments passed through
-// new Cover(
-// "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-// "Sunsets and Sorrows",
-// "sunsets",
-// "sorrows"
-// ),
-// ];
+var savedCovers = [
+//can change this or the arguments passed through
+  new Cover(
+  "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+  "Sunsets and Sorrows",
+  "sunsets",
+  "sorrows"
+  ),
+];
+
 
 // Add your event listeners here 👇
 window.onload = makeRandomBook();
@@ -61,6 +67,18 @@ homeB.addEventListener("click", function () {
   hideElement(savedView);
 });
 
+//Iteration 3: create an eventlistener that createNewBook
+// createNewBookB.addEventListener('click', function() {
+//   event.preventDefault();
+//   iteration3();
+//   dataArrays()
+// })
+createNewBookB.addEventListener('click', storeUserInput);
+//need to access the four data files
+//covers.push or unshift to the data.js arrays
+//input or keydown could be the event we are listening for
+//submit / click for make  my cover,
+
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -85,13 +103,60 @@ function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
   coverTitle.innerText = randTitle;
   tagline1.innerText = randDescriptor1;
   tagline2.innerText = randDescriptor2;
+
   //console.log(currentCover)
 }
-function viewElement(removeDisplay) {
-  removeDisplay.classList.remove("hidden");
+//ITERATION 3 Attempts:
+// function saveUserCover(){
+//   createCover(randImage, randTitle, randDescriptor1, randDescriptor2);
+//   document.querySelector('.user-cover').value) = randImage;
+//   // document.querySelector('.user-title').value) = randTitle;
+//   // tagline1.innerText = randDescriptor1;
+//   // tagline2.innerText = randDescriptor2;
+//   console.log(currentCover)
+// }
+//
+//
+//
+function storeUserInput() {
+  //event.preventDefault();
+  currentCover = new Cover(
+    saveInputCover.value,
+    saveInputTitle.value,
+    saveInputDesc1.value,
+    saveInputDesc2.value,);
+  savedCovers.push(currentCover);
+  dataArrays();
+  //delete this console.log later
+  console.log(savedCovers);
 }
 
-function hideElement(addDisplay) {
-  addDisplay.classList.add("hidden");
+
+function dataArrays() {
+  covers.unshift(saveInputCover.value);
+  titles.unshift(saveInputTitle.value);
+  descriptors.unshift(saveInputDesc1.value);
+  descriptors.unshift(saveInputDesc2.value);
 }
+
+// function saveUserData() {
+//   // document.querySelectorAll('input')
+//   covers.unshift(document.querySelector('.user-cover').value);
+//   titles.unshift(document.querySelector('.user-title').value);
+//   descriptors.unshift(document.querySelector('.user-desc1').value);
+//   descriptors.unshift(document.querySelector('.user-desc2').value);
+//   event.preventDefault()
+//
+//   console.log(saveData())
+//
+// }
+
+function viewElement(classToEdit) {
+  classToEdit.classList.remove("hidden");
+}
+
+function hideElement(classToEdit) {
+  classToEdit.classList.add("hidden");
+}
+//arrays we need: covers, titles, descriptors
 //console.log(savedCovers);
