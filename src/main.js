@@ -7,6 +7,11 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var homeButton = document.querySelector('.home-button');
+var makeMyBookButton = document.querySelector(".create-new-book-button");
+var coverInput = document.querySelector("#cover");
+var titleInput = document.querySelector("#title");
+var descriptor1Input = document.querySelector("#descriptor1");
+var descriptor2Input = document.querySelector("#descriptor2");
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -20,6 +25,7 @@ randomCoverButton.addEventListener('click', makeNewCover);
 makeCoverButton.addEventListener('click', clickMakeCoverButton);
 viewSavedButton.addEventListener('click', clickViewSavedCovers);
 homeButton.addEventListener('click', clickHomeButton);
+makeMyBookButton.addEventListener("click", clickMakeMyBookButton);
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -65,4 +71,21 @@ function clickHomeButton() {
   document.querySelector('.random-cover-button').classList.remove('hidden');
   document.querySelector('.home-button').classList.add('hidden');
   document.querySelector('.form-view').classList.add('hidden');
+  displayCustomCover(currentCover);
+};
+
+function clickMakeMyBookButton() {
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(descriptor1Input.value);
+  descriptors.push(descriptor2Input.value);
+  currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value);
+  event.preventDefault();
+};
+
+function displayCustomCover(cover) {
+  coverImage.src = cover.cover;
+  coverTitle.innerText = cover.title;
+  tagline1.innerText = cover.tagline1;
+  tagline2.innerText = cover.tagline2;
 };
