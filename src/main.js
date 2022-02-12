@@ -50,18 +50,30 @@ saveCoverButton.addEventListener('click', saveCover);
 // var deleteCover = document.querySelector('________');
 
 
-savedCoverDisplay.addEventListener('dblclick', function(){
-if (event.target.matches('.mini-cover')){
-  var e = event.target.id
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id === e) {
-      splice(savedCovers[i], 1);
-
+  function replyClick(clickedId) {
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers[i].id === clickedId) {
+        splice(savedCovers[i], 1);
     }
   }
+  loadSavedCovers()
 }
-loadSavedCovers()
-});
+
+
+
+
+// savedCoverDisplay.addEventListener('dblclick', function(){
+// if (event.target.matches('.mini-cover')){
+//   var e = event.target.id
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     if (savedCovers[i].id === e) {
+//       splice(savedCovers[i], 1);
+//
+//     }
+//   }
+// }
+// loadSavedCovers()
+// });
 
 // var e = event.target.id
 // for (var i = 0; i < savedCovers.length; i++) {
@@ -144,7 +156,7 @@ function myCover() {
 function loadSavedCovers() {
   var currentCoverDisplay = [];
   for (var i = 0; i < savedCovers.length; i++) {
-    currentCoverDisplay += `<section class="mini-cover" id="${savedCovers[i].id}">
+    currentCoverDisplay += `<section class="mini-cover" id="${savedCovers[i].id}" ondblclick="replyClick(this.id)">
     <img class="cover-image" src="${savedCovers[i].cover}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
