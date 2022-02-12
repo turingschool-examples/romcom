@@ -42,10 +42,37 @@ homeButton.addEventListener('click', homeButtonView);
 
 saveCoverButton.addEventListener('click', saveCover);
 
+// savedCoverDisplay.addEventListener('mouseover', function(event) {
+//   event.target.
+// })
+
 // target the HTML elements in the saved covers
 // var deleteCover = document.querySelector('________');
 
-// deleteCover.addEventListener('dblclick', _________);
+
+savedCoverDisplay.addEventListener('dblclick', function(){
+if (event.target.matches('.mini-cover')){
+  var e = event.target.id
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === e) {
+      splice(savedCovers[i], 1);
+
+    }
+  }
+}
+loadSavedCovers()
+});
+
+// var e = event.target.id
+// for (var i = 0; i < savedCovers.length; i++) {
+//   if (savedCovers[i].id === e) {
+//     splice(savedCovers[i], 1);
+//   }
+//
+// }
+//
+//   loadSavedCovers()
+// });
 
 // pull in savedCovers array
 // remove index position of object from array using splice
@@ -117,7 +144,7 @@ function myCover() {
 function loadSavedCovers() {
   var currentCoverDisplay = [];
   for (var i = 0; i < savedCovers.length; i++) {
-    currentCoverDisplay += `<section class="mini-cover">
+    currentCoverDisplay += `<section class="mini-cover" id="${savedCovers[i].id}">
     <img class="cover-image" src="${savedCovers[i].cover}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
@@ -127,11 +154,9 @@ function loadSavedCovers() {
 };
 
 function saveCover() {
-    for (var i = 0; i < savedCovers.length; i++) {
       if (savedCovers.includes(currentCover)) {
         splice(savedCovers[i], 1);
       }
-    }
     savedCovers.unshift(currentCover);
 };
 
