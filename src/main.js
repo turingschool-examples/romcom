@@ -25,10 +25,10 @@ var currentCover = new Cover();
 
 var savedCovers = [
   new Cover(
-  "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-  "Sunsets and Sorrows",
-  "sunsets",
-  "sorrows"
+    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+    "Sunsets and Sorrows",
+    "sunsets",
+    "sorrows"
   ),
 ];
 
@@ -38,9 +38,19 @@ randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
 viewSavedB.addEventListener("click", showSavedView);
 homeB.addEventListener("click", showHomeView);
-createNewBookB.addEventListener('click', storeUserInput);
+createNewBookB.addEventListener("click", storeUserInput);
+saveCoverB.addEventListener("click", saveCover);
 
 // Create your event handlers and other functions here 👇
+function saveCover() {
+  if (savedCovers[0] == currentCover) {
+    alert("You've already saved this cover darling.");
+  } else {
+    savedCovers.unshift(currentCover);
+    alert("This book has been saved darling.");
+  }
+}
+
 function makeRandomBook() {
   var randImage = covers[getRandomIndex(covers)];
   var randTitle = titles[getRandomIndex(titles)];
@@ -68,12 +78,12 @@ function storeUserInput() {
     saveInputCover.value,
     saveInputTitle.value,
     saveInputDesc1.value,
-    saveInputDesc2.value);
+    saveInputDesc2.value
+  );
   dataArrays();
   showHomeView();
   displayCover();
 }
-
 
 function dataArrays() {
   covers.unshift(saveInputCover.value);
@@ -81,14 +91,14 @@ function dataArrays() {
   descriptors.unshift(saveInputDesc1.value);
   descriptors.unshift(saveInputDesc2.value);
 }
-var displayUserCover = document.querySelector('.main-cover');
+var displayUserCover = document.querySelector(".main-cover");
 
 function displayCover() {
- coverImage.src = currentCover.cover;
- coverTitle.innerText = currentCover.title;
- tagline1.innerText = currentCover.tagline1;
- tagline2.innerText = currentCover.tagline2;
-};
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+}
 
 function viewElement(classToEdit) {
   classToEdit.classList.remove("hidden");
@@ -105,22 +115,22 @@ function showHomeView() {
   hideElement(homeB);
   hideElement(formView);
   hideElement(savedView);
-};
+}
 function showSavedView() {
   viewElement(savedView);
   viewElement(homeB);
   hideElement(homeView);
   hideElement(randomCoverB);
   hideElement(saveCoverB);
-  hideElement(formView)
-};
+  hideElement(formView);
+}
 function showFormView() {
   viewElement(formView);
   viewElement(homeB);
   hideElement(homeView);
   hideElement(randomCoverB);
   hideElement(saveCoverB);
-};
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
