@@ -25,7 +25,7 @@ randomCoverButton.addEventListener('click', makeNewCover);
 makeCoverButton.addEventListener('click', clickMakeCoverButton);
 viewSavedButton.addEventListener('click', clickViewSavedCovers);
 homeButton.addEventListener('click', clickHomeButton);
-makeMyBookButton.addEventListener("click", clickMakeMyBookButton);
+makeMyBookButton.addEventListener("click", addUserValue);
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -74,13 +74,18 @@ function clickHomeButton() {
   displayCustomCover(currentCover);
 };
 
-function clickMakeMyBookButton() {
+//Perhaps we can split these into two functions.
+function addUserValue() {
+  event.preventDefault();
   covers.push(coverInput.value);
   titles.push(titleInput.value);
   descriptors.push(descriptor1Input.value);
   descriptors.push(descriptor2Input.value);
+  createUserCover();
+};
+
+function createUserCover() {
   currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value);
-  event.preventDefault();
 };
 
 function displayCustomCover(cover) {
