@@ -1,8 +1,12 @@
 # 💘 ✨ RomCom ✨ 💘
 
 ### Overview
--JS
--DOM, CSS, HTML
+Do you have the passion of wanting to create amazing and tear-jerking romance novels?
+This is the repo for **YOU**.
+This application uses a combination of HTML, JavaScript, and CSS to create a dynamic and user-friendly
+webpage.
+To submit any suggestions, refer to our pull request template and we will review them!
+
 ### Collaborators
 🐧 **Jacob Lavarine** *(he/him)* @jlavarine **//** 🍒 **Steph Roe** *(she/her)* @stephanie-roe
 
@@ -19,4 +23,7 @@
 ![image](https://user-images.githubusercontent.com/96928474/153109623-84fe2cb8-27eb-40f3-868a-b5611bf36ea1.png)
 
 ### Application Forecast
--Blurb about what we'd like to add (features, images, etc.)
+In the future, we are looking to add the following features:
+
+1. The ability to delete saved covers from the Saved Covers View.
+2. The ability for the webpage to automatically clear the user's input from the input boxes once the form has been submitted.
