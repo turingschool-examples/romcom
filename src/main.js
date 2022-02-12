@@ -51,10 +51,10 @@ saveCoverButton.addEventListener('click', saveCover);
 
 
   function replyClick(clickedId) {
-    for (var i = 0; i < savedCovers.length; i++) {
-      if (savedCovers[i].id === clickedId) {
-        splice(savedCovers[i], 1);
-    }
+      if (savedCovers.includes(clickedId)) {
+        console.log()
+        splice(savedCovers, 1);
+
   }
   loadSavedCovers()
 }
@@ -167,7 +167,7 @@ function loadSavedCovers() {
 
 function saveCover() {
       if (savedCovers.includes(currentCover)) {
-        splice(savedCovers[i], 1);
+        splice(savedCovers, 1);
       }
     savedCovers.unshift(currentCover);
 };
