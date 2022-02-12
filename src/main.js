@@ -50,7 +50,7 @@ function toggleMakeOwn() {
   document.querySelector('.saved-view').classList.add('hidden');
 }
 
- 
+
 
 //Save-Cover Functionality:
 
@@ -92,7 +92,7 @@ makeNewBookButton.addEventListener('click', function() {
   toggleHomeButton();
   displayNewCover(currentCover);
 });
-// 
+
 function makeNewBook() {
   var coverInput = document.querySelector('.user-cover').value;
   var titleInput = document.querySelector('.user-title').value;
@@ -132,7 +132,6 @@ savedCoversButton.addEventListener('click', saveCurrentCover);
 function clickViewSave() {
   toggleSavedCovers();
   displaySavedCovers();
-
 }
 
 function saveCurrentCover() {
@@ -147,35 +146,42 @@ function saveCurrentCover() {
 //       return savedCovers.unshift(currentCover)
 //     } else {
 //       return savedCovers
-//     }   
+//     }
 //   }
 // }
 
 // We need a functionality that keeps this function from running if toggle saved covers button is run
-// function displaySavedCovers(savedCovers) {  
+// function displaySavedCovers(savedCovers) {
 //   for(var i = 0; i < savedCovers.length; i++) {
 //     if(savedCovers[i] )
 //     savedCoversSection.innerHTML += `<img class='mini-cover' src=${savedCovers[i].cover}>`
 //     savedCoversSection.innerHTML += `<h2 class='mini-cover cover-title' >${savedCovers[i].title}</h2>`
-//     savedCoversSection.innerHTML += `<h3 class='mini-cover tagline'>A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>`;     
+//     savedCoversSection.innerHTML += `<h3 class='mini-cover tagline'>A tale of <span>${savedCovers[i].tagline1}</span> and <span>${savedCovers[i].tagline2}</span></h3>`;
 //    };
 // }
 
 
 // saved classes
-function displaySavedCovers() {  
+function displaySavedCovers() {
   var display = "";
   for(var i = 0; i < savedCovers.length; i++) {
-    display += 
-    `<section class='mini-cover'> <img class='cover-image' src=${savedCovers[i].cover}>
+    display +=
+    `<section id='${savedCovers[i].id}' class='mini-cover' ondblclick='placeHolderFunc(this.id)'> <img class='cover-image' src=${savedCovers[i].cover}>
     <h2 class='cover-title'>${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png"></section>`;     
+    <img class="overlay" src="./assets/overlay.png"></section>`;
    }; savedCoversSection.innerHTML = display;
 }
 
-
+function placeHolderFunc(id) {
+  for(i=0; i <= savedCovers.length; i++) {
+    if (savedCovers[i].id == id) {
+      savedCovers.splice(i, 1);
+      displaySavedCovers();
+    }
+  }
+};
 
 
 // For Loop for adding an array of objects to an html element:
@@ -187,19 +193,47 @@ function displaySavedCovers() {
 //look for append(like)
 
 
+//Iteration 5
+//event for a double click - dblclick
+//For loop that will iterate through the saved covers array and when the dblclick
+//element is reached, .splice it from the array
 
+//Alternatively, could this look like removing an html element as in the dispaly saved covers section?
+// var dblClickedBook = document.removeElementById(variable)
+// dblClickedBook.addEventListener('dblclick', deleteSavedCovers);
+//
+// for (i=0; i <= savedCovers.length; i++)
+//   if(variable === savedCovers[i].id)
 
-// Pseudocode: 
-//We need to target the saved-covers-section
-//We'll need a for loop that loops through each cover in our savedCovers array
+//Could we declare give an individual id for each object we push to saved covers array?
+// function deleteSavedCovers() {
+  //Possible declare another variable at start of function?
+  //Iterate through the savedCovers array
+  //if savedCovers[i].cover = (#newID).src
 
+//how do we get the
+//img.src = savedCovers[i].cover SPLICE
 
+// var cover = document.querySelector('.overlay');
+// document.ondblclick = doubleClick;
+// cover.addEventListener('dblClick', doubleClick);
+// function doubleClick(e) {
+//   cover.textContent = `Position: (${e.clientX}, (${e.clientY}))`;
+// }
+//
+// var doubleClick = document.querySelector('')
 
+//remove() or removeChild()
 
+//we find a way to run a function when we double click anywhere on the entire document/window
+//the dblclick will run a function(s) when anything is dblclicked
+//Function will loop, comparing the clicked element to our array:
+//If element's id == savedCovers[i].id
+//then, .remove() element
 
-
-
-
+//Argument of element - is this a placeholder or universal?
+//ParseInt
+//event target
 
 
 
