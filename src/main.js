@@ -173,7 +173,7 @@ function displayNewCover(newCover) {
   // Removes a cover when double clicked:
   function deleteCover(id) {
     for(var i = 0; i <= savedCovers.length; i++) {
-      if (savedCovers[i].id == id) {
+      if (`${savedCovers[i].id}` === id) {
         savedCovers.splice(i, 1);
         displaySavedCovers();
       };
