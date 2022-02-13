@@ -39,12 +39,37 @@ window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
 viewSavedB.addEventListener("click", showSavedView);
-savedCoverSect.addEventListener("click", displaySavedCovers);
+//savedCoverSect.addEventListener("click", displaySavedCovers);
 homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
+//savedCoverSect.addEventListener("click", displaySavedCovers);
 
 // Create your event handlers and other functions here 👇
+function displaySavedCovers() {
+  savedCoverSect.innerHTML = "";
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoverSect.innerHTML += `
+  <section class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].cover}" />
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">
+      A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and
+      <span class="tagline-2">${savedCovers[i].tagline2}</span>
+    </h3>
+    <img class="price-tag" src="./assets/price.png" />
+    <img class="overlay" src="./assets/overlay.png" />
+  </section>
+    `;
+  }
+}
+//in line 52, dig deeper to access display of object - will need all 4 classes, can make a function add it to html for each saved cover - need the function to create a h2 h3 image to include all blocks.
+//start: 21-30 in html , mimic
+
+//pull properties and display
+//need the from savedCovers array , we need to see new covers first displayed
+//where in html the info is showing up / savedCovers
+
 function saveCover() {
   if (savedCovers[0] == currentCover) {
     alert("You've already saved this cover darling.");
@@ -96,13 +121,6 @@ function dataArrays() {
 }
 var displayUserCover = document.querySelector(".main-cover");
 
-function displaySavedCovers() {
-  savedCoverSect.innerHTML = "saved-covers-section";
-  //pull properties and display
-  //need the from savedCovers array , we need to see new covers first displayed
-  //where in html the info is showing up / savedC
-}
-
 function displayCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
@@ -128,13 +146,12 @@ function showHomeView() {
 }
 function showSavedView() {
   viewElement(savedView);
-  //also want showSavedView to display content of savedCovers array
   viewElement(homeB);
   hideElement(homeView);
   hideElement(randomCoverB);
   hideElement(saveCoverB);
   hideElement(formView);
-  savedCovers;
+  displaySavedCovers();
 }
 function showFormView() {
   viewElement(formView);
