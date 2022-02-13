@@ -1,13 +1,26 @@
 # RomCom
 
-A boilerplate repo. 
+## Instructions
+### Overview
+This page allows you to create different versions of romantic novel covers. You have the option to create your own, generate random covers, and save your favorites.
 
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
+### Home view
+This view displays a random cover example. From here the user can generate a random cover that can be saved, or navigate to one of the other views.
 
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+### View saved covers
+The saved covers view allows the user to preview all their saved covers. Double clicking on a cover will remove it from your saved covers list.
+
+### Make your own cover
+From this form the user can input their custom image, title, and descriptors to create their own cover. Clicking the "Make my book" button will take the user to the home page with the newly generated cover.
+
+## Deploy Link
+https://joerupp.github.io/romcom/
+
+## Contributors
+- Joe Rupp
+- Grant Beard
+
+## Technologies
+- Javascript
+- CSS
+- HTML
