@@ -28,7 +28,7 @@ This Valentine’s Day, users can have some fun with our Romance Novel generator
 
 # **Instructions For Use**
 
-- Access the application by clicking on this deploy link: file:///Users/jordansullivan/turing/mod_1/projects/romcom/index.html
+- Access the application by clicking on [this deploy link](https://jordan-sullivan.github.io/romcom/):
 - On opening the browser, click through the buttons on the top of the screen to view Randomly generated Romance novels, save your favorites, view saved Covers, and make your own titles.
 - When a user clicks on the _“Make your own cover”_ button, they should enter the correct properties into the fields. Note: the cover field should be a link ending in either a .png, .jpg file or .gif as shown below.
   ![Make Your Own Cover](README-images/Make Your Own Cover.png)
