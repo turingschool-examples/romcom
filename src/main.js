@@ -4,25 +4,20 @@ var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
-
 var savedView = document.querySelector(".saved-view");
 var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
-
 var viewSavedB = document.querySelector(".view-saved-button");
 var homeB = document.querySelector(".home-button");
 var randomCoverB = document.querySelector(".random-cover-button");
 var makeNewB = document.querySelector(".make-new-button");
 var saveCoverB = document.querySelector(".save-cover-button");
 var createNewBookB = document.querySelector(".create-new-book-button");
-
 var saveInputCover = document.querySelector(".user-cover");
 var saveInputTitle = document.querySelector(".user-title");
 var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
-
 var savedCoverSect = document.querySelector(".saved-covers-section");
-
 var currentCover = new Cover();
 
 var savedCovers = [
@@ -39,11 +34,9 @@ window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
 viewSavedB.addEventListener("click", showSavedView);
-//savedCoverSect.addEventListener("click", displaySavedCovers);
 homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
-//savedCoverSect.addEventListener("click", displaySavedCovers);
 
 // Create your event handlers and other functions here 👇
 function displaySavedCovers() {
@@ -63,12 +56,6 @@ function displaySavedCovers() {
     `;
   }
 }
-//in line 52, dig deeper to access display of object - will need all 4 classes, can make a function add it to html for each saved cover - need the function to create a h2 h3 image to include all blocks.
-//start: 21-30 in html , mimic
-
-//pull properties and display
-//need the from savedCovers array , we need to see new covers first displayed
-//where in html the info is showing up / savedCovers
 
 function saveCover() {
   if (savedCovers[0] == currentCover) {
@@ -159,6 +146,7 @@ function showFormView() {
   hideElement(homeView);
   hideElement(randomCoverB);
   hideElement(saveCoverB);
+  hideElement(savedView);
 }
 
 function getRandomIndex(array) {
