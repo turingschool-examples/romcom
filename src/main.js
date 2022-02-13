@@ -1,4 +1,6 @@
-//Global Variables below
+var currentCover = new Cover();
+var savedCovers = [];
+
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
@@ -18,10 +20,6 @@ var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 var savedCoverSect = document.querySelector(".saved-covers-section");
 
-var currentCover = new Cover();
-var savedCovers = [];
-
-// Add your event listeners here 👇
 window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
@@ -30,7 +28,6 @@ homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
 
-//Create your event handlers and other functions here 👇
 function deleteSavedCover(id) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (id == savedCovers[i].id) {
@@ -78,12 +75,7 @@ function makeRandomBook() {
 }
 
 function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
-  currentCover = new Cover(
-    randImage,
-    randTitle,
-    randDescriptor1,
-    randDescriptor2
-  );
+  currentCover = new Cover(randImage, randTitle,randDescriptor1, randDescriptor2);
   coverImage.src = randImage;
   coverTitle.innerText = randTitle;
   tagline1.innerText = randDescriptor1;
