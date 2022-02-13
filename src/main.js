@@ -21,30 +21,30 @@ var userDesc2 = document.querySelector('.user-desc2');
 
 var savedCoverDisplay = document.querySelector('.saved-covers-section')
 
-window.addEventListener('load', newCover);
+window.addEventListener('load', createNewCover);
 
-makeRandomCoverButton.addEventListener('click', newCover);
+makeRandomCoverButton.addEventListener('click', createNewCover);
 
 makeOwnCoverButton.addEventListener('click', makeOwnCoverView);
 
 viewSavedCoverButton.addEventListener('click', savedCoverView);
 
-homeButton.addEventListener('click', homeButtonView);
+homeButton.addEventListener('click', homeView);
 
 saveCoverButton.addEventListener('click', saveCover);
 
 makeMyBookButton.addEventListener('click', function(){
   saveToArray();
-  myCover();
+  createMyCover();
   event.preventDefault();
-  homeButtonView();
+  homeView();
 });
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function newCover() {
+function createNewCover() {
   title.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
@@ -75,7 +75,7 @@ function savedCoverView(){
   loadSavedCovers()
 };
 
-function homeButtonView() {
+function homeView() {
   document.querySelector('.home-view').classList.remove('hidden');
   document.querySelector('.form-view').classList.add('hidden');
   document.querySelector('.saved-view').classList.add('hidden');
@@ -86,7 +86,7 @@ function homeButtonView() {
   document.querySelector('.make-new-button').classList.remove('hidden');
 };
 
-function myCover() {
+function createMyCover() {
   title.innerText = userTitle.value;
   tagline1.innerText = userDesc1.value;
   tagline2.innerText = userDesc2.value;
@@ -95,16 +95,16 @@ function myCover() {
 };
 
 function loadSavedCovers() {
-  var currentCoverDisplay = [];
+  var displaySavedCovers = [];
   for (var i = 0; i < savedCovers.length; i++) {
-    currentCoverDisplay += `<section class="mini-cover" id="${savedCovers[i].id}" ondblclick="replyClick(this.id)">
+    displaySavedCovers += `<section class="mini-cover" id="${savedCovers[i].id}" ondblclick="deleteCover(this.id)">
     <img class="cover-image" src="${savedCovers[i].cover}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     </section>`
   }
 
-  savedCoverDisplay.innerHTML = currentCoverDisplay;
+  savedCoverDisplay.innerHTML = displaySavedCovers;
 };
 
 function saveCover() {
@@ -124,11 +124,12 @@ function saveToArray() {
   covers.unshift(userCover.value);
 };
 
-function replyClick(clickedElementId) {
+function deleteCover(clickedElementId) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (`${savedCovers[i].id}` === clickedElementId) {
       savedCovers.splice(i, 1);
-      savedCoverView();
     }
   }
+
+  savedCoverView();
 };
