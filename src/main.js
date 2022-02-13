@@ -1,4 +1,5 @@
-//Global Variables below
+var currentCover = new Cover();
+var savedCovers = [];
 
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -18,18 +19,7 @@ var saveInputTitle = document.querySelector(".user-title");
 var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 var savedCoverSect = document.querySelector(".saved-covers-section");
-var currentCover = new Cover();
 
-var savedCovers = [
-  new Cover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  ),
-];
-
-// Add your event listeners here 👇
 window.onload = makeRandomBook();
 randomCoverB.addEventListener("click", makeRandomBook);
 makeNewB.addEventListener("click", showFormView);
@@ -38,31 +28,41 @@ homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
 
-// Create your event handlers and other functions here 👇
+function deleteSavedCover(id) {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (id == savedCovers[i].id) {
+      savedCovers.splice(i,1);
+      displaySavedCovers()
+    }
+  }
+};
+
 function displaySavedCovers() {
   savedCoverSect.innerHTML = "";
-  for (var i = 0; i < savedCovers.length; i++) {
-    savedCoverSect.innerHTML += `
-  <section class="mini-cover">
-    <img class="cover-image" src="${savedCovers[i].cover}" />
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">
-      A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and
-      <span class="tagline-2">${savedCovers[i].tagline2}</span>
-    </h3>
-    <img class="price-tag" src="./assets/price.png" />
-    <img class="overlay" src="./assets/overlay.png" />
-  </section>
-    `;
-  }
+    for (var i = 0; i < savedCovers.length; i++) {
+      savedCoverSect.innerHTML += `
+        <section class="mini-cover"  id="${savedCovers[i].id}"
+         onDblClick="deleteSavedCover(this.id)">
+          <img class="cover-image" src="${savedCovers[i].cover}" />
+          <h2 class="cover-title">${savedCovers[i].title}</h2>
+          <h3 class="tagline">
+            A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and
+            <span class="tagline-2">${savedCovers[i].tagline2}</span>
+          </h3>
+          <img class="price-tag" src="./assets/price.png" />
+          <img class="overlay" src="./assets/overlay.png" />
+        </section>
+        `;
+    }
 }
+
 
 function saveCover() {
   if (savedCovers[0] == currentCover) {
-    alert("You've already saved this cover darling.");
+    alert("☞🪞You've already saved this cover, darling 🪞✨");
   } else {
     savedCovers.unshift(currentCover);
-    alert("This book has been saved darling.");
+    alert("💖 This cover has been saved, darling 💜");
   }
 }
 
@@ -75,12 +75,7 @@ function makeRandomBook() {
 }
 
 function createCover(randImage, randTitle, randDescriptor1, randDescriptor2) {
-  currentCover = new Cover(
-    randImage,
-    randTitle,
-    randDescriptor1,
-    randDescriptor2
-  );
+  currentCover = new Cover(randImage, randTitle,randDescriptor1, randDescriptor2);
   coverImage.src = randImage;
   coverTitle.innerText = randTitle;
   tagline1.innerText = randDescriptor1;
@@ -106,7 +101,6 @@ function dataArrays() {
   descriptors.unshift(saveInputDesc1.value);
   descriptors.unshift(saveInputDesc2.value);
 }
-var displayUserCover = document.querySelector(".main-cover");
 
 function displayCover() {
   coverImage.src = currentCover.cover;
@@ -131,6 +125,7 @@ function showHomeView() {
   hideElement(formView);
   hideElement(savedView);
 }
+
 function showSavedView() {
   viewElement(savedView);
   viewElement(homeB);
@@ -140,6 +135,7 @@ function showSavedView() {
   hideElement(formView);
   displaySavedCovers();
 }
+
 function showFormView() {
   viewElement(formView);
   viewElement(homeB);
