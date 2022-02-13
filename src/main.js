@@ -1,3 +1,6 @@
+//Status:
+//currently doubleclick gives us the same
+
 //Global Variables below
 
 var coverImage = document.querySelector(".cover-image");
@@ -19,6 +22,8 @@ var saveInputDesc1 = document.querySelector(".user-desc1");
 var saveInputDesc2 = document.querySelector(".user-desc2");
 var savedCoverSect = document.querySelector(".saved-covers-section");
 var currentCover = new Cover();
+var savedCoverClass = document.querySelector(".mini-cover");
+
 
 var savedCovers = [
   new Cover(
@@ -38,12 +43,51 @@ homeB.addEventListener("click", showHomeView);
 createNewBookB.addEventListener("click", storeUserInput);
 saveCoverB.addEventListener("click", saveCover);
 
-// Create your event handlers and other functions here 👇
+//savedCoverSect.addEventListener("dblclick", deleteSavedCover);
+//what element are our mini cover in
+// If our 'html section/conatiner' that holds the cover the user is trying to delete
+// we want to find the id of that .mini-cover instance and then
+//   1. remove that 'html section/container'
+//   2. delete from the array
+//
+// the id is the same for both the html that
+
+
+/* what is the var*/
+//on the double click, delete saved cover
+//hover tip idea: ____.addEventListener('mouseover', deleteHint)
+
+//Create your event handlers and other functions here 👇
+function deleteSavedCover(id){
+  // savedCovers = document.getElementById("this.id")
+  // savedCovers.removeChild().childNode[0]
+  console.log('I double clicked');
+  displaySavedCovers()
+  console.log(id)
+  // console.log(savedCoverSect)
+  // for (var i = 0; i < savedCovers.length; i++) {
+  //   if (savedCoverClass.classList.includes(`${savedCovers[i].id}`) == savedCovers[i].id) {
+  //     savedCovers.splice(i,1);
+  //     //savedCoverSect.innerHTML -=
+  //   }
+  // }
+
+};
+
+// var parent = document.getElementsByClassName("mini-cover");
+// console.log(parent);
+
+// when the cover you're clicking on current, matches the id in the SavedCovers array, delete
+// when the double click happens on an image
+
+
 function displaySavedCovers() {
+//duplicate ids being saved - debug tomorrow
   savedCoverSect.innerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoverSect.innerHTML += `
-  <section class="mini-cover">
+  <section class="mini-cover"  id="${savedCovers[i].id}"
+   onDblClick="deleteSavedCover(this.id)">
     <img class="cover-image" src="${savedCovers[i].cover}" />
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">
@@ -52,17 +96,26 @@ function displaySavedCovers() {
     </h3>
     <img class="price-tag" src="./assets/price.png" />
     <img class="overlay" src="./assets/overlay.png" />
+    <button></button>
   </section>
     `;
   }
+
+
 }
+//
+// function deleteHint() {
+//   //when a user hovers over a saved cover,
+  //show}
+
+
 
 function saveCover() {
   if (savedCovers[0] == currentCover) {
-    alert("You've already saved this cover darling.");
+    //alert("You've already saved this cover darling.");
   } else {
     savedCovers.unshift(currentCover);
-    alert("This book has been saved darling.");
+    //alert("This book has been saved darling.");
   }
 }
 
