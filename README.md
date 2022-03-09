@@ -9,6 +9,7 @@ To submit any suggestions, refer to our pull request template and we will review
 
 ### Collaborators
 🐧 **Jacob Lavarine** *(he/him)* @jlavarine **//** 🍒 **Steph Roe** *(she/her)* @stephanie-roe
+- We had 2 weeks of JavaScript,HTML, and CSS knowledge to build this application.
 
 ### Installation Steps
 1. Fork this repo to create your own copy.
@@ -19,7 +20,7 @@ To submit any suggestions, refer to our pull request template and we will review
 
 *Hot Tip: Create a new branch using `git checkout -b` to categorize additions to the code base.*
 
-#### Wanna see it in action? click [here](https://stephanie-roe.github.io/romcom/)
+#### Wanna see it in action? Click [here](https://jlavarine.github.io/romcom/)
 ![image](https://user-images.githubusercontent.com/96928474/153109623-84fe2cb8-27eb-40f3-868a-b5611bf36ea1.png)
 
 ### Application Forecast
