@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var buttonShowRandomCover = document.querySelector('.random-cover-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,7 +8,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+buttonShowRandomCover.addEventListener("click", printHello)
 
 // Create your event handlers and other functions here 👇
 
@@ -16,4 +16,8 @@ var currentCover;
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function printHello() {
+  console.log('hello')
 }
