@@ -1,6 +1,20 @@
 // Create variables targetting the relevant DOM elements here 👇
 var buttonShowRandomCover = document.querySelector('.random-cover-button');
 
+var buttonHome = document.querySelector('.home-button');
+var buttonSaveCover = document.querySelector('.save-cover-button');
+var buttonViewSaved = document.querySelector('.view-save-button');
+var buttonMakeNew = document.querySelector('.make-new-button');
+
+var titleCover = document.querySelector('.cover-title');
+var titleImage = document.querySelector('.cover-image');
+var titleTagline = document.querySelector('.tagline');
+
+var romControls = document.querySelector('.controls');
+var romViewHome = document.querySelector('.view home-view');
+var romViewSave = document.querySelector('.view home-view');
+var romViewForm = document.querySelector('.view form-view');
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -17,6 +31,8 @@ buttonShowRandomCover.addEventListener("click", printHello)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
 
 function printHello() {
   console.log('hello')
