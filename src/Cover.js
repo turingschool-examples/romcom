@@ -6,4 +6,9 @@ class Cover {
     this.tagline1 = descriptor1;
     this.tagline2 = descriptor2;
   }
+  class Random Cover {
+    constructor() {
+      
+    }
+  }
 }
