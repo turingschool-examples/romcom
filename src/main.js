@@ -12,9 +12,9 @@ var titleTagLine1 = document.querySelector('.tagline-1');
 var titleTagLine2 = document.querySelector('.tagline-2');
 
 var romControls = document.querySelector('.controls');
-var romViewHome = document.querySelector('.view home-view');
-var romViewSave = document.querySelector('.view home-view');
-var romViewForm = document.querySelector('.view form-view');
+var romViewHome = document.querySelector('.view.home-view');
+var romViewSave = document.querySelector('.view.saved-view');
+var romViewForm = document.querySelector('.view.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -25,6 +25,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomizedCover)
 buttonShowRandomCover.addEventListener("click", getRandomizedCover)
+buttonMakeNew.addEventListener('click', toggleHidden)
 
 // Create your event handlers and other functions here 👇
 
