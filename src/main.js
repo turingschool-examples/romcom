@@ -1,5 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
-// DOM allows us to interact with HTMLK elements via js
+// DOM allows us to interact with HTML elements via js
+
+//querySelectors:A
+var cover = document.querySelector('.cover-image');
+//right now we are grabbing the class cover.
+//If you need to grab the id: Id is a hashtag(#) instead of a dot (.)
 
 /*
 
@@ -39,7 +44,7 @@ class Romcom {
     this.title = title;
     this.tagline = tagline
   } // end of constructor
-  
+
 //Fxn 1
 
 
@@ -57,10 +62,16 @@ class Romcom {
 
 
 
-// Add your event listeners here 👇
+// Add your event listeners here(B) 👇
+
+window.onload = (function that generates math.random)
+//Window upload will be the refresh button
+
+cover.addEventListener('click', function)
+//click button, and the function happens
 
 
-// Create your event handlers and other functions here 👇
+// Create your event handlers and other functions here (c)👇
 
 
 // We've provided one function to get you started
