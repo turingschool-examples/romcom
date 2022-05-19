@@ -1,6 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector(".cover-image")
-
+var coverTitle = document.querySelector(".cover-title")
+var taglineNum1 = document.querySelector(".tagline-1")
+var taglineNum2 = document.querySelector(".tagline-2")
 //document is everything, everything on the page is part of doc
 //this one is just focused on the cover image
 
