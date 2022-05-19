@@ -44,6 +44,10 @@ function getRandomizedCover() {
 }
 
 
+function toggleHidden() {
+  romViewForm.classList.remove('hidden');
+}
+
 
 // function printHello() {
 //   console.log('hello')
