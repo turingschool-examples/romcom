@@ -8,12 +8,13 @@ var buttonMakeNew = document.querySelector('.make-new-button');
 
 var titleCover = document.querySelector('.cover-title');
 var titleImage = document.querySelector('.cover-image');
-var titleTagline = document.querySelector('.tagline');
+var titleTagLine1 = document.querySelector('.tagline-1');
+var titleTagLine2 = document.querySelector('.tagline-2');
 
 var romControls = document.querySelector('.controls');
-var romViewHome = document.querySelector('.view home-view');
-var romViewSave = document.querySelector('.view home-view');
-var romViewForm = document.querySelector('.view form-view');
+var romViewHome = document.querySelector('.view.home-view');
+var romViewSave = document.querySelector('.view.saved-view');
+var romViewForm = document.querySelector('.view.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -22,7 +23,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-buttonShowRandomCover.addEventListener("click", printHello)
+window.addEventListener('load', getRandomizedCover)
+buttonShowRandomCover.addEventListener("click", getRandomizedCover)
+buttonMakeNew.addEventListener('click', toggleHidden)
 
 // Create your event handlers and other functions here 👇
 
@@ -32,8 +35,16 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
-
-function printHello() {
-  console.log('hello')
+function getRandomizedCover() {
+  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+  titleImage.src = currentCover.cover;
+  titleCover.innerText = currentCover.title;
+  titleTagLine1.innerText = currentCover.tagline1;
+  titleTagLine2.innerText = currentCover.tagline2;
 }
+
+
+
+// function printHello() {
+//   console.log('hello')
+// }
