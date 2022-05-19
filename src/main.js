@@ -1,5 +1,4 @@
 // Create variables targetting the relevant DOM elements here 👇
-
 var cover = document.querySelector(."random-cover-button");
 var title = document.querySelector(."cover-title");
 var tagline1 = document.querySelector(."tagline-1");
@@ -35,7 +34,6 @@ var currentCover;
 //IDEA: New object instance to pass into constructor
 // var cover10 = new Romcom(cover, title, descriptor1, descriptor2);
 
-// *****************************************
 
 var currentCover =
 var currentTitle =
@@ -53,9 +51,12 @@ var currentTagline =
 // Event handlers section
 
 
+// Add your event listeners here(B) 👇
 
 
 
+
+// Create your event handlers and other functions here (c)👇
 
 
 // Fxn's Section
