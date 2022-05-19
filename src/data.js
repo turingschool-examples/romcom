@@ -1,6 +1,8 @@
+
+
 var covers = [
   './assets/bluebrocade.jpg',
-  './assets/dance.jpg', 
+  './assets/dance.jpg',
   './assets/embrace.png',
   './assets/fire.png',
   './assets/frock.png',
@@ -27,6 +29,12 @@ var covers = [
   './assets/wildwest.jpg',
   './assets/windswept.jpg',
 ];
+
+// Get 1 random cover image(jpg, png) string
+// function getRandomCover(covers) {
+//   return covers[Math.floor(Math.random() * covers.length)];
+// }
+// console.log(getRandomCover(covers));
 
 var titles = [
   "Passionate Moonlight",
@@ -55,6 +63,12 @@ var titles = [
   "Sapphire Skies",
   "Opal Passions"
 ];
+
+// // Get 1 random titles string
+// function getRandomTitle(titles) {
+//   return titles[Math.floor(Math.random() * titles.length)];
+// }
+// console.log(getRandomTitle(titles));
 
 var descriptors = [
   "passion",
@@ -90,3 +104,17 @@ var descriptors = [
   "blessings",
   "melancholy"
 ];
+
+// var tagline = [];
+//
+// Get 2 random descriptors strings
+// function getTwoRandomDescriptors(descriptors) {
+//   for (var i = 0; i < 2; i++) {
+//     var randomDescriptors = descriptors[Math.floor(Math.random() * descriptors.length)];
+//     tagline.push(randomDescriptors);
+//   }
+//    return tagline.join();
+// }
+
+// console.log(getTwoRandomDescriptors(descriptors));
+// const shuffleDescriptors = [...descriptors].sort();

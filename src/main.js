@@ -1,17 +1,14 @@
 // Create variables targetting the relevant DOM elements here 👇
-// DOM allows us to interact with HTML elements via js
+var cover = document.querySelector(."random-cover-button");
+var title = document.querySelector(."cover-title");
+var tagline1 = document.querySelector(."tagline-1");
+var tagline2 = document.querySelector(."tagline-2");
 
-//querySelectors:A
-var cover = document.querySelector('.cover-image');
-//right now we are grabbing the class cover.
-//If you need to grab the id: Id is a hashtag(#) instead of a dot (.)
-
-/*
 
 We've provided a few variables below
 
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
 ];
 
 - We have 4 args
@@ -21,60 +18,68 @@ var savedCovers = [
       - descriptor2 arg
 
 // descriptor literal thought
-`A tale of ${descriptor1} and ${descriptor2}`;
+tagline(){
+ `A tale of ${descriptor1} and ${descriptor2}`;
+}
 
-// Hint for document.querySelector(<argument>)
+
 var currentCover;
 
-// Function note & Idea
-
-math.floor(Math.random() * arrat.length
- - 3 math.floor fxns
-      1 for Covers
-      1 for titles
-      1 for taglines (will integrate descriptor1 and descriptor2 into a string literal)
 
 
 
-*/
+//IDEA A global fxn outside of class Romcom
+// Create fxn to collect all of our random elements from each array
 
-class Romcom {
-  constructor(cover, title, tagline){
-    this.cover = cover;
-    this.title = title;
-    this.tagline = tagline
-  } // end of constructor
-
-//Fxn 1
+//IDEA: New object instance to pass into constructor
+// var cover10 = new Romcom(cover, title, descriptor1, descriptor2);
 
 
+var currentCover =
+var currentTitle =
+var currentTagline =
 
-//Fxn 2
 
-
-
-//Fxn 3
+// Add your event listeners here 👇
 
 
 
 
-}  // end of class
 
+// Create your event handlers and other functions here 👇
+
+// Event handlers section
 
 
 // Add your event listeners here(B) 👇
 
-window.onload = (function that generates math.random)
-//Window upload will be the refresh button
 
-cover.addEventListener('click', function)
-//click button, and the function happens
 
 
 // Create your event handlers and other functions here (c)👇
 
 
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+// Fxn's Section
+
+// Get 1 random cover image(jpg, png) string
+function getRandomCover(covers) {
+  return covers[Math.floor(Math.random() * covers.length)];
+}
+console.log(getRandomCover(covers));
+
+// Get 1 random titles string
+function getRandomTitle(titles) {
+  return titles[Math.floor(Math.random() * titles.length)];
+}
+console.log(getRandomTitle(titles));
+
+var tagline = [];
+
+// Get 2 random descriptors strings
+function getTwoRandomDescriptors(descriptors) {
+  for (var i = 0; i < 2; i++) {
+    var randomDescriptors = descriptors[Math.floor(Math.random() * descriptors.length)];
+    tagline.push(randomDescriptors);
+  }
+   return tagline.join();
 }
