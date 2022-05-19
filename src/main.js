@@ -11,7 +11,11 @@ var currentCover = ;
 document.addEventListener('load', getRandomCoverPageLoad)
 
 // Create your event handlers and other functions here 👇
-
+function getRandomCoverPageLoad() {
+  var image = covers[getRandomIndex(covers)]
+  var title = titles[getRandomIndex(titles)]
+  var descriptor1 = descriptors[getRandomIndex(descriptors)]
+  var descriptor2 = descriptors[getRandomIndex(descriptors)]
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
