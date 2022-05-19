@@ -8,7 +8,8 @@ var buttonMakeNew = document.querySelector('.make-new-button');
 
 var titleCover = document.querySelector('.cover-title');
 var titleImage = document.querySelector('.cover-image');
-var titleTagline = document.querySelector('.tagline');
+var titleTagLine1 = document.querySelector('.tagline-1');
+var titleTagLine2 = document.querySelector('.tagline-2');
 
 var romControls = document.querySelector('.controls');
 var romViewHome = document.querySelector('.view home-view');
@@ -22,7 +23,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-buttonShowRandomCover.addEventListener("click", printHello)
+// buttonShowRandomCover.addEventListener("click", )
 
 // Create your event handlers and other functions here 👇
 
@@ -32,8 +33,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function getRandomizedCover() {
+  currentCover = new Cover(titleImage[getRandomIndex(titleImage)], titleCover[getRandomIndex(titleCover)], titleTagLine1[getRandomIndex(titleTagLine1)], titleTagLine2[getRandomIndex(titleTagLine2)])
 
-
-function printHello() {
-  console.log('hello')
 }
+
+
+
+// function printHello() {
+//   console.log('hello')
+// }
