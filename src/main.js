@@ -49,7 +49,6 @@ function displayFormView(){
   goHome.classList.toggle('hidden');
 }
 function displayHomeView(){
-
   homeView.classList.toggle('hidden');
   formView.classList.toggle('hidden');
   goHome.classList.toggle('hidden');
