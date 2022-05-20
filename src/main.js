@@ -4,6 +4,14 @@ var coverTitle = document.querySelector(".cover-title")
 var taglineNum1 = document.querySelector(".tagline-1")
 var taglineNum2 = document.querySelector(".tagline-2")
 var button = document.querySelector(".random-cover-button")
+
+var homeButton = document.querySelector(".home-button")
+var randomButton = document.querySelector(".random-cover-button")
+var saveButton = document.querySelector(".save-cover-button")
+var viewSavedbutton = document.querySelector(".view-saved-button")
+var makeNewbutton = document.querySelector(".make-new-button")
+//add new variable for each button on the main page
+
 //document is everything, everything on the page is part of doc
 //this one is just focused on the cover image
 
@@ -23,7 +31,12 @@ button.addEventListener('click', getRandomCover)
 //this is the one that activates on load, we'll have to do another for the clicks
 
 // Create your event handlers and other functions here 👇
+//event.preventDefault()
+//use this when you've set up another function and it's not working even if we're sure,
+//have it in your back pocket if things are working weird
 
+//<element>.classList.add('hidden')
+//<element>.classList.remove('hidden')
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -49,6 +62,8 @@ function getRandomCover() {
 //repeat this for the other categories, check to see what those are, prob innerText
   }
 //assign that html element next
+
+
 
 
 //instantiate the class for a new object instance
