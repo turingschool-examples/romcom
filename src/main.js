@@ -4,9 +4,13 @@ var coverTitle = document.querySelector('.cover-title')
 var coverTagLine = document.querySelector('.tagline')
 var priceTag = document.querySelector('.price-tag')
 var randomBtn = document.querySelector('.random-cover-button')
-var makeNewBtn = document.querySelector('.make-new-button')
-var makeOwnPage = document.querySelector('form')
-
+var makeOwnBtn = document.querySelector('.make-new-button')
+var makeOwnPage = document.querySelector('.form-view')
+var viewSavedPage = document.querySelector('.saved-view')
+var viewSaveBtn = document.querySelector('.view-saved-button')
+var homePage = document.querySelector('.home-view')
+var saveBtn = document.querySelector('.save-cover-button')
+var homeBtn = document.querySelector('.home-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -16,9 +20,23 @@ var currentCover;
 
 // Add your event listeners here 👇
 randomBtn.addEventListener('click', randomize)
-makeNewBtn.addEventListener('click', showMakeOwnPage)
-
+makeOwnBtn.addEventListener('click', showMakeOwnPage)
+viewSaveBtn.addEventListener('click', viewSaved)
+homeBtn.addEventListener('click', goHome)
 // Create your event handlers and other functions here 👇
+
+
+function goHome() {
+  homePage.classList.remove("hidden")
+  makeOwnPage.classList.add("hidden")
+  viewSavedPage.classList.add("hidden")
+  homeBtn.classList.add("hidden")
+  randomBtn.classList.remove("hidden")
+  saveBtn.classList.remove("hidden")
+}
+
+
+
 randomize();
 function randomize() {
     var newCover = getRandomIndex(covers)
@@ -32,8 +50,21 @@ function randomize() {
 }
 
 function showMakeOwnPage() {
-  console.log(makeOwnPage)
+  makeOwnPage.classList.remove("hidden")
+  homePage.classList.add("hidden")
+  randomBtn.classList.add("hidden")
+  saveBtn.classList.add("hidden")
+  homeBtn.classList.remove("hidden")
 }
+
+function viewSaved() {
+  viewSavedPage.classList.remove("hidden")
+  homePage.classList.add("hidden")
+  randomBtn.classList.add("hidden")
+  saveBtn.classList.add("hidden")
+  homeBtn.classList.remove("hidden")
+}
+
 
 
 
