@@ -5,6 +5,7 @@ var buttonHome = document.querySelector('.home-button');
 var buttonSaveCover = document.querySelector('.save-cover-button');
 var buttonViewSaved = document.querySelector('.view-saved-button');
 var buttonMakeNew = document.querySelector('.make-new-button');
+var buttonCreateNew = document.querySelector('.create-new-book-button');
 
 var titleCover = document.querySelector('.cover-title');
 var titleImage = document.querySelector('.cover-image');
@@ -17,10 +18,10 @@ var romViewSave = document.querySelector('.view.saved-view');
 var romViewForm = document.querySelector('.view.form-view');
 
 //getElementById's 🫣
-var coverInput = document.getElementById('cover').value;
-var titleInput = document.getElementById('title').value;
-var descriptor1Input = document.getElementById('descriptor1').value;
-var descriptor2Input = document.getElementById('descriptor2').value;
+var coverInput = document.getElementById('cover');
+var titleInput = document.getElementById('title');
+var descriptor1Input = document.getElementById('descriptor1');
+var descriptor2Input = document.getElementById('descriptor2');
 
 
 
@@ -37,7 +38,7 @@ buttonShowRandomCover.addEventListener("click", getRandomizedCover)
 buttonMakeNew.addEventListener('click', makeCoverPage)
 buttonViewSaved.addEventListener('click', savedCoversView)
 buttonHome.addEventListener('click', homeButton)
-buttonMakeNew.addEventListener('click', imageInput)
+buttonCreateNew.addEventListener('click', createNewCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -87,18 +88,22 @@ function homeButton() {
 
 //iteration2
 
-function imageInput() {
+// function imageInput() {
+//   currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
+// }
+
+function createNewCover(event) {
+  event.preventDefault()
   currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(descriptor1Input.value);
+  descriptors.push(descriptor2Input.value)
+  console.log(currentCover)
+  romViewForm.classList.add('hidden');
+  romViewHome.classList.remove('hidden')
 }
 
-// function createNewCover() {
-//   // event.preventDefault()
-//   currentCover = new Cover(covers, titles, descriptors, descriptors)
-//   covers.push(coverInput.value);
-//   titles.push(titleInput.value);
-//   descriptors.push(descriptor1Input.value);
-//   descriptors.push(descriptor2Input.value)
-// }
 
 
 
