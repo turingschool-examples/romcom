@@ -10,6 +10,7 @@ var mainTag2 = document.querySelector('.tagline-2')
 var formView = document.querySelector('.form-view')
 var homeView = document.querySelector('.home-view')
 var goHome = document.querySelector('.home-button')
+var savedView = document.querySelector('.saved-view')
 // var newBook = document.querySelector('.create-new-book-button')
 
 // We've provided a few variables below
@@ -21,7 +22,8 @@ var currentCover;
 // Add your event listeners here 👇
 newRandom.addEventListener("click", generateRandomCover);
 makeCover.addEventListener("click", displayFormView);
-goHome.addEventListener("click", displayHomeView)
+goHome.addEventListener("click", displayHomeView);
+viewSaved.addEventListener("click", displaySavedView);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -56,4 +58,19 @@ function displayHomeView(){
   saveCover.classList.toggle('hidden');
 }
 
+//view saved covers button clicks to switch page display to
+//saved view & initiate the function associated,
+//show random cover and save cover buttons should be hidden
+
+function displaySavedView(){
+  homeView.classList.toggle('hidden');
+  newRandom.classList.toggle('hidden');
+  saveCover.classList.toggle('hidden');
+  savedView.classList.toggle('hidden');
+  goHome.classList.toggle('hidden');
+}
+
+//**find a way to ensure toggle is controlled
+// (i.e. the ViewSavedCovers & MakeYourOwnCover are currently being swapped dependant upon which order clicked)
+// preventDefault(displayFormView(), displayHomeView(), displaySavedView());
 generateRandomCover();
