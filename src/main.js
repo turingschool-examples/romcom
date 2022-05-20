@@ -15,7 +15,8 @@ var savedCovers = [
 //var currentCover = new Cover(Cover.id, Cover.cover, Cover.title, Cover.tagline1, Cover.tagline2);
 
 // Add your event listeners here 👇
-document.addEventListener('load', getRandomCoverPageLoad)
+// document.addEventListener('load', getRandomCoverPageLoad)
+window.addEventListener('load', getRandomCoverPageLoad)
 //this is the one that activates on load, we'll have to do another for the clicks
 
 // Create your event handlers and other functions here 👇
@@ -37,7 +38,10 @@ function getRandomCoverPageLoad() {
 //we instantiate it here:
   currentCover = new Cover(image, title, descriptor1, descriptor2)
 
-  coverImage.src = currentCover.image
+  coverImage.src = currentCover.cover
+  coverTitle.innerText = currentCover.title
+  taglineNum1.innerText = currentCover.tagline1
+  taglineNum2.innerText = currentCover.tagline2
 //src is where the image it's defaulting to lives in the html
 //repeat this for the other categories, check to see what those are, prob innerText
 
