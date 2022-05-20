@@ -26,10 +26,13 @@ homeBtn.addEventListener('click', goHome)
 // Create your event handlers and other functions here 👇
 
 
-goHome() {
+function goHome() {
   homePage.classList.remove("hidden")
-  makeOwnPage.classList.remove("hidden")
-  viewSavedPage.classList.remove("hidden")
+  makeOwnPage.classList.add("hidden")
+  viewSavedPage.classList.add("hidden")
+  homeBtn.classList.add("hidden")
+  randomBtn.classList.remove("hidden")
+  saveBtn.classList.remove("hidden")
 }
 
 
