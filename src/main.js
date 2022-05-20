@@ -37,7 +37,11 @@ function getRandomCoverPageLoad() {
 //we instantiate it here:
   currentCover = new Cover(image, title, descriptor1, descriptor2)
 
-  coverImage.src = currentCover.image
+  // coverImage.src = currentCover.image
+  coverImage.src="currentCover.image"
+  coverTitle.innerText = currentCover.title
+  taglineNum1.innerText = currentCover.descriptor1
+  taglineNum2.innerText = currentCover.descriptor2
 //src is where the image it's defaulting to lives in the html
 //repeat this for the other categories, check to see what those are, prob innerText
 
