@@ -7,6 +7,10 @@ var mainCover = document.querySelector('.cover-image')
 var mainTitle = document.querySelector('.cover-title')
 var mainTag1 = document.querySelector('.tagline-1')
 var mainTag2 = document.querySelector('.tagline-2')
+var formView = document.querySelector('.form-view')
+var homeView = document.querySelector('.home-view')
+var goHome = document.querySelector('.home-button')
+// var newBook = document.querySelector('.create-new-book-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -15,8 +19,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-newRandom.addEventListener("click", generateRandomCover)
-
+newRandom.addEventListener("click", generateRandomCover);
+makeCover.addEventListener("click", displayFormView);
+goHome.addEventListener("click", displayHomeView)
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -36,14 +41,20 @@ function pageLoadRandom(){
   mainTag1.innerText = currentCover.tagline1
   mainTag2.innerText = currentCover.tagline2
 }
-
-function test(){
-  console.log("event works")
+function displayFormView(){
+  formView.classList.toggle('hidden');
+  newRandom.classList.toggle('hidden');
+  saveCover.classList.toggle('hidden');
+  homeView.classList.toggle('hidden');
+  goHome.classList.toggle('hidden');
 }
+function displayHomeView(){
 
-//generate a new instance of a Cover every time the page loads.
-//generate a new instance of a Cover every time you click the show random button
-//
-
+  homeView.classList.toggle('hidden');
+  formView.classList.toggle('hidden');
+  goHome.classList.toggle('hidden');
+  newRandom.classList.toggle('hidden');
+  saveCover.classList.toggle('hidden');
+}
 
 generateRandomCover();
