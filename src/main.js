@@ -33,6 +33,8 @@ buttonHome.addEventListener('click', homeButton)
 
 
 // We've provided one function to get you started
+
+//iteration0
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -45,7 +47,7 @@ function getRandomizedCover() {
   titleTagLine2.innerText = currentCover.tagline2;
 }
 
-
+//iteration1
 function makeCoverPage() {
   romViewForm.classList.remove('hidden');
   romViewHome.classList.add('hidden');
@@ -72,6 +74,9 @@ function homeButton() {
   buttonSaveCover.classList.remove('hidden');
   buttonHome.classList.add('hidden');
 }
+
+//iteration2
+
 
 
 
