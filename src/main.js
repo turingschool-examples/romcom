@@ -4,6 +4,8 @@ var coverTitle = document.querySelector('.cover-title')
 var coverTagLine = document.querySelector('.tagline')
 var priceTag = document.querySelector('.price-tag')
 var randomBtn = document.querySelector('.random-cover-button')
+var makeNewBtn = document.querySelector('.make-new-button')
+var makeOwnPage = document.querySelector('form')
 
 
 // We've provided a few variables below
@@ -13,21 +15,28 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomBtn.addEventListener('click', getRandomIndex)
-
+randomBtn.addEventListener('click', randomize)
+makeNewBtn.addEventListener('click', showMakeOwnPage)
 
 // Create your event handlers and other functions here 👇
-// function randomize() {
-  function getRandomIndex(titles) {
-    return Math.floor(Math.random() * titles.length);
-  }
-  function getRandomIndex(covers) {
-    return Math.floor(Math.random() * covers.length);
-  }
-  function getRandomIndex(descriptors) {
-    return Math.floor(Math.random() * descriptors.length);
-  }
-// }
+randomize();
+function randomize() {
+    var newCover = getRandomIndex(covers)
+    var newTitle = getRandomIndex(titles)
+    var newTag1 = getRandomIndex(descriptors)
+    var newTag2 = getRandomIndex(descriptors)
+    coverPic.src = covers[newCover]
+    coverTitle.innerText = titles[newTitle]
+    coverTagLine.innerText = `A tale of ${descriptors[newTag1]} and ${descriptors[newTag2]}`
+    return new Cover(covers[newCover], titles[newTitle], descriptors[newTag1], descriptors[newTag2])
+}
+
+function showMakeOwnPage() {
+  console.log(makeOwnPage)
+}
+
+
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
