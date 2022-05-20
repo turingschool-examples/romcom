@@ -12,46 +12,48 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
 ];
 
-
-// var currentCover =;
-// var currentTitle =;
-// var currentTagline =;
+// We need to instantiate our classes!
+var currentCover = new Cover(title, cover, tagline1, tagline2);
 
 
 // Add your event listeners here 👇
 
+coverButton.addEventListener('loadpage', getRandomCover);
 coverButton.addEventListener('click', getRandomCover);
-
-
-// Create your event handlers and other functions here 👇
-
-// Event handlers section
-
-
-// Create your event handlers and other functions here 👇
-
 
 // Fxn's Section
 
+function randomRomCover() {
+cover.src = currentCover.cover;
+title.innerText = currentCover.title;
+tagLine1.innerText = currentCover.tagline1;
+tagLine2.innerText = currentCover.tagline2;
+}
+
 // Get 1 random cover image(jpg, png) string
 function getRandomCover(covers) {
-  return covers[Math.floor(Math.random() * covers.length)];
+  this.cover = covers[getRandomIndex(covers)];
 }
-console.log(getRandomCover(covers));
 
-// Get 1 random titles string
+//Get a random title:
+
 function getRandomTitle(titles) {
-  return titles[Math.floor(Math.random() * titles.length)];
+  this.title = titles[getRandomIndex(titles)];
 }
-//console.log(getRandomTitle(titles));
+//Get a random 1st tagline:
 
-var tagline = [];
-
-// Get 2 random descriptors strings
-function getTwoRandomDescriptors(descriptors) {
-  for (var i = 0; i < 2; i++) {
-    var randomDescriptors = descriptors[Math.floor(Math.random() * descriptors.length)];
-    tagline.push(randomDescriptors);
-  }
-   return tagline.join();
+function getRandomDescriptor1(descriptors) {
+  this.tagline1 = descriptors[getRandomIndex(descriptors)];
 }
+//Get a random 2nd tagline:
+
+function getRandomDescriptor2(descriptors) {
+this.tagline2 = descriptors[getRandomIndex(descriptors)];
+}
+
+//Master function working on other functions:
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+  console.log("We are working hard!", getRandomIndex(titles))
