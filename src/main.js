@@ -3,7 +3,7 @@ var buttonShowRandomCover = document.querySelector('.random-cover-button');
 
 var buttonHome = document.querySelector('.home-button');
 var buttonSaveCover = document.querySelector('.save-cover-button');
-var buttonViewSaved = document.querySelector('.view-save-button');
+var buttonViewSaved = document.querySelector('.view-saved-button');
 var buttonMakeNew = document.querySelector('.make-new-button');
 
 var titleCover = document.querySelector('.cover-title');
@@ -25,12 +25,16 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomizedCover)
 buttonShowRandomCover.addEventListener("click", getRandomizedCover)
-buttonMakeNew.addEventListener('click', toggleHidden)
+buttonMakeNew.addEventListener('click', makeCoverPage)
+buttonViewSaved.addEventListener('click', savedCoversView)
+buttonHome.addEventListener('click', homeButton)
 
 // Create your event handlers and other functions here 👇
 
 
 // We've provided one function to get you started
+
+//iteration0
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -42,6 +46,38 @@ function getRandomizedCover() {
   titleTagLine1.innerText = currentCover.tagline1;
   titleTagLine2.innerText = currentCover.tagline2;
 }
+
+//iteration1
+function makeCoverPage() {
+  romViewForm.classList.remove('hidden');
+  romViewHome.classList.add('hidden');
+  romViewSave.classList.add('hidden');
+  buttonShowRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
+  buttonHome.classList.remove('hidden');
+}
+
+function savedCoversView() {
+  romViewForm.classList.add('hidden');
+  romViewHome.classList.add('hidden');
+  romViewSave.classList.remove('hidden');
+  buttonShowRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
+  buttonHome.classList.remove('hidden');
+}
+
+function homeButton() {
+  romViewForm.classList.remove('hidden');
+  romViewHome.classList.remove('hidden');
+  romViewSave.classList.add('hidden');
+  buttonShowRandomCover.classList.remove('hidden');
+  buttonSaveCover.classList.remove('hidden');
+  buttonHome.classList.add('hidden');
+}
+
+//iteration2
+
+
 
 
 
