@@ -3,6 +3,7 @@ var coverImage = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var taglineNum1 = document.querySelector(".tagline-1")
 var taglineNum2 = document.querySelector(".tagline-2")
+var button = document.querySelector(".random-cover-button")
 //document is everything, everything on the page is part of doc
 //this one is just focused on the cover image
 
@@ -16,7 +17,9 @@ var savedCovers = [
 
 // Add your event listeners here 👇
 // document.addEventListener('load', getRandomCoverPageLoad)
-window.addEventListener('load', getRandomCoverPageLoad)
+window.addEventListener('load', getRandomCover)
+button.addEventListener('click', getRandomCover)
+
 //this is the one that activates on load, we'll have to do another for the clicks
 
 // Create your event handlers and other functions here 👇
@@ -27,7 +30,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function getRandomCoverPageLoad() {
+function getRandomCover() {
   var image = covers[getRandomIndex(covers)]
   //image is a new variable made for this function
   //name of index, random function, specific element we want to access from array
@@ -44,8 +47,7 @@ function getRandomCoverPageLoad() {
   taglineNum2.innerText = currentCover.tagline2
 //src is where the image it's defaulting to lives in the html
 //repeat this for the other categories, check to see what those are, prob innerText
-
-}
+  }
 //assign that html element next
 
 
