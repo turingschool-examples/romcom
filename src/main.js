@@ -1,9 +1,12 @@
 // Create variables targetting the relevant DOM elements here 👇
 var mainCover = document.querySelector('.main-cover')
+
 var randomButton = document.querySelector('.random-cover-button')
-var saveButton = document.querySelector('.save-cover-button')
-var viewButton = document.querySelector('.view-saved-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var savedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
+var homeButton = document.querySelector('.home-button')
+
 var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image')
 var taglineOne = document.querySelector('.tagline-1')
@@ -18,14 +21,13 @@ var currentCover = new Cover();
 
 // Add your event listeners here 👇
 
-document.addEventListener('click', getRandomCoverPageLoad); //**not right
-//add event listener to element you want it to listen to
-// window.addEventListener.onload
-// we want this to randomize the cover
+randomButton.addEventListener('click', getRandomCoverPageLoad);
 
-
-
-// Create your event handlers and other functions here 👇
+randomButton.addEventListener('click', randomCover);
+saveCoverButton.addEventListener('click', saveCover);
+viewSavedButton.addEventListener('click', viewSaved);
+makeNewButton.addEventListener('click', makeNewCover);
+homeButton.addEventListener('click', goHome);
 
 
 // We've provided one function to get you started
@@ -34,28 +36,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function getRandomIndex(covers) {
-//   var getImage = Math.floor(Math.random() * covers.length);
-//   coverImage.innerHTML = `<img src=${getCovers}`;
-// }
-//
-// function getRandomIndex(titles) {
-//   var getTitles = Math.floor(Math.random() * titles.length);
-//   coverTitle.innerText = getTitles;
-// }
-//
-// function getRandomIndex(descriptor1) {
-//   var getDescriptor1 = Math.floor(Math.random() * descriptors.length);
-//   taglineOne.innerText = getDescriptor1;
-// }
-//
-// function getRandomIndex(descriptor2) {
-//   var getDescriptor2 = Math.floor(Math.random() * descriptors.length);
-//   taglineTwo.innerText = getDescriptor2;
-// }
-
 var currentCover = new Cover()
-
 
 function getRandomCoverPageLoad() {
   var cover = covers[getRandomIndex(covers)]
@@ -65,22 +46,32 @@ function getRandomCoverPageLoad() {
   currentCover = new Cover(cover, title, descriptor1, descriptor2)
   coverImage.src = currentCover.cover
   coverTitle.innerText = currentCover.title
-  console.log(currentCover)
   taglineOne.innerText = currentCover.tagline1
   taglineTwo.innerText = currentCover.tagline2
 }
-
-
-
-function randomCoverGenerator() {
-  return currentCover
-}
-randomCoverGenerator()
-
 getRandomCoverPageLoad()
-//use getRandomIndex to generate
-//variables stand for random numbers, inside parameters is one of the arrays in data.js, need each of the arrays and descriptors twice
-// //function getRandomIndex(covers, titles, descriptor1, descriptor2) {
-//   var getRandom = Math.floor(Math.random(covers[i], titles[i], descriptor1[i]), descriptor2[i] * covers.length);
-//   return getRandom
-// create variables to pass into cover that has that value
+
+
+makeNewCover() {
+  mainCover.classList.remove("visible");
+  mainCover.classList.add("hidden");
+  formView.classList.remove("hidden");
+  formView.classList.add("visible");
+  randomButton.classList.add("hidden");
+  randomButton.classList.remove("visible");
+  saveCoverButton.classList.add("hidden");
+  saveCoverButton.classList.remove("visible");
+  homeButton.classList.remove("hidden");
+  homeButton.classList.add("visible");
+}
+makeNewCover()
+// goHome() {
+//
+// }
+
+//
+// viewHomeImage
+// formView/main view all saved buttons
+//toggle hidden tag --> code pen with elephant used method to toggle from css to js --> method + classList use with hidden tag
+// css file there is a hidden tag to use
+//want to hide main-cover(home) and show the form
