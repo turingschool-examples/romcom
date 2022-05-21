@@ -14,15 +14,17 @@ var homeView = document.querySelector(".home-view");
 var savedView = document.querySelector(".saved-view");
 var formView = document.querySelector(".form-view");
 
-var userCoverInput = document.querySelector("#cover");
-var userTitleInput = document.querySelector("#title");
-var userDesc1Input =document.querySelector("#descriptor1");
-var userDesc2Input = document.querySelector("#descriptor2");
+// var userCoverInput = document.querySelector("#cover");
+// var userTitleInput = document.querySelector("#title");
+// var userDesc1Input = document.querySelector("#descriptor1");
+// var userDesc2Input = document.querySelector("#descriptor2");
 
 var userCoverOutput = document.querySelector(".user-cover");
 var userTitleOutput = document.querySelector(".user-title");
-var userDesc1Output =document.querySelector(".user-desc1");
+var userDesc1Output = document.querySelector(".user-desc1");
 var userDesc2Output = document.querySelector(".user-desc2");
+
+//var formCovers = document.getElementByID('cover')
 
 var createBookButton = document.querySelector(".create-new-book-button");
 // add new variable for each button on the main page
@@ -46,6 +48,8 @@ homeButton.addEventListener('click', displayHomeView)
 // saveButton.addEventListener('click' ,)
 viewSavedbutton.addEventListener('click', displaySavedView)
 makeNewButton.addEventListener('click', displayFormView)
+
+createBookButton.addEventListener('click', makeOwnCover)
 
 //this is the one that activates on load, we'll have to do another for the clicks
 
@@ -108,33 +112,55 @@ function getRandomCover() {
     homeView.classList.remove('hidden')
   }
 
-  function makeOwnCover(event) {
-    event.preventDefault(); // prevents default action of browser
+  function makeOwnCover(event) { //put event back in parameters
+     // prevents default action of browser
+    event.preventDefault()
     userCoverAdd();
     userTitleAdd();
     userDesc1Add();
     userDesc2Add();
+
+    currentCover = new Cover(userCoverAdd(), userTitleAdd(), userDesc1Add(),
+    userDesc2Add());
+
+    console.log(currentCover)
+
+    displayHomeView()
+
+    //formView.classList.add('hidden');
+    //homeView.classList.remove('hidden')
+    //randomButton.classList.remove('hidden');
   }
 
 //other ones go here:
 function userCoverAdd() {
-var coverNew = userCoverInput.value;
-userCoverOutput.innerText = coverNew;
+var coverNew = userCoverOutput.value;
+coverImage.src = coverNew;
+covers.push(coverNew)
+return coverNew
 }
 
 function userTitleAdd() {
-var titleNew = userTitleInput.value;
-userTitleOutput.innerText = titleNew;
+var titleNew = userTitleOutput.value;
+coverTitle.innerText = titleNew;
+console.log(titles)
+titles.push(titleNew)
+console.log(titles)
+return titleNew
 }
 
 function userDesc1Add() {
-var desc1New = userDesc1nput.value;
-userDesc1Output.innerText = desc1New;
+var desc1New = userDesc1Output.value;
+taglineNum1.innerText = desc1New;
+descriptors.push(desc1New)
+return desc1New
 }
 
 function userDesc2Add() {
-var desc2New = userDesc2Input.value;
-userDesc2Output.innerText = desc2New;
+var desc2New = userDesc2Output.value;
+taglineNum2.innerText = desc2New;
+descriptors.push(desc2New)
+return desc2New
 }
 
 
