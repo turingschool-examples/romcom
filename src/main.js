@@ -46,6 +46,7 @@ buttonViewSaved.addEventListener('click', savedCoversSection)
 buttonHome.addEventListener('click', homeButton)
 buttonCreateNew.addEventListener('click', createNewCover)
 buttonSaveCover.addEventListener('click', saveCovers)
+savedCoversSect.addEventListener('dblclick', deleteCovers)
 // Create your event handlers and other functions here 👇
 
 
@@ -128,11 +129,9 @@ function savedCoversSection() {
   savedCoversSect.innerHTML = ""
   for (var i = 0; i < savedCovers.length; i++) {
     console.log('savedcoverssect', savedCovers)
-    savedCoversSect.innerHTML += `<section class="mini-cover"> <img class="cover-image" src=${savedCovers[i].cover}>
+    savedCoversSect.innerHTML += `<section class="mini-cover"> <img class="cover-image" id='${savedCovers[i].id}' src=${savedCovers[i].cover}>
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
-      // <img class="price-tag" src="./assets/price.png">
-      // <img class="overlay" src="./assets/overlay.png">
 
       romViewHome.classList.add('hidden')
       romViewForm.classList.add('hidden')
@@ -145,36 +144,20 @@ function savedCoversSection() {
 }
 
 function saveCovers() {
-  console.log('savedCovers', savedCovers)
-
   if (!savedCovers.includes(currentCover) ) {
       savedCovers.push(currentCover)
-        console.log('addedCovers', savedCovers)
   }
 };
 
-// function saveCovers(event) {
-//   event.preventDefault()
-//   if (savedCovers.includes(currentCover)) {
-//     return savedCovers
-//   } else {
-//     savedCovers.push(currentCover)
-//   }
-//   console.log('hi')
-  // savedCoversSection()
-  // if(savedCovers.includes(currentCover)) {
-  //   return savedCovers
-  // }
-  // else {return array.push(currentCover)}
-//}
+//iteration 4
 
+function deleteCovers(event) {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id == event.target.id) {
+      savedCovers.splice(i, 1)
+      console.log(savedCovers)
+      savedCoversSection()
+    }
+  }
+}
 
-
-
-
-
-
-
-// function printHello() {
-//   console.log('hello')
-// }
