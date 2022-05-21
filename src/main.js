@@ -39,10 +39,11 @@ var currentCover;
 window.addEventListener("load", getRandomCover);
 homeButton.addEventListener("click", goHome);
 showRandomCoverButton.addEventListener("click", getRandomCover);
-//saveCoverButton.addEventListener('click', )
-viewSavedCoversButton.addEventListener("click", viewSavedCovers);
+saveCoverButton.addEventListener('click', saveCoversButton)
+viewSavedCoversButton.addEventListener("click", seeSavedCovers);
 makeYourOwnCoverButton.addEventListener("click", displayForm);
 makeMyBookButton.addEventListener("click", makeMyBook);
+//savedCoversSection.addEventListener('dblclick', performDelete);
 //viewSavedCoversSection.addEventListener('load', savedCovers)
 
 
@@ -65,28 +66,28 @@ function getRandomCover(){
   var newTitle = titles[getRandomIndex(titles)];
   var newDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var newDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(newCover, newTitle, newDescriptor1, newDescriptor2);
   displayData(newCover, newTitle, newDescriptor1, newDescriptor2);
-  currentCover = new Cover(newCover, newTitle, newDescriptor1, newDescriptor2)
   };
 
 // 👇🏼 Displays form when "Make Your Own Cover" button is clicked
   function displayForm() {
-     homeView.classList.add('hidden')
-     viewForm.classList.remove('hidden')
-     showRandomCoverButton.classList.add('hidden')
-     saveCoverButton.classList.add('hidden')
-     homeButton.classList.remove('hidden')
+     homeView.classList.add('hidden');
+     viewForm.classList.remove('hidden');
+     showRandomCoverButton.classList.add('hidden');
+     saveCoverButton.classList.add('hidden');
+     homeButton.classList.remove('hidden');
  }
 
 // 👇🏼 Displays saved covers section when "View Saved Covers" button is clicked
- function viewSavedCovers() {
-   savedCoversSection.classList.remove('hidden')
-   homeView.classList.add('hidden')
-   showRandomCoverButton.classList.add('hidden')
-   saveCoverButton.classList.add('hidden')
-   homeButton.classList.remove('hidden')
-   viewForm.classList.add('hidden')
-     //should this not have a way to view the images?
+ function seeSavedCovers() {
+   savedCoversSection.classList.remove('hidden');
+   homeView.classList.add('hidden');
+   showRandomCoverButton.classList.add('hidden');
+   saveCoverButton.classList.add('hidden');
+   homeButton.classList.remove('hidden');
+   viewForm.classList.add('hidden');
+   viewSavedCovers();
  }
 
 // 👇🏼 Takes user home when "Home" button is clicked
@@ -134,6 +135,67 @@ function clearFields() {
   userDesc2 = "";
 }
 
+function saveCoversButton() {
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    console.log(savedCovers)
+  } else {
+    window.alert ("This Book Cover Has Already Been Saved")
+  }
+}
+
+function viewSavedCovers() {
+  innerHTML = '';
+  for(var i = 0; i < savedCovers.length; i ++) {
+    innerHTML += '<section id="' + savedCovers[i].id + '" class="saved-covers-section">';
+    innerHTML += '<img class="cover-image dblClickTarget" src="' + savedCovers[i].cover + '">';
+    innerHTML += '<h2 class="saved-cover-title">' + savedCovers[i].title + '</h2>';
+    innerHTML += '<h3 class="saved-tagline">A tale of <span class="tagline-1">' + savedCovers[i].tagline1 + '</span> and <span class="tagline-2">' + savedCovers[i].tagline2 + '</span></h3>';
+    innerHTML += 'img class="price-tag" src="./assets/price.png">';
+    innerHTML += 'img class="overlay" src="./assets/overlay.png">';
+    innerHTML += '</section>';
+    }
+  savedCoversSection.innerHTML = innerHTML;
+}
+
+
+// //double click function
+// // 1. select the elements
+// // 2. add dblclick handlers
+// // 3. create the function to handle the event
+// // 4. perform delete
+//
+// // var bookElement = document.querySelector('.saved-covers-section');
+// // bookElement.addEventListener('dblclick', performDelete(e));
+// //
+// // function performDelete(e) {
+// //   alert(e.target.parentElement.id);
+// //   //for {
+// //     if (savedCovers[i].id = e.target.parentElement.id) {
+// //       savedCovers.splice(i);
+// //     }
+// //   }
+//
+// //looped through array, built dynamic HTML, assigning dynamic HTML to parent section.
+// //parent section is 'view saved-view hidden'
+// //bound the dbl click event to the parent element when the program starts
+// //performDelete is the double click handler
+// // create for loop - if savedCovers[i].id = e.target.parentElement.id) {
+// //savedCovers.splice(i);
+// //break;
+// //then call viewSavedCovers function(); to refresh page without the one removed
+//
+//
+//
+//
+// 1. save the id to a variables
+// 2. loop thorugh savedCovers array to find the idex of the targeted array elements
+// 3. remove the element from the arrays
+// 4. call view saved posters to repaint the page with revised data.
+
+// card.addEventListener('dblclick', function (e) {
+//   card.classList.toggle('large');
+// });
 
 // code taken from getRandomCover function - created new function from this code.
 // coverImg.src = newCover;
