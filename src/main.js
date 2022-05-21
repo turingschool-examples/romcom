@@ -100,19 +100,32 @@ taglineArrayOne.innerText = descriptors[getRandomIndex(descriptors)];
 taglineArrayTwo.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
-function makeOwnCover(event) {
+function userBookAdd(event) {
   event.preventDefault();
-  var coverNew = formCover.value;
-  userCover.innerText = coverNew
+  userCoverAdd();
+  userTitleAdd();
+  userDescriptor1Add();
+  userDescriptor2Add();
+};
 
-  var titleNew = formTitle.value;
-  userTitle.innerText = titleNew
+function userCovereAdd {
+var coverNew = formCover.value;
+userCover.innerText = coverNew
+};
 
-  var descriptor1New = formDescriptor1.value;
-  userDesc1.innerText = descriptor1New
+function userTitleAdd {
+var titleNew = formTitle.value;
+userTitle.innerText = titleNew
+};
 
-  var descriptor2New = formDescriptor2.value;
-  userDesc2.innerText = descriptor2New
-}
+function userDescriptor1Add {
+var descriptor1New = formDescriptor1.value;
+userDesc1.innerText = descriptor1New
+};
+
+function userDescriptor2Add {
+var descriptor2New = formDescriptor2.value;
+userDesc2.innerText = descriptor2New
+};
 
 getRandomCover()
