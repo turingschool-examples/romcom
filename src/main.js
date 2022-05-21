@@ -100,8 +100,19 @@ taglineArrayOne.innerText = descriptors[getRandomIndex(descriptors)];
 taglineArrayTwo.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
-function makeOwnCover() {
+function makeOwnCover(event) {
+  event.preventDefault();
+  var coverNew = formCover.value;
+  userCover.innerText = coverNew
 
+  var titleNew = formTitle.value;
+  userTitle.innerText = titleNew
+
+  var descriptor1New = formDescriptor1.value;
+  userDesc1.innerText = descriptor1New
+
+  var descriptor2New = formDescriptor2.value;
+  userDesc2.innerText = descriptor2New
 }
 
 getRandomCover()
