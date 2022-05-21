@@ -6,6 +6,8 @@ var saveCoverButton = document.querySelector('.save-cover-button')
 var savedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
+var createNewButton = document.querySelector('.create-new-book-button')
+
 var formView = document.querySelector('.form-view')
 var savedView = document.querySelector('.saved-view')
 
@@ -13,6 +15,16 @@ var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image')
 var taglineOne = document.querySelector('.tagline-1')
 var taglineTwo = document.querySelector('.tagline-2')
+
+var userCoverInput = document.querySelector('.user-cover')
+var userTitleInput = document.querySelector('.user-title')
+var userDescriptorOneInput = document.querySelector('.user-desc1')
+var userDescriptorTwoInput = document.querySelector('.user-desc2')
+
+var userCover = document.querySelector('.user-cover')
+var userTitle = document.querySelector('.user-title')
+var userDescriptorOne = document.querySelector('.user-desc1')
+var userDescriptorTwo = document.querySelector('.user-desc2')
 
 // We've provided a few variables below
 
@@ -40,7 +52,7 @@ function getRandomIndex(array) {
 
 var currentCover = new Cover()
 
-function getRandomCoverPageLoad() {
+function getRandomCoverPageLoad(event) {
   var cover = covers[getRandomIndex(covers)]
   var title = titles[getRandomIndex(titles)]
   var descriptor1 = descriptors[getRandomIndex(descriptors)]
@@ -97,13 +109,22 @@ function viewSaved() {
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
 }
+createNewButton.addEventListener('click', makeBook);
+function makeBook(event) {
+  event.preventDefault();
+  covers.push(userCoverInput.value);
+  titles.push(userTitleInput.value);
+  descriptors.push(userDescriptorOneInput.value);
+  descriptors.push(userDescriptorTwoInput.value);
+  var newCustomCover = new Cover(userCoverInput.value, userTitleInput.value, userDescriptorOneInput.value, userDescriptorTwoInput.value);
+  coverImage.src = newCustomCover.cover;
+  coverTitle.innerText = newCustomCover.title;
+  taglineOne.innerText = newCustomCover.tagline1
+  taglineTwo.innerText = newCustomCover.tagline2
+  goHome();
+}
+function savedCover() {
+  var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+}
 
-//
-// }
-
-//
-// viewHomeImage
-// formView/main view all saved buttons
-//toggle hidden tag --> code pen with elephant used method to toggle from css to js --> method + classList use with hidden tag
-// css file there is a hidden tag to use
-//want to hide main-cover(home) and show the form
+// console.log(makeBook())
