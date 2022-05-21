@@ -76,21 +76,13 @@ function viewSaved() {
     <img class="cover-image" src=${savedCovers[i].cover}>
      <h2 class="cover-title">${savedCovers[i].title}</h2>
      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-     <img class="price-tag" src="./assets/price.png">
      <img class="overlay" src="./assets/overlay.png">
      </section>`
   }
   displayCovers.innerHTML = savedUserImg ;
 }
 
-// for every element in our saved covers array
-// we want to produce the entire cover class in HTML
-// we want this block for every html element we have
-//
-// x = x + y  '
-// displayCovers.innerHTML'
-// x + y = z
-// return z = newList
+
 
 
 
