@@ -7,7 +7,7 @@ var taglineNum2 = document.querySelector(".tagline-2")
 var randomButton = document.querySelector(".random-cover-button")
 var homeButton = document.querySelector(".home-button")
 var saveButton = document.querySelector(".save-cover-button")
-//var viewSavedbutton = document.querySelector(".view-saved-button")
+var viewSavedbutton = document.querySelector(".view-saved-button")
 var makeNewButton = document.querySelector(".make-new-button")
 
 var homeView = document.querySelector(".home-view")
@@ -32,8 +32,8 @@ var savedCovers = [
 window.addEventListener('load', getRandomCover)
 randomButton.addEventListener('click', getRandomCover)
 //homeButton.addEventListener('click' ,)
-//saveButton.addEventListener('click' ,)
-//viewSavedbutton.addEventListener('click' ,)
+// saveButton.addEventListener('click' ,)
+viewSavedbutton.addEventListener('click', displaySavedView)
 makeNewButton.addEventListener('click', displayFormView)
 
 //this is the one that activates on load, we'll have to do another for the clicks
@@ -72,12 +72,17 @@ function getRandomCover() {
 
   function displayFormView() {
     homeButton.classList.remove('hidden');
-
     formView.classList.remove('hidden');
-
     randomButton.classList.add('hidden');
     saveButton.classList.add('hidden');
+    homeView.classList.add('hidden');
+  }
 
+  function displaySavedView() {
+    homeButton.classList.remove('hidden');
+    savedView.classList.remove('hidden');
+    randomButton.classList.add('hidden');
+    saveButton.classList.add('hidden');
     homeView.classList.add('hidden');
   }
 //assign that html element next
