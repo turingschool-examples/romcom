@@ -1,27 +1,39 @@
 // Create variables targetting the relevant DOM elements here
 
 // Random Cover variables & querySelector paths
-var coverButton = document.querySelector(".random-cover-button");
 var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 
-//Toggling between buttons querySelector paths
-// var saveCoverButton
-// var viewSavedCoverButton
-// var makeYourOwnCoverButton
-
+//Button querySelector paths
+var homeButton = document.querySelector(".home-button hidden");
+var coverButton = document.querySelector(".random-cover-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var viewSavedCoverButton = document.querySelector(".view-saved-button");
+var makeYourOwnCoverButton =document.querySelector(".make-new-button");
+var createNewBookButton = document.querySelector("crete-new-book-button");
 
 // Add event listeners here
 
-
 window.addEventListener('loadpage', randomRomCover);
+homeButton.addEventListener('click', //homeButtonFunction);
 coverButton.addEventListener('click', randomRomCover);
+saveCoverButton.addEventListener('click', //saveCoverFunction);
+viewSavedCoverButton.addEventListener('click', //savedButtonFunction);
+makeYourOwnCoverButton.addEventListener('click', //makeOwnCoverButtonFunction);
+
+
+// Toggling Between Tabs Functions
+
+function homeButton() {
+
+}
 
 
 
-// Fxn's Section
+
+// Random Cover Fxn's Section
 
 function randomRomCover() {
 var currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
@@ -67,6 +79,9 @@ console.log(getRandomIndex(descriptors));
 
 //Array for storing all "Make Your Own Cover" elements
 // Params (cover, title, tagLine1, tagline2)
+
+
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
 ];
