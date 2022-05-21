@@ -6,6 +6,7 @@ var saveCoverButton = document.querySelector('.save-cover-button')
 var savedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
+var formView = document.querySelector('.form-view')
 
 var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image')
@@ -23,11 +24,11 @@ var currentCover = new Cover();
 
 randomButton.addEventListener('click', getRandomCoverPageLoad);
 
-randomButton.addEventListener('click', randomCover);
-saveCoverButton.addEventListener('click', saveCover);
-viewSavedButton.addEventListener('click', viewSaved);
-makeNewButton.addEventListener('click', makeNewCover);
-homeButton.addEventListener('click', goHome);
+//randomButton.addEventListener('click', randomCover);
+// saveCoverButton.addEventListener('click', saveCover);
+// viewSavedButton.addEventListener('click', viewSaved);
+// makeNewButton.addEventListener('click', makeNewCover);
+// homeButton.addEventListener('click', goHome);
 
 
 // We've provided one function to get you started
@@ -51,8 +52,13 @@ function getRandomCoverPageLoad() {
 }
 getRandomCoverPageLoad()
 
+// randomButton.addEventListener('click', randomCover);
+// saveCoverButton.addEventListener('click', saveCover);
+// viewSavedButton.addEventListener('click', viewSaved);
+makeNewButton.addEventListener('click', makeNewCover);
+homeButton.addEventListener('click', goHome);
 
-makeNewCover() {
+function makeNewCover() {
   mainCover.classList.remove("visible");
   mainCover.classList.add("hidden");
   formView.classList.remove("hidden");
@@ -64,8 +70,19 @@ makeNewCover() {
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
 }
-makeNewCover()
-// goHome() {
+function goHome() {
+  mainCover.classList.remove("hidden");
+  mainCover.classList.add("visible");
+  formView.classList.remove("visible");
+  formView.classList.add("hidden");
+  randomButton.classList.add("visible");
+  randomButton.classList.remove("hidden");
+  saveCoverButton.classList.add("visible");
+  saveCoverButton.classList.remove("hidden");
+  homeButton.classList.remove("visible");
+  homeButton.classList.add("hidden");
+}
+
 //
 // }
 
