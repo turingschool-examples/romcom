@@ -26,12 +26,11 @@ var descriptor1Input = document.getElementById('descriptor1');
 var descriptor2Input = document.getElementById('descriptor2');
 
 //add currentCover to array
-// var html = `<img class="cover-image" src=`{savedCovers[i].cover}`>
-//   <h2 class="cover-title">`{savedCovers[i].title}`</h2>
-//   <h3 class="tagline">A tale of <span class="tagline-1">`{savedCovers[i].tagline1}`</span> and <span class="tagline-2">`{savedCovers[i].tagline2}`</span></h3>`
-//   `<img class="price-tag" src="./assets/price.png">`
-//   `<img class="overlay" src="./assets/overlay.png">`
-
+// var html = `<img class="cover-image" src=${savedCovers[i].cover}>
+//   <h2 class="cover-title">${savedCovers[i].title}</h2>
+//   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+//   <img class="price-tag" src="./assets/price.png">
+//   <img class="overlay" src="./assets/overlay.png">`
 
 // We've provided a few variables below
 var savedCovers = [
@@ -43,7 +42,7 @@ var currentCover;
 window.addEventListener('load', getRandomizedCover)
 buttonShowRandomCover.addEventListener("click", getRandomizedCover)
 buttonMakeNew.addEventListener('click', makeCoverPage)
-buttonViewSaved.addEventListener('click', savedCoversView)
+buttonViewSaved.addEventListener('click', savedCoversSection)
 buttonHome.addEventListener('click', homeButton)
 buttonCreateNew.addEventListener('click', createNewCover)
 buttonSaveCover.addEventListener('click', saveCovers)
@@ -112,6 +111,7 @@ function createNewCover(event) {
   console.log(currentCover)
   romViewForm.classList.add('hidden');
   romViewHome.classList.remove('hidden')
+  buttonSaveCover.classList.remove('hidden');
   getCover()
 }
 
@@ -124,21 +124,33 @@ function getCover() {
 
 //iteration 3
 function savedCoversSection() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    console.log(savedCovers)
 
-  for (var i = 0; i < savedCovers.length; i++)
-  savedCoversSect.innerHTML = html
+    savedCoversSect.innerHTML += `<img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
+      // <img class="price-tag" src="./assets/price.png">
+      // <img class="overlay" src="./assets/overlay.png">
 
-    romViewHome.classList.add('hidden')
-    romViewForm.classList.add('hidden')
-    romViewSave.classList.remove('hidden')
-    buttonSaveCover.classList.add('hidden')
-    buttonShowRandomCover.classList.add('hidden')
-    buttonHome.classList.remove('hidden')
+      romViewHome.classList.add('hidden')
+      romViewForm.classList.add('hidden')
+      romViewSave.classList.remove('hidden')
+      buttonSaveCover.classList.add('hidden')
+      buttonShowRandomCover.classList.add('hidden')
+      buttonHome.classList.remove('hidden')
+      buttonViewSaved.classList.add('hidden');
   }
+}
 
-function saveCovers() {
-  savedCovers.push(currentCover)
+function saveCovers(event) {
+  event.preventDefault()
+  if (savedCovers.includes(currentCover)) {
+    return savedCovers
+  }
+  else {savedCovers.push(currentCover)}
   console.log('hi')
+  //savedCoversSection()
   // if(savedCovers.includes(currentCover)) {
   //   return savedCovers
   // }
