@@ -13,11 +13,15 @@ var makeYourOwnButton = document.querySelector('.make-new-button');
 
 var saveCoverButton = document.querySelector('.save-cover-button');
 
+var viewSaveCoverButton = document.querySelector('.view-saved-button');
+
 var homeButton = document.querySelector('.home-button');
 
 var viewFormView = document.querySelector('.form-view');
 
 var viewHomeView = document.querySelector('.home-view');
+
+var viewSavedView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -30,6 +34,8 @@ getRandomButton.addEventListener('click', getRandomCover)
 
 makeYourOwnButton.addEventListener('click', makeNewPage)
 
+viewSaveCoverButton.addEventListener('click', savedView)
+
 // Create your event handlers and other functions here 👇
 
 
@@ -39,13 +45,21 @@ function getRandomIndex(array) {
 }
 
 function makeNewPage() {
-
 viewFormView.classList.remove('hidden');
 viewHomeView.classList.add('hidden');
 getRandomButton.classList.add('hidden');
 saveCoverButton.classList.add('hidden');
 homeButton.classList.remove('hidden');
+viewSavedView.classList.add('hidden')
+}
 
+function savedView() {
+  viewHomeView.classList.add('hidden');
+  getRandomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  viewSavedView.classList.remove('hidden');
+  viewFormView.classList.add('hidden');
 }
 
 
