@@ -5,27 +5,58 @@ var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
-var form = document.querySelector(".form-view");
+var formPage = document.querySelector(".form-view");
 var homePage = document.querySelector(".home-view");
 
-
+// Variables for button query paths:
 var homeButton = document.querySelector(".home-button");
 var coverButton = document.querySelector(".random-cover-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var viewSavedCoverButton = document.querySelector(".view-saved-button");
 var makeYourOwnCoverButton =document.querySelector(".make-new-button");
-var createNewBookButton = document.querySelector(".crete-new-book-button");
+var createCustomButton = document.querySelector(".create-new-book-button");
 
-// Event listeners here:
+// Query paths for make your own book form page:
+var userCoverInput = document.querySelector(".user-cover");
+var userTitleInput = document.querySelector(".user-title");
+var userDescInput1 = document.querySelector(".user-desc1");
+var userDescInput2 = document.querySelector(".user-desc2");
+
+// Button event listeners here:
 window.addEventListener('loadpage', randomRomCover);
-homeButton.addEventListener('click', savedRomCovers);
+homeButton.addEventListener('click', homePageTab);
 coverButton.addEventListener('click', randomRomCover);
-saveCoverButton.addEventListener('click', shouldDisplayForm);
-viewSavedCoverButton.addEventListener('click', savedRomCovers);
-makeYourOwnCoverButton.addEventListener('click', shouldDisplayForm);
+// saveCoverButton.addEventListener('click',  );
+viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
+makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
+
+// Make your own book form event listeners:
+
+userCoverInput.addEventListener('click', addCoverInput);
+userTitleInput.addEventListener('click', addTitleInput);
+userDescInput1.addEventListener('click', addDescriptor);
+
+// MAY NEED THIS 2ND LISTENER???
+// userDescInput2.addEventListener('click',
 
 
-// Random Cover Fxn's Section
+// User saved covers array:
+
+function savedRomCovers() {
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
+];
+
+}
+
+
+//User saved books Fxn's:
+
+
+
+
+
+// Random Cover Fxn's Section:
 
 function randomRomCover() {
 var currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
@@ -61,23 +92,32 @@ function getRandomDescriptor(descriptorsArray) {
 
 //Displays the "make your own cover" page
 
-function shouldDisplayForm() {
-  form.classList.remove("hidden");
+function makeOwnCoverDisplayForm() {
+  formPage.classList.remove("hidden");
   homePage.classList.add("hidden");
   coverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
+}
+
+function savedRomCoversTab () {
+  formPage.classList.add("hidden");
+  coverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  cover.classList.add("hidden");
 
 }
 
-
-function savedRomCovers () {
-  form.classList.remove("hidden")
-  coverButton.classList.add("hidden")
-  saveCoverButton.classList.add("hidden")
-  homePage.classList.remove("hidden")
+function homePageTab() {
+  homePage.classList.remove("hidden");
+  cover.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  saveCoverButton.classList.remove("hidden");
+  coverButton.classList.remove("hidden");
 
 }
+
 
 
 
@@ -91,9 +131,3 @@ console.log(getRandomIndex(descriptors));
 
 //Array for storing all "Make Your Own Cover" elements
 // Params (cover, title, tagLine1, tagline2)
-
-
-
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
-];
