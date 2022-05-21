@@ -11,7 +11,11 @@ var viewSaveBtn = document.querySelector('.view-saved-button')
 var homePage = document.querySelector('.home-view')
 var saveBtn = document.querySelector('.save-cover-button')
 var homeBtn = document.querySelector('.home-button')
-
+var coverInput = document.querySelector('#cover')
+var makeMyBookBtn = document.querySelector('.create-new-book-button')
+var titleInput = document.querySelector('#title')
+var tagInput1 = document.querySelector('#descriptor1')
+var tagInput2 = document.querySelector('#descriptor2')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -23,19 +27,20 @@ randomBtn.addEventListener('click', randomize)
 makeOwnBtn.addEventListener('click', showMakeOwnPage)
 viewSaveBtn.addEventListener('click', viewSaved)
 homeBtn.addEventListener('click', goHome)
+makeMyBookBtn.addEventListener('click', makeBook)
 // Create your event handlers and other functions here 👇
 
-
-function goHome() {
-  homePage.classList.remove("hidden")
-  makeOwnPage.classList.add("hidden")
-  viewSavedPage.classList.add("hidden")
-  homeBtn.classList.add("hidden")
-  randomBtn.classList.remove("hidden")
-  saveBtn.classList.remove("hidden")
+function makeBook(){
+  event.preventDefault()
+  covers.push(coverInput.value)
+  titles.push(titleInput.value)
+  descriptors.push(tagInput1.value, tagInput2.value)
+  new Cover(coverInput.value, titleInput.value, tagInput1.value, tagInput2.value)
+  goHome()
+  coverPic.src = coverInput.value
+  coverTitle.innerText = titleInput.value
+  coverTagLine.innerText = `A tale of ${tagInput1.value} and ${tagInput2.value}`
 }
-
-
 
 randomize();
 function randomize() {
@@ -65,6 +70,14 @@ function viewSaved() {
   homeBtn.classList.remove("hidden")
 }
 
+function goHome() {
+  homePage.classList.remove("hidden")
+  makeOwnPage.classList.add("hidden")
+  viewSavedPage.classList.add("hidden")
+  homeBtn.classList.add("hidden")
+  randomBtn.classList.remove("hidden")
+  saveBtn.classList.remove("hidden")
+}
 
 
 
