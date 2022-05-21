@@ -71,14 +71,14 @@ function getRandomCover() {
   }
 
   function displayFormView() {
-  //  homeButton.classList.remove('.hidden');
+    homeButton.classList.remove('hidden');
 
-    formView.classList.remove('.hidden');
+    formView.classList.remove('hidden');
 
-    //randomButton.classList.add('.hidden');
-    //saveButton.classList.add('.hidden');
+    randomButton.classList.add('hidden');
+    saveButton.classList.add('hidden');
 
-    homeView.classList.add('.hidden');
+    homeView.classList.add('hidden');
   }
 //assign that html element next
 
