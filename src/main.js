@@ -7,6 +7,7 @@ var savedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
 var formView = document.querySelector('.form-view')
+var savedView = document.querySelector('.saved-view')
 
 var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image')
@@ -54,7 +55,7 @@ getRandomCoverPageLoad()
 
 // randomButton.addEventListener('click', randomCover);
 // saveCoverButton.addEventListener('click', saveCover);
-// viewSavedButton.addEventListener('click', viewSaved);
+savedButton.addEventListener('click', viewSaved);
 makeNewButton.addEventListener('click', makeNewCover);
 homeButton.addEventListener('click', goHome);
 
@@ -81,6 +82,20 @@ function goHome() {
   saveCoverButton.classList.remove("hidden");
   homeButton.classList.remove("visible");
   homeButton.classList.add("hidden");
+}
+function viewSaved() {
+  randomButton.classList.add("hidden");
+  randomButton.classList.remove("visible");
+  saveCoverButton.classList.add("hidden");
+  saveCoverButton.classList.remove("visible");
+  savedButton.classList.remove("visible");
+  savedButton.classList.remove("hidden");
+  mainCover.classList.remove("visible");
+  mainCover.classList.add("hidden");
+  savedView.classList.remove("hidden");
+  savedView.classList.add("visible");
+  homeButton.classList.remove("hidden");
+  homeButton.classList.add("visible");
 }
 
 //
