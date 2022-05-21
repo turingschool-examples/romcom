@@ -1,5 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 var mainCover = document.querySelector('.main-cover')
+var savedCovers = document.querySelector('.saved-covers-section')
 
 var randomButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
@@ -36,12 +37,11 @@ var currentCover = new Cover();
 // Add your event listeners here 👇
 
 randomButton.addEventListener('click', getRandomCoverPageLoad);
-
-//randomButton.addEventListener('click', randomCover);
-// saveCoverButton.addEventListener('click', saveCover);
-// viewSavedButton.addEventListener('click', viewSaved);
-// makeNewButton.addEventListener('click', makeNewCover);
-// homeButton.addEventListener('click', goHome);
+savedButton.addEventListener('click', viewSaved);
+makeNewButton.addEventListener('click', makeNewCover);
+homeButton.addEventListener('click', goHome);
+createNewButton.addEventListener('click', makeBook);
+saveCoverButton.addEventListener('click', savedCover);
 
 
 // We've provided one function to get you started
@@ -65,11 +65,6 @@ function getRandomCoverPageLoad(event) {
 }
 getRandomCoverPageLoad()
 
-// randomButton.addEventListener('click', randomCover);
-// saveCoverButton.addEventListener('click', saveCover);
-savedButton.addEventListener('click', viewSaved);
-makeNewButton.addEventListener('click', makeNewCover);
-homeButton.addEventListener('click', goHome);
 
 function makeNewCover() {
   mainCover.classList.remove("visible");
@@ -109,7 +104,7 @@ function viewSaved() {
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
 }
-createNewButton.addEventListener('click', makeBook);
+
 function makeBook(event) {
   event.preventDefault();
   covers.push(userCoverInput.value);
@@ -123,8 +118,33 @@ function makeBook(event) {
   taglineTwo.innerText = newCustomCover.tagline2
   goHome();
 }
+
+var savedCoversPage = document.querySelector('.saved-covers-section')
 function savedCover() {
-  var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  var savedCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText)
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+    console.log(savedCovers)
+    console.log(currentCover)
+  }
+}
+function savedCoverImages() {
+  savedCoverSection.innerHTML = ""
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoverSection.innerHTML += `<section class='mini-cover'>
+    <img class= "cover-image" id= "${savedCovers[i].id}" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}`
+  }
 }
 
-// console.log(makeBook())
+
+function showSavedCoverSection() {
+  savedCover();
+  savedCoverImages();
+}
+//   coverImage.src = newSavedCover.cover;
+//   coverTitle.innerText = newSavedCover.title;
+//   taglineOne.innerText = newSavedCover.tagline1;
+//   taglineTwo.innerText = newSavedCover.tagline2;
+// }
