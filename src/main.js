@@ -112,6 +112,7 @@ function createNewCover(event) {
   romViewForm.classList.add('hidden');
   romViewHome.classList.remove('hidden')
   buttonSaveCover.classList.remove('hidden');
+  buttonViewSaved.classList.remove('hidden');
   getCover()
 }
 
@@ -124,10 +125,10 @@ function getCover() {
 
 //iteration 3
 function savedCoversSection() {
+  savedCoversSect.innerHTML = ""
   for (var i = 0; i < savedCovers.length; i++) {
-    console.log(savedCovers)
-
-    savedCoversSect.innerHTML += `<img class="cover-image" src=${savedCovers[i].cover}>
+    console.log('savedcoverssect', savedCovers)
+    savedCoversSect.innerHTML += `<section class="mini-cover"> <img class="cover-image" src=${savedCovers[i].cover}>
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
       // <img class="price-tag" src="./assets/price.png">
@@ -143,19 +144,29 @@ function savedCoversSection() {
   }
 }
 
-function saveCovers(event) {
-  event.preventDefault()
-  if (savedCovers.includes(currentCover)) {
-    return savedCovers
+function saveCovers() {
+  console.log('savedCovers', savedCovers)
+
+  if (!savedCovers.includes(currentCover) ) {
+      savedCovers.push(currentCover)
+        console.log('addedCovers', savedCovers)
   }
-  else {savedCovers.push(currentCover)}
-  console.log('hi')
-  //savedCoversSection()
+};
+
+// function saveCovers(event) {
+//   event.preventDefault()
+//   if (savedCovers.includes(currentCover)) {
+//     return savedCovers
+//   } else {
+//     savedCovers.push(currentCover)
+//   }
+//   console.log('hi')
+  // savedCoversSection()
   // if(savedCovers.includes(currentCover)) {
   //   return savedCovers
   // }
-  //else {return array.push(currentCover)}
-}
+  // else {return array.push(currentCover)}
+//}
 
 
 
