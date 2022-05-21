@@ -102,7 +102,20 @@ function createNewCover(event) {
   console.log(currentCover)
   romViewForm.classList.add('hidden');
   romViewHome.classList.remove('hidden')
+  getCover()
 }
+
+function getCover() {
+  titleImage.src = currentCover.cover;
+  titleCover.innerText = currentCover.title;
+  titleTagLine1.innerText = currentCover.tagline1;
+  titleTagLine2.innerText = currentCover.tagline2;
+}
+
+
+
+
+
 
 
 
