@@ -1,36 +1,28 @@
 // Create variables targetting the relevant DOM elements here
 
-// Random Cover variables & querySelector paths
+// Variables & querySelector paths
 var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
+var form = document.querySelector(".form-view");
+var homePage = document.querySelector(".home-view");
 
-//Button querySelector paths
-var homeButton = document.querySelector(".home-button hidden");
+
+var homeButton = document.querySelector(".home-button");
 var coverButton = document.querySelector(".random-cover-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var viewSavedCoverButton = document.querySelector(".view-saved-button");
 var makeYourOwnCoverButton =document.querySelector(".make-new-button");
-var createNewBookButton = document.querySelector("crete-new-book-button");
+var createNewBookButton = document.querySelector(".crete-new-book-button");
 
-// Add event listeners here
-
+// Event listeners here:
 window.addEventListener('loadpage', randomRomCover);
-homeButton.addEventListener('click', //homeButtonFunction);
+homeButton.addEventListener('click', savedRomCovers);
 coverButton.addEventListener('click', randomRomCover);
-saveCoverButton.addEventListener('click', //saveCoverFunction);
-viewSavedCoverButton.addEventListener('click', //savedButtonFunction);
-makeYourOwnCoverButton.addEventListener('click', //makeOwnCoverButtonFunction);
-
-
-// Toggling Between Tabs Functions
-
-function homeButton() {
-
-}
-
-
+saveCoverButton.addEventListener('click', shouldDisplayForm);
+viewSavedCoverButton.addEventListener('click', savedRomCovers);
+makeYourOwnCoverButton.addEventListener('click', shouldDisplayForm);
 
 
 // Random Cover Fxn's Section
@@ -42,6 +34,7 @@ title.innerText = currentCover.title;
 tagline1.innerText = currentCover.tagline1;
 tagline2.innerText = currentCover.tagline2;
 }
+
 
 //Master function composed into random cover, title & descriptors:
 
@@ -66,6 +59,25 @@ function getRandomDescriptor(descriptorsArray) {
   return descriptorsArray[getRandomIndex(descriptorsArray)];
 }
 
+//Displays the "make your own cover" page
+
+function shouldDisplayForm() {
+  form.classList.remove("hidden");
+  homePage.classList.add("hidden");
+  coverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+
+}
+
+
+function savedRomCovers () {
+  form.classList.remove("hidden")
+  coverButton.classList.add("hidden")
+  saveCoverButton.classList.add("hidden")
+  homePage.classList.remove("hidden")
+
+}
 
 
 
