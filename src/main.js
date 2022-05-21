@@ -31,7 +31,7 @@ var savedCovers = [
 // document.addEventListener('load', getRandomCoverPageLoad)
 window.addEventListener('load', getRandomCover)
 randomButton.addEventListener('click', getRandomCover)
-//homeButton.addEventListener('click' ,)
+homeButton.addEventListener('click', displayHomeView)
 // saveButton.addEventListener('click' ,)
 viewSavedbutton.addEventListener('click', displaySavedView)
 makeNewButton.addEventListener('click', displayFormView)
@@ -76,6 +76,7 @@ function getRandomCover() {
     randomButton.classList.add('hidden');
     saveButton.classList.add('hidden');
     homeView.classList.add('hidden');
+    savedView.classList.add('hidden');
   }
 
   function displaySavedView() {
@@ -84,6 +85,16 @@ function getRandomCover() {
     randomButton.classList.add('hidden');
     saveButton.classList.add('hidden');
     homeView.classList.add('hidden');
+    formView.classList.add('hidden');
+  }
+
+  function displayHomeView() {
+    homeButton.classList.add('hidden');
+    savedView.classList.add('hidden');
+    randomButton.classList.remove('hidden');
+    saveButton.classList.remove('hidden');
+    formView.classList.add('hidden');
+    homeView.classList.remove('hidden')
   }
 //assign that html element next
 
