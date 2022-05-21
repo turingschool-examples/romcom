@@ -46,6 +46,7 @@ buttonViewSaved.addEventListener('click', savedCoversSection)
 buttonHome.addEventListener('click', homeButton)
 buttonCreateNew.addEventListener('click', createNewCover)
 buttonSaveCover.addEventListener('click', saveCovers)
+romViewSave.addEventListener('dblclick', deleteCovers)
 // Create your event handlers and other functions here 👇
 
 
@@ -152,6 +153,28 @@ function saveCovers() {
         console.log('addedCovers', savedCovers)
   }
 };
+
+
+function deleteCovers() {
+  
+  for (var i = 0; savedCovers.length; i++) {
+    if(savedCovers[i].id == event.target.id) {
+      savedCovers.splice(i, 1)
+    }
+    savedCoversSection()
+    
+    //re-render the page
+    //with the html
+  }
+  // for (var i = savedCovers.length - 1; i >= 0; i--) {
+  //   console.log(currentCover.id)
+  //   console.log("before splice",savedCovers[i])
+  //   if (savedCovers[i].id === currentCover.id) {
+  //     savedCovers.splice(currentCover.id, 1)
+  //     console.log('after splice', savedCovers[i])
+  //   }
+  // }
+}
 
 // function saveCovers(event) {
 //   event.preventDefault()
