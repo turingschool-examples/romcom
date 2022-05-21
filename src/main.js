@@ -77,6 +77,7 @@ function makeNewCover() {
   saveCoverButton.classList.remove("visible");
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
+  // savedView.classList.add("hidden");
 }
 function goHome() {
   mainCover.classList.remove("hidden");
@@ -91,6 +92,7 @@ function goHome() {
   homeButton.classList.add("hidden");
 }
 function viewSaved() {
+  // event.preventDefault();
   randomButton.classList.add("hidden");
   randomButton.classList.remove("visible");
   saveCoverButton.classList.add("hidden");
@@ -99,10 +101,19 @@ function viewSaved() {
   savedButton.classList.remove("hidden");
   mainCover.classList.remove("visible");
   mainCover.classList.add("hidden");
-  savedView.classList.remove("hidden");
-  savedView.classList.add("visible");
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
+  formView.classList.remove("visible");
+  formView.classList.add("hidden");
+  var savedCoversPage = document.querySelector('.saved-covers-section')
+  var finalList = ""
+  for (i = 0; i < savedCoversPage.length; i++) {
+    finaList = finalList + `<section class='mini-cover'>
+    <img class= "cover-image" id= "${savedCovers[i].id}" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}`
+  }
+  savedCoversPage.innerHTML = finalList;
 }
 
 function makeBook(event) {
@@ -119,32 +130,11 @@ function makeBook(event) {
   goHome();
 }
 
-var savedCoversPage = document.querySelector('.saved-covers-section')
+
 function savedCover() {
-  var savedCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText)
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
     console.log(savedCovers)
     console.log(currentCover)
   }
 }
-function savedCoverImages() {
-  savedCoverSection.innerHTML = ""
-  for (i = 0; i < savedCovers.length; i++) {
-    savedCoverSection.innerHTML += `<section class='mini-cover'>
-    <img class= "cover-image" id= "${savedCovers[i].id}" src=${savedCovers[i].cover}>
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}`
-  }
-}
-
-
-function showSavedCoverSection() {
-  savedCover();
-  savedCoverImages();
-}
-//   coverImage.src = newSavedCover.cover;
-//   coverTitle.innerText = newSavedCover.title;
-//   taglineOne.innerText = newSavedCover.tagline1;
-//   taglineTwo.innerText = newSavedCover.tagline2;
-// }
