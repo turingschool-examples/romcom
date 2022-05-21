@@ -108,11 +108,35 @@ function getRandomCover() {
     homeView.classList.remove('hidden')
   }
 
-  // function makeOwnCover() {
+  function makeOwnCover(event) {
+    event.preventDefault(); // prevents default action of browser
+    userCoverAdd();
+    userTitleAdd();
+    userDesc1Add();
+    userDesc2Add();
+  }
 
-// }
+//other ones go here:
+function userCoverAdd() {
+var coverNew = userCoverInput.value;
+userCoverOutput.innerText = coverNew;
+}
 
-  function
+function userTitleAdd() {
+var titleNew = userTitleInput.value;
+userTitleOutput.innerText = titleNew;
+}
+
+function userDesc1Add() {
+var desc1New = userDesc1nput.value;
+userDesc1Output.innerText = desc1New;
+}
+
+function userDesc2Add() {
+var desc2New = userDesc2Input.value;
+userDesc2Output.innerText = desc2New;
+}
+
 
 
 //assign that html element next
