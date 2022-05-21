@@ -34,28 +34,60 @@ makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 
 userCoverInput.addEventListener('click', addCoverInput);
 userTitleInput.addEventListener('click', addTitleInput);
-userDescInput1.addEventListener('click', addDescriptor);
+userDescInput1.addEventListener('click', addDescriptor1);
+userDescInput2.addEventListener('click', addDescriptor2);
 
 // MAY NEED THIS 2ND LISTENER???
 // userDescInput2.addEventListener('click',
 
 
 // User saved covers array:
-
+// a new SavedCover instance means that it has 4 params.
+// unique cover, unique title, unique descriptor1, unique descriptor2) .... all are strings
+/*
 function savedRomCovers() {
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "passion", "woe")
+  new Cover(addCoverInput(covers, userCoverInput), addTitleInput(titles, userTitleInput), addDescriptorInput1(descriptors, userDescriptor1), addDescriptorInput2(descriptors, userDescriptor2))
 ];
-
+cover.src = savedRomCovers.cover;
+title.innerText = savedRomCovers.title;
+tagline1.innerText = savedRomCovers.tagline1;
+tagline2.innerText = savedRomCovers.tagline2;
 }
-
-
 //User saved books Fxn's:
 
+function addCoverInput(covers, userCoverInput) {
+  if (covers.includes(userCoverInput) {
+    return covers;
+  } else {
+    return covers.push(userCoverInput);
+  }
+}
 
+function addTitleInput(titles, userTitleInput) {
+  if (titles.includes(userTitleInput) {
+    return titles;
+  } else {
+    return titles.push(userTitleInput);
+  }
+}
 
+function addDescriptorInput1(descriptors, userDescriptor1) {
+  if (descriptors.includes(userDescriptor) {
+    return titles;
+  } else {
+    return titles.push(userTitleInput);
+  }
+}
 
-
+function addDescriptorInput2(descriptors, userDescriptor2) {
+  if (descriptors.includes(userDescriptor) {
+    return titles;
+  } else {
+    return titles.push(userTitleInput);
+  }
+}
+*/
 // Random Cover Fxn's Section:
 
 function randomRomCover() {
@@ -66,8 +98,7 @@ tagline1.innerText = currentCover.tagline1;
 tagline2.innerText = currentCover.tagline2;
 }
 
-
-//Master function composed into random cover, title & descriptors:
+// Master Make Random Book Cover function composed into random cover, title & descriptors:
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
