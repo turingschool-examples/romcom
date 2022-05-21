@@ -66,7 +66,11 @@ function viewSaved() {
 }
 
 
-
+function randomElement(array){
+ var randomIndex = getRandomIndex(array)
+ var randomDetails = array[randomIndex]
+ console.log(randomDetails)
+};
 
 
 // We've provided one function to get you started
