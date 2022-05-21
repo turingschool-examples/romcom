@@ -36,6 +36,8 @@ makeYourOwnButton.addEventListener('click', makeNewPage)
 
 viewSaveCoverButton.addEventListener('click', savedView)
 
+homeButton.addEventListener('click', viewHome)
+
 // Create your event handlers and other functions here 👇
 
 
@@ -54,12 +56,20 @@ viewSavedView.classList.add('hidden')
 }
 
 function savedView() {
-  viewHomeView.classList.add('hidden');
-  getRandomButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  viewSavedView.classList.remove('hidden');
+viewHomeView.classList.add('hidden');
+getRandomButton.classList.add('hidden');
+saveCoverButton.classList.add('hidden');
+homeButton.classList.remove('hidden');
+viewSavedView.classList.remove('hidden');
+viewFormView.classList.add('hidden');
+}
+
+function viewHome() {
+  viewHomeView.classList.remove('hidden');
+  viewSavedView.classList.add('hidden');
   viewFormView.classList.add('hidden');
+
+
 }
 
 
