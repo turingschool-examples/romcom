@@ -55,6 +55,7 @@ function showMakeOwnPage() {
   randomBtn.classList.add("hidden")
   saveCoverBtn.classList.add("hidden")
   homeBtn.classList.remove("hidden")
+  viewSavedPage.classList.add("hidden")
 }
 
 function viewSaved() {
@@ -63,7 +64,15 @@ function viewSaved() {
   randomBtn.classList.add("hidden")
   saveCoverBtn.classList.add("hidden")
   homeBtn.classList.remove("hidden")
-
+  makeOwnPage.classList.add("hidden")
+  var displayCovers = document.querySelector('.saved-covers-section')
+  displayCovers.innerHTML = `<section class="mini-cover">
+    <img class="cover-image" src="./assets/prairie.jpg">
+    <h2 class="cover-title">Windswept Hearts</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
 }
 
 function goHome() {
