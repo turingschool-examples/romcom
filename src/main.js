@@ -4,14 +4,22 @@ var randomTitle = document.querySelector(".cover-title");
 var randomTag = document.querySelector(".tagline");
 var randomTag = document.querySelector(".tagline-1");
 var randomTag = document.querySelector(".tagline-2");
+
+var formView = document.querySelector(".form-view");
+var mainCover = document.querySelector(".home-view");
+var viewSavedCovers = document.querySelector(".saved-view");
+
+var homeButton = document.querySelector(".home-button");
+var savedCoversButton = document.querySelector(".view-saved-button");
 var randomButton = document.querySelector(".random-cover-button");
 var makeNewCoverButton = document.querySelector(".make-new-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
-var formView = document.querySelector(".form-view");
-var mainCover = document.querySelector(".home-view");
-var homeButton = document.querySelector(".home-button");
-var viewSavedCovers = document.querySelector(".saved-view");
-var savedCoversButton = document.querySelector(".view-saved-button");
+var createBookButton = document.querySelector(".create-new-book-button")
+
+var inputCover = document.querySelector("#cover")
+var inputTitle = document.querySelector("#title")
+var input1descriptor = document.querySelector("#descriptor1")
+var input2descriptor = document.querySelector("#descriptor2")
 
 // We've provided a few variables below
 var savedCovers = [
@@ -27,8 +35,34 @@ savedCoversButton.addEventListener('click', hideSavedCovers);
 savedCoversButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click', showHomePage);
 homeButton.addEventListener('click', hideHomePage);
-
+createBookButton.addEventListener('click', makeCover);
 // Create your event handlers and other functions here 👇
+
+function makeCover () {
+  event.preventDefault();
+  getUserInput();
+}
+function getUserInput() {
+  var userCover = inputCover.value;
+  var userTitle = inputTitle.value;
+  var user1descriptor = input1descriptor.value;
+  var user2descriptor = input2descriptor.value;
+  covers.push(userCover);
+  titles.push(userTitle);
+  descriptors.push(user1descriptor, user2descriptor);
+  var test = new Cover (userCover, userTitle, user1descriptor, user2descriptor)
+  hideForm();
+  showHomePage();
+}
+
+  // displayCover(userCover, userTitle, user1descriptor, user2descriptor)
+// function displayCover() {
+// displayCover.innerText =
+// displayTitle.innnerText =
+// display1descriptor.innerText =
+// display2descriptor.innerText =
+// }
+
 
 function reveal(reveal) {
   reveal.classList.remove('hidden');
@@ -76,6 +110,7 @@ function hideHomePage() {
   conceal(homeButton);
 };
 
+randomCovers()
 function randomCovers() {
   randomCover.src = covers[getRandomIndex(covers)]
   randomTag.innerText = descriptors[getRandomIndex(descriptors)]
@@ -86,6 +121,7 @@ function randomCovers() {
     randomTitle.innerText,
   )
 };
+
 
 // We've provided one function to get you started
 
