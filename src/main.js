@@ -73,10 +73,11 @@ function viewSaved() {
   var savedUserImg = ""
   for (var i = 0; i < savedCovers.length; i++) {
     savedUserImg  = savedUserImg  + `<section class="mini-cover">
+    <img class="overlay" src="./assets/overlay.png">
     <img class="cover-image" src=${savedCovers[i].cover}>
      <h2 class="cover-title">${savedCovers[i].title}</h2>
      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-     <img class="overlay" src="./assets/overlay.png">
+
      </section>`
   }
   displayCovers.innerHTML = savedUserImg ;
