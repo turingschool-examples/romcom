@@ -14,17 +14,10 @@ var homeView = document.querySelector(".home-view");
 var savedView = document.querySelector(".saved-view");
 var formView = document.querySelector(".form-view");
 
-// var userCoverInput = document.querySelector("#cover");
-// var userTitleInput = document.querySelector("#title");
-// var userDesc1Input = document.querySelector("#descriptor1");
-// var userDesc2Input = document.querySelector("#descriptor2");
-
 var userCoverOutput = document.querySelector(".user-cover");
 var userTitleOutput = document.querySelector(".user-title");
 var userDesc1Output = document.querySelector(".user-desc1");
 var userDesc2Output = document.querySelector(".user-desc2");
-
-//var formCovers = document.getElementByID('cover')
 
 var createBookButton = document.querySelector(".create-new-book-button");
 // add new variable for each button on the main page
@@ -38,14 +31,12 @@ var savedCovers = [
 ];
 
 
-//var currentCover = new Cover(Cover.id, Cover.cover, Cover.title, Cover.tagline1, Cover.tagline2);
-
 // Add your event listeners here 👇
 // document.addEventListener('load', getRandomCoverPageLoad)
 window.addEventListener('load', getRandomCover)
 randomButton.addEventListener('click', getRandomCover)
 homeButton.addEventListener('click', displayHomeView)
-// saveButton.addEventListener('click' ,)
+saveButton.addEventListener('click' , saveCover)
 viewSavedbutton.addEventListener('click', displaySavedView)
 makeNewButton.addEventListener('click', displayFormView)
 
@@ -163,6 +154,11 @@ descriptors.push(desc2New)
 return desc2New
 }
 
+function saveCover() {
+  var coverSave = new Cover(currentCover.cover, currentCover.title,
+    currentCover.tagline1, currentCover.tagline2);
+    savedCovers.push(coverSave);
+}
 
 
 //assign that html element next
