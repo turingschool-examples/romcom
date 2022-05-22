@@ -10,6 +10,7 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var formPage = document.querySelector(".form-view");
 var homePage = document.querySelector(".home-view");
+var savedPage = document.querySelector(".saved-view");
 
 // Variables for button query paths:
 var homeButton = document.querySelector(".home-button");
@@ -35,8 +36,7 @@ makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 createCustomButton.addEventListener('click', savedRomCovers);
 
 
-
-//Make Your Own Cover Fxn's
+//Make Your Own Cover Fxn's Tab
 
 function savedRomCovers() {
 event.preventDefault();
@@ -58,11 +58,12 @@ homePageTab();
 // Random Cover Fxn's Section:
 
 function randomRomCover() {
-var currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
+currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
 cover.src = currentCover.cover;
 title.innerText = currentCover.title;
 tagline1.innerText = currentCover.tagline1;
 tagline2.innerText = currentCover.tagline2;
+
 }
 
 // Master Make Random Book Cover function composed into random cover, title & descriptors:
@@ -95,6 +96,7 @@ function makeOwnCoverDisplayForm() {
   coverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
+  savedPage.classList.add("hidden");
 }
 
 function savedRomCoversTab () {
@@ -104,7 +106,9 @@ function savedRomCoversTab () {
   homeButton.classList.remove("hidden");
   cover.classList.add("hidden");
   homePage.classList.add("hidden");
+  savedPage.classList.remove("hidden");
 
+savedCoversPage();
 }
 
 function homePageTab() {
@@ -116,48 +120,26 @@ function homePageTab() {
 
 }
 
-// Tests for Dev Tools
-console.log(getRandomIndex(covers));
-console.log(getRandomIndex(titles));
-console.log(getRandomIndex(descriptors));
-console.log(getRandomIndex(descriptors));
-
 //Iteration 3
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-
-//User clicks "save cover" buttn, and the current cover eill be saved to saved covers tab
-// ! = the "not operator" --> makes it the opposite
-// If the saved cover is not included in the current cover collection, it will save it.
-// if not, dont save
-//Look at current cover, if the saved cover you are trying to save is not there, then it
-//will get pushed to the array.
-//If the condition is met: push the saved cover into the current cover array
-
-//we need current covers to be able to go into the array of saved covers
-
 function saveCover() {
-  var savedCover = currentCover
-  if (!savedCovers.includes(currentCover)); {
+  if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    console.log(savedCovers)
   }
 }
 
+var coversSection = document.querySelector(".saved-covers-section");
 
-//All the covers in the "SavedCovers"
-//array should be displayed in the saved
-//covers Section
-
-//function coversSection
-//for (var i = 0; i < ?; i++)
-
-//"+currentCover.tagline1+"
-
-
-
-//Translate array into an image
-//pull from the inner HTML with .innerHTML
-//Write a for loop
+function savedCoversPage() {
+coversSection.innerHTML = '';
+for (var i = 0; i < savedCovers.length; i++) {
+coversSection.innerHTML+=
+`<section class='mini-cover'>
+<img class="cover-image" id="${savedCovers[i].id}" src=${savedCovers[i].cover}>
+<h2 class="cover-title">${savedCovers[i].title}</h2>
+<h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
+  }
+}
