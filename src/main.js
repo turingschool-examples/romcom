@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-var buttonShowRandomCover = document.querySelector('.random-cover-button');
+var showRandomCoverButton = document.querySelector('.random-cover-button');
 
 var homeButton = document.querySelector('.home-button');
 var buttonSaveCover = document.querySelector('.save-cover-button');
@@ -40,10 +40,10 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomizedCover)
-buttonShowRandomCover.addEventListener("click", getRandomizedCover)
+showRandomCoverButton.addEventListener("click", getRandomizedCover)
 buttonMakeNew.addEventListener('click', makeCoverPage)
 buttonViewSaved.addEventListener('click', savedCoversSection)
-homeButton.addEventListener('click', homeButton)
+homeButton.addEventListener('click', homeButtonFunction)
 buttonCreateNew.addEventListener('click', createNewCover)
 buttonSaveCover.addEventListener('click', saveCovers)
 savedCoversSect.addEventListener('dblclick', deleteCovers)
@@ -79,7 +79,7 @@ function makeCoverPage() {
   romViewForm.classList.remove('hidden');
   romViewHome.classList.add('hidden');
   romViewSave.classList.add('hidden');
-  buttonShowRandomCover.classList.add('hidden');
+  showRandomCoverButton.classList.add('hidden');
   buttonSaveCover.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
@@ -88,18 +88,18 @@ function savedCoversView() {
   romViewForm.classList.add('hidden');
   romViewHome.classList.add('hidden');
   romViewSave.classList.remove('hidden');
-  buttonShowRandomCover.classList.add('hidden');
+  showRandomCoverButton.classList.add('hidden');
   buttonSaveCover.classList.add('hidden');
   homeButton.classList.remove('hidden');
   buttonViewSaved.classList.add('hidden');
   savedCoversSect.classList.remove('hidden')
 }
 
-function homeButton() {
+function homeButtonFunction() {
   romViewForm.classList.add('hidden');
   romViewHome.classList.remove('hidden');
   romViewSave.classList.add('hidden');
-  buttonShowRandomCover.classList.remove('hidden');
+  showRandomCoverButton.classList.remove('hidden');
   buttonSaveCover.classList.remove('hidden');
   homeButton.classList.add('hidden');
   buttonViewSaved.classList.remove('hidden');
@@ -159,7 +159,7 @@ function savedCoversSection() {
       romViewForm.classList.add('hidden')
       romViewSave.classList.remove('hidden')
       buttonSaveCover.classList.add('hidden')
-      buttonShowRandomCover.classList.add('hidden')
+      showRandomCoverButton.classList.add('hidden')
       homeButton.classList.remove('hidden')
       buttonViewSaved.classList.add('hidden');
   }
