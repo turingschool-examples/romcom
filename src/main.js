@@ -2,7 +2,7 @@
 var showRandomCoverButton = document.querySelector('.random-cover-button');
 
 var homeButton = document.querySelector('.home-button');
-var buttonSaveCover = document.querySelector('.save-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 var buttonViewSaved = document.querySelector('.view-saved-button');
 var buttonMakeNew = document.querySelector('.make-new-button');
 var buttonCreateNew = document.querySelector('.create-new-book-button');
@@ -45,7 +45,7 @@ buttonMakeNew.addEventListener('click', makeCoverPage)
 buttonViewSaved.addEventListener('click', savedCoversSection)
 homeButton.addEventListener('click', homeButtonFunction)
 buttonCreateNew.addEventListener('click', createNewCover)
-buttonSaveCover.addEventListener('click', saveCovers)
+saveCoverButton.addEventListener('click', saveCovers)
 savedCoversSect.addEventListener('dblclick', deleteCovers)
 // Create your event handlers and other functions here 👇
 
@@ -80,7 +80,7 @@ function makeCoverPage() {
   romViewHome.classList.add('hidden');
   romViewSave.classList.add('hidden');
   showRandomCoverButton.classList.add('hidden');
-  buttonSaveCover.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
 
@@ -89,7 +89,7 @@ function savedCoversView() {
   romViewHome.classList.add('hidden');
   romViewSave.classList.remove('hidden');
   showRandomCoverButton.classList.add('hidden');
-  buttonSaveCover.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   buttonViewSaved.classList.add('hidden');
   savedCoversSect.classList.remove('hidden')
@@ -100,7 +100,7 @@ function homeButtonFunction() {
   romViewHome.classList.remove('hidden');
   romViewSave.classList.add('hidden');
   showRandomCoverButton.classList.remove('hidden');
-  buttonSaveCover.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   buttonViewSaved.classList.remove('hidden');
 }
@@ -118,7 +118,7 @@ function homeButtonFunction() {
 //   console.log(currentCover)
 //   romViewForm.classList.add('hidden');
 //   romViewHome.classList.remove('hidden')
-//   buttonSaveCover.classList.remove('hidden');
+//   saveCoverButton.classList.remove('hidden');
 //   buttonViewSaved.classList.remove('hidden');
 //   getCover()
 // }
@@ -134,7 +134,7 @@ function createNewCover(event) {
   console.log(currentCover)
   romViewForm.classList.add('hidden');
   romViewHome.classList.remove('hidden')
-  buttonSaveCover.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
   buttonViewSaved.classList.remove('hidden');
   getRandomizedCover(currentCover)
 }
@@ -158,7 +158,7 @@ function savedCoversSection() {
       romViewHome.classList.add('hidden')
       romViewForm.classList.add('hidden')
       romViewSave.classList.remove('hidden')
-      buttonSaveCover.classList.add('hidden')
+      saveCoverButton.classList.add('hidden')
       showRandomCoverButton.classList.add('hidden')
       homeButton.classList.remove('hidden')
       buttonViewSaved.classList.add('hidden');
