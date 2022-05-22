@@ -3,6 +3,7 @@ var coverPic = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var coverTagLine = document.querySelector('.tagline')
 var priceTag = document.querySelector('.price-tag')
+var overlayImg = document.querySelector('.overlay')
 var randomBtn = document.querySelector('.random-cover-button')
 var makeOwnBtn = document.querySelector('.make-new-button')
 var makeOwnPage = document.querySelector('.form-view')
@@ -22,7 +23,10 @@ var navSavedCovers = document.querySelector('.saved-covers-section')
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
+overlayImg.classList.add("hidden");
 var currentCover;
+priceTag.classList.add("hidden");
 
 
 // Add your event listeners here 👇
@@ -60,6 +64,7 @@ function showMakeOwnPage() {
   saveCoverBtn.classList.add("hidden")
   homeBtn.classList.remove("hidden")
   viewSavedPage.classList.add("hidden")
+  priceTag.classList.add("hidden")
 }
 
 function viewSaved() {
@@ -89,6 +94,7 @@ function viewSaved() {
 
 
 function goHome() {
+  overlayImg.classList.remove("hidden");
   homePage.classList.remove("hidden")
   makeOwnPage.classList.add("hidden")
   viewSavedPage.classList.add("hidden")
@@ -96,6 +102,7 @@ function goHome() {
   randomBtn.classList.remove("hidden")
   saveCoverBtn.classList.remove("hidden")
   viewSaveBtn.classList.remove("hidden")
+
 }
 
 function makeBook(){
