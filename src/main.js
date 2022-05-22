@@ -1,7 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var buttonShowRandomCover = document.querySelector('.random-cover-button');
 
-var buttonHome = document.querySelector('.home-button');
+var homeButton = document.querySelector('.home-button');
 var buttonSaveCover = document.querySelector('.save-cover-button');
 var buttonViewSaved = document.querySelector('.view-saved-button');
 var buttonMakeNew = document.querySelector('.make-new-button');
@@ -43,7 +43,7 @@ window.addEventListener('load', getRandomizedCover)
 buttonShowRandomCover.addEventListener("click", getRandomizedCover)
 buttonMakeNew.addEventListener('click', makeCoverPage)
 buttonViewSaved.addEventListener('click', savedCoversSection)
-buttonHome.addEventListener('click', homeButton)
+homeButton.addEventListener('click', homeButton)
 buttonCreateNew.addEventListener('click', createNewCover)
 buttonSaveCover.addEventListener('click', saveCovers)
 savedCoversSect.addEventListener('dblclick', deleteCovers)
@@ -81,7 +81,7 @@ function makeCoverPage() {
   romViewSave.classList.add('hidden');
   buttonShowRandomCover.classList.add('hidden');
   buttonSaveCover.classList.add('hidden');
-  buttonHome.classList.remove('hidden');
+  homeButton.classList.remove('hidden');
 }
 
 function savedCoversView() {
@@ -90,7 +90,7 @@ function savedCoversView() {
   romViewSave.classList.remove('hidden');
   buttonShowRandomCover.classList.add('hidden');
   buttonSaveCover.classList.add('hidden');
-  buttonHome.classList.remove('hidden');
+  homeButton.classList.remove('hidden');
   buttonViewSaved.classList.add('hidden');
   savedCoversSect.classList.remove('hidden')
 }
@@ -101,7 +101,7 @@ function homeButton() {
   romViewSave.classList.add('hidden');
   buttonShowRandomCover.classList.remove('hidden');
   buttonSaveCover.classList.remove('hidden');
-  buttonHome.classList.add('hidden');
+  homeButton.classList.add('hidden');
   buttonViewSaved.classList.remove('hidden');
 }
 
@@ -160,7 +160,7 @@ function savedCoversSection() {
       romViewSave.classList.remove('hidden')
       buttonSaveCover.classList.add('hidden')
       buttonShowRandomCover.classList.add('hidden')
-      buttonHome.classList.remove('hidden')
+      homeButton.classList.remove('hidden')
       buttonViewSaved.classList.add('hidden');
   }
 }
