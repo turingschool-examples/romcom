@@ -155,9 +155,9 @@ return desc2New
 }
 
 function saveCover() {
-  var coverSave = new Cover(currentCover.cover, currentCover.title,
-    currentCover.tagline1, currentCover.tagline2);
-    savedCovers.push(coverSave);
+    if (!savedCovers.includes(currentCover)) {
+      savedCovers.push(currentCover);
+    }
 }
 
 
