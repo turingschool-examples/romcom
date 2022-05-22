@@ -1,5 +1,8 @@
 // Create variables targetting the relevant DOM elements here
 
+//This variable instantiates a new book from the Cover class
+var currentCover;
+
 // Variables & querySelector paths
 var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
@@ -17,77 +20,39 @@ var makeYourOwnCoverButton =document.querySelector(".make-new-button");
 var createCustomButton = document.querySelector(".create-new-book-button");
 
 // Query paths for make your own book form page:
-var userCoverInput = document.querySelector(".user-cover");
-var userTitleInput = document.querySelector(".user-title");
-var userDescInput1 = document.querySelector(".user-desc1");
-var userDescInput2 = document.querySelector(".user-desc2");
+var userCoverInput = document.querySelector("#cover");
+var userTitleInput = document.querySelector("#title");
+var userDescInput1 = document.querySelector("#descriptor1");
+var userDescInput2 = document.querySelector("#descriptor2");
 
 // Button event listeners here:
-window.addEventListener('loadpage', randomRomCover);
+window.addEventListener('load', randomRomCover);
 homeButton.addEventListener('click', homePageTab);
 coverButton.addEventListener('click', randomRomCover);
 // saveCoverButton.addEventListener('click',  );
 viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
 makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
+createCustomButton.addEventListener('click', savedRomCovers);
 
-// Make your own book form event listeners:
+//Make Your Own Cover Fxn's
 
-userCoverInput.addEventListener('click', addCoverInput);
-userTitleInput.addEventListener('click', addTitleInput);
-userDescInput1.addEventListener('click', addDescriptor1);
-userDescInput2.addEventListener('click', addDescriptor2);
-
-// MAY NEED THIS 2ND LISTENER???
-// userDescInput2.addEventListener('click',
-
-
-// User saved covers array:
-// a new SavedCover instance means that it has 4 params.
-// unique cover, unique title, unique descriptor1, unique descriptor2) .... all are strings
-/*
 function savedRomCovers() {
-var savedCovers = [
-  new Cover(addCoverInput(covers, userCoverInput), addTitleInput(titles, userTitleInput), addDescriptorInput1(descriptors, userDescriptor1), addDescriptorInput2(descriptors, userDescriptor2))
-];
-cover.src = savedRomCovers.cover;
-title.innerText = savedRomCovers.title;
-tagline1.innerText = savedRomCovers.tagline1;
-tagline2.innerText = savedRomCovers.tagline2;
-}
-//User saved books Fxn's:
+event.preventDefault();
+covers.push(userCoverInput.value);
+titles.push(userTitleInput.value);
+descriptors.push(userDescInput1.value);
+descriptors.push(userDescInput2.value);
 
-function addCoverInput(covers, userCoverInput) {
-  if (covers.includes(userCoverInput) {
-    return covers;
-  } else {
-    return covers.push(userCoverInput);
-  }
+currentCover = new Cover(userCoverInput.value, userTitleInput.value, userDescInput1.value, userDescInput2.value);
+
+cover.src = currentCover.cover;
+title.innerText = currentCover.title;
+tagline1.innerText = currentCover.tagline1;
+tagline2.innerText = currentCover.tagline2;
+
+homePageTab();
 }
 
-function addTitleInput(titles, userTitleInput) {
-  if (titles.includes(userTitleInput) {
-    return titles;
-  } else {
-    return titles.push(userTitleInput);
-  }
-}
-
-function addDescriptorInput1(descriptors, userDescriptor1) {
-  if (descriptors.includes(userDescriptor) {
-    return titles;
-  } else {
-    return titles.push(userTitleInput);
-  }
-}
-
-function addDescriptorInput2(descriptors, userDescriptor2) {
-  if (descriptors.includes(userDescriptor) {
-    return titles;
-  } else {
-    return titles.push(userTitleInput);
-  }
-}
-*/
 // Random Cover Fxn's Section:
 
 function randomRomCover() {
@@ -99,26 +64,25 @@ tagline2.innerText = currentCover.tagline2;
 }
 
 // Master Make Random Book Cover function composed into random cover, title & descriptors:
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 // Get 1 random cover image(jpg, png) string:
 
-function getRandomCover(coversArray) {
-  return coversArray[getRandomIndex(coversArray)];
+function getRandomCover(covers) {
+  return covers[getRandomIndex(covers)];
 }
 
 //Get a random title:
 
-function getRandomTitle(titlesArray) {
-  return titlesArray[getRandomIndex(titlesArray)];
+function getRandomTitle(titles) {
+  return titles[getRandomIndex(titles)];
 }
 //Get a random 1st & 2nd tagline:
 
-function getRandomDescriptor(descriptorsArray) {
-  return descriptorsArray[getRandomIndex(descriptorsArray)];
+function getRandomDescriptor(descriptors) {
+  return descriptors[getRandomIndex(descriptors)];
 }
 
 //Displays the "make your own cover" page
@@ -149,16 +113,13 @@ function homePageTab() {
 
 }
 
-
-
-
 // Tests for Dev Tools
 console.log(getRandomIndex(covers));
 console.log(getRandomIndex(titles));
 console.log(getRandomIndex(descriptors));
 console.log(getRandomIndex(descriptors));
 
-// Future needed class Cover Instantiations
-
-//Array for storing all "Make Your Own Cover" elements
-// Params (cover, title, tagLine1, tagline2)
+//Iteration 3
+var savedCovers = [
+  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
