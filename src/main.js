@@ -4,6 +4,7 @@ var coverTitle = document.querySelector('.cover-title')
 var coverTagLine = document.querySelector('.tagline')
 var priceTag = document.querySelector('.price-tag')
 var overlayImg = document.querySelector('.overlay')
+var homeOverlay =document.querySelector('cover-image.overlay')
 var randomBtn = document.querySelector('.random-cover-button')
 var makeOwnBtn = document.querySelector('.make-new-button')
 var makeOwnPage = document.querySelector('.form-view')
@@ -24,7 +25,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-overlayImg.classList.add("hidden");
+
 var currentCover;
 priceTag.classList.add("hidden");
 
@@ -67,6 +68,20 @@ function showMakeOwnPage() {
   priceTag.classList.add("hidden")
 }
 
+function goHome() {
+  homePage.classList.remove("hidden")
+  makeOwnPage.classList.add("hidden")
+  viewSavedPage.classList.add("hidden")
+  homeBtn.classList.add("hidden")
+  randomBtn.classList.remove("hidden")
+  saveCoverBtn.classList.remove("hidden")
+  viewSaveBtn.classList.remove("hidden")
+
+}
+
+
+
+
 function viewSaved() {
   viewSavedPage.classList.remove("hidden")
   homePage.classList.add("hidden")
@@ -83,7 +98,6 @@ function viewSaved() {
     <img class="cover-image" src=${savedCovers[i].cover}>
      <h2 class="cover-title">${savedCovers[i].title}</h2>
      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-
      </section>`
   }
   displayCovers.innerHTML = savedUserImg ;
@@ -93,17 +107,7 @@ function viewSaved() {
 
 
 
-function goHome() {
-  overlayImg.classList.remove("hidden");
-  homePage.classList.remove("hidden")
-  makeOwnPage.classList.add("hidden")
-  viewSavedPage.classList.add("hidden")
-  homeBtn.classList.add("hidden")
-  randomBtn.classList.remove("hidden")
-  saveCoverBtn.classList.remove("hidden")
-  viewSaveBtn.classList.remove("hidden")
 
-}
 
 function makeBook(){
   event.preventDefault()
