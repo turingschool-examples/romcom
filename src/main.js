@@ -58,7 +58,6 @@ function makeNewCover() {
   homeButton.classList.remove("hidden");
   savedView.classList.add("hidden");
 }
-
 function goHome() {
   mainCover.classList.remove("hidden");
   formView.classList.add("hidden");
@@ -67,7 +66,6 @@ function goHome() {
   homeButton.classList.add("hidden");
   savedView.classList.add("hidden");
 }
-
 function viewSaved() {
   randomButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
@@ -88,7 +86,6 @@ function viewSaved() {
   }
   savedCoversPage.innerHTML = finalList;
 }
-
 function makeBook(event) {
   event.preventDefault();
   covers.push(userCoverInput.value);
@@ -102,7 +99,6 @@ function makeBook(event) {
   taglineTwo.innerText = newCustomCover.tagline2
   goHome();
 }
-
 function savedCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
