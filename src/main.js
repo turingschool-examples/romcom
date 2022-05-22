@@ -56,13 +56,22 @@ savedCoversSect.addEventListener('dblclick', deleteCovers)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//og
+// function getRandomizedCover() {
+//   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+//   titleImage.src = currentCover.cover;
+//   titleCover.innerText = currentCover.title;
+//   titleTagLine1.innerText = currentCover.tagline1;
+//   titleTagLine2.innerText = currentCover.tagline2;
+// }
 
-function getRandomizedCover() {
-  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
-  titleImage.src = currentCover.cover;
-  titleCover.innerText = currentCover.title;
-  titleTagLine1.innerText = currentCover.tagline1;
-  titleTagLine2.innerText = currentCover.tagline2;
+//REFACTORED
+function getRandomizedCover(coverToDisplay) {
+  titleImage.src = coverToDisplay.cover || covers[getRandomIndex(covers)];
+  titleCover.innerText = coverToDisplay.title || titles[getRandomIndex(titles)];
+  titleTagLine1.innerText = coverToDisplay.tagline1 || descriptors[getRandomIndex(descriptors)];
+  titleTagLine2.innerText = coverToDisplay.tagline2 || descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(titleImage.src, titleCover.innerText, titleTagLine1.innerText, titleTagLine2.innerText)
 }
 
 //iteration1
@@ -98,10 +107,23 @@ function homeButton() {
 
 //iteration2
 
-// function imageInput() {
+//OG
+// function createNewCover(event) {
+//   event.preventDefault()
 //   currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
+//   covers.push(coverInput.value);
+//   titles.push(titleInput.value);
+//   descriptors.push(descriptor1Input.value);
+//   descriptors.push(descriptor2Input.value)
+//   console.log(currentCover)
+//   romViewForm.classList.add('hidden');
+//   romViewHome.classList.remove('hidden')
+//   buttonSaveCover.classList.remove('hidden');
+//   buttonViewSaved.classList.remove('hidden');
+//   getCover()
 // }
 
+//refactored
 function createNewCover(event) {
   event.preventDefault()
   currentCover = new Cover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
@@ -114,7 +136,7 @@ function createNewCover(event) {
   romViewHome.classList.remove('hidden')
   buttonSaveCover.classList.remove('hidden');
   buttonViewSaved.classList.remove('hidden');
-  getCover()
+  getRandomizedCover(currentCover)
 }
 
 function getCover() {
@@ -160,4 +182,3 @@ function deleteCovers(event) {
     }
   }
 }
-
