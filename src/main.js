@@ -33,6 +33,8 @@ homeBtn.addEventListener('click', goHome)
 makeMyBookBtn.addEventListener('click', makeBook)
 saveCoverBtn.addEventListener('click', addToSaved)
 
+
+
 // Create your event handlers and other functions here 👇
 
 
@@ -50,6 +52,22 @@ function randomize() {
     coverTagLine.innerText = `A tale of ${descriptors[newTag1]} and ${descriptors[newTag2]}`
     currentCover = new Cover(covers[newCover], titles[newTitle], descriptors[newTag1], descriptors[newTag2])
     return currentCover
+}
+
+function minicoverHandler(eventParam){
+  // returns the minicover's section HTMLelement (which was captured by the event object's currentTarget property)
+  var minicoverSection = eventParam.currentTarget
+  var coverID = minicoverSection.dataset.id // uses HTML "data attributes"- google that term for more info
+
+  // loop through savedCovers
+  for(var i = 0;i < savedCovers.length;i++){
+      // find the cover whose ID matches the ID we
+      if(savedCovers[i].id == coverID){
+          // remove it from the array (probably with splice)
+          savedCovers.splice(i, 1)
+      }
+  }
+  minicoverSection.remove()
 }
 
 function showMakeOwnPage() {
@@ -72,14 +90,31 @@ function viewSaved() {
   var displayCovers = document.querySelector('.saved-covers-section')
   var savedUserImg = ""
   for (var i = 0; i < savedCovers.length; i++) {
-    savedUserImg  = savedUserImg  + `<section class="mini-cover">
+    // for iteration 4
+    // added a data-id attribute to the minicover section HTMLelement
+    // and gave it a value corresponding to the value held within the Cover object's id property
+    // later, we can use that id to find out
+
+    savedUserImg  = savedUserImg  + `<section class="mini-cover" data-id="${savedCovers[i].id}">
     <img class="cover-image" src=${savedCovers[i].cover}>
      <h2 class="cover-title">${savedCovers[i].title}</h2>
      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
      <img class="overlay" src="./assets/overlay.png">
      </section>`
   }
-  displayCovers.innerHTML = savedUserImg ;
+
+  displayCovers.innerHTML = savedUserImg;
+
+  // Iteration 4 requires these lines
+  // now that the minicovers exist in the HTML, we can query them
+  // we want to add event listeners to every minicover, not just one, so we get them all
+  var allSavedCovers = document.querySelectorAll('.mini-cover');
+
+  // querySelectorAll returns an array-like object called a NodeList
+  // We can loop through it like an array to access each minicover individually
+  for(var i = 0;i<allSavedCovers.length;i++){
+    allSavedCovers[i].addEventListener('dblclick', minicoverHandler);
+  }
 }
 
 
