@@ -3,8 +3,8 @@ var showRandomCoverButton = document.querySelector('.random-cover-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-var buttonMakeNew = document.querySelector('.make-new-button');
-var buttonCreateNew = document.querySelector('.create-new-book-button');
+var makeCoverButton = document.querySelector('.make-new-button');
+var makeBookButton = document.querySelector('.create-new-book-button');
 
 var titleCover = document.querySelector('.cover-title');
 var titleImage = document.querySelector('.cover-image');
@@ -40,10 +40,10 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomizedCover)
 showRandomCoverButton.addEventListener("click", getRandomizedCover)
-buttonMakeNew.addEventListener('click', makeCoverPage)
+makeCoverButton.addEventListener('click', makeCoverPage)
 viewSavedButton.addEventListener('click', savedCoversSection)
 homeButton.addEventListener('click', homeButtonFunction)
-buttonCreateNew.addEventListener('click', createNewCover)
+makeBookButton.addEventListener('click', createNewCover)
 saveCoverButton.addEventListener('click', saveCovers)
 savedCoversSect.addEventListener('dblclick', deleteCovers)
 // Create your event handlers and other functions here 👇
