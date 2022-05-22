@@ -1,6 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
 var mainCover = document.querySelector('.main-cover')
-var savedCovers = document.querySelector('.saved-covers-section')
 
 var randomButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
@@ -77,7 +76,6 @@ function makeNewCover() {
   saveCoverButton.classList.remove("visible");
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
-  // savedView.classList.add("hidden");
 }
 function goHome() {
   mainCover.classList.remove("hidden");
@@ -92,7 +90,6 @@ function goHome() {
   homeButton.classList.add("hidden");
 }
 function viewSaved() {
-  // event.preventDefault();
   randomButton.classList.add("hidden");
   randomButton.classList.remove("visible");
   saveCoverButton.classList.add("hidden");
@@ -101,17 +98,20 @@ function viewSaved() {
   savedButton.classList.remove("hidden");
   mainCover.classList.remove("visible");
   mainCover.classList.add("hidden");
+  savedView.classList.remove("hidden");
+  savedView.classList.add("visible");
   homeButton.classList.remove("hidden");
   homeButton.classList.add("visible");
-  formView.classList.remove("visible");
-  formView.classList.add("hidden");
   var savedCoversPage = document.querySelector('.saved-covers-section')
   var finalList = ""
-  for (i = 0; i < savedCoversPage.length; i++) {
-    finaList = finalList + `<section class='mini-cover'>
-    <img class= "cover-image" id= "${savedCovers[i].id}" src=${savedCovers[i].cover}>
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}`
+  for (i = 0; i < savedCovers.length; i++) {
+    finalList= finalList + `<section class="main-cover">
+        <img class="cover-image" src="${savedCovers[i].cover}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+      </section>`
   }
   savedCoversPage.innerHTML = finalList;
 }
