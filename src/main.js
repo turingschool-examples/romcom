@@ -23,7 +23,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-
+priceTag.classList.add("hidden")
 
 // Add your event listeners here 👇
 randomBtn.addEventListener('click', randomize)
@@ -96,10 +96,10 @@ function viewSaved() {
     // later, we can use that id to find out
 
     savedUserImg  = savedUserImg  + `<section class="mini-cover" data-id="${savedCovers[i].id}">
+    <img class="overlay" src="./assets/overlay.png">
     <img class="cover-image" src=${savedCovers[i].cover}>
      <h2 class="cover-title">${savedCovers[i].title}</h2>
      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-     <img class="overlay" src="./assets/overlay.png">
      </section>`
   }
 
@@ -116,9 +116,6 @@ function viewSaved() {
     allSavedCovers[i].addEventListener('dblclick', minicoverHandler);
   }
 }
-
-
-
 
 
 function goHome() {
