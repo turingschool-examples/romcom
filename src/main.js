@@ -78,7 +78,7 @@ function viewSaved() {
   var savedCoversPage = document.querySelector('.saved-covers-section')
   var finalList = ""
   for (i = 0; i < savedCovers.length; i++) {
-    finalList= finalList + `<section class="main-cover">
+    finalList= finalList + `<section class="mini-cover">
         <img class="cover-image" src="${savedCovers[i].cover}">
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
