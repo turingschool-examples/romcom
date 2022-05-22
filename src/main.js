@@ -1,6 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
+var taglineVanilla = document.querySelector(".tagline");
 var taglineNum1 = document.querySelector(".tagline-1");
 var taglineNum2 = document.querySelector(".tagline-2");
 
@@ -20,6 +21,8 @@ var userDesc1Output = document.querySelector(".user-desc1");
 var userDesc2Output = document.querySelector(".user-desc2");
 
 var createBookButton = document.querySelector(".create-new-book-button");
+
+var savedCoversSection = document.querySelector(".saved-covers-section")
 // add new variable for each button on the main page
 
 //document is everything, everything on the page is part of doc
@@ -76,6 +79,7 @@ function getRandomCover() {
 //repeat this for the other categories, check to see what those are, prob innerText
   }
 
+
   function displayFormView() {
     homeButton.classList.remove('hidden');
     formView.classList.remove('hidden');
@@ -92,7 +96,35 @@ function getRandomCover() {
     saveButton.classList.add('hidden');
     homeView.classList.add('hidden');
     formView.classList.add('hidden');
-  }
+
+      savedCoversSection.innerHTML = " ";
+      for (var i = 0; i < savedCovers.length; i++) {
+
+        //" " will come into play later when we want to delete
+
+        savedCoversSection.innerHTML +=
+        //+= is important for the for loop to work
+
+        `<section
+
+        class="mini-cover" id="${savedCovers[i].id}">
+
+        <img class="mini-cover" src=${savedCovers[i].cover}>
+
+          <h2 class="cover-title">
+          ${savedCovers[i].title}</h2>
+
+            <h3 class="tagline"
+            >A tale of <span class="tagline-1"
+            >${savedCovers[i].tagline1} </span>
+            and <span class="tagline-2"
+            >${savedCovers[i].tagline2} </span></h3>
+
+          </section>`
+        }
+    //interpolation! html code block!
+    //mini-cover class is from line 111 of styles.css
+}
 
   function displayHomeView() {
     homeButton.classList.add('hidden');
