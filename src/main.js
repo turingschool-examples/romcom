@@ -29,10 +29,12 @@ var userDescInput2 = document.querySelector("#descriptor2");
 window.addEventListener('load', randomRomCover);
 homeButton.addEventListener('click', homePageTab);
 coverButton.addEventListener('click', randomRomCover);
-// saveCoverButton.addEventListener('click',  );
+saveCoverButton.addEventListener('click', saveCover);
 viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
 makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 createCustomButton.addEventListener('click', savedRomCovers);
+
+
 
 //Make Your Own Cover Fxn's
 
@@ -101,6 +103,7 @@ function savedRomCoversTab () {
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
   cover.classList.add("hidden");
+  homePage.classList.add("hidden");
 
 }
 
@@ -123,3 +126,38 @@ console.log(getRandomIndex(descriptors));
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
+
+//User clicks "save cover" buttn, and the current cover eill be saved to saved covers tab
+// ! = the "not operator" --> makes it the opposite
+// If the saved cover is not included in the current cover collection, it will save it.
+// if not, dont save
+//Look at current cover, if the saved cover you are trying to save is not there, then it
+//will get pushed to the array.
+//If the condition is met: push the saved cover into the current cover array
+
+//we need current covers to be able to go into the array of saved covers
+
+function saveCover() {
+  var savedCover = currentCover
+  if (!savedCovers.includes(currentCover)); {
+    savedCovers.push(currentCover);
+    console.log(savedCovers)
+  }
+}
+
+
+//All the covers in the "SavedCovers"
+//array should be displayed in the saved
+//covers Section
+
+//function coversSection
+//for (var i = 0; i < ?; i++)
+
+//"+currentCover.tagline1+"
+
+
+
+//Translate array into an image
+//pull from the inner HTML with .innerHTML
+//Write a for loop
