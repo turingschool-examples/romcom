@@ -35,7 +35,6 @@ viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
 makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 createCustomButton.addEventListener('click', savedRomCovers);
 
-
 //Make Your Own Cover Fxn's Tab
 
 function savedRomCovers() {
@@ -109,6 +108,7 @@ function savedRomCoversTab () {
   savedPage.classList.remove("hidden");
 
 savedCoversPage();
+
 }
 
 function homePageTab() {
@@ -141,5 +141,20 @@ coversSection.innerHTML+=
 <img class="cover-image" id="${savedCovers[i].id}" src=${savedCovers[i].cover}>
 <h2 class="cover-title">${savedCovers[i].title}</h2>
 <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
+  }
+}
+
+
+//Event Listener that is located inside the "view saved covers tab".
+//If you click on the book (book id) it will be deleted.
+
+savedPage.addEventListener('dblclick', deletedSavedCovers);
+
+function deletedSavedCovers(event) {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (event.target.id == savedCovers[i].id) {
+      savedCovers.splice(i , 1);
+      savedCoversPage();
+    }
   }
 }
