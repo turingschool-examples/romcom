@@ -50,7 +50,7 @@ function getRandomIndex(array) {
 
 // Create your event handlers and other functions here 👇
 
-//REFACTORED
+//REFACTORED-boop
 function getRandomizedCover(coverToDisplay) {
   imageCover.src = coverToDisplay.cover || covers[getRandomIndex(covers)];
   coverTitle.innerText = coverToDisplay.title || titles[getRandomIndex(titles)];
@@ -108,13 +108,6 @@ function createNewCover(event) {
 
   viewSavedButton.classList.remove('hidden');
   getRandomizedCover(currentCover)
-}
-
-function getCover() {
-  imageCover.src = currentCover.cover;
-  coverTitle.innerText = currentCover.title;
-  tagline1.innerText = currentCover.tagline1;
-  tagline2.innerText = currentCover.tagline2;
 }
 
 //iteration 3
