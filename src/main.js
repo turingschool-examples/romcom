@@ -59,7 +59,7 @@ function getRandomizedCover(coverToDisplay) {
   currentCover = new Cover(imageCover.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 }
 
-//iteration1
+//iteration1-boop-foop
 function makeCoverPage() {
   viewForm.classList.remove('hidden');
   homeViewSection.classList.add('hidden');
