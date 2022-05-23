@@ -21,7 +21,7 @@ Create functioning web page that includes:
 - Delete feature
 
 
-## - Code Layout
+##  Code Layout
 - /.Cover.js -  Line 1 - 9
   - class constructor
 - /.main.js -
