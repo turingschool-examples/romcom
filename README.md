@@ -4,9 +4,11 @@
 
 ### *Contents*
 
-![Home Page](https://imgur.com/E6UznVu)
+![Home Page](https://i.imgur.com/E6UznVu.jpg)
 
-![Watch Demo](https://imgur.com/7PS35Vm)
+![Watch Demo](https://imgur.com/IMsD1HC)
+
+
 
 ## Objective
 Create functioning web page that includes:
