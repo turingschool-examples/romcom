@@ -1,4 +1,4 @@
-// Create variables targetting the relevant DOM elements here 👇
+
 var coverPic = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var coverTagLine = document.querySelector('.tagline')
@@ -18,14 +18,14 @@ var tagInput2 = document.querySelector('#descriptor2')
 var saveCoverBtn = document.querySelector('.save-cover-button')
 var navSavedCovers = document.querySelector('.saved-covers-section')
 
-// We've provided a few variables below
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 priceTag.classList.add("hidden")
 
-// Add your event listeners here 👇
+
 randomBtn.addEventListener('click', randomize)
 makeOwnBtn.addEventListener('click', showMakeOwnPage)
 viewSaveBtn.addEventListener('click', viewSaved)
@@ -34,11 +34,6 @@ makeMyBookBtn.addEventListener('click', makeBook)
 saveCoverBtn.addEventListener('click', addToSaved)
 
 
-
-// Create your event handlers and other functions here 👇
-
-
-// Should make a way to save random covers.
 
 
 randomize();
