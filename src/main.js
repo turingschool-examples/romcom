@@ -3,7 +3,7 @@
 //This variable instantiates a new book from the Cover class
 var currentCover;
 
-// Variables & querySelector paths
+// Variables for book cover querySelector paths
 var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
@@ -11,6 +11,7 @@ var tagline2 = document.querySelector(".tagline-2");
 var formPage = document.querySelector(".form-view");
 var homePage = document.querySelector(".home-view");
 var savedPage = document.querySelector(".saved-view");
+var coversSection = document.querySelector(".saved-covers-section");
 
 // Variables for button query paths:
 var homeButton = document.querySelector(".home-button");
@@ -35,8 +36,54 @@ viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
 makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 createCustomButton.addEventListener('click', savedRomCovers);
 
-//Make Your Own Cover Fxn's Tab
+// "make your own cover" page display
+function makeOwnCoverDisplayForm() {
+  formPage.classList.remove("hidden");
+  homePage.classList.add("hidden");
+  coverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  savedPage.classList.add("hidden");
+}
+//"view saved rom covers" page display
+function savedRomCoversTab () {
+  formPage.classList.add("hidden");
+  coverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  cover.classList.add("hidden");
+  homePage.classList.add("hidden");
+  savedPage.classList.remove("hidden");
+savedCoversPage();
+}
+// home page display
+function homePageTab() {
+  homePage.classList.remove("hidden");
+  cover.classList.remove("hidden");
+  homeButton.classList.add("hidden");
+  saveCoverButton.classList.remove("hidden");
+  coverButton.classList.remove("hidden");
+}
+//Iteration 0: Main page & Random Book generator fxn
 
+// Master Random Book Cover function
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+// Get 1 random cover image(jpg, png) string:
+function getRandomCover(covers) {
+  return covers[getRandomIndex(covers)];
+}
+//Get a random title:
+function getRandomTitle(titles) {
+  return titles[getRandomIndex(titles)];
+}
+//Get a random 1st & 2nd tagline:
+function getRandomDescriptor(descriptors) {
+  return descriptors[getRandomIndex(descriptors)];
+}
+
+//This fxn allows user to make & save their own rom com book
 function savedRomCovers() {
 event.preventDefault();
 covers.push(userCoverInput.value);
@@ -44,8 +91,9 @@ titles.push(userTitleInput.value);
 descriptors.push(userDescInput1.value);
 descriptors.push(userDescInput2.value);
 
+//new instance of current cover
 currentCover = new Cover(userCoverInput.value, userTitleInput.value, userDescInput1.value, userDescInput2.value);
-
+// HTML path for user input
 cover.src = currentCover.cover;
 title.innerText = currentCover.title;
 tagline1.innerText = currentCover.tagline1;
@@ -55,7 +103,6 @@ homePageTab();
 }
 
 // Random Cover Fxn's Section:
-
 function randomRomCover() {
 currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
 cover.src = currentCover.cover;
@@ -65,74 +112,18 @@ tagline2.innerText = currentCover.tagline2;
 
 }
 
-// Master Make Random Book Cover function composed into random cover, title & descriptors:
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-// Get 1 random cover image(jpg, png) string:
-
-function getRandomCover(covers) {
-  return covers[getRandomIndex(covers)];
-}
-
-//Get a random title:
-
-function getRandomTitle(titles) {
-  return titles[getRandomIndex(titles)];
-}
-//Get a random 1st & 2nd tagline:
-
-function getRandomDescriptor(descriptors) {
-  return descriptors[getRandomIndex(descriptors)];
-}
-
-//Displays the "make your own cover" page
-
-function makeOwnCoverDisplayForm() {
-  formPage.classList.remove("hidden");
-  homePage.classList.add("hidden");
-  coverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");
-  savedPage.classList.add("hidden");
-}
-
-function savedRomCoversTab () {
-  formPage.classList.add("hidden");
-  coverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");
-  cover.classList.add("hidden");
-  homePage.classList.add("hidden");
-  savedPage.classList.remove("hidden");
-
-savedCoversPage();
-
-}
-
-function homePageTab() {
-  homePage.classList.remove("hidden");
-  cover.classList.remove("hidden");
-  homeButton.classList.add("hidden");
-  saveCoverButton.classList.remove("hidden");
-  coverButton.classList.remove("hidden");
-
-}
-
-//Iteration 3
+//Iteration 3: Saving and Viewing Covers
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
+// This fxn pushes unqique covers into the saveCover array
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
 }
-
-var coversSection = document.querySelector(".saved-covers-section");
-
+// This fxn saves a cover to the saveCover array
 function savedCoversPage() {
 coversSection.innerHTML = '';
 for (var i = 0; i < savedCovers.length; i++) {
@@ -144,12 +135,10 @@ coversSection.innerHTML+=
   }
 }
 
-
-//Event Listener that is located inside the "view saved covers tab".
-//If you click on the book (book id) it will be deleted.
-
+//Iteration 4: Delete a saved cover
 savedPage.addEventListener('dblclick', deletedSavedCovers);
 
+//This fxn deletes covers from saved books page
 function deletedSavedCovers(event) {
   for (var i = 0; i < savedCovers.length; i++) {
     if (event.target.id == savedCovers[i].id) {
