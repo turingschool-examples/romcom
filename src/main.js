@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+//**anything that is on your HTML that needs to be accessed made into a variable */
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,7 +8,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+//**anything that you want clicked will be an event listener//
 
 // Create your event handlers and other functions here 👇
 

@@ -1,6 +1,6 @@
 class Cover {
   constructor(coverImgSrc, title, descriptor1, descriptor2) {
-    this.id = Date.now();
+    this.id = Date.now();//function that give the "unique ID" when the "button" is click.
     this.cover = coverImgSrc;
     this.title = title;
     this.tagline1 = descriptor1;
