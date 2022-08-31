@@ -22,12 +22,13 @@ showNewRandomCoverButton.addEventListener('click', randomizeCover)
 // Create your event handlers and other functions here 👇
 function randomizeCover(){
   var randomCover = new Cover(covers[getRandomIndex(covers)],titles[getRandomIndex(titles)],descriptors[getRandomIndex(descriptors)],descriptors[getRandomIndex(descriptors)])
-  
+
   coverImage.src = randomCover.cover
   coverTitle.innerText = randomCover.title
   descriptor1.innerText = randomCover.tagline1
   descriptor2.innerText = randomCover.tagline2
 
+  currentCover = randomCover
 }
 
 // We've provided one function to get you started
