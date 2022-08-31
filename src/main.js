@@ -2,6 +2,9 @@
 //**anything that is on your HTML that needs to be accessed made into a variable */
 var randomCoverButton = document.querySelector('.random-cover-button')
 var mainCoverDisplay = document.querySelector('.main-cover')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var viewSavedCovers = document.querySelector('.view-save-button')
+var makeYourOwnCover = doccument.querySelector('.make-new-button')
 
 // We've provided a few variables below
 var savedCovers = [
