@@ -1,5 +1,15 @@
 // Create variables targetting the relevant DOM elements here 👇
+var bookCover = document.querySelector();
+var coverImage = document.querySelector(".cover-image");
+var coverTilte = document.querySelector(".cover-title");
+var tagLine = document.querySelector(".tagline");
+var priceTag = document.querySelector(".price-tag");
+var overlay = document.querySelector(".overlay");
+var descriptor1 = document.querySelector(".descriptor1");
+var descriptor2 = document.querySelector(".descriptor2");
 
+// When the page loads, we should see a cover with a randomly selected image, title, and tagline which includes two random descriptors
+// Every time the user clicks the Show New Random Cover button, a new random cover is created
 
 // We've provided a few variables below
 var savedCovers = [
