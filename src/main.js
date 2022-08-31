@@ -20,5 +20,15 @@ var currentCover;
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var i = Math.floor(Math.random() * array.length);
+  return array[i]
 }
+
+title.innerText = getRandomIndex(titles);
+tagline1.innerText = getRandomIndex(descriptors);
+tagline2.innerText = getRandomIndex(descriptors);
+  if (tagline1 === tagline2) {
+  tagline2.innerText = getRandomIndex(descriptors);
+  };
+  //come back to this if statement
+coverImage.src = getRandomIndex(covers)
