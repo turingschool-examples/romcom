@@ -2,6 +2,8 @@
 var testVariable = 'just need to push something to a PR';
 var otherVariable = 'second test';
 var third = 3;
+var fourth = 4;
+
 
 // We've provided a few variables below
 var savedCovers = [
