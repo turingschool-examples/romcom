@@ -1,4 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
+//TO DO:
+// - Make the 'make your own cover button', get rid of the 'hidden' class when
+// clicked.
+// - Hide "Show new random cover" and "Saved covers" buttons at top
+// - When we deleted "hidden" from form class and placed "hidden" on home page,
+// the website changed to new page view of a form
 
 // We've provided a few variables below
 var savedCovers = [
