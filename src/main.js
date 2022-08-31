@@ -5,6 +5,7 @@ var mainCoverDisplay = document.querySelector('.main-cover')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedCovers = document.querySelector('.view-save-button')
 var makeYourOwnCover = doccument.querySelector('.make-new-button')
+var homeButton = document.querySelector('.home-button')
 
 // We've provided a few variables below
 var savedCovers = [
