@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var testVariable = 'just need to push something to a PR'
 
 // We've provided a few variables below
 var savedCovers = [
