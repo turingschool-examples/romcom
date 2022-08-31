@@ -1,9 +1,9 @@
 # RomCom
 
-A boilerplate repo. 
+A boilerplate repo.
 
 ## Set Up
-1. ONE teammate: fork this boilerplate repository 
+1. ONE teammate: fork this boilerplate repository
 2. Clone down your new, forked repo
 3. cd into the repository
 4. Open it in your text editor
@@ -33,7 +33,7 @@ ______________________________________________________
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
-
+Timothy Pendarvis, Alex Osgood
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
 
