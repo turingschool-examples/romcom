@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var coverImage = document.querySelector('.cover-image');
+var title = document.querySelector('.cover-title');
+var descriptor1 = document.querySelector('.tagline-1');
+var descriptor2 = document.querySelector('.tagline-2');
+var tagline = `A tale of ${descriptor1} and ${descriptor2}`
 
 // We've provided a few variables below
 var savedCovers = [
@@ -7,7 +11,7 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+// Add your event listeners here 👇 (should go at the bottom)
 
 
 // Create your event handlers and other functions here 👇
