@@ -1,7 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
+var randomCoverButton = document.querySelector(".random-cover-button")
 var bookCover = document.querySelector();
 var coverImage = document.querySelector(".cover-image");
-var coverTilte = document.querySelector(".cover-title");
+var coverTitle = document.querySelector(".cover-title");
 var tagLine = document.querySelector(".tagline");
 var priceTag = document.querySelector(".price-tag");
 var overlay = document.querySelector(".overlay");
@@ -18,6 +19,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+window.addEventListener(“load”, changeCover);
+
+randomCoverButton.addEventListener(“click”, changeCover);
 
 
 // Create your event handlers and other functions here 👇
