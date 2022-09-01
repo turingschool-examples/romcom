@@ -71,16 +71,13 @@ function takeMeHome() {
 }
 
 function makeMyBook() {
-savedCovers.push() = input.value
+  var myBookCover = inputUserCover.value
+  covers.push(myBookCover)
+  var myBookTitle = inputTitle.value
+  titles.push(myBookTitle)
+  var myDescriptor1 = inputDescriptor1.value
+  descriptors.push(myDescriptor1)
+  var myDescriptor2 = inputDescriptor1.value
+  descriptors.push(myDescriptor2)
+  myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
 }
-
-
-
-
-// makeNewButton.addEventListener('click', makeOwnCover)
-//
-// function makeOwnCover(click) {
-//   if(click.target.classList.contains('home-view')) {
-//     viewHomeView.classList.toggle('form-view')
-//   }
-// }
