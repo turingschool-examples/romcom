@@ -12,11 +12,12 @@ var savedCovers = [
 //this will be an array of new Cover instances
 ];
 
-
+var currentCover = new Cover(coverImage.src, title.innerText , tagline1.innerText, tagline2.innerText);
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener('click',randomize);
+randomCoverButton.addEventListener('click', randomize);
 
+window.addEventListener('load', randomize)
 // Create your event handlers and other functions here 👇
 
 
@@ -49,6 +50,4 @@ function randomize() {
 //   coverImage.src = randomImage;
 // }
 
-randomize();
-
-var currentCover = new Cover(coverImage.src, title.innerText , tagline1.innerText, tagline2.innerText);
+// randomize();
