@@ -3,6 +3,7 @@
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
 var coverForm = document.querySelector('.make-new-button');
+var saveButton = document.querySelector('.save-cover-button')
 // Cover-view buttons
 var currentCover = document.querySelector('.cover-image');
 var coverButton = document.querySelector('.random-cover-button')
@@ -19,6 +20,7 @@ var currentCover;
 coverForm.addEventListener('click', openForm);
 // Changes cover when cover button is clicked
 coverButton.addEventListener('click', changeCovers);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -30,6 +32,10 @@ function getRandomIndex(array) {
 function openForm() {
   homePage.classList.add('hidden');
   formPage.classList.remove('hidden');
+  coverButton.classList.add('hidden');
+  saveButton.classList.add('hidden');
+
+}
 // Changes cover picture
 function changeCovers() {
   var newCover = covers[Math.floor(Math.random() * covers.length)]
