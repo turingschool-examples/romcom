@@ -70,7 +70,14 @@ function viewHome() {
   viewSavedCoversButton.setAttribute('style', 'display: ')
   makeYourOwnCoverButton.setAttribute('style', 'display: ')
 }
+function viewSavedCovers() {
+  homePage.setAttribute('style', 'display: none')
+  savedCoversPage.className = 'view saved-view'
+  randomCoverButton.setAttribute('style', 'display: none')
+  viewSavedCoversButton.setAttribute('style', 'display: none')
+  homeButton.className = `home-button`
 
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
