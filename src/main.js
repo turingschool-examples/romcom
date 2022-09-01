@@ -2,12 +2,13 @@
 // Form-view buttons
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
+var savedView = document.querySelector('.saved-view');
 var coverForm = document.querySelector('.make-new-button');
 var saveButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 // Cover-view buttons
 var currentCover = document.querySelector('.cover-image');
-var coverButton = document.querySelector('.random-cover-button')
+var coverButton = document.querySelector('.random-cover-button');
 
 //all of things to interact with dom//
 // We've provided a few variables below
@@ -21,6 +22,8 @@ var currentCover;
 coverForm.addEventListener('click', openForm);
 // Changes cover when cover button is clicked
 coverButton.addEventListener('click', changeCovers);
+// Opens saved covers view when button is clicked
+saveButton.addEventListener('click', openSavedCovers);
 
 // Create your event handlers and other functions here 👇
 
@@ -36,6 +39,11 @@ function openForm() {
   saveButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   formPage.classList.remove('hidden');
+}
+// Opens saved-covers view
+function openSavedCovers() {
+  homePage.classList.add('hidden');
+  savedView.classList.remove('hidden');
 }
 // Changes cover picture
 function changeCovers() {
