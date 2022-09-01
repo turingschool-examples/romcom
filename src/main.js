@@ -71,9 +71,11 @@ function takeMeHome() {
 }
 
 function makeMyBook() {
-savedCovers.push() = input.value
+var myBookTitle = inputTitle.value
+      titles.push(myBookTitle)
 }
 
+// maybe we take each input and make them into a string that we .push to the savedCovers
 
 
 
