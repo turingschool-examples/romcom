@@ -11,6 +11,7 @@ var viewSavedButton = document.querySelector('.view-saved-button')
 var viewFormView = document.querySelector('.form-view')
 var viewHomeView = document.querySelector('.home-view')
 var viewSavedView = document.querySelector('.saved-view')
+var viewSavedCoversSection = document.querySelector('.saved-covers-section')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -50,6 +51,8 @@ function saveCovers() {
   saveCoverButton.classList.add('hidden')
   randomCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  viewSavedCoversSection.classList.remove('hidden')
+  viewFormView.classList.add('hidden')
 }
 
 function takeMeHome() {
