@@ -3,7 +3,8 @@
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
 var coverForm = document.querySelector('.make-new-button');
-var saveButton = document.querySelector('.save-cover-button')
+var saveButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
 // Cover-view buttons
 var currentCover = document.querySelector('.cover-image');
 var coverButton = document.querySelector('.random-cover-button')
@@ -31,10 +32,10 @@ function getRandomIndex(array) {
 // Opens form-view
 function openForm() {
   homePage.classList.add('hidden');
-  formPage.classList.remove('hidden');
   coverButton.classList.add('hidden');
   saveButton.classList.add('hidden');
-
+  homeButton.classList.remove('hidden');
+  formPage.classList.remove('hidden');
 }
 // Changes cover picture
 function changeCovers() {
