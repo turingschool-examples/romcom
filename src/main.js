@@ -71,18 +71,13 @@ function takeMeHome() {
 }
 
 function makeMyBook() {
-var myBookTitle = inputTitle.value
-      titles.push(myBookTitle)
+  var myBookCover = inputUserCover.value
+  covers.push(myBookCover)
+  var myBookTitle = inputTitle.value
+  titles.push(myBookTitle)
+  var myDescriptor1 = inputDescriptor1.value
+  descriptors.push(myDescriptor1)
+  var myDescriptor2 = inputDescriptor1.value
+  descriptors.push(myDescriptor2)
+  myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
 }
-
-// maybe we take each input and make them into a string that we .push to the savedCovers
-
-
-
-// makeNewButton.addEventListener('click', makeOwnCover)
-//
-// function makeOwnCover(click) {
-//   if(click.target.classList.contains('home-view')) {
-//     viewHomeView.classList.toggle('form-view')
-//   }
-// }
