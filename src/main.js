@@ -13,8 +13,6 @@ var currentCover;
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', createNewCover);
 
-// Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
