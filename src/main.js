@@ -7,6 +7,7 @@ var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tagLine1 = document.querySelector('.tagline-1')
 var tagLine2 = document.querySelector('.tagline-2')
+var homeButton = document.querySelector('.home-button')
 var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedCoverButton = document.querySelector('.view-saved-button')
@@ -40,6 +41,7 @@ function getRandomCover() {
   displayCover()
 }
 
+
 function displayCover() {
   coverImage.setAttribute('src', currentCover.cover);
   coverTitle.innerText = currentCover.title
@@ -48,9 +50,13 @@ function displayCover() {
 }
 
 function viewForm() {
-  homePage.setAttribute("style", "display: none")
-  formPage.className = "view form-view"
-
+  homePage.setAttribute('style', 'display: none')
+  formPage.className = 'view form-view'
+  homeButton.className = 'home-button'
+  randomCoverButton.setAttribute('style', 'display: none')
+  saveCoverButton.setAttribute('style', 'display: none')
+  viewSavedCoverButton.setAttribute('style', 'display: none')
+  makeYourOwnCoverButton.setAttribute('style', 'display: none')
 }
 
 
