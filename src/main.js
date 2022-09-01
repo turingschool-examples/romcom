@@ -21,7 +21,7 @@ var currentCover;
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', createNewCover);
 makeNewButton.addEventListener('click', makeOwnCover)
-
+viewSavedButton.addEventListener('click', saveCovers)
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -41,9 +41,15 @@ function makeOwnCover() {
   saveCoverButton.classList.add('hidden')
   viewFormView.classList.remove('hidden')
   homeButton.classList.remove('hidden')
-
 }
 
+function saveCovers() {
+  viewHomeView.classList.add('hidden')
+  viewSavedView.classList.remove('hidden')
+  saveCoverButton.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+}
 
 
 
