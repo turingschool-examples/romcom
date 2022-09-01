@@ -3,9 +3,10 @@
 var homePage = document.querySelector('.home-view');
 var formPage = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
-var coverForm = document.querySelector('.make-new-button');
+var coverFormButton = document.querySelector('.make-new-button');
 var saveButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
 // Cover-view buttons
 var currentCover = document.querySelector('.cover-image');
 var coverButton = document.querySelector('.random-cover-button');
@@ -19,11 +20,13 @@ var currentCover;
 
 // Add your event listeners here 👇
 // Opens form-view when button is clicked
-coverForm.addEventListener('click', openForm);
+coverFormButton.addEventListener('click', openForm);
 // Changes cover when cover button is clicked
 coverButton.addEventListener('click', changeCovers);
 // Opens saved covers view when button is clicked
 saveButton.addEventListener('click', openSavedCovers);
+// Opens home page view when button is clicked
+homeButton.addEventListener('click', openHomePage);
 
 // Create your event handlers and other functions here 👇
 
@@ -47,6 +50,17 @@ function openSavedCovers() {
   coverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   savedView.classList.remove('hidden');
+}
+// Opens home page
+function openHomePage() {
+  homePage.classList.remove('hidden');
+  savedView.classList.add('hidden');
+  formPage.classList.add('hidden');
+  saveButton.classList.remove('hidden');
+  coverButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+  coverFormButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
 }
 // Changes cover picture
 function changeCovers() {
