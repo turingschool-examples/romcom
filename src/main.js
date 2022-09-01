@@ -25,6 +25,7 @@ window.addEventListener('load', randomizeCover)
 showNewRandomCoverButton.addEventListener('click', randomizeCover)
 makeYourOwnCoverButton.addEventListener('click', changeToFormView)
 viewSavedCoversButton.addEventListener('click', changeToSavedCoversView)
+homeButton.addEventListener('click', changeToHomeView)
 
 // Create your event handlers and other functions here 👇
 function randomizeCover(){
@@ -54,7 +55,17 @@ function changeToSavedCoversView(){
   showNewRandomCoverButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+}
 
+function changeToHomeView(){
+  homeView.classList.remove('hidden')
+  formView.classList.add('hidden')
+  savedCoversView.classList.add('hidden')
+  showNewRandomCoverButton.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
+  homeButton.classList.add('hidden')
+  makeYourOwnCoverButton.classList.remove('hidden')
+  viewSavedCoversButton.classList.remove('hidden')
 }
 
 // We've provided one function to get you started
