@@ -58,7 +58,7 @@ function takeMeHome() {
   viewSavedView.classList.add('hidden')
   randomCoverButton.classList.remove('hidden')
   saveCoverButton.classList.remove('hidden')
-  homeButton.classList.remove('hidden')
+  homeButton.classList.add('hidden')
 }
 
 
