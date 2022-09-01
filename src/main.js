@@ -18,10 +18,6 @@ htmlTagline1.innerText = randomCover.tagline1
 htmlTagline2.innerText = randomCover.tagline2
 
 
-// var dataArray = document.querySelector()
-
-
-// var randomCover = new Cover()
 // We've provided a few variables below
 
 var savedCovers = [
@@ -52,11 +48,6 @@ function createRandomCover() {
   htmlTagline2.innerText = randomCover.tagline2
 }
 
-
-// var randomCoverNumber = getRandomIndex(covers)  //need access to those arrays
-// var randomTitleNumber = getRandomIndex(titles)
-// var randomDescriptor1 = getRandomIndex(descriptors)
-// var randomDescriptor2 = getRandomIndex(descriptors)
 
 function saveCover() {
   savedCovers.push(currentCover)
