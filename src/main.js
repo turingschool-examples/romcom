@@ -28,10 +28,10 @@ function createNewRandom() {
 
 function displayNewRandom() {
   displayCover = new Cover
-  displayCoverImage.innerHTML = currentCover.cover[i]
-  displayCoverTitle.innerHTML = currentCover.title[i]
-  displayCoverTagline1.innerHTML = currentCover.tagline1[i]
-  displayCoverTagline2.innerHTML = currentCover.tagline2[i]
+  displayCoverImage.innerHTML = `${currentCover.cover[i]}`
+  displayCoverTitle.innerHTML = `${currentCover.title[i]}`
+  displayCoverTagline1.innerHTML = `${currentCover.tagline1[i]}`
+  displayCoverTagline2.innerHTML = `${currentCover.tagline2[i]}`
   return displayCover
   
 }
