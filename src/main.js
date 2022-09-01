@@ -4,7 +4,9 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var coverImage = document.querySelector('.cover-image');
 var randomCoverButton = document.querySelector('.random-cover-button');
-
+var makeOwnCoverButton = document.querySelector('.make-new-button')
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -18,15 +20,9 @@ var currentCover = new Cover(coverImage.src, title.innerText , tagline1.innerTex
 randomCoverButton.addEventListener('click', randomize);
 
 window.addEventListener('load', randomize)
+
+makeOwnCoverButton.addEventListener('click', showForm)
 // Create your event handlers and other functions here 👇
-
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  var i = Math.floor(Math.random() * array.length);
-  return array[i]
-}
-
 function randomize() {
   title.innerText = getRandomIndex(titles);
   tagline1.innerText = getRandomIndex(descriptors);
@@ -36,6 +32,19 @@ function randomize() {
     };
   coverImage.src = getRandomIndex(covers);
 }
+
+function showForm() {
+  homeView.classList.add('hidden');
+  formView.classList.remove('hidden');
+}
+
+// We've provided one function to get you started
+function getRandomIndex(array) {
+  var i = Math.floor(Math.random() * array.length);
+  return array[i]
+}
+
+
 //   var randomTagline1 = getRandomIndex(descriptors);
 //   tagline1.innerText = randomTagline1;
 //
