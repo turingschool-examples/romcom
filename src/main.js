@@ -1,14 +1,15 @@
 // Create variables targetting the relevant DOM elements here 👇
+
 var randomCoverButton = document.querySelector(".random-cover-button")
 // var bookCover = document.querySelector();
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
-var coverTagLine1 = document.querySelector(".tagline-1");
-var coverTagLine2 = document.querySelector(".tagline-2");
+// var coverTagLine1 = document.querySelector(".tagline-1");
+// var coverTagLine2 = document.querySelector(".tagline-2");
 // var priceTag = document.querySelector(".price-tag");
 // var overlay = document.querySelector(".overlay");
-// var descriptor1 = document.querySelector(".descriptor1");
-// var descriptor2 = document.querySelector(".descriptor2");
+var descriptor1 = document.querySelector(".descriptor1");
+var descriptor2 = document.querySelector(".descriptor2");
 
 // When the page loads, we should see a cover with a randomly selected image, title, and tagline which includes two random descriptors
 // Every time the user clicks the Show New Random Cover button, a new random cover is created
@@ -19,22 +20,21 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
-window.addEventListener("load", showRandomCover)
-randomCoverButton.addEventListener("click", logClick)
 
+// Add your event listeners here 👇
+
+window.addEventListener("load", showRandomCover);
 
 // Create your event handlers and other functions here 👇
+
 function showRandomCover() {
-    coverImage.src = coverImage[getRandomIndex(coverImage)]
-    // coverTitle.innerText = titles[getRandomIndex(titles)]
-    // coverDescriptor1.innerText = quotes[getRandomIndex(descriptor1)]
-    // coverDescriptor2.innerText = quotes[getRandomIndex(descriptor2)]
-};
+    var newCover = covers[getRandomIndex(covers)];
+
+coverImage.src = newCover;
+}
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 // function logClick() {
 //   console.log("button was clicked")
-}
