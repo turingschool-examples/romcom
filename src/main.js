@@ -13,6 +13,9 @@ var subtitle = document.querySelector('.tagline');
 var makeYourButton = document.querySelector('.make-new-button');
 var homeViewPage = document.querySelectorAll('section')[1];
 var formPage = document.querySelectorAll('section')[5];
+var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
+
 
 // Add your event listeners here 👇
 randomButton.addEventListener('click', changeImage);
@@ -38,6 +41,10 @@ function changeSubtitle() {
 function viewNewPage() {
     homeViewPage.className = 'view home-view hidden';
     formPage.className = 'view form-view';
+    randomButton.className = 'random-cover-button hidden';
+    saveCoverButton.className = 'save-cover-button hidden';
+    homeButton.className = 'home-button';
+
 }
 
 // We've provided one function to get you started
