@@ -10,7 +10,8 @@ var formView = document.querySelector('.form-view')
 // Buttons
 var showNewRandomCoverButton = document.querySelector('.random-cover-button')
 var makeYourOwnCoverButton = document.querySelector('.make-new-button')
-
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
 
 // We've provided a few variables below
 var savedCovers = [];
@@ -37,6 +38,10 @@ function randomizeCover(){
 function changeToFormView (){
   homeView.classList.add('hidden')
   formView.classList.remove('hidden')
+  showNewRandomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+
 }
 
 // We've provided one function to get you started
