@@ -30,6 +30,7 @@ makeYourOwnCoverButton.addEventListener('click', changeToFormView)
 viewSavedCoversButton.addEventListener('click', changeToSavedCoversView)
 homeButton.addEventListener('click', changeToHomeView)
 createNewBookButton.addEventListener('click', createNewBook)
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function randomizeCover(){
@@ -81,7 +82,7 @@ function createNewBook(event) {
   var userDesc2 = document.querySelector('.user-desc2').value
 
   var newBook = new Cover(userCover, userTitle, userDesc1, userDesc2)
-  
+
   covers.push(newBook.cover)
   titles.push(newBook.title)
   descriptors.push(userDesc1, userDesc2)
@@ -94,6 +95,12 @@ function createNewBook(event) {
   currentCover = newBook
 
   changeToHomeView()
+}
+
+function saveCover(){
+  if (savedCovers[savedCovers.length-1] !== currentCover){
+    savedCovers.push(currentCover)
+  }
 }
 
 // We've provided one function to get you started
