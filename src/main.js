@@ -43,9 +43,10 @@ function openForm() {
 // Opens saved-covers view
 function openSavedCovers() {
   homePage.classList.add('hidden');
-  savedView.classList.remove('hidden');
   saveButton.classList.add('hidden');
   coverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  savedView.classList.remove('hidden');
 }
 // Changes cover picture
 function changeCovers() {
