@@ -25,7 +25,6 @@ var savedCovers = [
 ];
 
 
-
 // Add your event listeners here 👇
 
 randomCoverButton.addEventListener("click", createRandomCover)
