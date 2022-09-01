@@ -9,7 +9,17 @@ var tagline = `A tale of ${descriptor1} and ${descriptor2}`
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+
+var randomCover = getRandomIndex(covers);
+var randomTitle = getRandomIndex(titles);
+var randomTagline1 = getRandomIndex(descriptors);
+var randomTagline2 = getRandomIndex(descriptors);
+var currentCover = new Cover(covers[randomCover], titles[randomTitle], descriptors[randomTagline1], descriptors[randomTagline2]);
+
+coverImage.src = currentCover.cover;
+title.innerText = currentCover.title;
+descriptor1.innerText = currentCover.tagline1;
+descriptor2.innerText = currentCover.tagline2;
 
 // Add your event listeners here 👇 (should go at the bottom)
 
