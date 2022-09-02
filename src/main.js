@@ -100,6 +100,27 @@ function createNewBook(event) {
 function saveCover(){
   if (savedCovers[savedCovers.length-1] !== currentCover){
     savedCovers.push(currentCover)
+
+    var saveCoverSection = document.querySelector('.saved-covers-section')
+    var savedMiniCover = document.createElement('section')
+    var savedCoverImg = document.createElement('img')
+    var savedTitle = document.createElement('h2')
+    var savedDescriptors = document.createElement('h3')
+
+    saveCoverSection.appendChild(savedMiniCover)
+    savedMiniCover.appendChild(savedCoverImg)
+    savedMiniCover.appendChild(savedTitle)
+    savedMiniCover.appendChild(savedDescriptors)
+
+    savedCoverImg.setAttribute('src',currentCover.cover)
+    savedTitle.innerText = currentCover.title
+    savedDescriptors.innerText = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`
+
+    savedMiniCover.classList.add('mini-cover')
+    savedTitle.classList.add('cover-title')
+    savedDescriptors.classList.add('tagline')
+    savedCoverImg.classList.add('mini-cover')
+    
   }
 }
 
