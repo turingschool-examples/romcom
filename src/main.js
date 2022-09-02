@@ -16,14 +16,14 @@ var savedPage = document.querySelector('.saved-view')
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover() 
-var generatedCover = covers[getRandomIndex(covers)]
-var generatedTitle = titles[getRandomIndex(titles)]
-var generatedTagline1 = descriptors[getRandomIndex(descriptors)]
-var generatedTagline2 = descriptors[getRandomIndex(descriptors)]
+var currentCover 
+var coverImgSrc = covers[getRandomIndex(covers)]
+var title = titles[getRandomIndex(titles)]
+var descriptor1 = descriptors[getRandomIndex(descriptors)]
+var descriptor2 = descriptors[getRandomIndex(descriptors)]
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener('click', displayNewRandom)
+randomCoverButton.addEventListener('click', makeNewCover)
 makeYourOwnButton.addEventListener('click', displayFormPage)
 viewSavedButton.addEventListener('click', displaySavedPage)
 homeButton.addEventListener('click', displayHomePage)
@@ -33,31 +33,35 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createNewRandom() {
-  var currentCover = new Cover()
-  currentCover.cover = covers[getRandomIndex(covers)]
-  currentCover.title = titles[getRandomIndex(titles)]
-  currentCover.tagline1 = descriptors[getRandomIndex(descriptors)]
-  currentCover.tagline2 = descriptors[getRandomIndex(descriptors)]
-  return currentCover
+// function createNewRandom() {
+//   var currentCover = new Cover()
+//   currentCover.cover = covers[getRandomIndex(covers)]
+//   currentCover.title = titles[getRandomIndex(titles)]
+//   currentCover.tagline1 = descriptors[getRandomIndex(descriptors)]
+//   currentCover.tagline2 = descriptors[getRandomIndex(descriptors)]
+//   return currentCover
+// }
+
+function makeNewCover() {
+var coverImgSrc = covers[getRandomIndex(covers)]
+var title = titles[getRandomIndex(titles)]
+var descriptor1 = descriptors[getRandomIndex(descriptors)]
+var descriptor2 = descriptors[getRandomIndex(descriptors)]
+var randomCover = new Cover(coverImgSrc,title,descriptor1, descriptor2)
+currentCover = randomCover
+displayNewRandom()
 }
 
-// function generateRandom() {
-//   var coverImgSrc = covers[getRandomIndex(covers)]
-//   var title = titles[getRandomIndex(titles)]
-//   var descriptor1 = descriptors[getRandomIndex(descriptors)]
-//   var descriptor2 = descriptors[getRandomIndex(descriptors)]
+// function generateRandom(coverImgSrc, title, descriptor1, descriptor2) {
 //   var randomCover = new Cover(coverImgSrc, title, descriptor1, descriptor2)
 //   return randomCover
 // }
 
 function displayNewRandom() {
-
   displayCoverImage.src = currentCover.cover
   displayCoverTitle.innerText = currentCover.title
-  displayTagline1.innerText = currentCover.tagline1
-  displayTagline2.innerText = currentCover.tagline2
-  
+  displayTagline1.innerText = currentCover.displayTagline1
+  displayTagline2.innerText = currentCover.displayTagline2
 }
 
 function displayFormPage() {
