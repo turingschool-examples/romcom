@@ -9,6 +9,8 @@ var makeCoverForm = document.querySelector('.form-view')
 var mainPage = document.querySelector('.home-view')
 var savedCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
+var viewSavedButton = document.querySelector('.view-saved-button')
+var savedCoversPage = document.querySelector('.saved-covers-section')
 
 
 // We've provided a few variables below
@@ -22,6 +24,8 @@ var currentCover
 window.addEventListener('load', loadRandomCover)
 randomCoverButton.addEventListener('click', loadRandomCover)
 makeCoverButton.addEventListener('click', displayMakeCoverForm)
+viewSavedButton.addEventListener('click', displaySavedCoverPage)
+
 // Create your event handlers and other functions here 👇
 
 
@@ -65,4 +69,11 @@ function displayMakeCoverForm() {
   hide(randomCoverButton)
   show(makeCoverForm)
   show(homeButton)
+ }
+
+ function displaySavedCoverPage() {
+  hide(mainPage)
+  hide(savedCoverButton)
+  hide(randomCoverButton)
+  show(savedCoversPage)
  }
