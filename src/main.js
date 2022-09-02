@@ -74,11 +74,14 @@ function displayRandomCover() {
 
  function createCustomCover() {
    event.preventDefault()
+     covers.push(userCover.value)
+     titles.push(userTitle.value)
+     descriptors.push(userDescriptor.value, userDescriptor2.value)
    customCover = new Cover(userCover.value, userTitle.value,
    userDescriptor.value, userDescriptor2.value)
      coverImg.src = customCover.cover
      coverTitle.innerText = customCover.title
      tagLine1.innerText = customCover.tagline1
      tagLine2.innerText = customCover.tagline2
-  displayHomeView()
+   displayHomeView()
  }
