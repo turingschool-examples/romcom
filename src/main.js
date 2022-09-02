@@ -64,13 +64,21 @@ function goHome() {
   viewSavedButton.classList.remove('hidden');
   makeNewButton.classList.remove('hidden');
 }
-function getNewBookData() {
+function getNewBookData(event) {
+  event.preventDefault();
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(userDesc1.value, userDesc2.value);
-  goHome();
 
+ 
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
+
+  goHome();
 }
 // We've provided one function to get you started
 function getRandomIndex(array) {
