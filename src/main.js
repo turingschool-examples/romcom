@@ -23,6 +23,7 @@ window.addEventListener('load', displayRandomCover)
 randomButton.addEventListener('click', displayRandomCover)
 makeNewButton.addEventListener('click',displayFormView)
 savedCoversButton.addEventListener('click', displaySavedView)
+homeButton.addEventListener('click', displayHomeView)
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -37,7 +38,7 @@ function displayRandomCover() {
   return currentCover
 }
 
-  function displayFormView () {
+  function displayFormView() {
     homeView.classList.add("hidden")
     formView.classList.remove("hidden")
     randomButton.classList.add("hidden")
@@ -45,7 +46,7 @@ function displayRandomCover() {
     homeButton.classList.remove("hidden")
   }
 
-  function displaySavedView () {
+  function displaySavedView() {
     savedView.classList.remove("hidden")
     homeView.classList.add("hidden")
     formView.classList.add("hidden")
@@ -53,3 +54,12 @@ function displayRandomCover() {
     randomButton.classList.add("hidden")
     homeButton.classList.remove("hidden")
   }
+
+ function displayHomeView() {
+   homeView.classList.remove("hidden")
+   formView.classList.add("hidden")
+   savedView.classList.add("hidden")
+   homeButton.classList.add("hidden")
+   randomButton.classList.remove("hidden")
+   savedButton.classList.remove("hidden")
+ }
