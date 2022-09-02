@@ -25,7 +25,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener('click', createNewCover);
+randomCoverButton.addEventListener('click', showRandomCover);
 makeNewButton.addEventListener('click', makeOwnCover)
 viewSavedButton.addEventListener('click', saveCovers)
 homeButton.addEventListener('click', takeMeHome)
@@ -35,12 +35,22 @@ makeMyBookButton.addEventListener('click', makeMyBook)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-function createNewCover() {
-    randomCoverImage.src = covers[getRandomIndex(covers)]
-    randomCoverTitle.innerText = titles[getRandomIndex(titles)]
-    randomDescriptor1.innerText = descriptors[getRandomIndex(descriptors)]
-    randomDescriptor2.innerText = descriptors[getRandomIndex(descriptors)]
+function getRandomCover() {
+  var randomCover = covers[getRandomIndex(covers)]
+  var randomTitle = titles[getRandomIndex(titles)]
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
+  return new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
+}
+function showRandomCover() {
+  var randomCoverInstance = getRandomCover()
+  showCover(randomCoverInstance)
+}
+function showCover(coverInstance) {
+    randomCoverImage.src = coverInstance.cover
+    randomCoverTitle.innerText = coverInstance.title
+    randomDescriptor1.innerText = coverInstance.tagline1
+    randomDescriptor2.innerText = coverInstance.tagline2
 }
 
 function makeOwnCover() {
@@ -61,7 +71,8 @@ function saveCovers() {
   viewFormView.classList.add('hidden')
 }
 
-function takeMeHome() {
+function takeMeHome(event) {
+  event.preventDefault()
   viewHomeView.classList.remove('hidden')
   viewFormView.classList.add('hidden')
   viewSavedView.classList.add('hidden')
@@ -70,7 +81,7 @@ function takeMeHome() {
   homeButton.classList.add('hidden')
 }
 
-function makeMyBook() {
+function makeMyBook(event) {
   var myBookCover = inputUserCover.value
   covers.push(myBookCover)
   var myBookTitle = inputTitle.value
@@ -79,5 +90,9 @@ function makeMyBook() {
   descriptors.push(myDescriptor1)
   var myDescriptor2 = inputDescriptor1.value
   descriptors.push(myDescriptor2)
-  myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
+  var myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
+  debugger
+  savedCovers.push(myOwnBook)
+  takeMeHome(event)
+  showCover(myOwnBook)
 }
