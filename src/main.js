@@ -11,6 +11,11 @@ var makeYourCoverBtn = document.querySelector(".make-new-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var homeBtn = document.querySelector(".home-button");
 var randomCoverBtn = document.querySelector(".random-cover-button");
+var createNewBookButton = document.querySelector(".create-new-book-button");
+var userCover = document.querySelector(".user-cover");
+var userTitle = document.querySelector(".user-title");
+var userDescriptor1 = document.querySelector(".user-desc1");
+var userDescriptor2 = document.querySelector(".user-desc2");
 
 var customImage = getRandomItem(covers);
 var customTitle = getRandomItem(titles);
@@ -31,17 +36,15 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-var currentCover = new Cover(
-  customImage,
-  customTitle,
-  customDiscr1,
-  customDiscr2
-);
+var currentCover;
 
 // Add your event listeners here 👇
 
 customizeBtn.addEventListener("click", randomizeBtn);
 makeYourCoverBtn.addEventListener("click", makeYourCover);
+homeBtn.addEventListener("click", home);
+createNewBookButton.addEventListener("click", createNewBook);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -51,6 +54,38 @@ function makeYourCover() {
   customizeBtn.classList.add("hidden");
   saveCoverBtn.classList.add("hidden");
   homeBtn.classList.remove("hidden");
+}
+
+function createNewBook() {
+  event.preventDefault();
+
+  var inputCover = userCover.value;
+  var inputTitle = userTitle.value;
+  var inputDesc1 = userDescriptor1.value;
+  var inputDesc2 = userDescriptor2.value;
+
+
+  covers.push(inputCover);
+  titles.push(inputTitle);
+  descriptors.push(inputDesc1, inputDesc2);
+
+  currentCover = new Cover(inputCover, inputTitle, inputDesc1, inputDesc2);
+
+  image.src = inputCover;
+  title.innerText = inputTitle;
+  tagLine1.innerText = inputDesc1;
+  tagLine2.innerText = inputDesc2;
+
+
+  home();
+}
+
+function home() {
+  homeView.classList.remove("hidden");
+  homeBtn.classList.add("hidden");
+  randomCoverBtn.classList.remove("hidden");
+  saveCoverBtn.classList.remove("hidden");
+  formView.classList.add("hidden");
 }
 
 function getRandomItem(array) {
