@@ -23,7 +23,9 @@ randomCoverButton.addEventListener("click", generateRandomCover);
 
 makeCoverButton.addEventListener("click", getFormView);
 
-viewSavedButton.addEventListener("click", getSavedCoverView)
+viewSavedButton.addEventListener("click", getSavedCoverView);
+
+homeButton.addEventListener("click", getHomeView);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -50,6 +52,16 @@ function getSavedCoverView() {
   homeView.classList.add("hidden")
   fullFormView.classList.add("hidden")
   }
+
+function getHomeView(){
+  homeView.classList.remove("hidden")
+  savedView.classList.add("hidden")
+  fullFormView.classList.add("hidden")
+  homeButton.classList.add("hidden")
+  randomCoverButton.classList.remove("hidden")
+  saveCoverButton.classList.remove("hidden")
+}
+
 
 
 
