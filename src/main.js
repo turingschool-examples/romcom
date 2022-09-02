@@ -45,6 +45,11 @@ function getFormView () {
     saveCoverButton.classList.add("hidden")
   }
 
+function getSavedCoverView() {
+  savedView.classList.remove("hidden")
+  homeView.classList.add("hidden")
+  fullFormView.classList.add("hidden")
+  }
 
 
 // We've provided one function to get you started
