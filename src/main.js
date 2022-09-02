@@ -25,7 +25,7 @@ window.addEventListener('load', loadRandomCover)
 randomCoverButton.addEventListener('click', loadRandomCover)
 makeCoverButton.addEventListener('click', displayMakeCoverForm)
 viewSavedButton.addEventListener('click', displaySavedCoverPage)
-homeButton.addEventListener('click', )
+homeButton.addEventListener('click', displayHomePage)
 
 // Create your event handlers and other functions here 👇
 
@@ -79,4 +79,13 @@ function displayMakeCoverForm() {
   hide(randomCoverButton)
   show(savedCoversPage)
   show(homeButton)
+ }
+
+ function displayHomePage() {
+  hide(makeCoverForm)
+  hide(homeButton)
+  hide(savedCoversPage)
+  show(savedCoverButton)
+  show(randomCoverButton)
+  show(mainPage)
  }
