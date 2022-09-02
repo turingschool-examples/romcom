@@ -62,29 +62,36 @@ function newRandomCover() {
 function showForm() {
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
-  saveButton.classList.add("hidden")
-  randomButton.classList.add("hidden")
-  homeButton.classList.remove("hidden")
+  savedView.classList.add("hidden");
+
+  homeButton.classList.remove("hidden");
+  saveButton.classList.add("hidden");
+  randomButton.classList.add("hidden");
+  viewSavedButton.classList.remove("hidden");
 
 };
-function showSaved(){
-savedView.classList.remove("hidden");
-homeButton.classList.remove("hidden")
-viewSavedButton.classList.add("hidden")
-randomButton.classList.add("hidden")
-formView.classList.add("hidden");
-homeView.classList.add("hidden");
-saveButton.classList.add("hidden");
-//add every button and view
-}
-function showHome(){
-homeButton.classList.add("hidden");
-homeView.classList.remove("hidden");
-saveButton.classList.remove("hidden")
-randomButton.classList.remove("hidden")
-viewSavedButton.classList.add("hidden")
-//add every button and view
-}
+function showSaved() {
+  formView.classList.add("hidden");
+  homeView.classList.add("hidden");
+  savedView.classList.remove("hidden");
+
+  homeButton.classList.remove("hidden");
+  saveButton.classList.add("hidden");
+  randomButton.classList.add("hidden");
+  viewSavedButton.classList.remove("hidden");
+};
+
+function showHome() {
+  formView.classList.add("hidden");
+  homeView.classList.remove("hidden");
+  savedView.classList.add("hidden");
+
+  homeButton.classList.add("hidden");
+  saveButton.classList.remove("hidden");
+  randomButton.classList.remove("hidden");
+  viewSavedButton.classList.add("hidden");
+
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
