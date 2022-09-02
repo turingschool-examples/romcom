@@ -1,5 +1,5 @@
 //BUTTON VARIABLES
-var homeButton = document.querySelector(".home-button hidden");
+var homeButton = document.querySelector(".home-button");
 var randomButton = document.querySelector(".random-cover-button");
 var saveButton = document.querySelector(".save-cover-button");
 var viewSavedButton = document.querySelector(".view-saved-button");
@@ -39,6 +39,9 @@ tagline2.innerText = currentCover.tagline2;
 
 randomButton.addEventListener("click", newRandomCover);
 makeNewButton.addEventListener("click", showForm);
+viewSavedButton.addEventListener("click", showSaved);
+homeButton.addEventListener("click", showHome);
+
 
 //EVENT HANDLERS/MISC FUNCTIONS
 
@@ -59,7 +62,29 @@ function newRandomCover() {
 function showForm() {
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
+  saveButton.classList.add("hidden")
+  randomButton.classList.add("hidden")
+  homeButton.classList.remove("hidden")
+
 };
+function showSaved(){
+savedView.classList.remove("hidden");
+homeButton.classList.remove("hidden")
+viewSavedButton.classList.add("hidden")
+randomButton.classList.add("hidden")
+formView.classList.add("hidden");
+homeView.classList.add("hidden");
+saveButton.classList.add("hidden");
+//add every button and view
+}
+function showHome(){
+homeButton.classList.add("hidden");
+homeView.classList.remove("hidden");
+saveButton.classList.remove("hidden")
+randomButton.classList.remove("hidden")
+viewSavedButton.classList.add("hidden")
+//add every button and view
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
