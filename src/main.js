@@ -13,8 +13,11 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedCoversButton = document.querySelector('.view-saved-button')
 var makeYourOwnCoverButton = document.querySelector('.make-new-button')
-
-
+var formInputCover = document.querySelector(`.user-cover`)
+var formInputTitle = document.querySelector(`.user-title`)
+var formInputTag1 = document.querySelector(`.user-desc1`)
+var formInputTag2 = document.querySelector(`.user-desc2`)
+var makeMyBookButton = document.querySelector(`.create-new-book-button`)
 // We've provided a few variables below
 
 var savedCovers = [
@@ -29,6 +32,7 @@ randomCoverButton.addEventListener('click', getRandomCover)
 makeYourOwnCoverButton.addEventListener(`click`, viewForm)
 homeButton.addEventListener(`click`, viewHome)
 viewSavedCoversButton.addEventListener(`click`, viewSavedCovers)
+makeMyBookButton.addEventListener(`click`, gatherBookDetails)
 
 // Create your event handlers and other functions here 👇
 
@@ -43,8 +47,7 @@ function getRandomCover() {
   displayCover()
 }
 
-
-function displayCover() {
+function displayRandomCover() {
   coverImage.setAttribute('src', currentCover.cover);
   coverTitle.innerText = currentCover.title
   tagLine1.innerText = currentCover.tagline1
@@ -78,6 +81,27 @@ function viewSavedCovers() {
   homeButton.className = `home-button`
 
 }
+function makeBookCover(event){
+event.preventDefault()
+
+current cover = new Cover
+   formInputCover.value,
+   formInputTitle.value,
+   formInputTag1.value,
+   formInputTag2.value
+  }
+
+covers.push(currentCover.cover)
+titles.push(currentCover.title)
+descriptor.push(currentCover.tagline1)
+descriptor.push(current.tagline2)
+
+  displayCover()
+
+home.setAttribute(`style` `display: `)
+formPage.className = `view form-view hidden`
+}
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
