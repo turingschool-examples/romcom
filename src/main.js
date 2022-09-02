@@ -16,6 +16,7 @@ var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
+var savedSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -29,6 +30,7 @@ makeNewButton.addEventListener('click', makeYourOwn)
 viewSavedButton.addEventListener('click', viewSavedCovers)
 homeButton.addEventListener('click', goHome)
 createNewBookButton.addEventListener('click', getNewBookData)
+saveCoverButton.addEventListener('click', addToSaved)
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)],
@@ -80,6 +82,12 @@ function getNewBookData(event) {
 
   goHome();
 }
+function addToSaved() {
+  savedCovers.push(currentCover);
+  var savedCover = document.createElement('section');
+  savedSection.appendChild(savedCover);
+}
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
