@@ -33,15 +33,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function createNewRandom() {
-//   var currentCover = new Cover()
-//   currentCover.cover = covers[getRandomIndex(covers)]
-//   currentCover.title = titles[getRandomIndex(titles)]
-//   currentCover.tagline1 = descriptors[getRandomIndex(descriptors)]
-//   currentCover.tagline2 = descriptors[getRandomIndex(descriptors)]
-//   return currentCover
-// }
-
 function makeNewCover() {
 var coverImgSrc = covers[getRandomIndex(covers)]
 var title = titles[getRandomIndex(titles)]
@@ -51,11 +42,6 @@ var randomCover = new Cover(coverImgSrc,title,descriptor1, descriptor2)
 currentCover = randomCover
 displayNewRandom()
 }
-
-// function generateRandom(coverImgSrc, title, descriptor1, descriptor2) {
-//   var randomCover = new Cover(coverImgSrc, title, descriptor1, descriptor2)
-//   return randomCover
-// }
 
 function displayNewRandom() {
   displayCoverImage.src = currentCover.cover
@@ -90,3 +76,18 @@ function displaySavedPage() {
   randomCoverButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
 }
+
+
+// function generateRandom(coverImgSrc, title, descriptor1, descriptor2) {
+//   var randomCover = new Cover(coverImgSrc, title, descriptor1, descriptor2)
+//   return randomCover
+// }
+
+// function createNewRandom() {
+//   var currentCover = new Cover()
+//   currentCover.cover = covers[getRandomIndex(covers)]
+//   currentCover.title = titles[getRandomIndex(titles)]
+//   currentCover.tagline1 = descriptors[getRandomIndex(descriptors)]
+//   currentCover.tagline2 = descriptors[getRandomIndex(descriptors)]
+//   return currentCover
+// }
