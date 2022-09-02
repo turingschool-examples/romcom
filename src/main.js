@@ -8,7 +8,7 @@ var makeNewButton = document.querySelector(".make-new-button")
 var formView = document.querySelector(".form-view")
 var homeView = document.querySelector(".home-view")
 var savedView = document.querySelector(".saved-covers-section")
-var savedButton = document.querySelector(".save-cover-button")
+var saveCoverButton = document.querySelector(".save-cover-button")
 var homeButton = document.querySelector(".home-button")
 var savedCoversButton = document.querySelector(".view-saved-button")
 var userCover = document.querySelector(".user-cover")
@@ -16,6 +16,8 @@ var userTitle = document.querySelector(".user-title")
 var userDescriptor = document.querySelector(".user-desc1")
 var userDescriptor2 = document.querySelector(".user-desc2")
 var makeBookButton = document.querySelector(".create-new-book-button")
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -31,6 +33,7 @@ makeNewButton.addEventListener('click',displayFormView)
 savedCoversButton.addEventListener('click', displaySavedView)
 homeButton.addEventListener('click', displayHomeView)
 makeBookButton.addEventListener('click', createCustomCover)
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -46,42 +49,54 @@ function displayRandomCover() {
   return currentCover
 }
 
-  function displayFormView() {
-    homeView.classList.add("hidden")
-    formView.classList.remove("hidden")
-    randomButton.classList.add("hidden")
-    savedButton.classList.add("hidden")
-    homeButton.classList.remove("hidden")
+function displayFormView() {
+  homeView.classList.add("hidden")
+  formView.classList.remove("hidden")
+  randomButton.classList.add("hidden")
+  saveCoverButton.classList.add("hidden")
+  homeButton.classList.remove("hidden")
+}
+
+function displaySavedView() {
+  savedView.classList.remove("hidden")
+  homeView.classList.add("hidden")
+  formView.classList.add("hidden")
+  saveCoverButton.classList.add("hidden")
+  randomButton.classList.add("hidden")
+  homeButton.classList.remove("hidden")
+}
+
+function displayHomeView() {
+  homeView.classList.remove("hidden")
+  formView.classList.add("hidden")
+  savedView.classList.add("hidden")
+  homeButton.classList.add("hidden")
+  randomButton.classList.remove("hidden")
+  saveCoverButton.classList.remove("hidden")
+}
+
+function createCustomCover() {
+  event.preventDefault()
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  descriptors.push(userDescriptor.value, userDescriptor2.value)
+  customCover = new Cover(userCover.value, userTitle.value,
+  userDescriptor.value, userDescriptor2.value)
+    coverImg.src = customCover.cover
+    coverTitle.innerText = customCover.title
+    tagLine1.innerText = customCover.tagline1
+    tagLine2.innerText = customCover.tagline2
+  displayHomeView()
+}
+
+function saveCover() {
+  if (!savedCovers.includes(customCover) && customCover !=    undefined) {
+    savedCovers.push(customCover)
+  } else if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
   }
+}
 
-  function displaySavedView() {
-    savedView.classList.remove("hidden")
-    homeView.classList.add("hidden")
-    formView.classList.add("hidden")
-    savedButton.classList.add("hidden")
-    randomButton.classList.add("hidden")
-    homeButton.classList.remove("hidden")
-  }
 
- function displayHomeView() {
-   homeView.classList.remove("hidden")
-   formView.classList.add("hidden")
-   savedView.classList.add("hidden")
-   homeButton.classList.add("hidden")
-   randomButton.classList.remove("hidden")
-   savedButton.classList.remove("hidden")
- }
-
- function createCustomCover() {
-   event.preventDefault()
-     covers.push(userCover.value)
-     titles.push(userTitle.value)
-     descriptors.push(userDescriptor.value, userDescriptor2.value)
-   customCover = new Cover(userCover.value, userTitle.value,
-   userDescriptor.value, userDescriptor2.value)
-     coverImg.src = customCover.cover
-     coverTitle.innerText = customCover.title
-     tagLine1.innerText = customCover.tagline1
-     tagLine2.innerText = customCover.tagline2
-   displayHomeView()
- }
+//We want to save the current displayed covers by putting the cover, title and descriptors in the savedCovers array
+//if the current displayed cover is a custom cover we only want to save that one
