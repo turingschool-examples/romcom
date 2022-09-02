@@ -104,35 +104,14 @@ event.preventDefault()
 
   displayCover()
 
-
   homePage.setAttribute('style', 'display: ')
   formPage.className = 'view form-view hidden'
 }
 
-// function saveCover() {
-//   for (var i = 0; i < savedCovers.length; i++) {
-//     if (currentCover !== savedCovers[i]) {
-//       savedCovers.push(currentCover)
-//     }
-//   }
-// }
-
-matchingBookDetails = 0
 
 function saveCover() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (currentCover.cover === savedCovers[i].cover) {
-      matchingBookDetails += 1
-    } if (currentCover.title === savedCovers[i].title) {
-      matchingBookDetails += 1
-    } if (currentCover.tagLine1 === savedCovers[i].tagLine1) {
-      matchingBookDetails += 1
-    } if (currentCover.tagLine2 === savedCovers[i].tagLine2) {
-      matchingBookDetails += 1
-    } if (matchingBookDetails <= 3) {
-      savedCovers.push(currentCover)
-      matchingBookDetails = 0
-    }
+  if (savedCovers.includes(currentCover) !== true) {
+    savedCovers.push(currentCover)
   }
 }
 
