@@ -22,7 +22,7 @@ var inputDescriptor2 = document.querySelector('.user-desc2')
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover = ;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', showRandomCover);
@@ -30,6 +30,8 @@ makeNewButton.addEventListener('click', makeOwnCover)
 viewSavedButton.addEventListener('click', saveCovers)
 homeButton.addEventListener('click', takeMeHome)
 makeMyBookButton.addEventListener('click', makeMyBook)
+saveCoverButton.addEventListener('click', saveMyCover)
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -92,7 +94,15 @@ function makeMyBook(event) {
   descriptors.push(myDescriptor2)
   var myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
   debugger
-  savedCovers.push(myOwnBook)
+  // savedCovers.push(myOwnBook)
   takeMeHome(event)
   showCover(myOwnBook)
+}
+
+function saveMyCover(currentCover) {
+  savedCovers.push(currentCover)
+  //run makeMyBook function in here and use line 97?
+  //includes method() if(savedCovers.includes()) - don't add
+  //
+
 }
