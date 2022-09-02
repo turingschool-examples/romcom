@@ -6,6 +6,7 @@ var tagLine2 = document.querySelector(".tagline-2");
 
 var homeView = document.querySelector(".home-view");
 var formView = document.querySelector(".form-view");
+
 var customizeBtn = document.querySelector(".random-cover-button");
 var makeYourCoverBtn = document.querySelector(".make-new-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
@@ -14,6 +15,7 @@ var homeBtn = document.querySelector(".home-button");
 var viewSavedCoversBtn = document.querySelector(".view-saved-button");
 var randomCoverBtn = document.querySelector(".random-cover-button");
 var createNewBookButton = document.querySelector(".create-new-book-button");
+
 var userCover = document.querySelector(".user-cover");
 var userTitle = document.querySelector(".user-title");
 var userDescriptor1 = document.querySelector(".user-desc1");
@@ -34,7 +36,12 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-var currentCover;
+var currentCover = new Cover(
+  customImage,
+  customTitle,
+  customDiscr1,
+  customDiscr2
+);
 
 showCover(currentCover);
 // Add your event listeners here 👇
@@ -89,7 +96,6 @@ function createNewBook() {
   var inputDesc1 = userDescriptor1.value;
   var inputDesc2 = userDescriptor2.value;
 
-
   covers.push(inputCover);
   titles.push(inputTitle);
   descriptors.push(inputDesc1, inputDesc2);
@@ -100,7 +106,6 @@ function createNewBook() {
   title.innerText = inputTitle;
   tagLine1.innerText = inputDesc1;
   tagLine2.innerText = inputDesc2;
-
 
   home();
 }
