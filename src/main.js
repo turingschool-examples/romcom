@@ -43,8 +43,7 @@ function getRandomCover() {
   return new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
 }
 function showRandomCover() {
-  var randomCoverInstance = getRandomCover()
-  showCover(randomCoverInstance)
+  showCover(getRandomCover())
 }
 function showCover(coverInstance) {
     randomCoverImage.src = coverInstance.cover
@@ -88,7 +87,7 @@ function makeMyBook(event) {
   titles.push(myBookTitle)
   var myDescriptor1 = inputDescriptor1.value
   descriptors.push(myDescriptor1)
-  var myDescriptor2 = inputDescriptor1.value
+  var myDescriptor2 = inputDescriptor2.value
   descriptors.push(myDescriptor2)
   var myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
   debugger
