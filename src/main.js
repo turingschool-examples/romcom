@@ -28,7 +28,7 @@ var savedCovers = [
 //this will be an array of new Cover instances
 ];
 
-var currentCover = new Cover(coverImage.src, title.innerText , tagline1.innerText, tagline2.innerText);
+var currentCover = new Cover(coverImage.src, title.innerText, tagline1.innerText, tagline2.innerText);
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', randomize);
@@ -52,6 +52,7 @@ function randomize() {
       tagline2.innerText = getRandomIndex(descriptors);
     };
   coverImage.src = getRandomIndex(covers);
+  currentCover = new Cover(coverImage.src, title.innerText, tagline1.innerText, tagline2.innerText);
 };
 
 function showForm() {
@@ -90,6 +91,11 @@ function saveUserInput() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
+  coverImage.src = coverImageInput.value;
+  title.innerText = titleInput.value;
+  tagline1.innerText = tagline1Input.value;
+  tagline2.innerText = tagline2Input.value;
+  currentCover = new Cover(coverImage.src, title.innerText, tagline1.innerText, tagline2.innerText);
 };
 
 // We've provided one function to get you started
