@@ -7,6 +7,10 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var makeCoverButton = document.querySelector('.make-new-button')
 var makeCoverForm = document.querySelector('.form-view')
 var mainPage = document.querySelector('.home-view')
+var savedCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -57,5 +61,8 @@ element.classList.remove('hidden')
 
 function displayMakeCoverForm() {
   hide(mainPage)
+  hide(savedCoverButton)
+  hide(randomCoverButton)
   show(makeCoverForm)
+  show(homeButton)
  }
