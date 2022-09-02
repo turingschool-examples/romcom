@@ -1,7 +1,7 @@
 var randomCoverButton = document.querySelector('.random-cover-button')
 var mainCoverDisplay = document.querySelector('.main-cover')
 var saveCoverButton = document.querySelector('.save-cover-button')
-var viewSavedCovers = document.querySelector('.view-save-button')
+var viewSavedCovers = document.querySelector('.view-saved-button')
 var makeYourOwnCover = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
 var displayCoverImage = document.querySelector('.cover-image')
@@ -20,7 +20,9 @@ var currentCover = new Cover()
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', displayNewRandom)
-makeYourOwnCover.addEventListener('click', showForm)
+makeYourOwnCover.addEventListener('click', displayFormPage)
+viewSavedCovers.addEventListener('click', displaySavedPage)
+homeButton.addEventListener('click', displayHomePage)
 
 // Create your event handlers and other functions here 👇)
 
@@ -44,7 +46,7 @@ displayTagline2.innerText = currentCover.tagline2
   
 }
 
-function showForm() {
+function displayFormPage() {
   formPage.classList.remove('hidden')
   homeButton.classList.remove('hidden')
   homePage.classList.add('hidden')
@@ -53,9 +55,17 @@ function showForm() {
 }
 
 function displayHomePage() {
-  
+  savedPage.classList.add('hidden')
+  homeButton.classList.add('hidden')
+  randomCoverButton.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
+  formPage.classList.add('hidden')
 }
 
-function displaySavedCovers() {
-  
+function displaySavedPage() {
+  savedPage.classList.remove('hidden')
+  saveCoverButton.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  formPage.classList.add('hidden')
 }
