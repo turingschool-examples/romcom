@@ -26,12 +26,11 @@ var currentCover = ;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', showRandomCover);
-makeNewButton.addEventListener('click', makeOwnCover)
-viewSavedButton.addEventListener('click', saveCovers)
-homeButton.addEventListener('click', takeMeHome)
-makeMyBookButton.addEventListener('click', makeMyBook)
-saveCoverButton.addEventListener('click', saveMyCover)
-
+makeNewButton.addEventListener('click', makeOwnCover);
+viewSavedButton.addEventListener('click', saveCovers);
+homeButton.addEventListener('click', takeMeHome);
+makeMyBookButton.addEventListener('click', makeMyBook);
+saveCoverButton.addEventListener('click', saveMyCover);
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -42,11 +41,11 @@ function getRandomCover() {
   var randomTitle = titles[getRandomIndex(titles)]
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
-  return new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
+  currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
+  return currentCover
 }
 function showRandomCover() {
-  var randomCoverInstance = getRandomCover()
-  showCover(randomCoverInstance)
+  showCover(getRandomCover())
 }
 function showCover(coverInstance) {
     randomCoverImage.src = coverInstance.cover
@@ -90,13 +89,16 @@ function makeMyBook(event) {
   titles.push(myBookTitle)
   var myDescriptor1 = inputDescriptor1.value
   descriptors.push(myDescriptor1)
-  var myDescriptor2 = inputDescriptor1.value
+  var myDescriptor2 = inputDescriptor2.value
   descriptors.push(myDescriptor2)
-  var myOwnBook = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
-  debugger
-  // savedCovers.push(myOwnBook)
+  currentCover = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
   takeMeHome(event)
-  showCover(myOwnBook)
+  showCover(currentCover)
+}
+
+function saveMyCover(currentCover) {
+  if(!savedCovers.includes === currentCover) {
+    savedCovers.push(currentCover);
 }
 
 function saveMyCover(currentCover) {
