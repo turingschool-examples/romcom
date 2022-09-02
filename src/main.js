@@ -35,6 +35,7 @@ makeYourOwnCoverButton.addEventListener(`click`, viewForm)
 homeButton.addEventListener(`click`, viewHome)
 viewSavedCoversButton.addEventListener(`click`, viewSavedCovers)
 makeMyBookButton.addEventListener('click', makeBookCover)
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -108,7 +109,32 @@ event.preventDefault()
   formPage.className = 'view form-view hidden'
 }
 
+// function saveCover() {
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     if (currentCover !== savedCovers[i]) {
+//       savedCovers.push(currentCover)
+//     }
+//   }
+// }
 
+matchingBookDetails = 0
+
+function saveCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (currentCover.cover === savedCovers[i].cover) {
+      matchingBookDetails += 1
+    } if (currentCover.title === savedCovers[i].title) {
+      matchingBookDetails += 1
+    } if (currentCover.tagLine1 === savedCovers[i].tagLine1) {
+      matchingBookDetails += 1
+    } if (currentCover.tagLine2 === savedCovers[i].tagLine2) {
+      matchingBookDetails += 1
+    } if (matchingBookDetails <= 3) {
+      savedCovers.push(currentCover)
+      matchingBookDetails = 0
+    }
+  }
+}
 
 
 // We've provided one function to get you started
