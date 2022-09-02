@@ -47,6 +47,7 @@ function getFormView () {
 
 
 
+
 // We've provided one function to get you started
 // function getRandomIndex(array) {
 //   return Math.floor(Math.random() * array.length);
