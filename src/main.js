@@ -24,7 +24,6 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-var customCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover)
@@ -80,19 +79,17 @@ function createCustomCover() {
   covers.push(userCover.value)
   titles.push(userTitle.value)
   descriptors.push(userDescriptor.value, userDescriptor2.value)
-  customCover = new Cover(userCover.value, userTitle.value,
+  currentCover = new Cover(userCover.value, userTitle.value,
   userDescriptor.value, userDescriptor2.value)
-    coverImg.src = customCover.cover
-    coverTitle.innerText = customCover.title
-    tagLine1.innerText = customCover.tagline1
-    tagLine2.innerText = customCover.tagline2
+    coverImg.src = currentCover.cover
+    coverTitle.innerText = currentCover.title
+    tagLine1.innerText = currentCover.tagline1
+    tagLine2.innerText = currentCover.tagline2
   displayHomeView()
 }
 
 function saveCover() {
-  if (!savedCovers.includes(customCover) && customCover !=    undefined) {
-    savedCovers.push(customCover)
-  } else if (!savedCovers.includes(currentCover)) {
+  if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
   }
 }
