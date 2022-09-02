@@ -58,4 +58,4 @@ element.classList.remove('hidden')
 function displayMakeCoverForm() {
   hide(mainPage)
   show(makeCoverForm)
- }
+}
