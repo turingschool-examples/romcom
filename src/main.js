@@ -5,6 +5,8 @@ var saveButton = document.querySelector(".save-cover-button");
 var viewSavedButton = document.querySelector(".view-saved-button");
 var makeNewButton = document.querySelector(".make-new-button");
 
+var customBookButton = document.querySelector(".create-new-book-button");
+
 //PAGE VIEWS
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
@@ -22,6 +24,9 @@ var randomTitle = titles[getRandomIndex(titles)];
 var randomTagline1 = descriptors[getRandomIndex(descriptors)];
 var randomTagline2 = descriptors[getRandomIndex(descriptors)];
 
+//INPUT FIELDS
+var allFields = document.querySelector(".form-view");
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -36,11 +41,16 @@ tagline1.innerText = currentCover.tagline1;
 tagline2.innerText = currentCover.tagline2;
 
 //EVENT LISTENERS
-
+//buttons
 randomButton.addEventListener("click", newRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSaved);
 homeButton.addEventListener("click", showHome);
+
+customBookButton.addEventListener("click", makeCustomBook);
+
+//fields
+
 
 
 //EVENT HANDLERS/MISC FUNCTIONS
@@ -63,6 +73,8 @@ function showForm() {
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
   savedView.classList.add("hidden");
+
+  allFields.classList.remove("hidden");
 
   homeButton.classList.remove("hidden");
   saveButton.classList.add("hidden");
@@ -92,6 +104,20 @@ function showHome() {
   viewSavedButton.classList.add("hidden");
 
 };
+
+function makeCustomBook() {
+  var userSrc = document.querySelector("#cover").value;
+  var userTitle = document.querySelector("#title").value;
+  var userDesc1 = document.querySelector("#descriptor1").value;
+  var userDesc2 = document.querySelector("#descriptor2").value;
+
+  var userCover = new Cover(userSrc, userTitle, userDesc1, userDesc2);
+
+  covers.push(userSrc);
+  titles.push(userTitle);
+  descriptors.push(userDesc1, userDesc2);
+
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
