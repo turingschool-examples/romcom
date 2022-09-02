@@ -13,31 +13,31 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover = new Cover {
-currentCover.cover = Math.floor(Math.random(covers) * covers.length)
-currentCover.title = Math.floor(Math.random(titles) * titles.length)
-currentCover.tagline1 = Math.floor(Math.random(descriptors) * descriptors.length)
-currentCover.tagline2 = Math.floor(Math.random(descriptors) * descriptors.length)
+currentCover.cover = Math.floor(Math.random(cover) * covers.length)
+currentCover.title = Math.floor(Math.random(title) * titles.length)
+currentCover.tagline1 = Math.floor(Math.random(tagline1) * descriptors.length)
+currentCover.tagline2 = Math.floor(Math.random(tagline2) * descriptors.length)
 }
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', displayNewRandom)
 
 // Create your event handlers and other functions here 👇)
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 function createNewRandom() {
   return currentCover
 }
 
 function displayNewRandom() {
-  displayCover = new Cover
-  displayCoverImage.innerHTML = `<img>${currentCover.cover[i]}</img>`
-  displayCoverTitle.innerHTML = `<h2>${currentCover.title[i]}</h2>`
-  displayCoverTagline1.innerHTML = `<h3>${currentCover.tagline1[i]}<h3>`
-  displayCoverTagline2.innerHTML = `<h3>${currentCover.tagline2[i]}<h3>`
-  return displayCover
+  mainCoverDisplay.innerHTML = `
+     <img src=${currentCover.cover}>
+     <h2>${currentCover.title}</h2>
+     <span>${currentCover.tagline1}</span>
+     <span>${currentCover.tagline2}</span>
+    `
   
 }
 
-
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
