@@ -79,6 +79,7 @@ function viewHome() {
 
 function viewSavedCovers() {
   homePage.setAttribute('style', 'display: none')
+  formPage.className = 'view form-view hidden'
   savedCoversPage.className = 'view saved-view'
   randomCoverButton.setAttribute('style', 'display: none')
   viewSavedCoversButton.setAttribute('style', 'display: none')
