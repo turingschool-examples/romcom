@@ -11,6 +11,11 @@ var makeNewButton = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+var createNewBookButton = document.querySelector('.create-new-book-button');
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -23,6 +28,7 @@ randomButton.addEventListener('click', newRandomCover)
 makeNewButton.addEventListener('click', makeYourOwn)
 viewSavedButton.addEventListener('click', viewSavedCovers)
 homeButton.addEventListener('click', goHome)
+createNewBookButton.addEventListener('click', getNewBookData)
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)],
@@ -57,6 +63,14 @@ function goHome() {
   saveCoverButton.classList.remove('hidden');
   viewSavedButton.classList.remove('hidden');
   makeNewButton.classList.remove('hidden');
+}
+function getNewBookData() {
+  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value, userDesc2.value);
+  goHome();
+
 }
 // We've provided one function to get you started
 function getRandomIndex(array) {
