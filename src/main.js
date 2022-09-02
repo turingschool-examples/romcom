@@ -30,6 +30,7 @@ makeYourOwnCoverButton.addEventListener('click', changeToFormView)
 viewSavedCoversButton.addEventListener('click', changeToSavedCoversView)
 homeButton.addEventListener('click', changeToHomeView)
 createNewBookButton.addEventListener('click', createNewBook)
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function randomizeCover(){
@@ -81,7 +82,7 @@ function createNewBook(event) {
   var userDesc2 = document.querySelector('.user-desc2').value
 
   var newBook = new Cover(userCover, userTitle, userDesc1, userDesc2)
-  
+
   covers.push(newBook.cover)
   titles.push(newBook.title)
   descriptors.push(userDesc1, userDesc2)
@@ -94,6 +95,33 @@ function createNewBook(event) {
   currentCover = newBook
 
   changeToHomeView()
+}
+
+function saveCover(){
+  if (savedCovers[savedCovers.length-1] !== currentCover){
+    savedCovers.push(currentCover)
+
+    var saveCoverSection = document.querySelector('.saved-covers-section')
+    var savedMiniCover = document.createElement('section')
+    var savedCoverImg = document.createElement('img')
+    var savedTitle = document.createElement('h2')
+    var savedDescriptors = document.createElement('h3')
+
+    saveCoverSection.appendChild(savedMiniCover)
+    savedMiniCover.appendChild(savedCoverImg)
+    savedMiniCover.appendChild(savedTitle)
+    savedMiniCover.appendChild(savedDescriptors)
+
+    savedCoverImg.setAttribute('src',currentCover.cover)
+    savedTitle.innerText = currentCover.title
+    savedDescriptors.innerText = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`
+
+    savedMiniCover.classList.add('mini-cover')
+    savedTitle.classList.add('cover-title')
+    savedDescriptors.classList.add('tagline')
+    savedCoverImg.classList.add('mini-cover')
+    
+  }
 }
 
 // We've provided one function to get you started
