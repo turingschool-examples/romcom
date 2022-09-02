@@ -53,7 +53,6 @@ customizeBtn.addEventListener("click", randomizeBtn);
 homeBtn.addEventListener("click", home);
 viewSavedCoversBtn.addEventListener("click", viewSavedCovers);
 createNewBookButton.addEventListener("click", makeYourCover);
-saveCoverBtn.addEventListener("click", saveCover);
 makeMyBookBtn.addEventListener("click", createNewBook);
 
 // Create your event handlers and other functions here 👇
