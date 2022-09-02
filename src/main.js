@@ -11,12 +11,18 @@ var savedView = document.querySelector(".saved-covers-section")
 var savedButton = document.querySelector(".save-cover-button")
 var homeButton = document.querySelector(".home-button")
 var savedCoversButton = document.querySelector(".view-saved-button")
+var userCover = document.querySelector(".user-cover")
+var userTitle = document.querySelector(".user-title")
+var userDescriptor = document.querySelector(".user-desc1")
+var userDescriptor2 = document.querySelector(".user-desc2")
+var makeBookButton = document.querySelector(".create-new-book-button")
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
+var customCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover)
@@ -24,6 +30,8 @@ randomButton.addEventListener('click', displayRandomCover)
 makeNewButton.addEventListener('click',displayFormView)
 savedCoversButton.addEventListener('click', displaySavedView)
 homeButton.addEventListener('click', displayHomeView)
+makeBookButton.addEventListener('click', createCustomCover)
+
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -62,4 +70,14 @@ function displayRandomCover() {
    homeButton.classList.add("hidden")
    randomButton.classList.remove("hidden")
    savedButton.classList.remove("hidden")
+ }
+
+ function createCustomCover() {
+   customCover = new Cover(userCover.value, userTitle.value,
+   userDescriptor.value, userDescriptor2.value)
+     coverImg.src = customCover.cover
+     coverTitle.innerText = customCover.title
+     tagLine1.innerText = customCover.tagline1
+     tagLine2.innerText = customCover.tagline2
+  return customCover
  }
