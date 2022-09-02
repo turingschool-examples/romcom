@@ -5,8 +5,8 @@ var firstDescriptor = document.querySelector('.tagline-1')
 var secondDescriptor = document.querySelector('.tagline-2')
 var randomCoverButton = document.querySelector('.random-cover-button')
 var makeCoverButton = document.querySelector('.make-new-button')
-var makeCoverForm = document.querySelector('.view form-view hidden')
-var mainPage = document.querySelector('.view home-view')
+var makeCoverForm = document.querySelector('.form-view')
+var mainPage = document.querySelector('.home-view')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -47,19 +47,15 @@ function loadRandomCover() {
   loadNewCover()
 }
 
-function hideElements(elements) {
-  for(var i = 0; i < elements.length; i++) {
-    elements[i].classList.add('.hidden')
-  }
+function hide(element) {
+ element.classList.add('hidden')
 }
 
-function unHideElements(elements) {
-  for(var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove('.hidden')
-  }
+function show(element) {
+element.classList.remove('hidden')
 }
 
-// function displayMakeCoverForm() {
-  mainPage.classList.add ('.hidden')
-  makeCoverForm.classList.remove('.hidden')
-// }
+function displayMakeCoverForm() {
+  hide(mainPage)
+  show(makeCoverForm)
+ }
