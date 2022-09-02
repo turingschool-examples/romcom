@@ -78,7 +78,6 @@ function createNewBook() {
 
 
   home();
-  
 }
 
 function home() {
