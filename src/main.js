@@ -11,16 +11,21 @@ var makeYourCoverBtn = document.querySelector(".make-new-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var homeBtn = document.querySelector(".home-button");
 var viewSavedCoversBtn = document.querySelector(".view-saved-button");
+var makeMyBookBtn = document.querySelector(".create-new-book-button");
+
+// ### varibles for form input ###
+
+var userCover = document.getElementById("cover");
+var userTitle = document.getElementById("title");
+var userDesc1 = document.getElementById("descriptor1");
+var userDesc2 = document.getElementById("descriptor2");
+
+// ### variables for functions ###
 
 var customImage = getRandomItem(covers);
 var customTitle = getRandomItem(titles);
 var customDiscr1 = getRandomItem(descriptors);
 var customDiscr2 = getRandomItem(descriptors);
-
-image.src = customImage;
-title.innerText = customTitle;
-tagLine1.innerText = customDiscr1;
-tagLine2.innerText = customDiscr2;
 
 // We've provided a few variables below
 var savedCovers = [
@@ -38,14 +43,34 @@ var currentCover = new Cover(
   customDiscr2
 );
 
+showCover(currentCover);
 // Add your event listeners here 👇
 
 customizeBtn.addEventListener("click", randomizeBtn);
 makeYourCoverBtn.addEventListener("click", makeYourCover);
 homeBtn.addEventListener("click", home);
 viewSavedCoversBtn.addEventListener("click", viewSavedCovers);
+makeMyBookBtn.addEventListener("click", makeMyBook);
 
 // Create your event handlers and other functions here 👇
+
+function makeMyBook(event) {
+  event.preventDefault();
+
+  var newCoverSrc = userCover.value;
+  var newTitle = userTitle.value;
+  var newDesc1 = userDesc1.value;
+  var newDesc2 = userDesc2.value;
+
+  covers.push(newCoverSrc);
+  titles.push(newTitle);
+  descriptors.push(newDesc1, newDesc2);
+
+  currentCover = new Cover(newCoverSrc, newTitle, newDesc1, newDesc2);
+
+  showCover(currentCover);
+  home();
+}
 
 function viewSavedCovers() {
   homeView.classList.add("hidden");
@@ -76,13 +101,23 @@ function getRandomItem(array) {
   return array[randomIndex];
 }
 function randomizeBtn() {
-  image.src = getRandomItem(covers);
-  title.innerText = getRandomItem(titles);
-  tagLine1.innerText = getRandomItem(descriptors);
-  tagLine2.innerText = getRandomItem(descriptors);
+  currentCover = new Cover(
+    getRandomItem(covers),
+    getRandomItem(titles),
+    getRandomItem(descriptors),
+    getRandomItem(descriptors)
+  );
+  showCover(currentCover);
 }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function showCover(cover) {
+  image.src = cover.cover;
+  title.innerText = cover.title;
+  tagLine1.innerText = cover.tagline1;
+  tagLine2.innerText = cover.tagline2;
 }
