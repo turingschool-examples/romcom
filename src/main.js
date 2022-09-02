@@ -22,7 +22,7 @@ var inputDescriptor2 = document.querySelector('.user-desc2')
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = ;
+var currentCover;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', showRandomCover);
@@ -97,14 +97,13 @@ function makeMyBook(event) {
 }
 
 function saveMyCover(currentCover) {
-  if(!savedCovers.includes === currentCover) {
+  if(!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
+  }
 }
 
-function saveMyCover(currentCover) {
-  savedCovers.push(currentCover)
-  //run makeMyBook function in here and use line 97?
-  //includes method() if(savedCovers.includes()) - don't add
-  //
-
+function displaySavedCovers() {
+  for(var i =0; i < savedCovers.length; i++) {
+    return document.querySelector('.saved-view').style.display = savedCovers[i]
+  }
 }
