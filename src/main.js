@@ -16,6 +16,7 @@ var coverInput = document.querySelector('.user-cover')
 var titleInput = document.querySelector('.user-title')
 var userDesc1Input = document.querySelector('.user-desc1')
 var userDesc2Input = document.querySelector('.user-desc2')
+var mainCover = document.querySelector('.main-cover')
 
 
 
@@ -93,50 +94,18 @@ function displayMakeCoverForm() {
   show(savedCoverButton)
   show(randomCoverButton)
   show(mainPage)
+  show(mainCover)
  }
 
- // Here's what I've written that is partially working:
- 
-//  function createCustomBook() {
-//   // Could the event.preventDefault() method be used here to prevent loading a new page?
-  
-//   covers.push(coverInput.value)
-//       console.log('userDefinedCover: ', coverInput.value)
-//   titles.push(titleInput.value)
-//       console.log(titleInput.value)
-//   descriptors.push(userDesc1Input.value)
-//       console.log(userDesc1Input.value)
-//   descriptors.push(userDesc2Input.value)
-//       console.log(userDesc2Input.value)
-//   new Cover(coverInput.value, titleInput.value, userDesc1Input.value, userDesc2Input.value)
-// // Change back to Home view and display custom cover
-
-//   // This is the same code from the randomCover function
-//   coverImg.src = currentCover.cover
-//   coverTitle.innerText = currentCover.title
-//   firstDescriptor.innerText = currentCover.tagline1
-//   secondDescriptor.innerText = currentCover.tagline2
-//   console.log('Here are some words')
-
-
-// // These might be needed to meet the spec. Idk for now.
-//   hide(makeCoverForm)
-//   // show(savedCoverButton)
-//   show(randomCoverButton)
-//   show(savedCoversPage)
-//   }
-
-
-//Jake's new idea
 function createCustomBook(event) {
-  event.stopPropogation()
+  event.preventDefault()
   currentCover = new Cover(
     coverInput.value,
     titleInput.value,
     userDesc1Input.value,
-    user2Desc2Input.value
+    userDesc2Input.value
   )
-  loadNewPoster()
-  hideElements()
-  unhideElements()
+  loadNewCover()
+  displayHomePage()
 }
+
