@@ -10,7 +10,7 @@ var coverFormButton = document.querySelector('.make-new-button');
 var saveButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-// Cover elements to display on home page
+// Cover elements linked to home page display
 var cover = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('.tagline-1');
@@ -28,14 +28,13 @@ coverFormButton.addEventListener('click', openForm);
 // Changes cover when cover button is clicked
 coverButton.addEventListener('click', changeCovers);
 // Opens saved covers view when button is clicked
-saveButton.addEventListener('click', openSavedCovers);
+viewSavedButton.addEventListener('click', openSavedCovers);
 // Opens home page view when button is clicked
 homeButton.addEventListener('click', openHomePage);
 // Creates new book cover from user inputs
 createCoverButton.addEventListener('click', createNewBook);
 
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -59,8 +58,6 @@ function createNewBook() {
 
   displayCover(cover)
   openHomePage()
-
-  console.log(savedCovers)
 }
 // Updates home page cover based on cover class
 function displayCover(coverInstance) {
@@ -87,22 +84,22 @@ function openSavedCovers() {
 }
 // Opens home page
 function openHomePage() {
-  homePage.classList.remove('hidden');
   savedPage.classList.add('hidden');
+  homeButton.classList.add('hidden');
   formPage.classList.add('hidden');
   saveButton.classList.remove('hidden');
   coverButton.classList.remove('hidden');
   viewSavedButton.classList.remove('hidden');
   coverFormButton.classList.remove('hidden');
-  homeButton.classList.add('hidden');
+  homePage.classList.remove('hidden');
 }
-// Changes cover picture
+// Generates random cover and changes home page display
 function changeCovers() {
-  var newCover = covers[Math.floor(Math.random() * covers.length)]
-  var cover = document.querySelector('.cover-image');
-  cover.src = newCover;
+  var newCover = makeCoverInstance(selectRandomCover(), selectRandomTitle(), selectRandomDescriptor(), selectRandomDescriptor())
+  displayCover(newCover)
+  savedCovers.unshift(newCover)
 }
-
+// Pulls random values for changeCovers function
 function selectRandomCover() {
   return covers[getRandomIndex(covers)]
 }
@@ -112,7 +109,7 @@ function selectRandomTitle() {
 function selectRandomDescriptor() {
   return descriptors[getRandomIndex(descriptors)]
 }
-
+// Instantiates a new cover instance from
 function makeCoverInstance(cover, title, desc1, desc2) {
   return new Cover(cover, title, desc1, desc2);
 }
