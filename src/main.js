@@ -15,6 +15,7 @@ var homeBtn = document.querySelector(".home-button");
 var viewSavedCoversBtn = document.querySelector(".view-saved-button");
 var makeMyBookBtn = document.querySelector(".create-new-book-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
+// var deleteElementBtn = document.querySelector(".saved-covers-section");
 
 // ### varibles for form input ###
 
@@ -55,8 +56,11 @@ viewSavedCoversBtn.addEventListener("click", viewSavedCovers);
 createNewBookButton.addEventListener("click", makeYourCover);
 makeMyBookBtn.addEventListener("click", createNewBook);
 saveCoverBtn.addEventListener("click", saveCover);
+deleteElementBtn.addEventListener("dblclick", deleteElement);
 
 // Create your event handlers and other functions here 👇
+
+function deleteElement() {}
 
 function viewSavedCovers() {
   savedCoverSection.innerHTML = "";
@@ -105,10 +109,11 @@ function saveCover() {
 
 function createCoverElement(obj) {
   var newDiv = document.createElement("div");
+  newDiv.setAttribute("id", obj.id);
   newDiv.classList.add("mini-cover");
   newDiv.style.overflow = "hidden";
   newDiv.style.background = `url(${obj.cover})`;
-  newDiv.style.backgroundSize = "cover";
+  newDiv.style.backgroundSize = "100%";
   newDiv.innerHTML = `
   <h4 class='cover-title'>${obj.title}</h4>
   <p class='tagline'> A tale of ${obj.tagline1} and ${obj.tagline2}</p>
