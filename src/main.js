@@ -90,22 +90,17 @@ function getNewBookData(event) {
 }
 
 function addToSaved() {
-  // var combined = currentCover.title + currentCover.tagline1 + currentCover.tagline2;
-  // for (let i = 0; i < savedCovers.length; i++) {
-  //   var savedCombined = savedCovers[i].title + savedCovers[i].tagline1 + savedCovers[i].tagline2;
-  //   if (savedCombined !== combined && i === savedCovers.length - 1) {
-  //     savedCovers.push(currentCover);
-  //   }
-  // }
+  savedCovers.push(currentCover)
 
   var savedCover = document.createElement('section');
   var coverImage = document.createElement('img');
   var title = document.createElement('h2')
   var descriptors = document.createElement('h3');
+  var indexPosition = savedCovers.length - 1;
 
-  coverImage.src = currentCover.cover;
-  title.innerText = currentCover.title;
-  descriptors.innerText = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`;
+  coverImage.src = savedCovers[indexPosition].cover;
+  title.innerText = savedCovers[indexPosition].title;
+  descriptors.innerText = `A tale of ${savedCovers[indexPosition].tagline1} and ${savedCovers[indexPosition].tagline2}`;
 
   savedSection.appendChild(savedCover);
   savedCover.appendChild(coverImage);
