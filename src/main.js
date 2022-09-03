@@ -41,6 +41,7 @@ viewSavedButton.addEventListener("click", loadSavedCovers)
 homeButton.addEventListener("click", loadHomePage)
 makeMyBookButton.addEventListener("click", makeMyBookForm)
 saveButton.addEventListener("click", saveCurrentCover)
+savedCoversSection.addEventListener("dblclick", deleteSavedCover)
 
 // Create your event handlers and other functions here 👇
 // We've provided one function to get you started
@@ -129,6 +130,7 @@ function saveCurrentCover() {
 
   }
 //display first, redeploy fxn here
+//clear the saved covers section (var name), then savedCoversSection.innerHTML = ""
 
     var savedSubSection = document.createElement("section") //refactor helper function
     var savedImage = document.createElement("img")
@@ -138,6 +140,7 @@ function saveCurrentCover() {
     var savedOverlay = document.createElement("img")
 
     savedSubSection.classList.add("mini-cover")
+    savedSubSection.id = savedCovers[savedCovers.length-1].id
 
     savedImage.classList.add("mini-cover")
     savedImage.src = savedCovers[savedCovers.length-1].cover
@@ -177,4 +180,9 @@ function saveCurrentCover() {
 
 //display first function - don't push just dsiplay
 
+}
+
+function deleteSavedCover(event){
+  console.log(event.target.parentElement);
+  miniCoverID = event.target.parentElement
 }
