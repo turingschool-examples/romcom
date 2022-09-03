@@ -24,11 +24,6 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-userDefinedCover = coverInput.value
-userDefinedTitle = titleInput.value
-userTagLine1 = userDesc1Input.value
-userTagLine2 = userDesc2Input.value
-
 var currentCover;
 
 // Add your event listeners here 👇
@@ -39,10 +34,7 @@ viewSavedButton.addEventListener('click', displaySavedCoverPage)
 homeButton.addEventListener('click', displayHomePage)
 createNewBookButton.addEventListener('click', createCustomBook)
 
-
 // Create your event handlers and other functions here 👇
-
-
 function getRandomIndex(array) {
   var index = Math.floor(Math.random() * array.length)
   return array[index]
@@ -103,27 +95,48 @@ function displayMakeCoverForm() {
   show(mainPage)
  }
 
- // Here's what I've written that is not working:
+ // Here's what I've written that is partially working:
  
- function createCustomBook() {
-  covers.push(userDefinedCover)
-  titles.push(userDefinedTitle)
-  descriptors.push(userTagLine1)
-  descriptors.push(userTagLine2)
-  new Cover(userDefinedCover.value, userDefinedTitle.value, userTagLine1.value, userTagLine2.value)
-
-
-  coverImg.src = currentCover.cover
-  coverTitle.innerText = currentCover.title
-  firstDescriptor.innerText = currentCover.tagline1
-  secondDescriptor.innerText = currentCover.tagline2
-  console.log('Here are some words')
-
-  // hide(makeCoverForm)
-  // show(savedCoverButton)
-  // show(randomCoverButton)
-  //show(mainPage)
+//  function createCustomBook() {
+//   // Could the event.preventDefault() method be used here to prevent loading a new page?
   
-  }
+//   covers.push(coverInput.value)
+//       console.log('userDefinedCover: ', coverInput.value)
+//   titles.push(titleInput.value)
+//       console.log(titleInput.value)
+//   descriptors.push(userDesc1Input.value)
+//       console.log(userDesc1Input.value)
+//   descriptors.push(userDesc2Input.value)
+//       console.log(userDesc2Input.value)
+//   new Cover(coverInput.value, titleInput.value, userDesc1Input.value, userDesc2Input.value)
+// // Change back to Home view and display custom cover
+
+//   // This is the same code from the randomCover function
+//   coverImg.src = currentCover.cover
+//   coverTitle.innerText = currentCover.title
+//   firstDescriptor.innerText = currentCover.tagline1
+//   secondDescriptor.innerText = currentCover.tagline2
+//   console.log('Here are some words')
 
 
+// // These might be needed to meet the spec. Idk for now.
+//   hide(makeCoverForm)
+//   // show(savedCoverButton)
+//   show(randomCoverButton)
+//   show(savedCoversPage)
+//   }
+
+
+//Jake's new idea
+function createCustomBook(event) {
+  event.stopPropogation()
+  currentCover = new Cover(
+    coverInput.value,
+    titleInput.value,
+    userDesc1Input.value,
+    user2Desc2Input.value
+  )
+  loadNewPoster()
+  hideElements()
+  unhideElements()
+}
