@@ -42,7 +42,9 @@ function getRandomCover() {
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)]
   currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
-  return currentCover
+
+return currentCover
+
 }
 function showRandomCover() {
   showCover(getRandomCover())
@@ -72,8 +74,7 @@ function saveCovers() {
   viewFormView.classList.add('hidden')
 }
 
-function takeMeHome(event) {
-  event.preventDefault()
+function takeMeHome() {
   viewHomeView.classList.remove('hidden')
   viewFormView.classList.add('hidden')
   viewSavedView.classList.add('hidden')
@@ -82,7 +83,8 @@ function takeMeHome(event) {
   homeButton.classList.add('hidden')
 }
 
-function makeMyBook(event) {
+function makeMyBook() {
+  event.preventDefault()
   var myBookCover = inputUserCover.value
   covers.push(myBookCover)
   var myBookTitle = inputTitle.value
@@ -92,20 +94,20 @@ function makeMyBook(event) {
   var myDescriptor2 = inputDescriptor2.value
   descriptors.push(myDescriptor2)
   currentCover = new Cover (myBookCover, myBookTitle, myDescriptor1, myDescriptor2)
-  takeMeHome(event)
+  takeMeHome()
   showCover(currentCover)
 }
 
-function saveMyCover(currentCover) {
+function saveMyCover() {
   if(!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-  }
+    }
 }
 
-function displaySavedCovers() {
-  for(var i =0; i < savedCovers.length; i++) {
-    showCover(savedCovers[i])
-  }
-}
+// function displaySavedCovers() {
+//   for(var i =0; i < savedCovers.length; i++) {
+//     showCover(savedCovers[i])
+//   }
+// }
 
 //insert cover image, cover title, 2 descriptors
