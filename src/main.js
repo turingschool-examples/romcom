@@ -7,7 +7,7 @@ var randomButton = document.querySelector(".random-cover-button")
 var makeNewButton = document.querySelector(".make-new-button")
 var formView = document.querySelector(".form-view")
 var homeView = document.querySelector(".home-view")
-var savedView = document.querySelector(".saved-covers-section")
+var savedView = document.querySelector(".saved-view")
 var saveCoverButton = document.querySelector(".save-cover-button")
 var homeButton = document.querySelector(".home-button")
 var savedCoversButton = document.querySelector(".view-saved-button")
@@ -16,7 +16,7 @@ var userTitle = document.querySelector(".user-title")
 var userDescriptor = document.querySelector(".user-desc1")
 var userDescriptor2 = document.querySelector(".user-desc2")
 var makeBookButton = document.querySelector(".create-new-book-button")
-
+var savedCoversSection = document.querySelector(".saved-covers-section")
 
 
 // We've provided a few variables below
@@ -63,6 +63,18 @@ function displaySavedView() {
   saveCoverButton.classList.add("hidden")
   randomButton.classList.add("hidden")
   homeButton.classList.remove("hidden")
+  var savedCoverHTML = ""
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoverHTML +=
+    `<section class="main-cover">
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+    </section>`
+  }
+  savedCoversSection.innerHTML = savedCoverHTML
 }
 
 function displayHomeView() {
@@ -93,7 +105,3 @@ function saveCover() {
     savedCovers.push(currentCover)
   }
 }
-
-
-//We want to save the current displayed covers by putting the cover, title and descriptors in the savedCovers array
-//if the current displayed cover is a custom cover we only want to save that one
