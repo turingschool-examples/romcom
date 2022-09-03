@@ -79,8 +79,7 @@ function displaySavedPage() {
   saveCoverButton.classList.add('hidden')
 }
 
-function newCoverForm(e) {
-  e.preventDefault()
+function newCoverForm() {
   userBook = new Cover (userCover, userTitle, userDescriptor1, userDescriptor2)
   currentCover = userBook
   covers.push(userCover.value)
