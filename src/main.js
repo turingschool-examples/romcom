@@ -59,32 +59,45 @@ function displayCover() {
 }
 
 function viewForm() {
-  homePage.setAttribute('style', 'display: none')
-  formPage.className = 'view form-view'
-  homeButton.className = 'home-button'
-  randomCoverButton.setAttribute('style', 'display: none')
-  saveCoverButton.setAttribute('style', 'display: none')
-  viewSavedCoversButton.setAttribute('style', 'display: ')
-  makeYourOwnCoverButton.setAttribute('style', 'display: ')
+  homePage.style.display = "none";
+  formPage.style.display = "block";
+  homeButton.style.display = "block";
+  randomCoverButton.style.display = "none";
+  saveCoverButton.style.display = "none";
+  viewSavedCoversButton.style.display = "block";
+  makeYourOwnCoverButton.style.display = "block";
 }
 
 function viewHome() {
-  homePage.setAttribute('style', 'display: ')
-  formPage.className = 'view form-view hidden'
-  homeButton.className = 'home-button hidden'
-  randomCoverButton.setAttribute('style', 'display: ')
-  saveCoverButton.setAttribute('style', 'display: ')
-  viewSavedCoversButton.setAttribute('style', 'display: ')
-  makeYourOwnCoverButton.setAttribute('style', 'display: ')
+  homePage.style.display = "block";
+  formPage.style.display = "none";
+  homeButton.style.display = "none";
+  randomCoverButton.style.display = "block";
+  saveCoverButton.style.display = "block";
+  viewSavedCoversButton.style.display = "block";
+  makeYourOwnCoverButton.style.display = "block";
 }
 
 function viewSavedCovers() {
-  homePage.setAttribute('style', 'display: none')
-  formPage.className = 'view form-view hidden'
-  savedCoversPage.className = 'view saved-view'
-  randomCoverButton.setAttribute('style', 'display: none')
-  viewSavedCoversButton.setAttribute('style', 'display: none')
-  homeButton.className = `home-button`
+  homePage.style.display = "none";
+  formPage.style.display = "none";
+  savedCoversPage.style.display = "block";
+  randomCoverButton.style.display = "block";
+  viewSavedCoversButton.style.display = "none";
+  homeButton.style.display = "block";
+  document.querySelector(".saved-covers-section").innerHTML= "";
+  for(var i = 0; i < savedCovers.length; i++) {
+     document.querySelector(".saved-covers-section").innerHTML += `
+<span class = "mini-cover" id = "${savedCovers[i].id}">
+<img class = "cover-image" src = ${savedCovers[i].cover}>
+<h2 class = "cover-title">${savedCovers[i].title}</h2>
+<h3 class = "tagline"> A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+<img class="price-tag" src="./assets/price.png">
+<img class="overlay" src="./assets/overlay.png">
+</span>
+     `
+   }
+
 }
 
 function makeBookCover(event) {
@@ -109,13 +122,18 @@ event.preventDefault()
 }
 
 
-function saveCover() {
-  if (savedCovers.includes(currentCover) !== true) {
-    savedCovers.push(currentCover)
+function saveCover(event) {
+  event.preventDefault()
+  if (!savedCovers.includes(currentCover)) {
+console.log(currentCover)
+console.log(savedCovers)
+    savedCovers.push(currentCover);
   }
+
 }
+function displaySavedCovers() {
 
-
+}
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
