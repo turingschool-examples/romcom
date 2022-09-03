@@ -106,10 +106,13 @@ function addToSaved() {
   var coverImage = document.createElement('img');
   var title = document.createElement('h2')
   var descriptors = document.createElement('h3');
+  var indexPosition = savedCovers.length - 1;
+
 
   coverImage.src = savedCovers[savedCovers.length - 1].cover;
   title.innerText = savedCovers[savedCovers.length - 1].title;
   descriptors.innerText = `A tale of ${savedCovers[savedCovers.length - 1].tagline1} and ${savedCovers[savedCovers.length - 1].tagline2}`;
+ 
 
   savedSection.appendChild(savedCover);
   savedCover.appendChild(coverImage);
