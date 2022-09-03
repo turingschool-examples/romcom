@@ -71,13 +71,20 @@ function saveCovers() {
   randomCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   viewSavedCoversSection.classList.remove('hidden')
+  viewSavedCoversSection.classList.add('.mini-cover')
+  viewSavedCoversSection.classList.remove('.main-cover')
+  // viewSavedCoversSection.classList.add('.mini-cover > .cover-title')
+  // viewSavedCoversSection.classList.add('.mini-cover > .cover-title::first-letter')
+  // viewSavedCoversSection.classList.add('.mini-cover > .tagline')
   viewFormView.classList.add('hidden')
-  var displayCoverHTML;
+  var displayCoverHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     displayCoverHTML +=
       `<img class="cover-image" src=${savedCovers[i].cover}>
       <h2 class="cover-title">${savedCovers[i].title}</h2>
-      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">`
     }
  viewSavedCoversSection.innerHTML = displayCoverHTML
 }
