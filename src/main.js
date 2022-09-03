@@ -96,7 +96,16 @@ function makeMyBook(event) {
   showCover(currentCover)
 }
 
-// function saveMyCover(currentCover) {
-//   if(!savedCovers.includes === currentCover) {
-//     savedCovers.push(currentCover);
-// }
+function saveMyCover(currentCover) {
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
+
+function displaySavedCovers() {
+  for(var i =0; i < savedCovers.length; i++) {
+    showCover(savedCovers[i])
+  }
+}
+
+//insert cover image, cover title, 2 descriptors
