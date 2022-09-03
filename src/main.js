@@ -1,9 +1,11 @@
+//Home Page
 var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var makeYourOwnButton = document.querySelector('.make-new-button')
 makeYourOwnButton.type = 'button'
 var homeButton = document.querySelector('.home-button')
+//Form Page
 var newBookButton = document.querySelector('.create-new-book-button')
 var mainCoverDisplay = document.querySelector('.main-cover')
 var displayCoverImage = document.querySelector('.cover-image')
@@ -23,12 +25,14 @@ var savedCovers = [
 ];
 var currentCover 
 
-// Add your event listeners here 👇
-randomCoverButton.addEventListener('click', makeNewCover)
+//**EventListeners
+//Home Page
+randomCoverButton.addEventListener('click', showNewCover)
 makeYourOwnButton.addEventListener('click', displayFormPage)
 viewSavedButton.addEventListener('click', displaySavedPage)
 homeButton.addEventListener('click', displayHomePage)
-newBookButton.addEventListener('click', newCoverForm)
+//Form Page
+newBookButton.addEventListener('click', displayUserBook)
 
 
 // Create your event handlers and other functions here 👇)
@@ -36,31 +40,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeNewCover() {
+//Home Page -- Random Button
+function showNewCover() {
 var coverImgSrc = covers[getRandomIndex(covers)]
 var title = titles[getRandomIndex(titles)]
 var descriptor1 = descriptors[getRandomIndex(descriptors)]
 var descriptor2 = descriptors[getRandomIndex(descriptors)]
-currentCover = new Cover(coverImgSrc,title,descriptor1, descriptor2)
-displayNewRandom()
-}
 
-function displayNewRandom() {
+currentCover = new Cover(coverImgSrc,title,descriptor1, descriptor2)
   displayCoverImage.src = currentCover.cover
   displayCoverTitle.innerText = currentCover.title
   displayTagline1.innerText = currentCover.tagline1
   displayTagline2.innerText = currentCover.tagline2
 }
-
-function displayFormPage() {
-  formPage.classList.remove('hidden')
-  homePage.classList.add('hidden')
-  savedPage.classList.add('hidden')
-  homeButton.classList.remove('hidden')
-  randomCoverButton.classList.add('hidden')
-  saveCoverButton.classList.add('hidden')
-}
-
+//Home Page -- Button Navs
 function displayHomePage() {
   formPage.classList.add('hidden')
   homePage.classList.remove('hidden')
@@ -70,6 +63,7 @@ function displayHomePage() {
   saveCoverButton.classList.remove('hidden')
 }
 
+//View Saved Covers Page -- Button Navs
 function displaySavedPage() {
   formPage.classList.add('hidden')
   homePage.classList.add('hidden')
@@ -79,19 +73,42 @@ function displaySavedPage() {
   saveCoverButton.classList.add('hidden')
 }
 
-function newCoverForm() {
-  userBook = new Cover (userCover, userTitle, userDescriptor1, userDescriptor2)
-  currentCover = userBook
-  covers.push(userCover.value)
-  titles.push(userTitle.value)
-  descriptors.push(userDescriptor1.value, userDescriptor2.value)
-  displayUserBook()
+//Form Page -- Button Navs
+function displayFormPage() {
+  formPage.classList.remove('hidden')
+  homePage.classList.add('hidden')
+  savedPage.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  randomCoverButton.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+}
+//Form Page -- User Input
+function displayUserBook() {
+  event.preventDefault()
+  displayCoverImage.src = userCover.value
+  displayCoverTitle.innerText = userTitle.value
+  displayTagline1.innerText = userDescriptor1.value
+  displayTagline2.innerText = userDescriptor2.value
+  returnHome()
+}
+function returnHome() {
+  formPage.classList.add('hidden')
+  homePage.classList.remove('hidden')
+  savedPage.classList.add('hidden')
+  homeButton.classList.add('hidden')
+  randomCoverButton.classList.remove('hidden')
+  saveCoverButton.classList.remove('hidden')
 }
 
-function displayUserBook() {
-  displayCoverImage.src = userBook.cover
-  displayCoverTitle.innerText = userBook.title
-  displayTagline1.innerText = userBook.tagline1
-  displayTagline2.innerText = userBook.tagline2
-}
+// function newCoverForm() {
+//   // userBook = new Cover (userCover, userTitle, userDescriptor1, userDescriptor2)//   currentCover = userBook
+//   covers.push(userCover.value)
+//   titles.push(userTitle.value)
+//   descriptors.push(userDescriptor1.value, userDescriptor2.value)
+//   displayUserBook()
+// }
+
+
+
+
 
