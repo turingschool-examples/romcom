@@ -18,7 +18,9 @@ var inputUserCover = document.querySelector('.user-cover')
 var inputTitle = document.querySelector('.user-title')
 var inputDescriptor1 = document.querySelector('.user-desc1')
 var inputDescriptor2 = document.querySelector('.user-desc2')
+// queryselector for a saved cover
 var miniCover = document.querySelector('.mini-cover')
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -26,13 +28,15 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+
 randomCoverButton.addEventListener('click', showRandomCover);
 makeNewButton.addEventListener('click', makeOwnCover);
 viewSavedButton.addEventListener('click', saveCovers);
 homeButton.addEventListener('click', takeMeHome);
 makeMyBookButton.addEventListener('click', makeMyBook);
 saveCoverButton.addEventListener('click', saveMyCover);
-miniCover.addEventListener('dblclick', deleteBook);
+viewSavedCoversSection.addEventListener('dblclick', deleteBook);
+
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -67,6 +71,7 @@ function makeOwnCover() {
 }
 
 function saveCovers() {
+  event.preventDefault()
   viewHomeView.classList.add('hidden')
   viewSavedView.classList.remove('hidden')
   saveCoverButton.classList.add('hidden')
@@ -123,8 +128,9 @@ function saveMyCover() {
 
 function deleteBook() {
   for (var i = 0; i < savedCovers.length; i++) {
-    // if(savedCovers[i] === viewSavedCoversSection) {
+    if(savedCovers[i].id === Number(event.target.parentNode.id)) {
       savedCovers.splice(i, 1)
-    // }
+      }
+        saveCovers();
+      }
   }
-}
