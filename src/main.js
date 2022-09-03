@@ -92,6 +92,9 @@ function makeMyBookForm(){
   savedPageElement.classList.add("hidden")
   formPageElement.classList.add("hidden")
   homePageElement.classList.remove("hidden")
+  homeButton.classList.add("hidden")
+  saveButton.classList.remove("hidden")
+  randomCoverButton.classList.remove("hidden")
 
   htmlCoverImage.src = currentCover.cover
   htmlTitle.innerText = currentCover.title
