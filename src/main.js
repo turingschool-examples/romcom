@@ -21,10 +21,10 @@ var savedCoversSection = document.querySelector('.saved-covers-section')
 var newCover;
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-var newCover;
+var savedCovers = [];
+
+var newCover = new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+
 
 // Add your event listeners here 👇
 // Opens form-view when button is clicked
@@ -138,9 +138,11 @@ function addElement() {
 }
 
 function updateViewSavedCover(newCover) {
-  var newCoverStructure = `<img class="mini-cover" src="${newCover.cover}">
-  <h2 class="mini-cover > cover-title" class="mini-cover > cover-title::first-letter">${newCover.title}</h2>
-  <h3 class="mini-cover > tagline">A tale of <span class="mini-cover > tagline">${newCover.tagline1}</span> and <span class="mini-cover > tagline">${newCover.tagline2}</span></h3>`
+  var newCoverStructure = `<section id="${newCover.id}" class="mini-cover">
+  <img class="mini-cover" src="${newCover.cover}">
+  <h2 class="cover-title">${newCover.title}</h2>
+  <h3 class="tagline">A tale of ${newCover.tagline1} and ${newCover.tagline2}</span></h3>
+  </section>`
 
   savedCoversSection.innerHTML = savedCoversSection.innerHTML + newCoverStructure
 }
