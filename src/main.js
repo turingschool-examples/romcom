@@ -22,6 +22,8 @@ var titleInput = document.querySelector(".user-title")
 var firstDescriptorInput = document.querySelector(".user-desc1")
 var secondDescriptorInput = document.querySelector(".user-desc2")
 
+var savedCoversSection = document.querySelector(".saved-covers-section")
+
 // We've provided a few variables below
 var currentCover
 
@@ -74,6 +76,19 @@ function loadSavedCovers(){
   randomCoverButton.classList.add("hidden")
   saveButton.classList.add("hidden")
   homeButton.classList.remove("hidden")
+
+  // for (var i = 0; i < covers.length; i++){
+
+    savedCoversSection.innerHTML = (`<img class="mini-cover" src="${savedCovers[1].cover}">`
+      `<h2 class="cover-title">${savedCovers[1].title}</h2>`)
+    // (
+    // <img class="cover-image" src="./assets/prairie.jpg">
+    // <h2 class="cover-title">Windswept Hearts</h2>
+    // <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    // <img class="price-tag" src="./assets/price.png">
+    // <img class="overlay" src="./assets/overlay.png">
+    // )
+  // }
 }
 
 function loadHomePage(){
