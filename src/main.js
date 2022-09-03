@@ -14,11 +14,14 @@ var displayTagline1 = document.querySelector('.tagline-1')
 var displayTagline2 = document.querySelector('.tagline-2')
 var formPage = document.querySelector('.form-view')
 var homePage = document.querySelector('.home-view')
+//View Saves Page
 var savedPage = document.querySelector('.saved-view')
 var userCover = document.getElementById('cover')
 var userTitle = document.getElementById('title')
 var userDescriptor1 = document.getElementById('descriptor1')
 var userDescriptor2 = document.getElementById('descriptor2')
+//
+var customCoversPage
 
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -28,10 +31,11 @@ var currentCover
 //**EventListeners
 //Home Page
 randomCoverButton.addEventListener('click', showNewCover)
+saveCoverButton.addEventListener('click', saveBook)
 makeYourOwnButton.addEventListener('click', displayFormPage)
 viewSavedButton.addEventListener('click', displaySavedPage)
-homeButton.addEventListener('click', displayHomePage)
 //Form Page
+homeButton.addEventListener('click', displayHomePage)
 newBookButton.addEventListener('click', displayUserBook)
 
 
@@ -47,7 +51,7 @@ var title = titles[getRandomIndex(titles)]
 var descriptor1 = descriptors[getRandomIndex(descriptors)]
 var descriptor2 = descriptors[getRandomIndex(descriptors)]
 
-currentCover = new Cover(coverImgSrc,title,descriptor1, descriptor2)
+currentCover = new Cover(coverImgSrc, title, descriptor1, descriptor2)
   displayCoverImage.src = currentCover.cover
   displayCoverTitle.innerText = currentCover.title
   displayTagline1.innerText = currentCover.tagline1
@@ -63,6 +67,25 @@ function displayHomePage() {
   saveCoverButton.classList.remove('hidden')
 }
 
+//Home Page >> Save Cover Button
+function saveBook() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (currentCover.cover === savedCovers[i].cover && 
+        currentCover.title === savedCovers[i].title && 
+        currentCover.tagline1 === savedCovers[i].tagline1 &&
+        currentCover.tagline2 === savedCovers[i].tagline2) {
+      return   
+    } else {
+      savedCovers.push(currentCover)
+    }
+  }    
+}
+
+//View Saved Page
+function viewSavedCovers() {
+  // var galleryPage = document.createElement('div')
+  //   galleryPage.setAttribute('id', )
+}
 //View Saved Covers Page -- Button Navs
 function displaySavedPage() {
   formPage.classList.add('hidden')
