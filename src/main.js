@@ -20,8 +20,8 @@ var userCover = document.getElementById('cover')
 var userTitle = document.getElementById('title')
 var userDescriptor1 = document.getElementById('descriptor1')
 var userDescriptor2 = document.getElementById('descriptor2')
-//
-var customCoversPage
+var gallery = document.querySelector('.saved-covers-section')
+
 
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -33,7 +33,7 @@ var currentCover
 randomCoverButton.addEventListener('click', showNewCover)
 saveCoverButton.addEventListener('click', saveBook)
 makeYourOwnButton.addEventListener('click', displayFormPage)
-viewSavedButton.addEventListener('click', displaySavedPage)
+viewSavedButton.addEventListener('click', viewSavedCovers)
 //Form Page
 homeButton.addEventListener('click', displayHomePage)
 newBookButton.addEventListener('click', displayUserBook)
@@ -70,12 +70,10 @@ function displayHomePage() {
 //Home Page >> Save Cover Button
 function saveBook() {
   for (var i = 0; i < savedCovers.length; i++) {
-    if (currentCover.cover === savedCovers[i].cover && 
-        currentCover.title === savedCovers[i].title && 
-        currentCover.tagline1 === savedCovers[i].tagline1 &&
-        currentCover.tagline2 === savedCovers[i].tagline2) {
-      return   
-    } else {
+    if (`${currentCover.cover}${currentCover.title}${currentCover.tagline1}${currentCover.tagline2}`
+        === `${savedCovers.cover}${savedCovers.title}${savedCovers.tagline1}${savedCovers.tagline2}`) {
+        return   
+    }else{
       savedCovers.push(currentCover)
     }
   }    
@@ -83,9 +81,21 @@ function saveBook() {
 
 //View Saved Page
 function viewSavedCovers() {
+  gallery.classList.add('mini-cover')
+  gallery.innerHTML += ''
+  for(var i = 0; i < savedCovers.length; i++){
+  gallery.innerHTML += `
+  <img class="cover-image" src="${savedCovers[i].cover}">
+  <h2 class="cover-title">${savedCovers[i].title}</h2>
+  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and 
+  <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+  `
+  }
+  displaySavedPage()
   // var galleryPage = document.createElement('div')
   //   galleryPage.setAttribute('id', )
 }
+
 //View Saved Covers Page -- Button Navs
 function displaySavedPage() {
   formPage.classList.add('hidden')
@@ -114,6 +124,7 @@ function displayUserBook() {
   displayTagline2.innerText = userDescriptor2.value
   returnHome()
 }
+
 function returnHome() {
   formPage.classList.add('hidden')
   homePage.classList.remove('hidden')
@@ -123,13 +134,6 @@ function returnHome() {
   saveCoverButton.classList.remove('hidden')
 }
 
-// function newCoverForm() {
-//   // userBook = new Cover (userCover, userTitle, userDescriptor1, userDescriptor2)//   currentCover = userBook
-//   covers.push(userCover.value)
-//   titles.push(userTitle.value)
-//   descriptors.push(userDescriptor1.value, userDescriptor2.value)
-//   displayUserBook()
-// }
 
 
 
