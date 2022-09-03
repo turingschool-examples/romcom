@@ -89,6 +89,7 @@ function openSavedCovers() {
   coverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   savedPage.classList.remove('hidden');
+  showSavedCovers()
 }
 // Opens home page
 function openHomePage() {
@@ -119,4 +120,29 @@ function selectRandomDescriptor() {
 // Instantiates a new cover instance from
 function makeCoverInstance(cover, title, desc1, desc2) {
   return new Cover(cover, title, desc1, desc2);
+}
+//     <section class="main-cover">
+//         <img class="cover-image" src="./assets/prairie.jpg">
+//         <h2 class="cover-title">Windswept Hearts</h2>
+//         <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+//         <img class="price-tag" src="./assets/price.png">
+//         <img class="overlay" src="./assets/overlay.png">
+//       </section>
+function addElement() {
+  const newImg = document.createElement('img')
+  newImg.classList.add("cover-image")
+  newImg.createAttribute("src")
+}
+
+var savedCoversSection = document.querySelector('.saved-covers-section')
+
+function showSavedCovers() {
+  for (i = 0; i < savedCovers.length; i++) {
+    var coverLoader = ``
+    var coverInSavedArray = `<img class="mini-cover" src="${savedCovers[i].cover}">
+    <h2 class="mini-cover > cover-title" class="mini-cover > cover-title::first-letter">${savedCovers[i].title}</h2>
+    <h3 class="mini-cover > tagline">${savedCovers[i].tagline1} <span class="mini-cover > tagline">passion</span> and <span class="mini-cover > tagline">${savedCovers[i].tagline2}</span></h3>`
+
+    savedCoversSection.innerHTML = coverLoader + coverInSavedArray
+  }
 }
