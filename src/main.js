@@ -10,7 +10,13 @@ var mainPage = document.querySelector('.home-view')
 var savedCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
-var savedCoversPage = document.querySelector('.saved-covers-section')
+var savedCoversPage = document.querySelector('.saved-view')
+var createNewBookButton = document.querySelector('.create-new-book-button')
+var coverInput = document.querySelector('.user-cover')
+var titleInput = document.querySelector('.user-title')
+var userDesc1Input = document.querySelector('.user-desc1')
+var userDesc2Input = document.querySelector('.user-desc2')
+
 
 
 // We've provided a few variables below
@@ -18,17 +24,17 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover
+var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', loadRandomCover)
 randomCoverButton.addEventListener('click', loadRandomCover)
 makeCoverButton.addEventListener('click', displayMakeCoverForm)
 viewSavedButton.addEventListener('click', displaySavedCoverPage)
+homeButton.addEventListener('click', displayHomePage)
+createNewBookButton.addEventListener('click', createCustomBook)
 
 // Create your event handlers and other functions here 👇
-
-
 function getRandomIndex(array) {
   var index = Math.floor(Math.random() * array.length)
   return array[index]
@@ -73,7 +79,64 @@ function displayMakeCoverForm() {
 
  function displaySavedCoverPage() {
   hide(mainPage)
+  hide(makeCoverForm)
   hide(savedCoverButton)
   hide(randomCoverButton)
   show(savedCoversPage)
+  show(homeButton)
  }
+
+ function displayHomePage() {
+  hide(makeCoverForm)
+  hide(homeButton)
+  hide(savedCoversPage)
+  show(savedCoverButton)
+  show(randomCoverButton)
+  show(mainPage)
+ }
+
+ // Here's what I've written that is partially working:
+ 
+//  function createCustomBook() {
+//   // Could the event.preventDefault() method be used here to prevent loading a new page?
+  
+//   covers.push(coverInput.value)
+//       console.log('userDefinedCover: ', coverInput.value)
+//   titles.push(titleInput.value)
+//       console.log(titleInput.value)
+//   descriptors.push(userDesc1Input.value)
+//       console.log(userDesc1Input.value)
+//   descriptors.push(userDesc2Input.value)
+//       console.log(userDesc2Input.value)
+//   new Cover(coverInput.value, titleInput.value, userDesc1Input.value, userDesc2Input.value)
+// // Change back to Home view and display custom cover
+
+//   // This is the same code from the randomCover function
+//   coverImg.src = currentCover.cover
+//   coverTitle.innerText = currentCover.title
+//   firstDescriptor.innerText = currentCover.tagline1
+//   secondDescriptor.innerText = currentCover.tagline2
+//   console.log('Here are some words')
+
+
+// // These might be needed to meet the spec. Idk for now.
+//   hide(makeCoverForm)
+//   // show(savedCoverButton)
+//   show(randomCoverButton)
+//   show(savedCoversPage)
+//   }
+
+
+//Jake's new idea
+function createCustomBook(event) {
+  event.stopPropogation()
+  currentCover = new Cover(
+    coverInput.value,
+    titleInput.value,
+    userDesc1Input.value,
+    user2Desc2Input.value
+  )
+  loadNewPoster()
+  hideElements()
+  unhideElements()
+}
