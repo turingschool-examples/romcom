@@ -77,55 +77,7 @@ function loadSavedCovers(){
   saveButton.classList.add("hidden")
   homeButton.classList.remove("hidden")
 
-}
 
-function viewSavedCovers(){
-  for (var i = 0; i < savedCovers.length; i++){
-    var savedSubSection = document.createElement("section")
-    var savedImage = document.createElement("img")
-    var savedTitle = document.createElement("h2")
-    var savedTagline = document.createElement("h3")
-    var savedPriceTag = document.createElement("img")
-    var savedOverlay = document.createElement("img")
-
-    savedSubSection.classList.add("mini-cover")
-
-    savedImage.classList.add("mini-cover")
-    savedImage.src = savedCovers[i].cover
-
-    savedTitle.classList.add("cover-title")
-    savedTitle.innerText = savedCovers[i].title
-
-    savedTagline.classList.add("tagline")
-    var spanClass1 = document.createElement("span")
-    spanClass1.classList.add("tagline-1")
-    spanClass1.innerText = savedCovers[i].tagline1
-
-    var spanClass2 = document.createElement("span")
-    spanClass2.classList.add("tagline-2")
-    spanClass2.innerText = savedCovers[i].tagline2
-
-    var taglineText1 = document.createTextNode("A tale of ")
-    var taglineText2 = document.createTextNode(" and ")
-    savedTagline.appendChild(taglineText1)
-    savedTagline.appendChild(spanClass1)
-    savedTagline.appendChild(taglineText2)
-    savedTagline.appendChild(spanClass2)
-
-    savedPriceTag.classList.add("price-tag")
-    savedPriceTag.src = "./assets/price.png"
-
-    savedOverlay.classList.add("overlay")
-    savedOverlay.src = "./assets/overlay.png"
-
-    savedSubSection.appendChild(savedImage)
-    savedSubSection.appendChild(savedTitle)
-    savedSubSection.appendChild(savedTagline)
-    savedSubSection.appendChild(savedPriceTag)
-    savedSubSection.appendChild(savedOverlay)
-
-    savedCoversSection.appendChild(savedSubSection)
-  }
 }
 
 function loadHomePage(){
@@ -167,8 +119,62 @@ function makeMyBookForm(){
   }
 }
 
+function viewSavedCovers(){
+
+}
+
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)){
   savedCovers.push(currentCover)
+
   }
+//display first, redeploy fxn here
+
+    var savedSubSection = document.createElement("section") //refactor helper function
+    var savedImage = document.createElement("img")
+    var savedTitle = document.createElement("h2")
+    var savedTagline = document.createElement("h3")
+    var savedPriceTag = document.createElement("img")
+    var savedOverlay = document.createElement("img")
+
+    savedSubSection.classList.add("mini-cover")
+
+    savedImage.classList.add("mini-cover")
+    savedImage.src = savedCovers[savedCovers.length-1].cover
+
+    savedTitle.classList.add("cover-title")
+    savedTitle.innerText = savedCovers[savedCovers.length-1].title
+
+    savedTagline.classList.add("tagline")
+    var spanClass1 = document.createElement("span")
+    spanClass1.classList.add("tagline-1")
+    spanClass1.innerText = savedCovers[savedCovers.length-1].tagline1
+
+    var spanClass2 = document.createElement("span")
+    spanClass2.classList.add("tagline-2")
+    spanClass2.innerText = savedCovers[savedCovers.length-1].tagline2
+
+    var taglineText1 = document.createTextNode("A tale of ")
+    var taglineText2 = document.createTextNode(" and ")
+    savedTagline.appendChild(taglineText1)
+    savedTagline.appendChild(spanClass1)
+    savedTagline.appendChild(taglineText2)
+    savedTagline.appendChild(spanClass2)
+
+    savedPriceTag.classList.add("price-tag")
+    savedPriceTag.src = "./assets/price.png"
+
+    savedOverlay.classList.add("overlay")
+    savedOverlay.src = "./assets/overlay.png"
+
+    savedSubSection.appendChild(savedImage)
+    savedSubSection.appendChild(savedTitle)
+    savedSubSection.appendChild(savedTagline)
+    savedSubSection.appendChild(savedPriceTag)
+    savedSubSection.appendChild(savedOverlay)
+
+    savedCoversSection.appendChild(savedSubSection)
+
+//display first function - don't push just dsiplay
+
 }
