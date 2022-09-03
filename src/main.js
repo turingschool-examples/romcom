@@ -183,6 +183,19 @@ function saveCurrentCover() {
 }
 
 function deleteSavedCover(event){
-  console.log(event.target.parentElement);
   miniCoverID = event.target.parentElement
+  for(var i = 0; i< savedCovers.length; i++) {
+    if(savedCovers[i].id.toString() === miniCoverID.id) {
+      savedCovers.splice(i, 1)
+
+    }
+  }
+
+  // if (savedCovers.includes(currentCover)){
+  // savedCovers.delete(currentCover)
+
+
+
+  // }
+
 }
