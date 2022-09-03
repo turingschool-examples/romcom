@@ -54,10 +54,14 @@ homeBtn.addEventListener("click", home);
 viewSavedCoversBtn.addEventListener("click", viewSavedCovers);
 createNewBookButton.addEventListener("click", makeYourCover);
 makeMyBookBtn.addEventListener("click", createNewBook);
+saveCoverBtn.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 
 function viewSavedCovers() {
+  for(var i = 1; i < savedCovers.length; i++) {
+    createCoverElement(savedCovers[i])
+  }
   homeView.classList.add("hidden");
   formView.classList.add("hidden");
   customizeBtn.classList.add("hidden");
@@ -93,6 +97,25 @@ function createNewBook(event) {
 
   home();
 }
+
+function saveCover() {
+  savedCovers.push(currentCover)
+}
+
+function createCoverElement(obj) {
+  var newDiv = document.createElement('div')
+  newDiv.classList.add('mini-cover')
+  newDiv.innerHTML = `
+  <img src = "${obj.cover}" alt = "romcom image" height = "100%">
+  <h4 class='cover-title'>${obj.title}</h4>
+  <p class='tagline'> A tale of ${obj.tagLine1} and ${obj.tagLine2}</p>
+  `
+
+  savedCoverSection.appendChild(newDiv)
+
+}
+
+
 
 function home() {
   homeView.classList.remove("hidden");
