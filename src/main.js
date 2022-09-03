@@ -18,6 +18,7 @@ var inputUserCover = document.querySelector('.user-cover')
 var inputTitle = document.querySelector('.user-title')
 var inputDescriptor1 = document.querySelector('.user-desc1')
 var inputDescriptor2 = document.querySelector('.user-desc2')
+var miniCover = document.querySelector('.mini-cover')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -31,6 +32,7 @@ viewSavedButton.addEventListener('click', saveCovers);
 homeButton.addEventListener('click', takeMeHome);
 makeMyBookButton.addEventListener('click', makeMyBook);
 saveCoverButton.addEventListener('click', saveMyCover);
+miniCover.addEventListener('dblclick', deleteBook);
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -71,20 +73,18 @@ function saveCovers() {
   randomCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   viewSavedCoversSection.classList.remove('hidden')
-  viewSavedCoversSection.classList.add('.mini-cover')
-  viewSavedCoversSection.classList.remove('.main-cover')
-  // viewSavedCoversSection.classList.add('.mini-cover > .cover-title')
-  // viewSavedCoversSection.classList.add('.mini-cover > .cover-title::first-letter')
-  // viewSavedCoversSection.classList.add('.mini-cover > .tagline')
   viewFormView.classList.add('hidden')
+
   var displayCoverHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     displayCoverHTML +=
-      `<img class="cover-image" src=${savedCovers[i].cover}>
+      `<section class='mini-cover' id=${savedCovers[i].id}>
+      <img class="cover-image" src=${savedCovers[i].cover}>
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       <img class="price-tag" src="./assets/price.png">
-      <img class="overlay" src="./assets/overlay.png">`
+      <img class="overlay" src="./assets/overlay.png">
+      </section>`
     }
  viewSavedCoversSection.innerHTML = displayCoverHTML
 }
@@ -118,5 +118,13 @@ function saveMyCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
     }
+  }
+}
+
+function deleteBook() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    // if(savedCovers[i] === viewSavedCoversSection) {
+      savedCovers.splice(i, 1)
+    // }
   }
 }
