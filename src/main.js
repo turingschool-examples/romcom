@@ -2,6 +2,7 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var makeYourOwnButton = document.querySelector('.make-new-button')
+makeYourOwnButton.type = 'button'
 var homeButton = document.querySelector('.home-button')
 var newBookButton = document.querySelector('.create-new-book-button')
 var mainCoverDisplay = document.querySelector('.main-cover')
@@ -28,6 +29,7 @@ makeYourOwnButton.addEventListener('click', displayFormPage)
 viewSavedButton.addEventListener('click', displaySavedPage)
 homeButton.addEventListener('click', displayHomePage)
 newBookButton.addEventListener('click', newCoverForm)
+
 
 // Create your event handlers and other functions here 👇)
 function getRandomIndex(array) {
@@ -77,11 +79,13 @@ function displaySavedPage() {
   saveCoverButton.classList.add('hidden')
 }
 
-function newCoverForm() {
-  covers.push(userCover)
-  titles.push(userTitle)
-  descriptors.push(userDescriptor1, userDescriptor2)
+function newCoverForm(e) {
+  e.preventDefault()
   userBook = new Cover (userCover, userTitle, userDescriptor1, userDescriptor2)
+  currentCover = userBook
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  descriptors.push(userDescriptor1.value, userDescriptor2.value)
   displayUserBook()
 }
 
@@ -91,3 +95,4 @@ function displayUserBook() {
   displayTagline1.innerText = userBook.tagline1
   displayTagline2.innerText = userBook.tagline2
 }
+
