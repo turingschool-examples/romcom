@@ -15,6 +15,9 @@ var cover = document.querySelector('.cover-image');
 var title = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('.tagline-1');
 var descriptor2 = document.querySelector('.tagline-2');
+
+var savedCoversSection = document.querySelector('.saved-covers-section')
+
 var newCover;
 
 // We've provided a few variables below
@@ -47,6 +50,7 @@ function getRandomIndex(array) {
 function copyHomePage() {
   if (!savedCovers.includes(newCover)) {
     savedCovers.push(newCover)
+    updateViewSavedCover(newCover)
   }
 }
 // Creates new book
@@ -89,7 +93,6 @@ function openSavedCovers() {
   coverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   savedPage.classList.remove('hidden');
-  showSavedCovers()
 }
 // Opens home page
 function openHomePage() {
@@ -134,15 +137,10 @@ function addElement() {
   newImg.createAttribute("src")
 }
 
-var savedCoversSection = document.querySelector('.saved-covers-section')
+function updateViewSavedCover(newCover) {
+  var newCoverStructure = `<img class="mini-cover" src="${newCover.cover}">
+  <h2 class="mini-cover > cover-title" class="mini-cover > cover-title::first-letter">${newCover.title}</h2>
+  <h3 class="mini-cover > tagline">A tale of <span class="mini-cover > tagline">${newCover.tagline1}</span> and <span class="mini-cover > tagline">${newCover.tagline2}</span></h3>`
 
-function showSavedCovers() {
-  for (i = 0; i < savedCovers.length; i++) {
-    var coverLoader = ``
-    var coverInSavedArray = `<img class="mini-cover" src="${savedCovers[i].cover}">
-    <h2 class="mini-cover > cover-title" class="mini-cover > cover-title::first-letter">${savedCovers[i].title}</h2>
-    <h3 class="mini-cover > tagline">${savedCovers[i].tagline1} <span class="mini-cover > tagline">passion</span> and <span class="mini-cover > tagline">${savedCovers[i].tagline2}</span></h3>`
-
-    savedCoversSection.innerHTML = coverLoader + coverInSavedArray
-  }
+  savedCoversSection.innerHTML = savedCoversSection.innerHTML + newCoverStructure
 }
