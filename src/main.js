@@ -32,7 +32,7 @@ viewSavedButton.addEventListener('click', saveCovers);
 homeButton.addEventListener('click', takeMeHome);
 makeMyBookButton.addEventListener('click', makeMyBook);
 saveCoverButton.addEventListener('click', saveMyCover);
-miniCover.addEventListener('dblclick', deleteBook);
+ // document.querySelector(`#${viewSavedCoversSection.innerHTML}`).addEventListener('dblclick', deleteBook);
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
@@ -121,10 +121,11 @@ function saveMyCover() {
   }
 }
 
-function deleteBook() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    // if(savedCovers[i] === viewSavedCoversSection) {
-      savedCovers.splice(i, 1)
-    // }
-  }
-}
+// function deleteBook() {
+// event.preventDefault()
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     if(savedCovers[i].id === viewSavedCoversSection.innerHTML) {
+//       savedCovers.splice(i, 1)
+//     }
+//   }
+// }
