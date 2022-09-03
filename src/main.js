@@ -22,6 +22,7 @@ var savedSection = document.querySelector('.saved-covers-section');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+var currentCover;
 
 // Add your event listeners here 👇 (should go at the bottom)
 window.addEventListener('load', newRandomCover)
@@ -31,15 +32,17 @@ viewSavedButton.addEventListener('click', viewSavedCovers)
 homeButton.addEventListener('click', goHome)
 createNewBookButton.addEventListener('click', getNewBookData)
 saveCoverButton.addEventListener('click', addToSaved)
+
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)],
-    descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-    coverImage.src = currentCover.cover;
-    title.innerText = currentCover.title;
-    descriptor1.innerText = currentCover.tagline1;
-    descriptor2.innerText = currentCover.tagline2;
+  descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
 }
+
 function makeYourOwn() {
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
@@ -48,6 +51,7 @@ function makeYourOwn() {
   formView.classList.remove('hidden');
   savedView.classList.add('hidden');
 }
+
 function viewSavedCovers() {
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
@@ -56,6 +60,7 @@ function viewSavedCovers() {
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
+
 function goHome() {
   homeView.classList.remove('hidden');
   formView.classList.add('hidden');
@@ -66,6 +71,7 @@ function goHome() {
   viewSavedButton.classList.remove('hidden');
   makeNewButton.classList.remove('hidden');
 }
+
 function getNewBookData(event) {
   event.preventDefault();
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
@@ -74,7 +80,7 @@ function getNewBookData(event) {
   titles.push(userTitle.value);
   descriptors.push(userDesc1.value, userDesc2.value);
 
- 
+
   coverImage.src = currentCover.cover;
   title.innerText = currentCover.title;
   descriptor1.innerText = currentCover.tagline1;
@@ -82,10 +88,34 @@ function getNewBookData(event) {
 
   goHome();
 }
+
 function addToSaved() {
-  savedCovers.push(currentCover);
+  // var combined = currentCover.title + currentCover.tagline1 + currentCover.tagline2;
+  // for (let i = 0; i < savedCovers.length; i++) {
+  //   var savedCombined = savedCovers[i].title + savedCovers[i].tagline1 + savedCovers[i].tagline2;
+  //   if (savedCombined !== combined && i === savedCovers.length - 1) {
+  //     savedCovers.push(currentCover);
+  //   }
+  // }
+
   var savedCover = document.createElement('section');
+  var coverImage = document.createElement('img');
+  var title = document.createElement('h2')
+  var descriptors = document.createElement('h3');
+
+  coverImage.src = currentCover.cover;
+  title.innerText = currentCover.title;
+  descriptors.innerText = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`;
+
   savedSection.appendChild(savedCover);
+  savedCover.appendChild(coverImage);
+  savedCover.appendChild(title);
+  savedCover.appendChild(descriptors);
+
+  savedCover.classList.add("mini-cover");
+  coverImage.classList.add("mini-cover");
+  title.classList.add("cover-title");
+  descriptors.classList.add("tagline");
 }
 
 // We've provided one function to get you started
