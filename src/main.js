@@ -77,7 +77,9 @@ function loadSavedCovers(){
   saveButton.classList.add("hidden")
   homeButton.classList.remove("hidden")
 
-//ISSUE - loads the entire thing each click
+}
+
+function viewSavedCovers(){
   for (var i = 0; i < savedCovers.length; i++){
     var savedSubSection = document.createElement("section")
     var savedImage = document.createElement("img")
@@ -90,18 +92,31 @@ function loadSavedCovers(){
 
     savedImage.classList.add("mini-cover")
     savedImage.src = savedCovers[i].cover
-    //
-    // savedTitle.classList.add()
-    // savedTitle.innerText = savedCovers[i].title
-    //
-    // savedTagline.classList.add()
-    // savedTagline.innerText
-    //
-    // savedPriceTag.classList.add()
-    // savedPriceTag.src = "./assets/price.png"
-    //
-    // savedOverlay.classList.add()
-    // savedOverlay.src = "./assets/overlay.png"
+
+    savedTitle.classList.add("cover-title")
+    savedTitle.innerText = savedCovers[i].title
+
+    savedTagline.classList.add("tagline")
+    var spanClass1 = document.createElement("span")
+    spanClass1.classList.add("tagline-1")
+    spanClass1.innerText = savedCovers[i].tagline1
+
+    var spanClass2 = document.createElement("span")
+    spanClass2.classList.add("tagline-2")
+    spanClass2.innerText = savedCovers[i].tagline2
+
+    var taglineText1 = document.createTextNode("A tale of ")
+    var taglineText2 = document.createTextNode(" and ")
+    savedTagline.appendChild(taglineText1)
+    savedTagline.appendChild(spanClass1)
+    savedTagline.appendChild(taglineText2)
+    savedTagline.appendChild(spanClass2)
+
+    savedPriceTag.classList.add("price-tag")
+    savedPriceTag.src = "./assets/price.png"
+
+    savedOverlay.classList.add("overlay")
+    savedOverlay.src = "./assets/overlay.png"
 
     savedSubSection.appendChild(savedImage)
     savedSubSection.appendChild(savedTitle)
@@ -111,8 +126,6 @@ function loadSavedCovers(){
 
     savedCoversSection.appendChild(savedSubSection)
   }
-    // savedCoversSection.innerHTML = (`<img class="mini-cover" src="${savedCovers[1].cover}">`)
-
 }
 
 function loadHomePage(){
