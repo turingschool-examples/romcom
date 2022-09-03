@@ -70,25 +70,49 @@ function loadForm() {
 
 
 function loadSavedCovers(){
-  savedPageElement.classList.remove("hidden")
+  savedPageElement.classList.remove("hidden") //refactor?
   homePageElement.classList.add("hidden")
   formPageElement.classList.add("hidden")
   randomCoverButton.classList.add("hidden")
   saveButton.classList.add("hidden")
   homeButton.classList.remove("hidden")
 
-  // for (var i = 0; i < covers.length; i++){
+//ISSUE - loads the entire thing each click
+  for (var i = 0; i < savedCovers.length; i++){
+    var savedSubSection = document.createElement("section")
+    var savedImage = document.createElement("img")
+    var savedTitle = document.createElement("h2")
+    var savedTagline = document.createElement("h3")
+    var savedPriceTag = document.createElement("img")
+    var savedOverlay = document.createElement("img")
 
-    savedCoversSection.innerHTML = (`<img class="mini-cover" src="${savedCovers[1].cover}">`
-      `<h2 class="cover-title">${savedCovers[1].title}</h2>`)
-    // (
-    // <img class="cover-image" src="./assets/prairie.jpg">
-    // <h2 class="cover-title">Windswept Hearts</h2>
-    // <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-    // <img class="price-tag" src="./assets/price.png">
-    // <img class="overlay" src="./assets/overlay.png">
-    // )
-  // }
+    savedSubSection.classList.add("mini-cover")
+
+    savedImage.classList.add("mini-cover")
+    savedImage.src = savedCovers[i].cover
+    //
+    // savedTitle.classList.add()
+    // savedTitle.innerText = savedCovers[i].title
+    //
+    // savedTagline.classList.add()
+    // savedTagline.innerText
+    //
+    // savedPriceTag.classList.add()
+    // savedPriceTag.src = "./assets/price.png"
+    //
+    // savedOverlay.classList.add()
+    // savedOverlay.src = "./assets/overlay.png"
+
+    savedSubSection.appendChild(savedImage)
+    savedSubSection.appendChild(savedTitle)
+    savedSubSection.appendChild(savedTagline)
+    savedSubSection.appendChild(savedPriceTag)
+    savedSubSection.appendChild(savedOverlay)
+
+    savedCoversSection.appendChild(savedSubSection)
+  }
+    // savedCoversSection.innerHTML = (`<img class="mini-cover" src="${savedCovers[1].cover}">`)
+
 }
 
 function loadHomePage(){
@@ -104,7 +128,7 @@ function loadHomePage(){
 function makeMyBookForm(){
   currentCover = new Cover(coverInput.value, titleInput.value, firstDescriptorInput.value, secondDescriptorInput.value)
 
-  savedPageElement.classList.add("hidden")
+  savedPageElement.classList.add("hidden") //refactor
   formPageElement.classList.add("hidden")
   homePageElement.classList.remove("hidden")
   homeButton.classList.add("hidden")
