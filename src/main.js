@@ -103,7 +103,7 @@ function saveMyCover(currentCover) {
 }
 
 function displaySavedCovers() {
-  for(var i =0; i < savedCovers.length; i++) {
+  for(var i = 0; i < savedCovers.length; i++) {
     showCover(savedCovers[i])
   }
 }
