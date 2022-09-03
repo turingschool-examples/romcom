@@ -96,14 +96,7 @@ function makeMyBook(event) {
   showCover(currentCover)
 }
 
-function saveMyCover(currentCover) {
-  if(!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover);
-  }
-}
-
-function displaySavedCovers() {
-  for(var i =0; i < savedCovers.length; i++) {
-    return document.querySelector('.saved-view').style.display = savedCovers[i]
-  }
-}
+// function saveMyCover(currentCover) {
+//   if(!savedCovers.includes === currentCover) {
+//     savedCovers.push(currentCover);
+// }
