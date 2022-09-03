@@ -109,6 +109,6 @@ function createCustomBook(event) {
 }
 
 function saveUserInput() {
-  //push user input to array
+  if(!savedCovers.includes(currentCover))
   savedCovers.push(currentCover)
 }
