@@ -72,6 +72,14 @@ function saveCovers() {
   homeButton.classList.remove('hidden')
   viewSavedCoversSection.classList.remove('hidden')
   viewFormView.classList.add('hidden')
+  var displayCoverHTML;
+  for (var i = 0; i < savedCovers.length; i++) {
+    displayCoverHTML +=
+      `<img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>`
+    }
+ viewSavedCoversSection.innerHTML = displayCoverHTML
 }
 
 function takeMeHome() {
@@ -101,7 +109,6 @@ function makeMyBook() {
 function saveMyCover() {
   for (var i = 0; i < savedCovers.length; i++) {
   if (!savedCovers.includes(currentCover)) {
-  // if(!savedCovers.includes(currentCover.coverImgSrc) && !savedCovers.includes(currentCover.title) && !savedCovers.includes(currentCover.descriptor1) && !savedCovers.includes(currentCover.descriptor2)) {
     savedCovers.push(currentCover);
     }
   }
