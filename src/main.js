@@ -10,7 +10,7 @@ var mainPage = document.querySelector('.home-view')
 var savedCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
-var savedCoversPage = document.querySelector('.saved-view')
+var savedCoversPage = document.querySelector('.saved-covers-section')
 var createNewBookButton = document.querySelector('.create-new-book-button')
 var coverInput = document.querySelector('.user-cover')
 var titleInput = document.querySelector('.user-title')
@@ -18,6 +18,7 @@ var userDesc1Input = document.querySelector('.user-desc1')
 var userDesc2Input = document.querySelector('.user-desc2')
 var mainCover = document.querySelector('.main-cover')
 var saveButton = document.querySelector('.save-cover-button')
+var savedView = document.querySelector('.saved-view')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -82,9 +83,24 @@ function displayMakeCoverForm() {
   hide(makeCoverForm)
   hide(savedCoverButton)
   hide(randomCoverButton)
-  show(savedCoversPage)
+  hide(mainCover)
+  show(savedView)
   show(homeButton)
+  show(savedCoversPage)
+  savedCoversPage.innerHTML = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    if(!savedCovers.includes(savedCovers)) {
+    savedCoversPage.innerHTML += 
+    `<section class='mini-cover' id='${savedCovers[i].id}'> 
+    <img class='mini-cover cover-img'src='${savedCovers[i].cover}'> 
+    <h2 class=' cover-title'>${savedCovers[i].title}</h2> 
+    <h3 class= 'tagline'>A tale of <span class='tag-line1'> ${savedCovers[i].tagline1}</span> and <span class='tag-line2'> ${savedCovers[i].tagline2}</span></h3>
+    </section>`
+    }
+    findMiniCover()
+    }
  }
+
 
  function displayHomePage() {
   hide(makeCoverForm)
@@ -111,4 +127,23 @@ function createCustomBook(event) {
 function saveUserInput() {
   if(!savedCovers.includes(currentCover))
   savedCovers.push(currentCover)
+} 
+
+function findMiniCover() {
+  var miniCover = document.querySelectorAll('.mini-cover')
+  for (var i = 0; i < miniCover.length; i++) {
+    miniCover[i].addEventListener('dblclick', deleteMiniCover)
+  }
+}
+
+
+function deleteMiniCover(event) {
+  event.preventDefault()
+  console.log('being clicked')
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (event.currentTarget.id == savedCovers[i].id) {
+      savedCovers.splice(i, 1)
+    }
+  }
+  displaySavedCoverPage()
 }
