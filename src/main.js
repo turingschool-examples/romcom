@@ -104,6 +104,8 @@ function saveMyCover(currentCover) {
 
 function displaySavedCovers() {
   for(var i =0; i < savedCovers.length; i++) {
-    return document.querySelector('.saved-view').style.display = savedCovers[i]
+    showCover(savedCovers[i])
   }
 }
+
+//insert cover image, cover title, 2 descriptors
