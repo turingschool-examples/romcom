@@ -11,6 +11,12 @@ var savedCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var savedCoversPage = document.querySelector('.saved-view')
+var createNewBookButton = document.querySelector('.create-new-book-button')
+var coverInput = document.querySelector('.user-cover')
+var titleInput = document.querySelector('.user-title')
+var userDesc1Input = document.querySelector('.user-desc1')
+var userDesc2Input = document.querySelector('.user-desc2')
+
 
 
 // We've provided a few variables below
@@ -18,7 +24,12 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover
+userDefinedCover = coverInput.value
+userDefinedTitle = titleInput.value
+userTagLine1 = userDesc1Input.value
+userTagLine2 = userDesc2Input.value
+
+var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', loadRandomCover)
@@ -26,6 +37,8 @@ randomCoverButton.addEventListener('click', loadRandomCover)
 makeCoverButton.addEventListener('click', displayMakeCoverForm)
 viewSavedButton.addEventListener('click', displaySavedCoverPage)
 homeButton.addEventListener('click', displayHomePage)
+createNewBookButton.addEventListener('click', createCustomBook)
+
 
 // Create your event handlers and other functions here 👇
 
@@ -89,3 +102,28 @@ function displayMakeCoverForm() {
   show(randomCoverButton)
   show(mainPage)
  }
+
+ // Here's what I've written that is not working:
+ 
+ function createCustomBook() {
+  covers.push(userDefinedCover)
+  titles.push(userDefinedTitle)
+  descriptors.push(userTagLine1)
+  descriptors.push(userTagLine2)
+  new Cover(userDefinedCover.value, userDefinedTitle.value, userTagLine1.value, userTagLine2.value)
+
+
+  coverImg.src = currentCover.cover
+  coverTitle.innerText = currentCover.title
+  firstDescriptor.innerText = currentCover.tagline1
+  secondDescriptor.innerText = currentCover.tagline2
+  console.log('Here are some words')
+
+  // hide(makeCoverForm)
+  // show(savedCoverButton)
+  // show(randomCoverButton)
+  //show(mainPage)
+  
+  }
+
+
