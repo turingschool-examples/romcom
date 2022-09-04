@@ -70,6 +70,7 @@ function makeOwnCover () {
   saveCoverButton.classList.add('hidden')
   viewFormView.classList.remove('hidden')
   homeButton.classList.remove('hidden')
+  viewSavedView.classList.add('hidden')
 }
 
 function saveCovers () {
