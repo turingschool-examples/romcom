@@ -74,6 +74,7 @@ function displayMakeCoverForm() {
   hide(mainPage)
   hide(savedCoverButton)
   hide(randomCoverButton)
+  hide(savedView)
   show(makeCoverForm)
   show(homeButton)
  }
