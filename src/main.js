@@ -69,10 +69,10 @@ function displayHomePage() {
 
 //Home Page >> Save Cover Button
 function saveBook() {
+  var isSaved = true
   for (var i = 0; i < savedCovers.length; i++) {
-    if (`${currentCover.cover}${currentCover.title}${currentCover.tagline1}${currentCover.tagline2}`
-        === `${savedCovers.cover}${savedCovers.title}${savedCovers.tagline1}${savedCovers.tagline2}`) {
-        return   
+    if (currentCover.id === savedCovers[i].id && isSaved) {
+      return
     }else{
       savedCovers.push(currentCover)
     }
@@ -81,16 +81,29 @@ function saveBook() {
 
 //View Saved Page
 function viewSavedCovers() {
-  gallery.classList.add('mini-cover')
-  gallery.innerHTML += ''
-  for(var i = 0; i < savedCovers.length; i++){
-  gallery.innerHTML += `
-  <img class="cover-image" src="${savedCovers[i].cover}">
-  <h2 class="cover-title">${savedCovers[i].title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and 
-  <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-  `
-  }
+  // gallery.classList.add('mini-cover')
+  // gallery.innerHTML += ''
+  // for(var i = 0; i < savedCovers.length; i++){
+  // gallery.innerHTML += `
+  // <img class="cover-image" src="${savedCovers[i].cover}">
+  // <h2 class="cover-title">${savedCovers[i].title}</h2>
+  // <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and 
+  // <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+  // `
+  // }
+  var e = document.body; // whatever you want to append the rows to: 
+      for(var i = 0; i < v; i++){ 
+        var row = document.createElement("div"); 
+        row.className = "row"; 
+        for(var x = 1; x <= v; x++){ 
+            var cell = document.createElement("div"); 
+            cell.className = "gridsquare"; 
+            cell.innerText = (i * v) + x;
+            row.appendChild(cell); 
+        } 
+        e.appendChild(row); 
+      } 
+      document.getElementById("code").innerText = e.innerHTML;
   displaySavedPage()
   // var galleryPage = document.createElement('div')
   //   galleryPage.setAttribute('id', )
