@@ -18,7 +18,6 @@ var userDescriptor2 = document.querySelector(".user-desc2")
 var makeBookButton = document.querySelector(".create-new-book-button")
 var savedCoversSection = document.querySelector(".saved-covers-section")
 
-
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -33,6 +32,7 @@ savedCoversButton.addEventListener('click', displaySavedView)
 homeButton.addEventListener('click', displayHomeView)
 makeBookButton.addEventListener('click', createCustomCover)
 saveCoverButton.addEventListener('click', saveCover)
+savedCoversSection.addEventListener('dblclick', deleteCover)
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -66,7 +66,7 @@ function displaySavedView() {
   var savedCoverHTML = ""
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoverHTML +=
-    `<section class="main-cover">
+    `<section class="mini-cover" id=${savedCovers[i].id}>
     <img class="cover-image" src=${savedCovers[i].cover}>
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
@@ -104,4 +104,13 @@ function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
   }
+}
+
+function deleteCover() {
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers[i].id === Number(event.target.parentNode.id)) {
+        savedCovers.splice(i, 1)
+      }
+    }
+  displaySavedView()
 }
