@@ -1,4 +1,4 @@
-// Create variables targeting the relevant DOM elements here 👇
+// Create variables targeting the relevant DOM elements here  👇
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tag1 = document.querySelector('.tagline-1')
@@ -29,7 +29,7 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+// Add your event listeners here  👇
 window.addEventListener('load', makeRandomCover)
 
 randomButton.addEventListener('click', makeRandomCover)
