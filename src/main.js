@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+var coverLocation = document.querySelector(".cover-image")
+var titleLocation = document.querySelector(".cover-title")
+var firstTagLocation = document.querySelector(".tagline-1")
+var secondTagLocation = document.querySelector(".tagline-2")
 
 // We've provided a few variables below
 var savedCovers = [
@@ -12,6 +16,11 @@ var randomTitlesIndex = getRandomIndex(titles);
 var randomDescriptorsIndex1 = getRandomIndex(descriptors);
 var randomDescriptorsIndex2 = getRandomIndex(descriptors);
 
+var randomCoverImage = covers[randomCoversIndex];
+var randomTitleText = titles[randomTitlesIndex];
+var randomDescriptor1 = descriptors[randomDescriptorsIndex1];
+var randomDescriptor2 = descriptors[randomDescriptorsIndex2];
+
 // Add your event listeners here 👇
 
 
@@ -22,3 +31,8 @@ var randomDescriptorsIndex2 = getRandomIndex(descriptors);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+coverLocation.src = randomCoverImage
+titleLocation.innerText = randomTitleText
+firstTagLocation.innerText = randomDescriptor1
+secondTagLocation.innerText = randomDescriptor2
