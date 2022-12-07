@@ -19,12 +19,10 @@ console.log(currentCover)
 
 
 // Add your event listeners here 👇
-// document.getElementById("random-cover-button").addEventListener("click", showCurrentCover)
+document.querySelector('.random-cover-button').addEventListener("click", showCurrentCover)
 
 // Create your event handlers and other functions here 👇
-for (var i = 0; i < randomButton.length; i++) {
-  randomButton[i].addEventListener("click", showCurrentCover );
-}
+
 
 // show the cover we generated
 function showCurrentCover() {
