@@ -7,6 +7,11 @@ var savedCovers = [
 ];
 var currentCover;
 
+var randomCoversIndex = getRandomIndex(covers);
+var randomTitlesIndex = getRandomIndex(titles);
+var randomDescriptorsIndex1 = getRandomIndex(descriptors);
+var randomDescriptorsIndex2 = getRandomIndex(descriptors);
+
 // Add your event listeners here 👇
 
 
