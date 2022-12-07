@@ -29,7 +29,9 @@ function newRandomCover() {
     document.getElementsByClassName('cover-image')[0].src = covers[coverRandom]
     document.getElementsByClassName('cover-title')[0].innerHTML = titles[titleRandom]
     document.getElementsByClassName('tagline')[0].innerHTML = `A tale of ${descriptors[descriptorRandom1]} and ${descriptors[descriptorRandom2]}`
+
 }
+
 
 
 // We've provided one function to get you started
