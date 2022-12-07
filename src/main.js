@@ -26,10 +26,10 @@ document.querySelector('.random-cover-button').addEventListener("click", showCur
 
 // show the cover we generated
 function showCurrentCover() {
-  homeCover = covers[getRandomIndex(covers)]
-  homeTitle = titles[getRandomIndex(titles)]
-  homeTagline1 = descriptors[getRandomIndex(descriptors)]
-  homeTagline2 = descriptors[getRandomIndex(descriptors)]
+  homeCover.innerHTML = covers[getRandomIndex(covers)]
+  homeTitle.outerText = titles[getRandomIndex(titles)]
+  homeTagline1.outerText = descriptors[getRandomIndex(descriptors)]
+  homeTagline2.outerText = descriptors[getRandomIndex(descriptors)]
 }
 
 // We've provided one function to get you started
