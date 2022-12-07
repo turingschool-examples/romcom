@@ -1,5 +1,15 @@
 // Create variables targetting the relevant DOM elements here 👇
+var randomDesIndex1 = getRandomIndex(descriptors);
+var randomDesIndex2 = getRandomIndex(descriptors);
+var randomDescriptor1 = descriptors[randomDesIndex1];
+var randomDescriptor2 = descriptors[randomDesIndex2];
 
+var randomCoverIndex = getRandomIndex(covers);
+var randomCover = covers[randomCoverIndex];
+
+var randomTitleIndex = getRandomIndex(titles);
+var randomTitle = titles[randomTitleIndex];
+console.log(new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,6 +18,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+//on click - create a new random instance of the cover class
 
 
 // Create your event handlers and other functions here 👇
@@ -17,5 +28,3 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
