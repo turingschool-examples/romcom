@@ -1,13 +1,13 @@
 // Create variables targetting the relevant DOM elements here 👇
-var homeCover = document.getElementsByClassName('cover-image')
+var homeCover = document.querySelector('.cover-image')
 
-var homeTitle = document.getElementsByClassName('cover-title')
+var homeTitle = document.querySelector('.cover-title')
 
-var homeTagline1 = document.getElementsByClassName('tagline-1')
+var homeTagline1 = document.querySelector('.tagline-1')
 
-var homeTagline2 = document.getElementsByClassName('tagline-2')
+var homeTagline2 = document.querySelector('.tagline-2')
 
-var randomButton = document.getElementsByClassName('random-cover-button')
+var randomButton = document.querySelector('.random-cover-button')
 console.log(homeCover)
 
 // We've provided a few variables below
@@ -19,12 +19,10 @@ console.log(currentCover)
 
 
 // Add your event listeners here 👇
-// document.getElementById("random-cover-button").addEventListener("click", showCurrentCover)
+document.querySelector('.random-cover-button').addEventListener("click", showCurrentCover)
 
 // Create your event handlers and other functions here 👇
-for (var i = 0; i < randomButton.length; i++) {
-  randomButton[i].addEventListener("click", showCurrentCover);
-}
+
 
 // show the cover we generated
 function showCurrentCover() {
