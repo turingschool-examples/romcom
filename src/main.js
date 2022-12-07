@@ -8,7 +8,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+document.addEventListener('DOMContentLoaded',setRandomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -16,4 +16,9 @@ var currentCover;
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+//on page load function
+function setRandomCover(){
+  console.log("-----------------------HELLO!!!!");
 }
