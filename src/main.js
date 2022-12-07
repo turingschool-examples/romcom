@@ -1,13 +1,37 @@
 // Create variables targetting the relevant DOM elements here 👇
 // Pull up and display a new picture, headline, and tagline everytime we click "Show New Random Cover" button.
-
+// cover, titles, descriptors
 // We've provided a few variables below
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function getRandomIndex(titles) {
+  console.log(titles[Math.floor(Math.random() * titles.length)])
+}
+function getRandomIndex(covers) {
+  console.log(covers[Math.floor(Math.random() * covers.length)])
+}
+
+function getRandomIndex(descriptors) {
+  console.log(descriptors[Math.floor(Math.random() * descriptors.length)])
+}
+var currentCover = [
+  new Cover(getRandomIndex(covers), getRandomIndex(titles), getRandomIndex(descriptors), getRandomIndex(descriptors))
+]
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover = [
   new CurrentCover("./assets/prairie.jpg", "Windswept Hearts", "passion", "pigs")
 ]
+
+function getRandomIndex(title) {
+
+  return titles[Math.floor(Math.random() * cover.length)];
+}
 
 
 class Cover {
@@ -36,6 +60,3 @@ class Cover {
 
 
 // We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
