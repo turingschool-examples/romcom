@@ -22,3 +22,11 @@
 - Section at lines 26 - 28 would display the saved covers when the "View Saved Covers" button is clicked, currently hidden from view.
 - Section at lines 29 - 41 would display the fields user needs to fill out to make a new cover when the "Make Your Own Cover" button is clicked, currently hidden from view.
 - Our `<script>'s` after line 41 are referencing our other files to pull the data from.
+- After looking at the css file, it looks less like the formatting and more like the creation of things like buttons and images, as well as taking the input of the fields and interpolating them.
+
+### Styles.css
+- First real look at CSS
+- Looks like our specific formatting for everything user-facing.
+- Colors (backgrounds, text, buttons), fonts + font sizes, size and position of things on screen. Also button highlight colors when hovered.
+- Looks like it's referencing from the html file.
+- Does the formatting/placement of things on the cover image displayed when a cover is made, and the mini-form saved covers.
