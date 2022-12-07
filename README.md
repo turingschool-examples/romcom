@@ -2,6 +2,9 @@
 
 A boilerplate repo. 
 
+
+Lexye Kick off branch
+
 ## Set Up
 1. ONE teammate: fork this boilerplate repository 
 2. Clone down your new, forked repo
@@ -11,6 +14,7 @@ A boilerplate repo.
 6. Add all project partners and your assigned instructor as collaborators on the repository
 
 The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+
 
 ______________________________________________________  
 # README Template  
