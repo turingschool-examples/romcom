@@ -1,5 +1,15 @@
 // Create variables targetting the relevant DOM elements here 👇
+var randomDesIndex1 = getRandomIndex(descriptors);
+var randomDesIndex2 = getRandomIndex(descriptors);
+var randomDescriptor1 = descriptors[randomDesIndex1];
+var randomDescriptor2 = descriptors[randomDesIndex2];
 
+var randomCoverIndex = getRandomIndex(covers);
+var randomCover = covers[randomCoverIndex];
+
+var randomTitleIndex = getRandomIndex(titles);
+var randomTitle = titles[randomTitleIndex];
+console.log(new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,6 +18,7 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+//on click - create a new random instance of the cover class
 
 
 // Create your event handlers and other functions here 👇
@@ -17,3 +28,9 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+//console.log(new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
+
+
+//i wrote this: use main.js to grab data from the data.js page to randomize a new cover for the site. The data on the data page is stored in three arrays
