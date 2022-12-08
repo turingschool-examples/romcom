@@ -1,7 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImgSrc = document.querySelector('.cover-image')
 var title = document.querySelector('.cover-title')
-var tagline = document.querySelector('.tagline')
+
 var tagline = document.querySelector('.tagline')
 var tagline = document.querySelector('.tagline')
 var priceTag = document.querySelector('.price-tag')
