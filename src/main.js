@@ -4,7 +4,10 @@ var descriptorRandom1
 var descriptorRandom2
 var view
 var currentCover
-var count
+inputCover = document.getElementById("cover").value
+inputTitle = document.getElementById("title").value
+inputDescriptor1 = document.getElementById("descriptor1").value
+inputDescriptor2 = document.getElementById("descriptor2").value
     
 
 // We've provided a few variables below
@@ -15,22 +18,28 @@ var savedCovers = []
 //__________________________________________________________________________________
 
 
-var randomCover = document.getElementsByClassName("home-button hidden")
-randomCover[0].addEventListener('click', homeView)
+var coverView = document.getElementsByClassName("home-button hidden")
+coverView[0].addEventListener('click', homeView)
 
-var makeNew = document.getElementsByClassName("view-saved-button")
-makeNew[0].addEventListener('click', viewSaved)
+var saveView = document.getElementsByClassName("view-saved-button")
+saveView[0].addEventListener('click', viewSaved)
 
 var formView = document.getElementsByClassName("make-new-button")
 formView[0].addEventListener('click', viewForm)
 
 //...
 
+
 var randomCover = document.getElementsByClassName("random-cover-button")
 randomCover[0].addEventListener('click', newRandomCover)
 
 var saveCover = document.getElementsByClassName("save-cover-button")
 saveCover[0].addEventListener('click', saveCov)
+
+var createCover = document.getElementsByClassName("create-new-book-button")
+createCover[0].addEventListener('click', coverCreate)
+
+
 
 //__________________________________________________________________________________
 
@@ -65,6 +74,31 @@ function newRandomCover() {
       }
     }
 
+    function coverCreate() {
+
+      var inputCover = document.getElementById("cover").value
+      var inputTitle = document.getElementById("title").value
+      var inputDescriptor1 = document.getElementById("descriptor1").value
+      var inputDescriptor2 = document.getElementById("descriptor2").value
+
+      if(inputCover !== ''  && inputTitle !== '' && inputDescriptor1 !== '' && inputDescriptor2 !== '') {
+        
+        hide()
+
+        document.getElementsByClassName("cover-image")[0].src = inputCover
+        document.getElementsByClassName("cover-title")[0].innerHTML = inputTitle
+        document.getElementsByClassName("tagline")[0].innerHTML = `A tale of ${inputDescriptor1} and ${inputDescriptor2}`
+
+        document.getElementsByClassName("view home-view")[0].style.display = "block"
+
+      } else {
+        window.alert("All Elements Must be Filled in!");
+      }
+
+      currentCover = new Cover(inputCover, inputTitle, inputDescriptor1, inputDescriptor2)
+
+    }
+
 
 // Page Switching 👇
 //__________________________________________________________________________________
@@ -88,6 +122,7 @@ function viewSaved() {
     hide()
     buttonCheck()
     document.getElementsByClassName("view saved-view hidden")[0].style.display = "block"
+    document.getElementsByClassName("saved-covers-section")[0].style.display = "block"
 }
 
 function hide() {
