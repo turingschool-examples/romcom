@@ -1,6 +1,7 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
 var currentCover = 
 
 // Create variables targetting the relevant DOM elements here 👇
@@ -18,28 +19,13 @@ var currentCover =
 
 //Add your event listeners here 👇
 
-var image = document.querySelector('#image)');
 
-image.addEventListener ('click', function() {
-  image.src = './assets/fire.png';
-});
 
 //Create your event handlers and other functions here 👇
 
 
 // We've provided one function to get you started
-function createBook() {
-  titles.innerHTML = function getRandomIndex(titles) {
-    return (titles[Math.floor(Math.random() * titles.length)]);  
-  }
-cover.src = function getRandomIndex(covers) {
-  return (covers[Math.floor(Math.random() * covers.length)]);
-  }
-tagLine1.innerHTML = function getRandomIndex(tagLine1) {
-  return (tagLine1[Math.floor(Math.random() * tagLine1.length)]);
-}
-tagLine2.innerHTML = function getRandomIndex(tagLine2) {
-  return (tagLine1[Math.floor(Math.random() * tagLine2.length)]);
-}
-currentCover = new Cover(cover.src, titles.innerHTML, descriptor1.innerHTML, descriptor2.innerHTML) )
+
+function getRandomIndex() {
+  return Math.floor(Math.random() * array.length);
 }
