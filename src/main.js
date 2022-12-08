@@ -1,41 +1,38 @@
 // Create variables targetting the relevant DOM elements here 👇
-var image = document.querySelector('.cover-image');
-//var tagLine = document.querySelector(".grade-2");
+var image = document.querySelector(".cover-image");
+var tagLine = document.querySelector("h3.tagline");
 
-var makeYourOwnCover
+var makeYourOwnCover;
 
 // We've provided a few variables below
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  new Cover(
+    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+    "Sunsets and Sorrows",
+    "sunsets",
+    "sorrows"
+  ),
 ];
 var currentCover;
 
+class Cover {
+  constructor(coverImage, title, descriptor1, descriptor2) {
+    (this.cover = coverImage),
+      (this.title = title),
+      (this.tagline1 = descriptor1),
+      (this.tagline2 = descriptor2);
+  }
+}
+
 // Add your event listeners here 👇
 
-window.addEventListener('load', makeRandomCover)
+window.addEventListener("load", makeRandomCover);
 
 // Create your event handlers and other functions here 👇
-
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeRandomCover() {
-  
-}
-
-//class Cover {
-  //constructor(image, title, taglineDescriptors) {
-    //this.image = image;
-    //this.title = title;
-    //this.taglineDescriptors = taglineDescriptors
-  ////}
-}
-
-
-
-//tagLine.innerText = newData.schoolName;
-//bestGrade.innterText = newData.bestGrade;
+function makeRandomCover() {}
