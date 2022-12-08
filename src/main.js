@@ -3,6 +3,7 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTag1 = document.querySelector('.tagline-1');
 var coverTag2 = document.querySelector('.tagline-2');
+var randomCoverBtn = document.querySelector('.random-cover-button');
 
 
 // We've provided a few variables below
@@ -20,7 +21,9 @@ var currentCover  = new Cover(covers[randomImageIndex], titles[randomTitleIndex]
 
 // Add your event listeners here 👇
 
-document.addEventListener('load', currentCover);
+document.addEventListener('DOMContentLoaded', createRandomPoster);
+randomCoverBtn.addEventListener('click', createRandomPoster);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -33,7 +36,10 @@ function getRandomIndex(array) {
 }
 
 function createRandomPoster() {
-
+  coverImage.src = currentCover.cover
+  coverTitle.innerText = currentCover.title
+  coverTag1.innerText = currentCover.tagline1
+  coverTag2.innerText = currentCover.tagline2
 }
 
 
