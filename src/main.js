@@ -31,8 +31,8 @@ formView[0].addEventListener('click', viewForm)
 var randomCover = document.getElementsByClassName("random-cover-button")
 randomCover[0].addEventListener('click', newRandomCover)
 
-var formView = document.getElementsByClassName("make-new-button")
-formView[0].addEventListener('click', viewForm)
+var saveCover = document.getElementsByClassName("make-new-button")
+saveCover[0].addEventListener('click', viewForm)
 
 //__________________________________________________________________________________
 
