@@ -39,3 +39,6 @@ function createNewCover() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+// hello
+
