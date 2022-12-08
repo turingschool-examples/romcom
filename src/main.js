@@ -16,6 +16,7 @@ var savedCovers = [
 ];
 var currentCover;
 
+//We are practicing branch management
 
 // Add your event listeners here 👇
 //on click - create a new random instance of the cover class
