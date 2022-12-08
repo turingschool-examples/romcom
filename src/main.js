@@ -3,10 +3,15 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTag1 = document.querySelector('.tagline-1');
 var coverTag2 = document.querySelector('.tagline-2');
+var makeYourOwnPage = document.querySelector('.form-view')
+var homeView = document.querySelector('.home-view');
+
 
 // Button variables 👇
 var randomCoverBtn = document.querySelector('.random-cover-button');
-
+var makeYourBtn = document.querySelector('.make-new-button');
+var homePageBtn = document.querySelector('.home-button hidden');
+var saveCoverBtn = document.querySelector('.save-cover-button');
 
 // We've provided a few variables below 👇
 var savedCovers = [
@@ -21,10 +26,13 @@ randomCoverBtn.addEventListener('click', function() {
   generateRandomPoster()
   pushRandomCover()
 });
+
 document.addEventListener('DOMContentLoaded', function() {
   generateRandomPoster()
   pushRandomCover()
 });
+
+makeYourBtn.addEventListener('click', switchToMakeYourOwn);
 
 // Create your event handlers and other functions here 👇
 
@@ -41,6 +49,13 @@ function pushRandomCover() {
   coverTitle.innerText = currentCover.title;
   coverTag1.innerText = currentCover.tagline1;
   coverTag2.innerText = currentCover.tagline2;
+};
+
+function switchToMakeYourOwn(){
+  homeView.classList.add('hidden');
+  makeYourOwnPage.classList.remove('hidden');
+  randomCoverBtn.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden');
 };
 
 
