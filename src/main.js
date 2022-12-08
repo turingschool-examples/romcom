@@ -3,16 +3,12 @@ var titleRandom
 var descriptorRandom1
 var descriptorRandom2
 var view
+var currentCover
+var count
+    
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
-
-var currentCover = new Cover(covers[coverRandom], titles[titleRandom], descriptors[descriptorRandom1], descriptors[descriptorRandom2])
-
-
+var savedCovers = []
 
 // Event listeners 👇
 //__________________________________________________________________________________
@@ -31,8 +27,8 @@ formView[0].addEventListener('click', viewForm)
 var randomCover = document.getElementsByClassName("random-cover-button")
 randomCover[0].addEventListener('click', newRandomCover)
 
-var saveCover = document.getElementsByClassName("make-new-button")
-saveCover[0].addEventListener('click', viewForm)
+var saveCover = document.getElementsByClassName("save-cover-button")
+saveCover[0].addEventListener('click', saveCov)
 
 //__________________________________________________________________________________
 
@@ -48,7 +44,24 @@ function newRandomCover() {
     document.getElementsByClassName("cover-title")[0].innerHTML = titles[titleRandom]
     document.getElementsByClassName("tagline")[0].innerHTML = `A tale of ${descriptors[descriptorRandom1]} and ${descriptors[descriptorRandom2]}`
 
+    currentCover = new Cover(covers[coverRandom], titles[titleRandom], descriptors[descriptorRandom1], descriptors[descriptorRandom2])
+
   }
+
+  function saveCov() {
+    if(savedCovers.length === 0) {
+      savedCovers.push(currentCover)
+    } else {
+      for(var i = 0; i <= savedCovers.length; i++){
+        if (i === savedCovers.length) {
+          savedCovers.push(currentCover)
+          break  
+        } else if (savedCovers[i].title === currentCover.title){
+            break
+        }  
+        }
+      }
+    }
 
 
 // Page Switching 👇
@@ -57,9 +70,7 @@ function newRandomCover() {
 function homeView() {
     view = 'home'
     hide()
-    console.log('yea')
     buttonCheck()
-    console.log('yea')
     document.getElementsByClassName("view home-view")[0].style.display = "block"
 }
 
