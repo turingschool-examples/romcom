@@ -13,7 +13,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 document.addEventListener('DOMContentLoaded',handlePageLoad);
-randomCoverButton.addEventListener('mouseenter', handleRandomCoverButton);
+randomCoverButton.addEventListener('click', handleRandomCoverButton);
 
 // Create your event handlers and other functions here 👇
 function handlePageLoad() {
