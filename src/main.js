@@ -10,6 +10,8 @@ inputDescriptor1 = document.getElementById("descriptor1").value
 inputDescriptor2 = document.getElementById("descriptor2").value
 var block = 'block'
 var none = 'none'
+var savedGallery = document.querySelector(".saved-covers-section")
+
     
 
 // We've provided a few variables below
@@ -123,8 +125,27 @@ function viewSaved() {
     view = 'saved'
     hide()
     buttonCheck()
+    displaySavedCovers()
     document.getElementsByClassName("view saved-view hidden")[0].style.display = "block"
     document.getElementsByClassName("saved-covers-section")[0].style.display = "block"
+  
+}
+
+function displaySavedCovers() {
+  console.log('eek')
+  // savedGallery.innerHTML = ''
+  for (var i = 0; i < savedCovers.length; i++) {
+    console.log('uhhhh')
+    savedGallery.innerHTML = `
+    <section>
+        <img class="mini-cover" src=${savedCovers[i].covers}
+        <h2 class="mini-cover">${savedCovers[i].title}</h2>
+        <h3 class="mini-cover">A tale of <span class=${savedCovers[i].descriptors} </span> and class=${savedCovers[i].descriptors}</span></h3>
+      </section>
+    </section>
+    `
+    saveCov()
+  }
 }
 
 function hide() {
