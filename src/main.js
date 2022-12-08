@@ -17,3 +17,16 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+class Cover {
+  constructor(image, title, taglineDescriptors) {
+    this.image = image;
+    this.title = title;
+    this.taglineDescriptors = taglineDescriptors
+  }
+}
+
+
+var cover = document.querySelector("");
+var image = document.querySelector("h3");
+var tagLine = document.querySelector(".grade-2");
