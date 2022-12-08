@@ -20,8 +20,8 @@ var currentCover;
 // Add your event listeners here 👇
 //on click - create a new random instance of the cover class
 
-// var button = document.querySelector('.random-cover-button');
-// button.addEventListener('click', createNewCover())
+var button = document.querySelector('.random-cover-button');
+button.addEventListener('click', createNewCover(), true)
 // functionName would be a function we write that would
 
 
@@ -30,6 +30,8 @@ function createNewCover() {
   currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
   return currentCover
 }
+
+
 
 
 // We've provided one function to get you started
