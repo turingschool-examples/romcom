@@ -9,6 +9,8 @@ var coverData = document.querySelector('.home-view')
 var formData = document.querySelector('.form-view')
 var homeButton = document.querySelector('.home-button')
 var saveButton = document.querySelector('.save-cover-button')
+var savedCoversButton = document.querySelector('.view-saved-button')
+var savedData = document.querySelector('.saved-view')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -19,6 +21,7 @@ var currentCover = new Cover(coverImage, coverTitle, descriptor1, descriptor2)
 window.addEventListener('load', getRandomCover)
 randButton.addEventListener('click', getRandomCover)
 makeOwnCoverButton.addEventListener('click', switchToForm)
+savedCoversButton.addEventListener('click', switchToSaved)
 
 // Create your event handlers and other functions here 👇
 
@@ -40,6 +43,15 @@ function switchToForm() {
   homeButton.classList.remove('hidden')
   saveButton.classList.add('hidden')
   randButton.classList.add('hidden')
+}
+
+function switchToSaved() {
+  coverData.classList.add('hidden')
+  formData.classList.add('hidden')
+  saveButton.classList.add('hidden')
+  randButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  savedData.classList.remove('hidden')
 }
 
 //psuedocode here:
