@@ -8,6 +8,7 @@ var makeYourOwnCoverButton = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
+var homeButton = document.querySelector('.home-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -36,6 +37,7 @@ function handleMakeYourCoverButton() {
   showForm();
   hideNewRandomCoverButton();
   hideSaveCoverButton();
+  showHomeButton();
 }
 
 function createRandomCover(){
@@ -67,6 +69,10 @@ function hideNewRandomCoverButton() {
 
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden');
+}
+
+function showHomeButton(){
+  homeButton.classList.remove('hidden');
 }
 
 // We've provided one function to get you started
