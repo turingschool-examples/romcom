@@ -3,6 +3,8 @@
 // cover, titles, descriptors
 // We've provided a few variables below
 
+
+// var title = document.querySelector('.cover-title')
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -18,19 +20,26 @@ function getRandomIndex(descriptors) {
   console.log(descriptors[Math.floor(Math.random() * descriptors.length)])
 }
 var currentCover = [
-  new Cover(getRandomIndex(covers), getRandomIndex(titles), getRandomIndex(descriptors), getRandomIndex(descriptors))
+  
 ]
+
+var title = document.querySelector('.cover-title')
+console.log(title)
+
+title.innerText = function getRandomIndex(titles) {
+  (titles[Math.floor(Math.random() * titles.length)])
+}
 
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = [
-  new CurrentCover("./assets/prairie.jpg", "Windswept Hearts", "passion", "pigs")
-]
+// var currentCover = [
+//   new CurrentCover("./assets/prairie.jpg", "Windswept Hearts", "passion", "pigs")
+// ]
 
 function getRandomIndex(title) {
 
-  return titles[Math.floor(Math.random() * cover.length)];
+  return title[Math.floor(Math.random() * cover.length)];
 }
 
 
