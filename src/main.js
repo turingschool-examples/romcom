@@ -8,10 +8,12 @@ var count
     
 
 // We've provided a few variables below
+
 var savedCovers = []
 
 // Event listeners 👇
 //__________________________________________________________________________________
+
 
 var randomCover = document.getElementsByClassName("home-button hidden")
 randomCover[0].addEventListener('click', homeView)
