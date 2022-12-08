@@ -4,9 +4,10 @@ var coverImage = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var tag1 = document.querySelector(".tagline-1")
 var tag2 = document.querySelector(".tagline-2")
-var randomNumber = covers.indexOf(getRandomIndex(covers))
-coverImage.innerText = randomNumber
-
+coverTitle.innerText = titles[getRandomIndex(titles)]
+coverImage.src = covers[getRandomIndex(covers)]
+tag1.innerText = descriptors[getRandomIndex(descriptors)]
+tag2.innerText = descriptors[getRandomIndex(descriptors)]
 
 // We've provided a few variables below
 var savedCovers = [
@@ -24,5 +25,3 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-console.log(getRandomIndex(covers))
