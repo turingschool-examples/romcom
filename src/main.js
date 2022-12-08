@@ -10,7 +10,7 @@ var homeView = document.querySelector('.home-view');
 // Button variables 👇
 var randomCoverBtn = document.querySelector('.random-cover-button');
 var makeYourBtn = document.querySelector('.make-new-button');
-var homePageBtn = document.querySelector('.home-button hidden');
+var homePageBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 
 // We've provided a few variables below 👇
@@ -56,6 +56,7 @@ function switchToMakeYourOwn(){
   makeYourOwnPage.classList.remove('hidden');
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
+  homePageBtn.classList.remove('hidden');
 };
 
 
