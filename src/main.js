@@ -5,15 +5,31 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
+var currentCover; // make new object instance every created poster (for savin')
+
+var randomCoverButton = document.querySelector('.random-cover-button');
+
+var newRandomCover = document.querySelector('.cover-image');
 
 // Add your event listeners here 👇
 
+randomCoverButton.addEventListener('click', getRandomCover);
+
+
 
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+
+function getRandomCover(){
+newRandomCover.src = covers[getRandomIndex(covers)]
+// var randomCoverURL = covers[randomCoverNum];
+// newRandomCover.src = randomCoverURL
+}
+
+//MAKE NEW BRANCH!!!
