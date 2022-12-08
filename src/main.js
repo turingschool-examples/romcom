@@ -11,16 +11,27 @@ var currentCover;
 document.addEventListener('DOMContentLoaded',setRandomCover);
 
 // Create your event handlers and other functions here 👇
+function setRandomCover(){
+  var randomImgSrc = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  var currentCover = new Cover(randomImgSrc, randomTitle, randomDescriptor1, randomDescriptor2);
+  
+  var coverImage = document.querySelector('.cover-image');
+  var coverTitle = document.querySelector('.cover-title');
+  var descriptor1 = document.querySelector('.tagline-1');
+  var descriptor2 = document.querySelector('.tagline-2');
 
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//on page load function
-function setRandomCover(){
-  var coverTitle = document.querySelector('.cover-title');
-  var randomIndex = getRandomIndex(titles);
-  coverTitle.innerText = titles[randomIndex];
-}
+
