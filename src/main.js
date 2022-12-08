@@ -11,9 +11,16 @@ var randomCoverButton = document.querySelector('.random-cover-button');
 
 var newRandomCover = document.querySelector('.cover-image');
 
+var newRandomTitle = document.querySelector('.cover-title');
+
+var newRandomTagOne = document.querySelector('.tagline-1');
+
+var newRandomTagTwo = document.querySelector('.tagline-2');
+
 // Add your event listeners here 👇
 
 randomCoverButton.addEventListener('click', getRandomCover);
+window.addEventListener('load', getRandomCover);
 
 
 
@@ -27,9 +34,11 @@ function getRandomIndex(array) {
 
 
 function getRandomCover(){
-newRandomCover.src = covers[getRandomIndex(covers)]
-// var randomCoverURL = covers[randomCoverNum];
-// newRandomCover.src = randomCoverURL
+newRandomCover.src = covers[getRandomIndex(covers)];
+newRandomTitle.innerText = titles[getRandomIndex(titles)];
+newRandomTagOne.innerText = descriptors[getRandomIndex(descriptors)];
+newRandomTagTwo.innerText = descriptors[getRandomIndex(descriptors)];
+
 }
 
 //MAKE NEW BRANCH!!!
