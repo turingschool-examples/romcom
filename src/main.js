@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded',handlePageLoad);
 randomCoverButton.addEventListener('click', handleRandomCoverButton);
 makeYourOwnCoverButton.addEventListener('click', handleMakeYourCoverButton);
 viewSavedCoversButton.addEventListener('click', handleViewSavedCoversButton);
+homeButton.addEventListener('click', handleHomeButton);
 
 // Create your event handlers and other functions here 👇
 function handlePageLoad() {
@@ -52,6 +53,15 @@ function handleViewSavedCoversButton() {
   showHomeButton();
 }
 
+function handleHomeButton() {
+  hideHomeButton();
+  hideForm();
+  hideSavedCovers();
+  showSaveCoverButton();
+  showNewRandomCoverButton();
+  showHomeView();
+}
+
 function createRandomCover(){
   var randomImgSrc = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -67,6 +77,10 @@ function displayCurrentCover() {
   descriptor2.innerText = currentCover.tagline2;
 }
 
+function showHomeView() {
+  homeView.classList.remove('hidden');
+}
+
 function hideHomeView() {
   homeView.classList.add('hidden');
 }
@@ -79,12 +93,24 @@ function hideForm(){
   formView.classList.add('hidden');
 }
 
+function hideSavedCovers() {
+  savedView.classList.add('hidden');
+}
+
 function showSavedCovers() {
   savedView.classList.remove('hidden');
 }
 
+function showNewRandomCoverButton() {
+  randomCoverButton.classList.remove('hidden');
+}
+
 function hideNewRandomCoverButton() {
   randomCoverButton.classList.add('hidden');
+}
+
+function showSaveCoverButton() {
+  saveCoverButton.classList.remove('hidden');
 }
 
 function hideSaveCoverButton() {
@@ -93,6 +119,10 @@ function hideSaveCoverButton() {
 
 function showHomeButton(){
   homeButton.classList.remove('hidden');
+}
+
+function hideHomeButton(){
+  homeButton.classList.add('hidden');
 }
 
 // We've provided one function to get you started
