@@ -12,17 +12,29 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-document.addEventListener('DOMContentLoaded',setRandomCover);
-randomCoverButton.addEventListener('click', setRandomCover);
+document.addEventListener('DOMContentLoaded',handlePageLoad);
+randomCoverButton.addEventListener('mouseenter', handleRandomCoverButton);
 
 // Create your event handlers and other functions here 👇
-function setRandomCover(){
+function handlePageLoad() {
+  createRandomCover();
+  displayCurrentCover();
+}
+
+function handleRandomCoverButton() {
+  createRandomCover();
+  displayCurrentCover();
+}
+
+function createRandomCover(){
   var randomImgSrc = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var randomDescriptor2 = descriptors[getRandomIndex(descriptors)];
-  var currentCover = new Cover(randomImgSrc, randomTitle, randomDescriptor1, randomDescriptor2);
+  currentCover = new Cover(randomImgSrc, randomTitle, randomDescriptor1, randomDescriptor2);
+}
 
+function displayCurrentCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   descriptor1.innerText = currentCover.tagline1;
