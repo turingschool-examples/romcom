@@ -21,9 +21,12 @@ var currentCover = new Cover(homeCover.src, homeTitle.innerText, homeTagline1.in
 
 
 // Add your event listeners here 👇
+window.addEventListener('load', generateNewCover)
+// window.addEventListener('load', showCurrentCover)
+
 document.querySelector('.random-cover-button').addEventListener("click", generateNewCover)
 
-document.querySelector('.random-cover-button').addEventListener("click", showCurrentCover)
+// document.querySelector('.random-cover-button').addEventListener("click", showCurrentCover)
 
 
 // Create your event handlers and other functions here 👇
@@ -34,11 +37,16 @@ function generateNewCover() {
   homeCover.src = covers[getRandomIndex(covers)]
   homeTitle.innerText = titles[getRandomIndex(titles)]
   homeTagline1.innerText = descriptors[getRandomIndex(descriptors)]
-  homeTagline2.innerHTML = descriptors[getRandomIndex(descriptors)]
+  homeTagline2.innerText = descriptors[getRandomIndex(descriptors)]
+  currentCover = new Cover(homeCover.src, homeTitle.innerText, homeTagline1.innerText, homeTagline2.innerText)
 }
 
-function showCurrentCover() {
-  currentCover = new Cover(homeCover.src, homeTitle.innerText, homeTagline1.innerText, homeTagline2.innerText)
+// function showCurrentCover() {
+//   currentCover = new Cover(homeCover.src, homeTitle.innerText, homeTagline1.innerText, homeTagline2.innerText)
+// }
+
+function test() {
+  console.log('Is this working?')
 }
 
 // We've provided one function to get you started
