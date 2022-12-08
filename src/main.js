@@ -23,23 +23,22 @@ var savedCovers = [
 randomCoverButton.addEventListener("click", createBook)
 
 // Create your event handlers and other functions here 👇
-
+title.innerText = function getRandomIndex(titles) {
+  return (titles[Math.floor(Math.random() * titles.length)])
+}
+cover.src = function getRandomIndex(covers) {
+  return (covers[Math.floor(Math.random() * covers.length)])
+}
+taglineOne.innerText = function getRandomIndex(descriptors) {
+  return (descriptors[Math.floor(Math.random() * descriptors.length)])
+}
+taglineTwo.innerText = function getRandomIndex(descriptors) {
+  return (descriptors[Math.floor(Math.random() * descriptors.length)])
+} 
 
 // We've provided one function to get you started
 
 function createBook() {
-  title.innerText = function getRandomIndex(titles) {
-    return (titles[Math.floor(Math.random() * titles.length)])
-  }
-  cover.src = function getRandomIndex(covers) {
-    return (covers[Math.floor(Math.random() * covers.length)])
-  }
-  taglineOne.innerText = function getRandomIndex(descriptors) {
-    return (descriptors[Math.floor(Math.random() * descriptors.length)])
-  }
-  taglineTwo.innerText = function getRandomIndex(descriptors) {
-    return (descriptors[Math.floor(Math.random() * descriptors.length)])
-  } 
   currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
 }
 
