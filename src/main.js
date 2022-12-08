@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-var homeButton = document.querySelector(".home-button");
+var homeButton = document.querySelector(".home-button.hidden");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var viewSavedButton = document.querySelector(".view-saved-button");
@@ -11,14 +11,8 @@ var firstCovTag = document.querySelector(".tagline-1");
 var secCovTag = document.querySelector(".tagline-2");
 
 var homePageVis = document.querySelector(".main-cover");
-var savedCoverVis = document.querySelector(".saved-covers-section");
+var savedCoverVis = document.querySelector(".view.saved-view.hidden");
 
-var coverForm = document.forms[0] 
-
-// var formCovVis = document.querySelector(".user-cover");
-// var formTitleVis = document.querySelector(".user-title");
-// var formDesc1Vis = document.querySelector(".user-desc1");
-// var formDesc2Vis = document.querySelector(".user-desc2");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -63,7 +57,7 @@ function hideHome() {
   } else {
     homePageVis.style.display = "none";
   };
-}
+};
 
 function saveCover() {
   savedCovers.push(currentCover);
@@ -78,7 +72,9 @@ function viewSavedCovers() {
 
 function viewForm() {
   
-  homePageVis.style.display = "none" 
-  coverForm.style.display = "block"
-    coverForm.visibility = "visible"
-}
+  homePageVis.style.display = "none";
+  randomCoverButton.hidden = true;
+  homeButton.style.display = "block";
+  document.querySelector(".view.form-view.hidden").style.display = "block";
+  
+};
