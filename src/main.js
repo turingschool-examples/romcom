@@ -1,4 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
+var image = document.querySelector('.cover-image');
+//var tagLine = document.querySelector(".grade-2");
+
 
 
 // We've provided a few variables below
@@ -13,20 +16,23 @@ var currentCover;
 // Create your event handlers and other functions here 👇
 
 
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-class Cover {
-  constructor(image, title, taglineDescriptors) {
-    this.image = image;
-    this.title = title;
-    this.taglineDescriptors = taglineDescriptors
-  }
+function makeRandomCover()
+
+//class Cover {
+  //constructor(image, title, taglineDescriptors) {
+    //this.image = image;
+    //this.title = title;
+    //this.taglineDescriptors = taglineDescriptors
+  ////}
 }
 
 
-var cover = document.querySelector("");
-var image = document.querySelector("h3");
-var tagLine = document.querySelector(".grade-2");
+
+//tagLine.innerText = newData.schoolName;
+//bestGrade.innterText = newData.bestGrade;
