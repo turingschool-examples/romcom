@@ -2,7 +2,7 @@
 var image = document.querySelector('.cover-image');
 //var tagLine = document.querySelector(".grade-2");
 
-
+var makeYourOwnCover
 
 // We've provided a few variables below
 var savedCovers = [
@@ -12,6 +12,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+window.addEventListener('load', makeRandomCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -22,7 +23,9 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeRandomCover()
+function makeRandomCover() {
+  
+}
 
 //class Cover {
   //constructor(image, title, taglineDescriptors) {
