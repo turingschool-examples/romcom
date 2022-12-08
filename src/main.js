@@ -13,10 +13,12 @@ var secCovTag = document.querySelector(".tagline-2");
 var homePageVis = document.querySelector(".main-cover");
 var savedCoverVis = document.querySelector(".saved-covers-section");
 
-var formCovVis = document.querySelector(".user-cover");
-var formTitleVis = document.querySelector(".user-title");
-var formDesc1Vis = document.querySelector(".user-desc1");
-var formDesc2Vis = document.querySelector(".user-desc2");
+var coverForm = document.forms[0] 
+
+// var formCovVis = document.querySelector(".user-cover");
+// var formTitleVis = document.querySelector(".user-title");
+// var formDesc1Vis = document.querySelector(".user-desc1");
+// var formDesc2Vis = document.querySelector(".user-desc2");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -33,7 +35,7 @@ randomCoverButton.addEventListener("click", updateHome);
 saveCoverButton.addEventListener("click", saveCover);
 
 viewSavedButton.addEventListener("click", viewSavedCovers);
-makeNewCoverButton.addEventListener("click", hideHome);
+makeNewCoverButton.addEventListener("click", viewForm);
 // homeButton.addEventListener("click", );
 
 // Create your event handlers and other functions here 👇
@@ -56,7 +58,11 @@ function updateHome() {
 };
 
 function hideHome() {
-  homePageVis.style.display = "none";
+  if (homePageVis.style.display === "none") {
+    homePageVis.style.display = "block";
+  } else {
+    homePageVis.style.display = "none";
+  };
 }
 
 function saveCover() {
@@ -70,7 +76,9 @@ function viewSavedCovers() {
   };
 };
 
-// function viewForm() {
-//   if () {
-//   }
-// };
+function viewForm() {
+  
+  homePageVis.style.display = "none" 
+  coverForm.style.display = "block"
+    coverForm.visibility = "visible"
+}
