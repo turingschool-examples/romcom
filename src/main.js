@@ -4,10 +4,7 @@ var coverImage = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var tag1 = document.querySelector(".tagline-1")
 var tag2 = document.querySelector(".tagline-2")
-coverTitle.innerText = titles[getRandomIndex(titles)]
-coverImage.src = covers[getRandomIndex(covers)]
-tag1.innerText = descriptors[getRandomIndex(descriptors)]
-tag2.innerText = descriptors[getRandomIndex(descriptors)]
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,8 +14,18 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+window.addEventListener('load', createRandom)
+randomButton.addEventListener('click', createRandom)
+
 
 // Create your event handlers and other functions here 👇
+
+function createRandom(){
+ coverTitle.innerText = titles[getRandomIndex(titles)]
+ coverImage.src = covers[getRandomIndex(covers)]
+ tag1.innerText = descriptors[getRandomIndex(descriptors)]
+ tag2.innerText = descriptors[getRandomIndex(descriptors)]
+}
 
 
 // We've provided one function to get you started
