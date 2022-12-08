@@ -44,6 +44,7 @@ myTagLine2.innerText = currentCover.tagline2
 console.log(myTagLine2.innerText)
 
 
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
