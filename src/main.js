@@ -22,7 +22,7 @@ window.addEventListener('load', getRandomCover)
 randButton.addEventListener('click', getRandomCover)
 makeOwnCoverButton.addEventListener('click', switchToForm)
 savedCoversButton.addEventListener('click', switchToSaved)
-
+homeButton.addEventListener('click', switchToHome)
 // Create your event handlers and other functions here 👇
 
 
@@ -54,6 +54,14 @@ function switchToSaved() {
   savedData.classList.remove('hidden')
 }
 
+function switchToHome() {
+  homeButton.classList.add('hidden')
+  savedData.classList.add('hidden')
+  formData.classList.add('hidden')
+  saveButton.classList.remove('hidden')
+  savedCoversButton.classList.remove('hidden')
+  coverData.classList.remove('hidden')
+}
 //psuedocode here:
 // Query Selector notes -
 // syntax to affect "random cover button":
