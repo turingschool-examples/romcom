@@ -20,5 +20,7 @@ function getRandomIndex(array) {
 
 //on page load function
 function setRandomCover(){
-  console.log("-----------------------HELLO!!!!");
+  var coverTitle = document.querySelector('.cover-title');
+  var randomIndex = getRandomIndex(titles);
+  coverTitle.innerText = titles[randomIndex];
 }
