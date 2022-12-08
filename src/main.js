@@ -8,6 +8,8 @@ inputCover = document.getElementById("cover").value
 inputTitle = document.getElementById("title").value
 inputDescriptor1 = document.getElementById("descriptor1").value
 inputDescriptor2 = document.getElementById("descriptor2").value
+var block = 'block'
+var none = 'none'
     
 
 // We've provided a few variables below
@@ -133,9 +135,23 @@ function hide() {
 function buttonCheck() {
   if(view === 'home') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "none"
-  } else {
+    document.getElementsByClassName("random-cover-button")[0].style.display = "block"
+    document.getElementsByClassName("save-cover-button")[0].style.display = "block"
+    document.getElementsByClassName("view-saved-button")[0].style.display = "block"
+    document.getElementsByClassName("make-new-button")[0].style.display = "block"
+  } else if(view === 'saved') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "block"
-}
+    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
+    document.getElementsByClassName("save-cover-button")[0].style.display = "none"
+    document.getElementsByClassName("view-saved-button")[0].style.display = "none"
+    document.getElementsByClassName("make-new-button")[0].style.display = "block"
+  } else if(view === 'form') {
+    document.getElementsByClassName("home-button hidden")[0].style.display = "block"
+    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
+    document.getElementsByClassName("save-cover-button")[0].style.display = "block"
+    document.getElementsByClassName("view-saved-button")[0].style.display = "block"
+    document.getElementsByClassName("make-new-button")[0].style.display = "none"
+  }
 }
 
 
