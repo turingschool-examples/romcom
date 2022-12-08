@@ -11,7 +11,7 @@ var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover  = createRandomPoster()
+var currentCover  =
 
 // Add your event listeners here 👇
 
@@ -25,11 +25,11 @@ function createRandomPoster() {
   var randomTitleIndex = getRandomIndex(titles);
   var randomTag1Index = getRandomIndex(descriptors);
   var randomTag2Index = getRandomIndex(descriptors);
-    var currentCover = new Cover(covers[randomImageIndex], titles[randomTitleIndex], descriptors[randomTag1Index], descriptors[randomTag2Index]);
-    coverImage.src = currentCover.cover;
-    coverTitle.innerText = currentCover.title;
-    coverTag1.innerText = currentCover.tagline1;
-    coverTag2.innerText = currentCover.tagline2;
+  currentCover = new Cover(covers[randomImageIndex], titles[randomTitleIndex], descriptors[randomTag1Index], descriptors[randomTag2Index]);
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  coverTag1.innerText = currentCover.tagline1;
+  coverTag2.innerText = currentCover.tagline2;
 }
 
 // We've provided one function to get you started
