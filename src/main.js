@@ -16,11 +16,12 @@ var savedCovers = [
 var currentCover;
 
 class Cover {
-  constructor(coverImage, title, descriptor1, descriptor2) {
-    (this.cover = coverImage),
-      (this.title = title),
-      (this.tagline1 = descriptor1),
-      (this.tagline2 = descriptor2);
+  constructor(coverImgSrc, title, descriptor1, descriptor2) {
+    this.id = Date.now();
+    this.cover = coverImgSrc;
+    this.title = title;
+    this.tagline1 = descriptor1;
+    this.tagline2 = descriptor2;
   }
 }
 
@@ -35,4 +36,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeRandomCover() {}
+function makeRandomCover() {
+  .cover
+  return Math.floor(math.random() * covers.length)
+}
