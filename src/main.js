@@ -77,6 +77,15 @@ function displayCurrentCover() {
   descriptor2.innerText = currentCover.tagline2;
 }
 
+
+function showElement(elementToShow) {
+  elementToShow.classList.remove('hidden');
+}
+
+function hideElement(elementToHide) {
+  elementToHide.classList.add('hidden');
+}
+
 function showHomeView() {
   homeView.classList.remove('hidden');
 }
