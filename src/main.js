@@ -16,23 +16,24 @@ var savedCovers = [
 ];
 var currentCover;
 
-//We are practicing branch management
-
 // Add your event listeners here 👇
 //on click - create a new random instance of the cover class
 
 var button = document.querySelector('.random-cover-button');
-button.addEventListener('click', createNewCover(), true)
+button.addEventListener('click', createNewCover())
 // functionName would be a function we write that would
 
 
 // Create your event handlers and other functions here 👇
 function createNewCover() {
   currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
-  return currentCover
 }
 
-
+// var cover = document.querySelector(".cover-image");
+// console.log(cover.innerHTML)
+var myTitle = document.querySelector(".cover-title")
+myTitle.innerText = currentCover.title
+console.log(myTitle.innerText)
 
 
 // We've provided one function to get you started
