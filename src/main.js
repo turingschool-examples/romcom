@@ -7,6 +7,7 @@ var randButton = document.querySelector('.random-cover-button')
 var makeOwnCoverButton = document.querySelector('.make-new-button')
 var coverData = document.querySelector('.home-view')
 var formData = document.querySelector('.form-view')
+var homeButton = document.querySelector('.home-button')
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -35,6 +36,7 @@ function getRandomCover() {
 function switchToForm() {
   coverData.classList.add('hidden')
   formData.classList.remove('hidden')
+  homeButton.classList.remove('hidden')
 }
 
 //psuedocode here:
