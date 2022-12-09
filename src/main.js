@@ -95,7 +95,9 @@ function createUserBook(event) {
   descriptors.unshift(userDesc1.value);
   descriptors.unshift(userDesc2.value);
   // Use the values from the inputs to create a new instance of the Cover class
+  currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
   // Change back to the main home view (hiding the form view again)
+  switchToHome();
   // Display the newly created cover image, title, and descriptors in the main cover
 };
 
