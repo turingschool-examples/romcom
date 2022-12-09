@@ -6,6 +6,7 @@ var coverTag2 = document.querySelector('.tagline-2');
 var makeYourOwnPage = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var savedSection = document.querySelector('.saved-covers-section');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
@@ -79,6 +80,14 @@ function switchToSavedView() {
   saveCoverBtn.classList.add('hidden');
   homePageBtn.classList.remove('hidden');
   makeYourOwnPage.classList.add('hidden');
+  savedSection.innerHTML = `
+  <section class="saved-covers-section">
+    <section class="mini-cover">
+      <img class="mini-cover" src=${savedCovers[0].cover}></img>
+      <h2 class="cover-title"> ${savedCovers[0].title}</h2>
+      <h3 class="tagline">A tale of <span> ${savedCovers[0].tagline1}</span> and <span> ${savedCovers[0].tagline2}</span></h3>
+    </section>
+  </section>`
 };
 
 function switchToHome() {
@@ -106,8 +115,10 @@ function createUserBook(event) {
 function saveCover() {
     if (!savedCovers.includes(currentCover)) {
       savedCovers.push(currentCover)
-    }
-  }
+    };
+};
+
+
 
 // We've provided one function to get you started 👇
 function getRandomIndex(array) {
