@@ -35,10 +35,8 @@ makeOwnCoverButton.addEventListener('click', switchToForm)
 savedCoversButton.addEventListener('click', switchToSaved)
 homeButton.addEventListener('click', switchToHome)
 
-createNewBookButton.addEventListener('click', function() {
-  makeCustomBook()
-  
-})
+createNewBookButton.addEventListener('click', makeCustomBook)
+
 
 
 // Create your event handlers and other functions here 👇
@@ -82,31 +80,37 @@ function switchToHome() {
 }
 
 function makeCustomBook() {
+  event.preventDefault()
+
   covers.push(userInputCover.value)
   titles.push(userInputTitle.value)
   descriptors.push(userInputDesc1.value)
   descriptors.push(userInputDesc2.value)
   
   coverImage.src = userInputCover.value
+  coverTitle.innerText = userInputTitle.value
+  descriptor1.innerText = userInputDesc1.value
+  descriptor2.innerText = userInputDesc2.value
+
   
-  //var currentCover = new Cover(userInputCover.src, userInputTitle.value, userInputDesc1.value, userInputDesc2.value)
+  //currentCover = new Cover(userInputCover, coverTitle.innerText, descriptor1.innerText, userInputDesc2.value)
+
+  switchToHome()
 }
 
 
+//========NOTES=========//
+//ARE THESE INPUTS BEING PUSHED INTO THEIR RESPECTIVE ARRAYS?
+//PUSH OUR NEW INSTANCE OF CLASS INTO OUR SAVED COVERS PAGE
 
 
-// In the new cover form view, users should be able to fill out the four input fields and then hit the Make My Book button
+// ??Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
 
-// When the Make My Book button is clicked, several things will happen:
+// ??Use the values from the inputs to create a new instance of the Cover class
 
-// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
 
-// Use the values from the inputs to create a new instance of the Cover class
-
-// Change back to the main home view (hiding the form view again)
-
-// Display the newly created cover image, title, and descriptors in the main cover
-
+//=================QUESTIONS================//
+// WHY DOES THE MAKE MY BOOK BUTTON RELOAD THE PAGE EVERYTIME IT'S CLICKED? NO OTHER BUTTONS HAD THIS SAME EFFECT.
 
 
 
