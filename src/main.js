@@ -81,16 +81,16 @@ function switchToHome() {
   coverData.classList.remove('hidden')
 }
 
-// function makeCustomBook() {
-//   covers.push(userInputCover.value)
-//   titles.push(userInputTitle.value)
-//   descriptors.push(userInputDesc1.value)
-//   descriptors.push(userInputDesc2.value)
+function makeCustomBook() {
+  covers.push(userInputCover.value)
+  titles.push(userInputTitle.value)
+  descriptors.push(userInputDesc1.value)
+  descriptors.push(userInputDesc2.value)
   
-//   coverImage.src = userInputCover.value
+  coverImage.src = userInputCover.value
   
-//   //var currentCover = new Cover(userInputCover.src, userInputTitle.value, userInputDesc1.value, userInputDesc2.value)
-// }
+  //var currentCover = new Cover(userInputCover.src, userInputTitle.value, userInputDesc1.value, userInputDesc2.value)
+}
 
 
 
