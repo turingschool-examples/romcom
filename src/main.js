@@ -47,6 +47,7 @@ var currentCover;
 
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCoversButton);
+makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm)
 
 
 // Create your event handlers and other functions here 👇
@@ -74,13 +75,30 @@ function makeRandomCoversButton() {
 }
 
 function makeNewCoverForm() {
-   
+	image.src = 'https://icatcare.org/app/uploads/2018/07/Finding-homes-for-your-kittens-1.png'
+	image.alt = 'Form'
+  
+  img.classList.add('kitten-heading');
+	section.classList.add('kitten-box');
 }
 
 
-//pizza[0]
+// var title = document.querySelector('h1');
+// var animalFact = document.querySelector('#animalFact');
+// var imageLabel = document.querySelector('#imageLabel');
+// var image = document.querySelector('img');
+// var section = document.querySelector('section');
+// var button = document.querySelector('button');
 
+// button.addEventListener('click', changePet);
 
-// var season = seasonSelection.value
-// heading.innerText = season
-// picture.src = imagePaths[season];
+// function changePet() {
+// 	title.innerText = 'kittens';
+// 	animalFact.innerText = 'Kittens are so cute!';
+// 	imageLabel.innerText = 'Here is a pic of some kitties:'
+// 	image.src = 'https://icatcare.org/app/uploads/2018/07/Finding-homes-for-your-kittens-1.png'
+// 	image.alt = 'Fluffy kitties in a basket!'
+
+// 	title.classList.add('kitten-heading');
+// 	section.classList.add('kitten-box');
+// }
