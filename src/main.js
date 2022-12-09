@@ -73,11 +73,32 @@ function viewSavedCovers() {
   homeButton.classList.remove("hidden");
   savedCoversMain.classList.remove('hidden');
   
-
-
   for (var i = 0; i < savedCovers.length; i++) {
     displaySavedCovers(i);
   };
+};
+
+function displaySavedCovers(numCycle) {
+  var display = document.createElement("div");
+  var smallImage = document.createElement("img");
+  var smallPage = document.createElement("p");
+  var smallTag = document.createElement("p");
+  
+  savedCoversSection.appendChild(display);
+  
+  addClass(display, smallImage, smallPage, smallTag);
+  
+  smallImage.setAttribute("id", `coverImg${numCycle}`);
+  smallImage.src = savedCovers[numCycle].cover;
+  display.appendChild(smallImage);
+  
+  smallPage.setAttribute("id", `coverTitle${numCycle}`);
+  smallPage.innerText = savedCovers[numCycle].title;
+  display.appendChild(smallPage);
+  
+  smallTag.setAttribute("id", `coverTags${numCycle}`);
+  smallTag.innerText = `A tale of ${savedCovers[numCycle].tagline1} and ${savedCovers[numCycle].tagline2}`;
+  display.appendChild(smallTag);
 };
 
 function addClass(disp, smlI, smlP, smlT) {
@@ -85,33 +106,18 @@ function addClass(disp, smlI, smlP, smlT) {
   smlI.classList.add("mini-cover");
   smlP.classList.add("cover-title");
   smlT.classList.add("tagline");
-}
-
-function displaySavedCovers(numCycle) {
-  var display = document.createElement("div");
-  var smallImage = document.createElement("img")
-  var smallPage = document.createElement("p");
-  var smallTag = document.createElement("p")
-
-  savedCoversSection.appendChild(display);
-
-  addClass(display, smallImage, smallPage, smallTag);
-
-  smallImage.setAttribute("id", `coverImg${numCycle}`)
-  smallImage.src = savedCovers[numCycle].cover;
-  display.appendChild(smallImage);
-
-  smallPage.setAttribute("id", `coverTitle${numCycle}`);
-  smallPage.innerText = savedCovers[numCycle].title;
-  display.appendChild(smallPage);
-
-  smallTag.setAttribute("id", `coverTags${numCycle}`);
-  smallTag.innerText = `A tale of ${savedCovers[numCycle].tagline1} and ${savedCovers[numCycle].tagline2}`
-  display.appendChild(smallTag);
-
 };
 
+function resetSaved() {
+  var hold = document.querySelector("div");
+  hold.remove();
+};
 
+function loopSaveReset() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    resetSaved();
+  };
+};
 
 function viewForm() {
   saveCoverButton.classList.add("hidden");
@@ -119,6 +125,8 @@ function viewForm() {
   randomCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
   newCoverForm.classList.remove("hidden");
+
+  loopSaveReset();
 };
 
 function viewHome() {
@@ -128,6 +136,8 @@ function viewHome() {
   saveCoverButton.classList.remove("hidden");
   randomCoverButton.classList.remove("hidden");
   homePageSection.classList.remove("hidden");
+
+  loopSaveReset();
 };
 
 function saveFormData(event) {
