@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 makeYourBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
+homePageBtn.addEventListener('click', switchToHome);
 
 // Create your event handlers and other functions here 👇
 
@@ -68,6 +69,14 @@ function switchToSavedView() {
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homePageBtn.classList.remove('hidden');
+  makeYourOwnPage.classList.add('hidden');
+}
+
+function switchToHome() {
+  homeView.classList.remove('hidden');
+  homePageBtn.classList.add('hidden');
+  randomCoverBtn.classList.remove('hidden');
+  saveCoverBtn.classList.remove('hidden');
 }
 
 
