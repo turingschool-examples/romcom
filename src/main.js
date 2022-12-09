@@ -11,6 +11,13 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
+//Added type attribute to prevent make my book button from reloading the page
+makeMyBookButton.type = "button";
+var coverInput = document.querySelector('.user-cover');
+var titleInput = document.querySelector('.user-title');
+var descriptor1Input = document.querySelector('.user-desc1');
+var descriptor2Input = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -19,11 +26,12 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-document.addEventListener('DOMContentLoaded',handlePageLoad);
+document.addEventListener('DOMContentLoaded', handlePageLoad);
 randomCoverButton.addEventListener('click', handleRandomCoverButton);
 makeYourOwnCoverButton.addEventListener('click', handleMakeYourCoverButton);
 viewSavedCoversButton.addEventListener('click', handleViewSavedCoversButton);
 homeButton.addEventListener('click', handleHomeButton);
+makeMyBookButton.addEventListener('click', handleMakeMyBookButton);
 
 // Create your event handlers and other functions here 👇
 function handlePageLoad() {
@@ -60,6 +68,23 @@ function handleHomeButton() {
   showElement(saveCoverButton);
   showElement(randomCoverButton);
   showElement(homeView);
+}
+
+function handleMakeMyBookButton() {
+  var currentCoverInput = coverInput.value;
+  var currentTitleInput = titleInput.value;
+  var currentDescriptor1Input = descriptor1Input.value;
+  var currentDescriptor2Input = descriptor2Input.value;
+
+  covers.push(currentCoverInput);
+  titles.push(currentTitleInput);
+  descriptors.push(currentDescriptor1Input);
+  descriptors.push(currentDescriptor2Input);
+
+  currentCover = new Cover(currentCoverInput, currentTitleInput, currentDescriptor1Input, currentDescriptor2Input);
+  
+  displayCurrentCover();
+  handleHomeButton();
 }
 
 function createRandomCover(){
