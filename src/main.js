@@ -81,19 +81,18 @@ function switchToHome() {
 
 function makeCustomBook() {
   event.preventDefault()
-
   covers.push(userInputCover.value)
   titles.push(userInputTitle.value)
   descriptors.push(userInputDesc1.value)
   descriptors.push(userInputDesc2.value)
-  
+
   coverImage.src = userInputCover.value
   coverTitle.innerText = userInputTitle.value
   descriptor1.innerText = userInputDesc1.value
   descriptor2.innerText = userInputDesc2.value
 
   
-  //currentCover = new Cover(userInputCover, coverTitle.innerText, descriptor1.innerText, userInputDesc2.value)
+  currentCover = new Cover(userInputCover.src, coverTitle.innerText, descriptor1.innerText, userInputDesc2.innerText)
 
   switchToHome()
 }
