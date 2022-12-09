@@ -45,6 +45,7 @@ makeYourBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
 createBookBtn.addEventListener('click', createUserBook);
+saveCoverBtn.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -101,6 +102,12 @@ function createUserBook(event) {
   coverTag1.innerText = userDesc1.value;
   coverTag2.innerText = userDesc2.value;
 };
+
+function saveCover() {
+    if (!savedCovers.includes(currentCover)) {
+      savedCovers.push(currentCover)
+    }
+  }
 
 // We've provided one function to get you started 👇
 function getRandomIndex(array) {
