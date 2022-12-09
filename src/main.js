@@ -9,6 +9,12 @@ var randomCover = covers[randomCoverIndex];
 
 var randomTitleIndex = getRandomIndex(titles);
 var randomTitle = titles[randomTitleIndex];
+
+var myTitle = document.querySelector(".cover-title")
+var myTagLine1 = document.querySelector(".tagline-1")
+var myTagLine2 = document.querySelector(".tagline-2")
+var myImage = document.querySelector(".cover-image")
+
 // console.log(new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
 
 // We've provided a few variables below
@@ -21,34 +27,26 @@ var currentCover;
 //on click - create a new random instance of the cover class
 
 var button = document.querySelector('.random-cover-button');
-button.addEventListener('', createNewCover())         //this is not working as we expect, it's running on refresh
+button.addEventListener('click', createNewCover)         //this is not working as we expect, it's running on refresh
 
 
 // Create your event handlers and other functions here 👇
 function createNewCover() {
   currentCover = new Cover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2)
+  myTitle.innerText = currentCover.title
+  myTagLine1.innerText = currentCover.tagline1
+  myTagLine2.innerText = currentCover.tagline2
+  myImage.src = currentCover.cover
 }
 
 // var cover = document.querySelector(".cover-image");
 // console.log(cover.innerHTML)
-
-var myTitle = document.querySelector(".cover-title")
-myTitle.innerText = currentCover.title
-
-var myTagLine1 = document.querySelector(".tagline-1")
-myTagLine1.innerText = currentCover.tagline1
 console.log(myTagLine1.innerText)
-
-var myTagLine2 = document.querySelector(".tagline-2")
-myTagLine2.innerText = currentCover.tagline2
 console.log(myTagLine2.innerText)
-
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// hello
 
