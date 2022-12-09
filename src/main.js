@@ -2,6 +2,10 @@
 // When the page loads a random cover will appear. We want to randome book cover button to select a different random book cover
 //when we click it. We are working with arrays
 // i think that we need a for loop
+
+//Goal= Our goal is to be able to click the button "make your own cover" and take the user to the make your own cover form.
+// when the form comes up, the show randome cover button and save cover button should be gone as well as the home page.
+//
 var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image');
 var tagLine1 = document.querySelector('.tagline-1');
@@ -11,6 +15,9 @@ var tagLine2 = document.querySelector('.tagline-2')
 //Next create user listener for a click.  
 
 var randomCoverButton = document.querySelector('.random-cover-button')
+var makeYourOwnForm = document.querySelector(".form-view")
+var makeYourOwnCoverButton = document.querySelector(".make-new-button")
+var homeView = document.querySelector(".home-view")
 
 
 
@@ -40,6 +47,8 @@ var currentCover;
 
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCoversButton);
+makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm)
+
 
 // Create your event handlers and other functions here 👇
 
@@ -65,10 +74,9 @@ function makeRandomCoversButton() {
   coverImage.src = newCovers;
 }
 
+function makeNewCoverForm() {
 
-//pizza[0]
-
-
-// var season = seasonSelection.value
-// heading.innerText = season
-// picture.src = imagePaths[season];
+  
+  makeYourOwnForm.classList.remove("hidden");
+  homeView.classList.add("hidden")
+}
