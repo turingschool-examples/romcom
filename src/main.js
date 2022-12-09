@@ -32,13 +32,13 @@ var currentCover;
 // Add your event listeners here 👇
 
 randomCoverBtn.addEventListener('click', function() {
-  generateRandomCover()
-  pushRandomCover()
+  generateRandomCover();
+  pushRandomCover();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  generateRandomCover()
-  pushRandomCover()
+  generateRandomCover();
+  pushRandomCover();
 });
 
 makeYourBtn.addEventListener('click', switchToMakeYourOwn);
@@ -88,18 +88,18 @@ function switchToHome() {
 };
 
 function createUserBook(event) {
-  event.preventDefault()
-  covers.push(userCover.value)
-  titles.push(userTitle.value)
-  descriptors.push(userDesc1.value)
-  descriptors.push(userDesc2.value)
+  event.preventDefault();
+  // Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
+  covers.unshift(userCover.value);
+  titles.unshift(userTitle.value);
+  descriptors.unshift(userDesc1.value);
+  descriptors.unshift(userDesc2.value);
   // Use the values from the inputs to create a new instance of the Cover class
   // Change back to the main home view (hiding the form view again)
   // Display the newly created cover image, title, and descriptors in the main cover
-  // currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
 };
 
 // We've provided one function to get you started 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
