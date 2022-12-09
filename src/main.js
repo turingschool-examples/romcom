@@ -16,12 +16,13 @@ var userInputTitle = document.querySelector('.user-title')
 var userInputDesc1 = document.querySelector('.user-desc1')
 var userInputDesc2 = document.querySelector('.user-desc2')
 var createNewBookButton = document.querySelector('.create-new-book-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = new Cover(coverImage, coverTitle, descriptor1, descriptor2)
+var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', getRandomCover)
@@ -30,6 +31,7 @@ makeOwnCoverButton.addEventListener('click', switchToForm)
 savedCoversButton.addEventListener('click', switchToSaved)
 homeButton.addEventListener('click', switchToHome)
 createNewBookButton.addEventListener('click', makeCustomBook)
+saveCoverButton.addEventListener('click', saveCover )
 
 // Create your event handlers and other functions here 👇
 
@@ -42,6 +44,7 @@ function getRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)]
   descriptor1.innerText = descriptors[getRandomIndex(descriptors)]
   descriptor2.innerText = descriptors[getRandomIndex(descriptors)]
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, descriptor1.innerText, descriptor2.innerText)
 }
 function switchToForm() {
   coverData.classList.add('hidden')
@@ -65,6 +68,7 @@ function switchToHome() {
   saveButton.classList.remove('hidden')
   savedCoversButton.classList.remove('hidden')
   coverData.classList.remove('hidden')
+  randButton.classList.remove('hidden')
 }
 function makeCustomBook() {
   event.preventDefault()
@@ -78,6 +82,11 @@ function makeCustomBook() {
   descriptor2.innerText = userInputDesc2.value
   currentCover = new Cover(userInputCover.src, coverTitle.innerText, descriptor1.innerText, userInputDesc2.innerText)
   switchToHome()
+}
+function saveCover(){
+if(!savedCovers.includes(currentCover)){
+  savedCovers.push(currentCover)
+  }
 }
 
 
