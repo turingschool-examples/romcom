@@ -37,29 +37,29 @@ function handleRandomCoverButton() {
 }
 
 function handleMakeYourCoverButton() {
-  hideHomeView();
-  showForm();
-  hideNewRandomCoverButton();
-  hideSaveCoverButton();
-  showHomeButton();
+  hideElement(homeView);
+  hideElement(randomCoverButton);
+  hideElement(saveCoverButton);
+  showElement(formView);
+  showElement(homeButton);
 }
 
 function handleViewSavedCoversButton() {
-  hideHomeView();
-  hideForm();
-  showSavedCovers();
-  hideNewRandomCoverButton();
-  hideSaveCoverButton();
-  showHomeButton();
+  hideElement(homeView);
+  hideElement(formView);
+  hideElement(randomCoverButton);
+  hideElement(saveCoverButton);
+  showElement(savedView);
+  showElement(homeButton);
 }
 
 function handleHomeButton() {
-  hideHomeButton();
-  hideForm();
-  hideSavedCovers();
-  showSaveCoverButton();
-  showNewRandomCoverButton();
-  showHomeView();
+  hideElement(homeButton);
+  hideElement(formView);
+  hideElement(savedView);
+  showElement(saveCoverButton);
+  showElement(randomCoverButton);
+  showElement(homeView);
 }
 
 function createRandomCover(){
@@ -77,61 +77,12 @@ function displayCurrentCover() {
   descriptor2.innerText = currentCover.tagline2;
 }
 
-
 function showElement(elementToShow) {
   elementToShow.classList.remove('hidden');
 }
 
 function hideElement(elementToHide) {
   elementToHide.classList.add('hidden');
-}
-
-function showHomeView() {
-  homeView.classList.remove('hidden');
-}
-
-function hideHomeView() {
-  homeView.classList.add('hidden');
-}
-
-function showForm(){
-  formView.classList.remove('hidden');
-}
-
-function hideForm(){
-  formView.classList.add('hidden');
-}
-
-function hideSavedCovers() {
-  savedView.classList.add('hidden');
-}
-
-function showSavedCovers() {
-  savedView.classList.remove('hidden');
-}
-
-function showNewRandomCoverButton() {
-  randomCoverButton.classList.remove('hidden');
-}
-
-function hideNewRandomCoverButton() {
-  randomCoverButton.classList.add('hidden');
-}
-
-function showSaveCoverButton() {
-  saveCoverButton.classList.remove('hidden');
-}
-
-function hideSaveCoverButton() {
-  saveCoverButton.classList.add('hidden');
-}
-
-function showHomeButton(){
-  homeButton.classList.remove('hidden');
-}
-
-function hideHomeButton(){
-  homeButton.classList.add('hidden');
 }
 
 // We've provided one function to get you started
