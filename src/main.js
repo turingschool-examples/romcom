@@ -11,16 +11,11 @@ var homeButton = document.querySelector('.home-button')
 var saveButton = document.querySelector('.save-cover-button')
 var savedCoversButton = document.querySelector('.view-saved-button')
 var savedData = document.querySelector('.saved-view')
-
 var userInputCover = document.querySelector('.user-cover')
 var userInputTitle = document.querySelector('.user-title')
 var userInputDesc1 = document.querySelector('.user-desc1')
 var userInputDesc2 = document.querySelector('.user-desc2')
 var createNewBookButton = document.querySelector('.create-new-book-button')
-
-
-
-
 
 // We've provided a few variables below
 var savedCovers = [
@@ -34,19 +29,14 @@ randButton.addEventListener('click', getRandomCover)
 makeOwnCoverButton.addEventListener('click', switchToForm)
 savedCoversButton.addEventListener('click', switchToSaved)
 homeButton.addEventListener('click', switchToHome)
-
 createNewBookButton.addEventListener('click', makeCustomBook)
 
-
-
 // Create your event handlers and other functions here 👇
-
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 function getRandomCover() {
   coverImage.src = covers[getRandomIndex(covers)]
   coverTitle.innerText = titles[getRandomIndex(titles)]
@@ -60,7 +50,6 @@ function switchToForm() {
   saveButton.classList.add('hidden')
   randButton.classList.add('hidden')
 }
-
 function switchToSaved() {
   coverData.classList.add('hidden')
   formData.classList.add('hidden')
@@ -69,7 +58,6 @@ function switchToSaved() {
   homeButton.classList.remove('hidden')
   savedData.classList.remove('hidden')
 }
-
 function switchToHome() {
   homeButton.classList.add('hidden')
   savedData.classList.add('hidden')
@@ -78,22 +66,17 @@ function switchToHome() {
   savedCoversButton.classList.remove('hidden')
   coverData.classList.remove('hidden')
 }
-
 function makeCustomBook() {
   event.preventDefault()
   covers.push(userInputCover.value)
   titles.push(userInputTitle.value)
   descriptors.push(userInputDesc1.value)
   descriptors.push(userInputDesc2.value)
-
   coverImage.src = userInputCover.value
   coverTitle.innerText = userInputTitle.value
   descriptor1.innerText = userInputDesc1.value
   descriptor2.innerText = userInputDesc2.value
-
-  
   currentCover = new Cover(userInputCover.src, coverTitle.innerText, descriptor1.innerText, userInputDesc2.innerText)
-
   switchToHome()
 }
 
