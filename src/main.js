@@ -8,9 +8,13 @@ var homeCover = new Cover(homeImage.src, homeTitle.innerText, homeTagline1.inner
 
 var homeButton = document.querySelector('.home-button')
 var randomButton = document.querySelector('.random-cover-button')
+
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
+
+// User form buttons 1.to get there 2.submit
 var makeCoverButton = document.querySelector('.make-new-button')
+var newBookButton = document.querySelector('.create-new-book-button')
 
 
 var savedView = document.querySelector('.saved-view')
@@ -20,9 +24,8 @@ var savedCoversSection = document.querySelector('.saved-covers-section')
 var userForm = document.querySelector('.form-view')
 
 
-var whatToShow = [homeButton, userForm]
-var whatToHide = [homeMainCover, randomButton, saveCoverButton]
-
+var makeUserFormElements = [homeButton, userForm]
+var homePageElements = [homeMainCover, randomButton, saveCoverButton]
 
 // var savedCoverPageElements = [homeButton, savedCovers]
 var savedCoverPageElements = [homeButton, savedView]
@@ -38,6 +41,7 @@ randomButton.addEventListener("click", generateNewCover)
 // --------------- Make new cover Button------------------------- 
 // for make your own
 makeCoverButton.addEventListener("click", activateCoverButton)
+homeButton.addEventListener("click", activateHomeButton)
 
 
 // for saved cover
@@ -53,15 +57,28 @@ function generateNewCover() {
   homeCover = new Cover(homeImage.src, homeTitle.innerText, homeTagline1.innerText, homeTagline2.innerText)
 }
 
+function activateHomeButton() {
+  showElements(homePageElements)
+  hideElements(makeUserFormElements)
+  hideElements(savedCoverPageElements)
+}
+
 function activateCoverButton() {
-  hideElements(whatToHide)
-  showElements(whatToShow)
+  hideElements(homePageElements)
+  showElements(makeUserFormElements)
+  hideElements(savedCoverPageElements)
 }
 
 function activateViewSavedButton() {
-  hideElements(whatToHide)
+  hideElements(homePageElements)
+  hideElements(makeUserFormElements)
   showElements(savedCoverPageElements)
-  savedCoversSection.innerHTML = "<h2>Windswept Hearts</h2>"
+  // savedCoversSection.innerHTML = 
+  //   `<img class="mini-cover" src="./assets/prairie.jpg">
+  //   <h2 class="mini-cover cover-title">Windswept Hearts</h2>
+  //   <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+  //   <img class="price-tag" src="./assets/price.png">
+  //   <img class="overlay" src="./assets/overlay.png">`
 }
 
 function hideElements(elementsToHide) {
