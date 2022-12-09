@@ -13,6 +13,7 @@ var titleLocation = document.querySelector('.cover-title')
 var taglineOneLocation = document.querySelector('.tagline-1')
 var taglineTwoLocation = document.querySelector('.tagline-2')
 var priceTagLocation = document.querySelector('.price-tag')
+// var showFormView = document.querySelector('.form-view')
 
 var randomButtonCover = document.querySelector('.random-cover-button')
 var saveButtonCover = document.querySelector('.save-cover-button')
@@ -60,22 +61,29 @@ function getRandomIndex(array) {
 
 
 function generateRandomBook() {
-  currentCover = new Cover (randomCoverPicture, randomTitleCover, randomCoverDescriptorOne, randomCoverDescriptorTwo)
-
+  
 var randomTitleCover = titles[getRandomIndex(titles)]
 var randomCoverPicture = covers[getRandomIndex(covers)]
 var randomCoverDescriptorOne = descriptors[getRandomIndex(descriptors)]
 var randomCoverDescriptorTwo = descriptors[getRandomIndex(descriptors)]
 
-coverLocation.src = randomCoverPicture
-titleLocation.innerText = randomTitleCover
-taglineOneLocation.innerText = randomCoverDescriptorOne
-taglineTwoLocation.innerText = randomCoverDescriptorTwo
+currentCover = new Cover (randomCoverPicture, randomTitleCover, randomCoverDescriptorOne, randomCoverDescriptorTwo)
+loadCurrentCover()
+// coverLocation.src = randomCoverPicture
+// titleLocation.innerText = randomTitleCover
+// taglineOneLocation.innerText = randomCoverDescriptorOne
+// taglineTwoLocation.innerText = randomCoverDescriptorTwo
 
 
 }
 
+function loadCurrentCover() {
 
+coverLocation.src = currentCover.cover
+titleLocation.innerText = currentCover.title
+taglineOneLocation.innerText = currentCover.tagline1 
+taglineTwoLocation.innerText = currentCover.tagline2
+}
 
 
 
