@@ -13,8 +13,8 @@ var viewSavedButton = document.querySelector('.view-saved-button')
 var makeCoverButton = document.querySelector('.make-new-button')
 
 
+var savedView = document.querySelector('.saved-view')
 var savedCoversSection = document.querySelector('.saved-covers-section')
-        savedCoversSection.innerHTML = "<h2> Windswept Hearts </h2>"
 
 
 var userForm = document.querySelector('.form-view')
@@ -24,7 +24,8 @@ var whatToShow = [homeButton, userForm]
 var whatToHide = [homeMainCover, randomButton, saveCoverButton]
 
 
-var savedCoverPageElements = [homeButton, savedCovers]
+// var savedCoverPageElements = [homeButton, savedCovers]
+var savedCoverPageElements = [homeButton, savedView]
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -60,6 +61,7 @@ function activateCoverButton() {
 function activateViewSavedButton() {
   hideElements(whatToHide)
   showElements(savedCoverPageElements)
+  savedCoversSection.innerHTML = "<h2>Windswept Hearts</h2>"
 }
 
 function hideElements(elementsToHide) {
