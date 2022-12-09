@@ -1,3 +1,4 @@
+
 // Create variables targetting the relevant DOM elements here 👇
 
 
@@ -26,15 +27,18 @@ var makenewCover = document.querySelector('.make-new-button')
 
 // Add your event listeners here 👇
 
+
 window.addEventListener('load', displayRandomCover);
 
 randomCoverButton.addEventListener('click', displayRandomCover)
 
-// Create your event handlers and other functions here 👇
+
+//Create your event handlers and other functions here 👇
 
 
 
 // We've provided one function to get you started
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
