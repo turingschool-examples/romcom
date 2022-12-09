@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 var randomButton = document.querySelector(".random-cover-button")
+var makeCoverButton = document.querySelector(".make-new-button")
+var saveCoverButton = document.querySelector(".save-cover-button")
+var viewSavedButton = document.querySelector(".view-saved-button")
+var homeButton = document.querySelector('.home-button')
 var coverImage = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var tag1 = document.querySelector(".tagline-1")
@@ -16,7 +20,7 @@ var currentCover;
 
 window.addEventListener('load', createRandom)
 randomButton.addEventListener('click', createRandom)
-
+makeCoverButton.addEventListener('click', makeCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -27,6 +31,11 @@ function createRandom(){
  tag2.innerText = descriptors[getRandomIndex(descriptors)]
 }
 
+function makeCover() {
+  saveCoverButton.classList.toggle("hidden")
+  randomButton.classList.toggle("hidden")
+  homeButton.classList.toggle("hidden")
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
