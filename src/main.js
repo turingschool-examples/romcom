@@ -36,8 +36,8 @@ saveCoverButton.addEventListener('click', handleSaveCoverButton);
 
 // Create your event handlers and other functions here 👇
 function handleSaveCoverButton() {
-  savedCovers.push
-  //current cover added to savedCovers array with clicking save cover button
+  savedCovers.push(currentCover);
+  
   //if cover exists in the saved covers section, it will not add
   //when view saved cover button is clicked, the saved covers array will show
 }
