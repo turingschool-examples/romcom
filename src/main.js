@@ -1,8 +1,14 @@
 // Create variables targetting the relevant DOM elements here 👇
-var image = document.querySelector(".cover-image");
-var tagLine = document.querySelector("h3.tagline");
+// When the page loads a random cover will appear. We want to randome book cover button to select a different random book cover
+//when we click it. We are working with arrays
+// i think that we need a for loop
+var coverTitle = document.querySelector('.cover-title')
+var coverImage = document.querySelector('.cover-image');
+var tagLine1 = document.querySelector('.tagline-1');
+var tagLine2 = document.querySelector('.tagline-2')
 
-var makeYourOwnCover;
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -15,19 +21,20 @@ var savedCovers = [
 ];
 var currentCover;
 
-class Cover {
-  constructor(coverImgSrc, title, descriptor1, descriptor2) {
-    this.id = Date.now();
-    this.cover = coverImgSrc;
-    this.title = title;
-    this.tagline1 = descriptor1;
-    this.tagline2 = descriptor2;
-  }
-}
+// class Cover {
+//   constructor(coverImgSrc, title, descriptor1, descriptor2) {
+//     this.id = Date.now();
+//     this.cover = coverImgSrc;
+//     this.title = title;
+//     this.tagline1 = descriptor1;
+//     this.tagline2 = descriptor2;
+//   }
+// }
 
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -37,6 +44,21 @@ function getRandomIndex(array) {
 }
 
 function makeRandomCover() {
-  .cover
-  return Math.floor(math.random() * covers.length)
+  var newCovers = covers[getRandomIndex(covers)] 
+  var newTitles = titles[getRandomIndex(titles)]
+  var newDescriptors1 = descriptors[getRandomIndex(descriptors)]
+  var newDescriptors2 = descriptors[getRandomIndex(descriptors)]
+ coverTitle.innerText = newCovers
+ coverImage.src = newTitles
+ tagLine1.innerText = newDescriptors1
+ tagLine2.innerText = newDescriptors2
+
 }
+
+
+//pizza[0]
+
+
+// var season = seasonSelection.value
+// heading.innerText = season
+// picture.src = imagePaths[season];
