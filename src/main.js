@@ -7,8 +7,10 @@ var coverImage = document.querySelector('.cover-image');
 var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2')
 
+//Goal = new random cover button a new random cover is created. First need to target DOM element for button. 
+//Next create user listener for a click.  
 
-
+var randomCoverButton = document.querySelector('.random-cover-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -34,7 +36,7 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
-
+randomCoverButton.addEventListener("click", makeRandomCoversButton);
 
 // Create your event handlers and other functions here 👇
 
@@ -48,11 +50,16 @@ function makeRandomCover() {
   var newTitles = titles[getRandomIndex(titles)]
   var newDescriptors1 = descriptors[getRandomIndex(descriptors)]
   var newDescriptors2 = descriptors[getRandomIndex(descriptors)]
- coverTitle.innerText = newCovers
- coverImage.src = newTitles
+ coverTitle.innerText = newTitles
+ coverImage.src = newCovers
  tagLine1.innerText = newDescriptors1
  tagLine2.innerText = newDescriptors2
 
+}
+
+function makeRandomCoversButton() {
+  var newCovers = covers[getRandomIndex(covers)]; 
+  coverImage.src = newCovers;
 }
 
 
