@@ -15,19 +15,16 @@ var taglineTwo = document.querySelector('.tagline-2')
 
 var randomCoverButton = document.querySelector('.random-cover-button')
 
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-title.innerText = getRandomIndex(titles)
-cover.src = getRandomIndex(covers)
-taglineOne.innerText = getRandomIndex(descriptors)
-taglineTwo.innerText = getRandomIndex(descriptors)
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener("click", createBook);
+randomCoverButton.addEventListener("click", generateRandom);
 
-// Create your event handlers and other functions here 👇
+// // // Create your event handlers and other functions here 👇
 function getRandomIndex(titles) {
   return (titles[Math.floor(Math.random() * titles.length)])
 }
@@ -38,8 +35,27 @@ function getRandomIndex(descriptors) {
   return (descriptors[Math.floor(Math.random() * descriptors.length)])
 }
 
+function generateRandom() {
+  title.innerText = getRandomIndex(titles)
+  cover.src = getRandomIndex(covers)
+  taglineOne.innerText = getRandomIndex(descriptors)
+  taglineTwo.innerText = getRandomIndex(descriptors)
+} 
+
+//   var randomCovers = getRandomIndex(covers);
+//   var randomTitles = getRandomIndex(titles);
+//   var randomDescriptors1 = getRandomIndex(descriptors);
+//   var randomDescriptors2 = getRandomIndex(descriptors);
+//   currentCover = new Cover(cover[randomCovers], randomTitles, randomDescriptors1, randomDescriptors2);
+// }
+
+
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length)
+// }
+
 function createBook() {
-  currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
+  
 }
 
 // title.innerText = getRandomIndex(titles)
@@ -52,5 +68,3 @@ function createBook() {
 //   currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
 // }
 
-// function getRandomIndex(array) {
-//    return Math.floor(Math.random() * array.length)
