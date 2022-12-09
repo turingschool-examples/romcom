@@ -15,9 +15,8 @@ var savedCoverSection = document.querySelector(".saved-covers-section");
 window.addEventListener("load", createBook);
 randomCoverButton.addEventListener("click", createBook);
 makeYourOwnCover.addEventListener("click", createForm);
-homeButton.addEventListener("click", createHome);
-// saveCoversButton.addEventListener('click', viewSavedCovers)
 viewSaved.addEventListener("click", viewSavedCovers);
+homeButton.addEventListener("click", returnHome);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -49,20 +48,21 @@ function createForm() {
 }
 
 function viewSavedCovers() {
-  console.log("is this firing");
   homeView.classList.add("hidden");
   homeButton.classList.remove("hidden");
   viewForm.classList.add("hidden");
   savedView.classList.remove("hidden");
 }
 
- function createHome() {
-  homeView.classList.add('view')
-  homeButton.classList.remove('view')
-  randomCoverButton.classList.add('view')
-  saveCoversButton.classList.add('view')
-  viewForm.classList.remove('view')
- }
+function returnHome() {
+  console.log("firing");
+  homeView.classList.remove("hidden");
+  saveCoversButton.classList.remove('hidden');
+  randomCoverButton.classList.remove("hidden");
+  viewForm.classList.add("hidden");
+  homeButton.classList.add("hidden");
+  savedView.classList.remove("hidden")
+}
 
 // We've provided a few variables below
 var savedCovers = [
