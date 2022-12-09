@@ -14,7 +14,7 @@ var viewSavedButton = document.querySelector('.view-saved-button')
 
 // User form buttons 1.to get there 2.submit
 var formViewButton = document.querySelector('.make-new-button')
-var newBookButton = document.querySelector('.create-new-book-button')
+var makeMyBookButton = document.querySelector('.create-new-book-button')
 
 
 var savedView = document.querySelector('.saved-view')
@@ -41,6 +41,9 @@ randomButton.addEventListener("click", generateNewCover)
 // --------------- Make new cover Button------------------------- 
 // for make your own
 formViewButton.addEventListener("click", activateFormViewButton)
+makeMyBookButton.addEventListener("click", activateMakeMyBookButton)
+
+
 homeButton.addEventListener("click", activateHomeButton)
 
 
@@ -73,6 +76,18 @@ function activateFormViewButton() {
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
   // savedCoverPageElements.classList.add('hidden')
+}
+
+function activateMakeMyBookButton() {
+  var formCover = document.querySelector('#cover')
+  var formTitle = document.querySelector('#title')
+  var formDescriptor1 = document.querySelector('#descriptor1')
+  var formDescriptor2 = document.querySelector('#descriptor2')
+  covers.unshift(formCover)
+  titles.unshift(formTitle)
+  descriptors.unshift(formDescriptor1)
+  descriptors.unshift(formDescriptor2)
+  // event.preventDefault()
 }
 
 function activateViewSavedButton() {
