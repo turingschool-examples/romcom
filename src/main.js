@@ -32,6 +32,7 @@ makeYourOwnCoverButton.addEventListener('click', handleMakeYourCoverButton);
 viewSavedCoversButton.addEventListener('click', handleViewSavedCoversButton);
 homeButton.addEventListener('click', handleHomeButton);
 makeMyBookButton.addEventListener('click', handleMakeMyBookButton);
+saveCoverButton.addEventListener('click', handleSaveCoverButton);
 
 // Create your event handlers and other functions here 👇
 function handlePageLoad() {
