@@ -1,4 +1,5 @@
 var currentCover;
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -7,11 +8,11 @@ var savedCovers = [
 
 
 // Create variables targetting the relevant DOM elements here 👇
-var cover = document.querySelector('.cover-image')
-var title = document.querySelector('.cover-title')
-var taglineOne = document.querySelector('.tagline-1')
-var taglineTwo = document.querySelector('.tagline-2')
-var priceTag = document.querySelector('.price-tag')
+var coverLocation = document.querySelector('.cover-image')
+var titleLocation = document.querySelector('.cover-title')
+var taglineOneLocation = document.querySelector('.tagline-1')
+var taglineTwoLocation = document.querySelector('.tagline-2')
+var priceTagLocation = document.querySelector('.price-tag')
 
 var randomButtonCover = document.querySelector('.random-cover-button')
 var saveButtonCover = document.querySelector('.save-cover-button')
@@ -22,52 +23,65 @@ var makeNewCover = document.querySelector('.make-new-button')
 
 
 
-title.innerText = titles[getRandomIndex(titles)]
-cover.src = covers[getRandomIndex(covers)]
-taglineOne.innerText = covers[getRandomIndex(descriptors)]
-taglineTwo.innerText = covers[getRandomIndex(descriptors)]
+
+
+
 //titles[0]
+
+
+
+
+
+
+
 // Add your event listeners here 👇
 
-// window.addEventListener("load", (event)
-// var image = document.querySelector('#image');
+window.addEventListener("load", generateRandomBook)
 
-// image.addEventListener('click', function() {
-//     image.src = 'https://dirask.com/static/bucket/1633375165831-yjQ7G6WQeL--image.png';
-// });
+randomButtonCover.addEventListener("click", generateRandomBook)
+
+
 
 
 // Create your event handlers and other functions here 👇
 
 
+
+
+
 // We've provided one function to get you started
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 
-// function getRandomTitles(titles) {
-//   return (Math.floor(Math.random() * titles.length))
-// }
 
-// function getRandomCovers(covers) {
-//   return (Math.floor(Math.random() * covers.length))
-// }
+function generateRandomBook() {
+  currentCover = new Cover (randomCoverPicture, randomTitleCover, randomCoverDescriptorOne, randomCoverDescriptorTwo)
 
-// function getRandomDescriptors(descriptors) {
-//   return (Math.floor(Math.random() * descriptors.length))
-// }
+var randomTitleCover = titles[getRandomIndex(titles)]
+var randomCoverPicture = covers[getRandomIndex(covers)]
+var randomCoverDescriptorOne = descriptors[getRandomIndex(descriptors)]
+var randomCoverDescriptorTwo = descriptors[getRandomIndex(descriptors)]
 
-// function getRandomIndex(descriptors) {
-//   return (descriptors(math.floor(math.random() * discriptors.length)))
-// }
-function createBook(){
-  currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
+coverLocation.src = randomCoverPicture
+titleLocation.innerText = randomTitleCover
+taglineOneLocation.innerText = randomCoverDescriptorOne
+taglineTwoLocation.innerText = randomCoverDescriptorTwo
+
+
 }
 
 
 
-// function getRandomIndex(savedCovers) {
-//   return Math.floor(Math.random() * savedCovers.length);
-// 
+
+
+// function createBook(){
+//   currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
+// }
+
+
+
