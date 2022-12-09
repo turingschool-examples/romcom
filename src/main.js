@@ -6,6 +6,7 @@ var coverTag2 = document.querySelector('.tagline-2');
 var makeYourOwnPage = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var savedSection = document.querySelector('.saved-covers-section');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
@@ -23,10 +24,7 @@ var createBookBtn = document.querySelector('.create-new-book-button');
 
 
 // We've provided a few variables below 👇
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
-
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -45,6 +43,7 @@ makeYourBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
 createBookBtn.addEventListener('click', createUserBook);
+saveCoverBtn.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -69,6 +68,7 @@ function switchToMakeYourOwn() {
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homePageBtn.classList.remove('hidden');
+  savedView.classList.add('hidden')
 };
 
 function switchToSavedView() {
@@ -96,10 +96,19 @@ function createUserBook(event) {
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
   switchToHome();
   makeYourOwnPage.classList.add('hidden');
-  coverImage.src = userCover.value;
-  coverTitle.innerText = userTitle.value;
-  coverTag1.innerText = userDesc1.value;
-  coverTag2.innerText = userDesc2.value;
+  pushRandomCover();
+};
+
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+      savedSection.innerHTML += `
+        <section class="mini-cover">
+          <img class="mini-cover" src=${currentCover.cover}></img>
+          <h2 class="cover-title"> ${currentCover.title}</h2>
+          <h3 class="tagline">A tale of <span> ${currentCover.tagline1}</span> and <span> ${currentCover.tagline2}</span></h3>
+        </section>`
+  };
 };
 
 // We've provided one function to get you started 👇
