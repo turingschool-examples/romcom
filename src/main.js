@@ -15,9 +15,9 @@ var tagLine2 = document.querySelector('.tagline-2')
 //Next create user listener for a click.  
 
 var randomCoverButton = document.querySelector('.random-cover-button')
-var makeYourOwnForm = document.querySelector(".view form-view hidden")
+var makeYourOwnForm = document.querySelector(".form-view")
 var makeYourOwnCoverButton = document.querySelector(".make-new-button")
-
+var homeView = document.querySelector(".home-view")
 
 
 
@@ -75,30 +75,8 @@ function makeRandomCoversButton() {
 }
 
 function makeNewCoverForm() {
-	image.src = 'https://icatcare.org/app/uploads/2018/07/Finding-homes-for-your-kittens-1.png'
-	image.alt = 'Form'
+
   
-  img.classList.add('kitten-heading');
-	section.classList.add('kitten-box');
+  makeYourOwnForm.classList.remove("hidden");
+  homeView.classList.add("hidden")
 }
-
-
-// var title = document.querySelector('h1');
-// var animalFact = document.querySelector('#animalFact');
-// var imageLabel = document.querySelector('#imageLabel');
-// var image = document.querySelector('img');
-// var section = document.querySelector('section');
-// var button = document.querySelector('button');
-
-// button.addEventListener('click', changePet);
-
-// function changePet() {
-// 	title.innerText = 'kittens';
-// 	animalFact.innerText = 'Kittens are so cute!';
-// 	imageLabel.innerText = 'Here is a pic of some kitties:'
-// 	image.src = 'https://icatcare.org/app/uploads/2018/07/Finding-homes-for-your-kittens-1.png'
-// 	image.alt = 'Fluffy kitties in a basket!'
-
-// 	title.classList.add('kitten-heading');
-// 	section.classList.add('kitten-box');
-// }
