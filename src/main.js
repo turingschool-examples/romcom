@@ -28,7 +28,7 @@ document.onload = makeCovAndUpdate();
 
 randomCoverButton.addEventListener("click", makeCovAndUpdate);
 
-// saveCoverButton.addEventListener("click", saveCover);
+saveCoverButton.addEventListener("click", saveCover);
 
 viewSavedButton.addEventListener("click", viewSavedCovers);
 
@@ -62,6 +62,11 @@ function updateHome() {
 
 function saveCover() {
   savedCovers.push(currentCover);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === currentCover.id) {
+      return;
+    };
+  };
 };
 
 function viewSavedCovers() {
@@ -70,8 +75,16 @@ function viewSavedCovers() {
   homePageSection.style.display = "none";
   newCoverForm.style.display = "none";
   homeButton.style.display = "block";
-  savedCoversSection.style.display = "block";
+  savedCoversSection.style.display = "flex";
 };
+
+function displaySavedCovers() {
+  for (var i = 0; i < savedCovers.length; i++) {
+
+  }
+};
+
+
 
 function viewForm() {
   saveCoverButton.style.display = "none";
@@ -105,4 +118,9 @@ function saveFormData() {
 
   viewHome();
   updateHome();
+ 
+  document.querySelector("#cover").value = "";
+  document.querySelector("#title").value = "";
+  document.querySelector("#descriptor1").value = "";
+  document.querySelector("#descriptor2").value = "";
 };
