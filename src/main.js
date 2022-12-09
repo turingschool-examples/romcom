@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
 var homeButton = document.querySelector(".home-button.hidden");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
@@ -12,34 +11,31 @@ var firstCovTag = document.querySelector(".tagline-1");
 var secCovTag = document.querySelector(".tagline-2");
 
 var homePageSection = document.querySelector(".main-cover");
-var savedCoversSection = document.querySelector(".view.saved-view.hidden");
+var savedCoversMain = document.querySelector(".view.saved-view.hidden");
+var savedCoversSection = document.querySelector('.saved-covers-section');
+
+
 
 var newCoverForm = document.querySelector(".view.form-view.hidden");
 
-
-// We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+
+
 document.onload = makeCovAndUpdate();
-
 randomCoverButton.addEventListener("click", makeCovAndUpdate);
-
 saveCoverButton.addEventListener("click", saveCover);
-
 viewSavedButton.addEventListener("click", viewSavedCovers);
-
 makeOwnCoverButton.addEventListener("click", viewForm);
-
 homeButton.addEventListener("click", viewHome);
-
 makeMyBookButton.addEventListener("click", saveFormData);
 
-// Create your event handlers and other functions here 👇
-// We've provided one function to get you started
+
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -61,49 +57,80 @@ function updateHome() {
 };
 
 function saveCover() {
-  savedCovers.push(currentCover);
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id === currentCover.id) {
       return;
     };
   };
+  savedCovers.push(currentCover);
 };
 
 function viewSavedCovers() {
-  randomCoverButton.style.display = "none";
-  saveCoverButton.style.display = "none";
-  homePageSection.style.display = "none";
-  newCoverForm.style.display = "none";
-  homeButton.style.display = "block";
-  savedCoversSection.style.display = "flex";
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homePageSection.classList.add("hidden");
+  newCoverForm.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  savedCoversMain.classList.remove('hidden');
+  
+
+
+  for (var i = 0; i < savedCovers.length; i++) {
+    displaySavedCovers(i);
+  };
 };
 
-function displaySavedCovers() {
-  for (var i = 0; i < savedCovers.length; i++) {
+function addClass(disp, smlI, smlP, smlT) {
+  disp.classList.add("mini-cover");
+  smlI.classList.add("mini-cover");
+  smlP.classList.add("cover-title");
+  smlT.classList.add("tagline");
+}
 
-  }
+function displaySavedCovers(numCycle) {
+  var display = document.createElement("div");
+  var smallImage = document.createElement("img")
+  var smallPage = document.createElement("p");
+  var smallTag = document.createElement("p")
+
+  savedCoversSection.appendChild(display);
+
+  addClass(display, smallImage, smallPage, smallTag);
+
+  smallImage.setAttribute("id", `coverImg${numCycle}`)
+  smallImage.src = savedCovers[numCycle].cover;
+  display.appendChild(smallImage);
+
+  smallPage.setAttribute("id", `coverTitle${numCycle}`);
+  smallPage.innerText = savedCovers[numCycle].title;
+  display.appendChild(smallPage);
+
+  smallTag.setAttribute("id", `coverTags${numCycle}`);
+  smallTag.innerText = `A tale of ${savedCovers[numCycle].tagline1} and ${savedCovers[numCycle].tagline2}`
+  display.appendChild(smallTag);
+
 };
 
 
 
 function viewForm() {
-  saveCoverButton.style.display = "none";
-  homePageSection.style.display = "none";
-  randomCoverButton.style.display = "none";
-  homeButton.style.display = "block";
-  newCoverForm.style.display = "block";
+  saveCoverButton.classList.add("hidden");
+  homePageSection.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+  newCoverForm.classList.remove("hidden");
 };
 
 function viewHome() {
-  savedCoversSection.style.display = "none";
-  newCoverForm.style.display = "none";
-  homeButton.style.display = "none";
-  saveCoverButton.style.display = "block";
-  randomCoverButton.style.display = "block";
-  homePageSection.style.display = "block";
+  savedCoversMain.classList.add("hidden");
+  newCoverForm.classList.add("hidden");
+  homeButton.classList.add("hidden");
+  saveCoverButton.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  homePageSection.classList.remove("hidden");
 };
 
-function saveFormData() {
+function saveFormData(event) {
   event.preventDefault();
   var coverInput = document.querySelector("#cover").value;
   var titleInput = document.querySelector("#title").value;
