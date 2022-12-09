@@ -11,6 +11,17 @@ var homeButton = document.querySelector('.home-button')
 var saveButton = document.querySelector('.save-cover-button')
 var savedCoversButton = document.querySelector('.view-saved-button')
 var savedData = document.querySelector('.saved-view')
+
+var userInputCover = document.querySelector('.user-cover')
+var userInputTitle = document.querySelector('.user-title')
+var userInputDesc1 = document.querySelector('.user-desc1')
+var userInputDesc2 = document.querySelector('.user-desc2')
+var createNewBookButton = document.querySelector('.create-new-book-button')
+
+
+
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -23,6 +34,13 @@ randButton.addEventListener('click', getRandomCover)
 makeOwnCoverButton.addEventListener('click', switchToForm)
 savedCoversButton.addEventListener('click', switchToSaved)
 homeButton.addEventListener('click', switchToHome)
+
+createNewBookButton.addEventListener('click', function() {
+  makeCustomBook()
+  
+})
+
+
 // Create your event handlers and other functions here 👇
 
 
@@ -62,6 +80,38 @@ function switchToHome() {
   savedCoversButton.classList.remove('hidden')
   coverData.classList.remove('hidden')
 }
+
+// function makeCustomBook() {
+//   covers.push(userInputCover.value)
+//   titles.push(userInputTitle.value)
+//   descriptors.push(userInputDesc1.value)
+//   descriptors.push(userInputDesc2.value)
+  
+//   coverImage.src = userInputCover.value
+  
+//   //var currentCover = new Cover(userInputCover.src, userInputTitle.value, userInputDesc1.value, userInputDesc2.value)
+// }
+
+
+
+
+// In the new cover form view, users should be able to fill out the four input fields and then hit the Make My Book button
+
+// When the Make My Book button is clicked, several things will happen:
+
+// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
+
+// Use the values from the inputs to create a new instance of the Cover class
+
+// Change back to the main home view (hiding the form view again)
+
+// Display the newly created cover image, title, and descriptors in the main cover
+
+
+
+
+
+
 //psuedocode here:
 // Query Selector notes -
 // syntax to affect "random cover button":
