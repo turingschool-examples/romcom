@@ -6,6 +6,10 @@ var coverTag2 = document.querySelector('.tagline-2');
 var makeYourOwnPage = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
 
 
 // Button variables 👇
@@ -14,6 +18,9 @@ var makeYourBtn = document.querySelector('.make-new-button');
 var homePageBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var savedViewBtn = document.querySelector('.view-saved-button');
+var createBookBtn = document.querySelector('.create-new-book-button');
+
+
 
 // We've provided a few variables below 👇
 var savedCovers = [
@@ -25,22 +32,23 @@ var currentCover;
 // Add your event listeners here 👇
 
 randomCoverBtn.addEventListener('click', function() {
-  generateRandomPoster()
+  generateRandomCover()
   pushRandomCover()
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  generateRandomPoster()
+  generateRandomCover()
   pushRandomCover()
 });
 
 makeYourBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
+createBookBtn.addEventListener('click', createUserBook);
 
 // Create your event handlers and other functions here 👇
 
-function generateRandomPoster() {
+function generateRandomCover() {
   var randomImageIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
   var randomTag1Index = getRandomIndex(descriptors);
@@ -79,7 +87,17 @@ function switchToHome() {
   saveCoverBtn.classList.remove('hidden');
 };
 
-
+function createUserBook(event) {
+  event.preventDefault()
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  descriptors.push(userDesc1.value)
+  descriptors.push(userDesc2.value)
+  // Use the values from the inputs to create a new instance of the Cover class
+  // Change back to the main home view (hiding the form view again)
+  // Display the newly created cover image, title, and descriptors in the main cover
+  // currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
+};
 
 // We've provided one function to get you started 👇
 function getRandomIndex(array) {
