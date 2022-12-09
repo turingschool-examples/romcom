@@ -12,6 +12,7 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 var savedView = document.querySelector('.saved-view');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
+//Added type attribute to prevent make my book button from reloading the page
 makeMyBookButton.type = "button";
 var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
