@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-var image = document.querySelector(".cover-image");
+// When the page loads a random cover will appear. We want to randome book cover button to select a different random book cover
+//when we click it. We are working with arrays
+// i think that we need a for loop
+var title = document.querySelector('')
+var coverImage = document.querySelector(".cover-image");
 var tagLine = document.querySelector("h3.tagline");
 
 var makeYourOwnCover;
@@ -37,6 +41,6 @@ function getRandomIndex(array) {
 }
 
 function makeRandomCover() {
-  .cover
+  
   return Math.floor(math.random() * covers.length)
 }
