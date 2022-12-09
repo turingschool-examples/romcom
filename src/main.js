@@ -12,6 +12,9 @@ var tagLine2 = document.querySelector('.tagline-2')
 
 var randomCoverButton = document.querySelector('.random-cover-button')
 
+
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover(
@@ -46,7 +49,7 @@ function getRandomIndex(array) {
 }
 
 function makeRandomCover() {
-  var newCovers = covers[getRandomIndex(covers)] 
+  var newCovers = covers[getRandomIndex(covers)]  
   var newTitles = titles[getRandomIndex(titles)]
   var newDescriptors1 = descriptors[getRandomIndex(descriptors)]
   var newDescriptors2 = descriptors[getRandomIndex(descriptors)]
