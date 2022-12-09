@@ -32,8 +32,16 @@ makeYourOwnCoverButton.addEventListener('click', handleMakeYourCoverButton);
 viewSavedCoversButton.addEventListener('click', handleViewSavedCoversButton);
 homeButton.addEventListener('click', handleHomeButton);
 makeMyBookButton.addEventListener('click', handleMakeMyBookButton);
+saveCoverButton.addEventListener('click', handleSaveCoverButton);
 
 // Create your event handlers and other functions here 👇
+function handleSaveCoverButton() {
+  savedCovers.push(currentCover);
+  
+  //if cover exists in the saved covers section, it will not add
+  //when view saved cover button is clicked, the saved covers array will show
+}
+
 function handlePageLoad() {
   createRandomCover();
   displayCurrentCover();
