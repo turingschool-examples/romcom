@@ -34,6 +34,11 @@ var savedCovers = [
 ];
 var currentCover;
 
+  // inputCover.innterHTML = 
+  // coverTitle.innerText = inputTitle.value
+  // tagLine1.innerText = inputFirstDescriptor.value
+  // tagLine2.innerText = inputSecondDescriptor.value
+
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
@@ -103,7 +108,8 @@ function makeMyBook() {
   titles.unshift(inputTitle.value);
   descriptors.unshift(inputFirstDescriptor.value);
   descriptors.unshift(inputSecondDescriptor.value);
-  viewHomePage()
+  currentCover = new Cover (coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
+  viewHomePage();
   // viewMakeYourOwnCoverForm.classList.remove("hidden");
   //  buttonMakeMyBook.classList.remove("hidden")
   
