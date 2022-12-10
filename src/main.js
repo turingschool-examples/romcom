@@ -21,14 +21,12 @@ var saveCoverBtn = document.querySelector('.save-cover-button');
 var savedViewBtn = document.querySelector('.view-saved-button');
 var createBookBtn = document.querySelector('.create-new-book-button');
 
-
-
 // We've provided a few variables below 👇
 var savedCovers = [];
 var currentCover;
+var miniCovers = [];
 
 // Add your event listeners here 👇
-
 randomCoverBtn.addEventListener('click', function() {
   generateRandomCover();
   pushRandomCover();
@@ -46,7 +44,6 @@ createBookBtn.addEventListener('click', createUserBook);
 saveCoverBtn.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
-
 function generateRandomCover() {
   var randomImageIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
@@ -83,6 +80,7 @@ function switchToSavedView() {
 function switchToHome() {
   homeView.classList.remove('hidden');
   homePageBtn.classList.add('hidden');
+  savedView.classList.add('hidden');
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 };
@@ -108,8 +106,33 @@ function saveCover() {
           <h2 class="cover-title"> ${currentCover.title}</h2>
           <h3 class="tagline">A tale of <span> ${currentCover.tagline1}</span> and <span> ${currentCover.tagline2}</span></h3>
         </section>`
+    miniCovers = savedSection.children;
+    for (var i = 0; i < miniCovers.length; i++) {
+      miniCovers[i].addEventListener('dblclick', removeCover)
+    }
   };
 };
+
+
+function removeCover(e) {
+  var parent = e.currentTarget.parentElement
+  console.log(miniCovers)
+  console.log(parent)
+  var target = e.currentTarget
+  parent.removeChild(target)
+  // savedCovers.splice(i, 1)
+}
+
+/*
+On clicking, get the object id for the title we clicked
+Remove HTML from the saved covers section 
+Remove object from savedCovers array
+*/
+
+
+
+
+
 
 // We've provided one function to get you started 👇
 function getRandomIndex(array) {
