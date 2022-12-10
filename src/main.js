@@ -18,10 +18,11 @@ var buttonViewSavedCover = document.querySelector(".view-saved-button");
 var buttonRandomCover = document.querySelector('.random-cover-button')
 var buttonMakeYourOwnCover = document.querySelector(".make-new-button")
 var buttonHome = document.querySelector('.home-button')
+var buttonSaveCover = document.querySelector(".save-cover-button")
 
 var viewMakeYourOwnCoverForm = document.querySelector(".form-view")
 var viewHome = document.querySelector(".home-view")
-var viewSavedCoversPage = document.querySelector(".saved-covers-section");
+var viewSavedCoversPage = document.querySelector(".saved-view");
 
 //query select saved cover button- 
 
@@ -82,10 +83,11 @@ function viewSavedCovers() {
   viewHome.classList.add("hidden");
   viewMakeYourOwnCoverForm.classList.add("hidden");
   buttonRandomCover.classList.add("hidden");
+  buttonSaveCover.classList.add("hidden")
   viewSavedCoversPage.classList.remove("hidden")
+  buttonHome.classList.remove("hidden");
 //  viewHome.classList.add("hidden");
-//  savedCoverButton.classList.add("hidden");
-//  buttonHome.classList.remove("hidden");
+
 }
 
 
