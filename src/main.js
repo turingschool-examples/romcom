@@ -19,11 +19,16 @@ var buttonRandomCover = document.querySelector('.random-cover-button')
 var buttonMakeYourOwnCover = document.querySelector(".make-new-button")
 var buttonHome = document.querySelector('.home-button')
 var buttonSaveCover = document.querySelector(".save-cover-button")
+var buttonMakeMyBook = document.querySelector("create-new-book-button");
 
 var viewMakeYourOwnCoverForm = document.querySelector(".form-view")
 var viewHome = document.querySelector(".home-view")
 var viewSavedCoversPage = document.querySelector(".saved-view");
 
+var inputCover = document.getElementById("#cover");
+var inputTitle = document.getElementById("#title");
+var inputFirstDescriptor = document.getElementById("#descriptor1");
+var inputSecondDescriptor = document.getElementById("#descriptor2");
 //query select saved cover button- 
 
 
@@ -44,10 +49,8 @@ window.addEventListener("load", makeRandomCover);
 buttonRandomCover.addEventListener("click", makeRandomCoversButton);
 buttonMakeYourOwnCover.addEventListener("click", makeNewCoverForm);
 buttonViewSavedCover.addEventListener('click', viewSavedCovers);
-buttonHome.addEventListener("click", viewHomePage) 
-
-
-
+buttonHome.addEventListener("click", viewHomePage)
+buttonMakeMyBook.addEventListener('click', makeMyBook) 
 
 
 // Create your event handlers and other functions here 👇
@@ -104,10 +107,15 @@ function viewHomePage() {
   viewSavedCoversPage.classList.remove("hidden")
   viewHome.classList.remove("hidden");
   buttonViewSavedCover.classList.remove("hidden");
-
-
 }
 
+function makeMyBook() {
+  event.preventDefault();
+  covers.unshift('inputCover.value')
+  titles.unshift('inputTitle.value')
+  descriptors.unshift('inputDescriptors1.value, inputDescriptors2.value')
+  viewMakeYourOwnCoverForm.classList.remove("hidden");
+}
 
 //When a user clicks the “View Saved Covers” button, we should see the saved covers section, and the homepage view should be hidden
 //When the Saved Covers view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
