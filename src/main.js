@@ -1,18 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-// When the page loads a random cover will appear. We want to randome book cover button to select a different random book cover
-//when we click it. We are working with arrays
-// i think that we need a for loop
 
-//Goal= Our goal is to be able to click the button "make your own cover" and take the user to the make your own cover form.
-// when the form comes up, the show randome cover button and save cover button should be gone as well as the home page.
-//
 var coverTitle = document.querySelector('.cover-title')
 var coverImage = document.querySelector('.cover-image');
 var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2')
-
-//Goal = new random cover button a new random cover is created. First need to target DOM element for button. 
-//Next create user listener for a click.  
 
 var buttonViewSavedCover = document.querySelector(".view-saved-button");
 var buttonRandomCover = document.querySelector('.random-cover-button')
@@ -25,10 +16,10 @@ var viewMakeYourOwnCoverForm = document.querySelector(".form-view")
 var viewHome = document.querySelector(".home-view")
 var viewSavedCoversPage = document.querySelector(".saved-view");
 
-var inputCover = document.getElementById("#cover");
-var inputTitle = document.getElementById("#title");
-var inputFirstDescriptor = document.getElementById("#descriptor1");
-var inputSecondDescriptor = document.getElementById("#descriptor2");
+var inputCover = document.getElementById("cover");
+var inputTitle = document.getElementById("title");
+var inputFirstDescriptor = document.getElementById("descriptor1");
+var inputSecondDescriptor = document.getElementById("descriptor2");
 //query select saved cover button- 
 
 
@@ -49,8 +40,8 @@ window.addEventListener("load", makeRandomCover);
 buttonRandomCover.addEventListener("click", makeRandomCoversButton);
 buttonMakeYourOwnCover.addEventListener("click", makeNewCoverForm);
 buttonViewSavedCover.addEventListener('click', viewSavedCovers);
-buttonHome.addEventListener("click", viewHomePage)
-buttonMakeMyBook.addEventListener('click', makeMyBook) 
+buttonHome.addEventListener("click", viewHomePage);
+buttonMakeMyBook.addEventListener('click', makeMyBook); 
 
 
 // Create your event handlers and other functions here 👇
@@ -84,7 +75,6 @@ function makeNewCoverForm() {
   buttonRandomCover.classList.add("hidden");
   buttonViewSavedCover.classList.remove("hidden");
   buttonSaveCover.classList.add("hidden")
-  
 }
 
 function viewSavedCovers() {
@@ -94,8 +84,6 @@ function viewSavedCovers() {
   buttonSaveCover.classList.add("hidden")
   viewSavedCoversPage.classList.remove("hidden")
   buttonHome.classList.remove("hidden");
-//  viewHome.classList.add("hidden")
-
 }
 
 function viewHomePage() {
@@ -109,14 +97,17 @@ function viewHomePage() {
   buttonViewSavedCover.classList.remove("hidden");
 }
 
-function makeMyBook() {
+function makeMyBook(event) {
+  debugger
   event.preventDefault();
-  covers.unshift('inputCover.value')
-  titles.unshift('inputTitle.value')
-  descriptors.unshift('inputDescriptors1.value, inputDescriptors2.value')
+  inputCover = document.getElementById("cover").value;
+  inputTitle = document.getElementById("title").value;
+  inputFirstDescriptor = document.getElementById("descriptor1").value;
+  inputSecondDescriptor = document.getElementById("descriptor2").value;
+  covers.unshift(inputCover).value;
+  titles.unshift(inputTitle).value;
+  descriptors.unshift(inputDescriptors1).value;
+  descriptors.unshift(inputDescriptors2).value;
   viewMakeYourOwnCoverForm.classList.remove("hidden");
 }
 
-//When a user clicks the “View Saved Covers” button, we should see the saved covers section, and the homepage view should be hidden
-//When the Saved Covers view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
-//When the Saved Covers view is visible, the “Home” button should be visible
