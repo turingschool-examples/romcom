@@ -73,20 +73,27 @@ function newRandomCover() {
 
   }
 
+  // function saveCov() {
+  //   if(savedCovers.length) {
+  //     savedCovers.push(currentCover)
+  //   } else {
+  //     for(var i = 0; i <= savedCovers.length; i++){
+  //       if (i === savedCovers.length) {
+  //         savedCovers.push(currentCover)
+  //         break  
+  //       } else if (savedCovers[i].title === currentCover.title){
+  //           break
+  //       }  
+  //       }
+  //     }
+  //   }
+
   function saveCov() {
-    if(savedCovers.length) {
+    if (!savedCovers.includes(currentCover)) {
       savedCovers.push(currentCover)
-    } else {
-      for(var i = 0; i <= savedCovers.length; i++){
-        if (i === savedCovers.length) {
-          savedCovers.push(currentCover)
-          break  
-        } else if (savedCovers[i].title === currentCover.title){
-            break
-        }  
-        }
-      }
     }
+    return savedCovers
+  }
 
     function coverCreate() {
 
