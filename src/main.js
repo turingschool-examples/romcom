@@ -12,23 +12,25 @@ var viewSaved = document.querySelector(".view-saved-button");
 var homeButton = document.querySelector(".home-button");
 var saveCoversButton = document.querySelector(".save-cover-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
+var newBookButton = document.querySelector(".create-new-book-button");
 
 window.addEventListener("load", createBook);
 randomCoverButton.addEventListener("click", createBook);
 makeYourOwnCover.addEventListener("click", createForm);
 viewSaved.addEventListener("click", viewSavedCovers);
 homeButton.addEventListener("click", returnHome);
+newBookButton.addEventListener('click', makeMyBook)
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function createBook() {
-  currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText);
   title.innerText = titles[getRandomIndex(titles)];
   cover.src = covers[getRandomIndex(covers)];
   taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
   taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText);
 }
 
 function createForm() {
@@ -56,6 +58,25 @@ function returnHome() {
   viewForm.classList.add("hidden");
   homeButton.classList.add("hidden");
   savedView.classList.remove("hidden");
+}
+
+function makeMyBook(event) {
+  debugger
+  event.preventDefault();
+  var coverInput = document.getElementById('cover').value;
+  var titleInput = document.getElementById('title').value;
+  var descriptor1Input = document.getElementById('descriptor1').value;
+  var descriptor2Input = document.getElementById('descriptor2').value;
+  covers.unshift(coverInput);
+  titles.unshift(titleInput);
+  descriptors.unshift(descriptor1Input); 
+  descriptors.unshift(descriptor2Input);
+  title.innerText = titleInput;
+  cover.src = coverInput;
+  taglineOne.innerText = descriptor1Input;
+  taglineTwo.innerText = descriptor2Input;
+  savedCovers.unshift = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input)
+  returnHome();
 }
 
 // We've provided a few variables below
