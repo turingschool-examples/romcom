@@ -28,7 +28,8 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
-var homeButton = document.querySelector(".home-button")
+var homeButton = document.querySelector('.home-button')
+var makeBookButton = document.querySelector('.create-new-book-button')
 
 // Add your event listeners here 👇
 
@@ -42,6 +43,9 @@ makeNewButton.addEventListener('click', openCoverForm)
 viewSavedButton.addEventListener('click', showSavedCovers)
 
 homeButton.addEventListener('click', displayHomepage)
+
+makeBookButton.addEventListener('click', showNewCover)
+
 //Create your event handlers and other functions here 👇
 
 
@@ -58,7 +62,7 @@ function displayRandomCover() {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
-  taglineTwo.innerText = currentCover.tagline2
+  taglineTwo.innerText = currentCover.tagline2;
 
 }
 
@@ -88,6 +92,33 @@ function displayHomepage() {
   homeButton.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
+  viewForm.classList.add('hidden');
+  makeBookButton.classList.add('hidden');
+}
+
+function makeBook() {
+  
+  var coverInput = document.getElementById('cover').value; 
+  var titleInput = document.getElementById('title').value;
+  var descriptor1Input = document.getElementById('descriptor1').value;
+  var descriptor2Input = document.getElementById('descriptor2').value;
+  covers.push(coverInput);
+  titles.push(titleInput);
+  descriptors.push(descriptor1Input);
+  descriptors.push(descriptor2Input);
+  currentCover = new Cover (coverInput, titleInput, descriptor1Input, descriptor2Input);
+
+}
+
+function showNewCover(event) {
+  event.preventDefault();
+  makeBook();
+  displayHomepage();
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  taglineOne.innerText = currentCover.tagline1;
+  taglineTwo.innerText = currentCover.tagline2;
+
 }
 
 
