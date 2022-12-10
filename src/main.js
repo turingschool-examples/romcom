@@ -14,13 +14,15 @@ var tagLine2 = document.querySelector('.tagline-2')
 //Goal = new random cover button a new random cover is created. First need to target DOM element for button. 
 //Next create user listener for a click.  
 
-var randomCoverButton = document.querySelector('.random-cover-button')
-var makeYourOwnForm = document.querySelector(".form-view")
-var makeYourOwnCoverButton = document.querySelector(".make-new-button")
-var homeView = document.querySelector(".home-view")
-var homeButton = document.querySelector('.home-button')
-var viewSavedCoverButton = document.querySelector(".view-saved-button");
-var savedCoversPage = document.querySelector(".saved-covers-section");
+var buttonViewSavedCover = document.querySelector(".view-saved-button");
+var buttonRandomCover = document.querySelector('.random-cover-button')
+var buttonMakeYourOwnCover = document.querySelector(".make-new-button")
+var buttonHome = document.querySelector('.home-button')
+var buttonSaveCover = document.querySelector(".save-cover-button")
+
+var viewMakeYourOwnCoverForm = document.querySelector(".form-view")
+var viewHome = document.querySelector(".home-view")
+var viewSavedCoversPage = document.querySelector(".saved-view");
 
 //query select saved cover button- 
 
@@ -39,9 +41,12 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
-randomCoverButton.addEventListener("click", makeRandomCoversButton);
-makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm);
-viewSavedCoverButton.addEventListener('click', viewSavedCovers)
+buttonRandomCover.addEventListener("click", makeRandomCoversButton);
+buttonMakeYourOwnCover.addEventListener("click", makeNewCoverForm);
+buttonViewSavedCover.addEventListener('click', viewSavedCovers);
+buttonHome.addEventListener("click", viewHomePage) 
+
+
 
 
 
@@ -70,21 +75,37 @@ function makeRandomCoversButton() {
 }
 
 function makeNewCoverForm() {
-  makeYourOwnForm.classList.remove("hidden");
-  homeView.classList.add("hidden");
-  randomCoverButton.classList.add("hidden");
-  viewSavedCoverButton.classList.add("hidden");
-  homeButton.classList.remove("hidden");
+  viewMakeYourOwnCoverForm.classList.remove("hidden");
+  buttonHome.classList.remove("hidden");
+  viewHome.classList.add("hidden");
+  buttonRandomCover.classList.add("hidden");
+  buttonViewSavedCover.classList.remove("hidden");
+  buttonSaveCover.classList.add("hidden")
+  
 }
 
 function viewSavedCovers() {
-  homeView.classList.add("hidden");
-  savedCoversPage.classList.remove('hidden')
-  makeYourOwnForm.classList.add("hidden");
-//  homeView.classList.add("hidden");
-//  randomCoverButton.classList.add("hidden");
-//  saveCoverButton.classList.add("hidden");
-//  homeButton.classList.remove("hidden");
+  viewHome.classList.add("hidden");
+  viewMakeYourOwnCoverForm.classList.add("hidden");
+  buttonRandomCover.classList.add("hidden");
+  buttonSaveCover.classList.add("hidden")
+  viewSavedCoversPage.classList.remove("hidden")
+  buttonHome.classList.remove("hidden");
+//  viewHome.classList.add("hidden")
+
+}
+
+function viewHomePage() {
+  viewHome.classList.add("hidden");
+  viewMakeYourOwnCoverForm.classList.add("hidden");
+  buttonHome.classList.add("hidden");
+  buttonRandomCover.classList.remove("hidden");
+  buttonSaveCover.classList.remove("hidden")
+  viewSavedCoversPage.classList.remove("hidden")
+  viewHome.classList.remove("hidden");
+  buttonViewSavedCover.classList.remove("hidden");
+
+
 }
 
 
