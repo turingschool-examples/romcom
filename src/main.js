@@ -1,53 +1,63 @@
+// global variables 👇
+//__________________________________________________________________
+
+var currentCover
+var savedCovers = []
 var coverRandom 
 var titleRandom
 var descriptorRandom1
 var descriptorRandom2
 var view
-var currentCover
-inputCover = document.getElementById("cover").value
-inputTitle = document.getElementById("title").value
-inputDescriptor1 = document.getElementById("descriptor1").value
-inputDescriptor2 = document.getElementById("descriptor2").value
-var block = 'block'
-var none = 'none'
-var savedGallery = document.querySelector(".saved-covers-section")
-
-    
-
-// We've provided a few variables below
-
-var savedCovers = []
-
-// Event listeners 👇
-//__________________________________________________________________________________
+var deleteSavedCover
 
 
-var coverView = document.getElementsByClassName("home-button hidden")
-coverView[0].addEventListener('click', homeView)
-
-var saveView = document.getElementsByClassName("view-saved-button")
-saveView[0].addEventListener('click', viewSaved)
-
-var formView = document.getElementsByClassName("make-new-button")
-formView[0].addEventListener('click', viewForm)
-
-//...
-
+// query/getElement selectors 👇
+//__________________________________________________________________
 
 var randomCover = document.getElementsByClassName("random-cover-button")
+var saveCover = document.getElementsByClassName("save-cover-button")
+var createCover = document.getElementsByClassName("create-new-book-button")
+var coverView = document.getElementsByClassName("home-button hidden")
+var saveView = document.getElementsByClassName("view-saved-button")
+var formView = document.getElementsByClassName("make-new-button")
+
+
+var inputCover = document.getElementById("cover")
+var inputTitle = document.getElementById("title")
+var inputDescriptor1 = document.getElementById("descriptor1")
+var inputDescriptor2 = document.getElementById("descriptor2")
+
+var savedGallery = document.querySelector(".saved-covers-section")
+
+var deleteSavedCover = document.querySelector(".mini-cover")
+
+// Event listeners 👇
+//__________________________________________________________________
 randomCover[0].addEventListener('click', newRandomCover)
 
-var saveCover = document.getElementsByClassName("save-cover-button")
 saveCover[0].addEventListener('click', saveCov)
 
-var createCover = document.getElementsByClassName("create-new-book-button")
+
 createCover[0].addEventListener('click', coverCreate)
 
 
+coverView[0].addEventListener('click', homeView)
 
+
+saveView[0].addEventListener('click', viewSaved)
+
+
+formView[0].addEventListener('click', viewForm)
+
+
+
+// event handlers and functions 👇
 //__________________________________________________________________________________
 
-// Create your event handlers and other functions here 👇
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length)
+}
+
 function newRandomCover() {
 
     coverRandom = (getRandomIndex(covers))
@@ -64,19 +74,11 @@ function newRandomCover() {
   }
 
   function saveCov() {
-    if(savedCovers.length === 0) {
+    if (!savedCovers.includes(currentCover)) {
       savedCovers.push(currentCover)
-    } else {
-      for(var i = 0; i <= savedCovers.length; i++){
-        if (i === savedCovers.length) {
-          savedCovers.push(currentCover)
-          break  
-        } else if (savedCovers[i].title === currentCover.title){
-            break
-        }  
-        }
-      }
     }
+    return savedCovers
+  }
 
     function coverCreate() {
 
@@ -103,28 +105,24 @@ function newRandomCover() {
 
     }
 
-
 // Page Switching 👇
 //__________________________________________________________________________________
 
 function homeView() {
     view = 'home'
     hide()
-    buttonCheck()
     document.getElementsByClassName("view home-view")[0].style.display = "block"
 }
 
 function viewForm() {
     view = 'form'
     hide()
-    buttonCheck()
     document.getElementsByClassName("view form-view hidden")[0].style.display = "block"
 }
 
 function viewSaved() {
     view = 'saved'
     hide()
-    buttonCheck()
     displaySavedCovers()
     document.getElementsByClassName("view saved-view hidden")[0].style.display = "block"
     document.getElementsByClassName("saved-covers-section")[0].style.display = "block"
@@ -132,14 +130,10 @@ function viewSaved() {
 }
 
 function displaySavedCovers() {
-  // savedGallery.innerHTML = ''
+  savedGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
-
-    console.log(savedCovers[i].cover)
-    console.log(savedCovers.length)
-
     savedGallery.innerHTML += `
-    <section class = "saved-covers-section">
+    <section class = "saved-covers-section${currentCover.id}">
       <section class = "mini-cover">
         <img class="mini-cover" src= ${savedCovers[i].cover} </img>
         <h2 class="cover-title"> ${savedCovers[i].title} </h2>
@@ -147,10 +141,26 @@ function displaySavedCovers() {
       </section>
     </section>
     `
+    }
+    miniCovers = savedGallery.children;
+    for (var i = 0; i < miniCovers.length; i++) {
+      miniCovers[i].addEventListener("dblclick", deleteCover)
   }
 }
 
+function deleteCover(e) {
+  var parent = e.currentTarget.parentElement
+  var target = e.currentTarget
+  parent.removeChild(target)
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i] === target.miniCovers)
+   savedCovers.splice(i, 1)
+  }
+}
+
+
 function hide() {
+  buttonCheck()
   document.getElementsByClassName("view home-view")[0].style.display = "none"
   document.getElementsByClassName("view saved-view hidden")[0].style.display = "none"
   document.getElementsByClassName("view form-view hidden")[0].style.display = "none"
@@ -177,10 +187,4 @@ function buttonCheck() {
     document.getElementsByClassName("view-saved-button")[0].style.display = "block"
     document.getElementsByClassName("make-new-button")[0].style.display = "none"
   }
-}
-
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length)
 }
