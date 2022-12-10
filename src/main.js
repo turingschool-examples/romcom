@@ -19,6 +19,8 @@ var titleInput = document.querySelector('.user-title');
 var descriptor1Input = document.querySelector('.user-desc1');
 var descriptor2Input = document.querySelector('.user-desc2');
 var savedCoversSection = document.querySelector('.saved-covers-section');
+//Added left property set to 0 to align tattered cover with book so that it is visible
+document.querySelector('.overlay').style.left = 0
 
 // We've provided a few variables below
 var savedCovers = [
@@ -46,7 +48,7 @@ function handleSaveCoverButton() {
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       <img class="price-tag" src="./assets/price.png">
-      <img class="overlay" src="./assets/overlay.png">
+      <img class="overlay" src="./assets/overlay.png" style="left: 0px">
     </section>`
     }
   }
