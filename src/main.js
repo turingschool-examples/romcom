@@ -40,7 +40,9 @@ savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
 function deleteCover(event) {
-  event.srcElement.parentElement.remove();
+  if (event.target.parentElement.classList[0] === "mini-cover") {
+  event.target.parentElement.remove();
+  }
 }
 
 function handleSaveCoverButton() {
@@ -75,6 +77,7 @@ function handleMakeYourCoverButton() {
   hideElement(saveCoverButton);
   showElement(formView);
   showElement(homeButton);
+  hideElement(savedView);
 }
 
 function handleViewSavedCoversButton() {
