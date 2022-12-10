@@ -10,7 +10,7 @@ We added dynamic functionality to an app that that allows the user to view rando
 - CD into the repository and open using your preferred text editor
 
 ### Preview of App:
-![](ezgif.com-gif-maker.gif)
+![Make Your Own Cover Gif](https://user-images.githubusercontent.com/114787710/206830395-ce534df1-7610-479b-8e85-3374f90ee0b6.gif)
 
 ### Context:
 - We were given 5 days to work on this project and we are both in our second week of the front end program at Turing. 
