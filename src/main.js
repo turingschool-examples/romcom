@@ -41,7 +41,13 @@ savedCoversSection.addEventListener('dblclick', deleteCover);
 // Create your event handlers and other functions here 👇
 function deleteCover(event) {
   if (event.target.parentElement.classList[0] === "mini-cover") {
-  event.target.parentElement.remove();
+    var idToDelete = event.target.parentElement.id;
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (idToDelete === savedCovers[i].id.toString()) {
+        savedCovers.splice(i, 1)
+      } 
+    }
+    event.target.parentElement.remove();
   }
 }
 
@@ -50,7 +56,7 @@ function handleSaveCoverButton() {
     savedCovers.push(currentCover);
     savedCoversSection.innerHTML = ''
     for (var i = 0; i < savedCovers.length; i++) {
-      savedCoversSection.innerHTML += `<section class="mini-cover">
+      savedCoversSection.innerHTML += `<section class="mini-cover" id=${savedCovers[i].id}>
       <img class="cover-image" src=${savedCovers[i].cover}>
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
