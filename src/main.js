@@ -58,6 +58,11 @@ formView[0].addEventListener('click', viewForm)
 
 // event handlers and functions 👇
 
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length)
+}
+
 function newRandomCover() {
 
     coverRandom = (getRandomIndex(covers))
@@ -197,7 +202,8 @@ function buttonCheck() {
 }
 
 
+// I moved this function up with the randomCov function
 // We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length)
-}
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length)
+// }
