@@ -22,6 +22,7 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 //Added left property set to 0 to align tattered cover with book so that it is visible
 document.querySelector('.overlay').style.left = 0
 
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -114,16 +115,19 @@ function handleMakeMyBookButton() {
   var currentTitleInput = titleInput.value;
   var currentDescriptor1Input = descriptor1Input.value;
   var currentDescriptor2Input = descriptor2Input.value;
+  if (currentCoverInput && currentTitleInput && currentDescriptor1Input && currentDescriptor2Input) {
+    covers.push(currentCoverInput);
+    titles.push(currentTitleInput);
+    descriptors.push(currentDescriptor1Input);
+    descriptors.push(currentDescriptor2Input);
 
-  covers.push(currentCoverInput);
-  titles.push(currentTitleInput);
-  descriptors.push(currentDescriptor1Input);
-  descriptors.push(currentDescriptor2Input);
-
-  currentCover = new Cover(currentCoverInput, currentTitleInput, currentDescriptor1Input, currentDescriptor2Input);
+    currentCover = new Cover(currentCoverInput, currentTitleInput, currentDescriptor1Input, currentDescriptor2Input);
   
-  displayCurrentCover();
-  handleHomeButton();
+    displayCurrentCover();
+    handleHomeButton();
+  } else {
+    alert('Alas there, lover! Your story must be complete before submission!')
+  }
 }
 
 function createRandomCover(){
