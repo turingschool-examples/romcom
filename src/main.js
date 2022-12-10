@@ -23,6 +23,14 @@ var saveButtonCover = document.querySelector('.save-cover-button')
 var viewSavedCoverButton = document.querySelector('.view-saved-button')
 var makeNewCover = document.querySelector('.make-new-button')
 var viewSavedCover = document.querySelector('.saved-view')
+
+var userCoverForm = document.querySelector('.user-cover')
+var userTitleForm = document.querySelector('.user-title')
+var userFirstDescriptorForm = document.querySelector('.user-desc1')
+var userSecondDescriptorForm = document.querySelector('.user-desc2')
+var makeMyBookButton = document.querySelector('.create-new-book-button')
+
+
 // We've provided a few variables below
 
 
@@ -30,7 +38,7 @@ var viewSavedCover = document.querySelector('.saved-view')
 
 
 
-//titles[0]
+
 
 
 
@@ -41,12 +49,11 @@ var viewSavedCover = document.querySelector('.saved-view')
 // Add your event listeners here 👇
 
 window.addEventListener("load", generateRandomBook)
-
 randomButtonCover.addEventListener("click", generateRandomBook)
 makeNewCover.addEventListener("click", makeOwnCover)
 viewSavedCoverButton.addEventListener("click", showSavedCovers)
 showHomeButton.addEventListener("click", showMainPage)
-
+makeMyBookButton.addEventListener('click', submitForm)
 
 // Create your event handlers and other functions here 👇
 
@@ -60,17 +67,15 @@ showHomeButton.addEventListener("click", showMainPage)
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-
 }
 
 
 
-function generateRandomBook() {
-  
-var randomTitleCover = titles[getRandomIndex(titles)]
-var randomCoverPicture = covers[getRandomIndex(covers)]
-var randomCoverDescriptorOne = descriptors[getRandomIndex(descriptors)]
-var randomCoverDescriptorTwo = descriptors[getRandomIndex(descriptors)]
+function generateRandomBook() { 
+  var randomTitleCover = titles[getRandomIndex(titles)]
+  var randomCoverPicture = covers[getRandomIndex(covers)]
+  var randomCoverDescriptorOne = descriptors[getRandomIndex(descriptors)]
+  var randomCoverDescriptorTwo = descriptors[getRandomIndex(descriptors)]
 
 currentCover = new Cover (randomCoverPicture, randomTitleCover, randomCoverDescriptorOne, randomCoverDescriptorTwo)
 loadCurrentCover()
@@ -83,38 +88,63 @@ loadCurrentCover()
 }
 
 function loadCurrentCover() {
+  coverLocation.src = currentCover.cover
+  titleLocation.innerText = currentCover.title
+  taglineOneLocation.innerText = currentCover.tagline1 
+  taglineTwoLocation.innerText = currentCover.tagline2
+}
 
-coverLocation.src = currentCover.cover
-titleLocation.innerText = currentCover.title
-taglineOneLocation.innerText = currentCover.tagline1 
-taglineTwoLocation.innerText = currentCover.tagline2
-}
 function makeOwnCover() {
-showFormView.classList.remove("hidden")
-showHomeView.classList.add("hidden")
-randomButtonCover.classList.add("hidden")
-saveButtonCover.classList.add("hidden")
-showHomeButton.classList.remove("hidden")
+  showFormView.classList.remove("hidden")
+  showHomeView.classList.add("hidden")
+  randomButtonCover.classList.add("hidden")
+  saveButtonCover.classList.add("hidden")
+  showHomeButton.classList.remove("hidden")
+  viewSavedCover.classList.add("hidden")
 }
+
 function showSavedCovers() {
-showHomeView.classList.add("hidden")
-showMainCover.classList.add("hidden")
-showFormView.classList.add("hidden")
-showHomeView.classList.add("hidden")
-showHomeButton.classList.remove("hidden")
-viewSavedCover.classList.remove("hidden")
-randomButtonCover.classList.add("hidden")
-saveButtonCover.classList.add("hidden")
+  showHomeView.classList.add("hidden")
+  showMainCover.classList.add("hidden")
+  showFormView.classList.add("hidden")
+  showHomeView.classList.add("hidden")
+  showHomeButton.classList.remove("hidden")
+  viewSavedCover.classList.remove("hidden")
+  randomButtonCover.classList.add("hidden")
+  saveButtonCover.classList.add("hidden")
 }
+
 function showMainPage() {
   showHomeView.classList.remove("hidden")
   showFormView.classList.add("hidden")
   showHomeButton.classList.add("hidden")
-viewSavedCover.classList.add("hidden")
-randomButtonCover.classList.remove("hidden")
-saveButtonCover.classList.remove("hidden")
-showMainCover.classList.remove("hidden")
+  viewSavedCover.classList.add("hidden")
+  randomButtonCover.classList.remove("hidden")
+  saveButtonCover.classList.remove("hidden")
+  showMainCover.classList.remove("hidden")
 }
+
+
+function submitForm(event) {
+  event.preventDefault()
+  covers.push(userCoverForm.value)
+  titles.push(userTitleForm.value)
+  descriptors.push(userFirstDescriptorForm.value)
+  descriptors.push(userSecondDescriptorForm.value)
+
+  coverLocation.src = userCoverForm.value
+  titleLocation.innerText = userTitleForm.value
+  taglineOneLocation.innerText = userFirstDescriptorForm.value
+  taglineTwoLocation.innerText = userSecondDescriptorForm.value
+
+  showHomeView.classList.remove("hidden")
+}
+
+
+
+// function makeOwnBook(){
+// }
+
 
 // function createBook(){
 //   currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
