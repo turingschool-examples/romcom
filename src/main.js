@@ -1,4 +1,4 @@
-// Create variables targetting the relevant DOM elements here 👇
+// Variables targetting the relevant DOM elements 👇
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTag1 = document.querySelector('.tagline-1');
@@ -12,23 +12,20 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
-
 // Button variables 👇
 var randomCoverBtn = document.querySelector('.random-cover-button');
-var makeYourBtn = document.querySelector('.make-new-button');
+var makeOwnBtn = document.querySelector('.make-new-button');
 var homePageBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var savedViewBtn = document.querySelector('.view-saved-button');
 var createBookBtn = document.querySelector('.create-new-book-button');
 
-
-
-// We've provided a few variables below 👇
-var savedCovers = [];
+// Global variables 👇
 var currentCover;
+var savedCovers = [];
+var miniCovers = [];
 
-// Add your event listeners here 👇
-
+// Event listeners 👇
 randomCoverBtn.addEventListener('click', function() {
   generateRandomCover();
   pushRandomCover();
@@ -39,14 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
   pushRandomCover();
 });
 
-makeYourBtn.addEventListener('click', switchToMakeYourOwn);
+makeOwnBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
-createBookBtn.addEventListener('click', createUserBook);
+createBookBtn.addEventListener('click', createUserMovie);
 saveCoverBtn.addEventListener('click', saveCover);
 
-// Create your event handlers and other functions here 👇
-
+// Event handlers and other functions👇
 function generateRandomCover() {
   var randomImageIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
@@ -83,11 +79,12 @@ function switchToSavedView() {
 function switchToHome() {
   homeView.classList.remove('hidden');
   homePageBtn.classList.add('hidden');
+  savedView.classList.add('hidden');
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
 };
 
-function createUserBook(event) {
+function createUserMovie(event) {
   event.preventDefault();
   covers.unshift(userCover.value);
   titles.unshift(userTitle.value);
@@ -95,23 +92,37 @@ function createUserBook(event) {
   descriptors.unshift(userDesc2.value);
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
   switchToHome();
-  makeYourOwnPage.classList.add('hidden');
   pushRandomCover();
+  makeYourOwnPage.classList.add('hidden');
 };
 
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover)
-      savedSection.innerHTML += `
-        <section class="mini-cover">
-          <img class="mini-cover" src=${currentCover.cover}></img>
-          <h2 class="cover-title"> ${currentCover.title}</h2>
-          <h3 class="tagline">A tale of <span> ${currentCover.tagline1}</span> and <span> ${currentCover.tagline2}</span></h3>
-        </section>`
+    savedCovers.push(currentCover);
+    savedSection.innerHTML += `
+      <section class="mini-cover">
+        <img class="mini-cover" src=${currentCover.cover}></img>
+        <h2 class="cover-title">${currentCover.title}</h2>
+        <h3 class="tagline">A tale of <span>${currentCover.tagline1}</span> and <span>${currentCover.tagline2}</span></h3>
+      </section>`;
+    miniCovers = savedSection.children;
+    for (var i = 0; i < miniCovers.length; i++) {
+      miniCovers[i].addEventListener('dblclick', removeCover);
+    };
   };
 };
 
-// We've provided one function to get you started 👇
+function removeCover(e) {
+  var parent = e.currentTarget.parentElement;
+  var target = e.currentTarget;
+  parent.removeChild(target);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].cover === target.querySelector('img').getAttribute('src') && savedCovers[i].title === target.querySelector('.cover-title').innerText && `A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}` === target.querySelector('.tagline').innerText) {
+    return savedCovers.splice(i, 1);
+    };
+  };
+};
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
