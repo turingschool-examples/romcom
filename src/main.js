@@ -14,7 +14,7 @@ var userDesc2 = document.querySelector('.user-desc2');
 
 // Button variables 👇
 var randomCoverBtn = document.querySelector('.random-cover-button');
-var makeYourBtn = document.querySelector('.make-new-button');
+var makeOwnBtn = document.querySelector('.make-new-button');
 var homePageBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var savedViewBtn = document.querySelector('.view-saved-button');
@@ -24,7 +24,6 @@ var createBookBtn = document.querySelector('.create-new-book-button');
 var currentCover;
 var savedCovers = [];
 var miniCovers = [];
-var coverIds = [];
 
 // Event listeners 👇
 randomCoverBtn.addEventListener('click', function() {
@@ -37,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
   pushRandomCover();
 });
 
-makeYourBtn.addEventListener('click', switchToMakeYourOwn);
+makeOwnBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
-createBookBtn.addEventListener('click', createUserBook);
+createBookBtn.addEventListener('click', createUserMovie);
 saveCoverBtn.addEventListener('click', saveCover);
 
 // Event handlers and other functions👇
@@ -85,7 +84,7 @@ function switchToHome() {
   saveCoverBtn.classList.remove('hidden');
 };
 
-function createUserBook(event) {
+function createUserMovie(event) {
   event.preventDefault();
   covers.unshift(userCover.value);
   titles.unshift(userTitle.value);
@@ -100,7 +99,6 @@ function createUserBook(event) {
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    coverIds.push(currentCover.id);
     savedSection.innerHTML += `
       <section class="mini-cover">
         <img class="mini-cover" src=${currentCover.cover}></img>
@@ -113,7 +111,6 @@ function saveCover() {
     };
   };
 };
-
 
 function removeCover(e) {
   var parent = e.currentTarget.parentElement;
