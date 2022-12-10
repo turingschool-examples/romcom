@@ -149,7 +149,7 @@ function viewSaved() {
 }
 
 function displaySavedCovers() {
-  // savedGallery.innerHTML = ''
+  savedGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
 
     console.log(savedCovers[i].cover)
