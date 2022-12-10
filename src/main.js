@@ -17,6 +17,7 @@ var userInputDesc1 = document.querySelector('.user-desc1')
 var userInputDesc2 = document.querySelector('.user-desc2')
 var createNewBookButton = document.querySelector('.create-new-book-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
+var viewSavedCoversPage = document.querySelector('.saved-covers-section')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -28,7 +29,10 @@ var currentCover;
 window.addEventListener('load', getRandomCover)
 randButton.addEventListener('click', getRandomCover)
 makeOwnCoverButton.addEventListener('click', switchToForm)
-savedCoversButton.addEventListener('click', switchToSaved)
+savedCoversButton.addEventListener('click', function() {
+switchToSaved();
+displaySavedCovers();
+})
 homeButton.addEventListener('click', switchToHome)
 createNewBookButton.addEventListener('click', makeCustomBook)
 saveCoverButton.addEventListener('click', saveCover )
@@ -60,6 +64,7 @@ function switchToSaved() {
   randButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
   savedData.classList.remove('hidden')
+
 }
 function switchToHome() {
   homeButton.classList.add('hidden')
@@ -83,11 +88,25 @@ function makeCustomBook() {
   currentCover = new Cover(userInputCover.src, coverTitle.innerText, descriptor1.innerText, userInputDesc2.innerText)
   switchToHome()
 }
-function saveCover(){
-if(!savedCovers.includes(currentCover)){
-  savedCovers.push(currentCover)
+function displaySavedCovers() {
+  //viewSavedCoversPage.innerHTML = ""
+  for(var i = 0; i < savedCovers.length; i++){
+    viewSavedCoversPage.innerHTML += `
+    <div id=${savedCovers[i].id}>
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+    </div>
+    `
   }
 }
+function saveCover(){
+  if(!savedCovers.includes(currentCover)){
+    savedCovers.push(currentCover)
+    }
+  }
 
 
 //========NOTES=========//
