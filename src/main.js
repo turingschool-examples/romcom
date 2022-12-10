@@ -18,8 +18,8 @@ var randomCoverButton = document.querySelector('.random-cover-button')
 var makeYourOwnForm = document.querySelector(".form-view")
 var makeYourOwnCoverButton = document.querySelector(".make-new-button")
 var homeView = document.querySelector(".home-view")
-
-
+var homeButton = document.querySelector('.home-button')
+var saveCoverButton = document.querySelector('.save-cover-button')
 
 
 // We've provided a few variables below
@@ -47,7 +47,7 @@ var currentCover;
 
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCoversButton);
-makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm)
+makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm);
 
 
 // Create your event handlers and other functions here 👇
@@ -75,8 +75,11 @@ function makeRandomCoversButton() {
 }
 
 function makeNewCoverForm() {
-
-  
   makeYourOwnForm.classList.remove("hidden");
-  homeView.classList.add("hidden")
+  homeView.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
 }
+
+//When the Form view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
