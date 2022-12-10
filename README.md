@@ -41,7 +41,6 @@ This project was completed during the second week at Turing. We were provided a 
 ##### Wins
 - Effective teamwork (e.g. communicating our needs, taking breaks, not moving on until everyone was on the same page)
 - Organization - we were able to organize code into functions so we can re-use them and avoid repeating code 
-- 
 
 ##### Challenges
 - Difficulty with having specific covers delete versus having the whole page delete. We learned about capturing events on dynamic elements by researching online and trial-and-error.
