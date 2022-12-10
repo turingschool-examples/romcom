@@ -19,7 +19,10 @@ var makeYourOwnForm = document.querySelector(".form-view")
 var makeYourOwnCoverButton = document.querySelector(".make-new-button")
 var homeView = document.querySelector(".home-view")
 var homeButton = document.querySelector('.home-button')
-var saveCoverButton = document.querySelector('.save-cover-button')
+var viewSavedCoverButton = document.querySelector(".view-saved-button");
+var savedCoversPage = document.querySelector(".saved-covers-section");
+
+//query select saved cover button- 
 
 
 // We've provided a few variables below
@@ -33,21 +36,13 @@ var savedCovers = [
 ];
 var currentCover;
 
-// class Cover {
-//   constructor(coverImgSrc, title, descriptor1, descriptor2) {
-//     this.id = Date.now();
-//     this.cover = coverImgSrc;
-//     this.title = title;
-//     this.tagline1 = descriptor1;
-//     this.tagline2 = descriptor2;
-//   }
-// }
-
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
 randomCoverButton.addEventListener("click", makeRandomCoversButton);
 makeYourOwnCoverButton.addEventListener("click", makeNewCoverForm);
+viewSavedCoverButton.addEventListener('click', viewSavedCovers)
+
 
 
 // Create your event handlers and other functions here 👇
@@ -78,8 +73,21 @@ function makeNewCoverForm() {
   makeYourOwnForm.classList.remove("hidden");
   homeView.classList.add("hidden");
   randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
+  viewSavedCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
 }
 
-//When the Form view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
+function viewSavedCovers() {
+  homeView.classList.add("hidden");
+  savedCoversPage.classList.remove('hidden')
+  makeYourOwnForm.classList.add("hidden");
+//  homeView.classList.add("hidden");
+//  randomCoverButton.classList.add("hidden");
+//  saveCoverButton.classList.add("hidden");
+//  homeButton.classList.remove("hidden");
+}
+
+
+//When a user clicks the “View Saved Covers” button, we should see the saved covers section, and the homepage view should be hidden
+//When the Saved Covers view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
+//When the Saved Covers view is visible, the “Home” button should be visible
