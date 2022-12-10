@@ -56,7 +56,6 @@ viewSavedCoverButton.addEventListener("click", showSavedCovers)
 showHomeButton.addEventListener("click", showMainPage)
 makeMyBookButton.addEventListener('click', submitForm)
 saveButtonCover.addEventListener('click', storeSavedCovers)
-viewSavedCover.addEventListener('click', viewAllSavedCovers)
 // Create your event handlers and other functions here 👇
 
 
@@ -104,14 +103,26 @@ function makeOwnCover() {
 }
 
 function showSavedCovers() {
-  showHomeView.classList.add("hidden")
+  // showHomeView.classList.add("hidden")
   showMainCover.classList.add("hidden")
   showFormView.classList.add("hidden")
-  showHomeView.classList.add("hidden")
   showHomeButton.classList.remove("hidden")
   viewSavedCover.classList.remove("hidden")
   randomButtonCover.classList.add("hidden")
   saveButtonCover.classList.add("hidden")
+
+
+
+  for (var i = 0; i < savedCovers.length; i++) {
+  displaySavedCover.innerHTML += `
+        <section class="mini-cover">
+        <img class="mini-cover" src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of ${savedCovers[i].descriptor1} and ${savedCovers[i].descriptor2}</h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png"></img>
+        </section>`
+  }
 }
 
 function showMainPage() {
@@ -148,17 +159,18 @@ function storeSavedCovers() {
   } 
 }
 
-function viewAllSavedCovers() {
-  viewSavedCover.classList.remove('hidden')
-  for (var i = 0; i < savedCovers.length;) {
-  displaySavedCover.innerHTML = `
-        <img class="cover-image" src=${savedCovers[i].cover}>
-        <h2 class="cover-title">${savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of ${savedCovers[i].descriptor1} and ${savedCovers[i].descriptor2}</h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png"></img>`
-  }
-}
+// function viewAllSavedCovers() {
+//   viewSavedCover.classList.remove("hidden")
+//   displaySavedCover.innerHTML = ""
+//   for (var i = 0; i < savedCovers.length; i++) {
+//   displaySavedCover.innerHTML +=  `
+//         <img class="cover-image" src=${savedCovers[i].cover}>
+//         <h2 class="cover-title">${savedCovers[i].title}</h2>
+//         <h3 class="tagline">A tale of ${savedCovers[i].descriptor1} and ${savedCovers[i].descriptor2}</h3>
+//         <img class="price-tag" src="./assets/price.png">
+//         <img class="overlay" src="./assets/overlay.png"></img>`
+//   }
+// }
 
 
 
