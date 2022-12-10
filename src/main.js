@@ -29,6 +29,7 @@ var userTitleForm = document.querySelector('.user-title')
 var userFirstDescriptorForm = document.querySelector('.user-desc1')
 var userSecondDescriptorForm = document.querySelector('.user-desc2')
 var makeMyBookButton = document.querySelector('.create-new-book-button')
+var displaySavedCover = document.querySelector('.saved-covers-section')
 
 
 // We've provided a few variables below
@@ -54,7 +55,8 @@ makeNewCover.addEventListener("click", makeOwnCover)
 viewSavedCoverButton.addEventListener("click", showSavedCovers)
 showHomeButton.addEventListener("click", showMainPage)
 makeMyBookButton.addEventListener('click', submitForm)
-
+saveButtonCover.addEventListener('click', storeSavedCovers)
+viewSavedCover.addEventListener('click', viewAllSavedCovers)
 // Create your event handlers and other functions here 👇
 
 
@@ -62,8 +64,6 @@ makeMyBookButton.addEventListener('click', submitForm)
 
 
 // We've provided one function to get you started
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -138,6 +138,26 @@ function submitForm(event) {
   taglineTwoLocation.innerText = userSecondDescriptorForm.value
 
   showHomeView.classList.remove("hidden")
+}
+
+var savedCovers = []
+
+function storeSavedCovers() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+  } 
+}
+
+function viewAllSavedCovers() {
+  viewSavedCover.classList.remove('hidden')
+  for (var i = 0; i < savedCovers.length;) {
+  displaySavedCover.innerHTML = `
+        <img class="cover-image" src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of ${savedCovers[i].descriptor1} and ${savedCovers[i].descriptor2}</h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png"></img>`
+  }
 }
 
 
