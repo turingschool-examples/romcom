@@ -10,16 +10,16 @@ var buttonRandomCover = document.querySelector('.random-cover-button')
 var buttonMakeYourOwnCover = document.querySelector(".make-new-button")
 var buttonHome = document.querySelector('.home-button')
 var buttonSaveCover = document.querySelector(".save-cover-button")
-var buttonMakeMyBook = document.querySelector("create-new-book-button");
+var buttonMakeMyBook = document.querySelector(".create-new-book-button");
 
 var viewMakeYourOwnCoverForm = document.querySelector(".form-view")
 var viewHome = document.querySelector(".home-view")
 var viewSavedCoversPage = document.querySelector(".saved-view");
 
-var inputCover = document.getElementById("cover");
-var inputTitle = document.getElementById("title");
-var inputFirstDescriptor = document.getElementById("descriptor1");
-var inputSecondDescriptor = document.getElementById("descriptor2");
+var inputCover = document.querySelector(".user-cover");
+var inputTitle = document.querySelector(".user-title");
+var inputFirstDescriptor = document.querySelector(".user-desc1");
+var inputSecondDescriptor = document.querySelector(".user-desc2");
 //query select saved cover button- 
 
 
@@ -37,11 +37,11 @@ var currentCover;
 // Add your event listeners here 👇
 
 window.addEventListener("load", makeRandomCover);
-buttonRandomCover.addEventListener("click", makeRandomCoversButton);
+buttonRandomCover.addEventListener("click", makeRandomCover);
 buttonMakeYourOwnCover.addEventListener("click", makeNewCoverForm);
 buttonViewSavedCover.addEventListener('click', viewSavedCovers);
 buttonHome.addEventListener("click", viewHomePage);
-buttonMakeMyBook.addEventListener('click', makeMyBook); 
+buttonMakeMyBook.addEventListener('click', makeMyBook, false); 
 
 
 // Create your event handlers and other functions here 👇
@@ -63,10 +63,6 @@ function makeRandomCover() {
 
 }
 
-function makeRandomCoversButton() {
-  var newCovers = covers[getRandomIndex(covers)]; 
-  coverImage.src = newCovers;
-}
 
 function makeNewCoverForm() {
   viewMakeYourOwnCoverForm.classList.remove("hidden");
@@ -97,17 +93,23 @@ function viewHomePage() {
   buttonViewSavedCover.classList.remove("hidden");
 }
 
-function makeMyBook(event) {
-  debugger
+function makeMyBook() {
   event.preventDefault();
-  inputCover = document.getElementById("cover").value;
-  inputTitle = document.getElementById("title").value;
-  inputFirstDescriptor = document.getElementById("descriptor1").value;
-  inputSecondDescriptor = document.getElementById("descriptor2").value;
-  covers.unshift(inputCover).value;
-  titles.unshift(inputTitle).value;
-  descriptors.unshift(inputDescriptors1).value;
-  descriptors.unshift(inputDescriptors2).value;
-  viewMakeYourOwnCoverForm.classList.remove("hidden");
+  coverImage.src = inputCover.value
+  coverTitle.innerText = inputTitle.value
+  tagLine1.innerText = inputFirstDescriptor.value
+  tagLine2.innerText = inputSecondDescriptor.value
+  covers.unshift(inputCover.value);
+  titles.unshift(inputTitle.value);
+  descriptors.unshift(inputFirstDescriptor.value);
+  descriptors.unshift(inputSecondDescriptor.value);
+  viewHomePage()
+  // viewMakeYourOwnCoverForm.classList.remove("hidden");
+  //  buttonMakeMyBook.classList.remove("hidden")
+  
+  
+  // inputTitle = document.getElementById("title").value;
+  // inputFirstDescriptor = document.getElementById("descriptor1").value;
+  // inputSecondDescriptor = document.getElementById("descriptor2").value;
 }
 
