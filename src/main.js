@@ -117,6 +117,18 @@ function saveCover() {
 } 
 
 function showSavedCoversGallery() {
+  showSavedCoversGallery.innerHTML = ''
+  for (var i = 0; i < savedCovers.length; i++) {
+    viewSavedCoversGallery.innerHTML += `
+    <section class="saved-covers-section">
+    <section class="mini-cover">
+      <img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagLine1}</span> and <span class="tagline-2">${savedCovers[i].tagLine2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">`
+
+  }
   
 
 }
