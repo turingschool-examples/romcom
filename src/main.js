@@ -22,7 +22,7 @@ var mainCover = document.querySelector('.main-cover')
 var viewForm = document.querySelector('.form-view')
 var homeView = document.querySelector('.home-view')
 var savedView = document.querySelector('.saved-view')
-var savedCovers = document.querySelector('.saved-covers-section')
+var savedCoversSection = document.querySelector('.saved-covers-section')
 
 var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
@@ -40,11 +40,13 @@ randomCoverButton.addEventListener('click', displayRandomCover)
 
 makeNewButton.addEventListener('click', openCoverForm)
 
-viewSavedButton.addEventListener('click', showSavedCovers)
+viewSavedButton.addEventListener('click', showSavedCoversPage)
 
 homeButton.addEventListener('click', displayHomepage)
 
 makeBookButton.addEventListener('click', showNewCover)
+
+saveCoverButton.addEventListener('click', saveCover)
 
 //Create your event handlers and other functions here 👇
 
@@ -77,12 +79,14 @@ function openCoverForm() {
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  makeBookButton.classList.remove('hidden')
 }
 
-function showSavedCovers() {
-savedView.classList.remove('hidden');
-homeView.classList.add('hidden');
-viewForm.classList.add('hidden');
+function showSavedCoversPage() {
+  displaySavedCovers()
+  savedView.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  viewForm.classList.add('hidden');
 
 }
 
@@ -120,9 +124,27 @@ function showNewCover(event) {
   taglineTwo.innerText = currentCover.tagline2;
 
 }
+// Joe Exotic data insert.
 
+function saveCover() {
+  if (savedCovers.includes(currentCover) === false) 
+  savedCovers.push(currentCover);
 
+}
 
-
+function displaySavedCovers() {
+  savedCoversSection.innerHTML = ''; 
+  for (var i = 0; i < savedCovers.length; i++) {
+  savedCoversSection.innerHTML +=
+ `<section class= "mini-cover">
+    <img class= "cover-image" src= "${savedCovers[i].cover}">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> 
+    and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+  }
+}
 
 
