@@ -1,13 +1,8 @@
 var currentCover;
-
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-
-
-
-// Create variables targetting the relevant DOM elements here 👇
 var coverLocation = document.querySelector('.cover-image')
 var titleLocation = document.querySelector('.cover-title')
 var taglineOneLocation = document.querySelector('.tagline-1')
@@ -16,27 +11,18 @@ var priceTagLocation = document.querySelector('.price-tag')
 var showFormView = document.querySelector('.form-view')
 var showHomeView = document.querySelector('.home-view')
 var showMainCover = document.querySelector('.main-cover')
-
 var showHomeButton = document.querySelector('.home-button')
 var randomButtonCover = document.querySelector('.random-cover-button')
 var saveButtonCover = document.querySelector('.save-cover-button')
 var viewSavedCoverButton = document.querySelector('.view-saved-button')
 var makeNewCover = document.querySelector('.make-new-button')
 var viewSavedCover = document.querySelector('.saved-view')
-
 var userCoverForm = document.querySelector('.user-cover')
 var userTitleForm = document.querySelector('.user-title')
 var userFirstDescriptorForm = document.querySelector('.user-desc1')
 var userSecondDescriptorForm = document.querySelector('.user-desc2')
 var makeMyBookButton = document.querySelector('.create-new-book-button')
 var displaySavedCover = document.querySelector('.saved-covers-section')
-
-
-// We've provided a few variables below
-
-
-
-// Add your event listeners here 👇
 
 window.addEventListener("load", generateRandomBook)
 randomButtonCover.addEventListener("click", generateRandomBook)
@@ -45,19 +31,10 @@ viewSavedCoverButton.addEventListener("click", showSavedCovers)
 showHomeButton.addEventListener("click", showMainPage)
 makeMyBookButton.addEventListener('click', submitForm)
 saveButtonCover.addEventListener('click', storeSavedCovers)
-// Create your event handlers and other functions here 👇
-
-
-
-
-
-
-// We've provided one function to get you started
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 
 function generateRandomBook() { 
   var randomTitleCover = titles[getRandomIndex(titles)]
@@ -116,19 +93,16 @@ function showMainPage() {
   showMainCover.classList.remove("hidden")
 }
 
-
 function submitForm(event) {
   event.preventDefault()
   covers.push(userCoverForm.value)
   titles.push(userTitleForm.value)
   descriptors.push(userFirstDescriptorForm.value)
   descriptors.push(userSecondDescriptorForm.value)
-
   coverLocation.src = userCoverForm.value
   titleLocation.innerText = userTitleForm.value
   taglineOneLocation.innerText = userFirstDescriptorForm.value
   taglineTwoLocation.innerText = userSecondDescriptorForm.value
-
   showHomeView.classList.remove("hidden")
 }
 
@@ -144,13 +118,6 @@ function storeSavedCovers() {
 
 
 
-// function makeOwnBook(){
-// }
-
-
-// function createBook(){
-//   currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText)
-// }
 
 
 
