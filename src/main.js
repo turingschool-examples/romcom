@@ -44,7 +44,7 @@ buttonViewSavedCover.addEventListener('click', viewSavedCovers);
 buttonHome.addEventListener('click', viewHomePage);
 buttonMakeMyBook.addEventListener('click', makeMyBook, false); 
 buttonSaveCover.addEventListener('click', saveCover);
-buttonViewSavedCover.addEventListener('click', showSavedCoversGallery)
+buttonViewSavedCover.addEventListener('click', displaySavedCoversGallery)
 
 // Create your event handlers and other functions here 👇
 
@@ -110,35 +110,25 @@ function makeMyBook() {
 
 
 function saveCover() {
-  console.log(savedCovers)
     if (!savedCovers.includes(currentCover)) {
      savedCovers.push(currentCover)
-   }return savedCovers
+   }
 } 
 
-function showSavedCoversGallery() {
-  showSavedCoversGallery.innerHTML = ''
+
+function displaySavedCoversGallery() {
+  viewSavedCoversGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     viewSavedCoversGallery.innerHTML += `
     <section class="saved-covers-section">
-    <section class="mini-cover">
-      <img class="cover-image" src=${savedCovers[i].cover}>
-      <h2 class="cover-title">${savedCovers[i].title}</h2>
-      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagLine1}</span> and <span class="tagline-2">${savedCovers[i].tagLine2}</span></h3>
-      <img class="price-tag" src="./assets/price.png">
-      <img class="overlay" src="./assets/overlay.png">`
-
+      <section class="mini-cover">
+        <img class="cover-image" src=${savedCovers[i].cover}>
+          <h2 class="cover-title">${savedCovers[i].title}</h2>
+          <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+          <img class="price-tag" src="./assets/price.png">
+          <img class="overlay" src="./assets/overlay.png">
+      </section>  
+    </section>`;
   }
-  
-
 }
-
-
-
- 
-//When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
-//On the saved cover page push current cover to the savedCovers array.
-//--> event listener --> attached to function.
-
-//When a user clicks the “Save Cover” button, 
-//the current cover will be added to the savedCovers array
+// Goal: saved covers view -double click a saved poster = deleted
