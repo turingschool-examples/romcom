@@ -15,6 +15,7 @@ var buttonMakeMyBook = document.querySelector('.create-new-book-button');
 var viewMakeYourOwnCoverForm = document.querySelector('.form-view');
 var viewHome = document.querySelector('.home-view');
 var viewSavedCoversPage = document.querySelector(".saved-view");
+var viewSavedCoversGallery= document.querySelector(".saved-covers-section")
 
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
@@ -33,7 +34,6 @@ var savedCovers = [];
   //),
 var currentCover;
 
-var savedCovers = []
 
 // Add your event listeners here 👇
 
@@ -44,6 +44,7 @@ buttonViewSavedCover.addEventListener('click', viewSavedCovers);
 buttonHome.addEventListener('click', viewHomePage);
 buttonMakeMyBook.addEventListener('click', makeMyBook, false); 
 buttonSaveCover.addEventListener('click', saveCover);
+buttonViewSavedCover.addEventListener('click', showSavedCoversGallery)
 
 // Create your event handlers and other functions here 👇
 
@@ -61,6 +62,7 @@ function makeRandomCover() {
  coverImage.src = newCovers
  tagLine1.innerText = newDescriptors1
  tagLine2.innerText = newDescriptors2
+ currentCover = new Cover (coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
 }
 
 function makeNewCoverForm() {
@@ -106,15 +108,30 @@ function makeMyBook() {
   viewHomePage();
 }
 
-function saveCover() {
-  
-}
 
 function saveCover() {
+  console.log(savedCovers)
     if (!savedCovers.includes(currentCover)) {
      savedCovers.push(currentCover)
-   }
-} return savedCovers
+   }return savedCovers
+} 
+
+function showSavedCoversGallery() {
+  showSavedCoversGallery.innerHTML = ''
+  for (var i = 0; i < savedCovers.length; i++) {
+    viewSavedCoversGallery.innerHTML += `
+    <section class="saved-covers-section">
+    <section class="mini-cover">
+      <img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagLine1}</span> and <span class="tagline-2">${savedCovers[i].tagLine2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">`
+
+  }
+  
+
+}
 
 
 
