@@ -1,4 +1,4 @@
-var currentCover = createBook()
+var currentCover
 var title = document.querySelector(".cover-title");
 var cover = document.querySelector(".cover-image");
 var taglineOne = document.querySelector(".tagline-1");
@@ -10,16 +10,16 @@ var homeView = document.querySelector(".home-view");
 var savedView = document.querySelector(".saved-view");
 var viewSaved = document.querySelector(".view-saved-button");
 var homeButton = document.querySelector(".home-button");
-var saveCoversButton = document.querySelector(".save-cover-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
 var newBookButton = document.querySelector(".create-new-book-button");
 var savedCovers = [
-  new Cover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  ),
+  // new Cover(
+  //   "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+  //   "Sunsets and Sorrows",
+  //   "sunsets",
+  //   "sorrows"
+  //),
 ];
 
 window.addEventListener("load", createBook);
@@ -62,7 +62,7 @@ function viewSavedCovers() {
 
 function returnHome() {
   homeView.classList.remove("hidden");
-  saveCoversButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
   randomCoverButton.classList.remove("hidden");
   viewForm.classList.add("hidden");
   homeButton.classList.add("hidden");
@@ -88,9 +88,12 @@ function makeMyBook(event) {
 }
 
 function saveCover() {
-  savedCovers.push(currentCover)
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
 }
+return savedCovers
 
+}  
 
 
 
