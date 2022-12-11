@@ -5,52 +5,38 @@
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-
 var currentCover;
-
-//var cover above tests branch
-
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tagline = document.querySelector('.tagline')
 var taglineOne = document.querySelector('.tagline-1')
 var taglineTwo = document.querySelector('.tagline-2')
 var priceTag = document.querySelector('.price-tag')
-
-
 var mainCover = document.querySelector('.main-cover')
 var viewForm = document.querySelector('.form-view')
 var homeView = document.querySelector('.home-view')
 var savedView = document.querySelector('.saved-view')
 var savedCoversSection = document.querySelector('.saved-covers-section')
-
 var randomCoverButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
 var makeBookButton = document.querySelector('.create-new-book-button')
+var miniCover = document.querySelector('.mini-cover')
 
 // Add your event listeners here 👇
 
-
 window.addEventListener('load', displayRandomCover);
-
 randomCoverButton.addEventListener('click', displayRandomCover)
-
 makeNewButton.addEventListener('click', openCoverForm)
-
 viewSavedButton.addEventListener('click', showSavedCoversPage)
-
 homeButton.addEventListener('click', displayHomepage)
-
 makeBookButton.addEventListener('click', showNewCover)
-
 saveCoverButton.addEventListener('click', saveCover)
+savedCoversSection.addEventListener('dblclick', deleteSavedCover)
 
 //Create your event handlers and other functions here 👇
-
-
 
 // We've provided one function to get you started
 
@@ -65,7 +51,6 @@ function displayRandomCover() {
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
-
 }
 
 function makeCover() {
@@ -87,7 +72,6 @@ function showSavedCoversPage() {
   savedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   viewForm.classList.add('hidden');
-
 }
 
 function displayHomepage() {
@@ -101,7 +85,6 @@ function displayHomepage() {
 }
 
 function makeBook() {
-  
   var coverInput = document.getElementById('cover').value; 
   var titleInput = document.getElementById('title').value;
   var descriptor1Input = document.getElementById('descriptor1').value;
@@ -111,7 +94,6 @@ function makeBook() {
   descriptors.push(descriptor1Input);
   descriptors.push(descriptor2Input);
   currentCover = new Cover (coverInput, titleInput, descriptor1Input, descriptor2Input);
-
 }
 
 function showNewCover(event) {
@@ -122,21 +104,18 @@ function showNewCover(event) {
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
-
 }
-// Joe Exotic data insert.
 
 function saveCover() {
   if (savedCovers.includes(currentCover) === false) 
-  savedCovers.push(currentCover);
-
-}
+    savedCovers.push(currentCover);
+  }
 
 function displaySavedCovers() {
   savedCoversSection.innerHTML = ''; 
   for (var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML +=
- `<section class= "mini-cover">
+ `<section class= "mini-cover" id="${savedCovers[i].id}"/>
     <img class= "cover-image" src= "${savedCovers[i].cover}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> 
@@ -146,5 +125,20 @@ function displaySavedCovers() {
   </section>`
   }
 }
+
+function deleteSavedCover(event) {
+  var thisCover = event.target.parentElement.id;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (thisCover === savedCovers[i].id.toString()) {
+      savedCovers.splice(i,1);
+    
+    }
+  }
+  displaySavedCovers();
+}
+
+
+
+
 
 
