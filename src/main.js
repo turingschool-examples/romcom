@@ -93,15 +93,16 @@ function showSavedCovers() {
   randomButtonCover.classList.add("hidden")
   saveButtonCover.classList.add("hidden")
 
-  for (var i = 0; i < savedCovers.length; i++) {
+  displaySavedCover.innerHTML = ""
+  for (var i = 0; i < savedCovers.length; i++) { 
     displaySavedCover.innerHTML += `
-        <section class="mini-cover">
-        <img class="mini-cover" src=${savedCovers[i].cover}>
-        <h2 class="cover-title">${savedCovers[i].title}</h2>
-        <h3 class="tagline">A tale of ${savedCovers[i].descriptor1} and ${savedCovers[i].descriptor2}</h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png"></img>
-        </section>`
+      <section class="mini-cover">
+      <img class="mini-cover" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png"></img>
+      </section>`
   }
 }
 
@@ -134,7 +135,7 @@ function submitForm(event) {
 var savedCovers = []
 
 function storeSavedCovers() {
-  if (!savedCovers.includes(currentCover)) {
+  if (savedCovers.includes(currentCover) === false) {
     savedCovers.push(currentCover)
   } 
 }
