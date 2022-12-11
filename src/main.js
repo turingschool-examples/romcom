@@ -18,7 +18,7 @@ var makeOwnBtn = document.querySelector('.make-new-button');
 var homePageBtn = document.querySelector('.home-button');
 var saveCoverBtn = document.querySelector('.save-cover-button');
 var savedViewBtn = document.querySelector('.view-saved-button');
-var createBookBtn = document.querySelector('.create-new-book-button');
+var creatCoverBtn = document.querySelector('.create-new-book-button');
 
 // Global variables 👇
 var currentCover;
@@ -39,16 +39,21 @@ document.addEventListener('DOMContentLoaded', function() {
 makeOwnBtn.addEventListener('click', switchToMakeYourOwn);
 savedViewBtn.addEventListener('click', switchToSavedView);
 homePageBtn.addEventListener('click', switchToHome);
-createBookBtn.addEventListener('click', createUserMovie);
+creatCoverBtn.addEventListener('click', createUserCover);
 saveCoverBtn.addEventListener('click', saveCover);
 
 // Event handlers and other functions👇
 function generateRandomCover() {
+  var indices = getRandomIndices();
+  currentCover = new Cover(covers[indices[0]], titles[indices[1]], descriptors[indices[2]], descriptors[indices[3]]);
+};
+
+function getRandomIndices() {
   var randomImageIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
   var randomTag1Index = getRandomIndex(descriptors);
   var randomTag2Index = getRandomIndex(descriptors);
-  currentCover = new Cover(covers[randomImageIndex], titles[randomTitleIndex], descriptors[randomTag1Index], descriptors[randomTag2Index]);
+    return [randomImageIndex, randomTitleIndex, randomTag1Index, randomTag2Index];
 };
 
 function pushRandomCover() {
@@ -64,7 +69,7 @@ function switchToMakeYourOwn() {
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homePageBtn.classList.remove('hidden');
-  savedView.classList.add('hidden')
+  savedView.classList.add('hidden');
 };
 
 function switchToSavedView() {
@@ -82,18 +87,23 @@ function switchToHome() {
   savedView.classList.add('hidden');
   randomCoverBtn.classList.remove('hidden');
   saveCoverBtn.classList.remove('hidden');
+  makeYourOwnPage.classList.add('hidden');
 };
 
-function createUserMovie(event) {
+function createUserCover(event) {  
   event.preventDefault();
-  covers.unshift(userCover.value);
-  titles.unshift(userTitle.value);
-  descriptors.unshift(userDesc1.value);
-  descriptors.unshift(userDesc2.value);
+  pushUserInputs();
   currentCover = new Cover(userCover.value, userTitle.value, userDesc1.value, userDesc2.value);
   switchToHome();
   pushRandomCover();
   makeYourOwnPage.classList.add('hidden');
+};
+
+function pushUserInputs() {
+  covers.unshift(userCover.value);
+  titles.unshift(userTitle.value);
+  descriptors.unshift(userDesc1.value);
+  descriptors.unshift(userDesc2.value);
 };
 
 function saveCover() {
@@ -105,10 +115,14 @@ function saveCover() {
         <h2 class="cover-title">${currentCover.title}</h2>
         <h3 class="tagline">A tale of <span>${currentCover.tagline1}</span> and <span>${currentCover.tagline2}</span></h3>
       </section>`;
-    miniCovers = savedSection.children;
-    for (var i = 0; i < miniCovers.length; i++) {
-      miniCovers[i].addEventListener('dblclick', removeCover);
-    };
+    enableDblClick();
+  };
+};
+
+function enableDblClick() {
+  miniCovers = savedSection.children;
+  for (var i = 0; i < miniCovers.length; i++) {
+    miniCovers[i].addEventListener('dblclick', removeCover);
   };
 };
 
