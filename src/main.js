@@ -1,8 +1,8 @@
 var currentCover
 var title = document.querySelector(".cover-title");
 var cover = document.querySelector(".cover-image");
-var taglineOne = document.querySelector(".tagline-1");
-var taglineTwo = document.querySelector(".tagline-2");
+var tagline1 = document.querySelector(".tagline-1");
+var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var makeYourOwnCover = document.querySelector(".make-new-button");
 var viewForm = document.querySelector(".form-view");
@@ -13,19 +13,12 @@ var homeButton = document.querySelector(".home-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
 var newBookButton = document.querySelector(".create-new-book-button");
-var savedCovers = [
-  // new Cover(
-  //   "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-  //   "Sunsets and Sorrows",
-  //   "sunsets",
-  //   "sorrows"
-  //),
-];
+var savedCovers = [];
 
 window.addEventListener("load", createBook);
 randomCoverButton.addEventListener("click", createBook);
 makeYourOwnCover.addEventListener("click", createForm);
-viewSaved.addEventListener("click", viewSavedCovers);
+viewSaved.addEventListener("click", displaySavedCovers);
 homeButton.addEventListener("click", returnHome);
 newBookButton.addEventListener('click', makeMyBook)
 saveCoverButton.addEventListener('click', saveCover)
@@ -37,9 +30,9 @@ function getRandomIndex(array) {
 function createBook() {
   title.innerText = titles[getRandomIndex(titles)];
   cover.src = covers[getRandomIndex(covers)];
-  taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
-  taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover = new Cover(cover.src, title.innerText, descriptor1.innerText, descriptor2.innerText);
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(cover.src, title.innerText, tagline1.innerText, tagline2.innerText);
 }
 
 function createForm() {
@@ -55,9 +48,10 @@ function createForm() {
 
 function viewSavedCovers() {
   homeView.classList.add("hidden");
-  homeButton.classList.remove("hidden");
   viewForm.classList.add("hidden");
+  homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
+  // displaySavedCovers()
 }
 
 function returnHome() {
@@ -81,8 +75,8 @@ function makeMyBook(event) {
   descriptors.unshift(descriptor2Input);
   title.innerText = titleInput;
   cover.src = coverInput;
-  taglineOne.innerText = descriptor1Input;
-  taglineTwo.innerText = descriptor2Input;
+  tagline1.innerText = descriptor1Input;
+  tagline2.innerText = descriptor2Input;
   savedCovers.push = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input)
   returnHome();
 }
@@ -91,32 +85,32 @@ function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover)
 }
-return savedCovers
 
 }  
 function displaySavedCovers() {
+  viewSavedCovers()
+  var smallCover = ''
   savedCoverSection.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
-    savedGallery.innerHTML += `
-    <section class="saved-covers-section${savedCovers[i].id">
-      <section class="main-cover">
-        <img class="cover-image" src="./assets/prairie.jpg">
-        <h2 class="cover-title">Windswept Hearts</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-        <img class="price-tag" src="./assets/price.png">
+    smallCover = `
+      <section class="main-cover"id=${savedCovers[i].id}>
+      <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
+        <img class="cover-image" src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       </section>
-    </section>
     `
+    savedCoverSection.innerHTML += smallCover
   }
 
   }
 
 
+  
 
 
-
-
+// 
 
 
 
