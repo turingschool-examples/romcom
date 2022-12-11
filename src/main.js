@@ -3,6 +3,7 @@ var title = document.querySelector('.cover-title')
 var cover = document.querySelector('.cover-image')
 var taglineOne = document.querySelector('.tagline-1')
 var taglineTwo = document.querySelector('.tagline-2')
+
 var viewForm = document.querySelector('.form-view')
 var homeView = document.querySelector('.home-view')
 var savedView = document.querySelector('.saved-view')
@@ -18,41 +19,51 @@ var homeButton = document.querySelector(".home-button")
 var saveCoverButton = document.querySelector(".save-cover-button")
 var makeCoverButton = document.querySelector(".make-new-button")
 var viewSavedButton = document.querySelector(".view-saved-button")
+
 var makeUserCoverButton = document.querySelector(".create-new-book-button")
 
-var userCover = document.querySelector(".user-cover").value
-var userTitle = document.querySelector(".user-title").value
-var userDescript1 = document.querySelector(".user-desc1").value
-var userDescript2 = document.querySelector(".user-desc2").value
-
+var userCover = document.querySelector(".user-cover")
+var userTitle = document.querySelector(".user-title")
+var userDescript1 = document.querySelector(".user-desc1")
+var userDescript2 = document.querySelector(".user-desc2")
 
 
 // Add your event listeners here 👇
+
 randomCoverButton.addEventListener("click", generateRandom)
 window.addEventListener("load", generateRandom)
 makeCoverButton.addEventListener("click", viewMakeCover)
 viewSavedButton.addEventListener("click", viewSavedCovers)
 homeButton.addEventListener("click", goHome)
-makeUserCoverButton.addEventListener("click", makeUserCover)
+
+makeUserCoverButton.addEventListener("click", makeUserCover) 
 
 //one that 1) makes new user generated cover on click and 2) returns the cover on the home page and 3) takes the user there.
-
 //  Create your event handlers and other functions here
 
-function makeUserCover() {
-  covers.push(userCover)
-  titles.push(userTitle)
-  descriptors.push(userDescript1)
-  descriptors.push(userDescript2)
+function makeUserCover(event) {
+  event.preventDefault()
 
-  userCover = new Cover (covers[covers.length], titles[titles.length], descriptors[descriptors.length], descriptors[descriptors.length])
+  cover.src = userCover.value
+  title.innerText = userTitle.value
+  taglineOne.innerText = userDescript1.value
+  taglineTwo.innerText = userDescript2.value
 
-  title.innerText = titles.slice(-1)
-  cover.src = covers.slice(-1)
-  taglineOne.innerText = descriptors.slice(-2)
-  taglineTwo.innerText = descriptors.slice(-1)
+  covers.push(userCover.value)
+  titles.push(userTitle.value)
+  descriptors.push(userDescript1.value)
+  descriptors.push(userDescript2.value)
 
+  currentCover = new Cover (cover.src, title.innerText, taglineOne.innerText, taglineTwo.innerText)
+
+  goHome()
 }
+
+  // title.innerText = titles.slice(-1)
+  // cover.src = covers.slice(-1)
+  // taglineOne.innerText = descriptors.slice(-2)
+  // taglineTwo.innerText = descriptors.slice(-1)
+
 
 function generateRandom() {
   var titleIndex = getRandomIndex(titles)
@@ -61,6 +72,7 @@ function generateRandom() {
   var taglineTwoIndex = getRandomIndex(descriptors)
   
   currentCover = new Cover (covers[coverIndex], titles[titleIndex], descriptors[taglineOneIndex], descriptors[taglineTwoIndex])
+
 
   title.innerText = titles[titleIndex]
   cover.src =covers[coverIndex]
@@ -90,7 +102,7 @@ function goHome() {
   saveCoverButton.classList.remove("hidden")
   viewForm.classList.add("hidden")
   homeButton.classList.add("hidden")
-  savedView.classList.remove("hidden")
+  savedView.classList.add("hidden")
 }
 
 function getRandomIndex(array) {
