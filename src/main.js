@@ -25,7 +25,15 @@ var inputSecondDescriptor = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [];
+  //new Cover(
+    //"http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+   // "Sunsets and Sorrows",
+   // "sunsets",
+   // "sorrows"
+  //),
 var currentCover;
+
+var savedCovers = []
 
 // Add your event listeners here 👇
 
@@ -36,7 +44,6 @@ buttonViewSavedCover.addEventListener('click', viewSavedCovers);
 buttonHome.addEventListener('click', viewHomePage);
 buttonMakeMyBook.addEventListener('click', makeMyBook, false); 
 buttonSaveCover.addEventListener('click', saveCover);
-
 
 // Create your event handlers and other functions here 👇
 
@@ -100,12 +107,20 @@ function makeMyBook() {
 }
 
 function saveCover() {
-  if (!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover)
-  } 
-  return savedCovers
+  
 }
+
+function saveCover() {
+    if (!savedCovers.includes(currentCover)) {
+     savedCovers.push(currentCover)
+   }
+} return savedCovers
+
+
+
+ 
 //When a user clicks the “Save Cover” button, the current cover will be added to the savedCovers array
+//On the saved cover page push current cover to the savedCovers array.
 //--> event listener --> attached to function.
 
 //When a user clicks the “Save Cover” button, 
