@@ -1,4 +1,4 @@
-
+var currentCover = createBook()
 var title = document.querySelector(".cover-title");
 var cover = document.querySelector(".cover-image");
 var taglineOne = document.querySelector(".tagline-1");
@@ -13,6 +13,14 @@ var homeButton = document.querySelector(".home-button");
 var saveCoversButton = document.querySelector(".save-cover-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
 var newBookButton = document.querySelector(".create-new-book-button");
+var savedCovers = [
+  new Cover(
+    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+    "Sunsets and Sorrows",
+    "sunsets",
+    "sorrows"
+  ),
+];
 
 window.addEventListener("load", createBook);
 randomCoverButton.addEventListener("click", createBook);
@@ -20,6 +28,7 @@ makeYourOwnCover.addEventListener("click", createForm);
 viewSaved.addEventListener("click", viewSavedCovers);
 homeButton.addEventListener("click", returnHome);
 newBookButton.addEventListener('click', makeMyBook)
+saveCoverButton.addEventListener('click', saveCover)
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -61,7 +70,6 @@ function returnHome() {
 }
 
 function makeMyBook(event) {
-  debugger
   event.preventDefault();
   var coverInput = document.getElementById('cover').value;
   var titleInput = document.getElementById('title').value;
@@ -75,20 +83,17 @@ function makeMyBook(event) {
   cover.src = coverInput;
   taglineOne.innerText = descriptor1Input;
   taglineTwo.innerText = descriptor2Input;
-  savedCovers.unshift = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input)
+  savedCovers.push = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input)
   returnHome();
 }
 
-// We've provided a few variables below
-var savedCovers = [
-  new Cover(
-    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-    "Sunsets and Sorrows",
-    "sunsets",
-    "sorrows"
-  ),
-];
-var currentCover;
+function saveCover() {
+  savedCovers.push(currentCover)
+}
+
+
+
+
 
 
 
