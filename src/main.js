@@ -15,6 +15,7 @@ var buttonMakeMyBook = document.querySelector('.create-new-book-button');
 var viewMakeYourOwnCoverForm = document.querySelector('.form-view');
 var viewHome = document.querySelector('.home-view');
 var viewSavedCoversPage = document.querySelector(".saved-view");
+var viewSavedCoversGallery= document.querySelector(".saved-covers-section")
 
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
@@ -33,7 +34,6 @@ var savedCovers = [];
   //),
 var currentCover;
 
-var savedCovers = []
 
 // Add your event listeners here 👇
 
@@ -44,6 +44,7 @@ buttonViewSavedCover.addEventListener('click', viewSavedCovers);
 buttonHome.addEventListener('click', viewHomePage);
 buttonMakeMyBook.addEventListener('click', makeMyBook, false); 
 buttonSaveCover.addEventListener('click', saveCover);
+buttonViewSavedCover.addEventListener('click', showSavedCoversGallery)
 
 // Create your event handlers and other functions here 👇
 
@@ -61,6 +62,7 @@ function makeRandomCover() {
  coverImage.src = newCovers
  tagLine1.innerText = newDescriptors1
  tagLine2.innerText = newDescriptors2
+ currentCover = new Cover (coverImage.src, coverTitle.innerText, tagLine1.innerText, tagLine2.innerText)
 }
 
 function makeNewCoverForm() {
@@ -106,15 +108,18 @@ function makeMyBook() {
   viewHomePage();
 }
 
-function saveCover() {
-  
-}
 
 function saveCover() {
+  console.log(savedCovers)
     if (!savedCovers.includes(currentCover)) {
      savedCovers.push(currentCover)
-   }
-} return savedCovers
+   }return savedCovers
+} 
+
+function showSavedCoversGallery() {
+  
+
+}
 
 
 
