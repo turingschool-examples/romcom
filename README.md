@@ -8,6 +8,7 @@
 
 ### Preview of App:
 [// Each iteration was very exciting to create. We both were extremely proud of the make your own cover feature and then storing them to the saved covers page. We had a lot of fun creating different covers and adding them to our feature we created.]: 
+![](![Alt text](https://files.slack.com/files-pri/T029P2S9M-F04F379QYQH/screen_shot_2022-12-11_at_3.58.44_pm.png))
 
 ### Context:
 [// We have been working on this project collaboratively for 35 hours. We really wanted to make sure we both understood every element in this project that we came up with.]: 
