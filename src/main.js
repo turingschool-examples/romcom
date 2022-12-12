@@ -13,7 +13,8 @@ var homeButton = document.querySelector(".home-button");
 var saveCoverButton = document.querySelector(".save-cover-button");
 var savedCoverSection = document.querySelector(".saved-covers-section");
 var newBookButton = document.querySelector(".create-new-book-button");
-var mainCover = document.querySelector(".main-cover")
+var mainCover = document.querySelector(".main-cover");
+var miniCover = document.querySelector(".mini-cover");
 var savedCovers = [];
 
 window.addEventListener("load", createBook);
@@ -53,7 +54,7 @@ function viewSavedCovers() {
   homeView.classList.add("hidden");
   viewForm.classList.add("hidden");
   randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden")
+  saveCoverButton.classList.add("hidden");
 }
 
 function returnHome() {
@@ -64,7 +65,7 @@ function returnHome() {
   homeButton.classList.add("hidden");
   savedView.classList.add("hidden");
   savedCoverSection.classlist.add("hidden");
-  mainCover.classlist.add("hidden")
+  mainCover.classlist.add("hidden");
 }
 
 function makeMyBook(event) {
@@ -81,7 +82,7 @@ function makeMyBook(event) {
   cover.src = coverInput;
   tagline1.innerText = descriptor1Input;
   tagline2.innerText = descriptor2Input;
-  savedCovers.push = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input)
+  savedCovers.push = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input);
   returnHome();
 }
 
@@ -107,8 +108,21 @@ function displaySavedCovers() {
     `
     savedCoverSection.innerHTML += smallCover
     }
+    for (var i = 0; i < savedCovers.length; i++){
+      savedCovers[i].addEventListener('dblclick', deleteCover)
+    }
   }
-
+ 
+  function deleteCover(e) {
+    var parent = e.currentTarget.parentElement
+    var target = e.currentTarget
+    parent.removeChild(target)
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers[i].id === target.miniCovers)
+      savedCovers.splice(i, 1)
+    }
+  }
+ 
   
 
 
