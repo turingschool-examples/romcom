@@ -1,41 +1,25 @@
-// Create variables targetting the relevant DOM elements here 👇
 
 var coverTitle = document.querySelector('.cover-title');
 var coverImage = document.querySelector('.cover-image');
 var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2');
-
 var buttonViewSavedCover = document.querySelector('.view-saved-button');
 var buttonRandomCover = document.querySelector('.random-cover-button');
 var buttonMakeYourOwnCover = document.querySelector('.make-new-button');
 var buttonHome = document.querySelector('.home-button');
 var buttonSaveCover = document.querySelector('.save-cover-button');
 var buttonMakeMyBook = document.querySelector('.create-new-book-button');
-
 var viewMakeYourOwnCoverForm = document.querySelector('.form-view');
 var viewHome = document.querySelector('.home-view');
 var viewSavedCoversPage = document.querySelector(".saved-view");
 var viewSavedCoversGallery= document.querySelector(".saved-covers-section")
-
+var viewMiniCover= document.querySelector('.mini-cover')
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
 var inputFirstDescriptor = document.querySelector('.user-desc1');
 var inputSecondDescriptor = document.querySelector('.user-desc2');
-//query select saved cover button- 
-
-
-// We've provided a few variables below
 var savedCovers = [];
-  //new Cover(
-    //"http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
-   // "Sunsets and Sorrows",
-   // "sunsets",
-   // "sorrows"
-  //),
 var currentCover;
-
-
-// Add your event listeners here 👇
 
 window.addEventListener('load', makeRandomCover);
 buttonRandomCover.addEventListener('click', makeRandomCover);
@@ -46,9 +30,6 @@ buttonMakeMyBook.addEventListener('click', makeMyBook, false);
 buttonSaveCover.addEventListener('click', saveCover);
 buttonViewSavedCover.addEventListener('click', displaySavedCoversGallery)
 
-// Create your event handlers and other functions here 👇
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -108,17 +89,15 @@ function makeMyBook() {
   viewHomePage();
 }
 
-
 function saveCover() {
     if (!savedCovers.includes(currentCover)) {
      savedCovers.push(currentCover)
    }
 } 
 
-
 function displaySavedCoversGallery() {
   viewSavedCoversGallery.innerHTML = ''
-  for (var i = 0; i < savedCovers.length; i++) {
+  for(var i = 0; i < savedCovers.length; i++) {
     viewSavedCoversGallery.innerHTML += `
     <section class="saved-covers-section">
       <section class="mini-cover">
@@ -131,4 +110,17 @@ function displaySavedCoversGallery() {
     </section>`;
   }
 }
-// Goal: saved covers view -double click a saved poster = deleted
+
+//   for(var i = 0; i < savedCovers.length; i++) {
+//     savedCovers[i].addEventListener('dblclick', deleteCover)
+// }
+
+// function deleteCover(e) {
+//   var parent = e.currentTarget.parentElement
+//   var target = e.currentTargetparent
+//   parent.removeChild(target)
+//   for (var i = 0; i < savedCovers.length; i++) {
+//     if (savedCovers[i].id === target.miniCovers)
+//     savedCovers.splice(i, 1)
+//   }
+// }
