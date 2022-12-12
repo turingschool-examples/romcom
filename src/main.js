@@ -62,7 +62,7 @@ function returnHome() {
   randomCoverButton.classList.remove("hidden");
   viewForm.classList.add("hidden");
   homeButton.classList.add("hidden");
-  savedView.classList.add("view");
+  savedView.classList.add("hidden");
   savedCoverSection.classlist.add("hidden");
   mainCover.classlist.add("hidden")
 }
@@ -97,7 +97,7 @@ function displaySavedCovers() {
   savedCoverSection.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     smallCover = `
-      <section class="main-cover"id=${savedCovers[i].id}>
+      <section class="mini-cover"id=${savedCovers[i].id}>
       <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
         <img class="cover-image" src=${savedCovers[i].cover}>
