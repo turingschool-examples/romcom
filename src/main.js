@@ -94,7 +94,7 @@ function saveCover() {
 
 function displaySavedCovers() {
   viewSavedCovers()
-  var smallCover = ''
+  //var smallCover = ''
   savedCoverSection.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     smallCover = `
@@ -109,18 +109,12 @@ function displaySavedCovers() {
     savedCoverSection.innerHTML += smallCover
     }
     for (var i = 0; i < savedCovers.length; i++){
-      savedCovers[i].addEventListener('dblclick', deleteCover)
+    savedCovers[i].addEventListener('dblclick', deleteCover)
     }
   }
  
-  function deleteCover(e) {
-    var parent = e.currentTarget.parentElement
-    var target = e.currentTarget
-    parent.removeChild(target)
-    for (var i = 0; i < savedCovers.length; i++) {
-      if (savedCovers[i].id === target.miniCovers)
-      savedCovers.splice(i, 1)
-    }
+  function deleteCover() {
+    savedCoverSection.removeChild(event.target.parentNode) 
   }
  
   
