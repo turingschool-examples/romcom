@@ -1,4 +1,4 @@
-var currentCover
+var currentCover;
 var title = document.querySelector(".cover-title");
 var cover = document.querySelector(".cover-image");
 var tagline1 = document.querySelector(".tagline-1");
@@ -22,8 +22,8 @@ randomCoverButton.addEventListener("click", createBook);
 makeYourOwnCover.addEventListener("click", createForm);
 viewSaved.addEventListener("click", displaySavedCovers);
 homeButton.addEventListener("click", returnHome);
-newBookButton.addEventListener('click', makeMyBook);
-saveCoverButton.addEventListener('click', saveCover);
+newBookButton.addEventListener("click", makeMyBook);
+saveCoverButton.addEventListener("click", saveCover);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -34,7 +34,12 @@ function createBook() {
   cover.src = covers[getRandomIndex(covers)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  currentCover = new Cover(cover.src, title.innerText, tagline1.innerText, tagline2.innerText);
+  currentCover = new Cover(
+    cover.src,
+    title.innerText,
+    tagline1.innerText,
+    tagline2.innerText
+  );
 }
 
 function createForm() {
@@ -59,43 +64,48 @@ function viewSavedCovers() {
 
 function returnHome() {
   homeView.classList.remove("hidden");
-  saveCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove("hidden");
   randomCoverButton.classList.remove("hidden");
   viewForm.classList.add("hidden");
   homeButton.classList.add("hidden");
   savedView.classList.add("hidden");
-  savedCoverSection.classlist.add("hidden");
-  mainCover.classlist.add("hidden");
+  savedCoverSection.classList.add("hidden");
+  // mainCover.classlist.add("hidden");
 }
 
 function makeMyBook(event) {
   event.preventDefault();
-  var coverInput = document.getElementById('cover').value;
-  var titleInput = document.getElementById('title').value;
-  var descriptor1Input = document.getElementById('descriptor1').value;
-  var descriptor2Input = document.getElementById('descriptor2').value;
+  var coverInput = document.getElementById("cover").value;
+  var titleInput = document.getElementById("title").value;
+  var descriptor1Input = document.getElementById("descriptor1").value;
+  var descriptor2Input = document.getElementById("descriptor2").value;
   covers.unshift(coverInput);
   titles.unshift(titleInput);
-  descriptors.unshift(descriptor1Input); 
+  descriptors.unshift(descriptor1Input);
   descriptors.unshift(descriptor2Input);
   title.innerText = titleInput;
   cover.src = coverInput;
   tagline1.innerText = descriptor1Input;
   tagline2.innerText = descriptor2Input;
-  savedCovers.push = new Cover(coverInput, titleInput, descriptor1Input, descriptor2Input);
+  savedCovers.push = new Cover(
+    coverInput,
+    titleInput,
+    descriptor1Input,
+    descriptor2Input
+  );
   returnHome();
 }
 
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover)
+    savedCovers.push(currentCover);
   }
 }
 
 function displaySavedCovers() {
-  viewSavedCovers()
-  //var smallCover = ''
-  savedCoverSection.innerHTML = ''
+  viewSavedCovers();
+  var smallCover = "";
+  savedCoverSection.innerHTML = "";
   for (var i = 0; i < savedCovers.length; i++) {
     smallCover = `
       <section class="mini-cover"id=${savedCovers[i].id}>
@@ -105,21 +115,20 @@ function displaySavedCovers() {
         <h2 class="cover-title">${savedCovers[i].title}</h2>
         <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
       </section>
-    `
-    savedCoverSection.innerHTML += smallCover
-    }
-    for (var i = 0; i < savedCovers.length; i++){
-    savedCovers[i].addEventListener('dblclick', deleteCover)
-    }
+    `;
+    savedCoverSection.innerHTML += smallCover;
   }
- 
-  function deleteCover() {
-    savedCoverSection.removeChild(event.target.parentNode) 
+  var allSavedCovers = document.querySelectorAll(".mini-cover");
+  for (var i = 0; i < allSavedCovers.length; i++) {
+    allSavedCovers[i].addEventListener("dblclick", deleteCover);
   }
- 
-  
+}
 
-
+function deleteCover(event) {
+  {
+    savedCoverSection.removeChild(event.target.parentNode);
+  }
+}
 
 
 
