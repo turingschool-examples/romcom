@@ -116,12 +116,8 @@ function storeSavedCovers() {
   } 
 }
 
-
 function deletePoster(event) {
 var clickedParentId = event.target.parentElement.id
-console.log(clickedParentId)
 var clickedParentElement = document.getElementById(clickedParentId)
-console.log(clickedParentElement)
 clickedParentElement.outerHTML = ''
-
 }
