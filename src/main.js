@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+// iteration 0
+var randomCoverButton = document.querySelector('.random-cover-button')
+var coverImage = document.querySelector('.cover-image')
+var coverTitle = document.querySelector('.cover-title')
+var tagLine = document.querySelector('.tagline')
 
 // We've provided a few variables below
 var savedCovers = [
