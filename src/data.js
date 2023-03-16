@@ -1,5 +1,3 @@
-
-
 var covers = [
   './assets/bluebrocade.jpg',
   './assets/dance.jpg',

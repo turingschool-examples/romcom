@@ -1,5 +1,3 @@
-// Create variables targetting the relevant DOM elements here
-
 //This variable instantiates a new book from the Cover class
 var currentCover;
 
@@ -35,7 +33,7 @@ viewSavedCoverButton.addEventListener('click', savedRomCoversTab);
 makeYourOwnCoverButton.addEventListener('click', makeOwnCoverDisplayForm);
 createCustomButton.addEventListener('click', savedRomCovers);
 
-//Make Your Own Cover Fxn's Tab
+//Make Your Own Cover 
 
 function savedRomCovers() {
 event.preventDefault();
@@ -54,7 +52,7 @@ tagline2.innerText = currentCover.tagline2;
 homePageTab();
 }
 
-// Random Cover Fxn's Section:
+// Random Cover
 
 function randomRomCover() {
 currentCover = new Cover(getRandomCover(covers), getRandomTitle(titles), getRandomDescriptor(descriptors), getRandomDescriptor(descriptors));
@@ -117,10 +115,11 @@ function homePageTab() {
   homeButton.classList.add("hidden");
   saveCoverButton.classList.remove("hidden");
   coverButton.classList.remove("hidden");
+  formPage.classList.add("hidden");
+  savedPage.classList.add("hidden");
 
 }
 
-//Iteration 3
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -144,11 +143,8 @@ coversSection.innerHTML+=
   }
 }
 
-
 //Event Listener that is located inside the "view saved covers tab".
 //If you click on the book (book id) it will be deleted.
-
-savedPage.addEventListener('dblclick', deletedSavedCovers);
 
 function deletedSavedCovers(event) {
   for (var i = 0; i < savedCovers.length; i++) {
@@ -158,3 +154,6 @@ function deletedSavedCovers(event) {
     }
   }
 }
+
+savedPage.addEventListener('dblclick', deletedSavedCovers);
+

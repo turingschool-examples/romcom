@@ -14,6 +14,12 @@ body {
   display: none;
 }
 
+.home-title {
+  display: flex;
+  justify-content: center;
+  color: #7e5496
+}
+
 /* ~~~~~~~~~~~~~~ CONTROLS ~~~~~~~~~~~~~~~~ */
 .controls {
   background: #7e5496;
@@ -61,11 +67,11 @@ body {
 }
 
 .cover-title {
-  bottom: .9em;
+  bottom: 4.2em;
   font-family: 'Playball', cursive;
-  font-size: 4.5em;
+  font-size: 3.5vw;
   font-weight: normal;
-  line-height: 90%;
+  line-height: 60%;
   margin: 0;
   padding: 0.1em;
 }
@@ -98,7 +104,7 @@ body {
 
 /* ~~~~~~~~~~~~~ SAVED COVERS ~~~~~~~~~~~~~~~ */
 .saved-view {
-  padding: 30px;
+  padding: 10px;
 }
 
 .saved-covers-section {
@@ -113,11 +119,12 @@ body {
   margin: 1.3vh auto;
   position: relative;
   width: 14vw;
+  margin-bottom: 20px;
 }
 
 .mini-cover > .cover-title {
-  bottom: 45px;
-  font-size: 40px;
+  bottom: 30px;
+  font-size: 20px;
 }
 
 .mini-cover > .cover-title::first-letter {
