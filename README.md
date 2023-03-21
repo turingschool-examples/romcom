@@ -10,6 +10,11 @@ A boilerplate repo.
 5. View the project in the browser by running open index.html in your terminal
 6. Add all project partners and your assigned instructor as collaborators on the repository
 
+## File structure
+- `app.js` is where you will write the logic for the data model (creating and manipulating cover objects, no DOM manipulation)
+- `index.js` is where your DOM manipulation will occur (rendering to the DOM and updating what is being rendered)
+- You will not need to worry about importing/exporting pieces of code between files because they are linked via scripts in the `index.html` file
+
 The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
 
 ______________________________________________________  
