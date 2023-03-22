@@ -10,7 +10,7 @@ A boilerplate repo.
 5. View the project in the browser by running open index.html in your terminal
 6. Add all project partners and your assigned instructor as collaborators on the repository
 
-You will not need to worry about importing/exporting pieces of code between files because they are linked via scripts in the `index.html` file.  
+You will not need to worry about importing/exporting the arrays from the data.js file because they are linked via the script in the `index.html` file.  
 
 The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
 
