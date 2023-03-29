@@ -1,40 +1,46 @@
 // Create variables targetting the relevant DOM elements here 👇
-var titlesIndex = getRandomIndex(titles)
-var taglineIndex = getRandomIndex(descriptors)
-var taglineIndex2 = getRandomIndex(descriptors)
-var coverIndex = getRandomIndex(covers)
 var title = document.querySelector('h2');
 var tagline = document.querySelector('h3');
 var mainCover = document.querySelector('img')
 var randomCoverButton = document.querySelector('.random-cover-button')
-
-// We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover = {
-  id: Date.now(),
-  coverImg: covers[coverIndex],
-  title: titles[titlesIndex],
-  tagline1: descriptors[taglineIndex],
-  tagline2: descriptors[taglineIndex2]
-}
-
-function randomCover() {
-  title.innerHTML = currentCover.title;
-  mainCover.src = currentCover.coverImg;
-  tagline.innerHTML = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`
-}
-
-randomCover(currentCover);
 
 // Add your event listeners here 
-randomCoverButton.addEventListener("click", randomCover)
+randomCoverButton.addEventListener('click', randomCover);
+window.addEventListener('load', randomCover);
 
 // Create your event handlers and other functions here 👇
 
+function getIndex() {
+  var index = {
+  titlesIndex: getRandomIndex(titles),
+  taglineIndex: getRandomIndex(descriptors),
+  taglineIndex2: getRandomIndex(descriptors),
+  coverIndex: getRandomIndex(covers)
+  }
+return index;
+}
 
-// We've provided two functions to get you started
+function randomCover() {
+ var index = getIndex();
+
+  var currentCover = {
+    id: Date.now(),
+    coverImg: covers[index.coverIndex],
+    title: titles[index.titlesIndex],
+    tagline1: descriptors[index.taglineIndex],
+    tagline2: descriptors[index.taglineIndex2]
+  }
+
+  title.innerHTML = currentCover.title;
+  mainCover.src = currentCover.coverImg;
+  tagline.innerHTML = `A tale of ${currentCover.tagline1} and ${currentCover.tagline2}`
+  return currentCover
+}
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
