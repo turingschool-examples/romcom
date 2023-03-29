@@ -1,3 +1,4 @@
+
 // Create variables targetting the relevant DOM elements here 👇
 var randomCoverButton = document.querySelector(".random-cover-button")
 var saveCoverButton = document.querySelector(".save-cover-button")
@@ -16,10 +17,31 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+randomCoverButton.onclick = handleRandomCoverButtonClicked
+// saveCoverButton.onclick =
+// viewSavedButton.onclick =
+// makeNewButton.onclick =
 
 // Create your event handlers and other functions here 👇
+function handleRandomCoverButtonClicked(){
+  var currentCover = randomCover()
+  coverImage.src = covers[currentCover.coverImg]
+  coverTitle.innerText = titles[currentCover.title]
+  tagline1.innerText = descriptors[currentCover.tagline1]
+  tagline2.innerText = descriptors[currentCover.tagline2]
+}
 
+
+function randomCover() {
+  var randomCover = {
+    id: Date.now(),
+    coverImg: getRandomIndex(covers),
+    title: getRandomIndex(titles),
+    tagline1: getRandomIndex(descriptors),
+    tagline2: getRandomIndex(descriptors),
+  }
+  return randomCover;
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
@@ -35,14 +57,4 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
-}
-function randomCover() {
-  var randomCover = {
-    id: Date.now(),
-    coverImg: getRandomIndex(covers),
-    title: getRandomIndex(titles),
-    tagline1: getRandomIndex(descriptors),
-    tagline2: getRandomIndex(descriptors),
-  }
-  return randomCover;
 }
