@@ -1,18 +1,23 @@
 // Create variables targetting the relevant DOM elements here 👇
 var title = document.querySelector('h2');
 var tagline = document.querySelector('h3');
-var mainCover = document.querySelector('img')
-var randomCoverButton = document.querySelector('.random-cover-button')
+var mainCover = document.querySelector('img');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var makeCoverButton = document.querySelector('.make-new-button');
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
 
 // Add your event listeners here 
 randomCoverButton.addEventListener('click', randomCover);
 window.addEventListener('load', randomCover);
+makeCoverButton.addEventListener('click', switchFormView)
 
 // Create your event handlers and other functions here 👇
-
 function getIndex() {
   var index = {
   titlesIndex: getRandomIndex(titles),
@@ -40,7 +45,6 @@ function randomCover() {
   return currentCover
 }
 
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -56,3 +60,10 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
+function switchFormView() {
+  homeView.classList.add('hidden')
+  formView.classList.remove('hidden')
+  saveCoverButton.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+}
