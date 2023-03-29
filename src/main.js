@@ -36,6 +36,8 @@ function displayCover() {
   tagline2.innerText = currentCover.tagline2;
 }
 
+displayCover();
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
