@@ -11,7 +11,10 @@ var currentCover;
 
 
 // Create your event handlers and other functions here 👇
-
+function getRandomCover(savedCovers) {
+  var randomIndex = getRandomIndex(savedCovers);
+  return savedCovers[randomIndex];
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
