@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var newCover;
 
 // We've provided a few variables below
 var savedCovers = [
