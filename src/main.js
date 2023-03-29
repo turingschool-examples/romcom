@@ -4,6 +4,11 @@ var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
+var makeOwnCoverButton = document.querySelector(".make-new-button");
+var homeView = document.querySelector(".home-view");
+var displayForm = document.querySelector(".form-view");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var homeButton = document.querySelector(".home-button");
 
 // We've provided a few variables below
 var savedCovers = [
@@ -19,8 +24,8 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener("load", loadCover);
-
 randomCoverButton.addEventListener("click", showRandom);
+makeOwnCoverButton.addEventListener("click", makeOwnCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -61,4 +66,21 @@ function loadCover() {
 function showRandom() {
   createCurrentCover();
   console.log(currentCover);
+}
+
+
+function hide(element) {
+  element.classList.add("hidden");
+}
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function makeOwnCover() {
+  show(displayForm);
+  hide(homeView);
+  hide(randomCoverButton);
+  hide(saveCoverButton);
+  show(homeButton);
 }
