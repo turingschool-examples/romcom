@@ -26,6 +26,15 @@ function getAllIndexs() {
   return idx;
 }
 
+function displayCover() {
+  var idx = getAllIndexs();
+  currentCover = createCover(covers[idx.cover], titles[idx.title], descriptors[idx.descrip1], descriptors[idx.descrip2]);
+  coverImg.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+}
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
