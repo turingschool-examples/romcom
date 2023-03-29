@@ -16,6 +16,15 @@ var currentCover;
 
 // Create your event handlers and other functions here 👇
 
+function getAllIndexs() {
+  var idx = {
+    cover: getRandomIndex(covers),
+    title: getRandomIndex(titles),
+    descrip1: getRandomIndex(descriptors),
+    descrip2: getRandomIndex(descriptors),
+  }
+  return idx;
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
