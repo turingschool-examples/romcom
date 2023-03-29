@@ -1,5 +1,12 @@
 // Create variables targetting the relevant DOM elements here 👇
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var tagline = document.querySelector('.tagline');
+var priceTag = document.querySelector('.price-tag');
+var overlay = document.querySelector('.overlay');
+var randomButton = document.querySelector('.random-cover-button')
 
+var {covers, titles, descriptors} = require('data.js');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,10 +15,13 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+window.addEventListener('load', loadRandomPoster);
+randomButton.addEventListener('click', loadRandomPoster);
 
 // Create your event handlers and other functions here 👇
-
+function loadRandomPoster() {
+   return coverImage.src = covers[getRandomIndex(covers)]
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
