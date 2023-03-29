@@ -13,7 +13,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 randomCoverBtn.addEventListener("click", displayCover);
-
+window.addEventListener("load", displayCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -36,7 +36,6 @@ function displayCover() {
   tagline2.innerText = currentCover.tagline2;
 }
 
-displayCover();
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
