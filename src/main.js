@@ -1,4 +1,12 @@
 // Create variables targetting the relevant DOM elements here 👇
+var randomCoverButton = document.querySelector(".random-cover-button")
+var saveCoverButton = document.querySelector(".save-cover-button")
+var viewSavedButton = document.querySelector(".view-saved-button")
+var makeNewButton = document.querySelector(".make-new-button")
+var coverImage = document.querySelector(".cover-image")
+var coverTitle = document.querySelector(".cover-title")
+var tagline1 = document.querySelector(".tagline-1")
+var tagline2 = document.querySelector(".tagline-2")
 
 
 // We've provided a few variables below
@@ -27,4 +35,14 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
+}
+function randomCover() {
+  var randomCover = {
+    id: Date.now(),
+    coverImg: getRandomIndex(covers),
+    title: getRandomIndex(titles),
+    tagline1: getRandomIndex(descriptors),
+    tagline2: getRandomIndex(descriptors),
+  }
+  return randomCover;
 }
