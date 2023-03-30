@@ -19,6 +19,7 @@ randomCoverButton.addEventListener('click', randomCover);
 window.addEventListener('load', randomCover);
 makeCoverButton.addEventListener('click', switchFormView)
 viewSavedButton.addEventListener('click', switchSavedView)
+homeButton.addEventListener('click', switchHomeView)
 
 // Create your event handlers and other functions here 👇
 function getIndex() {
@@ -78,4 +79,15 @@ function switchSavedView() {
   saveCoverButton.classList.add('hidden')
   randomCoverButton.classList.add('hidden')
   homeButton.classList.remove('hidden')
+}
+
+function switchHomeView() {
+  homeView.classList.remove('hidden')
+  formView.classList.add('hidden')
+  savedView.classList.add('hidden')
+  saveCoverButton.classList.remove('hidden')
+  viewSavedButton.classList.remove('hidden')
+  makeCoverButton.classList.remove('hidden')
+  randomCoverButton.classList.remove('hidden')
+  homeButton.classList.add('hidden')
 }
