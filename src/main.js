@@ -12,26 +12,47 @@ var coverForm = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var saveView = document.querySelector('.saved-view');
 var viewPages = document.querySelectorAll('.view');
+var userCoverInput = document.querySelector('.user-cover');
+var userTitleInput = document.querySelector('.user-title');
+var userDesc1Input = document.querySelector('.user-desc1');
+var userDesc2Input = document.querySelector('.user-desc2');
+var makeBookButton = document.querySelector('.create-new-book-button');
+
 
 // We've provided a few variables below
+// var savedCovers = [
+  // createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+// ];
+
 var savedCovers = [
-  createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+  // createCover(, userTitleInput.value, userDesc1Input.value, userDesc2Input.value)
 ];
+// savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
 
 var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover);
 randomCoverButton.addEventListener('click', createRandomCover);
+
 makeCoverButton.addEventListener('click', function() {
   togglePage(coverForm);
 });
+
 viewSavedButton.addEventListener('click', function() {
   togglePage(saveView);
 });
+
 homeButton.addEventListener('click', function() {
   togglePage(homeView);
 });
+
+makeBookButton.addEventListener('click', function() {
+  // savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
+}); 
+// {
+//   createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value);
+// });
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -42,7 +63,7 @@ function createRandomCover() {
 }
 
 function togglePage(page) {
-  for(var i = 0; i < viewPages.length; i++) {
+  for (var i = 0; i < viewPages.length; i++) {
     viewPages[i].classList.add('hidden');
   }
   page.classList.remove('hidden');
@@ -65,6 +86,10 @@ function togglePage(page) {
     viewSavedButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
   }
+}
+
+function createBook() {
+  savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
 }
 
 // We've provided two functions to get you started
