@@ -87,3 +87,37 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 };
+
+var userTitle = document.querySelector('#title');
+
+var userCover = document.querySelector('.#cover');
+
+var userDesc1 = document.querySelector('.#descriptor1');
+
+var userDesc2 = document.querySelector('.#descriptor2');
+
+var createNewBookButton = document.querySelector('.create-new-book-button')
+
+createNewBookButton.addEventListener('click', makeBook);
+
+function saveUserInputs() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
+}
+
+function makeBook() {
+  Event.preventDefault();
+  randomTitle.innerText = userTitle.value;
+  image.src = userCover.value;
+  randomDescriptor1.innerText = userDesc1.value;
+  randomDescriptor2.innerText = userDesc2.value;
+  saveUserInputs();
+  switchToHome();
+}
+
+// XX use values from user inputs on form
+// xx save submitted data in arrays (titles, descriptors, covers)  - new function??
+// change to home view (function?)
+// display new cover on home page
