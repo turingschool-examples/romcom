@@ -5,7 +5,7 @@ var coverImg = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var makeCoverButton = document.querySelector('.make-new-button');
-var showNewRandomCover = document.querySelector('.make-new-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var coverForm = document.querySelector('.form-view');
@@ -47,6 +47,12 @@ function showForm() {
 function saveCover() {
   homeView.classList.add('hidden');
   saveView.classList.remove('hidden');
+  
+  if (saveView) {
+    saveCoverButton.classList.add('hidden');
+    randomCoverButton.classList.add('hidden');
+    homeButton.classList.remove('hidden');
+  }
 
 
 }
