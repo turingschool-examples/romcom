@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+var randomCoverButton = document.querySelector('.random-cover-button')
+var coverImage = document.querySelector('.cover-image')
+var coverTitle = document.querySelector('.cover-title')
+var coverTagline = document.querySelector('.tagline')
+console.log(randomCoverButton)
 
 // We've provided a few variables below
 var savedCovers = [
@@ -8,9 +12,29 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+randomCoverButton.addEventListener('click', newCover)
+window.addEventListener("load", newCover);
+window.addEventListener("load", randomTitle);
+window.addEventListener("load", randomDescriptors);
 
 // Create your event handlers and other functions here 👇
+function newCover() {
+var randomNumber = Math.floor(Math.random()*covers.length)
+coverImage.src = covers[randomNumber]
+}
+
+function randomTitle() {
+  var randomNumber = Math.floor(Math.random()*titles.length)
+  coverTitle.textContent = titles[randomNumber]
+}
+
+function randomDescriptors() {
+  var randomNumber = Math.floor(Math.random()*descriptors.length)
+  var randomNumber1 = Math.floor(Math.random()*descriptors.length)
+  coverTagline.textContent = `A tale of ${descriptors[randomNumber]} and ${descriptors[randomNumber1]}`
+  
+
+}
 
 
 // We've provided two functions to get you started
