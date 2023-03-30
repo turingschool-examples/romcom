@@ -16,10 +16,9 @@ var userCover = document.getElementById('cover');
 var userTitle = document.getElementById('title');
 var userTagline1 = document.getElementById('descriptor1');
 var userTagline2 = document.getElementById('descriptor2');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+var coverView = document.querySelector('.main-cover');
 var allViews = [homeView, savedView, formView];
-
-
-
 
 
 // We've provided a few variables below
@@ -43,6 +42,7 @@ newBookBtn.addEventListener('click', function(event) {
   event.preventDefault()
   createUserBook()
 })
+saveBtn.addEventListener('click', addSavedCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -132,6 +132,13 @@ function createUserBook() {
   addToData(currentCover);
   console.log(currentCover)
   switchToHome();
+}
+
+function addSavedCover() {
+  if (!savedCovers.includes(currentCover)){
+    savedCovers.push(currentCover)
+  }
+  console.log(savedCovers)
 }
 // We've provided two functions to get you started
 function getRandomIndex(array) {
