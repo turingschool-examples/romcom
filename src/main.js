@@ -3,6 +3,7 @@ var randomCoverBtn = document.querySelector(".random-cover-button");
 var makeCoverBtn = document.querySelector(".make-new-button");
 var homeBtn = document.querySelector('.home-button');
 var viewSavedBtn = document.querySelector('.view-saved-button');
+var saveBtn = document.querySelector('.save-cover-button');
 var coverImg = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
@@ -69,6 +70,19 @@ function switchView(selectedView) {
     }
   }
 }
+ 
+function switchBtns(selectedView) {
+  if(selectedView !== homeView) {
+    homeBtn.classList.remove('hidden');
+    saveBtn.classList.add('hidden');
+    randomCoverBtn.classList.add('hidden');
+  } else {
+    homeBtn.classList.add('hidden');
+    saveBtn.classList.remove('hidden');
+    randomCoverBtn.classList.remove('hidden');
+  }
+}
+
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
