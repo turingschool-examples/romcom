@@ -1,35 +1,38 @@
-// Create variables targetting the relevant DOM elements here 👇
-var imgSrc = document.querySelector('.cover-image');
-var randomTitle = document.querySelector('.cover-title')
-var descriptor1 = document.querySelector('.tagline-1');
-var descriptor2 = document.querySelector(`.tagline-2`);
+// // Create variables targetting the relevant DOM elements here 👇
+var randomTitle = document.querySelector('.cover-title');
 
-// We've provided a few variables below
-// var savedCovers = [
-//   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
-var currentCover = createCover((imgSrc, randomTitle, descriptor1, descriptor2))
+var randomDescriptor1 = document.querySelector('.tagline-1');
 
-// Add your event listeners here 👇
-var randomCover = document.querySelector('.random-cover-button')
+var randomDescriptor2 = document.querySelector(`.tagline-2`);
 
-randomCover.addEventListener('click', createCover)
+var image = document.querySelector('.cover-image');
 
-/* do we create a new function that uses getRandomIndex function as callback?*/
+var randomCoverButton = document.querySelector('.random-cover-button');
 
-// Create your event handlers and other functions here 👇
-randomTitle.innerText = titles[getRandomIndex(titles)]
+// // We've provided a few variables below
+var savedCovers = [
+  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+];
 
-descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+var currentCover;
 
-descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
+// // Add your event listeners here 👇
+randomCoverButton.addEventListener('click', displayNewCover);
 
-imgSrc.src = covers[getRandomIndex(covers)];
+// /* do we create a new function that uses getRandomIndex function as callback?*/
 
-// We've provided two functions to get you started
+// // Create your event handlers and other functions here 👇
+function displayNewCover() {
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+  randomDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
+  image.src = covers[getRandomIndex(covers)];
+};
+
+// // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
@@ -40,4 +43,4 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
-}
+};
