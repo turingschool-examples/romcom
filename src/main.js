@@ -5,6 +5,16 @@ var bookCover = document.querySelector('.cover-image')
 var bookTagline1 = document.querySelector('.tagline-1');
 var bookTagline2 = document.querySelector('.tagline-2');
 
+//Iteration 1 variables
+var makeYourOwnCoverButton = document.querySelector('.make-new-button');
+var viewSavedCoverButton = document.querySelector('.view-saved-button');
+var homeButton = document.querySelector('.home-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewForm = document.querySelector('.form-view');
+var viewHome = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
+
+
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -51,3 +61,5 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 }
+
+
