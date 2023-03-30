@@ -93,6 +93,11 @@ function switchToHome() {
   switchBtns(homeView);
 }
 
+function switchToSaved() {
+  switchView(savedView);
+  switchBtns(savedView);
+}
+ 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
