@@ -5,11 +5,13 @@ var coverImg = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var makeCoverButton = document.querySelector('.make-new-button');
-var showNewRandomCover = document.querySelector('.make-new-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var coverForm = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
+var saveView = document.querySelector('.saved-view');
+var viewPages = document.querySelectorAll('.view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,7 +23,15 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover);
 randomCoverButton.addEventListener('click', createRandomCover);
-makeCoverButton.addEventListener('click', showForm);
+makeCoverButton.addEventListener('click', function() {
+  togglePage(coverForm);
+});
+viewSavedButton.addEventListener('click', function() {
+  togglePage(saveView);
+});
+homeButton.addEventListener('click', function() {
+  togglePage(homeView);
+});
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -31,11 +41,26 @@ function createRandomCover() {
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
-function showForm() {
-  homeView.classList.add('hidden');
-  coverForm.classList.remove('hidden');
+function togglePage(page) {
+  for(var i = 0; i < viewPages.length; i++) {
+    viewPages[i].classList.add('hidden');
+  }
+  page.classList.remove('hidden');
 
-  if (coverForm) {
+  if (!homeView.classList.contains('hidden')) {
+    homeButton.classList.add('hidden');
+    randomCoverButton.classList.remove('hidden');
+    saveCoverButton.classList.remove('hidden');
+    viewSavedButton.classList.remove('hidden');
+  }
+
+  if (!saveView.classList.contains('hidden')) {
+    saveCoverButton.classList.add('hidden');
+    randomCoverButton.classList.add('hidden');
+    homeButton.classList.remove('hidden');
+  }
+
+  if (!coverForm.classList.contains('hidden')) {
     randomCoverButton.classList.add('hidden');
     viewSavedButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
