@@ -10,6 +10,7 @@ var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var coverForm = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
+var saveView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -22,6 +23,7 @@ var currentCover;
 window.addEventListener('load', createRandomCover);
 randomCoverButton.addEventListener('click', createRandomCover);
 makeCoverButton.addEventListener('click', showForm);
+viewSavedButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -40,6 +42,13 @@ function showForm() {
     viewSavedButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
   }
+}
+
+function saveCover() {
+  homeView.classList.add('hidden');
+  saveView.classList.remove('hidden');
+
+
 }
 
 // We've provided two functions to get you started
