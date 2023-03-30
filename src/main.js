@@ -52,25 +52,25 @@ function makeCustomCoverForms() {
   saveCoverButton.classList.add('hidden')
 }
 
-  function showSavedCovers() {
-    randomButton.classList.add('hidden');
-    saveCoverButton.classList.add('hidden');
-    homeButton.classList.remove('hidden');
-    savedView.classList.remove('hidden');
-    formView.classList.add('hidden');
-    homeView.classList.add('hidden');
-  } 
+function showSavedCovers() {
+  randomButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  savedView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  homeView.classList.add('hidden');
+} 
   
-  function homePage() {
-    homeView.classList.remove('hidden');
-    formView.classList.add('hidden');
-    savedView.classList.add('hidden');
-    homeButton.classList.add('hidden');
-    saveCoverButton.classList.remove('hidden');
-    makeCoverButton.classList.remove('hidden');
-    randomButton.classList.remove('hidden');
-    viewSavedButton.classList.remove('hidden');
-  };
+function homePage() {
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  homeButton.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden');
+  makeCoverButton.classList.remove('hidden');
+  randomButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+};
 
 
 
