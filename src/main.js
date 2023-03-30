@@ -14,12 +14,10 @@ var savedView = document.querySelector(".saved-view");
 
 // We've provided a few variables below
 var savedCovers = [
-  createCover(
-    covers[getRandomIndex(covers)],
-    titles[getRandomIndex(titles)],
-    descriptors[getRandomIndex(descriptors)],
-    descriptors[getRandomIndex(descriptors)]
-  ),
+  createCover(covers[getRandomIndex(covers)],
+  titles[getRandomIndex(titles)],
+  descriptors[getRandomIndex(descriptors)],
+  descriptors[getRandomIndex(descriptors)])
 ];
 
 var currentCover;
@@ -28,7 +26,8 @@ var currentCover;
 window.addEventListener("load", loadCover);
 randomCoverButton.addEventListener("click", showRandom);
 makeOwnCoverButton.addEventListener("click", makeOwnCover);
-viewSavedCoverButton.addEventListener("click", displayCover)
+viewSavedCoverButton.addEventListener("click", displayCover);
+homeButton.addEventListener("click", takeHome)
 
 // Create your event handlers and other functions here 👇
 
@@ -94,4 +93,6 @@ function displayCover() {
   show(homeButton);
   hide(saveCoverButton);
   show(savedView);
+  hide(displayForm)
 }
+
