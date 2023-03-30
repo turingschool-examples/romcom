@@ -96,3 +96,11 @@ function displayCover() {
   hide(displayForm)
 }
 
+function takeHome(){
+  hide(displayForm)
+  show(homeView)
+  hide(savedView)
+  hide(homeButton)
+  show(randomCoverButton)
+  show(saveCoverButton)
+}
