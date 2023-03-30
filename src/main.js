@@ -16,10 +16,9 @@ var userCover = document.getElementById('cover');
 var userTitle = document.getElementById('title');
 var userTagline1 = document.getElementById('descriptor1');
 var userTagline2 = document.getElementById('descriptor2');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+var coverView = document.querySelector('.main-cover');
 var allViews = [homeView, savedView, formView];
-
-
-
 
 
 // We've provided a few variables below
@@ -43,6 +42,7 @@ newBookBtn.addEventListener('click', function(event) {
   event.preventDefault()
   createUserBook()
 })
+saveBtn.addEventListener('click', addSavedCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -103,9 +103,23 @@ function switchToHome() {
   switchBtns(homeView);
 }
 
+function cloneSections() {
+  for (var i =0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+    <section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].coverImg}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+        </section>`
+  }
+}
+
 function switchToSaved() {
   switchView(savedView);
   switchBtns(savedView);
+  cloneSections();
 }
  
 function addToData(cover) {
@@ -132,6 +146,12 @@ function createUserBook() {
   addToData(currentCover);
   console.log(currentCover)
   switchToHome();
+}
+
+function addSavedCover() {
+  if (!savedCovers.includes(currentCover)){
+    savedCovers.push(currentCover)
+  }
 }
 // We've provided two functions to get you started
 function getRandomIndex(array) {
