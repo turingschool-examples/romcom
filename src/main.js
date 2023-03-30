@@ -4,6 +4,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
 
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
@@ -14,6 +15,11 @@ var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
 
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
+
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -23,9 +29,10 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', showNewRandomCover);
 randomCoverButton.addEventListener('click', showNewRandomCover);
-makeNewButton.addEventListener('click',viewFormView);
-viewSavedButton.addEventListener('click',viewSavedCoversView);
-homeButton.addEventListener('click',viewHomeView);
+makeNewButton.addEventListener('click', viewFormView);
+viewSavedButton.addEventListener('click', viewSavedCoversView);
+homeButton.addEventListener('click', viewHomeView);
+createNewBookButton.addEventListener('click', makeMyBook);
 
 // Create your event handlers and other functions here 👇
 function showNewRandomCover() {
@@ -60,6 +67,27 @@ function viewHomeView() {
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
+}
+
+function makeMyBook(event) {
+  event.preventDefault();
+  if (!covers.includes(userCover.value)) {
+    covers.push(userCover.value);
+  }
+  if (!titles.includes(userTitle.value)) {
+    titles.push(userTitle.value);
+  }
+  if (!descriptors.includes(userDesc1.value)) {
+    descriptors.push(userDesc1.value);
+  }
+  if (!descriptors.includes(userDesc2.value)) {
+    descriptors.push(userDesc2.value);
+  }
+  viewHomeView();
+  coverImage.src = userCover.value;
+  coverTitle.innerText = userTitle.value;
+  tagline1.innerText = userDesc1.value;
+  tagline2.innerText = userDesc2.value;
 }
 
 // We've provided two functions to get you started
