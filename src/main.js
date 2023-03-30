@@ -1,9 +1,7 @@
 // Create variables targetting the relevant DOM elements here 👇
 var showNewRandomCoverButton = document.querySelector('.random-cover-button');
-var currentCover = document.querySelector('.cover-image');
-var currentTitle = document.querySelector('.cover-title');
-var currentDesc1 = document.querySelector('.tagline-1');
-var currentDesc2 = document.querySelector('.tagline-2');
+
+var book = document.querySelector('.main-cover')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -33,10 +31,11 @@ function getRandomDesc() {
 
 function getRandomCover() {
   var randomCover = createCover(getRandomImage(), getRandomTitle(), getRandomDesc(), getRandomDesc());
-  currentCover.src = randomCover.coverImg;
-  currentTitle.innerText = randomCover.title;
-  currentDesc1.innerText = randomCover.tagline1;
-  currentDesc2.innerText = randomCover.tagline2;
+  book.innerHTML = `<img class="cover-image" src="${randomCover.coverImg}">
+    <h2 class="cover-title">${randomCover.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${randomCover.tagline1}</span> and <span class="tagline-2">${randomCover.tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">`
   return randomCover;
 }
 
