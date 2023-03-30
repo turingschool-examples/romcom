@@ -14,6 +14,11 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var savedView = document.querySelector('.saved-view');
 var savedButton = document.querySelector('.view-saved-button');
+var makeBookButton = document.querySelector('.create-new-book-button');
+var coverInput = document.querySelector('#cover');
+var titleInput = document.querySelector('#title');
+var taglineOneInput = document.querySelector('#descriptor1');
+var taglineTwoInput = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -28,14 +33,36 @@ randomButton.addEventListener('click', loadRandomPoster);
 makeYourOwnCoverButton.addEventListener('click', showForm);
 savedButton.addEventListener('click', showSavedPosters);
 homeButton.addEventListener('click', showHome);
+makeBookButton.addEventListener('click', makeBook);
 
 // Create your event handlers and other functions here 👇
-function loadRandomPoster() {
-    coverImage.src = covers[getRandomIndex(covers)], 
-    coverTitle.innerText = titles[getRandomIndex(titles)],
-    taglineOne.innerText = descriptors[getRandomIndex(descriptors)],
-    taglineTwo.innerText = descriptors[getRandomIndex(descriptors)]
+function makeBook(event) {
+  coverImage.src = coverInput.value; 
+  coverTitle.innerText = titleInput.value;
+  taglineOne.innerText = taglineOneInput.value;
+  taglineTwo.innerText = taglineTwoInput.value;
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(taglineOneInput.value);
+  descriptors.push(taglineTwoInput.value);
+  currentCover.image = coverImage.src;
+  currentCover.title = coverTitle.innerText;
+  currentCover.taglineOne = taglineOne.innerText;
+  currentCover.taglineTwo = taglineTwo.innerText;
+  event.preventDefault();
+  showHome();
 };
+
+function loadRandomPoster() {
+    coverImage.src = covers[getRandomIndex(covers)]; 
+    coverTitle.innerText = titles[getRandomIndex(titles)];
+    taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
+    taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+    currentCover.image = coverImage.src;
+    currentCover.title = coverTitle.innerText;
+    currentCover.taglineOne = taglineOne.innerText;
+    currentCover.taglineTwo = taglineTwo.innerText;
+  };
 
 function showForm() {
   homeView.classList.add('hidden');
@@ -55,12 +82,12 @@ function showSavedPosters() {
 }
 
 function showHome() {
-  homeView.classList.remove('hidden')
-  formView.classList.add('hidden')
-  savedView.classList.add('hidden')
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
   randomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
-  homeButton.classList.add('hidden')
+  homeButton.classList.add('hidden');
 }
 
 // We've provided two functions to get you started
