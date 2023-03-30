@@ -47,7 +47,27 @@ function displayNewCover() {
   image.src = covers[getRandomIndex(covers)];
 };
 
-//add functions here to be called to hide and show buttons and pages - might have multiple event listeners for one button click to hide multiple buttons and pull up things to keep code DRY
+function switchToHome(){
+  //needs to hide home button
+  //needs to display show new random cover button and save cover button
+  //home screen displayed, make book and saved books screens hidden
+}
+
+function switchToMakeYourOwn(){
+  //needs to hide show new cover button and save cover button
+  //needs to display form to make new book and home button
+  //needs to display make book screen, home and saved screens hidden
+}
+
+function switchToSaved(){
+  // needs to hide the save cover and create new random cover buttons
+  //needs to display home button
+  // needs to display saved covers screen
+}
+
+// 🐝 //add functions here to be called to hide and show buttons and pages - might have multiple event listeners for one button click to hide multiple buttons and pull up things to keep code DRY
+// 🐝 // when the word hidden is added the end of the class then that element is hidden -- need to find a method to change the class name -- then apply that method to each thing that needs to be hidden fo each of the three pages in one fucntion, invoke that function when the button is clicked. 
+// 🐝 // 
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
