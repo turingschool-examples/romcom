@@ -28,13 +28,11 @@ randomButton.addEventListener('click', newRandomBook)
 // Displays random cover on Load
 window.addEventListener('DOMContentLoaded', newRandomBook)
 
-makeCoverButton.addEventListener('click', makeCustomCover);
+makeCoverButton.addEventListener('click', makeCustomCoverForms)
+
 
 // Shows saved covers and hides new random cover, save cover buttons
 viewSavedButton.addEventListener('click', showSavedCovers);
-
-// Shows make your own cover form
-// makeCoverButton.addEventListener('click', makeCoverForm);
 
 // Shows home page
 homeButton.addEventListener('click', homePage);
@@ -48,35 +46,13 @@ function newRandomBook() {
   coverImage.src = covers[getRandomIndex(covers)];
 }
 
-function makeCustomCover() {
+function makeCustomCoverForms() {
   homeButton.classList.remove('hidden')
   homeView.classList.add('hidden')
   formView.classList.remove('hidden')
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
 }
-
-//  Write a function that:
-  // 1. shows the home button
-  // 2. hides the home view
-  // 3. shows the make your own cover form
-  // 4. hides the random cover button
-  // 5. hides the save cover button
-
-// function makeCoverForm() {
-//   homeButton.classList.remove('hidden');
-//   homeView.classList.add("hidden");
-//   formView.classList.remove('hidden');
-//   randomButton.classList.add('hidden');
-//   saveCoverButton.classList.add('hidden');
-// }
-
-// write a function that:
-  // 1. shows the saved covers section
-  // 2. hides show new random cover and save cover buttons
-  // 3. shows the home button
-  // 4. hides the make new cover form
-  // 5. hides the main cover
 
   function showSavedCovers() {
     randomButton.classList.add('hidden');
@@ -106,8 +82,6 @@ function makeCustomCover() {
     randomButton.classList.remove('hidden');
     viewSavedButton.classList.remove('hidden');
   };
-
-
 
 
 
