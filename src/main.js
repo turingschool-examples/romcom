@@ -4,6 +4,7 @@ var makeCoverBtn = document.querySelector(".make-new-button");
 var homeBtn = document.querySelector('.home-button');
 var viewSavedBtn = document.querySelector('.view-saved-button');
 var saveBtn = document.querySelector('.save-cover-button');
+var newBookBtn = document.querySelector('.create-new-book-button');
 var coverImg = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
@@ -38,6 +39,11 @@ window.addEventListener('load', displayCover);
 makeCoverBtn.addEventListener('click', switchToForm);
 homeBtn.addEventListener('click', switchToHome);
 viewSavedBtn.addEventListener('click', switchToSaved);
+newBookBtn.addEventListener('click', function(event) {
+  event.preventDefault()
+  createUserBook()
+})
+
 // Create your event handlers and other functions here 👇
 
 function getAllIndexs() {
@@ -102,13 +108,30 @@ function switchToSaved() {
   switchBtns(savedView);
 }
  
+function addToData(cover) {
+  if (!covers.includes(cover.coverImg)) {
+    covers.push(cover.coverImg)
+  }
+  if (!titles.includes(cover.title)) {
+    titles.push(cover.title)
+  }
+  if (!descriptors.includes(cover.tagline1)) {
+    descriptors.push(cover.tagline1)
+  }
+  if (!descriptors.includes(cover.tagline2)) {
+    descriptors.push(cover.tagline2)
+  }
+  }
+
 function createUserBook() {
-  currentCover = createCover(userCover.value, userTitle.value, userTagline1.value, userTagline2.value)
+  currentCover = createCover(userCover.value, userTitle.value, userTagline1.value, userTagline2.value);
   coverImg.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
-  switchToHome()
+  addToData(currentCover);
+  console.log(currentCover)
+  switchToHome();
 }
 // We've provided two functions to get you started
 function getRandomIndex(array) {
