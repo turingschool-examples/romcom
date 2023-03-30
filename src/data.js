@@ -91,8 +91,4 @@ var descriptors = [
   "melancholy"
 ];
 
-module.exports = {
-  covers,
-  titles,
-  descriptors
-}
+// export {covers, titles, descriptors}

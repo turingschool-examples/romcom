@@ -6,13 +6,15 @@ var taglineOne = document.querySelector('.tagline-1');
 var taglineTwo = document.querySelector('.tagline-2');
 var priceTag = document.querySelector('.price-tag');
 var overlay = document.querySelector('.overlay');
-var randomButton = document.querySelector('.random-cover-button')
-var makeYourOwnCoverButton = document.querySelector('.make-new-button')
-var viewForm = document.querySelector('.view form-view hidden')
-var homeView = document.querySelector('.view home-view')
+var randomButton = document.querySelector('.random-cover-button');
+var makeYourOwnCoverButton = document.querySelector('.make-new-button');
+var viewForm = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
 
-// var {covers, titles, descriptors} = require('./src/data');
+// import {covers, titles, descriptors} from './data.js';
+
 // data goes here:
+
 var covers = [
   './assets/bluebrocade.jpg',
   './assets/dance.jpg', 
@@ -124,9 +126,9 @@ function loadRandomPoster() {
 };
 
 function showForm() {
-  homeView.style.visibility = 'hidden';
-  viewForm.style.visibility = 'visible';
-  return viewForm, homeView
+  homeView.classList.add('hidden');
+  viewForm.classList.remove('hidden');
+  return viewForm, homeView;
 }
 
 // We've provided two functions to get you started
@@ -142,5 +144,5 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline1: descriptor1,
     tagline2: descriptor2
   }
-  return cover
+  return cover;
 }
