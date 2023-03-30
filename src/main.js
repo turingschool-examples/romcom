@@ -5,6 +5,10 @@ var coverTitle = document.querySelector(".cover-title");
 var coverDescriptor1 = document.querySelector(".tagline-1");
 var coverDescriptor2 = document.querySelector(".tagline-2");
 var showNewRandomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -14,6 +18,10 @@ var currentCover;
 
 // Add your event listeners here 👇
 showNewRandomCoverButton.addEventListener('click', getRandomCover);
+viewSavedCoversButton.addEventListener('click', function () {
+  currentView = homeView;
+  switchToViewSavedCovers(currentView);
+});
 
 window.onload = (event) => {
   currentCover = createCover(
@@ -59,6 +67,13 @@ function getRandomCover() {
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">`
   return randomCover;
+}
+
+function switchToViewSavedCovers(currentView) {
+  showNewRandomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  currentView.classList.add("hidden");
+  savedView.classList.remove("hidden");
 }
 
 // We've provided two functions to get you started
