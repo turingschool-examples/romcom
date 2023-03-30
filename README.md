@@ -34,7 +34,7 @@ ______________________________________________________
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+[//]: <> Victor Sriqui - https://github.com/vsriqui; Seth Burns https://github.com/SethBurns
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
