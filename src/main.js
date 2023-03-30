@@ -34,6 +34,12 @@ function createRandomCover() {
 function showForm() {
   homeView.classList.add('hidden');
   coverForm.classList.remove('hidden');
+
+  if (coverForm) {
+    randomCoverButton.classList.add('hidden');
+    viewSavedButton.classList.add('hidden');
+    homeButton.classList.remove('hidden');
+  }
 }
 
 // We've provided two functions to get you started
