@@ -5,11 +5,11 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 var randomCoverButton = document.querySelector(".random-cover-button");
 var makeOwnCoverButton = document.querySelector(".make-new-button");
+var homeButton = document.querySelector(".home-button");
+var saveCoverButton = document.querySelector(".save-cover-button");
+var viewSavedCoverButton = document.querySelector(".view-saved-button")
 var homeView = document.querySelector(".home-view");
 var displayForm = document.querySelector(".form-view");
-var saveCoverButton = document.querySelector(".save-cover-button");
-var homeButton = document.querySelector(".home-button");
-var viewSavedCoverButton = document.querySelector(".view-saved-button")
 var savedView = document.querySelector(".saved-view");
 
 // We've provided a few variables below
@@ -62,14 +62,13 @@ function createCurrentCover() {
 }
 
 function loadCover() {
-  createCurrentCover();
+ createCover()
 }
 
 function showRandom() {
   createCurrentCover();
   console.log(currentCover);
 }
-
 
 function hide(element) {
   element.classList.add("hidden");
