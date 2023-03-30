@@ -2,7 +2,6 @@
 var fullCover = document.querySelector(".main-cover");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
-console.log(coverTitle);
 var coverDescriptor1 = document.querySelector(".tagline-1");
 var coverDescriptor2 = document.querySelector(".tagline-2");
 
