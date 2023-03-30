@@ -88,6 +88,11 @@ function switchToForm() {
   switchBtns(formView);
 }
 
+function switchToHome() {
+  switchView(homeView);
+  switchBtns(homeView);
+}
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
