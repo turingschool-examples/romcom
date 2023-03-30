@@ -8,7 +8,11 @@ var coverImage = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var tagline1 = document.querySelector(".tagline-1")
 var tagline2 = document.querySelector(".tagline-2")
-
+/////////////////////////////////////////////////////////////////////////
+var viewForm = document.querySelector(".form-view")
+var viewHome = document.querySelector(".home-view")
+var viewSaved = document.querySelector(".saved-view")
+var saveCover = document.querySelector(".saved-covers-section")
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,12 +21,44 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randomCoverButton.onclick = handleRandomCoverButtonClicked
-// saveCoverButton.onclick =
-// viewSavedButton.onclick =
-// makeNewButton.onclick =
+randomCoverButton.onclick = handleRandomCoverButtonClicked;
+/////////////////////////////////////////////////////////////
+saveCoverButton.onclick = handleSaveCoverButtonClicked;
+ 
+viewSavedButton.onclick = handleViewSavedButtonClicked;
+makeNewButton.onclick = handleNewButtonClicked;
 
 // Create your event handlers and other functions here 👇
+
+function handleNewButtonClicked(){
+  makeNewButton.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove('hidden');
+  viewSaved.classList.add("hidden");
+  viewForm.classList.remove("hidden");
+  viewHome.classList.add("hidden");
+  saveCover.classList.add("hidden")
+};
+function handleViewSavedButtonClicked(){
+  makeNewButton.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove('hidden');
+  viewSaved.classList.remove("hidden");
+  viewForm.classList.add("hidden");
+  viewHome.classList.add("hidden");
+  saveCover.classList.add("hidden")
+};
+function handleSaveCoverButtonClicked(){
+  makeNewButton.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove('hidden');
+  viewSaved.classList.add("hidden");
+  viewForm.classList.add("hidden");
+  viewHome.classList.add("hidden");
+  saveCover.classList.remove("hidden")
+};
+
+//////////////////////////////////
 function handleRandomCoverButtonClicked(){
   var currentCover = randomCover()
   coverImage.src = covers[currentCover.coverImg]
