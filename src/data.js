@@ -90,5 +90,3 @@ var descriptors = [
   "blessings",
   "melancholy"
 ];
-
-// export {covers, titles, descriptors}
