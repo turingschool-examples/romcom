@@ -83,6 +83,10 @@ function switchBtns(selectedView) {
   }
 }
 
+function switchToForm() {
+  switchView(formView);
+  switchBtns(formView);
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
