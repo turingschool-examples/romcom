@@ -11,6 +11,10 @@ var tagline2 = document.querySelector(".tagline-2");
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var userCover = document.getElementById('cover');
+var userTitle = document.getElementById('title');
+var userTagline1 = document.getElementById('descriptor1');
+var userTagline2 = document.getElementById('descriptor2');
 var allViews = [homeView, savedView, formView];
 
 
@@ -33,7 +37,7 @@ randomCoverBtn.addEventListener('click', displayCover);
 window.addEventListener('load', displayCover);
 makeCoverBtn.addEventListener('click', switchToForm);
 homeBtn.addEventListener('click', switchToHome);
-viewSavedBtn.addEventListener('click', switchToSaved):
+viewSavedBtn.addEventListener('click', switchToSaved);
 // Create your event handlers and other functions here 👇
 
 function getAllIndexs() {
@@ -98,6 +102,14 @@ function switchToSaved() {
   switchBtns(savedView);
 }
  
+function createUserBook() {
+  currentCover = createCover(userCover.value, userTitle.value, userTagline1.value, userTagline2.value)
+  coverImg.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  switchToHome()
+}
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
