@@ -7,6 +7,9 @@ var taglineTwo = document.querySelector('.tagline-2');
 var priceTag = document.querySelector('.price-tag');
 var overlay = document.querySelector('.overlay');
 var randomButton = document.querySelector('.random-cover-button')
+var makeYourOwnCoverButton = document.querySelector('.make-new-button')
+var viewForm = document.querySelector('.view form-view hidden')
+var homeView = document.querySelector('.view home-view')
 
 // var {covers, titles, descriptors} = require('./src/data');
 // data goes here:
@@ -110,6 +113,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', loadRandomPoster);
 randomButton.addEventListener('click', loadRandomPoster);
+makeYourOwnCoverButton.addEventListener('click', showForm);
 
 // Create your event handlers and other functions here 👇
 function loadRandomPoster() {
@@ -118,6 +122,12 @@ function loadRandomPoster() {
     taglineOne.innerText = descriptors[getRandomIndex(descriptors)],
     taglineTwo.innerText = descriptors[getRandomIndex(descriptors)]
 };
+
+function showForm() {
+  homeView.style.visibility = 'hidden';
+  viewForm.style.visibility = 'visible';
+  return viewForm, homeView
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
