@@ -103,9 +103,23 @@ function switchToHome() {
   switchBtns(homeView);
 }
 
+function cloneSections() {
+  for (var i =0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+    <section class="mini-cover" id="${savedCovers[i].id}">
+        <img class="cover-image" src="${savedCovers[i].coverImg}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">
+        </section>`
+  }
+}
+
 function switchToSaved() {
   switchView(savedView);
   switchBtns(savedView);
+  cloneSections();
 }
  
 function addToData(cover) {
@@ -138,7 +152,6 @@ function addSavedCover() {
   if (!savedCovers.includes(currentCover)){
     savedCovers.push(currentCover)
   }
-  console.log(savedCovers)
 }
 // We've provided two functions to get you started
 function getRandomIndex(array) {
