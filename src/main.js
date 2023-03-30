@@ -2,7 +2,12 @@
 var randButton = document.querySelector('.random-cover-button'); 
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-console.log(coverTitle);
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
+// console.log(coverTitle);
+// console.log(coverTitle.innerText);
+// console.log(tagline1);
+// console.log(coverImage);
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -23,7 +28,12 @@ function getRandomIndex(array) {
 
 function displayRandom() {
   coverTitle.innerText = [titles[getRandomIndex(titles)]];
+  tagline1.innerText = [descriptors[getRandomIndex(descriptors)]];
+  tagline2.innerText = [descriptors[getRandomIndex(descriptors)]];
+  coverImage.src = [covers[getRandomIndex(covers)]];
 }
+
+
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
