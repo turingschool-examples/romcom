@@ -6,7 +6,7 @@ var tagline2 = document.querySelector('.tagline-2');
 var coverImage = document.querySelector('.cover-image');
 var randomTitle = titles[getRandomIndex(titles)];
 var randomTagline1 = descriptors[getRandomIndex(descriptors)];
-var randomTagline2 = descriptors[getRandomIndex(descriptors)]
+var randomTagline2 = descriptors[getRandomIndex(descriptors)];
 var randomImage = covers[getRandomIndex(covers)];
 
 
