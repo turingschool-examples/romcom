@@ -22,6 +22,7 @@ var currentCover;
 showNewRandomCoverButton.addEventListener('click', getRandomCover);
 
 makeNewButton.addEventListener('click', makeCoverButton);
+homeButton.addEventListener('click', goHome)
 
 window.onload = (event) => {
   currentCover = createCover(
@@ -39,6 +40,15 @@ window.onload = (event) => {
 
 // Create your event handlers and other functions here 👇
 
+function goHome() {
+  homeButton.classList.add('hidden');
+  formView.classList.add('hidden');
+  
+  showNewRandomCoverButton.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+}
 
 function makeCoverButton() {
   makeNewButton.classList.add('hidden');
