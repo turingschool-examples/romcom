@@ -87,14 +87,14 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 };
-
+/////////////
 var userTitle = document.querySelector('#title');
 
-var userCover = document.querySelector('.#cover');
+var userCover = document.querySelector('#user');
 
-var userDesc1 = document.querySelector('.#descriptor1');
+var userDesc1 = document.querySelector('#descriptor1');
 
-var userDesc2 = document.querySelector('.#descriptor2');
+var userDesc2 = document.querySelector('#descriptor2');
 
 var createNewBookButton = document.querySelector('.create-new-book-button')
 
@@ -113,11 +113,18 @@ function makeBook() {
   image.src = userCover.value;
   randomDescriptor1.innerText = userDesc1.value;
   randomDescriptor2.innerText = userDesc2.value;
+  currentCover = (randomTitle.innerText, randomDescriptor1.innerText, randomDescriptor2.innerText, image.src);
   saveUserInputs();
   switchToHome();
 }
 
+// need makeBook() to display the new cover... ???  -- is this where the reassigning of the currentCover comes into play?? Any ways around it?? -- see line 116 ??! can we break up our function displayNewCover() & somehow use the currentCover variable??
+
+// ideas: 
+
+
+
 // XX use values from user inputs on form
-// xx save submitted data in arrays (titles, descriptors, covers)  - new function??
-// change to home view (function?)
+// xx save submitted data in arrays (titles, descriptors, covers)  - new function -- Yes, saveUserInputs()
+// XX change to home view (function?)
 // display new cover on home page
