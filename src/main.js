@@ -1,21 +1,23 @@
 // Create variables targetting the relevant DOM elements here 👇
+
+//Cover elements
 var randomTitle = document.querySelector('.cover-title');
-
+var window = document.querySelector('html')
 var randomDescriptor1 = document.querySelector('.tagline-1');
-
 var randomDescriptor2 = document.querySelector(`.tagline-2`);
-
 var image = document.querySelector('.cover-image');
 
+// Buttons
 var randomCoverButton = document.querySelector('.random-cover-button');
-
 var homeButton = document.querySelector('.home-button');
-
 var makeCoverButton = document.querySelector('.make-new-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var veiwSavedButton = document.querySelector('.view-saved-button');
 
-var saveButton = document.querySelector('.save-cover-button');
-
-var veiwSaveButton = document.querySelector('.view-saved-button');
+//pages
+var homePage = document.querySelector('.home-view');
+var savedCoversPage = document.querySelector('.saved-view');
+var makeCoversPage = document.querySelector('.form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -26,16 +28,11 @@ var currentCover;
 
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', displayNewCover);
-
-homeButton.addEventListener('click',)
-
-makeCoverButton.addEventListener('click',)
-
-saveButton.addEventListener('click',)
-
-veiwSaveButton.addEventListener('click',)
-
-//might need to add more eventListners for each button click to invoke different functions
+window.addEventListener('load', displayNewCover)
+homeButton.addEventListener('click',switchToHome);
+veiwSavedButton.addEventListener('click', switchToSavedCovers);
+makeCoverButton.addEventListener('click',switchToMakeCovers);
+saveCoverButton.addEventListener('click',);
 
 // /* do we create a new function that uses getRandomIndex function as callback?*/
 
@@ -47,27 +44,33 @@ function displayNewCover() {
   image.src = covers[getRandomIndex(covers)];
 };
 
+
 function switchToHome(){
-  //needs to hide home button
-  //needs to display show new random cover button and save cover button
-  //home screen displayed, make book and saved books screens hidden
+  homeButton.classList.add('hidden')
+  saveCoverButton.classList.remove('hidden')
+  randomCoverButton.classList.remove('hidden')
+  savedCoversPage.classList.add('hidden')
+  makeCoversPage.classList.add('hidden')
+  homePage.classList.remove('hidden')
 }
 
-function switchToMakeYourOwn(){
-  //needs to hide show new cover button and save cover button
-  //needs to display form to make new book and home button
-  //needs to display make book screen, home and saved screens hidden
+function switchToSavedCovers(){
+  saveCoverButton.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  savedCoversPage.classList.remove('hidden')
+  makeCoversPage.classList.add('hidden')
+  homePage.classList.add('hidden')
 }
 
-function switchToSaved(){
-  // needs to hide the save cover and create new random cover buttons
-  //needs to display home button
-  // needs to display saved covers screen
+function switchToMakeCovers(){
+  saveCoverButton.classList.add('hidden')
+  randomCoverButton.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  savedCoversPage.classList.add('hidden')
+  makeCoversPage.classList.remove('hidden')
+  homePage.classList.add('hidden')
 }
-
-// 🐝 //add functions here to be called to hide and show buttons and pages - might have multiple event listeners for one button click to hide multiple buttons and pull up things to keep code DRY
-// 🐝 // when the word hidden is added the end of the class then that element is hidden -- need to find a method to change the class name -- then apply that method to each thing that needs to be hidden fo each of the three pages in one fucntion, invoke that function when the button is clicked. 
-// 🐝 // 
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
