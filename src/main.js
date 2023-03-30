@@ -20,8 +20,9 @@ var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
+
 // Add your event listeners here 
-randomCoverButton.addEventListener('click', randomCover);
+randomCoverButton.addEventListener('click', displayRandomCover);
 window.addEventListener('load', randomCover);
 makeCoverButton.addEventListener('click', switchFormView)
 viewSavedButton.addEventListener('click', switchSavedView)
@@ -57,14 +58,7 @@ return index;
 function randomCover() {
  var index = getIndex();
 
-  var currentCover = {
-    id: Date.now(),
-    coverImg: covers[index.coverIndex],
-    title: titles[index.titlesIndex],
-    tagline1: descriptors[index.taglineIndex],
-    tagline2: descriptors[index.taglineIndex2]
-  }
-
+  var currentCover = createCover(covers[index.coverIndex],titles[index.titlesIndex],descriptors[index.taglineIndex], descriptors[index.taglineIndex2])
   displayMainCover(currentCover);
 
   return currentCover
@@ -100,9 +94,6 @@ function makeBook(event) {
 
   displayMainCover(newCover);
 
-  // COMMIT REFACTOR CHANGES BEFORE BEGINNING!!!! *****
-  //changed the input.value by just input by putting the .value in the variable declaration!!
-
   return newCover
 }
 
@@ -124,6 +115,10 @@ function displayMainCover(cover) {
   tagline.innerHTML = `A tale of ${cover.tagline1} and ${cover.tagline2}`;
 }
 
-function saveCovers() {
-  
+function displayRandomCover() {
+  var differentCover = randomCover()
+  displayMainCover(differentCover) 
+  return differentCover
 }
+
+// save var current = displayRandomCover() in a function
