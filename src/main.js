@@ -4,6 +4,7 @@ var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverDescriptor1 = document.querySelector(".tagline-1");
 var coverDescriptor2 = document.querySelector(".tagline-2");
+var homeButton = document.querySelector('.home-button');
 var showNewRandomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
@@ -73,6 +74,8 @@ function switchToViewSavedCovers(currentView) {
   showNewRandomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   currentView.classList.add("hidden");
+  
+  homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
 }
 
