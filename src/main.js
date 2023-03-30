@@ -13,6 +13,11 @@ var savedView = document.querySelector('.saved-view')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var homeButton = document.querySelector('.home-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
+var makeBookButton = document.querySelector('.create-new-book-button')
+var coverInput = document.querySelector('#cover')
+var titleInput = document.querySelector('#title')
+var descriptor1Input = document.querySelector('#descriptor1')
+var descriptor2Input = document.querySelector('#descriptor2')
 
 // Add your event listeners here 
 randomCoverButton.addEventListener('click', randomCover);
@@ -20,6 +25,7 @@ window.addEventListener('load', randomCover);
 makeCoverButton.addEventListener('click', switchFormView)
 viewSavedButton.addEventListener('click', switchSavedView)
 homeButton.addEventListener('click', switchHomeView)
+makeBookButton.addEventListener('click', makeBook)
 
 // Create your event handlers and other functions here 👇
 function getIndex() {
@@ -53,16 +59,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createCover(imgSrc, title, descriptor1, descriptor2) {
-  var cover = {
-    id: Date.now(),
-    coverImg: imgSrc,
-    title: title,
-    tagline1: descriptor1,
-    tagline2: descriptor2
-  }
-  return cover
-}
+
 
 function switchFormView() {
   homeView.classList.add('hidden')
@@ -90,4 +87,29 @@ function switchHomeView() {
   makeCoverButton.classList.remove('hidden')
   randomCoverButton.classList.remove('hidden')
   homeButton.classList.add('hidden')
+}
+
+
+function createCover(imgSrc, title, descriptor1, descriptor2) {
+  var cover = {
+    id: Date.now(),
+    coverImg: imgSrc,
+    title: title,
+    tagline1: descriptor1,
+    tagline2: descriptor2
+  }
+  return cover
+}
+
+function makeBook(event) {
+  event.preventDefault()
+  var newCover = createCover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
+  covers.push(coverInput.value)
+  titles.push(titleInput.value)
+  descriptors.push(descriptor1Input.value, descriptor2Input.value)
+  switchHomeView()
+  title.innerHTML = newCover.title;
+  mainCover.src = newCover.coverImg;
+  tagline.innerHTML = `A tale of ${newCover.tagline1} and ${newCover.tagline2}`
+  return newCover
 }
