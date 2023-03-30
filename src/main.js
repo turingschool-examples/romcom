@@ -47,7 +47,7 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 //twice from descriptors. 
 
 //Using the above random indexes, find the elements from respective arrays and 
-//use them as variables and manipulate the DOM
+//use them as variables and manipulate the DOM.
 
 
 
