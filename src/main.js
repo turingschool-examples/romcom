@@ -60,15 +60,6 @@ function makeCustomCoverForms() {
     formView.classList.add('hidden');
     homeView.classList.add('hidden');
   } 
-
-  // write a function that:
-    // shows home view
-    // hides make cover form
-    // hides saved cover view
-    // hides home button
-    // shows save cover button
-    // shows saved covers button
-    // shows make your own cover button
   
   function homePage() {
     homeView.classList.remove('hidden');
