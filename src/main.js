@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
+var randomTitle = document.querySelector('.cover-title')
 
+var randomDescriptor = document.querySelector('.tagline-1', `tagline-2`);
+
+var image = document.querySelector('.cover-image');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -10,8 +14,15 @@ var currentCover;
 // Add your event listeners here 👇
 
 
-// Create your event handlers and other functions here 👇
+/* do we create a new function that uses getRandomIndex function as callback?*/
 
+
+// Create your event handlers and other functions here 👇
+randomTitle.innerText = titles[getRandomIndex(titles)]
+
+randomDescriptor.innerText = descriptors[getRandomIndex(descriptors)];
+
+image.src = covers[getRandomIndex(covers)];
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
