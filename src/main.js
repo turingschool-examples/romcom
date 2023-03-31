@@ -36,6 +36,7 @@ function viewSavedCover() {
 
 function displayHome() {
   viewHome.classList.remove('hidden');
+  viewForm.classList.add('hidden');
   showRandomCoverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
