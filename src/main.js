@@ -117,12 +117,15 @@ createNewBookButton.addEventListener('click', function(event) {
   makeUserBook()
 });
 
+var newUserBook;
+
 function makeUserBook() {
-  var newUserBook = {
-    image: image.src = userCover.value,
+  newUserBook = {
+    id: Date.now(),
+    coverImg: image.src = userCover.value,
     title: randomTitle.innerText = userTitle.value,
-    desc1: randomDescriptor1.innerText = userDesc1.value,
-    desc2: randomDescriptor2.innerText = userDesc2.value
+    tagline1: randomDescriptor1.innerText = userDesc1.value,
+    tagline2: randomDescriptor2.innerText = userDesc2.value
   };
   saveUserInputs();
   switchToHome();
@@ -135,3 +138,16 @@ function saveUserInputs() {
   descriptors.push(userDesc1.value);
   descriptors.push(userDesc2.value);
 }
+
+///// 
+
+saveCoverButton.addEventListener('click', saveCover);
+
+function saveCover() {
+  if (!savedCovers.includes(newUserBook)) {
+    savedCovers.push(newUserBook);
+  }
+  return savedCovers
+}
+
+
