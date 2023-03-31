@@ -56,7 +56,6 @@ function createNewBook() {
   var inputTitle = userTitle.value;
   var inputDescription1 = userDescription1.value;
   var inputDescription2 = userDescription2.value;
-
   covers.push(inputCover)
   descriptors.push(inputDescription1, inputDescription2)
   titles.push(inputTitle)
@@ -67,8 +66,6 @@ function createNewBook() {
   
   displayHome();
 }
-
-// event.preventDefault()
 
 // We've provided a few variables below
 var savedCovers = [
