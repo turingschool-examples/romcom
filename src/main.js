@@ -103,7 +103,7 @@ var newUserBook;
 
 function makeUserBook() {
   newUserBook = {
-    id,
+    id: Date.now(),
     coverImg: image.src = userCover.value,
     title: randomTitle.innerText = userTitle.value,
     tagline1: randomDescriptor1.innerText = userDesc1.value,
