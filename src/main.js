@@ -44,7 +44,7 @@ homeButton.addEventListener('click', homePage);
 createBookButton.addEventListener('click', function(event) {
   event.preventDefault();
   makeCover();
-  createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+  pushCustomCover();
 });
 
 
@@ -93,9 +93,12 @@ function makeCover() {
   homePage();
 }
 
-
-
-
+function pushCustomCover() {
+  titles.push(`${titleInput.value}`);
+  covers.push(`${coverInput.value}`);
+  descriptors.push(`${tagline1Input.value}`);
+  descriptors.push(`${tagline2Input.value}`);
+};
 
 // We've provided two functions to get you started
 
