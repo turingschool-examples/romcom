@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-var randomCoverButton = document.querySelector('.random-cover-button');
+var showRandomCoverButton = document.querySelector('.random-cover-button');
 var bookTitle = document.querySelector('.cover-title');
 var bookCover = document.querySelector('.cover-image')
 var bookTagline1 = document.querySelector('.tagline-1');
@@ -7,7 +7,7 @@ var bookTagline2 = document.querySelector('.tagline-2');
 
 //Iteration 1 variables
 var makeYourOwnCoverButton = document.querySelector('.make-new-button');
-var viewSavedCoverButton = document.querySelector('.view-saved-button');
+var savedCoverButton = document.querySelector('.view-saved-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewForm = document.querySelector('.form-view');
@@ -15,7 +15,7 @@ var viewHome = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 
 makeYourOwnCoverButton.addEventListener('click', displayOwnCover);
-viewSavedCoverButton.addEventListener('click', viewSavedCover)
+savedCoverButton.addEventListener('click', viewSavedCover)
 
 function displayOwnCover() {
 console.log(makeYourOwnCoverButton);
@@ -27,7 +27,13 @@ console.log(makeYourOwnCoverButton);
 }
 
 function viewSavedCover() {
+  viewHome.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  showRandomCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  viewForm.classList.add('hidden');
 }
+
 
 // We've provided a few variables below
 var savedCovers = [
