@@ -103,10 +103,11 @@ var newUserBook;
 
 function makeUserBook() {
   newUserBook = {
-    image: image.src = userCover.value,
+    id,
+    coverImg: image.src = userCover.value,
     title: randomTitle.innerText = userTitle.value,
-    desc1: randomDescriptor1.innerText = userDesc1.value,
-    desc2: randomDescriptor2.innerText = userDesc2.value
+    tagline1: randomDescriptor1.innerText = userDesc1.value,
+    tagline2: randomDescriptor2.innerText = userDesc2.value
   };
   saveUserInputs();
   switchToHome();
@@ -130,6 +131,5 @@ function saveCover() {
   }
   return savedCovers
 }
-
 
 
