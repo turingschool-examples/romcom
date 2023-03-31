@@ -34,8 +34,23 @@ makeYourOwnCoverButton.addEventListener('click', showForm);
 savedButton.addEventListener('click', showSavedPosters);
 homeButton.addEventListener('click', showHome);
 makeBookButton.addEventListener('click', makeBook);
+saveCoverButton.addEventListener('click', saveBook);
+
 
 // Create your event handlers and other functions here 👇
+
+// savedCovers array
+// query
+// event listener call saveBook
+// saveBook {... push currentCover into savedCovers array
+// savedCovers array !include current cover will push,,,, but if it already exists nothing happens
+// display the objects in savedCovers
+
+function saveBook() {
+  savedCovers.push(currentCover);
+  return savedCovers
+}
+
 function makeBook(event) {
   coverImage.src = coverInput.value; 
   coverTitle.innerText = titleInput.value;
