@@ -93,8 +93,20 @@ function makeMyBook(event) {
 
 function saveCover() {
   var currentCover = createCover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
-  if (!savedCovers.includes(currentCover)) {
+  var uniqueFactor = true;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (checkDuplicates(currentCover, savedCovers[i])) {
+      uniqueFactor = false;
+    }
+  }
+  if (uniqueFactor) {
     savedCovers.push(currentCover);
+  }
+}
+
+function checkDuplicates(cover1, cover2) {
+  if (cover1.coverImg === cover2.coverImg && cover1.title === cover2.title && cover1.tagline1 === cover2.tagline1 && cover1.tagline2 === cover2.tagline2) {
+    return true;
   }
 }
 
