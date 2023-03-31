@@ -13,6 +13,7 @@ var tagline2 = document.querySelector('.tagline-2');
 
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var formView = document.querySelector('.form-view');
 
 var userCover = document.querySelector('.user-cover');
@@ -59,6 +60,7 @@ function viewSavedCoversView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  viewSavedCovers();
 }
 
 function viewHomeView() {
@@ -109,6 +111,21 @@ function checkDuplicates(cover1, cover2) {
     return true;
   }
 }
+
+function viewSavedCovers() {
+  savedCoversSection.innerHTML = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += 
+    `<section class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].coverImg}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">`;
+  }
+
+}
+
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
