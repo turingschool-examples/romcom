@@ -48,17 +48,17 @@ createBookButton.addEventListener('click', function(event) {
 
 saveCoverButton.addEventListener('click', function () {
   saveCover();
-  showSavedCovers();
 })
 
 
 
 // Create your event handlers and other functions here 👇
 function newRandomBook() {
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  coverImage.src = covers[getRandomIndex(covers)];
+  currentCover = createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  coverImage.src = currentCover.coverImg;
 }
 
 function makeCustomCoverForms() {
@@ -77,8 +77,8 @@ function showSavedCovers() {
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
   homeView.classList.add('hidden');
-} 
-  
+};
+
 function homePage() {
   homeView.classList.remove('hidden');
   formView.classList.add('hidden');
@@ -91,6 +91,7 @@ function homePage() {
 };
 
 function makeCover() {
+  currentCover = createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
   coverTitle.innerText = titleInput.value;
   tagline1.innerText = tagline1Input.value;
   tagline2.innerText = tagline2Input.value;
@@ -119,13 +120,13 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline1: descriptor1,
     tagline2: descriptor2
   }
-  savedCovers.unshift(cover);
+  return cover;
 }
 
 // add to saved covers section
 // write a function that accesses the inner HTML of the saved covers section
 function saveCover() {
-  createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+  savedCovers.unshift(currentCover)
   savedCoversSection.innerHTML +=
   `<section class="mini-cover">
     <img class="cover-image" src=${savedCovers[0].coverImg}>
@@ -133,17 +134,10 @@ function saveCover() {
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
-  </section>`
-  
+  `
 }
+ 
 
-// function cloneSections() {
-//   var miniCovers = 
-//   `<div class ='mini-cover'>
-//     <img class='mini-cover' src=${savedCovers[0].coverImg}>
-//     <h2 class='mini-cover cover-title first-letter'>${savedCovers[0].title}</h2>
-//     <h3 class='mini-cover tagline'>A tale of <span class="tagline">${savedCovers[0].tagline1}</span> and <span class="tagline">${savedCovers[0].tagline2}</span></h3>
-//   </div>`
-// }
+
 // createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 // http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg"
