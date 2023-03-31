@@ -1,5 +1,8 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+// var newUserBook;
+var currentCover;
+
 //Cover elements
 var randomTitle = document.querySelector('.cover-title');
 var window = document.querySelector('html')
@@ -13,39 +16,57 @@ var homeButton = document.querySelector('.home-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var veiwSavedButton = document.querySelector('.view-saved-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
 
 //pages
 var homePage = document.querySelector('.home-view');
 var savedCoversPage = document.querySelector('.saved-view');
 var makeCoversPage = document.querySelector('.form-view');
-var savedCoversSection = document.querySelector('.saved-covers-section')
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
-
+//user inputs
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDesc1 = document.querySelector('#descriptor1');
+var userDesc2 = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover;
-
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', displayNewCover);
 window.addEventListener('load', displayNewCover)
-homeButton.addEventListener('click',switchToHome);
+homeButton.addEventListener('click', switchToHome);
 veiwSavedButton.addEventListener('click', switchToSavedCovers);
 makeCoverButton.addEventListener('click',switchToMakeCovers);
+saveCoverButton.addEventListener('click', saveCover);
+createNewBookButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  makeUserBook()
+  displayMadeCover()
+});
 
 // /* do we create a new function that uses getRandomIndex function as callback?*/
 
 // Create your event handlers and other functions here 👇
 function displayNewCover() {
-  randomTitle.innerText = titles[getRandomIndex(titles)];
-  randomDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
-  randomDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
-  image.src = covers[getRandomIndex(covers)];
+    currentCover = createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+    displayMadeCover()
+    // randomTitle.innerText = titles[getRandomIndex(titles)];
+    // randomDescriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+    // randomDescriptor2.innerText = descriptors[getRandomIndex(descriptors)];
+    // image.src = covers[getRandomIndex(covers)];
+    // currentCover = createCover()
 };
 
+function displayMadeCover(){
+    randomTitle.innerText = currentCover.title;
+    image.src = currentCover.coverImg;
+    randomDescriptor1.innerText = currentCover.tagline1;
+    randomDescriptor2.innerText = currentCover.tagline2;
+}
 
 function switchToHome(){
   homeButton.classList.add('hidden')
@@ -76,17 +97,51 @@ function switchToMakeCovers(){
 }
 
 function displaySavedCovers(){
+  console.log(savedCovers)
+  savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML +=
     `
     <section class="mini-cover">
     <img class="cover-image" src="${savedCovers[i].coverImg}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="${savedCovers[i].tagline1}">passion</span> and <span class="${savedCovers[i].tagline2}">woe</span></h3>
+    <h3 class="tagline">A tale of <span class="${savedCovers[i].tagline1}">passion</span> and <span class="${savedCovers[i].tagline2}"</h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
     `
   }
+}
+
+function makeUserBook() {
+  // newUserBook = {
+  //   id: Date.now(),
+// image.src = userCover.value,
+  //   title: randomTitle.innerText = userTitle.value,
+  //   tagline1: randomDescriptor1.innerText = userDesc1.value,
+  //   tagline2: randomDescriptor2.innerText = userDesc2.value
+  // };
+  currentCover = createCover(userCover.value, userDesc2.value, userDesc1.value, userDesc2.value)
+  console.log(currentCover)
+  // saveUserInputs();
+  switchToHome();
+  return currentCover
+}
+
+// function saveUserInputs() {
+//   // covers.push(userCover.value);
+//   // titles.push(userTitle.value);
+//   // descriptors.push(userDesc1.value);
+//   // descriptors.push(userDesc2.value);
+//   image
+//   randomTitle.innerText = userDesc2.value
+// }
+
+function saveCover() {
+  console.log({currentCover})
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+  return savedCovers
 }
 
 // We've provided two functions to get you started
@@ -104,50 +159,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 };
-
-
-var userCover = document.querySelector('#cover');
-var userTitle = document.querySelector('#title');
-var userDesc1 = document.querySelector('#descriptor1');
-var userDesc2 = document.querySelector('#descriptor2');
-var createNewBookButton = document.querySelector('.create-new-book-button')
-
-createNewBookButton.addEventListener('click', function(event) {
-  event.preventDefault()
-  makeUserBook()
-});
-
-var newUserBook;
-
-function makeUserBook() {
-  newUserBook = {
-    id: Date.now(),
-    coverImg: image.src = userCover.value,
-    title: randomTitle.innerText = userTitle.value,
-    tagline1: randomDescriptor1.innerText = userDesc1.value,
-    tagline2: randomDescriptor2.innerText = userDesc2.value
-  };
-  saveUserInputs();
-  switchToHome();
-  return newUserBook
-}
-
-function saveUserInputs() {
-  covers.push(userCover.value);
-  titles.push(userTitle.value);
-  descriptors.push(userDesc1.value);
-  descriptors.push(userDesc2.value);
-}
-
-///// 
-
-saveCoverButton.addEventListener('click', saveCover);
-
-function saveCover() {
-  if (!savedCovers.includes(newUserBook)) {
-    savedCovers.push(newUserBook);
-  }
-  return savedCovers
-}
-
-
