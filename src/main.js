@@ -4,6 +4,7 @@ var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSaveButton = document.querySelector('.view-saved-button');
 var makeCoverButton = document.querySelector('.make-new-button');
+var newBookButton = document.querySelector('.create-new-book-button');
 
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
@@ -26,6 +27,7 @@ window.addEventListener('load', displayRandom);
 makeCoverButton.addEventListener('click', enableFormView);
 viewSaveButton.addEventListener('click', enableSavedView);
 homeButton.addEventListener('click', enableHomeView);
+newBookButton.addEventListener('click', makeNewBook);
 // Create your event handlers and other functions here 👇
 
 
@@ -50,6 +52,24 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
+}
+
+function makeNewBook() {
+  event.preventDefault();
+  var userCover = document.querySelector('#cover').value;
+  var userTitle = document.querySelector('#title').value;
+  var userDesc1 = document.querySelector('#descriptor1').value;
+  var userDesc2 = document.querySelector('#descriptor2').value;
+
+  var coverObject = 
+  createCover(userCover, userTitle, userDesc1, userDesc2);
+  
+
+  covers.push(userCover);
+  titles.push(userTitle);
+  descriptors.push(userDesc1, userDesc2);
+  // console.log(covers);
+  enableHomeView()
 }
 
 function enableFormView() {
@@ -78,6 +98,17 @@ function enableHomeView() {
   randButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
 }
+
+
+/* iterator 2
+import makeMyBook button as a variable using document.querySelector
+assign an eventListener to makeMyBook button to respond when clicked
+//  how to store form input using javascript??
+create new function
+create variables to store user input. 
+Then, use the created object values and push them to the respective arrays
+invoke createCover function
+invoke enableHomeView function
 
 
 /* iterator 1
