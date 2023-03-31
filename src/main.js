@@ -99,8 +99,10 @@ createNewBookButton.addEventListener('click', function(event) {
   makeUserBook()
 });
 
+var newUserBook;
+
 function makeUserBook() {
-  var newUserBook = {
+  newUserBook = {
     image: image.src = userCover.value,
     title: randomTitle.innerText = userTitle.value,
     desc1: randomDescriptor1.innerText = userDesc1.value,
@@ -117,3 +119,17 @@ function saveUserInputs() {
   descriptors.push(userDesc1.value);
   descriptors.push(userDesc2.value);
 }
+
+///// 
+
+saveCoverButton.addEventListener('click', saveCover);
+
+function saveCover() {
+  if (!savedCovers.includes(newUserBook)) {
+    savedCovers.push(newUserBook);
+  }
+  return savedCovers
+}
+
+
+
