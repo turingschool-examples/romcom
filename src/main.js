@@ -18,6 +18,9 @@ var veiwSavedButton = document.querySelector('.view-saved-button');
 var homePage = document.querySelector('.home-view');
 var savedCoversPage = document.querySelector('.saved-view');
 var makeCoversPage = document.querySelector('.form-view');
+var savedCoversSection = document.querySelector('.saved-covers-section')
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -60,6 +63,7 @@ function switchToSavedCovers(){
   savedCoversPage.classList.remove('hidden')
   makeCoversPage.classList.add('hidden')
   homePage.classList.add('hidden')
+  displaySavedCovers()
 }
 
 function switchToMakeCovers(){
@@ -69,6 +73,20 @@ function switchToMakeCovers(){
   savedCoversPage.classList.add('hidden')
   makeCoversPage.classList.remove('hidden')
   homePage.classList.add('hidden')
+}
+
+function displaySavedCovers(){
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML +=
+    `
+    <section class="mini-cover">
+    <img class="cover-image" src="${savedCovers[i].coverImg}">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="${savedCovers[i].tagline1}">passion</span> and <span class="${savedCovers[i].tagline2}">woe</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+    `
+  }
 }
 
 // We've provided two functions to get you started
