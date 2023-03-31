@@ -7,6 +7,7 @@ var makeCoverButton = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
@@ -122,16 +123,27 @@ function displayRandomCover() {
   displayMainCover(randomCover());
 }
 
-function saveCover() {
-  savedCovers.push(currentCover)
-  savedView.innerHTML +=
-  `<section class="mini-cover">
-  <img class="mini-cover" src="${currentCover.coverImg}">
-  <h2 class="cover-title">${currentCover.title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span>
-  </h3>
-  <img class="price-tag" src="./assets/price.png">
-  <img class="overlay" src="./assets/overlay.png">
-</section>`
+function searchSaved(book){
+  for (var i= 0; i < savedCovers.length; i++){
+    if (savedCovers[i].id === book.id){
+     return true
+    }
+  }
 }
-// save var current = displayRandomCover() in a function
+
+function saveCover() {
+    if(searchSaved(currentCover) !== true){
+      savedCovers.push(currentCover)
+      savedCoversSection.innerHTML +=
+      `<section class="mini-cover">
+      <img class="mini-cover" src="${currentCover.coverImg}">
+      <h2 class="cover-title">${currentCover.title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span>
+      </h3>
+      <img class="overlay" src="./assets/overlay.png">
+    </section>`
+    }
+  }
+
+ 
+
