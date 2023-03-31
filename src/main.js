@@ -17,8 +17,7 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows"),
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Barf and Throwup", "puke", "vomit")
+  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 var currentView;
@@ -109,9 +108,16 @@ function switchToViewSavedCovers(currentView) {
   appendCoversToSavedView();
 }
 
+var savedCoverIDs = [];
 function appendCoversToSavedView() {
   for(i = 0; i < savedCovers.length; i++) {
     let thisCover = savedCovers[i];
+    if(savedCoverIDs.includes(thisCover.id)) {
+      continue;
+    }
+
+    savedCoverIDs.push(thisCover.id);
+    
     let newSection = document.createElement('section');
     newSection.classList.add('mini-cover');
     savedCoversSection.appendChild(newSection);
