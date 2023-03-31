@@ -114,6 +114,7 @@ function saveCurrentCover() {
 
 //make sure currentCover is saved and display savedCovers (128)
 
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
