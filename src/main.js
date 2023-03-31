@@ -16,13 +16,14 @@ var userCover = document.querySelector('.user-cover')
 var userTitle = document.querySelector('.user-title')
 var userDescription1 = document.querySelector('.user-desc1')
 var userDescription2 = document.querySelector('.user-desc2')
-
+var savedCoversSection = document.querySelector('.saved-covers-section')
 
 makeYourOwnCoverButton.addEventListener('click', displayOwnCover);
 viewSaveCoverButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', displayHome);
 createNewBookButton.addEventListener('click', createNewBook);
 saveCoverButton.addEventListener('click', saveCurrentCover);
+
 
 function displayOwnCover() {
   viewHome.classList.add('hidden');
@@ -38,6 +39,8 @@ function viewSavedCovers() {
   showRandomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
   viewForm.classList.add('hidden');
+  savedView.classList.remove('hidden');
+  displaySavedCovers();
 }
 
 function displayHome() {
@@ -67,9 +70,7 @@ function createNewBook() {
 }
 
 // We've provided a few variables below
-var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 
 var currentCover;
 
@@ -110,7 +111,23 @@ function saveCurrentCover() {
  if (match === false) {
   savedCovers.push(currentCover)
  }
+  
 }
+
+function displaySavedCovers() {
+  savedCoversSection.innerHTML = ''
+  console.log("help");
+  for (var i = 0; i < savedCovers.length; i++) {
+    console.log(savedCovers[i])
+    savedCoversSection.innerHTML += `
+    <section class="mini-cover" id="${savedCovers[i].id}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <img class="cover-image" src="${savedCovers[i].coverImg}">
+      <h3 class="tagline"><span class="tagline-1">${savedCovers[i].tagline1}</span><span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    </section>
+    `
+  }
+};
 
 //make sure currentCover is saved and display savedCovers (128)
 
