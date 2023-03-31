@@ -20,15 +20,7 @@ var makeBookButton = document.querySelector('.create-new-book-button');
 
 
 // We've provided a few variables below
-// var savedCovers = [
-  // createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
-// ];
-
-var savedCovers = [
-  // createCover(, userTitleInput.value, userDesc1Input.value, userDesc2Input.value)
-];
-// savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
-
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -47,20 +39,21 @@ homeButton.addEventListener('click', function() {
   togglePage(homeView);
 });
 
-makeBookButton.addEventListener('click', function() {
-  // savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
+makeBookButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  createBook();
 }); 
-// {
-//   createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value);
-// });
+
+makeBookButton.addEventListener('click', displayBook);
 
 // Create your event handlers and other functions here 👇
-function createRandomCover() {
+function createRandomCover(event) {
+  event.preventDefault();
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverImg.src = covers[getRandomIndex(covers)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-}
+ }
 
 function togglePage(page) {
   for (var i = 0; i < viewPages.length; i++) {
@@ -89,7 +82,29 @@ function togglePage(page) {
 }
 
 function createBook() {
-  savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
+  if (!userCoverInput.value || !userTitleInput.value || !userDesc1Input.value || !userDesc2Input.value) {
+    return;
+  }
+
+  covers.push(userCoverInput.value);
+  titles.push(userTitleInput.value);
+  descriptors.push(userDesc1Input.value);
+  descriptors.push(userDesc2Input.value);
+
+  homeView.classList.remove('hidden');
+  coverForm.classList.add('hidden');
+  homeButton.classList.add('hidden');
+  randomCoverButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+
+  return savedCovers.push(createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value));
+}
+
+function displayBook() {
+  coverTitle.innerText = userTitleInput.value;
+  coverImg.src = userCoverInput.value;
+  tagline1.innerText = userDesc1Input.value;
+  tagline2.innerText = userDesc2Input.value;
 }
 
 // We've provided two functions to get you started
