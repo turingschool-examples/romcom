@@ -33,6 +33,7 @@ makeNewButton.addEventListener('click', viewFormView);
 viewSavedButton.addEventListener('click', viewSavedCoversView);
 homeButton.addEventListener('click', viewHomeView);
 createNewBookButton.addEventListener('click', makeMyBook);
+saveCoverButton.addEventListener('click', saveCover);
 
 // Create your event handlers and other functions here 👇
 function showNewRandomCover() {
@@ -88,6 +89,12 @@ function makeMyBook(event) {
   coverTitle.innerText = userTitle.value;
   tagline1.innerText = userDesc1.value;
   tagline2.innerText = userDesc2.value;
+}
+
+function saveCover() {
+  var currentCover = createCover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+  savedCovers.push(currentCover);
+  console.log(savedCovers);
 }
 
 // We've provided two functions to get you started
