@@ -3,7 +3,9 @@ var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var coverImage = document.querySelector('.cover-image');
+
 var randomButton = document.querySelector('.random-cover-button');
+
 var makeCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
@@ -42,6 +44,7 @@ homeButton.addEventListener('click', homePage);
 createBookButton.addEventListener('click', function(event) {
   event.preventDefault();
   makeCover();
+  pushCustomCover();
 });
 
 
@@ -90,9 +93,12 @@ function makeCover() {
   homePage();
 }
 
-// function pushCustomCover() {
-//   titles.push(`${titleInput}`)
-// }
+function pushCustomCover() {
+  titles.push(`${titleInput.value}`);
+  covers.push(`${coverInput.value}`);
+  descriptors.push(`${tagline1Input.value}`);
+  descriptors.push(`${tagline2Input.value}`);
+}
 
 
 // Use the values from the inputs to create a new, unique cover object (part of your data model)
