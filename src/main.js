@@ -39,8 +39,8 @@ goHomeButton.onclick = handleHomeButtonClicked;
 makeBookButton.onclick = (function(event) {
   event.preventDefault();
   generateCover();
-  loadCover();
-});
+  loadCover()
+})
 
 // ***Event Handlers and Functions*** //
 // ***Functions To Ease Readability Of Code*** //
@@ -54,10 +54,10 @@ function show(element) {
 }
 
 function handleRandomCoverButtonClicked() {
+  coverImage.src = covers[getRandomIndex(covers)];
   customTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-  coverImage.src = covers[getRandomIndex(covers)];
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)]  
 }
 
 
@@ -88,10 +88,10 @@ function handleSaveCoverButtonClicked(){
 };
 
 function handleNewButtonClicked() {
-  goHomeButton.classList.remove('hidden')
-  viewHome.classList.add('hidden')
-  viewForm.classList.remove('hidden')
-  randomCoverButton.classList.add('hidden')
+  goHomeButton.classList.remove('hidden');
+  viewHome.classList.add('hidden');
+  viewForm.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden')
 }
 
@@ -101,7 +101,7 @@ function handleViewSavedButtonClicked() {
   goHomeButton.classList.remove('hidden');
   viewSaved.classList.remove('hidden');
   viewForm.classList.add('hidden');
-  viewHome.classList.add('hidden');
+  viewHome.classList.add('hidden')
 } 
   
 
@@ -111,21 +111,21 @@ function generateCover() {
   tagline1.innerText = customDescriptor1.value;
   tagline2.innerText = customDescriptor2.value;
   coverImage.src = customCover.value;
-  handleHomeButtonClicked();
+  handleHomeButtonClicked()
 }
 
 function loadCover() {
-  titles.push(`${titleInput.value}`);
   covers.push(`${customCover.value}`);
+  titles.push(`${titleInput.value}`);
   descriptors.push(`${customDescriptor1.value}`);
-  descriptors.push(`${customDescriptor2.value}`);
+  descriptors.push(`${customDescriptor2.value}`)
 }
 
 
 
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length)
 }
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
