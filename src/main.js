@@ -32,7 +32,6 @@ window.addEventListener('load', displayNewCover)
 homeButton.addEventListener('click',switchToHome);
 veiwSavedButton.addEventListener('click', switchToSavedCovers);
 makeCoverButton.addEventListener('click',switchToMakeCovers);
-saveCoverButton.addEventListener('click',);
 
 // /* do we create a new function that uses getRandomIndex function as callback?*/
 
@@ -87,3 +86,34 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 };
+
+
+var userCover = document.querySelector('#cover');
+var userTitle = document.querySelector('#title');
+var userDesc1 = document.querySelector('#descriptor1');
+var userDesc2 = document.querySelector('#descriptor2');
+var createNewBookButton = document.querySelector('.create-new-book-button')
+
+createNewBookButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  makeUserBook()
+});
+
+function makeUserBook() {
+  var newUserBook = {
+    image: image.src = userCover.value,
+    title: randomTitle.innerText = userTitle.value,
+    desc1: randomDescriptor1.innerText = userDesc1.value,
+    desc2: randomDescriptor2.innerText = userDesc2.value
+  };
+  saveUserInputs();
+  switchToHome();
+  return newUserBook
+}
+
+function saveUserInputs() {
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
+}
