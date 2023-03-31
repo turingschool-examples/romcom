@@ -13,10 +13,10 @@ var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 var saveCoverButton = document.querySelector('.save-cover-button')
 var createBookButton = document.querySelector('.create-new-book-button');
-var coverInput = document.querySelector('.user-cover').value;
-var titleInput = document.querySelector('.user-title').value;
-var tagline1Input = document.querySelector('.user-desc1'.value;
-var tagline2Input = document.querySelector('.user-desc2').value;
+var coverInput = document.querySelector('.user-cover');
+var titleInput = document.querySelector('.user-title');
+var tagline1Input = document.querySelector('.user-desc1');
+var tagline2Input = document.querySelector('.user-desc2');
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -40,9 +40,9 @@ viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click', homePage);
 
 createBookButton.addEventListener('click', function(event) {
-  event.preventDefault()
-  makeCover()
-})
+  event.preventDefault();
+  makeCover();
+});
 
 
 
@@ -85,10 +85,14 @@ function homePage() {
 function makeCover() {
   coverTitle.innerText = titleInput.value;
   tagline1.innerText = tagline1Input.value;
-  tagline2.innerText = tagline2Input;
-  coverImage.src = coverInput;
+  tagline2.innerText = tagline2Input.value;
+  coverImage.src = coverInput.value;
   homePage();
 }
+
+// function pushCustomCover() {
+//   titles.push(`${titleInput}`)
+// }
 
 
 // Use the values from the inputs to create a new, unique cover object (part of your data model)
