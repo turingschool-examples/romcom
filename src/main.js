@@ -32,7 +32,6 @@ window.addEventListener('load', displayNewCover)
 homeButton.addEventListener('click',switchToHome);
 veiwSavedButton.addEventListener('click', switchToSavedCovers);
 makeCoverButton.addEventListener('click',switchToMakeCovers);
-saveCoverButton.addEventListener('click',);
 
 // /* do we create a new function that uses getRandomIndex function as callback?*/
 
