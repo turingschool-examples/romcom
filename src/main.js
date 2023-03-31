@@ -30,6 +30,7 @@ viewSavedButton.addEventListener('click', switchSavedView)
 homeButton.addEventListener('click', switchHomeView)
 makeBookButton.addEventListener('click', makeBookClick)
 saveCoverButton.addEventListener('click', saveCover)
+savedCoversSection.addEventListener('dblclick', deleteCover)
 
 // Create your event handlers and other functions here 👇
 function createCover(imgSrc, title, descriptor1, descriptor2) {
@@ -133,10 +134,10 @@ function searchSaved(book){
 }
 
 function saveCover() {
-    if(searchSaved(currentCover) !== true){
+  if(searchSaved(currentCover) !== true){
       savedCovers.push(currentCover)
-    }
   }
+}
 
 function renderCovers() {
   savedCoversSection.innerHTML = " "
@@ -152,4 +153,19 @@ function renderCovers() {
   }
 }
 
+function searchSavedID(event) {
+  for (var i= 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id.value === event.target.id.    value){
+        return true
+    }  
+  }
+}
 
+function deleteCover(event) {
+ if (searchSavedID(event)) {
+    var ids =savedCovers.map((element) => {return element.id})
+    var currentId = ids.indexOf(parseInt(event.target.id))
+    savedCovers.splice(currentId, 1)
+    event.target.parentElement.remove()
+  }
+}
