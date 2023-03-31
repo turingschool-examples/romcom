@@ -14,6 +14,20 @@ var viewForm = document.querySelector('.form-view');
 var viewHome = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 
+makeYourOwnCoverButton.addEventListener('click', displayOwnCover);
+viewSavedCoverButton.addEventListener('click', viewSavedCover)
+
+function displayOwnCover() {
+console.log(makeYourOwnCoverButton);
+  viewHome.classList.add('hidden');
+  viewForm.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden')
+}
+
+function viewSavedCover() {
+}
 
 // We've provided a few variables below
 var savedCovers = [
