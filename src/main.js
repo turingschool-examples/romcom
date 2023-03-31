@@ -17,6 +17,8 @@ var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
+var savedCovers = [];
+
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -42,6 +44,7 @@ homeButton.addEventListener('click', homePage);
 createBookButton.addEventListener('click', function(event) {
   event.preventDefault();
   makeCover();
+  createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
 });
 
 
@@ -90,15 +93,6 @@ function makeCover() {
   homePage();
 }
 
-// function pushCustomCover() {
-//   titles.push(`${titleInput}`)
-// }
-
-
-// Use the values from the inputs to create a new, unique cover object (part of your data model)
-// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
-// Change back to the main home view (hiding the form view again)
-// Use the newly created cover object to display the newly created cover image, title, and descriptors in the main view on the DOM
 
 
 
@@ -117,6 +111,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline1: descriptor1,
     tagline2: descriptor2
   }
-  return cover
+  savedCovers.push(cover);
 }
 
