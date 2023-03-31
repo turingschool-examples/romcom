@@ -67,6 +67,7 @@ function switchFormView() {
 function switchSavedView() {
   addHiddenClass([homeView, formView, saveCoverButton,randomCoverButton]);
   removeHiddenClass([savedView, homeButton]);
+  renderCovers();
 }
 
 function switchHomeView() {
@@ -134,16 +135,21 @@ function searchSaved(book){
 function saveCover() {
     if(searchSaved(currentCover) !== true){
       savedCovers.push(currentCover)
-      savedCoversSection.innerHTML +=
-      `<section class="mini-cover">
-      <img class="mini-cover" src="${currentCover.coverImg}">
-      <h2 class="cover-title">${currentCover.title}</h2>
-      <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span>
-      </h3>
-      <img class="overlay" src="./assets/overlay.png">
-    </section>`
     }
   }
 
- 
+function renderCovers() {
+  savedCoversSection.innerHTML = " "
+  for (var i=0; i < savedCovers.length; i++){
+    savedCoversSection.innerHTML += `
+      <section class="mini-cover">
+        <img class="mini-cover" src="${savedCovers[i].coverImg}">
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span>
+        </h3>
+        <img class="overlay" src="./assets/overlay.png">
+      </section>`
+  }
+}
+
 
