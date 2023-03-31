@@ -18,7 +18,7 @@ var savedCoversSection = document.querySelector('.saved-covers-section');
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows"),
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "barf", "puke", "vomit")
+  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Barf and Throwup", "puke", "vomit")
 ];
 var currentCover;
 var currentView;
@@ -118,10 +118,28 @@ function appendCoversToSavedView() {
 
     let img = document.createElement('img');
     img.classList.add('cover-image');
-    let title = document.createElement('h2');
-    let tagline = document.createElement('h3');
     img.src = thisCover.coverImg;
     newSection.append(img);
+
+    let title = document.createElement('h2');
+    title.classList.add('cover-title');
+    title.innerHTML = thisCover.title;
+    newSection.append(title);
+
+    let tagline = document.createElement('h3');
+    tagline.classList.add('tagline');
+    tagline.innerHTML = `A tale of ${thisCover.tagline1} and ${thisCover.tagline2}`;
+    newSection.append(tagline);
+    
+    let priceTag = document.createElement('img');
+    priceTag.classList.add('price-tag');
+    priceTag.src = "./assets/price.png";
+    newSection.append(priceTag);
+
+    let overlay = document.createElement('img');
+    overlay.classList.add('overlay');
+    overlay.src = "./assets/overlay.png";
+    newSection.append(overlay);
   }
 }
 
