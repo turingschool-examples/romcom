@@ -19,9 +19,10 @@ var userDescription2 = document.querySelector('.user-desc2')
 
 
 makeYourOwnCoverButton.addEventListener('click', displayOwnCover);
-viewSaveCoverButton.addEventListener('click', viewSavedCover);
+viewSaveCoverButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', displayHome);
 createNewBookButton.addEventListener('click', createNewBook);
+saveCoverButton.addEventListener('click', saveCurrentCover);
 
 function displayOwnCover() {
   viewHome.classList.add('hidden');
@@ -31,7 +32,7 @@ function displayOwnCover() {
   homeButton.classList.remove('hidden');
 }
 
-function viewSavedCover() {
+function viewSavedCovers() {
   viewHome.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   showRandomCoverButton.classList.add('hidden');
@@ -84,6 +85,7 @@ function makeRandomCover() {
   var descriptor1 = descriptors[getRandomIndex(descriptors)]
   var descriptor2 = descriptors[getRandomIndex(descriptors)]
   var cover = createCover(newCover, newTitle, descriptor1, descriptor2)
+  console.log(cover)
   currentCover = cover
   showCover(cover)
 }
@@ -95,6 +97,22 @@ function showCover(cover) {
   bookTagline2.innerText = cover.tagline2
 }
 
+// iteration 3
+
+function saveCurrentCover() {
+ var match = false
+  for (var i = 0; i < savedCovers.length; i++) {
+  var cover = savedCovers[i]
+  if (cover.id === currentCover.id) {
+   match = true
+  }
+ }
+ if (match === false) {
+  savedCovers.push(currentCover)
+ }
+}
+
+//make sure currentCover is saved and display savedCovers (128)
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
