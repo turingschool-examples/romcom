@@ -12,7 +12,11 @@ var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
 var saveCoverButton = document.querySelector('.save-cover-button')
-
+var createBookButton = document.querySelector('.create-new-book-button');
+var coverInput = document.querySelector('.user-cover').value;
+var titleInput = document.querySelector('.user-title').value;
+var tagline1Input = document.querySelector('.user-desc1'.value;
+var tagline2Input = document.querySelector('.user-desc2').value;
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -34,6 +38,12 @@ viewSavedButton.addEventListener('click', showSavedCovers);
 
 // Shows home page
 homeButton.addEventListener('click', homePage);
+
+createBookButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  makeCover()
+})
+
 
 
 // Create your event handlers and other functions here 👇
@@ -71,6 +81,20 @@ function homePage() {
   randomButton.classList.remove('hidden');
   viewSavedButton.classList.remove('hidden');
 };
+
+function makeCover() {
+  coverTitle.innerText = titleInput.value;
+  tagline1.innerText = tagline1Input.value;
+  tagline2.innerText = tagline2Input;
+  coverImage.src = coverInput;
+  homePage();
+}
+
+
+// Use the values from the inputs to create a new, unique cover object (part of your data model)
+// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
+// Change back to the main home view (hiding the form view again)
+// Use the newly created cover object to display the newly created cover image, title, and descriptors in the main view on the DOM
 
 
 
