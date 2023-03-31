@@ -11,12 +11,14 @@ var viewSavedCoversButton = document.querySelector('.view-saved-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var makeNewButton = document.querySelector('.make-new-button');
-var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
+
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows"),
+  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "barf", "puke", "vomit")
 ];
 var currentCover;
 var currentView;
@@ -76,6 +78,7 @@ function getRandomCover() {
     <img class="overlay" src="./assets/overlay.png">`
   return randomCover;
 }
+
 function goHome() {
   homeButton.classList.add('hidden');
   formView.classList.add('hidden');
@@ -103,6 +106,23 @@ function switchToViewSavedCovers(currentView) {
   
   homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
+  appendCoversToSavedView();
+}
+
+function appendCoversToSavedView() {
+  for(i = 0; i < savedCovers.length; i++) {
+    let thisCover = savedCovers[i];
+    let newSection = document.createElement('section');
+    newSection.classList.add('mini-cover');
+    savedCoversSection.appendChild(newSection);
+
+    let img = document.createElement('img');
+    img.classList.add('cover-image');
+    let title = document.createElement('h2');
+    let tagline = document.createElement('h3');
+    img.src = thisCover.coverImg;
+    newSection.append(img);
+  }
 }
 
 // We've provided two functions to get you started
