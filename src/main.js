@@ -3,9 +3,7 @@ var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var coverImage = document.querySelector('.cover-image');
-
 var randomButton = document.querySelector('.random-cover-button');
-
 var makeCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
@@ -19,10 +17,11 @@ var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+var savedCovers = [];
+
 // We've provided a few variables below
-var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+
 var currentCover;
 
 // Add your event listeners here 👇
@@ -47,6 +46,11 @@ createBookButton.addEventListener('click', function(event) {
   pushCustomCover();
 });
 
+saveCoverButton.addEventListener('click', function () {
+  saveCover();
+  showSavedCovers();
+})
+
 
 
 // Create your event handlers and other functions here 👇
@@ -63,6 +67,7 @@ function makeCustomCoverForms() {
   formView.classList.remove('hidden')
   randomButton.classList.add('hidden')
   saveCoverButton.classList.add('hidden')
+  savedView.classList.add('hidden');
 }
 
 function showSavedCovers() {
@@ -98,16 +103,7 @@ function pushCustomCover() {
   covers.push(`${coverInput.value}`);
   descriptors.push(`${tagline1Input.value}`);
   descriptors.push(`${tagline2Input.value}`);
-}
-
-
-// Use the values from the inputs to create a new, unique cover object (part of your data model)
-// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
-// Change back to the main home view (hiding the form view again)
-// Use the newly created cover object to display the newly created cover image, title, and descriptors in the main view on the DOM
-
-
-
+};
 
 // We've provided two functions to get you started
 
@@ -123,6 +119,31 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline1: descriptor1,
     tagline2: descriptor2
   }
-  return cover
+  savedCovers.unshift(cover);
 }
 
+// add to saved covers section
+// write a function that accesses the inner HTML of the saved covers section
+function saveCover() {
+  createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+  savedCoversSection.innerHTML +=
+  `<section class="mini-cover">
+    <img class="cover-image" src=${savedCovers[0].coverImg}>
+    <h2 class="cover-title">${savedCovers[0].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+  
+}
+
+// function cloneSections() {
+//   var miniCovers = 
+//   `<div class ='mini-cover'>
+//     <img class='mini-cover' src=${savedCovers[0].coverImg}>
+//     <h2 class='mini-cover cover-title first-letter'>${savedCovers[0].title}</h2>
+//     <h3 class='mini-cover tagline'>A tale of <span class="tagline">${savedCovers[0].tagline1}</span> and <span class="tagline">${savedCovers[0].tagline2}</span></h3>
+//   </div>`
+// }
+// createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+// http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg"
