@@ -92,6 +92,7 @@ function homePage() {
 };
 
 function makeCover() {
+  currentCover = createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
   coverTitle.innerText = titleInput.value;
   tagline1.innerText = tagline1Input.value;
   tagline2.innerText = tagline2Input.value;
