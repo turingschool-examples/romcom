@@ -4,8 +4,6 @@ var bookTitle = document.querySelector('.cover-title');
 var bookCover = document.querySelector('.cover-image')
 var bookTagline1 = document.querySelector('.tagline-1');
 var bookTagline2 = document.querySelector('.tagline-2');
-
-//Iteration 1 variables
 var makeYourOwnCoverButton = document.querySelector('.make-new-button');
 var viewSaveCoverButton = document.querySelector('.view-saved-button');
 var homeButton = document.querySelector('.home-button');
