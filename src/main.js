@@ -93,8 +93,9 @@ function makeMyBook(event) {
 
 function saveCover() {
   var currentCover = createCover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
-  savedCovers.push(currentCover);
-  console.log(savedCovers);
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 // We've provided two functions to get you started
