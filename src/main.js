@@ -10,10 +10,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
-
 var makeNewButton = document.querySelector('.make-new-button');
-var homeButton = document.querySelector('.home-button');
-var saveCoverButton = document.querySelector('.save-cover-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 
@@ -49,26 +46,6 @@ window.onload = (event) => {
 
 // Create your event handlers and other functions here 👇
 
-function goHome() {
-  homeButton.classList.add('hidden');
-  formView.classList.add('hidden');
-  
-  showNewRandomCoverButton.classList.remove('hidden');
-  makeNewButton.classList.remove('hidden');
-  homeView.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-}
-
-function makeCoverButton() {
-  makeNewButton.classList.add('hidden');
-  homeView.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  showNewRandomCoverButton.classList.add('hidden');
-
-  formView.classList.remove('hidden')
-  homeButton.classList.remove('hidden');
-}
-
 function getRandomImage() {
   var randomIndex = getRandomIndex(covers);
   return covers[randomIndex];
@@ -97,6 +74,25 @@ function getRandomCover() {
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">`
   return randomCover;
+}
+function goHome() {
+  homeButton.classList.add('hidden');
+  formView.classList.add('hidden');
+  
+  showNewRandomCoverButton.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+}
+
+function makeCoverButton() {
+  makeNewButton.classList.add('hidden');
+  homeView.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  showNewRandomCoverButton.classList.add('hidden');
+
+  formView.classList.remove('hidden')
+  homeButton.classList.remove('hidden');
 }
 
 function switchToViewSavedCovers(currentView) {
