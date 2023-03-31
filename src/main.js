@@ -52,7 +52,7 @@ saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function newRandomBook() {
-  currentCover = createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  currentCover = createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
@@ -75,9 +75,8 @@ function showSavedCovers() {
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
   homeView.classList.add('hidden');
-}
+};
 
-  
 function homePage() {
   homeView.classList.remove('hidden');
   formView.classList.add('hidden');
@@ -90,6 +89,7 @@ function homePage() {
 };
 
 function makeCover() {
+  currentCover = createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
   currentCover = createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
   coverTitle.innerText = titleInput.value;
   tagline1.innerText = tagline1Input.value;
@@ -120,10 +120,11 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover;
+  return cover;
 }
 
 function saveCover() {
-  savedCovers.unshift(currentCover);
+  savedCovers.unshift(currentCover)
   savedCoversSection.innerHTML +=
   `<section class="mini-cover">
     <img class="cover-image" src=${savedCovers[0].coverImg}>
@@ -131,8 +132,9 @@ function saveCover() {
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
-  </section>`
+  `
 }
+ 
 
 
 // createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
