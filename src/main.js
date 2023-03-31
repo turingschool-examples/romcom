@@ -87,18 +87,30 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 };
-/////////////
+
+
+var userCover = document.querySelector('#cover');
 var userTitle = document.querySelector('#title');
-
-var userCover = document.querySelector('#user');
-
 var userDesc1 = document.querySelector('#descriptor1');
-
 var userDesc2 = document.querySelector('#descriptor2');
-
 var createNewBookButton = document.querySelector('.create-new-book-button')
 
-createNewBookButton.addEventListener('click', makeBook);
+createNewBookButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  makeUserBook()
+});
+
+function makeUserBook() {
+  var newUserBook = {
+    image: image.src = userCover.value,
+    title: randomTitle.innerText = userTitle.value,
+    desc1: randomDescriptor1.innerText = userDesc1.value,
+    desc2: randomDescriptor2.innerText = userDesc2.value
+  };
+  saveUserInputs();
+  switchToHome();
+  return newUserBook
+}
 
 function saveUserInputs() {
   covers.push(userCover.value);
@@ -106,25 +118,3 @@ function saveUserInputs() {
   descriptors.push(userDesc1.value);
   descriptors.push(userDesc2.value);
 }
-
-function makeBook() {
-  Event.preventDefault();
-  randomTitle.innerText = userTitle.value;
-  image.src = userCover.value;
-  randomDescriptor1.innerText = userDesc1.value;
-  randomDescriptor2.innerText = userDesc2.value;
-  currentCover = (randomTitle.innerText, randomDescriptor1.innerText, randomDescriptor2.innerText, image.src);
-  saveUserInputs();
-  switchToHome();
-}
-
-// need makeBook() to display the new cover... ???  -- is this where the reassigning of the currentCover comes into play?? Any ways around it?? -- see line 116 ??! can we break up our function displayNewCover() & somehow use the currentCover variable??
-
-// ideas: 
-
-
-
-// XX use values from user inputs on form
-// xx save submitted data in arrays (titles, descriptors, covers)  - new function -- Yes, saveUserInputs()
-// XX change to home view (function?)
-// display new cover on home page
