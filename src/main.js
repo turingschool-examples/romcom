@@ -46,10 +46,7 @@ createBookButton.addEventListener('click', function(event) {
   pushCustomCover();
 });
 
-saveCoverButton.addEventListener('click', function () {
-  saveCover();
-  showSavedCovers();
-})
+saveCoverButton.addEventListener('click', saveCover)
 
 
 
@@ -78,7 +75,8 @@ function showSavedCovers() {
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
   homeView.classList.add('hidden');
-} 
+}
+
   
 function homePage() {
   homeView.classList.remove('hidden');
@@ -125,7 +123,7 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 }
 
 function saveCover() {
-  createCover(coverInput.value, titleInput.value, tagline1Input.value, tagline2Input.value);
+  savedCovers.unshift(currentCover);
   savedCoversSection.innerHTML +=
   `<section class="mini-cover">
     <img class="cover-image" src=${savedCovers[0].coverImg}>
@@ -135,5 +133,7 @@ function saveCover() {
     <img class="overlay" src="./assets/overlay.png">
   </section>`
 }
+
+
 // createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 // http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg"
