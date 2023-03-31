@@ -22,8 +22,8 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randButton.addEventListener('click', displayRandom);
-window.addEventListener('load', displayRandom);
+randButton.addEventListener('click', assignRandom);
+window.addEventListener('load', assignRandom);
 makeCoverButton.addEventListener('click', enableFormView);
 viewSaveButton.addEventListener('click', enableSavedView);
 homeButton.addEventListener('click', enableHomeView);
@@ -34,13 +34,6 @@ newBookButton.addEventListener('click', makeNewBook);
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-
-function displayRandom() {
-  coverTitle.innerText = [titles[getRandomIndex(titles)]];
-  tagline1.innerText = [descriptors[getRandomIndex(descriptors)]];
-  tagline2.innerText = [descriptors[getRandomIndex(descriptors)]];
-  coverImage.src = [covers[getRandomIndex(covers)]];
 }
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
@@ -54,22 +47,40 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
+function displayCurrent() {
+  coverTitle.innerText = currentCover.title;
+  coverImage.src = currentCover.coverImg;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+}
+
+function assignRandom() {
+  var argTitle = [titles[getRandomIndex(titles)]];
+  var argCover = [covers[getRandomIndex(covers)]];
+  var argDesc1 = [descriptors[getRandomIndex(descriptors)]];
+  var argDesc2 =[descriptors[getRandomIndex(descriptors)]];
+  currentCover = createCover(argCover, argTitle, argDesc1, argDesc2);
+  displayCurrent();
+
+}
+
+
+
 function makeNewBook() {
   event.preventDefault();
   var userCover = document.querySelector('#cover').value;
   var userTitle = document.querySelector('#title').value;
   var userDesc1 = document.querySelector('#descriptor1').value;
   var userDesc2 = document.querySelector('#descriptor2').value;
-
-  var coverObject = 
-  createCover(userCover, userTitle, userDesc1, userDesc2);
+  currentCover = createCover(userCover, userTitle, userDesc1, userDesc2);
   
 
   covers.push(userCover);
   titles.push(userTitle);
   descriptors.push(userDesc1, userDesc2);
-  // console.log(covers);
-  enableHomeView()
+  console.log(covers);
+  enableHomeView();
+  displayCurrent();
 }
 
 function enableFormView() {
