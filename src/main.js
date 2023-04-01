@@ -107,7 +107,8 @@ function makeCoverButton() {
 function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
-    console.log(savedCovers);
+  } else {
+    alert('Already Saved!✅')
   }
 }
 
