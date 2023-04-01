@@ -105,6 +105,8 @@ function showButtons() {
   if (!coverForm.classList.contains('hidden')) {
     randomCoverButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
+    saveCoverButton.classList.add('hidden');
+
   }
 }
 
