@@ -171,9 +171,16 @@ createBookBtn.addEventListener("click", function(event){
 });
 
 function makeBookButton() {
-  if (userCover.value === '' || 
-    userTitle.value === '' || 
-    userDecr1.value === ''|| 
+  try {
+    new URL(userCover.value)
+  }
+  catch(error){
+    alert('Please enter a valid url‼️')
+    return
+  }
+  if (userCover.value === '' ||
+    userTitle.value === '' ||
+    userDecr1.value === ''||
     userDecr2.value === '') {
       alert('⚠️Please fill out all fields before continuing! ☺︎')
     } else {
