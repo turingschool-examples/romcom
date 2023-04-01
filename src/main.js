@@ -98,6 +98,7 @@ function showButtons() {
 
 function createBook() {
   if (!userCoverInput.value || !userTitleInput.value || !userDesc1Input.value || !userDesc2Input.value) {
+    alert('Please ensure all fields are filled out.');
     return;
   }
 
@@ -122,8 +123,7 @@ function displayBook() {
   tagline2.innerText = userDesc2Input.value;
 }
 
-function saveCover() {
-  
+function saveCover() {  
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
