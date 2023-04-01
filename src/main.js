@@ -81,7 +81,6 @@ function togglePage(page) {
 
   if (!coverForm.classList.contains('hidden')) {
     randomCoverButton.classList.add('hidden');
-    viewSavedButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
   }
 }
@@ -133,8 +132,6 @@ function displaySavedCovers() {
 }
 
 function deleteCover(event) {
-  // event.target.parentNode.id
-  // event.target.parentNode.id.remove();
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id === Number(event.target.parentNode.id)) {
       savedCovers.splice(i, 1);
