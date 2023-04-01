@@ -48,6 +48,8 @@ makeBookButton.addEventListener('click', function(event) {
 
 saveCoverButton.addEventListener('click', saveCover);
 
+savedCoversSection.addEventListener('dblclick', deleteCover);
+
 // Create your event handlers and other functions here 👇
 function createRandomCover(event) {
   event.preventDefault();
@@ -122,12 +124,23 @@ function displaySavedCovers() {
 
   for (var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += 
-    `<section class="mini-cover" id="${Date.now()}">
+    `<section class="mini-cover" id="${savedCovers[i].id}">
     <img class="cover-image" src=${savedCovers[i].coverImg}>
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     </section>`
   }
+}
+
+function deleteCover(event) {
+  // event.target.parentNode.id
+  // event.target.parentNode.id.remove();
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === Number(event.target.parentNode.id)) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCovers();
 }
 
 // We've provided two functions to get you started
