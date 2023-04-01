@@ -126,6 +126,11 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 // add to saved covers section
 // write a function that accesses the inner HTML of the saved covers section
 function saveCover() {
+  for (var i = -1; i < savedCovers.length; i++){
+    if(currentCover === savedCovers[i]){
+      return null
+    } 
+  } 
   savedCovers.unshift(currentCover)
   savedCoversSection.innerHTML +=
   `<section class="mini-cover">
@@ -134,8 +139,9 @@ function saveCover() {
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
-  `
-}
+  `}
+  
+
  
 
 
