@@ -8,10 +8,15 @@ var homeButton = document.querySelector('.home-button');
 var showNewRandomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var createBookBtn = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var makeNewButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDecr1 = document.querySelector('.user-desc1');
+var userDecr2 = document.querySelector('.user-desc2');
 
 var savedCoversSection = document.querySelector('.saved-covers-section');
 
@@ -149,7 +154,28 @@ function appendCoversToSavedView() {
   }
 }
 
-// We've provided two functions to get you started
+// MAKE MY BOOK BUTTON //
+createBookBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  makeBookButton();
+});
+
+function makeBookButton() {
+  currentCover = createCover(userCover.value, userTitle.value, userDecr1.value, userDecr2.value);
+  coverImage.src = currentCover.coverImg; 
+  coverTitle.innerHTML = currentCover.title;
+  coverDescriptor1.innerHTML = currentCover.tagline1;
+  coverDescriptor2.innerHTML = currentCover.tagline2;
+  saveNewInfo();
+  goHome();
+}
+
+function saveNewInfo() {
+ covers.push(currentCover.coverImg);
+ titles.push(currentCover.title);
+ descriptors.push(currentCover.tagline1, currentCover.tagline2);
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
