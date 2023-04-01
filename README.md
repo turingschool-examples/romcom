@@ -1,19 +1,5 @@
 # RomCom
 
-A boilerplate repo. 
-
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
-
-You will not need to worry about importing/exporting the arrays from the data.js file because they are linked via the script in the `index.html` file.  
-
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
-
 ______________________________________________________  
 # README Template  
 Before turning this project in, erase this line and everything above it and fill in the info below.  
@@ -23,13 +9,15 @@ ______________________________________________________
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+ROMCOM is a web app that can make generated romance novel covers, both random and customizable. These covers can be saved to the app and later deleted.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+With the link to the GitHub Repository this app can be forked and cloned to the user's local, and then run using 'open index.html'
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-
+![](../../Desktop/Screenshot%202023-04-01%20at%201.35.18%20PM.png)
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
