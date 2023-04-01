@@ -33,7 +33,7 @@ viewSavedCoversButton.addEventListener('click', function () {
   currentView = homeView;
   switchToViewSavedCovers(currentView);
 });
-
+saveCoverButton.addEventListener('click', saveCover);
 makeNewButton.addEventListener('click', makeCoverButton);
 homeButton.addEventListener('click', goHome)
 
@@ -69,18 +69,18 @@ function getRandomDesc() {
 }
 
 function getRandomCover() {
-  var randomCover = createCover(
+  currentCover = createCover(
     getRandomImage(), 
     getRandomTitle(), 
     getRandomDesc(), 
     getRandomDesc()
     );
-  fullCover.innerHTML = `<img class="cover-image" src="${randomCover.coverImg}">
-    <h2 class="cover-title">${randomCover.title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${randomCover.tagline1}</span> and <span class="tagline-2">${randomCover.tagline2}</span></h3>
+  fullCover.innerHTML = `<img class="cover-image" src="${currentCover.coverImg}">
+    <h2 class="cover-title">${currentCover.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">`
-  return randomCover;
+  return currentCover;
 }
 
 function goHome() {
@@ -98,15 +98,24 @@ function makeCoverButton() {
   homeView.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   showNewRandomCoverButton.classList.add('hidden');
+  savedView.classList.add('hidden');
 
   formView.classList.remove('hidden')
   homeButton.classList.remove('hidden');
+}
+
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    console.log(savedCovers);
+  }
 }
 
 function switchToViewSavedCovers(currentView) {
   showNewRandomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   currentView.classList.add("hidden");
+  formView.classList.add("hidden");
   
   homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
