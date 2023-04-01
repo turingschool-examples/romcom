@@ -1,4 +1,5 @@
 
+
 // Create variables targetting the relevant DOM elements here 👇
 // ** Button Vars** //
 
@@ -22,23 +23,21 @@ var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 
 // ** Form Vars ** //
-var userCover = document.querySelector('user-cover')
-var userTitle = document.querySelector('user-title')
-var userDescriptor1 = document.querySelector('user-desc1')
-var userDescriptor2 = document.querySelector('user-desc2')
+var userCover = document.querySelector('#cover')
+var userTitle = document.querySelector('.user-title')
+var userDescriptor1 = document.querySelector('.user-desc1')
+var userDescriptor2 = document.querySelector('.user-desc2')
 
 // ** We've provided a few variables below ** //
 // ** Prospective vars ** //
-var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = ["http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows"];
 var currentCover;
 
 // Add your event listeners here 👇
 // ** Event Listeners ** //
 window.addEventListener("load", newRandomCover)
 
-randomCoverButton.onclick = handleRandomCoverButtonClicked;
+randomCoverButton.onclick = newRandomCover;
 saveCoverButton.onclick = handleSaveCoverButtonClicked;
 viewSavedButton.onclick = handleViewSavedButtonClicked;
 makeNewButton.onclick = handleNewButtonClicked;
@@ -48,11 +47,26 @@ makeBookButton.onclick = createCustomBook;
 
 // Create your event handlers and other functions here 👇
 function newRandomCover() {
-  randomCover();
-  displayCover();
+  var newCover = randomCover();
+  displayCover(newCover);
 }
 
-function displayCover() {
+function createCustomBook() {
+  var customCover = customBook();
+  displayCover(customCover);
+}
+
+function randomCover() {
+  return {
+    cover: covers[getRandomIndex(covers)],
+    title: titles[getRandomIndex(titles)],
+    tagline1: descriptors[getRandomIndex(descriptors)],
+    tagline2: descriptors[getRandomIndex(descriptors)],
+  }
+
+}
+
+function displayCover(currentCover) {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
@@ -117,22 +131,8 @@ function handleHomeButtonClicked(){
   show(viewHome);
   hide(saveCover);
 };
-//*** Randomizer of front page-cover button function ***//
-function handleRandomCoverButtonClicked(){
-  randomCover();
-  displayCover();
-}
 
-//*** Randomizer of cover object ***//
-function randomCover() {
-  var randomCover = {
-    cover: covers[getRandomIndex(covers)],
-    title: titles[getRandomIndex(titles)],
-    tagline1: descriptors[getRandomIndex(descriptors)],
-    tagline2: descriptors[getRandomIndex(descriptors)],
-  }
-  currentCover = randomCover
-}
+
 
 //*** Randomizer of array retrieval function ***//
 function getRandomIndex(array) {
@@ -140,24 +140,29 @@ function getRandomIndex(array) {
 }
 
 // ** Create Custom Book Function ** //
-function createCustomBook() {
-  event.preventDefault();
+function customBook() {
+  event.preventDefault()
   var customBook = {
   cover: userCover.value,
   title: userTitle.value,
   tagline1: userDescriptor1.value,
   tagline2: userDescriptor2.value,
   }
+  
   covers.push(customBook.cover);
   titles.push(customBook.title);
   descriptors.push(customBook.tagline1, customBook.tagline2);
-
-  currentCover = customBook;
-
-  displayCover()
   handleHomeButtonClicked()
+  clearInputs()
+  return customBook
 }
 
+function clearInputs() {
+  userCover.value = ""
+  userTitle.value = ""
+  userDescriptor1.value = ""
+  userDescriptor2.value = ""
+}
 
 // ** Create Cover Function ** //
 
