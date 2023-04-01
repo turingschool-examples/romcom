@@ -26,6 +26,10 @@ ______________________________________________________
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+Select the parent directory in terminal by using cd to get into it.
+Type "git clone git@github.com:vsriqui/romcom.git" into console.
+"Use cd romcom to enter that cloned child directory.
+Type "open index.html" in console and hit enter.
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
@@ -34,8 +38,7 @@ ______________________________________________________
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
 ### Contributors:
-[//]: <> Victor Sriqui - https://github.com/vsriqui; Seth Burns https://github.com/SethBurns
-
+[//]: <> Seth Burns https://github.com/SethBurns; Victor Sriqui - https://github.com/vsriqui; 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
 

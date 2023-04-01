@@ -13,12 +13,12 @@ var viewSaved = document.querySelector('.saved-view');
 var saveCover = document.querySelector(".saved-covers-section");
 // ** Cover Vars ** //
 var coverImage = document.querySelector('.cover-image');
-var customTitle = document.querySelector('.cover-title');
+var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 // ** Form Vars ** //
 var customCover = document.querySelector('.user-cover');
-var titleInput = document.querySelector('.user-title');
+var customTitle = document.querySelector('.user-title');
 var customDescriptor1 = document.querySelector('.user-desc1');
 var customDescriptor2 = document.querySelector('.user-desc2');
 // ** Project Vars ** //
@@ -39,7 +39,11 @@ goHomeButton.onclick = handleHomeButtonClicked;
 makeBookButton.onclick = (function(event) {
   event.preventDefault();
   generateCover();
-  loadCover()
+  loadPicture();
+  loadTitle();
+  loadDescriptor1();
+  loadDescriptor2();
+  setTimeout(clearForm, 1000)
 })
 
 // ***Event Handlers and Functions*** //
@@ -55,7 +59,7 @@ function show(element) {
 
 function handleRandomCoverButtonClicked() {
   coverImage.src = covers[getRandomIndex(covers)];
-  customTitle.innerText = titles[getRandomIndex(titles)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)]  
 }
@@ -88,37 +92,69 @@ function handleSaveCoverButtonClicked(){
 };
 
 function handleNewButtonClicked() {
-  goHomeButton.classList.remove('hidden');
-  viewHome.classList.add('hidden');
-  viewForm.classList.remove('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden')
+  show(makeNewButton);
+  hide(randomCoverButton);
+  hide(saveCoverButton);
+  show(goHomeButton);
+  show(viewSavedButton);
+  hide(viewSaved);
+  show(viewForm);
+  hide(viewHome);
+  hide(saveCover)
 }
 
 function handleViewSavedButtonClicked() {
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  goHomeButton.classList.remove('hidden');
-  viewSaved.classList.remove('hidden');
-  viewForm.classList.add('hidden');
-  viewHome.classList.add('hidden')
+  show(makeNewButton);
+  hide(randomCoverButton);
+  hide(saveCoverButton);
+  show(goHomeButton);
+  show(viewSavedButton);
+  show(viewSaved);
+  hide(viewForm);
+  hide(viewHome);
+  hide(saveCover)
 } 
   
 
 
 function generateCover() {
-  customTitle.innerText = titleInput.value;
+  coverImage.src = customCover.value;
+  coverTitle.innerText = customTitle.value;
   tagline1.innerText = customDescriptor1.value;
   tagline2.innerText = customDescriptor2.value;
-  coverImage.src = customCover.value;
-  handleHomeButtonClicked()
+  handleHomeButtonClicked();
 }
 
-function loadCover() {
-  covers.push(`${customCover.value}`);
-  titles.push(`${titleInput.value}`);
-  descriptors.push(`${customDescriptor1.value}`);
-  descriptors.push(`${customDescriptor2.value}`)
+function loadPicture() {
+  if (covers.indexOf(customCover.value) === -1) {
+   return covers.push(customCover.value)
+  }
+}
+
+function loadTitle() {
+  if (titles.indexOf(customTitle.value) === -1) {
+   return titles.push(customTitle.value)
+  } 
+}
+
+function loadDescriptor1() {
+  if (descriptors.indexOf(customDescriptor1.value) === -1){
+   return descriptors.push(customDescriptor1.value)
+  }
+}
+
+function loadDescriptor2() {
+  if (descriptors.indexOf(customDescriptor2.value) === -1) {
+   return descriptors.push(customDescriptor2.value)
+  }
+}
+
+
+function clearForm() {
+  customCover.value = "";
+  customTitle.value = "";
+  customDescriptor1.value = "";
+  customDescriptor2.value = "";
 }
 
 
