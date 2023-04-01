@@ -62,36 +62,39 @@ function createRandomCover(event) {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = createCover(coverImg.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
- }
+}
 
 function togglePage(page) {
   for (var i = 0; i < viewPages.length; i++) {
-    viewPages[i].classList.add('hidden');
+    hide(viewPages[i]);
   }
-  page.classList.remove('hidden');
+  show(page);
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
 }
 
 function showButtons() {
   if (!homeView.classList.contains('hidden')) {
-    homeButton.classList.add('hidden');
-    randomCoverButton.classList.remove('hidden');
-    saveCoverButton.classList.remove('hidden');
-    viewSavedButton.classList.remove('hidden');
-    console.log('i am the homeview')
+    hide(homeButton);
+    show(randomCoverButton);
+    show(saveCoverButton);
+    show(viewSavedButton);
   } else if (!saveView.classList.contains('hidden')) {
-    saveCoverButton.classList.add('hidden');
-    randomCoverButton.classList.add('hidden');
-    homeButton.classList.remove('hidden');
-    console.log('am am the save view')
+    hide(saveCoverButton);
+    hide(randomCoverButton);
+    show(homeButton);
   } else if (!coverForm.classList.contains('hidden')) {
-    randomCoverButton.classList.add('hidden');
-    homeButton.classList.remove('hidden');
-    saveCoverButton.classList.add('hidden');
-    console.log('i am the cover form')
+    hide(randomCoverButton);
+    hide(saveCoverButton);
+    show(homeButton);
   }
 }
-
-
 
 function createBook() {
   if (!userCoverInput.value || !userTitleInput.value || !userDesc1Input.value || !userDesc2Input.value) {
@@ -103,11 +106,11 @@ function createBook() {
   descriptors.push(userDesc1Input.value);
   descriptors.push(userDesc2Input.value);
 
-  homeView.classList.remove('hidden');
-  coverForm.classList.add('hidden');
-  homeButton.classList.add('hidden');
-  randomCoverButton.classList.remove('hidden');
-  viewSavedButton.classList.remove('hidden');
+  hide(coverForm);
+  hide(homeButton);
+  show(homeView);
+  show(randomCoverButton);
+  show(viewSavedButton);
 
 currentCover = createCover(userCoverInput.value, userTitleInput.value, userDesc1Input.value, userDesc2Input.value);
 }
