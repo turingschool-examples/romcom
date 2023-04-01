@@ -35,7 +35,7 @@ var currentCover;
 
 // Add your event listeners here 👇
 // ** Event Listeners ** //
-window.addEventListener("load", newRandomCover)
+onload = newRandomCover
 
 randomCoverButton.onclick = newRandomCover;
 saveCoverButton.onclick = saveNewCover;
@@ -134,22 +134,22 @@ function createCustomBook() {
   userTitle.value,
   userDescriptor1.value,
   userDescriptor2.value,
-  )
+  );
   
   covers.push(currentCover.cover);
   titles.push(currentCover.title);
   descriptors.push(currentCover.tagline1, currentCover.tagline2);
 
-  goHome()
-  clearInputs()
+  goHome();
+  clearInputs();
   displayCover();
 }
 
 function clearInputs() {
-  userCover.value = ""
-  userTitle.value = ""
-  userDescriptor1.value = ""
-  userDescriptor2.value = ""
+  userCover.value = "";
+  userTitle.value = "";
+  userDescriptor1.value = "";
+  userDescriptor2.value = "";
 }
 
 
@@ -160,7 +160,6 @@ function saveNewCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
     }
-    console.log(savedCovers)
     displaySavedCovers();
   }
 
@@ -177,4 +176,24 @@ function displaySavedCovers() {
     </section>
     `
   }
+}
+
+//** Iteration 4 **//
+// Will need to reference ID on dblclick 
+// to see where the dblclick is happening
+// loop through savedCovers array to splice that index from array.
+// savedCovers.splice(ID, 1)
+
+savedCoversSection.ondblclick = function(event) {
+  deleteCover(event)
+};
+
+function deleteCover(event) {
+  for (i = 0; i < savedCovers.length; i++) {
+    if(event.target.closest('section').id === savedCovers[i].id.toString()){
+      savedCovers.splice(i, 1);
+    console.log(savedCovers)
+    }
+  }
+  displaySavedCovers()
 }
