@@ -12,12 +12,13 @@ var createBookBtn = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var makeNewButton = document.querySelector('.make-new-button');
-var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDecr1 = document.querySelector('.user-desc1');
 var userDecr2 = document.querySelector('.user-desc2');
+
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -81,6 +82,7 @@ function getRandomCover() {
     <img class="overlay" src="./assets/overlay.png">`
   return randomCover;
 }
+
 function goHome() {
   homeButton.classList.add('hidden');
   formView.classList.add('hidden');
@@ -108,6 +110,48 @@ function switchToViewSavedCovers(currentView) {
   
   homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
+  appendCoversToSavedView();
+}
+
+var savedCoverIDs = [];
+function appendCoversToSavedView() {
+  for(i = 0; i < savedCovers.length; i++) {
+    let thisCover = savedCovers[i];
+    if(savedCoverIDs.includes(thisCover.id)) {
+      continue;
+    }
+
+    savedCoverIDs.push(thisCover.id);
+    
+    let newSection = document.createElement('section');
+    newSection.classList.add('mini-cover');
+    savedCoversSection.appendChild(newSection);
+
+    let img = document.createElement('img');
+    img.classList.add('cover-image');
+    img.src = thisCover.coverImg;
+    newSection.append(img);
+
+    let title = document.createElement('h2');
+    title.classList.add('cover-title');
+    title.innerHTML = thisCover.title;
+    newSection.append(title);
+
+    let tagline = document.createElement('h3');
+    tagline.classList.add('tagline');
+    tagline.innerHTML = `A tale of ${thisCover.tagline1} and ${thisCover.tagline2}`;
+    newSection.append(tagline);
+    
+    let priceTag = document.createElement('img');
+    priceTag.classList.add('price-tag');
+    priceTag.src = "./assets/price.png";
+    newSection.append(priceTag);
+
+    let overlay = document.createElement('img');
+    overlay.classList.add('overlay');
+    overlay.src = "./assets/overlay.png";
+    newSection.append(overlay);
+  }
 }
 
 // MAKE MY BOOK BUTTON //
