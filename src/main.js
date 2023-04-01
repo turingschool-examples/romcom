@@ -23,7 +23,7 @@ viewSaveCoverButton.addEventListener('click', viewSavedCovers);
 homeButton.addEventListener('click', displayHome);
 createNewBookButton.addEventListener('click', createNewBook);
 saveCoverButton.addEventListener('click', saveCurrentCover);
-
+savedCoversSection.addEventListener('dblclick', deleteSavedCover);
 
 function displayOwnCover() {
   viewHome.classList.add('hidden');
@@ -116,7 +116,6 @@ function saveCurrentCover() {
 
 function displaySavedCovers() {
   savedCoversSection.innerHTML = ''
-  console.log("help");
   for (var i = 0; i < savedCovers.length; i++) {
     console.log(savedCovers[i])
     savedCoversSection.innerHTML += `
@@ -128,6 +127,16 @@ function displaySavedCovers() {
     `
   }
 };
+
+function deleteSavedCover(e) {
+  for (var i = 0; i <savedCovers.length; i++) {
+      if (parseInt(e.target.closest('section').id) === savedCovers[i].id) {
+        savedCovers.splice(i, 1);
+      }
+  }
+      displaySavedCovers()
+
+}
 
 //make sure currentCover is saved and display savedCovers (128)
 
