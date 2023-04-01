@@ -18,7 +18,6 @@ var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
 var savedCoversSection = document.querySelector('.saved-covers-section');
-var miniCover = document.querySelector(".mini-cover");
 var savedCovers = [];
 var currentCover;
 
