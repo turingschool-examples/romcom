@@ -47,6 +47,7 @@ makeBookButton.addEventListener('click', function(event) {
   event.preventDefault();
   createBook();
   displayBook();
+  showButtons();
 }); 
 
 saveCoverButton.addEventListener('click', saveCover);
@@ -68,24 +69,6 @@ function togglePage(page) {
     viewPages[i].classList.add('hidden');
   }
   page.classList.remove('hidden');
-
-  // if (!homeView.classList.contains('hidden')) {
-  //   homeButton.classList.add('hidden');
-  //   randomCoverButton.classList.remove('hidden');
-  //   saveCoverButton.classList.remove('hidden');
-  //   viewSavedButton.classList.remove('hidden');
-  // }
-
-  // if (!saveView.classList.contains('hidden')) {
-  //   saveCoverButton.classList.add('hidden');
-  //   randomCoverButton.classList.add('hidden');
-  //   homeButton.classList.remove('hidden');
-  // }
-
-  // if (!coverForm.classList.contains('hidden')) {
-  //   randomCoverButton.classList.add('hidden');
-  //   homeButton.classList.remove('hidden');
-  // }
 }
 
 function showButtons() {
@@ -94,19 +77,17 @@ function showButtons() {
     randomCoverButton.classList.remove('hidden');
     saveCoverButton.classList.remove('hidden');
     viewSavedButton.classList.remove('hidden');
-  }
-
-  if (!saveView.classList.contains('hidden')) {
+    console.log('i am the homeview')
+  } else if (!saveView.classList.contains('hidden')) {
     saveCoverButton.classList.add('hidden');
     randomCoverButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
-  }
-
-  if (!coverForm.classList.contains('hidden')) {
+    console.log('am am the save view')
+  } else if (!coverForm.classList.contains('hidden')) {
     randomCoverButton.classList.add('hidden');
     homeButton.classList.remove('hidden');
     saveCoverButton.classList.add('hidden');
-
+    console.log('i am the cover form')
   }
 }
 
