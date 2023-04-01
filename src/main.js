@@ -29,15 +29,18 @@ randomCoverButton.addEventListener('click', createRandomCover);
 
 makeCoverButton.addEventListener('click', function() {
   togglePage(coverForm);
+  showButtons();
 });
 
 viewSavedButton.addEventListener('click', function() {
   togglePage(saveView);
   displaySavedCovers();
+  showButtons();
 });
 
 homeButton.addEventListener('click', function() {
   togglePage(homeView);
+  showButtons();
 });
 
 makeBookButton.addEventListener('click', function(event) {
@@ -66,6 +69,26 @@ function togglePage(page) {
   }
   page.classList.remove('hidden');
 
+  // if (!homeView.classList.contains('hidden')) {
+  //   homeButton.classList.add('hidden');
+  //   randomCoverButton.classList.remove('hidden');
+  //   saveCoverButton.classList.remove('hidden');
+  //   viewSavedButton.classList.remove('hidden');
+  // }
+
+  // if (!saveView.classList.contains('hidden')) {
+  //   saveCoverButton.classList.add('hidden');
+  //   randomCoverButton.classList.add('hidden');
+  //   homeButton.classList.remove('hidden');
+  // }
+
+  // if (!coverForm.classList.contains('hidden')) {
+  //   randomCoverButton.classList.add('hidden');
+  //   homeButton.classList.remove('hidden');
+  // }
+}
+
+function showButtons() {
   if (!homeView.classList.contains('hidden')) {
     homeButton.classList.add('hidden');
     randomCoverButton.classList.remove('hidden');
@@ -84,6 +107,8 @@ function togglePage(page) {
     homeButton.classList.remove('hidden');
   }
 }
+
+
 
 function createBook() {
   if (!userCoverInput.value || !userTitleInput.value || !userDesc1Input.value || !userDesc2Input.value) {
