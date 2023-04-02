@@ -127,7 +127,6 @@ function appendCoversToSavedView() {
     newSection.classList.add('mini-cover');
     newSection.setAttribute('id', thisCover.id)
     savedCoversSection.appendChild(newSection);
-    
 
     let img = document.createElement('img');
     img.classList.add('cover-image');
