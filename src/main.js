@@ -53,7 +53,10 @@ window.onload = (event) => {
   var editableCoverFields = fullCover.querySelectorAll('img.cover-image, h2.cover-title, h3.tagline');
   editableCoverFields.forEach((element) => {
     element.addEventListener('click', function () {
-      editCover(element);
+      getNewRandomCoverItem(element);
+    });
+    element.addEventListener('dblclick', function () {
+      manuallyEditCover(element);
     });
   });
 };
@@ -198,12 +201,26 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
-function editCover(element) {
+function manuallyEditCover(element) {
   element.contentEditable = true;
   if(element.tagName === "IMG") {
     let newImage = prompt("Please enter new URL for cover image:");
     if(newImage) {
       element.src = newImage;
     }
+  }
+}
+
+function getNewRandomCoverItem(element) {
+  console.log(element);
+  if(element.tagName === "IMG") {
+    coverImage.src = getRandomImage();
+  } else if(element.tagName === "H2") {
+    coverTitle.innerText = getRandomTitle();
+  } else if(element.tagName === "H3") {
+    var desc1 = getRandomDesc();
+    var desc2 = getRandomDesc();
+    coverDescriptor1.innerText = desc1;
+    coverDescriptor2.innerText = desc2;
   }
 }
