@@ -125,7 +125,9 @@ function appendCoversToSavedView() {
     
     let newSection = document.createElement('section');
     newSection.classList.add('mini-cover');
+    newSection.setAttribute('id', thisCover.id)
     savedCoversSection.appendChild(newSection);
+    
 
     let img = document.createElement('img');
     img.classList.add('cover-image');
@@ -151,6 +153,11 @@ function appendCoversToSavedView() {
     overlay.classList.add('overlay');
     overlay.src = "./assets/overlay.png";
     newSection.append(overlay);
+
+    newSection.addEventListener('dblclick', (e) => {
+      var coverToRemove = document.getElementById(`${thisCover.id}`);
+      coverToRemove.remove();
+    });
   }
 }
 
