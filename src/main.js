@@ -49,6 +49,13 @@ window.onload = (event) => {
   coverTitle.innerHTML = currentCover.title;
   coverDescriptor1.innerHTML = currentCover.tagline1;
   coverDescriptor2.innerHTML = currentCover.tagline2;
+
+  var editableCoverFields = fullCover.querySelectorAll('img.cover-image, h2.cover-title, h3.tagline');
+  editableCoverFields.forEach((element) => {
+    element.addEventListener('click', function () {
+      editCover(element);
+    });
+  });
 };
 
 // Create your event handlers and other functions here 👇
@@ -189,4 +196,14 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
+}
+
+function editCover(element) {
+  element.contentEditable = true;
+  if(element.tagName === "IMG") {
+    let newImage = prompt("Please enter new URL for cover image:");
+    if(newImage) {
+      element.src = newImage;
+    }
+  }
 }
