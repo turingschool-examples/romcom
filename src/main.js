@@ -98,7 +98,8 @@ function makeNewBook() {
   hide(saveCoverButton);
   show(goHomeButton);
   show(viewForm);
-  hide(viewHome)
+  hide(viewHome);
+  hide(viewSaved)
 }
 
 function viewSavedCovers() {
