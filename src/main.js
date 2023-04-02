@@ -1,45 +1,45 @@
+// romcom
+
 // Variables
+var savedCovers = [];
+var currentCover;
+  // Cover
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 var coverImage = document.querySelector('.cover-image');
+  // Buttons
 var randomButton = document.querySelector('.random-cover-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var createBookButton = document.querySelector('.create-new-book-button');
+  // Views
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
-var saveCoverButton = document.querySelector('.save-cover-button')
-var createBookButton = document.querySelector('.create-new-book-button');
+var savedCoversSection = document.querySelector('.saved-covers-section');
+  // User Inputs
 var coverInput = document.querySelector('.user-cover');
 var titleInput = document.querySelector('.user-title');
 var tagline1Input = document.querySelector('.user-desc1');
 var tagline2Input = document.querySelector('.user-desc2');
-var savedCoversSection = document.querySelector('.saved-covers-section');
-var savedCovers = [];
-var currentCover;
+
 
 // Event Listeners
 randomButton.addEventListener('click', newRandomBook)
-
 window.addEventListener('DOMContentLoaded', newRandomBook)
-
 makeCoverButton.addEventListener('click', makeCustomCoverForms)
-
 viewSavedButton.addEventListener('click', showSavedCovers);
-
 homeButton.addEventListener('click', homePage);
-
 createBookButton.addEventListener('click', function(event) {
   event.preventDefault();
   makeCover();
   pushCustomCover();
 });
-
 saveCoverButton.addEventListener('click', saveCover);
-
 savedCoversSection.addEventListener("dblclick", function(e) {
   var miniCoverId = e.target.parentNode.id;
   var clickedBook = document.getElementById(`${miniCoverId}`);
@@ -137,11 +137,3 @@ function saveCover() {
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">`
 };
-  
-
-
-
-
-
-// createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg"
