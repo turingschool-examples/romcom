@@ -1,16 +1,49 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+const randomCoverButton = document.querySelector(".random-cover-button");
+var coverImage = document.querySelector(".cover-image");
+var coverTitle = document.querySelector(".cover-title");
+var coverTagline = document.querySelector(".tagline");
+var tagline1 = document.querySelector(".tagline-1");
+var tagline2 = document.querySelector(".tagline-2");
 
 // We've provided a few variables below
 var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  createCover(
+    "http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg",
+    "Sunsets and Sorrows",
+    "sunsets",
+    "sorrows"
+  ),
 ];
-var currentCover;
+var currentCover = coverImage;
 
 // Add your event listeners here 👇
-
-
+window.addEventListener("load", pageLoad);
+randomCoverButton.addEventListener("click", showNewCover);
 // Create your event handlers and other functions here 👇
+function pageLoad() {
+  // console.log("Your work is showing up in the browser!");
+  var randomCover = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomTag1 = descriptors[getRandomIndex(descriptors)];
+  var randomTag2 = descriptors[getRandomIndex(descriptors)];
+  currentCover.src = randomCover;
+  coverTitle.innerHTML = randomTitle;
+  tagline1.innerHTML = randomTag1;
+  tagline2.innerHTML = randomTag2;
+}
+
+function showNewCover() {
+  var randomCover = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomTag1 = descriptors[getRandomIndex(descriptors)];
+  var randomTag2 = descriptors[getRandomIndex(descriptors)];
+
+  currentCover.src = randomCover;
+  coverTitle.innerHTML = randomTitle;
+  tagline1.innerHTML = randomTag1;
+  tagline2.innerHTML = randomTag2;
+}
 
 
 // We've provided two functions to get you started
@@ -24,7 +57,7 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     coverImg: imgSrc,
     title: title,
     tagline1: descriptor1,
-    tagline2: descriptor2
-  }
-  return cover
+    tagline2: descriptor2,
+  };
+  return cover;
 }
