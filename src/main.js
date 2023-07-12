@@ -1,6 +1,5 @@
-// Pull test!
 // Create variables targetting the relevant DOM elements here 👇
-
+// pull test! PE
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-Title');
 var tagLine = document.querySelector('.tagline');
