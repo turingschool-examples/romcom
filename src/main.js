@@ -1,3 +1,9 @@
+// ACTION PLAN
+// 1. Create querySelector for the elements we want to manipulate (elements of the cover)
+// 2. Create an eventListener for those elements to either appear or disappear on page load
+// 3. Create a function to generate a random cover by invoking getRandomIndex()
+// 4. Invoke it three times passing thru the args
+
 // Create variables targetting the relevant DOM elements here 👇
 
 
@@ -28,3 +34,4 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 }
+// possibly write if statement to not repeat descriptors in the random generation
