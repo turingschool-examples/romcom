@@ -4,7 +4,6 @@ var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
-// var tagline = ""
 
 // We've provided a few variables below
 var savedCovers = [
@@ -15,7 +14,7 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-var currentCover;
+var currentCover = coverImage;
 
 // Add your event listeners here 👇
 window.addEventListener("load", pageLoad);
@@ -27,7 +26,7 @@ function pageLoad() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomTag1 = descriptors[getRandomIndex(descriptors)];
   var randomTag2 = descriptors[getRandomIndex(descriptors)];
-  coverImage.src = randomCover;
+  currentCover.src = randomCover;
   coverTitle.innerHTML = randomTitle;
   tagline1.innerHTML = randomTag1;
   tagline2.innerHTML = randomTag2;
