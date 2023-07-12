@@ -1,4 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
+const randomCoverButton = document.querySelector(".random-cover-button");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
@@ -18,7 +19,7 @@ var currentCover = coverImage;
 
 // Add your event listeners here 👇
 window.addEventListener("load", pageLoad);
-
+randomCoverButton.addEventListener("click", showNewCover);
 // Create your event handlers and other functions here 👇
 function pageLoad() {
   // console.log("Your work is showing up in the browser!");
@@ -31,6 +32,19 @@ function pageLoad() {
   tagline1.innerHTML = randomTag1;
   tagline2.innerHTML = randomTag2;
 }
+
+function showNewCover() {
+  var randomCover = covers[getRandomIndex(covers)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomTag1 = descriptors[getRandomIndex(descriptors)];
+  var randomTag2 = descriptors[getRandomIndex(descriptors)];
+
+  currentCover.src = randomCover;
+  coverTitle.innerHTML = randomTitle;
+  tagline1.innerHTML = randomTag1;
+  tagline2.innerHTML = randomTag2;
+}
+
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
