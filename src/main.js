@@ -1,6 +1,14 @@
 // Pull test!
 // Create variables targetting the relevant DOM elements here 👇
 
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-Title');
+var tagLine = document.querySelector('.tagline');
+var tagLine1 = document.querySelector('.tagline-1');
+var tagLine2 = document.querySelector('.tagline-2')
+var image = document.querySelector('.price-tag');
+var imageOverLay = document.querySelector('.overlay');
+
 
 // We've provided a few variables below
 var savedCovers = [
