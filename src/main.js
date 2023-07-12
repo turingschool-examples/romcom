@@ -5,7 +5,9 @@
 // 4. Invoke it three times passing thru the args
 
 // Create variables targetting the relevant DOM elements here 👇
-
+var coverImg = document.querySelector(".cover-image")
+var coverTitle = document.querySelector(".cover-title")
+var coverTagline = document.querySelectorAll("h3")
 
 // We've provided a few variables below
 var savedCovers = [
