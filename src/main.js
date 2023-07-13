@@ -29,10 +29,6 @@ console.log(savedCovers);
 
 var currentCover = coverImage;
 
-var allCoversArr = createSavedCovers();
-console.log(allCoversArr);
-console.log(allCoversArr.length);
-
 // ========= Add your event listeners here 👇 ==========
 window.addEventListener("load", pageLoad);
 
@@ -84,6 +80,7 @@ function viewSavedCovers() {
   // ***looks like we need to create all the covers and add them to the saved covers array***
   // Step 1. Create array with all info from data.js
   // Step 2. Iterate over covers array - pull out the info you need to build the HTML elements
+  createSavedCovers();
   homeButton.classList.toggle("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
@@ -92,11 +89,11 @@ function viewSavedCovers() {
   // savedCoversLayout.innerHTML = `<img class="cover-image" src="./assets/prairie.jpg">`;
   // console.log(savedCovers[0].coverImg);
   var htmlSavedCoversString = "";
-  for (let i = 0; i < allCoversArr.length; i++) {
+  for (let i = 0; i < savedCovers.length; i++) {
     htmlSavedCoversString += `<section class="main-cover"> \
-    <img class="cover-image" src=${allCoversArr[i].coverImg}> \
-    <h2 class="cover-title">${allCoversArr[i].title}</h2> \
-    <h3 class="tagline">A tale of <span class="tagline-1">${allCoversArr[i].tagline1}</span> and <span class="tagline-2">${allCoversArr[i].tagline2}</span></h3> \
+    <img class="cover-image" src=${savedCovers[i].coverImg}> \
+    <h2 class="cover-title">${savedCovers[i].title}</h2> \
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3> \
     <img class="overlay" src="./assets/overlay.png"> \
     </section>`;
     // `<div>${i}</div>`;
@@ -114,9 +111,8 @@ function viewSavedCovers() {
 }
 
 function createSavedCovers() {
-  var coversArr = [];
   for (let i = 0; i < covers.length; i++) {
-    coversArr.push(
+    savedCovers.push(
       createCover(
         covers[i],
         titles[i],
@@ -125,7 +121,7 @@ function createSavedCovers() {
       )
     );
   }
-  return coversArr;
+  return savedCovers;
 }
 // We've provided two functions to get you started
 function getRandomIndex(array) {
