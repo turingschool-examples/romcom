@@ -1,4 +1,12 @@
 // Create variables targetting the relevant DOM elements here 👇
+// pull test! PE
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-Title');
+var tagLine = document.querySelector('.tagline');
+var tagLine1 = document.querySelector('.tagline-1');
+var tagLine2 = document.querySelector('.tagline-2')
+var image = document.querySelector('.price-tag');
+var imageOverLay = document.querySelector('.overlay');
 
 
 // We've provided a few variables below
@@ -8,9 +16,30 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+//we will need an event listener for when the page loads
+//and image title and two descriptors
+
+window.addEventListener('load', function() {
+ showRandomCover() //Data Model (creating information)
+                   // DOM (updating page)
+});
 
 
 // Create your event handlers and other functions here 👇
+
+function showRandomCover() {
+ var randomCover = covers[getRandomIndex(covers)] 
+ var randomTitle = titles[getRandomIndex(titles)]  
+ var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]  
+ var randomDescriptor2 = descriptors[getRandomIndex(descriptors)] 
+ 
+ console.log(createCover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
+ 
+
+ coverImage.innerText = cover.coverImg.src
+
+}//Data Model
+
 
 
 // We've provided two functions to get you started
