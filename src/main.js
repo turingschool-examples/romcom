@@ -7,7 +7,8 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImg = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
-var coverTagline = document.querySelectorAll("h3")
+var coverTagline1 = document.querySelector(".tagline-1")
+var coverTagline2 = document.querySelector(".tagline-2")
 
 // We've provided a few variables below
 var savedCovers = [
@@ -24,18 +25,24 @@ window.addEventListener("load", generateRandomCover)
 function generateRandomCover() {
   var getRandImgIndex = getRandomIndex(covers)
   var getRandTitleIndex = getRandomIndex(titles)
-  var getRandTagIndex = getRandomIndex(descriptors)
+  var getRandTagIndex1 = getRandomIndex(descriptors)
+  var getRandTagIndex2 = getRandomIndex(descriptors)
   var randImg = covers[getRandImgIndex]
   var randTitle = titles[getRandTitleIndex]
-  var randTag = descriptors[getRandTagIndex]
+  var randTag1 = descriptors[getRandTagIndex1]
+  var randTag2 = descriptors[getRandTagIndex2]
 
 coverImg.src = randImg 
-coverTitle.innerText = randTitle
-coverTagline.innerText = randTag
-
-// research method to "splice" the innertext section between <span
+coverTitle.innerHTML = randTitle
+coverTagline1.innerHTML = randTag1
+coverTagline2.innerHTML = randTag2
   createCover(imgSrc, title, descriptor1, descriptor2)
 }
+
+
+
+// research method to "splice" the innertext section between <span
+// edge case: descriptor words repeating themselves in the tagline
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
