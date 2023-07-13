@@ -16,9 +16,10 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-var currentCover;
+var currentCover
 
 // Add your event listeners here 👇
+<<<<<<< HEAD
 showNewBtn.addEventListener("click", function () {
   function getRandomIndexCover(coversArray) {
     var randomNumber = Math.floor(Math.random() * coversArray.length);
@@ -69,6 +70,20 @@ showNewBtn.addEventListener("click", function () {
 
   // createCover();
 });
+=======
+showNewBtn.addEventListener("click", function(){
+  var randIndexCovers = getRandomIndex(covers);
+  var randIndexTitles = getRandomIndex(titles);
+  var randIndexDescriptors = getRandomIndex(descriptors);
+  var randCover = covers[randIndexCovers]
+  var randTitle = titles[randIndexTitles]
+  var randDesc1 = descriptors[randIndexDescriptors]
+  var randDesc2 = descriptors[randIndexDescriptors]
+  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2)
+  mainCoverTitle.innerText = newCover.title;
+  console.log(cover.title)
+})
+>>>>>>> main
 
 // Create your event handlers and other functions here 👇
 
