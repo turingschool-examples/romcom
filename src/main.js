@@ -9,6 +9,7 @@ var coverImg = document.querySelector(".cover-image")
 var coverTitle = document.querySelector(".cover-title")
 var coverTagline1 = document.querySelector(".tagline-1")
 var coverTagline2 = document.querySelector(".tagline-2")
+var randCoverBtn = document.querySelector(".random-cover-button")
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,6 +22,12 @@ var currentCover;
 
 // Create your event handlers and other functions here 👇
 window.addEventListener("load", generateRandomCover)
+
+randCoverBtn.addEventListener("click", function(event) {
+  console.log(event.target)
+
+}) 
+
 
 function generateRandomCover() {
   var getRandImgIndex = getRandomIndex(covers)
@@ -39,7 +46,15 @@ coverTagline2.innerHTML = randTag2
   createCover(imgSrc, title, descriptor1, descriptor2)
 }
 
+// function showRandomCover() {
 
+// }
+
+/*
+make a querySelector for random-cover-button 
+
+
+ */
 
 // research method to "splice" the innertext section between <span
 // edge case: descriptor words repeating themselves in the tagline
