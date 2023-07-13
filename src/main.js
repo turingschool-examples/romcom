@@ -25,6 +25,7 @@ var savedCovers = [
     "sorrows"
   ),
 ];
+console.log(savedCovers);
 
 var currentCover = coverImage;
 
@@ -62,9 +63,9 @@ function showNewCover() {
   var randomTag2 = descriptors[getRandomIndex(descriptors)];
 
   currentCover.src = randomCover;
-  coverTitle.innerHTML = randomTitle;
-  tagline1.innerHTML = randomTag1;
-  tagline2.innerHTML = randomTag2;
+  coverTitle.innerText = randomTitle;
+  tagline1.innerText = randomTag1;
+  tagline2.innerText = randomTag2;
 }
 
 function switchToForm() {
@@ -73,6 +74,7 @@ function switchToForm() {
   homeButton.classList.toggle("hidden");
   homeView.classList.toggle("hidden");
   savedCoversView.classList.toggle("hidden");
+  formView.classList.toggle("hidden");
 }
 
 function viewSavedCovers() {
@@ -80,7 +82,8 @@ function viewSavedCovers() {
   // hide homepage view - similar to form view
   // hide make your own and save
   // ***looks like we need to create all the covers and add them to the saved covers array***
-  // ***
+  // Step 1. Create array with all info from data.js
+  // Step 2. Iterate over covers array - pull out the info you need to build the HTML elements
   homeButton.classList.toggle("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
@@ -101,7 +104,7 @@ function viewSavedCovers() {
   console.log(htmlSavedCoversString);
   savedCoversLayout.innerHTML = htmlSavedCoversString;
 
-  // DISPLAY THE SAVED COVER IMAGE
+  // TEST DISPLAY THE SAVED COVER IMAGE WITH THE GIVEN EXAMPLE
   // savedCoversLayout.innerHTML = `<section class="main-cover"> \
   // <img class="cover-image" src=${savedCovers[0].coverImg}> \
   // <h2 class="cover-title">${savedCovers[0].title}</h2> \
@@ -113,11 +116,17 @@ function viewSavedCovers() {
 function createSavedCovers() {
   var coversArr = [];
   for (let i = 0; i < covers.length; i++) {
-    coversArr.push(createCover(covers[i], titles[i], tagline1[i], tagline2[i]));
+    coversArr.push(
+      createCover(
+        covers[i],
+        titles[i],
+        descriptors[getRandomIndex(descriptors)],
+        descriptors[getRandomIndex(descriptors)]
+      )
+    );
   }
   return coversArr;
 }
-
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
