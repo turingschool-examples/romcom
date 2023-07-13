@@ -1,5 +1,9 @@
 // Create variables targetting the relevant DOM elements here 👇
 const randomCoverButton = document.querySelector(".random-cover-button");
+const makeCoverButton = document.querySelector(".make-new-button");
+const saveCoverButton = document.querySelector(".save-cover-button");
+const homeButton = document.querySelector(".home-button");
+const homeView = document.querySelector(".view home-view");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
@@ -19,8 +23,13 @@ var currentCover = coverImage;
 
 // Add your event listeners here 👇
 window.addEventListener("load", pageLoad);
+
 randomCoverButton.addEventListener("click", showNewCover);
+
+makeCoverButton.addEventListener("click", switchToForm);
+
 // Create your event handlers and other functions here 👇
+
 function pageLoad() {
   // console.log("Your work is showing up in the browser!");
   var randomCover = covers[getRandomIndex(covers)];
@@ -45,6 +54,19 @@ function showNewCover() {
   tagline2.innerHTML = randomTag2;
 }
 
+function switchToForm() {
+  randomCoverButton.innerHTML = `
+  <button class="random-cover-button hidden">Show New Random Cover</button> 
+  `;
+  saveCoverButton.innerHTML = `
+  <button class="save-cover-button hidden">Save Cover</button>
+  `;
+  homeButton.innerHTML = `
+  <button class="home-button">Home</button>
+  `;
+
+
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
