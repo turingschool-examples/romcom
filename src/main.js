@@ -28,6 +28,10 @@ var savedCovers = [
 
 var currentCover = coverImage;
 
+var allCoversArr = createSavedCovers();
+console.log(allCoversArr);
+console.log(allCoversArr.length);
+
 // ========= Add your event listeners here 👇 ==========
 window.addEventListener("load", pageLoad);
 
@@ -84,16 +88,34 @@ function viewSavedCovers() {
   savedCoversView.classList.toggle("hidden");
   // savedCoversLayout.innerHTML = `<img class="cover-image" src="./assets/prairie.jpg">`;
   // console.log(savedCovers[0].coverImg);
-  savedCoversLayout.innerHTML = ` <section class="main-cover"> \
-  <img class="cover-image" src=${savedCovers[0].coverImg}> \
-  <h2 class="cover-title">${savedCovers[0].title}</h2> \
-  <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3> \
-  <img class="overlay" src="./assets/overlay.png"> \
-  </section>`;
+  var htmlSavedCoversString = "";
+  for (let i = 0; i < allCoversArr.length; i++) {
+    htmlSavedCoversString += `<section class="main-cover"> \
+    <img class="cover-image" src=${allCoversArr[i].coverImg}> \
+    <h2 class="cover-title">${allCoversArr[i].title}</h2> \
+    <h3 class="tagline">A tale of <span class="tagline-1">${allCoversArr[i].tagline1}</span> and <span class="tagline-2">${allCoversArr[i].tagline2}</span></h3> \
+    <img class="overlay" src="./assets/overlay.png"> \
+    </section>`;
+    // `<div>${i}</div>`;
+  }
+  console.log(htmlSavedCoversString);
+  savedCoversLayout.innerHTML = htmlSavedCoversString;
+
+  // DISPLAY THE SAVED COVER IMAGE
+  // savedCoversLayout.innerHTML = `<section class="main-cover"> \
+  // <img class="cover-image" src=${savedCovers[0].coverImg}> \
+  // <h2 class="cover-title">${savedCovers[0].title}</h2> \
+  // <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3> \
+  // <img class="overlay" src="./assets/overlay.png"> \
+  // </section>`;
 }
 
 function createSavedCovers() {
-  savedCovers.coverImg;
+  var coversArr = [];
+  for (let i = 0; i < covers.length; i++) {
+    coversArr.push(createCover(covers[i], titles[i], tagline1[i], tagline2[i]));
+  }
+  return coversArr;
 }
 
 // We've provided two functions to get you started
