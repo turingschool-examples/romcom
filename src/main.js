@@ -7,6 +7,7 @@ var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2');
 var image = document.querySelector('.price-tag');
 var imageOverLay = document.querySelector('.overlay');
+var showRandomCoverButton = document.querySelector('.random-cover-button')
 // queries over all dom elements(?) we need to change
 
 // We've provided a few variables below
@@ -20,8 +21,12 @@ var currentCover;
 window.addEventListener('load', function(){
   makeRandomCover();
   renderRandomCover();
-})
+});
 
+showRandomCoverButton.addEventListener('click', function() {
+ makeRandomCover();
+ renderRandomCover();
+});
 
 // Create your event handlers and other functions here 👇
 
