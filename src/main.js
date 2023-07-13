@@ -16,74 +16,41 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-var currentCover
+var currentCover;
 
 // Add your event listeners here 👇
-<<<<<<< HEAD
-showNewBtn.addEventListener("click", function () {
-  function getRandomIndexCover(coversArray) {
-    var randomNumber = Math.floor(Math.random() * coversArray.length);
-    for (var i = 0; i < coversArray.length; i++) {
-      var randomCoverImgSrc = coversArray[randomNumber];
-    }
-    return randomCoverImgSrc;
-  }
-  getRandomIndexCover(covers);
 
-  function getRandomIndexTitle(titleArray) {
-    var randomNumber = Math.floor(Math.random() * titleArray.length);
-    for (var i = 0; i < titleArray.length; i++) {
-      var randomCoverTitle = titleArray[randomNumber];
-    }
-    return randomCoverTitle;
-  }
-  getRandomIndexTitle(titles);
-
-  function getRandomIndexTagline1(taglineArray) {
-    var randomNumber = Math.floor(Math.random() * taglineArray.length);
-    for (var i = 0; i < taglineArray.length; i++) {
-      var randomTagLine1 = taglineArray[randomNumber];
-    }
-    return randomTagLine1;
-  }
-  getRandomIndexTagline1(descriptors);
-
-  function getRandomIndexTagline2(taglineArray) {
-    var randomNumber = Math.floor(Math.random() * taglineArray.length);
-    for (var i = 0; i < taglineArray.length; i++) {
-      var randomTagLine2 = taglineArray[randomNumber];
-    }
-    return randomTagLine2;
-  }
-  getRandomIndexTagline2(descriptors);
-
-  // function createCover(imgSrc, title, descriptor1, descriptor2) {
-  //   var cover = {
-  //     id: Date.now(),
-  //     coverImg: imgSrc,
-  //     title: title,
-  //     tagline1: descriptor1,
-  //     tagline2: descriptor2,
-  //   };
-  //   return cover;
-  // }
-
-  // createCover();
-});
-=======
-showNewBtn.addEventListener("click", function(){
+window.addEventListener("DOMContentLoaded", () => {
   var randIndexCovers = getRandomIndex(covers);
   var randIndexTitles = getRandomIndex(titles);
-  var randIndexDescriptors = getRandomIndex(descriptors);
-  var randCover = covers[randIndexCovers]
-  var randTitle = titles[randIndexTitles]
-  var randDesc1 = descriptors[randIndexDescriptors]
-  var randDesc2 = descriptors[randIndexDescriptors]
-  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2)
+  var randIndexDescriptors1 = getRandomIndex(descriptors);
+  var randIndexDescriptors2 = getRandomIndex(descriptors);
+  var randCover = covers[randIndexCovers];
+  var randTitle = titles[randIndexTitles];
+  var randDesc1 = descriptors[randIndexDescriptors1];
+  var randDesc2 = descriptors[randIndexDescriptors2];
+  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2);
   mainCoverTitle.innerText = newCover.title;
-  console.log(cover.title)
-})
->>>>>>> main
+  mainCoverImg.src = randCover;
+  mainCoverTagline1.innerText = randDesc1;
+  mainCoverTagline2.innerText = randDesc2;
+});
+
+showNewBtn.addEventListener("click", function () {
+  var randIndexCovers = getRandomIndex(covers);
+  var randIndexTitles = getRandomIndex(titles);
+  var randIndexDescriptors1 = getRandomIndex(descriptors);
+  var randIndexDescriptors2 = getRandomIndex(descriptors);
+  var randCover = covers[randIndexCovers];
+  var randTitle = titles[randIndexTitles];
+  var randDesc1 = descriptors[randIndexDescriptors1];
+  var randDesc2 = descriptors[randIndexDescriptors2];
+  var newCover = createCover(randCover, randTitle, randDesc1, randDesc2);
+  mainCoverTitle.innerText = newCover.title;
+  mainCoverImg.src = randCover;
+  mainCoverTagline1.innerText = randDesc1;
+  mainCoverTagline2.innerText = randDesc2;
+});
 
 // Create your event handlers and other functions here 👇
 
