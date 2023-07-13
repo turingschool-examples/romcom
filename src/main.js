@@ -4,7 +4,8 @@ const makeCoverButton = document.querySelector(".make-new-button");
 const saveCoverButton = document.querySelector(".save-cover-button");
 const homeButton = document.querySelector(".home-button");
 const homeView = document.querySelector(".view");
-const formView = document.querySelector("view-form.view-hidden");
+const formView = document.querySelector(".form-view");
+console.log(formView);
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
@@ -56,13 +57,11 @@ function showNewCover() {
 }
 
 function switchToForm() {
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden')
-  homeButton.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  formView.classList.remove('hidden');
-
-
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.toggle("hidden");
+  homeView.classList.toggle("hidden");
+  formView.classList.toggle("hidden");
 }
 
 // We've provided two functions to get you started
