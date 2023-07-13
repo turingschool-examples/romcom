@@ -19,7 +19,23 @@ var currentCover;
 
 
 // Create your event handlers and other functions here 👇
+window.addEventListener("load", generateRandomCover)
 
+function generateRandomCover() {
+  var getRandImgIndex = getRandomIndex(covers)
+  var getRandTitleIndex = getRandomIndex(titles)
+  var getRandTagIndex = getRandomIndex(descriptors)
+  var randImg = covers[getRandImgIndex]
+  var randTitle = titles[getRandTitleIndex]
+  var randTag = descriptors[getRandTagIndex]
+
+coverImg.src = randImg 
+coverTitle.innerText = randTitle
+coverTagline.innerText = randTag
+
+// research method to "splice" the innertext section between <span
+  createCover(imgSrc, title, descriptor1, descriptor2)
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
