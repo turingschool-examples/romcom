@@ -1,4 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
+const controls = document.querySelectorAll("section.controls > button");
+
 const homeView = document.querySelector(".view");
 const formView = document.querySelector(".form-view");
 const savedCoversView = document.querySelector(".saved-view");
@@ -8,7 +10,7 @@ const randomCoverButton = document.querySelector(".random-cover-button");
 const makeCoverButton = document.querySelector(".make-new-button");
 const saveCoverButton = document.querySelector(".save-cover-button");
 const homeButton = document.querySelector(".home-button");
-const savedCoversButton = document.querySelector(".view-saved-button");
+const viewCoversButton = document.querySelector(".view-saved-button");
 
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -25,20 +27,24 @@ var savedCovers = [
     "sorrows"
   ),
 ];
-console.log(savedCovers);
+// console.log(savedCovers);
 
 var currentCover = coverImage;
 
 // ========= Add your event listeners here 👇 ==========
-window.addEventListener("load", pageLoad);
+window.onload = pageLoad;
 
 randomCoverButton.addEventListener("click", showNewCover);
 
 makeCoverButton.addEventListener("click", switchToForm);
 
-savedCoversButton.addEventListener("click", viewSavedCovers);
+viewCoversButton.addEventListener("click", viewSavedCovers);
+
+homeButton.addEventListener("click", viewHomePage);
 
 // ========== Create your event handlers and other functions here 👇 ==========
+
+// ================== RANDOM COVER AND PAGE RELOAD ==================
 
 function pageLoad() {
   // console.log("Your work is showing up in the browser!");
@@ -50,6 +56,15 @@ function pageLoad() {
   coverTitle.innerHTML = randomTitle;
   tagline1.innerHTML = randomTag1;
   tagline2.innerHTML = randomTag2;
+
+  controls.forEach((control) => {
+    control.classList.add("hidden");
+    control.classList.toggle("hidden");
+  });
+
+  homeButton.classList.toggle("hidden", true);
+  savedCoversView.classList.add("hidden");
+  formView.classList.add("hidden");
 }
 
 function showNewCover() {
@@ -64,15 +79,17 @@ function showNewCover() {
   tagline2.innerText = randomTag2;
 }
 
+// ================ FORM VIEW ==================
 function switchToForm() {
-  randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeButton.classList.toggle("hidden");
-  homeView.classList.toggle("hidden");
-  savedCoversView.classList.toggle("hidden");
-  formView.classList.toggle("hidden");
+  randomCoverButton.classList.toggle("hidden", true);
+  saveCoverButton.classList.toggle("hidden", true);
+  homeButton.classList.toggle("hidden", false);
+  homeView.classList.toggle("hidden", true);
+  savedCoversView.classList.toggle("hidden", true);
+  formView.classList.toggle("hidden", false);
 }
 
+// ================== SAVED COVERS FUNCTIONS ===============
 function viewSavedCovers() {
   // view saved covers page - querySel (page, button), eventList
   // hide homepage view - similar to form view
@@ -81,11 +98,14 @@ function viewSavedCovers() {
   // Step 1. Create array with all info from data.js
   // Step 2. Iterate over covers array - pull out the info you need to build the HTML elements
   createSavedCovers();
-  homeButton.classList.toggle("hidden");
-  randomCoverButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
-  homeView.classList.toggle("hidden");
-  savedCoversView.classList.toggle("hidden");
+  homeButton.classList.toggle("hidden", false);
+  randomCoverButton.classList.toggle("hidden", true);
+  saveCoverButton.classList.toggle("hidden", true);
+  viewCoversButton.classList.toggle("hidden", false);
+  homeView.classList.toggle("hidden", true);
+  savedCoversView.classList.toggle("hidden", false);
+  makeCoverButton.classList.toggle("hidden", false);
+
   // savedCoversLayout.innerHTML = `<img class="cover-image" src="./assets/prairie.jpg">`;
   // console.log(savedCovers[0].coverImg);
   var htmlSavedCoversString = "";
@@ -98,7 +118,7 @@ function viewSavedCovers() {
     </section>`;
     // `<div>${i}</div>`;
   }
-  console.log(htmlSavedCoversString);
+
   savedCoversLayout.innerHTML = htmlSavedCoversString;
 
   // TEST DISPLAY THE SAVED COVER IMAGE WITH THE GIVEN EXAMPLE
@@ -123,6 +143,25 @@ function createSavedCovers() {
   }
   return savedCovers;
 }
+
+// ================ HOME VIEW ==================
+
+function viewHomePage() {
+  randomCoverButton.classList.toggle("hidden", false);
+  saveCoverButton.classList.toggle("hidden", false);
+  homeButton.classList.toggle("hidden", true);
+  makeCoverButton.classList.toggle("hidden", false);
+  viewCoversButton.classList.toggle("hidden", false);
+  homeView.classList.toggle("hidden", false);
+  savedCoversView.classList.toggle("hidden", true);
+  formView.classList.toggle("hidden", true);
+}
+
+function hiddenCheck(element) {
+  var hiddenStatus = element.classList.contains("hidden");
+  return hiddenStatus;
+}
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
