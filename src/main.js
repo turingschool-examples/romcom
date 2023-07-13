@@ -16,9 +16,30 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+//we will need an event listener for when the page loads
+//and image title and two descriptors
+
+window.addEventListener('load', function() {
+ showRandomCover() //Data Model (creating information)
+                   // DOM (updating page)
+});
 
 
 // Create your event handlers and other functions here 👇
+
+function showRandomCover() {
+ var randomCover = covers[getRandomIndex(covers)] 
+ var randomTitle = titles[getRandomIndex(titles)]  
+ var randomDescriptor1 = descriptors[getRandomIndex(descriptors)]  
+ var randomDescriptor2 = descriptors[getRandomIndex(descriptors)] 
+ 
+ console.log(createCover(randomCover, randomTitle, randomDescriptor1, randomDescriptor2))
+ 
+
+ coverImage.innerText = cover.coverImg.src
+
+}//Data Model
+
 
 
 // We've provided two functions to get you started
