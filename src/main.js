@@ -1,13 +1,15 @@
 // Create variables targeting the relevant DOM elements here 👇
+//buttons:
 var randomCoverButton = document.querySelector('.random-cover-button');
-var coverImage = document.querySelector('.cover-image');
-var coverTitle = document.querySelector('.cover-title');
-var descriptor1 = document.querySelector('#descriptor1');
-var descriptor2 = document.querySelector('#descriptor2');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
+//views:
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var descriptor1 = document.querySelector('#descriptor1');
+var descriptor2 = document.querySelector('#descriptor2');
 
 
 
@@ -25,9 +27,9 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover);
 randomCoverButton.addEventListener('click', displayRandomCover);
-makeNewCoverButton.addEventListener('click', toggleViewMakeCoverBtn);
 viewSavedCoversButton.addEventListener('click', toggleViewSaveCoverBtn);
-homeButton.addEventListener('click', showHomeView)
+makeNewCoverButton.addEventListener('click', toggleViewMakeCoverBtn);
+homeButton.addEventListener('click', showHomeViewBtn)
 
 
 
@@ -56,6 +58,24 @@ function getRandomCover() {
   return randomCover;
 }
 
+function toggleViewSaveCoverBtn() {
+  //show saved cover section hidden
+  //home page hidden
+  var hideHome = document.querySelector('.home-view');
+  var viewSavedCovers = document.querySelector('.saved-view');
+  var switchView = document.querySelector('.form-view');
+
+  hideHome.classList.add('hidden');
+  viewSavedCovers.classList.remove('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  switchView.classList.add('hidden')
+}
+//on the view saved cover button the form/view needs to be hidden 
+
+
+
 
 function toggleViewMakeCoverBtn() {
   var switchView = document.querySelector('.form-view');
@@ -68,20 +88,8 @@ function toggleViewMakeCoverBtn() {
   homeButton.classList.toggle('hidden');
 }
 
-function toggleViewSaveCoverBtn() {
-  //show saved cover section hidden
-  //home page hidden
-  var hideHome = document.querySelector('.home-view');
-  var viewSavedCovers = document.querySelector('.saved-view');
 
-  hideHome.classList.add('hidden');
-  viewSavedCovers.classList.remove('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-}
-
-function showHomeView () {
+function showHomeViewBtn () {
   var switchView = document.querySelector('.form-view');
   var hideHome = document.querySelector('.home-view');
   var viewSavedCovers = document.querySelector('.saved-view');
@@ -95,6 +103,7 @@ function showHomeView () {
   viewSavedCovers.classList.add('hidden');
 }
 
+//on the view saved cover button the form/view needs to be hidden 
 
 
 function getRandomIndex(array) {
