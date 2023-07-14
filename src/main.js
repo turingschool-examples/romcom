@@ -11,6 +11,7 @@ const makeCoverButton = document.querySelector(".make-new-button");
 const saveCoverButton = document.querySelector(".save-cover-button");
 const homeButton = document.querySelector(".home-button");
 const viewCoversButton = document.querySelector(".view-saved-button");
+const createNewBookButton = document.querySelector(".create-new-book-button");
 
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -29,12 +30,12 @@ var savedCovers = [
 ];
 // console.log(savedCovers);
 
-var currentCover = coverImage;
+var currentCover;
 
 // ========= Add your event listeners here 👇 ==========
 window.onload = pageLoad;
 
-randomCoverButton.addEventListener("click", showNewCover);
+randomCoverButton.addEventListener("click", randomizeCover);
 
 makeCoverButton.addEventListener("click", switchToForm);
 
@@ -42,21 +43,16 @@ viewCoversButton.addEventListener("click", viewSavedCovers);
 
 homeButton.addEventListener("click", viewHomePage);
 
+createNewBookButton.addEventListener("click", viewHomePage);
+
 // ========== Create your event handlers and other functions here 👇 ==========
 
 // ================== RANDOM COVER AND PAGE RELOAD ==================
 
 function pageLoad() {
   // console.log("Your work is showing up in the browser!");
-  var randomCover = covers[getRandomIndex(covers)];
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomTag1 = descriptors[getRandomIndex(descriptors)];
-  var randomTag2 = descriptors[getRandomIndex(descriptors)];
-  currentCover.src = randomCover;
-  coverTitle.innerHTML = randomTitle;
-  tagline1.innerHTML = randomTag1;
-  tagline2.innerHTML = randomTag2;
-
+  randomizeCover();
+  // FIX (IF TIME): REFACTOR WITH FOR LOOP
   controls.forEach((control) => {
     control.classList.add("hidden");
     control.classList.toggle("hidden");
@@ -67,16 +63,19 @@ function pageLoad() {
   formView.classList.add("hidden");
 }
 
-function showNewCover() {
+function randomizeCover() {
   var randomCover = covers[getRandomIndex(covers)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomTag1 = descriptors[getRandomIndex(descriptors)];
   var randomTag2 = descriptors[getRandomIndex(descriptors)];
 
-  currentCover.src = randomCover;
-  coverTitle.innerText = randomTitle;
-  tagline1.innerText = randomTag1;
-  tagline2.innerText = randomTag2;
+  currentCover = setCurrentCover(
+    randomCover,
+    randomTitle,
+    randomTag1,
+    randomTag2
+  );
+  displayCurrentCover(currentCover);
 }
 
 // ================ FORM VIEW ==================
@@ -97,7 +96,7 @@ function viewSavedCovers() {
   // ***looks like we need to create all the covers and add them to the saved covers array***
   // Step 1. Create array with all info from data.js
   // Step 2. Iterate over covers array - pull out the info you need to build the HTML elements
-  createSavedCovers();
+
   homeButton.classList.toggle("hidden", false);
   randomCoverButton.classList.toggle("hidden", true);
   saveCoverButton.classList.toggle("hidden", true);
@@ -130,6 +129,17 @@ function viewSavedCovers() {
   // </section>`;
 }
 
+// function createSavedCovers() {
+//   for (let i = 0; i < covers.length; i++) {
+//     savedCovers.push(
+//       createCover(
+//         covers[i],
+//         titles[i],
+//         descriptors[getRandomIndex(descriptors)],
+//         descriptors[getRandomIndex(descriptors)]
+//       )
+//     );
+//   }
 function createSavedCovers() {
   for (let i = 0; i < covers.length; i++) {
     savedCovers.push(
@@ -145,6 +155,22 @@ function createSavedCovers() {
 }
 
 // ================ HOME VIEW ==================
+function setCurrentCover(imageSrc, title, disc1, disc2) {
+  currentCover = {
+    src: imageSrc,
+    title: title,
+    descriptor1: disc1,
+    descriptor2: disc2,
+  };
+  return currentCover;
+}
+
+function displayCurrentCover(currentCover) {
+  coverImage.src = currentCover.src;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.descriptor1;
+  tagline2.innerText = currentCover.descriptor2;
+}
 
 function viewHomePage() {
   randomCoverButton.classList.toggle("hidden", false);
