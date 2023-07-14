@@ -49,8 +49,10 @@ function makeYourOwnCover () {
   homePage.classList.add('hidden')
   saveCoverButton.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden') 
+  form.classList.add('hidden')
   form.classList.remove('hidden')
   homeButton.classList.remove('hidden')
+  
 }
 
 function viewSavedCovers() {
