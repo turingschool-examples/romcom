@@ -62,3 +62,42 @@
   - When a user clicks the "Home" button, we should only see the Home section
   - When a user clicks the "Home" button, the home button should be hidden
   - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
+
+
+
+
+
+<!-- Notes from Natalie about making the hidden an elements function to remove .hidden for each function  -->
+
+<!-- function showElements(elements) {
+  elements.forEach(function(element) {
+    element.classList.remove('hidden')
+  })
+};
+
+function hideElements(elements) {
+  elements.forEach(function(element) {
+    element.classList.add('hidden')
+  })
+};
+
+function showFormView() {
+  hideElements([homeView, randomCoverButton, saveCoverButton])
+  showElements([formView, homeButton])
+};
+function showSavedView() {
+  hideElements([homeView, randomCoverButton, saveCoverButton])
+  showElements([savedView, homeButton])
+};
+function showHomeView() {
+  hideElements([formView, savedView])
+  showElements([homeView, randomCoverButton, saveCoverButton])
+  hideElements([homeButton])
+};
+ -->
+
+
+
+
+
+
