@@ -14,6 +14,11 @@ const viewCoversButton = document.querySelector(".view-saved-button");
 const createNewBookButton = document.querySelector(".create-new-book-button");
 
 
+var coverInput = document.getElementById("cover");
+var titleInput = document.querySelector("#title");
+var desc1Input = document.querySelector(".user-desc1");
+var desc2Input = document.querySelector(".user-desc2");
+
 
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -45,7 +50,7 @@ viewCoversButton.addEventListener("click", viewSavedCovers);
 
 homeButton.addEventListener("click", viewHomePage);
 
-createNewBookButton.addEventListener("click", viewHomePage);
+createNewBookButton.addEventListener("click", createNewBook);
 
 // ========== Create your event handlers and other functions here 👇 ==========
 
@@ -71,12 +76,8 @@ function randomizeCover() {
   var randomTag1 = descriptors[getRandomIndex(descriptors)];
   var randomTag2 = descriptors[getRandomIndex(descriptors)];
 
-  currentCover = setCurrentCover(
-    randomCover,
-    randomTitle,
-    randomTag1,
-    randomTag2
-  );
+  currentCover = createCover(randomCover, randomTitle, randomTag1, randomTag2);
+
   displayCurrentCover(currentCover);
 }
 
@@ -88,6 +89,20 @@ function switchToForm() {
   homeView.classList.toggle("hidden", true);
   savedCoversView.classList.toggle("hidden", true);
   formView.classList.toggle("hidden", false);
+}
+
+// ================ BOOK CREATE FORM ==================
+
+function createNewBook(event){
+  event.preventDefault();
+  currentCover = createCover(coverInput.value, titleInput.value, desc1Input.value, desc2Input.value);
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(desc1Input.value);
+  descriptors.push(desc2Input.value);
+  viewHomePage();
+  displayCurrentCover(currentCover);
+ 
 }
 
 // ================== SAVED COVERS FUNCTIONS ===============
@@ -106,6 +121,7 @@ function viewSavedCovers() {
   homeView.classList.toggle("hidden", true);
   savedCoversView.classList.toggle("hidden", false);
   makeCoverButton.classList.toggle("hidden", false);
+  formView.classList.toggle("hidden", true);
 
   // savedCoversLayout.innerHTML = `<img class="cover-image" src="./assets/prairie.jpg">`;
   // console.log(savedCovers[0].coverImg);
