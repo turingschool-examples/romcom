@@ -12,6 +12,8 @@ const saveCoverButton = document.querySelector(".save-cover-button");
 const homeButton = document.querySelector(".home-button");
 const viewCoversButton = document.querySelector(".view-saved-button");
 
+
+
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
