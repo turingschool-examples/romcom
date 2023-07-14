@@ -37,3 +37,20 @@
 - capture the elements you need (querySelectors)
 - add event listeners to those elements
 - do the thing
+# Pseudocode Iteration-1
+
+## Be sure that the buttons when clicked change the view
+
+- Create eventListeners for each button
+
+  - Make your own cover Button - visible
+
+  * Homepage "hidden"
+  * View saved Cover - hidden
+
+  * View saved cover - visible
+  * Make your own cover - hidden
+
+  - build a function that activates the form view -
+
+  * toggle using the "view saved covers" and "view saved covers hidden" elements from the html
