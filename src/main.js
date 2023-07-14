@@ -13,6 +13,11 @@ const homeButton = document.querySelector(".home-button");
 const viewCoversButton = document.querySelector(".view-saved-button");
 const createNewBookButton = document.querySelector(".create-new-book-button");
 
+var coverInput = document.getElementById("cover");
+var titleInput = document.querySelector("#title");
+var desc1Input = document.querySelector(".user-desc1");
+var desc2Input = document.querySelector(".user-desc2");
+
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
 var coverTagline = document.querySelector(".tagline");
@@ -43,7 +48,9 @@ viewCoversButton.addEventListener("click", viewSavedCovers);
 
 homeButton.addEventListener("click", viewHomePage);
 
-createNewBookButton.addEventListener("click", viewHomePage);
+createNewBookButton.addEventListener("click", createNewBook);
+
+saveCoverButton.addEventListener("click", saveCover);
 
 // ========== Create your event handlers and other functions here 👇 ==========
 
@@ -69,12 +76,8 @@ function randomizeCover() {
   var randomTag1 = descriptors[getRandomIndex(descriptors)];
   var randomTag2 = descriptors[getRandomIndex(descriptors)];
 
-  currentCover = setCurrentCover(
-    randomCover,
-    randomTitle,
-    randomTag1,
-    randomTag2
-  );
+  currentCover = createCover(randomCover, randomTitle, randomTag1, randomTag2);
+
   displayCurrentCover(currentCover);
 }
 
@@ -88,6 +91,24 @@ function switchToForm() {
   formView.classList.toggle("hidden", false);
 }
 
+// ================ BOOK CREATE FORM ==================
+
+function createNewBook(event) {
+  event.preventDefault();
+  currentCover = createCover(
+    coverInput.value,
+    titleInput.value,
+    desc1Input.value,
+    desc2Input.value
+  );
+  covers.push(coverInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(desc1Input.value);
+  descriptors.push(desc2Input.value);
+  viewHomePage();
+  displayCurrentCover(currentCover);
+}
+
 // ================== SAVED COVERS FUNCTIONS ===============
 function viewSavedCovers() {
   // view saved covers page - querySel (page, button), eventList
@@ -96,7 +117,6 @@ function viewSavedCovers() {
   // ***looks like we need to create all the covers and add them to the saved covers array***
   // Step 1. Create array with all info from data.js
   // Step 2. Iterate over covers array - pull out the info you need to build the HTML elements
-
   homeButton.classList.toggle("hidden", false);
   randomCoverButton.classList.toggle("hidden", true);
   saveCoverButton.classList.toggle("hidden", true);
@@ -104,7 +124,13 @@ function viewSavedCovers() {
   homeView.classList.toggle("hidden", true);
   savedCoversView.classList.toggle("hidden", false);
   makeCoverButton.classList.toggle("hidden", false);
+  formView.classList.toggle("hidden", true);
 
+  var savedCoversHTML = buildSavedCoversString();
+  savedCoversLayout.innerHTML = savedCoversHTML;
+}
+
+function buildSavedCoversString() {
   // savedCoversLayout.innerHTML = `<img class="cover-image" src="./assets/prairie.jpg">`;
   // console.log(savedCovers[0].coverImg);
   var htmlSavedCoversString = "";
@@ -116,17 +142,16 @@ function viewSavedCovers() {
     <img class="overlay" src="./assets/overlay.png"> \
     </section>`;
     // `<div>${i}</div>`;
+    // TEST DISPLAY THE SAVED COVER IMAGE WITH THE GIVEN EXAMPLE
+    // savedCoversLayout.innerHTML = `<section class="main-cover"> \
+    // <img class="cover-image" src=${savedCovers[0].coverImg}> \
+    // <h2 class="cover-title">${savedCovers[0].title}</h2> \
+    // <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3> \
+    // <img class="overlay" src="./assets/overlay.png"> \
+    // </section>`;
   }
-
-  savedCoversLayout.innerHTML = htmlSavedCoversString;
-
-  // TEST DISPLAY THE SAVED COVER IMAGE WITH THE GIVEN EXAMPLE
-  // savedCoversLayout.innerHTML = `<section class="main-cover"> \
-  // <img class="cover-image" src=${savedCovers[0].coverImg}> \
-  // <h2 class="cover-title">${savedCovers[0].title}</h2> \
-  // <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[0].tagline1}</span> and <span class="tagline-2">${savedCovers[0].tagline2}</span></h3> \
-  // <img class="overlay" src="./assets/overlay.png"> \
-  // </section>`;
+  console.log(htmlSavedCoversString);
+  return htmlSavedCoversString;
 }
 
 // function createSavedCovers() {
@@ -140,36 +165,37 @@ function viewSavedCovers() {
 //       )
 //     );
 //   }
-function createSavedCovers() {
-  for (let i = 0; i < covers.length; i++) {
-    savedCovers.push(
-      createCover(
-        covers[i],
-        titles[i],
-        descriptors[getRandomIndex(descriptors)],
-        descriptors[getRandomIndex(descriptors)]
-      )
-    );
+
+function checkCover() {
+  var coverCheck = savedCovers.includes(currentCover);
+  return coverCheck;
+}
+
+function saveCover() {
+  var saveCoverCheck = checkCover();
+  if (saveCoverCheck === false) {
+    savedCovers.push(currentCover);
+  } else {
+    window.alert("That cover already exists");
   }
-  return savedCovers;
 }
 
 // ================ HOME VIEW ==================
-function setCurrentCover(imageSrc, title, disc1, disc2) {
-  currentCover = {
-    src: imageSrc,
-    title: title,
-    descriptor1: disc1,
-    descriptor2: disc2,
-  };
-  return currentCover;
-}
+// function setCurrentCover(cover) {
+//   currentCover = {
+//     src: imageSrc,
+//     title: title,
+//     descriptor1: disc1,
+//     descriptor2: disc2,
+//   };
+//   return currentCover;
+// }
 
 function displayCurrentCover(currentCover) {
-  coverImage.src = currentCover.src;
+  coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
-  tagline1.innerText = currentCover.descriptor1;
-  tagline2.innerText = currentCover.descriptor2;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
 }
 
 function viewHomePage() {
@@ -181,11 +207,6 @@ function viewHomePage() {
   homeView.classList.toggle("hidden", false);
   savedCoversView.classList.toggle("hidden", true);
   formView.classList.toggle("hidden", true);
-}
-
-function hiddenCheck(element) {
-  var hiddenStatus = element.classList.contains("hidden");
-  return hiddenStatus;
 }
 
 // We've provided two functions to get you started
