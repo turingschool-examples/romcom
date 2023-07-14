@@ -50,19 +50,19 @@
 
 <!-- - Form view visible - Home button visible -->
 
-## Saved covers buttton
+## Saved covers button
 
 <!-- - View Saved Covers button - show saved cover section & home page hidden
 
 - When saved covers is visible - home button visible -->
 
-  ## For both the Make New Cover Form section & Saved Covers Section
+  <!-- ## For both the Make New Cover Form section & Saved Covers Section
 
   - Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
   - When a user clicks the "Home" button, we should only see the Home section
   - When a user clicks the "Home" button, the home button should be hidden
   - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
-
+ -->
 
 
 
