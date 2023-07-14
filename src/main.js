@@ -7,6 +7,14 @@ var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2');
 var image = document.querySelector('.price-tag');
 var imageOverLay = document.querySelector('.overlay');
+var showRandomCoverButton = document.querySelector('.random-cover-button');
+var makeOwnCoverButton = document.querySelector('.make-new-button');
+var homePage = document.querySelector('.home-view');
+var form = document.querySelector('.form-view');
+var homeButton = document.querySelector('home-view');
+var section = document.querySelector('section')
+var saveCoverButton = document.querySelector('.save-cover-button')
+var homeButton = document.querySelector('.home-button')
 // queries over all dom elements(?) we need to change
 
 // We've provided a few variables below
@@ -20,10 +28,25 @@ var currentCover;
 window.addEventListener('load', function(){
   makeRandomCover();
   renderRandomCover();
-})
+});
 
+showRandomCoverButton.addEventListener('click', function() {
+ makeRandomCover();
+ renderRandomCover();
+});
+
+makeOwnCoverButton.addEventListener('click', makeYourOwnCover)
+  
 
 // Create your event handlers and other functions here 👇
+
+function makeYourOwnCover () {
+  homePage.classList.add('hidden')
+  saveCoverButton.classList.add('hidden')
+  showRandomCoverButton.classList.add('hidden')
+  form.classList.remove('hidden')
+  homeButton.classList.remove('hidden')
+}
 
 function makeRandomCover() { // Updating the Data Model (currentCover)
   currentCover =  createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
