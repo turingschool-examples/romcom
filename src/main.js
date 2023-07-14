@@ -5,13 +5,12 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var makeNewCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var makeMyCoverButton = document.querySelector('.create-new-book-button');
 //views:
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
-
-
 
 // We've provided a few variables below
 var savedCovers = [
@@ -29,9 +28,8 @@ window.addEventListener('load', displayRandomCover);
 randomCoverButton.addEventListener('click', displayRandomCover);
 viewSavedCoversButton.addEventListener('click', toggleViewSaveCoverBtn);
 makeNewCoverButton.addEventListener('click', toggleViewMakeCoverBtn);
-homeButton.addEventListener('click', showHomeViewBtn)
-
-
+homeButton.addEventListener('click', showHomeViewBtn);
+makeMyCoverButton.addEventListener('click', makeMyBookBtn);
 
 // Create your event handlers and other functions here 👇
 
@@ -70,12 +68,29 @@ function toggleViewSaveCoverBtn() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  switchView.classList.add('hidden')
+  switchView.classList.add('hidden');
 }
-//on the view saved cover button the form/view needs to be hidden 
 
+function userNewCover() {
+  var userCoverImage = document.querySelector('#cover.user-cover');
+  var userTitle = document.querySelector('#title.user-title');
+  var userDescipt1 = document.querySelector('#descriptor1.user-desc1');
+  var userDescript2 = document.querySelector('#descriptor2.user-desc2');
 
+  userCoverImage.innerText = input.value;
+  userTitle.innerText = input.value;
+  userDescipt1.innerText = input.value;
+  userDescript2.innerText = input.value;
+  return userCoverImage + userTitle;
+}
 
+function makeMyBookBtn() {
+  var userInputAll = userNewCover();
+  return userInputAll;
+}
+
+var userInputTest = console.log(makeMyBookBtn());
+//on the view saved cover button the form/view needs to be hidden
 
 function toggleViewMakeCoverBtn() {
   var switchView = document.querySelector('.form-view');
@@ -88,8 +103,7 @@ function toggleViewMakeCoverBtn() {
   homeButton.classList.toggle('hidden');
 }
 
-
-function showHomeViewBtn () {
+function showHomeViewBtn() {
   var switchView = document.querySelector('.form-view');
   var hideHome = document.querySelector('.home-view');
   var viewSavedCovers = document.querySelector('.saved-view');
@@ -103,8 +117,7 @@ function showHomeViewBtn () {
   viewSavedCovers.classList.add('hidden');
 }
 
-//on the view saved cover button the form/view needs to be hidden 
-
+//on the view saved cover button the form/view needs to be hidden
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -124,10 +137,8 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 //pseudocode - thought for later iteration:
 //maybe not a push to savedCover array yet - this may come with a later iteration
 
-
-////note the rubric states to not have redundant code so maybe we take Nats suggestion and create a way to condense all our hidden classes 
+////note the rubric states to not have redundant code so maybe we take Nats suggestion and create a way to condense all our hidden classes
 
 ///BUG when in make your own cover and clicking the view saved covers section still only shows the form and not the saved covers page and vice versa
-
 
 //
