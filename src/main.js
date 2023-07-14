@@ -8,6 +8,11 @@ var homeButton = document.querySelector('.home-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var controls = document.querySelector('.controls');
+var viewHomeView = document.querySelector('.view-home-view');
+var mainCover = document.querySelector('.main-cover');
+var viewSavedView = document.querySelector('.view saved-view');
+var viewFormView = document.querySelector('.view form-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,8 +22,9 @@ var savedCovers = [
 var currentCover = createCover()
 
 // Add your event listeners here 👇
-randomCoverButton.addEventListener("click", showRandomCover);
+randomCoverButton.addEventListener('click', showRandomCover);
 window.onload = showRandomCover();
+makeNewButton.addEventListener('click', displayForm);
 // el.addEventListener("click", modifyText, false);
 // Create your event handlers and other functions here 👇
 
@@ -29,6 +35,13 @@ function showRandomCover() {
   bookCaption2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = createCover(bookCover.src, bookTitle.innerText, bookCaption1.innerText, bookCaption2.innerText);
 }
+
+function displayForm() {
+  viewHomeView.hidden = true
+  viewFormView.classList.remove('hidden');
+}
+
+//make querySelector to hide
 //each button will have a function
 
 // for our eventListener, is the 2nd parameter just the name of the function to be invoked when the button is clicked?
