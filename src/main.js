@@ -5,9 +5,9 @@ var coverTitle = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
 var saveCoverButton = document.querySelector('.save-cover-button');
-var makeNewCoverButton = document.querySelector('.make-new-button')
-
-
+var makeNewCoverButton = document.querySelector('.make-new-button');
+var homeButton = document.querySelector('.home-button');
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -23,7 +23,8 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover);
 randomCoverButton.addEventListener('click', displayRandomCover);
-makeNewCoverButton.addEventListener('click', toggleView)
+makeNewCoverButton.addEventListener('click', toggleViewMakeCoverBtn);
+viewSavedCoversButton.addEventListener('click', toggleViewSaveCoverBtn);
 
 // Create your event handlers and other functions here 👇
 
@@ -50,22 +51,26 @@ function getRandomCover() {
 }
 //may rename function
 
-function toggleView() {
-  var switchView = document.querySelector('.form-view')
-  var hideHome = document.querySelector('.home-view')
-  hideHome.classList.toggle('hidden')
-  switchView.classList.toggle('hidden')
+function toggleViewMakeCoverBtn() {
+  var switchView = document.querySelector('.form-view');
+  var hideHome = document.querySelector('.home-view');
+
+  hideHome.classList.toggle('hidden');
+  switchView.classList.toggle('hidden');
+  randomCoverButton.classList.toggle('hidden');
+  saveCoverButton.classList.toggle('hidden');
+  homeButton.classList.toggle('hidden');
 }
 
+function toggleViewSaveCoverBtn() {
+  //show saved cover section hidden
+  //home page hidden
+  var hideHome = document.querySelector('.home-view');
+  var viewSavedCovers = document.querySelector('.saved-view');
 
-
-
-
-
-
-
-
-
+  hideHome.classList.toggle('hidden');
+  viewSavedCovers.classList.toggle('hidden');
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -84,4 +89,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 
 //pseudocode - thought for later iteration:
 //maybe not a push to savedCover array yet - this may come with a later iteration
-

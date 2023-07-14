@@ -37,20 +37,28 @@
 - capture the elements you need (querySelectors)
 - add event listeners to those elements
 - do the thing
+
 # Pseudocode Iteration-1
 
-## Be sure that the buttons when clicked change the view
+## Make your Own Cover Button
 
-- Create eventListeners for each button
+<!-- - Create eventListeners for button -->
 
-  - Make your own cover Button - visible
+<!-- - Form view - visible -->
 
-  * Homepage "hidden"
-  * View saved Cover - hidden
+<!-- - Show New Random Cover & Save Cover buttons - hidden -->
 
-  * View saved cover - visible
-  * Make your own cover - hidden
+<!-- - Form view visible - Home button visible -->
 
-  - build a function that activates the form view -
+## Saved covers buttton
 
-  * toggle using the "view saved covers" and "view saved covers hidden" elements from the html
+- View Saved Covers button - show saved cover section & home page hidden
+
+- When saved covers is visible - home button visible
+
+  ## For both the Make New Cover Form section & Saved Covers Section
+
+  - Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+  - When a user clicks the "Home" button, we should only see the Home section
+  - When a user clicks the "Home" button, the home button should be hidden
+  - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
