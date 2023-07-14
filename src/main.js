@@ -1,9 +1,13 @@
-// Create variables targetting the relevant DOM elements here 👇
+// Create variables targeting the relevant DOM elements here 👇
 var randomCoverButton = document.querySelector('.random-cover-button');
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('#descriptor1');
 var descriptor2 = document.querySelector('#descriptor2');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var makeNewCoverButton = document.querySelector('.make-new-button')
+
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -19,6 +23,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover);
 randomCoverButton.addEventListener('click', displayRandomCover);
+makeNewCoverButton.addEventListener('click', toggleView)
 
 // Create your event handlers and other functions here 👇
 
@@ -30,8 +35,6 @@ function displayRandomCover() {
   descriptor2.innerText = currentCover.tagline2;
 }
 function getRandomCover() {
-  //each of these returns a number (from respective array)
-  //we need an element from each array that we then add to displayRandomCover - which becomes our "currentCover"
   var coverImageIndex = getRandomIndex(covers);
   var coverTitlesIndex = getRandomIndex(titles);
   var coverDesciptor1Index = getRandomIndex(descriptors);
@@ -45,8 +48,25 @@ function getRandomCover() {
   );
   return randomCover;
 }
+//may rename function
 
-// We've provided two functions to get you started
+function toggleView() {
+  var switchView = document.querySelector('.form-view')
+  var hideHome = document.querySelector('.home-view')
+  hideHome.classList.toggle('hidden')
+  switchView.classList.toggle('hidden')
+}
+
+
+
+
+
+
+
+
+
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -64,3 +84,4 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 
 //pseudocode - thought for later iteration:
 //maybe not a push to savedCover array yet - this may come with a later iteration
+
