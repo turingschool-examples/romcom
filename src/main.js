@@ -1,9 +1,13 @@
 // Create variables targetting the relevant DOM elements here 👇
-var newCoverButton = document.querySelector('.random-cover-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
 var bookCover = document.querySelector('.cover-image');
 var bookTitle = document.querySelector('.cover-title');
 var bookCaption1 = document.querySelector('.tagline-1');
 var bookCaption2 = document.querySelector('.tagline-2');
+var homeButton = document.querySelector('.home-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+var viewSavedButton = document.querySelector('.view-saved-button');
+var makeNewButton = document.querySelector('.make-new-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -13,7 +17,7 @@ var savedCovers = [
 var currentCover = createCover()
 
 // Add your event listeners here 👇
-newCoverButton.addEventListener("click", showRandomCover);
+randomCoverButton.addEventListener("click", showRandomCover);
 window.onload = showRandomCover();
 // el.addEventListener("click", modifyText, false);
 // Create your event handlers and other functions here 👇

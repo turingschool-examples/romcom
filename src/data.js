@@ -7,7 +7,7 @@ var covers = [
   './assets/glorious.jpg',
   './assets/golden.jpg',
   './assets/maskedmeeting.jpg',
-  './assets/masquerade.jpg',
+  './assets/masqueradgit checkout maine.jpg',
   './assets/moonlitmeadow.jpg',
   './assets/office.png',
   './assets/picnic.jpg',
