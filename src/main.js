@@ -9,10 +9,11 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var controls = document.querySelector('.controls');
-var viewHomeView = document.querySelector('.view-home-view');
+var viewHomeView = document.querySelector('.home-view');
 var mainCover = document.querySelector('.main-cover');
-var viewSavedView = document.querySelector('.view saved-view');
-var viewFormView = document.querySelector('.view form-view');
+var viewSavedView = document.querySelector('.saved-view');
+var viewFormView = document.querySelector('.form-view');
+// var createNewBookButton = document.querySelector('.create-new-book-button');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -25,6 +26,8 @@ var currentCover = createCover()
 randomCoverButton.addEventListener('click', showRandomCover);
 window.onload = showRandomCover();
 makeNewButton.addEventListener('click', displayForm);
+viewSavedButton.addEventListener('click', displaySavedCovers);
+
 // el.addEventListener("click", modifyText, false);
 // Create your event handlers and other functions here 👇
 
@@ -37,8 +40,15 @@ function showRandomCover() {
 }
 
 function displayForm() {
-  viewHomeView.hidden = true
+  // console.log('here');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  viewHomeView.classList.add('hidden');
   viewFormView.classList.remove('hidden');
+}
+
+function displaySavedCovers() {
+  viewSavedView.classList.remove('hidden');
 }
 
 //make querySelector to hide
