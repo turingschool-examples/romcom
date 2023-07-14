@@ -64,9 +64,17 @@
   - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
  -->
 
+# Pseudocode Iteration-2
 
+## Make the form active to user input
 
+- on each text box we need an event listener that recives input
 
+* we'll need to "push" each entry to their respective array
 
+- save user input
 
-
+* Make My Book Button is the button that will save user input
+* Change back to the main home view
+  - hide the form view again
+* Use newly created cover object
