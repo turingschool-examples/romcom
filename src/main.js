@@ -27,7 +27,7 @@ randomCoverButton.addEventListener('click', showRandomCover);
 window.onload = showRandomCover();
 makeNewButton.addEventListener('click', displayForm);
 viewSavedButton.addEventListener('click', displaySavedCovers);
-
+homeButton.addEventListener('click', goToHome);
 // el.addEventListener("click", modifyText, false);
 // Create your event handlers and other functions here 👇
 
@@ -38,7 +38,6 @@ function showRandomCover() {
   bookCaption2.innerText = descriptors[getRandomIndex(descriptors)];
   currentCover = createCover(bookCover.src, bookTitle.innerText, bookCaption1.innerText, bookCaption2.innerText);
 }
-
 function displayForm() {
   // console.log('here');
   randomCoverButton.classList.add('hidden');
@@ -46,11 +45,22 @@ function displayForm() {
   viewHomeView.classList.add('hidden');
   viewFormView.classList.remove('hidden');
 }
-
 function displaySavedCovers() {
   viewSavedView.classList.remove('hidden');
+  viewFormView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  viewHomeView.classList.add('hidden');
+  // viewFormView.classList.remove('hidden');
 }
-
+function goToHome() {
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  viewHomeView.classList.remove('hidden');
+  viewFormView.classList.add('hidden');
+  viewSavedView.classList.add('hidden');
+  homeButton.classList.add('hidden');
+}
 //make querySelector to hide
 //each button will have a function
 
