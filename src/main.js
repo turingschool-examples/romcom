@@ -13,9 +13,10 @@ var homePage = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
-var savedCoversButton = document.querySelector('.view-saved-button');
-var savedCoversPage = document.querySelector('saved-covers-section');
-
+var viewSavedCoversButton = document.querySelector('.view-saved-button');
+var savedCoversPage = document.querySelector('.saved-covers-section');
+var savedBookPage = document.querySelector('.saved-view')
+var savedCoversSection = document.querySelector('.saved-covers');
 var form = document.querySelector('form');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
 var coverInput = document.querySelector('#cover');
@@ -45,7 +46,7 @@ showRandomCoverButton.addEventListener('click', function() {
 
 makeOwnCoverButton.addEventListener('click', makeYourOwnCover)
 
-savedCoversButton.addEventListener('click', viewSavedCovers)
+viewSavedCoversButton.addEventListener('click', viewSavedCovers)
 
 homeButton.addEventListener('click', viewHomePage)
 
@@ -60,30 +61,34 @@ form.addEventListener('submit', function(event) {
 //on google copy the image address not the link address
 // Create your event handlers and other functions here 👇
 
-function preventDuplicateObjects() {
-  if (!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover)
-  }
-}
+
+// function preventDuplicateObjects() {
+   
+//     savedCovers.push(currentCover);
+//   }
+
 
 function showCoverCreatedInForm() {
-  coverImage.src = currentCover.coverImg;
+  coverImage.src = currentCover.coverImage;
   coverTitle.innerText = currentCover.title;
   tagLine1.innerText = currentCover.theTagLine1;
   tagLine2.innerText = currentCover.theTagLine2;
 }
 
 
-function backToHomePage() {
+function backToHomePage() { 
   formView.classList.add('hidden');
   homePage.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  showRandomCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
 }
 
 function updateSavedCoversArray() {
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
   descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
-  //savedCovers.push(currentCover)
+  savedCovers.push(currentCover)
 }
 
 function createBook() {
@@ -103,29 +108,31 @@ function makeYourOwnCover () {
 }
 
 function viewSavedCovers() {
-  homePage.classList.add('hidden') 
-  showRandomCoverButton.classList.add('hidden') 
-  saveCoverButton.classList.add('hidden')
-  formView.classList.add('hidden')
+  savedBookPage.classList.remove('hidden');
+  homePage.classList.add('hidden')
   homeButton.classList.remove('hidden')
+  saveCoverButton.classList.add('hidden') 
+  showRandomCoverButton.classList.add('hidden')
 }
 
 function viewHomePage() {
-  homePage.classList.remove('hidden')
+  homePage.classList.add('hidden')
   showRandomCoverButton.classList.remove('hidden') 
   saveCoverButton.classList.remove('hidden')
-  homeButton.classList.add('hidden')
+
 }
 
-function makeRandomCover() { // Updating the Data Model (currentCover)
-  currentCover =  createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
-}
 function renderRandomCover() {
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
   tagLine1.innerText = currentCover.theTagLine1;
   tagLine2.innerText = currentCover.theTagLine2;
 }
+
+function makeRandomCover() { // Updating the Data Model (currentCover)
+  currentCover =  createCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+}
+
 // We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
