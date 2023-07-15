@@ -78,19 +78,31 @@ function userNewCover() {
   var descript1 = document.querySelector('.user-desc1');
   var descript2 = document.querySelector('.user-desc2');
 
+  //I don't think we even need the innerText here? we're pushing the user input to an array - we're not really changing the innerText value of any element
+  //we're actually adding data
   // Variables to capture the user input
   var userInputCover = coverImage.value;
   var userInputTitle = title.value;
-  var userInputDescipt1 = descript1.value;
+  var userInputDescript1 = descript1.value;
   var userInputDescript2 = descript2.value;
 
   // Now we need to use the "captured" user input value and "save" it.
-  //In our case this will be "pushing" each corresponding value to its respective array (covers, titles, descriptors)
-  //so something like covers.push(userInputCover)
-  //I don't think we even need the innerText here? we're pushing the user input to an array - we're not really changing the innerText value of any element
-  //we're actually adding data
+  // Use starter function creatCover - with userInputs
+  var userCoverSelections = createCover(
+    userInputCover,
+    userInputTitle,
+    userInputDescript1,
+    userInputDescript2
+  );
 
+  //Now we "push" to each corresponding value to its respective array (covers, titles, descriptors)
   //build the .push code fo each of the 4 elements
+  covers.push(userInputCover);
+
+  //Change back to home view
+
+  //Display userCoverSelections on home page
+  // innerText.value hooked to the DOM elements - does this functionality already exist in randomCover...?
 }
 
 function makeMyBookBtn() {
