@@ -71,44 +71,72 @@ function toggleViewSaveCoverBtn() {
   switchView.classList.add('hidden');
 }
 
-function userNewCover() {
-  // Variables that connect to the DOM elements we want to target
+//function for the form:
+function captureUserInput(){
+    // Variables that connect to the DOM elements we want to target
   var coverImage = document.querySelector('.user-cover');
   var title = document.querySelector('.user-title');
   var descript1 = document.querySelector('.user-desc1');
   var descript2 = document.querySelector('.user-desc2');
 
-  //I don't think we even need the innerText here? we're pushing the user input to an array - we're not really changing the innerText value of any element
-  //we're actually adding data
-  // Variables to capture the user input
+  // Variables to capture the user input:
   var userInputCover = coverImage.value;
   var userInputTitle = title.value;
   var userInputDescript1 = descript1.value;
   var userInputDescript2 = descript2.value;
+  
+
+  //Now we "push" to each corresponding value to its respective array (covers, titles, descriptors):
+  covers.push(userInputCover);
+  titles.push(userInputTitle);
+  descriptors.push(userInputDescript1);
+  descriptors.push(userInputDescript2);
+}
+
+
+function userNewBook() {
+captureUserInput();
 
   // Now we need to use the "captured" user input value and "save" it.
-  // Use starter function creatCover - with userInputs
+  // Use starter function creatCover - with userInputs:
   var userCoverSelections = createCover(
     userInputCover,
     userInputTitle,
     userInputDescript1,
     userInputDescript2
   );
-
-  //Now we "push" to each corresponding value to its respective array (covers, titles, descriptors)
-  //build the .push code fo each of the 4 elements
-  covers.push(userInputCover);
-
-  //Change back to home view
-
-  //Display userCoverSelections on home page
-  // innerText.value hooked to the DOM elements - does this functionality already exist in randomCover...?
+  
+  return userCoverSelections
 }
 
-function makeMyBookBtn() {
-  var userInputAll = userNewCover();
-  return userInputAll;
+function makeMyBookBtn(event) {
+  event.preventDefault();
+  var userCoverSelections = captureUserInput();
+  var newCover = createCover(
+    userCoverSelections.cover,
+    userCoverSelections.title,
+    userCoverSelections.descriptor1,
+    userCoverSelections.descriptor2
+  );
+  
+  currentCover = newCover;
+  displayCurrentCover();
+
+
+
+function displayCurrentCover() {
+  coverImage.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  descriptor1.innerText = currentCover.tagline1;
+  descriptor2.innerText = currentCover.tagline2;
 }
+
+  //Change back to home view:
+  homeButton.classList.remove('hidden');
+  switchView.classList.add('hidden');
+}
+
+
 
 //on the view saved cover button the form/view needs to be hidden
 
@@ -153,12 +181,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
-
-//pseudocode - thought for later iteration:
-//maybe not a push to savedCover array yet - this may come with a later iteration
-
-////note the rubric states to not have redundant code so maybe we take Nats suggestion and create a way to condense all our hidden classes
-
-///BUG when in make your own cover and clicking the view saved covers section still only shows the form and not the saved covers page and vice versa
-
-//
