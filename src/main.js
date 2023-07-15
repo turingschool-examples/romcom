@@ -24,6 +24,8 @@ var coverTagline = document.querySelector(".tagline");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 
+const coverObject = document.querySelectorAll(".main-cover");
+
 // We've provided a few variables below
 var savedCovers = [
   createCover(
@@ -51,6 +53,8 @@ homeButton.addEventListener("click", viewHomePage);
 createNewBookButton.addEventListener("click", createNewBook);
 
 saveCoverButton.addEventListener("click", saveCover);
+
+coverObject.addEventListener("dblclick", deleteSave);
 
 // ========== Create your event handlers and other functions here 👇 ==========
 
@@ -207,6 +211,13 @@ function viewHomePage() {
   homeView.classList.toggle("hidden", false);
   savedCoversView.classList.toggle("hidden", true);
   formView.classList.toggle("hidden", true);
+}
+
+
+function deleteSave(event){
+  event.currentTarget;
+  var apples = savedCovers.indexOf(event.CurrentTarget);
+console.log(apples);
 }
 
 // We've provided two functions to get you started
