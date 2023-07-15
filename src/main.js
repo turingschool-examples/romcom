@@ -11,18 +11,18 @@ var showRandomCoverButton = document.querySelector('.random-cover-button');
 var makeOwnCoverButton = document.querySelector('.make-new-button');
 var homePage = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
-var section = document.querySelector('section');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var savedCoversButton = document.querySelector('.view-saved-button');
 var savedCoversPage = document.querySelector('saved-covers-section');
 
-var form = document.querySelector('form')
+var form = document.querySelector('form');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
 var coverInput = document.querySelector('#cover');
-var titleInput = document.querySelector('#title')
+var titleInput = document.querySelector('#title');
 var descriptor1Input = document.querySelector('#descriptor1');
 var descriptor2Input = document.querySelector('#descriptor2');
+var mainCover = document.querySelector('.main-cover');
 // queries over all dom elements(?) we need to change
 
 // We've provided a few variables below
@@ -53,13 +53,36 @@ form.addEventListener('submit', function(event) {
   event.preventDefault()
   createBook()
   updateSavedCoversArray()
-
+  backToHomePage()
+  showCoverCreatedInForm()
 })
 
 
 // Create your event handlers and other functions here 👇
 
+function showCoverCreatedInForm() {
+  coverImage.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  tagLine1.innerText = currentCover.theTagLine1;
+  tagLine2.innerText = currentCover.theTagLine2;
+}
 
+// function showCoverCreatedInForm() {
+//   mainCover.innerHTML = '';
+//   mainCover.innerHTML += `
+//   <section class="main-cover">
+//         <img class="cover-image" src="">
+//         <h2 class="cover-title">Windswept Hearts</h2>
+//         <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+//         <img class="price-tag" src="./assets/price.png">
+//         <img class="overlay" src="./assets/overlay.png">
+//       </section>`
+// }
+
+function backToHomePage() {
+  formView.classList.add('hidden');
+  homePage.classList.remove('hidden');
+}
 
 function updateSavedCoversArray() {
   covers.push(currentCover.coverImg);
@@ -67,7 +90,6 @@ function updateSavedCoversArray() {
   descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
   savedCovers.push(currentCover)
 }
-
 
 function createBook() {
   currentCover.id = Date.now()
