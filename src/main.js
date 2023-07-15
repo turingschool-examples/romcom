@@ -76,12 +76,13 @@ function userNewCover() {
   var userTitle = document.querySelector('#title.user-title');
   var userDescipt1 = document.querySelector('#descriptor1.user-desc1');
   var userDescript2 = document.querySelector('#descriptor2.user-desc2');
+  var fullUserInput = userCoverImage + userTitle + userDescipt1 + userDescript2;
 
   userCoverImage.innerText = input.value;
   userTitle.innerText = input.value;
   userDescipt1.innerText = input.value;
   userDescript2.innerText = input.value;
-  return userCoverImage + userTitle;
+  return fullUserInput;
 }
 
 function makeMyBookBtn() {
