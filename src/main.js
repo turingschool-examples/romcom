@@ -9,8 +9,8 @@ var makeMyCoverButton = document.querySelector('.create-new-book-button');
 //views:
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var descriptor1 = document.querySelector('#descriptor1');
-var descriptor2 = document.querySelector('#descriptor2');
+var descriptor1 = document.querySelector('.tagline-1');
+var descriptor2 = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -44,13 +44,13 @@ function displayRandomCover() {
 function getRandomCover() {
   var coverImageIndex = getRandomIndex(covers);
   var coverTitlesIndex = getRandomIndex(titles);
-  var coverDesciptor1Index = getRandomIndex(descriptors);
+  var coverDescriptor1Index = getRandomIndex(descriptors);
   var coverDescriptors2Index = getRandomIndex(descriptors);
 
   var randomCover = createCover(
     covers[coverImageIndex],
     titles[coverTitlesIndex],
-    descriptors[coverDesciptor1Index],
+    descriptors[coverDescriptor1Index],
     descriptors[coverDescriptors2Index]
   );
   return randomCover;
@@ -72,17 +72,25 @@ function toggleViewSaveCoverBtn() {
 }
 
 function userNewCover() {
-  var userCoverImage = document.querySelector('#cover.user-cover');
-  var userTitle = document.querySelector('#title.user-title');
-  var userDescipt1 = document.querySelector('#descriptor1.user-desc1');
-  var userDescript2 = document.querySelector('#descriptor2.user-desc2');
-  var fullUserInput = userCoverImage + userTitle + userDescipt1 + userDescript2;
+  // Variables that connect to the DOM elements we want to target
+  var coverImage = document.querySelector('.user-cover');
+  var title = document.querySelector('.user-title');
+  var descript1 = document.querySelector('.user-desc1');
+  var descript2 = document.querySelector('.user-desc2');
 
-  userCoverImage.innerText = input.value;
-  userTitle.innerText = input.value;
-  userDescipt1.innerText = input.value;
-  userDescript2.innerText = input.value;
-  return fullUserInput;
+  // Variables to capture the user input
+  var userInputCover = coverImage.value;
+  var userInputTitle = title.value;
+  var userInputDescipt1 = descript1.value;
+  var userInputDescript2 = descript2.value;
+
+  // Now we need to use the "captured" user input value and "save" it.
+  //In our case this will be "pushing" each corresponding value to its respective array (covers, titles, descriptors)
+  //so something like covers.push(userInputCover)
+  //I don't think we even need the innerText here? we're pushing the user input to an array - we're not really changing the innerText value of any element
+  //we're actually adding data
+
+  //build the .push code fo each of the 4 elements
 }
 
 function makeMyBookBtn() {
@@ -90,7 +98,6 @@ function makeMyBookBtn() {
   return userInputAll;
 }
 
-var userInputTest = console.log(makeMyBookBtn());
 //on the view saved cover button the form/view needs to be hidden
 
 function toggleViewMakeCoverBtn() {

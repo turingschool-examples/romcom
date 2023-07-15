@@ -68,13 +68,15 @@
 
 ## Make the form active to user input
 
-- on each text box we need an event listener that recives input
+- each text box will need to recieve and store the user input into a respective variable
 
-* we'll need to "push" each entry to their respective array
+## Make My Book Button
 
-- save user input
-
-* Make My Book Button is the button that will save user input
-* Change back to the main home view
+- Use the input values to create a new, unique cover object(??)
+  - Am I missing something here - is there an additional save that needs to happen or just the push to the arrays
+  - Save to currentCover type question?
+  - currentCover is an existing object in our main.js
+- "push" each user input to their respective array(s)
+- Change back to the main home view
   - hide the form view again
-* Use newly created cover object
+- Use the newly created cover object to display the newly created cover on the main view (home-view?)
