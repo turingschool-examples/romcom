@@ -136,8 +136,6 @@ function displayCurrentCover() {
   switchView.classList.add('hidden');
 }
 
-
-
 //on the view saved cover button the form/view needs to be hidden
 
 function toggleViewMakeCoverBtn() {
