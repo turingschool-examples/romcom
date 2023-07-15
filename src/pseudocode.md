@@ -64,9 +64,19 @@
   - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
  -->
 
+# Pseudocode Iteration-2
 
+## Make the form active to user input
 
+- each text box will need to recieve and store the user input into a respective variable
 
+## Make My Book Button
 
-
-
+- Use the input values to create a new, unique cover object(??)
+  - Am I missing something here - is there an additional save that needs to happen or just the push to the arrays
+  - Save to currentCover type question?
+  - currentCover is an existing object in our main.js
+- "push" each user input to their respective array(s)
+- Change back to the main home view
+  - hide the form view again
+- Use the newly created cover object to display the newly created cover on the main view (home-view?)
