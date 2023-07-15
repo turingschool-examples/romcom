@@ -52,26 +52,30 @@ homeButton.addEventListener('click', viewHomePage)
 form.addEventListener('submit', function(event) {
   event.preventDefault()
   createBook()
+  updateSavedCoversArray()
+
 })
 
 
 // Create your event handlers and other functions here 👇
 
-function createBook() {
-  currentCover.coverImg = coverInput.value;
-  currentCover.title = titleInput.value;
-  currentCover.theTagLine1 = titleInput.value;
-  currentCover.theTagLine2 = descriptor2Input.value;
-}
+
 
 function updateSavedCoversArray() {
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id != currentCover.id) {
-      savedCovers.push(currentCover)
-    }
-  }
+  covers.push(currentCover.coverImg);
+  titles.push(currentCover.title);
+  descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
+  savedCovers.push(currentCover)
 }
 
+
+function createBook() {
+  currentCover.id = Date.now()
+  currentCover.coverImg = coverInput.value;
+  currentCover.title = titleInput.value;
+  currentCover.theTagLine1 = descriptor1Input.value;
+  currentCover.theTagLine2 = descriptor2Input.value;
+}
 
 function makeYourOwnCover () {
   homePage.classList.add('hidden')
