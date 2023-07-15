@@ -212,7 +212,13 @@ function viewHomePage() {
 
 function deleteCover(event) {
   var targetCover = event.target.parentNode;
-  console.log(targetCover);
+  for (i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id.toString() === targetCover.id) {
+      var index = i;
+    }
+  }
+  savedCovers.splice(index, 1);
+  viewSavedCovers();
 }
 
 // We've provided two functions to get you started
