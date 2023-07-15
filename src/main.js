@@ -55,10 +55,16 @@ form.addEventListener('submit', function(event) {
   updateSavedCoversArray()
   backToHomePage()
   showCoverCreatedInForm()
+  preventDuplicateObjects()
 })
-
-
+//on google copy the image address not the link address
 // Create your event handlers and other functions here 👇
+
+function preventDuplicateObjects() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+  }
+}
 
 function showCoverCreatedInForm() {
   coverImage.src = currentCover.coverImg;
@@ -67,17 +73,6 @@ function showCoverCreatedInForm() {
   tagLine2.innerText = currentCover.theTagLine2;
 }
 
-// function showCoverCreatedInForm() {
-//   mainCover.innerHTML = '';
-//   mainCover.innerHTML += `
-//   <section class="main-cover">
-//         <img class="cover-image" src="">
-//         <h2 class="cover-title">Windswept Hearts</h2>
-//         <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-//         <img class="price-tag" src="./assets/price.png">
-//         <img class="overlay" src="./assets/overlay.png">
-//       </section>`
-// }
 
 function backToHomePage() {
   formView.classList.add('hidden');
@@ -88,7 +83,7 @@ function updateSavedCoversArray() {
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
   descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
-  savedCovers.push(currentCover)
+  //savedCovers.push(currentCover)
 }
 
 function createBook() {
