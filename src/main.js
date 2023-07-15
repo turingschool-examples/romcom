@@ -10,12 +10,19 @@ var imageOverLay = document.querySelector('.overlay');
 var showRandomCoverButton = document.querySelector('.random-cover-button');
 var makeOwnCoverButton = document.querySelector('.make-new-button');
 var homePage = document.querySelector('.home-view');
-var form = document.querySelector('.form-view');
-var section = document.querySelector('section');
+var formView = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var savedCoversButton = document.querySelector('.view-saved-button');
 var savedCoversPage = document.querySelector('saved-covers-section');
+
+var form = document.querySelector('form');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
+var coverInput = document.querySelector('#cover');
+var titleInput = document.querySelector('#title');
+var descriptor1Input = document.querySelector('#descriptor1');
+var descriptor2Input = document.querySelector('#descriptor2');
+var mainCover = document.querySelector('.main-cover');
 // queries over all dom elements(?) we need to change
 
 // We've provided a few variables below
@@ -41,15 +48,57 @@ makeOwnCoverButton.addEventListener('click', makeYourOwnCover)
 savedCoversButton.addEventListener('click', viewSavedCovers)
 
 homeButton.addEventListener('click', viewHomePage)
-  
 
+form.addEventListener('submit', function(event) {
+  event.preventDefault()
+  createBook()
+  updateSavedCoversArray()
+  backToHomePage()
+  showCoverCreatedInForm()
+  preventDuplicateObjects()
+})
+//on google copy the image address not the link address
 // Create your event handlers and other functions here 👇
+
+function preventDuplicateObjects() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover)
+  }
+}
+
+function showCoverCreatedInForm() {
+  coverImage.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  tagLine1.innerText = currentCover.theTagLine1;
+  tagLine2.innerText = currentCover.theTagLine2;
+}
+
+
+function backToHomePage() {
+  formView.classList.add('hidden');
+  homePage.classList.remove('hidden');
+}
+
+function updateSavedCoversArray() {
+  covers.push(currentCover.coverImg);
+  titles.push(currentCover.title);
+  descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
+  //savedCovers.push(currentCover)
+}
+
+function createBook() {
+  currentCover.id = Date.now()
+  currentCover.coverImg = coverInput.value;
+  currentCover.title = titleInput.value;
+  currentCover.theTagLine1 = descriptor1Input.value;
+  currentCover.theTagLine2 = descriptor2Input.value;
+}
 
 function makeYourOwnCover () {
   homePage.classList.add('hidden')
   saveCoverButton.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden') 
-  form.classList.remove('hidden')
+  formView.classList.remove('hidden')
   homeButton.classList.remove('hidden')
 }
 
@@ -57,6 +106,7 @@ function viewSavedCovers() {
   homePage.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden') 
   saveCoverButton.classList.add('hidden')
+  formView.classList.add('hidden')
   homeButton.classList.remove('hidden')
 }
 
