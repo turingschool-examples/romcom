@@ -53,8 +53,9 @@ homeButton.addEventListener('click', viewHomePage)
 form.addEventListener('submit', function(event) {
   event.preventDefault()
   createBook()
-  updateSavedCoversArray()
-  backToHomePage()
+  saveFormInputValues()
+  homePageAfterFormSubmission()
+  
   showCoverCreatedInForm()
   preventDuplicateObjects()
 })
@@ -69,14 +70,14 @@ form.addEventListener('submit', function(event) {
 
 
 function showCoverCreatedInForm() {
-  coverImage.src = currentCover.coverImage;
+  coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
   tagLine1.innerText = currentCover.theTagLine1;
   tagLine2.innerText = currentCover.theTagLine2;
 }
 
 
-function backToHomePage() { 
+function homePageAfterFormSubmission() { 
   formView.classList.add('hidden');
   homePage.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
@@ -84,11 +85,11 @@ function backToHomePage() {
   homeButton.classList.add('hidden');
 }
 
-function updateSavedCoversArray() {
+function saveFormInputValues() {
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
   descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
-  savedCovers.push(currentCover)
+  //savedCovers.push(currentCover)
 }
 
 function createBook() {
