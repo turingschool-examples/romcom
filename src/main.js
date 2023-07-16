@@ -154,7 +154,6 @@ function buildSavedCoversString() {
     // <img class="overlay" src="./assets/overlay.png"> \
     // </section>`;
   }
-  console.log(htmlSavedCoversString);
   return htmlSavedCoversString;
 }
 
@@ -213,16 +212,15 @@ function viewHomePage() {
   formView.classList.toggle("hidden", true);
 }
 
-
 function deleteCover(event) {
   var targetCover = event.target.parentNode;
-  console.log(targetCover);
-
-for(var i = 0; i < savedCovers.length; i++){
-  if(targetCover.includes(savedCovers[i].id) === true){
-    savedCovers.splice(i, 1);
+  for (i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id.toString() === targetCover.id) {
+      var index = i;
+    }
   }
-}
+  savedCovers.splice(index, 1);
+  viewSavedCovers();
 }
 
 // We've provided two functions to get you started
