@@ -64,7 +64,7 @@
   - When a user clicks the "Home" button, the "Show New Random Cover" and "Save Cover" buttons should be visible again
  -->
 
-# Pseudocode Iteration-2
+<!-- # Pseudocode Iteration-2
 
 ## Make the form active to user input
 
@@ -79,4 +79,10 @@
 - "push" each user input to their respective array(s)
 - Change back to the main home view
   - hide the form view again
-- Use the newly created cover object to display the newly created cover on the main view (home-view?)
+- Use the newly created cover object to display the newly created cover on the main view (home-view?) -->
+
+# Refactor after Iteration-2
+
+1. making the toggle add/remove to be more dry?
+=> on view saved covers need to see save cover button 
+=> on make your own cover view need to see view saved covers 
