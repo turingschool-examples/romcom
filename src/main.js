@@ -54,7 +54,7 @@ createNewBookButton.addEventListener("click", createNewBook);
 
 saveCoverButton.addEventListener("click", saveCover);
 
-coverObject.addEventListener("dblclick", deleteSave);
+savedCoversLayout.addEventListener("dblclick", deleteCover);
 
 // ========== Create your event handlers and other functions here 👇 ==========
 
@@ -139,7 +139,7 @@ function buildSavedCoversString() {
   // console.log(savedCovers[0].coverImg);
   var htmlSavedCoversString = "";
   for (let i = 0; i < savedCovers.length; i++) {
-    htmlSavedCoversString += `<section class="main-cover"> \
+    htmlSavedCoversString += `<section class="mini-cover" id="${savedCovers[i].id}"> \
     <img class="cover-image" src=${savedCovers[i].coverImg}> \
     <h2 class="cover-title">${savedCovers[i].title}</h2> \
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3> \
@@ -214,10 +214,15 @@ function viewHomePage() {
 }
 
 
-function deleteSave(event){
-  event.currentTarget;
-  var apples = savedCovers.indexOf(event.CurrentTarget);
-console.log(apples);
+function deleteCover(event) {
+  var targetCover = event.target.parentNode;
+  console.log(targetCover);
+
+for(var i = 0; i < savedCovers.length; i++){
+  if(targetCover.includes(savedCovers[i].id) === true){
+    savedCovers.splice(i, 1);
+  }
+}
 }
 
 // We've provided two functions to get you started
@@ -235,3 +240,5 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
+console.log(savedCovers);
+console.log(savedCoversHTML);
