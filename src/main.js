@@ -15,6 +15,7 @@ var tagline2 = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -30,10 +31,11 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', displayRandomCover);
 randomCoverButton.addEventListener('click', displayRandomCover);
-viewSavedCoversButton.addEventListener('click', showSavedCoversView);//
-makeNewCoverButton.addEventListener('click', showFormView);//
-homeButton.addEventListener('click', showHomeView);//
-makeMyCoverButton.addEventListener('click', makeMyBookBtn);//
+viewSavedCoversButton.addEventListener('click', showSavedCoversView); //
+makeNewCoverButton.addEventListener('click', showFormView); //
+homeButton.addEventListener('click', showHomeView); //
+makeMyCoverButton.addEventListener('click', makeMyBookBtn);
+saveCoverButton.addEventListener('click', saveCover); //
 
 // Create your event handlers and other functions here 👇
 
@@ -43,6 +45,9 @@ function displayRandomCover() {
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
+
+  console.log('displayRandomCover:', currentCover);
+  return currentCover;
 }
 
 function getRandomCover() {
@@ -75,7 +80,7 @@ function showSavedCoversView() {
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
+  saveCoverButton.classList.remove('hidden');
   homeButton.classList.remove('hidden');
   viewSavedCoversButton.classList.add('hidden');
 }
@@ -118,14 +123,13 @@ function makeMyBookBtn(event) {
   tagline1.innerText = currentCover.tagline1;
   tagline2.innerText = currentCover.tagline2;
 
-    // Switch back to the main home view
+  // Switch back to the main home view
   showHomeView();
 
   // Display the newly created cover on the DOM
   displayNewCover(newCover);
 
   // update the DOM elements with our user inputs
-
 }
 
 function displayNewCover(cover) {
@@ -137,9 +141,17 @@ function displayNewCover(cover) {
 
 //on the view saved cover button the form/view needs to be hidden
 
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function saveCover() {
+  // Check if currentCover is null or undefined
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+  console.log('saveCover equals:', currentCover);
+  console.log(savedCovers);
 }
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
