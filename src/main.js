@@ -9,8 +9,9 @@ var makeMyCoverButton = document.querySelector('.create-new-book-button');
 //views:
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var descriptor1 = document.querySelector('.tagline-1');
-var descriptor2 = document.querySelector('.tagline-2');
+var tagline1 = document.querySelector('.tagline-1');
+var tagline2 = document.querySelector('.tagline-2');
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -37,21 +38,21 @@ function displayRandomCover() {
   currentCover = getRandomCover();
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
-  descriptor1.innerText = currentCover.tagline1;
-  descriptor2.innerText = currentCover.tagline2;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
 }
 
 function getRandomCover() {
   var coverImageIndex = getRandomIndex(covers);
   var coverTitlesIndex = getRandomIndex(titles);
-  var coverDescriptor1Index = getRandomIndex(descriptors);
-  var coverDescriptors2Index = getRandomIndex(descriptors);
+  var coverTagline1Index = getRandomIndex(descriptors);
+  var coverTagline2Index = getRandomIndex(descriptors);
 
   var randomCover = createCover(
     covers[coverImageIndex],
     titles[coverTitlesIndex],
-    descriptors[coverDescriptor1Index],
-    descriptors[coverDescriptors2Index]
+    descriptors[coverTagline1Index],
+    descriptors[coverTagline2Index]
   );
   return randomCover;
 }
@@ -72,73 +73,85 @@ function toggleViewSaveCoverBtn() {
 }
 
 //function for the form:
-function captureUserInput(){
-    // Variables that connect to the DOM elements we want to target
-  var coverImage = document.querySelector('.user-cover');
-  var title = document.querySelector('.user-title');
-  var descript1 = document.querySelector('.user-desc1');
-  var descript2 = document.querySelector('.user-desc2');
-
-  // Variables to capture the user input:
-  var userInputCover = coverImage.value;
-  var userInputTitle = title.value;
-  var userInputDescript1 = descript1.value;
-  var userInputDescript2 = descript2.value;
-  
-
-  //Now we "push" to each corresponding value to its respective array (covers, titles, descriptors):
-  covers.push(userInputCover);
-  titles.push(userInputTitle);
-  descriptors.push(userInputDescript1);
-  descriptors.push(userInputDescript2);
-}
-
-
-function userNewBook() {
-captureUserInput();
-
-  // Now we need to use the "captured" user input value and "save" it.
-  // Use starter function creatCover - with userInputs:
-  var userCoverSelections = createCover(
-    userInputCover,
-    userInputTitle,
-    userInputDescript1,
-    userInputDescript2
-  );
-  
-  return userCoverSelections
-}
-
-function makeMyBookBtn(event) {
+function makeBook(event) {
   event.preventDefault();
-  var userCoverSelections = captureUserInput();
-  var newCover = createCover(
-    userCoverSelections.cover,
-    userCoverSelections.title,
-    userCoverSelections.descriptor1,
-    userCoverSelections.descriptor2
-  );
-  
-  currentCover = newCover;
-  displayCurrentCover();
+  // Variables that connect to the DOM elements and capture the user input values:
+  var cover = document.querySelector('.user-cover').value;
+  var title = document.querySelector('.user-title').value;
+  var descriptor1 = document.querySelector('.user-desc1').value;
+  var descriptor2 = document.querySelector('.user-desc2').value;
 
+  //Use the newly created object to display the newly created cover
+  var coverImage = document.querySelector('.cover-image');
+  var coverTitle = document.querySelector('.cover-title');
 
+  //Create new cover
+  var currentCover = createCover(cover, title, descriptor1, descriptor2);
 
-function displayCurrentCover() {
+  //Now we "push" to each corresponding value
+
+  covers.push(currentCover.coverImg);
+  titles.push(currentCover.title);
+  descriptors.push(currentCover.descriptors);
+  descriptors.push(currentCover.descriptors);
+
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
-  descriptor1.innerText = currentCover.tagline1;
-  descriptor2.innerText = currentCover.tagline2;
-}
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
 
   //Change back to home view:
-  homeButton.classList.remove('hidden');
-  switchView.classList.add('hidden');
+  // switchView.classList.add('hidden');
+  // homeButton.classList.remove('hidden');
+
+  // update the DOM elements with our user inputs
 }
 
+//////////////////////////////////////////////new functions:
+function makeMyBookBtn(event) {
+  event.preventDefault();
+
+  // Variables that connect to the DOM elements and capture the user input values:
+  var cover = document.querySelector('.user-cover').value;
+  var title = document.querySelector('.user-title').value;
+  var descriptor1 = document.querySelector('.user-desc1').value;
+  var descriptor2 = document.querySelector('.user-desc2').value;
+
+  // Create new cover
+  var newCover = createCover(cover, title, descriptor1, descriptor2);
+
+  // Save the new cover to your data model
+  covers.push(newCover.coverImg);
+  titles.push(newCover.title);
+  descriptors.push(newCover.tagline1);
+  descriptors.push(newCover.tagline2);
+  
+
+  console.log("Cover: ", cover);
+  console.log("Title: ", title);
+  console.log("Descriptor 1: ", descriptor1);
+  console.log("Descriptor 2: ", descriptor2);
+  console.log("Covers Array:", covers);
+  console.log("Titles Array:", titles);
+  console.log("Descriptors Array:", descriptors);
+
+  // Switch back to the main home view
+  showHomeViewBtn();
+
+  // Display the newly created cover on the DOM
+  displayNewCover(newCover);
+}
+
+function displayNewCover(cover) {
+  coverImage.src = cover.coverImg;
+  coverTitle.innerText = cover.title;
+  tagline1.innerText = cover.tagline1;
+  tagline2.innerText = cover.tagline2;
+}
+
+//////////////////////////////////////////////end of new functions
 
 
-//on the view saved cover button the form/view needs to be hidden
 
 function toggleViewMakeCoverBtn() {
   var switchView = document.querySelector('.form-view');
@@ -150,6 +163,7 @@ function toggleViewMakeCoverBtn() {
   saveCoverButton.classList.toggle('hidden');
   homeButton.classList.toggle('hidden');
 }
+
 
 function showHomeViewBtn() {
   var switchView = document.querySelector('.form-view');
@@ -165,7 +179,9 @@ function showHomeViewBtn() {
   viewSavedCovers.classList.add('hidden');
 }
 
+
 //on the view saved cover button the form/view needs to be hidden
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
