@@ -15,7 +15,7 @@ var tagline2 = document.querySelector('.tagline-2');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var formView = document.querySelector('.form-view');
-var savedCoversSection = document.querySelector('.saved-covers-section');
+var savedCoversView = document.querySelector('.saved-covers-section');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -72,10 +72,11 @@ function showFormView() {
   randomCoverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  viewSavedCoversButton.classList.add('hidden');
+  viewSavedCoversButton.classList.remove('hidden');
 }
 
 function showSavedCoversView() {
+  displaySavedCovers();
   homeView.classList.add('hidden');
   savedView.classList.remove('hidden');
   formView.classList.add('hidden');
@@ -152,6 +153,24 @@ function saveCover() {
   }
   console.log('saveCover equals:', currentCover);
   console.log(savedCovers);
+}
+
+function displaySavedCovers() {
+  savedCoversView.innerHTML = '';
+  if (savedCovers.length === 0) {
+    savedCoversView.innerHTML = '<p>No saved covers found.</p>';
+  } else {
+    for (var i = 0; i < savedCovers.length; i++) {
+      var cover = savedCovers[i];
+      savedCoversView.innerHTML += `
+        <div class="mini-cover" style="background-image: url(${cover.coverImg});">
+          <h2 class="cover-title">${cover.title}</h2>
+          <h3 class="tagline">A tale of <span class="tagline-1">${cover.tagline1}</span> and <span class="tagline-2">${cover.tagline2}</span></h3>
+          <img class="cover-image" src="${cover.coverImg}" alt="No image found">
+        </div>
+      `;
+    }
+  }
 }
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
