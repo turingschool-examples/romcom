@@ -12,6 +12,8 @@ var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 
+
+
 // We've provided a few variables below
 var savedCovers = [
   createCover(
@@ -72,7 +74,8 @@ function toggleViewSaveCoverBtn() {
 }
 
 //function for the form:
-function makeBook() {
+function makeBook(event) {
+  event.preventDefault();
   // Variables that connect to the DOM elements and capture the user input values:
   var cover = document.querySelector('.user-cover').value;
   var title = document.querySelector('.user-title').value;
@@ -83,24 +86,24 @@ function makeBook() {
   var coverImage = document.querySelector('.cover-image');
   var coverTitle = document.querySelector('.cover-title');
 
-  console.log('User Input Values:');
-  console.log('Cover:', cover);
-  console.log('Title:', title);
-  console.log('Descriptor 1:', descriptor1);
-  console.log('Descriptor 2:', descriptor2);
+  // console.log('User Input Values:');
+  // console.log('Cover:', cover);
+  // console.log('Title:', title);
+  // console.log('Descriptor 1:', descriptor1);
+  // console.log('Descriptor 2:', descriptor2);
 
   //Create new cover
   var currentCover = createCover(cover, title, descriptor1, descriptor2);
 
   //Now we "push" to each corresponding value
-  console.log('Before Pushing:', covers, titles, descriptor1, descriptor2);
+  // console.log('Before Pushing:', covers, titles, descriptor1, descriptor2);
 
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
-  descriptors.push(currentCover.tagline1);
-  descriptors.push(currentCover.tagline2);
+  descriptors.push(currentCover.descriptors);
+  descriptors.push(currentCover.descriptors);
 
-  console.log('After Pushing:', covers, titles, descriptor1, descriptor2);
+  // console.log('After Pushing:', covers, titles, descriptor1, descriptor2);
 
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
@@ -114,10 +117,50 @@ function makeBook() {
   // update the DOM elements with our user inputs
 }
 
+/////function makeMyBookBtn(event) {
+//   event.preventDefault();
+
+
+//   makeBook(newcover);
+// }//////////
+
+
+
+
+//////////////////////////////////////////////
 function makeMyBookBtn(event) {
   event.preventDefault();
-  makeBook();
+
+  // Variables that connect to the DOM elements and capture the user input values:
+  var cover = document.querySelector('.user-cover').value;
+  var title = document.querySelector('.user-title').value;
+  var descriptor1 = document.querySelector('.user-desc1').value;
+  var descriptor2 = document.querySelector('.user-desc2').value;
+
+  // Create new cover
+  var newCover = createCover(cover, title, descriptor1, descriptor2);
+
+  // Save the new cover to your data model
+  covers.push(newCover.coverImg);
+  titles.push(newCover.title);
+  descriptors.push(newCover.tagline1);
+  descriptors.push(newCover.tagline2);
+
+  // Switch back to the main home view
+  showHomeViewBtn();
+
+  // Display the newly created cover on the DOM
+  displayNewCover(newCover);
 }
+
+function displayNewCover(cover) {
+  coverImage.src = cover.coverImg;
+  coverTitle.innerText = cover.title;
+  tagline1.innerText = cover.tagline1;
+  tagline2.innerText = cover.tagline2;
+}
+
+//////////////////////////////////////////////
 
 function toggleViewMakeCoverBtn() {
   var switchView = document.querySelector('.form-view');
@@ -129,6 +172,10 @@ function toggleViewMakeCoverBtn() {
   saveCoverButton.classList.toggle('hidden');
   homeButton.classList.toggle('hidden');
 }
+
+
+
+
 
 function showHomeViewBtn() {
   var switchView = document.querySelector('.form-view');
@@ -144,7 +191,15 @@ function showHomeViewBtn() {
   viewSavedCovers.classList.add('hidden');
 }
 
+
+
+
+
 //on the view saved cover button the form/view needs to be hidden
+
+
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -160,3 +215,13 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
+
+
+
+
+
+
+
+
+//put classlist buttons together
+//current cover 
