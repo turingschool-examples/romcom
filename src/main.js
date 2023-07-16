@@ -55,18 +55,25 @@ form.addEventListener('submit', function(event) {
   createBook()
   saveFormInputValues()
   homePageAfterFormSubmission()
-  
   showCoverCreatedInForm()
-  preventDuplicateObjects()
-})
-//on google copy the image address not the link address
-// Create your event handlers and other functions here 👇
+
+});
+
+saveCoverButton.addEventListener('click', saveCover)
 
 
-// function preventDuplicateObjects() {
-   
-//     savedCovers.push(currentCover);
-//   }
+
+function saveCover() {
+  
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id != savedCovers[i].id) {
+      savedCovers.push(currentCover) 
+     }
+   }
+   return savedCovers
+ }
+  
+
 
 
 function showCoverCreatedInForm() {
@@ -122,7 +129,6 @@ function viewHomePage() {
   homeButton.classList.add('hidden')
   showRandomCoverButton.classList.remove('hidden') 
   saveCoverButton.classList.remove('hidden')
-
 }
 
 function renderRandomCover() {
