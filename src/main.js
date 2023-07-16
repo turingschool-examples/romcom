@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-// pull test! PE
+
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagLine = document.querySelector('.tagline');
@@ -55,24 +55,23 @@ form.addEventListener('submit', function(event) {
   createBook()
   saveFormInputValues()
   homePageAfterFormSubmission()
-  showCoverCreatedInForm()
-
+  showCoverCreatedInForm() 
 });
 
-saveCoverButton.addEventListener('click', saveCover)
+saveCoverButton.addEventListener('click', function() {
+  saveCover()
+});
 
-
+// Create your event handlers and other functions here 👇
 
 function saveCover() {
-  
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id != savedCovers[i].id) {
-      savedCovers.push(currentCover) 
-     }
-   }
-   return savedCovers
+  for ( var i = 0; i < savedCovers.length; i++) {
+    if (!savedCovers.includes(currentCover)) {
+      savedCovers.push(currentCover)
+    }
+  }
+  console.log(savedCovers)
  }
-  
 
 
 
@@ -80,9 +79,8 @@ function showCoverCreatedInForm() {
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
   tagLine1.innerText = currentCover.theTagLine1;
-  tagLine2.innerText = currentCover.theTagLine2;
+  tagLine2.innerText = currentCover.theTagLine2;  
 }
-
 
 function homePageAfterFormSubmission() { 
   formView.classList.add('hidden');
@@ -99,13 +97,9 @@ function saveFormInputValues() {
   //savedCovers.push(currentCover)
 }
 
-function createBook() {
-  currentCover.id = Date.now()
-  currentCover.coverImg = coverInput.value;
-  currentCover.title = titleInput.value;
-  currentCover.theTagLine1 = descriptor1Input.value;
-  currentCover.theTagLine2 = descriptor2Input.value;
-}
+ function createBook() {
+  currentCover = createCover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value)
+ }
 
 function makeYourOwnCover () {
   homePage.classList.add('hidden')
@@ -114,14 +108,13 @@ function makeYourOwnCover () {
   formView.classList.remove('hidden')
   homeButton.classList.remove('hidden')
 }
-
 function viewSavedCovers() {
-  savedBookPage.classList.remove('hidden');
   homePage.classList.add('hidden')
-  homeButton.classList.remove('hidden')
   saveCoverButton.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden')
   formView.classList.add('hidden')
+  savedBookPage.classList.remove('hidden')
+  homeButton.classList.remove('hidden')
 }
 
 function viewHomePage() {
@@ -157,3 +150,8 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 }
+
+// savedCovers[i].coverImg === currentCover.coverImg &&
+// savedCovers[i].title === currentCover.theTagLine1 &&
+// savedCovers[i].theTagLine1 === currentCover.theTagLine1 &&
+// savedCovers[i].theTagLine2 === currentCover.theTagLine2
