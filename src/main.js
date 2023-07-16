@@ -13,7 +13,6 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 
 
-
 // We've provided a few variables below
 var savedCovers = [
   createCover(
@@ -86,24 +85,15 @@ function makeBook(event) {
   var coverImage = document.querySelector('.cover-image');
   var coverTitle = document.querySelector('.cover-title');
 
-  // console.log('User Input Values:');
-  // console.log('Cover:', cover);
-  // console.log('Title:', title);
-  // console.log('Descriptor 1:', descriptor1);
-  // console.log('Descriptor 2:', descriptor2);
-
   //Create new cover
   var currentCover = createCover(cover, title, descriptor1, descriptor2);
 
   //Now we "push" to each corresponding value
-  // console.log('Before Pushing:', covers, titles, descriptor1, descriptor2);
 
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
   descriptors.push(currentCover.descriptors);
   descriptors.push(currentCover.descriptors);
-
-  // console.log('After Pushing:', covers, titles, descriptor1, descriptor2);
 
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
@@ -117,17 +107,7 @@ function makeBook(event) {
   // update the DOM elements with our user inputs
 }
 
-/////function makeMyBookBtn(event) {
-//   event.preventDefault();
-
-
-//   makeBook(newcover);
-// }//////////
-
-
-
-
-//////////////////////////////////////////////
+//////////////////////////////////////////////new functions:
 function makeMyBookBtn(event) {
   event.preventDefault();
 
@@ -145,6 +125,15 @@ function makeMyBookBtn(event) {
   titles.push(newCover.title);
   descriptors.push(newCover.tagline1);
   descriptors.push(newCover.tagline2);
+  
+
+  console.log("Cover: ", cover);
+  console.log("Title: ", title);
+  console.log("Descriptor 1: ", descriptor1);
+  console.log("Descriptor 2: ", descriptor2);
+  console.log("Covers Array:", covers);
+  console.log("Titles Array:", titles);
+  console.log("Descriptors Array:", descriptors);
 
   // Switch back to the main home view
   showHomeViewBtn();
@@ -160,7 +149,9 @@ function displayNewCover(cover) {
   tagline2.innerText = cover.tagline2;
 }
 
-//////////////////////////////////////////////
+//////////////////////////////////////////////end of new functions
+
+
 
 function toggleViewMakeCoverBtn() {
   var switchView = document.querySelector('.form-view');
@@ -172,9 +163,6 @@ function toggleViewMakeCoverBtn() {
   saveCoverButton.classList.toggle('hidden');
   homeButton.classList.toggle('hidden');
 }
-
-
-
 
 
 function showHomeViewBtn() {
@@ -192,13 +180,7 @@ function showHomeViewBtn() {
 }
 
 
-
-
-
 //on the view saved cover button the form/view needs to be hidden
-
-
-
 
 
 function getRandomIndex(array) {
@@ -215,13 +197,3 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   };
   return cover;
 }
-
-
-
-
-
-
-
-
-//put classlist buttons together
-//current cover 
