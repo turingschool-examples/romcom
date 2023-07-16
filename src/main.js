@@ -113,10 +113,12 @@ function viewSavedCovers() {
   homeButton.classList.remove('hidden')
   saveCoverButton.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden')
+  formView.classList.add('hidden')
 }
 
 function viewHomePage() {
-  homePage.classList.add('hidden')
+  homePage.classList.remove('hidden')
+  homeButton.classList.add('hidden')
   showRandomCoverButton.classList.remove('hidden') 
   saveCoverButton.classList.remove('hidden')
 
