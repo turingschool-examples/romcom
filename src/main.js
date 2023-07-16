@@ -74,6 +74,7 @@ savedCoversLayout.addEventListener("dblclick", deleteCover);
 
 
 
+
 // ========== EVENT HANDLERS/OTHER FUNCTIONS ==========
 
 
@@ -127,8 +128,12 @@ function switchToForm() {
 // BOOK CREATE FORM:
 
 function createNewBook(event) {
-
   event.preventDefault();
+  if (coverInput.value == "" || titleInput.value == "" || desc1Input.value == "" || desc2Input.value == "") {
+    window.alert("Please fill out all fields.")
+  } else if (coverInput.value.endsWith(".png") == false && coverInput.value.endsWith(".jpg") == false) {
+    window.alert("Please input a .jpg or .png file into the cover field")
+  } else {
   currentCover = createCover(
     coverInput.value,
     titleInput.value,
@@ -142,6 +147,7 @@ function createNewBook(event) {
   descriptors.push(desc2Input.value);
   viewHomePage();
   displayCurrentCover(currentCover);
+  }
 }
 
 
@@ -239,7 +245,6 @@ function deleteCover(event) {
   savedCovers.splice(index, 1);  
   viewSavedCovers();
 }
-
 
 
 
