@@ -2,7 +2,7 @@
 
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var tagLine = document.querySelector('.tagline');
+//var tagLine = document.querySelector('.tagline');
 var tagLine1 = document.querySelector('.tagline-1');
 var tagLine2 = document.querySelector('.tagline-2');
 var image = document.querySelector('.price-tag');
@@ -14,9 +14,8 @@ var formView = document.querySelector('.form-view');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedCoversButton = document.querySelector('.view-saved-button');
-var savedCoversPage = document.querySelector('.saved-covers-section');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var savedBookPage = document.querySelector('.saved-view')
-var savedCoversSection = document.querySelector('.saved-covers');
 var form = document.querySelector('form');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
 var coverInput = document.querySelector('#cover');
@@ -44,22 +43,44 @@ showRandomCoverButton.addEventListener('click', function() {
  renderRandomCover();
 });
 
-makeOwnCoverButton.addEventListener('click', makeYourOwnCover)
+makeOwnCoverButton.addEventListener('click', makeYourOwnCover) //dom page switching to the form
 
-viewSavedCoversButton.addEventListener('click', viewSavedCovers)
+viewSavedCoversButton.addEventListener('click', function() {
+showSavedCovers() //DOM showing saved covers based on the data model of savedCovers array
+viewSavedCoversPage() //DOM showing page
+});
+
+function showSavedCovers() {
+
+  savedCoversSection.innerHTML = ''
+ console.log("checking 1")
+  for (var i = 0; i < savedCovers.length; i++) {
+   console.log("checking2")
+  savedCoversSection.innerHTML += `<section class="mini-cover saved-view"><section class="mini-cover" saved-covers-section">
+  <img class="mini-cover cover-image" src="${savedCovers[i].coverImg}">
+  <h2 class= "cover-title">${savedCovers[i].title}</h2>
+  <h3 class="min-cover tagline">A tale of <span class="tagline-1">${savedCovers[i].theTagLine1}</span> and <span class="mini-cover tagline-2">${savedCovers[i].theTagLine2}</span></h3>
+  </section>`
+  console.log("checking3")
+  } 
+}
+
+// ${savedCovers[i].coverImg}
+// ${savedCovers[i].tagLine1}
+// ${savedCovers[i].tagLine2}
 
 homeButton.addEventListener('click', viewHomePage)
 
 form.addEventListener('submit', function(event) {
   event.preventDefault()
-  createBook()
-  saveFormInputValues()
-  homePageAfterFormSubmission()
-  showCoverCreatedInForm() 
+  createBook() //data model
+  saveFormInputValues() // data model
+  homePageAfterFormSubmission() // DOM
+  showCoverCreatedInForm() // DOM
 });
 
 saveCoverButton.addEventListener('click', function() {
-  saveCover()
+  saveCover() //data model
 });
 
 // Create your event handlers and other functions here 👇
@@ -72,8 +93,6 @@ function saveCover() {
   }
   console.log(savedCovers)
  }
-
-
 
 function showCoverCreatedInForm() {
   coverImage.src = currentCover.coverImg;
@@ -94,7 +113,6 @@ function saveFormInputValues() {
   covers.push(currentCover.coverImg);
   titles.push(currentCover.title);
   descriptors.push(currentCover.theTagLine1, currentCover.theTagLine2)
-  //savedCovers.push(currentCover)
 }
 
  function createBook() {
@@ -107,8 +125,10 @@ function makeYourOwnCover () {
   showRandomCoverButton.classList.add('hidden') 
   formView.classList.remove('hidden')
   homeButton.classList.remove('hidden')
+  savedCoversSection.classList.add('hidden')
+  savedBookPage.classList.add('hidden')
 }
-function viewSavedCovers() {
+function viewSavedCoversPage() {
   homePage.classList.add('hidden')
   saveCoverButton.classList.add('hidden') 
   showRandomCoverButton.classList.add('hidden')
