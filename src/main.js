@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+//pe
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 //var tagLine = document.querySelector('.tagline');
