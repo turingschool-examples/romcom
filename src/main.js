@@ -164,6 +164,7 @@ function viewHomePage() {
   homeButton.classList.add('hidden')
   showRandomCoverButton.classList.remove('hidden') 
   saveCoverButton.classList.remove('hidden')
+  savedBookPage.classList.add('hidden')
 }
 
 function renderRandomCover() {
