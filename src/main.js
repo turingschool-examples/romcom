@@ -1,5 +1,5 @@
 // Create variables targetting the relevant DOM elements here 👇
-
+//pe
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 //var tagLine = document.querySelector('.tagline');
@@ -33,6 +33,8 @@ var currentCover;
 
 // Add your event listeners here 👇
 
+
+
 window.addEventListener('load', function(){
   makeRandomCover();
   renderRandomCover();
@@ -51,18 +53,19 @@ viewSavedCoversPage() //DOM showing page
 });
 
 function showSavedCovers() {
-
-  savedCoversSection.innerHTML = ''
- console.log("checking 1")
+  savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
-   console.log("checking2")
-  savedCoversSection.innerHTML += `<section class="mini-cover saved-view"><section class="mini-cover" saved-covers-section">
-  <img class="mini-cover cover-image" src="${savedCovers[i].coverImg}">
-  <h2 class= "cover-title">${savedCovers[i].title}</h2>
-  <h3 class="min-cover tagline">A tale of <span class="tagline-1">${savedCovers[i].theTagLine1}</span> and <span class="mini-cover tagline-2">${savedCovers[i].theTagLine2}</span></h3>
-  </section>`
-  console.log("checking3")
-  } 
+    savedCoversSection.innerHTML += `
+      <section id="${savedCovers[i].id}" class="mini-cover saved-view">
+        <section class="mini-cover">
+          <img class="mini-cover cover-image" src="${savedCovers[i].coverImg}">
+          <h2 class="cover-title">${savedCovers[i].title}</h2>
+          <h3 class="min-cover tagline">A tale of <span class="tagline-1">${savedCovers[i].theTagLine1}</span> and <span class="mini-cover tagline-2">${savedCovers[i].theTagLine2}</span></h3>
+        </section>
+      </section>
+    `;
+  }
+
 }
 
 // ${savedCovers[i].coverImg}
@@ -83,7 +86,26 @@ saveCoverButton.addEventListener('click', function() {
   saveCover() //data model
 });
 
+var savedCoversElements = document.querySelectorAll('.saved-view');
+savedCoversElements.forEach(function (coverElement) {
+  coverElement.addEventListener('dblclick', function (event) {
+    deleteSavedCover(event);
+  });
+});
+
+
+
 // Create your event handlers and other functions here 👇
+
+function deleteSavedCover(event) {
+  var coverId = parseInt(event.target.closest('.saved-view').id);
+  savedCovers = savedCovers.filter(function (cover) {
+    return cover.id !== coverId;
+  });
+  showSavedCovers();
+}
+
+
 
 function saveCover() {
   for ( var i = 0; i < savedCovers.length; i++) {
