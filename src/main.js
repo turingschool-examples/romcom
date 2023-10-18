@@ -1,6 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
-var randombtn = document.querySelector('.random-cover-button');
-var savebtn = document.querySelector('.save-cover-button');
+var randomBtn = document.querySelector('.random-cover-button');
+var saveBtn = document.querySelector('.save-cover-button');
+var viewBtn = document.querySelector('.view-saved-button');
+var newBtn = document.querySelector('.make-new-button');
+var newBookBtn = document.querySelector('.create-new-book-button');
+
 // JP Add view saved and make new DOM element.
 
 var covers = require("./data.js");
@@ -14,8 +18,12 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-randombtn.addEventListener('click', createRandomCover());
-savebtn.addEventListener('click', saveCover());
+randomBtn.addEventListener('click', createRandomCover());
+saveBtn.addEventListener('click', saveCover());
+viewBtn.addEventListener('click', viewSavedCovers());
+newBtn.addEventListener('click', makeNewButton());
+newBookBtn.addEventListener('click', makeNewBookButton());
+
 // JP Add event listeners for view saved and make new.
 
 // Create your event handlers and other functions here 👇
