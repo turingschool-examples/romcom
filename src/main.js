@@ -16,6 +16,7 @@ var savedView = document.querySelector('.saved-view')
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+
 var currentCover;
 
 // Add your event listeners here 👇
@@ -29,7 +30,10 @@ homeButton.addEventListener('click', () => {
 });
 
 randomCoverBtn.addEventListener('click', () => {
-  randomizeCover(cover);
+  coverTitle.innerText = (titles[getRandomIndex(titles)]);
+  tagline1.innerText = (descriptors[getRandomIndex(descriptors)])
+  tagline2.innerText = (descriptors[getRandomIndex(descriptors)])
+  coverImage.src = (covers[getRandomIndex(covers)]);
 });
 
 saveCoverBtn.addEventListener('click', () => {
