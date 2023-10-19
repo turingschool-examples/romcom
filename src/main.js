@@ -18,59 +18,63 @@ var savedCovers = [
 ];
 
 var currentCover;
+var imageSrc;
+var title;
+var descriptor1;
+var descriptor2;
 
 // Add your event listeners here 👇
 
-homeButton.addEventListener('click', () => {
-  randomCoverBtn.classList.remove('hidden');
-  homeButton.classList.add('hidden');
-  saveCoverBtn.classList.remove('hidden');
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-});
+randomCoverBtn.addEventListener('click', randomizeCover);
+saveCoverBtn.addEventListener('click', saveCover);
+homeButton.addEventListener('click', navToHomePage);
+viewSavedBtn.addEventListener('click', navToSavedPage);
+makeNewBtn.addEventListener('click', navToMakeNewPage);
 
-randomCoverBtn.addEventListener('click', () => {
-  coverTitle.innerText = (titles[getRandomIndex(titles)]);
-  tagline1.innerText = (descriptors[getRandomIndex(descriptors)])
-  tagline2.innerText = (descriptors[getRandomIndex(descriptors)])
-  coverImage.src = (covers[getRandomIndex(covers)]);
-});
+// Create your event handlers and other functions here 👇
 
-saveCoverBtn.addEventListener('click', () => {
+function randomizeCover() {
+  imageSrc = covers[getRandomIndex(covers)];
+  coverImage.src = imageSrc;
+  title = titles[getRandomIndex(titles)];
+  coverTitle.innerText = title;
+  descriptor1 = descriptors[getRandomIndex(descriptors)];
+  tagline1.innerText = descriptor1;
+  descriptor2 = descriptors[getRandomIndex(descriptors)];
+  tagline2.innerText = descriptor2;
+  currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
+  console.log(currentCover);
+  return currentCover
+}
 
+function saveCover() {
+  
+}
 
-});
-
-viewSavedBtn.addEventListener('click', () => {
+function navToSavedPage() {
   homeButton.classList.remove('hidden');
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   savedView.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.add('hidden');
-});
+}
 
-makeNewBtn.addEventListener('click', () => {
+function navToMakeNewPage() {
   randomCoverBtn.classList.add('hidden');
   saveCoverBtn.classList.add('hidden');
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
-
-});
-
-
-
-// Create your event handlers and other functions here 👇
-
-function randomizeCover(cover) {
-  randomCover = createCover()
-  cover.coverImg = getRandomIndex(covers);
-  cover.title = getRandomIndex(titles);
-  cover.tagline1 = getRandomIndex(descriptors);
-  cover.tagline2 = getRandomIndex(descriptors);
 }
 
+function navToHomePage() {
+  randomCoverBtn.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  saveCoverBtn.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
