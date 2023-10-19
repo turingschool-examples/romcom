@@ -10,7 +10,16 @@ var viewSavedBtn = document.querySelector('.view-saved-button');
 var makeNewBtn = document.querySelector('.make-new-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
-var savedView = document.querySelector('.saved-view')
+var savedView = document.querySelector('.saved-view');
+var createNewCoverBtn = document.querySelector('.create-new-book-button');
+var formInfromation = document.querySelector('form');
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
+
+
+//let userCover = document.querySelector(".user-cover").value;
 
 // We've provided a few variables below
 var savedCovers = [
@@ -23,6 +32,8 @@ var title;
 var descriptor1;
 var descriptor2;
 
+
+
 // Add your event listeners here 👇
 
 randomCoverBtn.addEventListener('click', randomizeCover);
@@ -30,6 +41,24 @@ saveCoverBtn.addEventListener('click', saveCover);
 homeButton.addEventListener('click', navToHomePage);
 viewSavedBtn.addEventListener('click', navToSavedPage);
 makeNewBtn.addEventListener('click', navToMakeNewPage);
+createNewCoverBtn.addEventListener('click',createUserCover);
+
+function createUserCover(){
+  event.preventDefault();
+  imageSrc = userCover.value;
+  title = userTitle.value;
+  descriptor1 = userDesc1.value;
+  descriptor2 = userDesc2.value;
+  // console.log(userCover.value);
+  // console.log(userTitle.value);
+  // console.log(userDesc1.value);
+  // console.log(userDesc2.value);
+  currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
+  console.log(currentCover);
+  navToHomePage()
+  return currentCover;
+}
+
 
 // Create your event handlers and other functions here 👇
 
