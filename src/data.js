@@ -91,6 +91,4 @@ var descriptors = [
   "melancholy"
 ];
 
-module.exports = covers;
-module.exports = titles;
-module.exports = descriptors;
+
