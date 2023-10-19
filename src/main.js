@@ -8,8 +8,9 @@ var savedView = document.querySelector('.saved-view')
 var homeButton = document.querySelector('.home-button');
 var saveVButton = document.querySelector('.save-cover-button');
 var viewSButton = document.querySelector('.view-saved-button');
-var randomButton = document.querySelector('.random-cover-button');
-var makeOwnButton = document.querySelector('.make-new-button');
+
+// var randomButton = document.querySelector('random-cover-button');
+// var makeOwnButton = document.querySelector('make-new-button');
 
 // We've provided a few variables below
 
@@ -18,9 +19,11 @@ var savedCovers = [
 ];
 var currentCover;
 // Add your event listeners here 👇
-homeButton.addEventListener("click", homeF("click"));
-saveVButton.addEventListener("click", savedF());
-makeOwnButton.addEventListener("click", makeF());
+
+homeButton.addEventListener('click', homeF);
+saveVButton.addEventListener('click', savedF);
+makeOwnButton.addEventListener('click', makeF);
+
 // Create your event handlers and other functions here 👇
 function homeF(){
   homeButton.classList.add("hidden");
