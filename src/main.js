@@ -17,6 +17,7 @@ var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
+var savedViewCovers = document.querySelector('.saved-covers-section')
 
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -77,8 +78,38 @@ function renderUserCover() {
 }
 
 function saveCover() {
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id === currentCover.id)
+      return;
+  }
   savedCovers.push(currentCover)
-  console.log(savedCovers);
+  savedViewCovers.appendChild(viewSavedCovers());
+}
+
+function viewSavedCovers() {
+  var newSavedCoverImage = document.createElement('img');
+  newSavedCoverImage.classList.add('mini-cover');
+  newSavedCoverImage.src = currentCover.coverImg;
+
+  var newSavedCoverTitle = document.createElement('h2');
+  newSavedCoverTitle.classList.add('cover-title');
+  newSavedCoverTitle.innerText = currentCover.title;
+
+  var newSavedCoverTagline = document.createElement('h3');
+  newSavedCoverTagline.classList.add('tagline');
+  var newSavedCoverTagline1 = document.createElement('span');
+  newSavedCoverTagline1.innerText = currentCover.tagline1;
+
+  var newSavedCoverTagline2 = document.createElement('span');
+  newSavedCoverTagline2.innerText = currentCover.tagline2;
+  var newSavedCoverTaglineText = 
+  document.createTextNode(`A tale of ${newSavedCoverTagline1.innerText} and ${newSavedCoverTagline2.innerText}`);
+  newSavedCoverTagline.appendChild(newSavedCoverTaglineText);
+
+  var newSavedCover = document.createElement('section');
+  newSavedCover.classList.add('mini-cover');
+  newSavedCover.append(newSavedCoverImage, newSavedCoverTitle, newSavedCoverTagline)
+  return newSavedCover;
 }
 
 function navToSavedPage() {
