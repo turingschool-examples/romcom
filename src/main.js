@@ -77,7 +77,8 @@ function renderUserCover() {
 }
 
 function saveCover() {
-
+  savedCovers.push(currentCover)
+  console.log(savedCovers);
 }
 
 function navToSavedPage() {
