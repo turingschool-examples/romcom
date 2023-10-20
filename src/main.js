@@ -18,10 +18,6 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
-
-//let userCover = document.querySelector(".user-cover").value;
-
-// We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
@@ -32,8 +28,6 @@ var title;
 var descriptor1;
 var descriptor2;
 
-
-
 // Add your event listeners here 👇
 
 randomCoverBtn.addEventListener('click', randomizeCover);
@@ -41,24 +35,7 @@ saveCoverBtn.addEventListener('click', saveCover);
 homeButton.addEventListener('click', navToHomePage);
 viewSavedBtn.addEventListener('click', navToSavedPage);
 makeNewBtn.addEventListener('click', navToMakeNewPage);
-createNewCoverBtn.addEventListener('click',createUserCover);
-
-function createUserCover(){
-  event.preventDefault();
-  imageSrc = userCover.value;
-  title = userTitle.value;
-  descriptor1 = userDesc1.value;
-  descriptor2 = userDesc2.value;
-  // console.log(userCover.value);
-  // console.log(userTitle.value);
-  // console.log(userDesc1.value);
-  // console.log(userDesc2.value);
-  currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
-  console.log(currentCover);
-  navToHomePage()
-  return currentCover;
-}
-
+createNewCoverBtn.addEventListener('click', createUserCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -72,12 +49,34 @@ function randomizeCover() {
   descriptor2 = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptor2;
   currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
-  console.log(currentCover);
   return currentCover
 }
 
+function createUserCover() {
+  event.preventDefault();
+  imageSrc = userCover.value;
+  covers.push(imageSrc);
+  title = userTitle.value;
+  titles.push(title);
+  descriptor1 = userDesc1.value;
+  descriptors.push(descriptor1);
+  descriptor2 = userDesc2.value;
+  descriptors.push(descriptor2);
+  currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
+  renderUserCover();
+}
+
+function renderUserCover() {
+  navToHomePage()
+  coverImage.src = currentCover.coverImg;
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  return currentCover;
+}
+
 function saveCover() {
-  
+
 }
 
 function navToSavedPage() {
@@ -105,7 +104,6 @@ function navToHomePage() {
   formView.classList.add('hidden');
 }
 
-// We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
