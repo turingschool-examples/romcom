@@ -19,11 +19,7 @@ var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 var savedViewCovers = document.querySelector('.saved-covers-section')
 
-var savedCovers = [
-  // createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-
-];
-
+var savedCovers = [];
 var currentCover;
 var imageSrc;
 var title;
@@ -37,10 +33,8 @@ saveCoverBtn.addEventListener('click', saveCover);
 homeButton.addEventListener('click', navToHomePage);
 viewSavedBtn.addEventListener('click', navToSavedPage);
 makeNewBtn.addEventListener('click', navToMakeNewPage);
-createNewCoverBtn.addEventListener('click', createUserCover);
-savedViewCovers.addEventListener('dblclick', (e) => {
-  deleteSavedCover(e)
-})
+createNewCoverBtn.addEventListener('click', validateForm);
+savedViewCovers.addEventListener('dblclick', (e) => { deleteSavedCover(e) });
 
 // Create your event handlers and other functions here 👇
 
@@ -55,6 +49,21 @@ function randomizeCover() {
   tagline2.innerText = descriptor2;
   currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
   return currentCover
+}
+
+function validateForm() {
+  event.preventDefault();
+  if (userCover.value === '') {
+    alert('Must input valid image source!');
+  } else if (userTitle.value === '') {
+    alert('Must input book title!');
+  } else if (userDesc1.value === '') {
+    alert('Must input subtitle descriptor!');
+  } else if (userDesc2.value === '') {
+    alert('Must input subtitle descriptor!');
+  } else {
+    createUserCover();
+  }
 }
 
 function createUserCover() {
@@ -73,7 +82,7 @@ function createUserCover() {
 }
 
 function renderUserCover() {
-  navToHomePage()
+  navToHomePage();
   coverImage.src = currentCover.coverImg;
   coverTitle.innerText = currentCover.title;
   tagline1.innerText = currentCover.tagline1;
