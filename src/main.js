@@ -20,7 +20,8 @@ var userDesc2 = document.querySelector('.user-desc2');
 var savedViewCovers = document.querySelector('.saved-covers-section')
 
 var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  // createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+
 ];
 
 var currentCover;
@@ -37,6 +38,9 @@ homeButton.addEventListener('click', navToHomePage);
 viewSavedBtn.addEventListener('click', navToSavedPage);
 makeNewBtn.addEventListener('click', navToMakeNewPage);
 createNewCoverBtn.addEventListener('click', createUserCover);
+savedViewCovers.addEventListener('dblclick', (e) => {
+  deleteSavedCover(e)
+})
 
 // Create your event handlers and other functions here 👇
 
@@ -108,8 +112,18 @@ function viewSavedCovers() {
 
   var newSavedCover = document.createElement('section');
   newSavedCover.classList.add('mini-cover');
+  newSavedCover.setAttribute("id", currentCover.id);
   newSavedCover.append(newSavedCoverImage, newSavedCoverTitle, newSavedCoverTagline)
   return newSavedCover;
+}
+
+function deleteSavedCover(e){
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (Number(e.target.parentElement.id) === Number(savedCovers[i].id)) {
+      savedCovers.splice(i, 1);
+      document.getElementById(e.target.parentElement.id).remove();
+    }
+  }
 }
 
 function navToSavedPage() {
