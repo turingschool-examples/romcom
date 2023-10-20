@@ -54,6 +54,7 @@ function showFormView() {
 
  function showSavedView() {
   hide(formView);
+  hide(homeView);
   show(savedView);
  }
 
