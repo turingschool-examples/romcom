@@ -64,6 +64,7 @@ function createUserCover() {
   descriptors.push(descriptor2);
   currentCover = createCover(imageSrc, title, descriptor1, descriptor2);
   renderUserCover();
+  formInfromation.reset();
 }
 
 function renderUserCover() {
