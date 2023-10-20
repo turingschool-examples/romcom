@@ -127,6 +127,7 @@ function navToMakeNewPage() {
   homeButton.classList.remove('hidden');
   homeView.classList.add('hidden');
   formView.classList.remove('hidden');
+  savedView.classList.add('hidden');
 }
 
 function navToHomePage() {
