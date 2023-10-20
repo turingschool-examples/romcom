@@ -8,9 +8,14 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
+var userCover = document.querySelector('.user-cover');
+var userTitle = document.querySelector('.user-title');
+var userDesc1 = document.querySelector('.user-desc1');
+var userDesc2 = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -23,6 +28,7 @@ randomCoverButton.addEventListener('click', generateRandomCover);
 makeCoverButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView);
 homeButton.addEventListener('click', showHomeView);
+makeMyBookButton.addEventListener('click', makeBook);
 
 // Create your event handlers and other functions here 👇
 function generateRandomCover() {
@@ -34,6 +40,13 @@ function generateRandomCover() {
   coverTitle.innerText = title;
   coverTagline1.innerText = descriptor1;
   coverTagline2.innerText = descriptor2;
+}
+
+function generateUserCover() {
+  coverImage.src = userCover
+  coverTitle.innerText = userTitle;
+  coverTagline1.innerText = userDesc1;
+  coverTagline2.innerText = userDesc2;
 }
 
 function show(element) {
@@ -57,7 +70,7 @@ function showFormView() {
   hide(homeView);
   show(savedView);
  }
-
+ 
  function showHomeView() {
   hide(formView);
   show(homeView);
@@ -65,6 +78,25 @@ function showFormView() {
   show(randomCoverButton);
   hide(homeButton);
   generateRandomCover();
+ }
+
+ function makeBook (event) {
+  event.preventDefault();
+  userCover = userCover.value;
+  userTitle = userTitle.value;
+  userDesc1 = userDesc1.value;
+  userDesc2 = userDesc2.value;
+  userInput = createCover(userCover, userTitle, userDesc1, userDesc2);
+  covers.push(userInput.coverImg);
+  titles.push(userInput.title);
+  descriptors.push(userInput.tagline1);
+  descriptors.push(userInput.tagline2);
+  hide(formView);
+  show(homeView);
+  show(saveCoverButton);
+  show(randomCoverButton);
+  hide(homeButton);
+  generateUserCover();
  }
 
 // We've provided two functions to get you started
