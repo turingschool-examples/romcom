@@ -62,6 +62,18 @@ function newPageForm() {
   goHomeButton.classList.remove('hidden');
 }
 
+function renderSavedCovers() {
+  savedCoversSection.innerHTML = ''; // Clear out any previous saved covers
+  for (let cover of savedCovers) {
+    savedCoversSection.innerHTML += `
+      <div class="mini-cover" id="${cover.id}">
+        <img class="cover-image" src="${cover.coverImg}">
+        <h2 class="cover-title">${cover.title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${cover.tagline1}</span> and <span class="tagline-2">${cover.tagline2}</span></h3>
+      </div>`;
+  }
+}
+
 function savedCoversPage() {
   homeView.classList.add('hidden')
   savedCoversSection.classList.add('view')
@@ -70,4 +82,6 @@ function savedCoversPage() {
   saveCoverButton.classList.add('hidden');
   randomCoverButton.classList.add('hidden');
   goHomeButton.classList.remove('hidden');
+
+  renderSavedCovers();
 }
