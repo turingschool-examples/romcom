@@ -18,6 +18,12 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+createRandomCover()
+
+randomCoverButton()
+
+
+
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
     id: Date.now(),
