@@ -100,3 +100,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 
 createRandomCover()
 
+//gwyneth's code
+
+//jordan's code
