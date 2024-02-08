@@ -24,9 +24,6 @@ function createRandomCover() {
   <img class="overlay" src="./assets/overlay.png">`
   
 
-  console.log(coverSeed)
-  //createCover(coverSeed[0])
-
   
 }
 
