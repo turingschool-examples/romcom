@@ -34,20 +34,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 
 
 
-// function getRandomNovel() {
-//   var randomCoverIndex = getRandomIndex(covers)
-//   var randomTitleIndex = getRandomIndex(titles)
-//   var randomDescriptorIndex = getRandomIndex(descriptors)
-//   var randomDescriptorIndex2 = getRandomIndex(descriptors)
-//   var newNovel = createCover(covers[randomCoverIndex],titles[randomTitleIndex],descriptors[randomDescriptorIndex],descriptors[randomDescriptorIndex2])
-//   currentCover = newNovel
-//   coverTitle.innerText = newNovel.title
-//   coverTag1.innerText = newNovel.tagline1
-//   coverTag2.innerText = newNovel.tagline2
-//   coverImage.setAttribute("src", newNovel.coverImg)
-//   return currentCover
-// }
-
 function getRandomNovel() {
   var randomCoverIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
