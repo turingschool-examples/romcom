@@ -98,4 +98,5 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
 }
 
 
+createRandomCover()
 
