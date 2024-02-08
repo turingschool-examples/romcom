@@ -90,3 +90,6 @@ var descriptors = [
   "blessings",
   "melancholy"
 ];
+console.log(covers.length)
+console.log(titles.length)
+console.log(descriptors.length)
