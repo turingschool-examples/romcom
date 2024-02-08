@@ -103,3 +103,5 @@ createRandomCover()
 //gwyneth's code
 
 //jordan's code
+
+//Here I will add my own code for my portion of the iteration
