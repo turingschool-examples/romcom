@@ -16,13 +16,12 @@ var randomTags2Index = getRandomIndex(descriptors)
 
 var chosenRandomTitle = titles[randomTitleIndex]
 var chosenRandomCover = covers[randomCoverIndex]
-chosenRandomTag1 = descriptors[randomTags1Index]
-chosenRandomTag2 = descriptors[randomTags2Index]
+var chosenRandomTag1 = descriptors[randomTags1Index]
+var chosenRandomTag2 = descriptors[randomTags2Index]
 
-coverTitle.innerText = chosenRandomTitle
-tag1.innerText = chosenRandomTag1
-tag2.innerText = chosenRandomTag2
-coverImage.src = chosenRandomCover
+
+
+
 
 
 
@@ -61,7 +60,16 @@ function createRandomCover() {
   var randomCoverIndex = getRandomIndex(covers)
   var chosenRandomCover = covers[randomCoverIndex]
     coverImage.src = chosenRandomCover
+
   var randomTitleIndex = getRandomIndex(titles)
   var chosenRandomTitle = titles[randomTitleIndex]
     coverTitle.innerText = chosenRandomTitle
+
+  var randomTags1Index = getRandomIndex(tag1)
+  var chosenRandomTag1 = tag1[randomTags1Index]
+    tag1.innerText = chosenRandomTag1
+
+    var randomTags2Index = getRandomIndex(tag2)
+  var chosenRandomTag2 = tag2[randomTags2Index]
+    tag2.innerText = chosenRandomTag2
 }
