@@ -97,5 +97,28 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
+// var covers = [];
+// var titles = [];
+// var descriptors = [];
+
+document.querySelector('.create-new-book-button').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  var coverValue = document.getElementById('cover').value;
+  var titleValue = document.getElementById('title').value;
+  var firstDescValue = document.getElementById('descriptor1').value;
+  var secDescValue = document.getElementById('descriptor2').value;
+
+  var newCover = createCover(coverValue, titleValue, firstDescValue, secDescValue);
+
+
+  covers.push(coverValue);
+  titles.push(titleValue);
+  descriptors.push(firstDescValue, secDescValue);
+
+
+  displayCover(newCover);
+});
+
 
 createRandomCover()
