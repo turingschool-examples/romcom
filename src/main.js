@@ -25,28 +25,32 @@ saveCoversButton.addEventListener('click', )
 
 // Create your event handlers and other functions here 👇
 function makeCover(){
-  document.querySelector('.form-view').classList.toggle('hidden')
-  document.querySelector('.home-view').classList.toggle('hidden')
-  document.querySelector('.random-cover-button').classList.toggle('hidden')
-  document.querySelector('.save-cover-button').classList.toggle('hidden')
-  document.querySelector('.home-button').classList.toggle('hidden')
+  document.querySelector('.form-view').classList.remove('hidden')
+  document.querySelector('.home-view').classList.add('hidden')
+  document.querySelector('.random-cover-button').classList.add('hidden')
+  document.querySelector('.save-cover-button').classList.add('hidden')
+  document.querySelector('.home-button').classList.remove('hidden')
+  document.querySelector('.make-new-button').classList.add('hidden')
+  document.querySelector('.view-saved-button').classList.add('hidden')
 }
 
 function showSavedCovers() {
-  document.querySelector('.saved-view').classList.toggle('hidden')
-  document.querySelector('.random-cover-button').classList.toggle('hidden')
-  document.querySelector('.home-button').classList.toggle('hidden')
-  document.querySelector('.home-view').classList.toggle('hidden')
-  document.querySelector('.save-cover-button').classList.toggle('hidden')
+  document.querySelector('.saved-view').classList.remove('hidden')
+  document.querySelector('.random-cover-button').classList.add('hidden')
+  document.querySelector('.home-button').classList.remove('hidden')
+  document.querySelector('.home-view').classList.add('hidden')
+  document.querySelector('.save-cover-button').classList.add('hidden')
+  document.querySelector('.view-saved-button').classList.add('hidden')
 }
 
 function goHome() {
-  document.querySelector('.home-view').classList.toggle('hidden')
-  document.querySelector('.form-view').classList.toggle('hidden')
-  document.querySelector('.home-button').classList.toggle('hidden')
-  document.querySelector('.save-cover-button').classList.toggle('hidden')
-  document.querySelector('.random-cover-button').classList.toggle('hidden')
+  document.querySelector('.home-view').classList.remove('hidden')
+  document.querySelector('.form-view').classList.add('hidden')
+  document.querySelector('.home-button').classList.add('hidden')
+  document.querySelector('.save-cover-button').classList.remove('hidden')
+  document.querySelector('.random-cover-button').classList.remove('hidden')
   document.querySelector('.view-saved-button').classList.remove('hidden')
+  document.querySelector('.make-new-button').classList.remove('hidden')
 }
 
 
