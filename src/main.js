@@ -4,10 +4,11 @@ var coverTitle = document.querySelector('.cover-title');
 var coverTagLine1 = document.querySelector('.tagline-1');
 var coverTagLine2 = document.querySelector('.tagline-2');
 
+var buttonHome = document.querySelector('.home-button');
 var buttonRandomCover = document.querySelector('.random-cover-button');
-var buttonHome = document.querySelector('.home-button')
-var buttonMakeOwn = document.querySelector('.make-new-button')
-var buttonViewSaved = document.querySelector('.view-saved-button')
+var buttonSaveCover = document.querySelector('.save-cover-button');
+var buttonViewSaved = document.querySelector('.view-saved-button');
+var buttonMakeOwn = document.querySelector('.make-new-button');
 
 var viewHome = document.querySelector('.home-view');
 var viewMakeOwn = document.querySelector('.form-view');
@@ -58,11 +59,13 @@ function setHome() {
   viewMakeOwn.classList.add('hidden');
   viewViewSaved.classList.add('hidden');
 
+  buttonRandomCover.classList.remove('hidden');
+  buttonSaveCover.classList.remove('hidden');
   buttonHome.classList.add('hidden');
 }
 
 // "make your own cover"
-// HOME, VIEW SAVED COVERS, MAKE YOUR OWN COVER
+// HOME, VIEW SAVED COVERS, MAsKE YOUR OWN COVER
 // in the top row show: home
 // in top row HIDE: show new random cover, save cover
 // see form, homepage view, save cover
@@ -71,6 +74,8 @@ function setMake() {
   viewHome.classList.add('hidden');
   viewViewSaved.classList.add('hidden');
 
+  buttonRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
   buttonHome.classList.remove('hidden');
 }
 
@@ -84,6 +89,8 @@ function setSaved() {
   viewMakeOwn.classList.add('hidden');
   viewHome.classList.add('hidden');
 
+  buttonRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
   buttonHome.classList.remove('hidden');
 }
 
