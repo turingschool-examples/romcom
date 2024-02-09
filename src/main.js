@@ -27,7 +27,6 @@ function updateCover() {
   coverTitle.innerText = currentCover.title;
   coverTagLine1.innerText = currentCover.tagline1;
   coverTagLine2.innerText = currentCover.tagline2;
-  console.log("I updated!");
 };
 
 // We've provided two functions to get you started
@@ -60,11 +59,21 @@ function randomCover() {
     );
 }
 
-
 init();
-// the arguments of our createCover function will be invocations of the getRandomIndex functions with the different
-// arrays needed.
-// We need to figure out how to get a random cover when the page is loaded. page load event listener? 
-// what do we do with the currentCover variable given to us? Is it the invocation of the createCover function? 
-// Do we need to update the value with the createCover invocation? 
-// We need a function that will update the DOM elements with object values that are created. 
+
+// "make your own over"
+// HOME, VIEW SAVED COVERS, MAKE YOUR OWN COVER
+// in the top row show: home
+// in top row HIDE: show new random cover, save cover
+// see form, homepage view, save cover
+
+// "view saved covers"
+// HOME, VIEW SAVED COVERS, MAKE YOUR OWN COVER
+// in the top row SHOW: home
+// in the top row HIDE: show new random cover, save cover
+// show the saved covers section, hide homepage, hide the make your cover view
+
+// "home"
+// only show the home section
+// show: Show new random cover, save cover should be visible
+// hide: home
