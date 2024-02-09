@@ -21,7 +21,12 @@ makeCoverButton.addEventListener('click', showForm)
 function showForm(){
   document.querySelector('.form-view').classList.toggle('hidden')
   document.querySelector('.home-view').classList.toggle('hidden')
+  document.querySelector('.random-cover-button').classList.toggle('hidden')
+  document.querySelector('.save-cover-button').classList.toggle('hidden')
+  document.querySelector('.home-button').classList.toggle('hidden')
 }
+
+
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
