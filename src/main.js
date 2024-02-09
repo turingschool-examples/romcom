@@ -10,45 +10,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var saveCoverButton = document.querySelector('.save-cover-button');
   var viewSavedButton = document.querySelector('.view-saved-button');
   var makeNewButton = document.querySelector('.make-new-button');
+
   
-  // Event listener for "Make Your Own Cover" button
-  makeNewButton.addEventListener('click', function () {
-    // Hide homepage, show form view
-    homeSection.classList.add('hidden');
-    formSection.classList.remove('hidden');
-    
-    // Hide other buttons
-    viewSavedButton.style.display = 'none';
-    randomCoverButton.style.display = 'none';
-    saveCoverButton.style.display = 'none';
+  makeNewButton.addEventListener('click', function(event){
+    event.preventDefault();
+    locationUpdate(homeSection,formSection,viewSavedButton,randomCoverButton,saveCoverButton,false)
+
   });
+ 
+  viewSavedButton.addEventListener('click', function(event){
+    event.preventDefault();
+    locationUpdate(homeSection,viewSavedButton,makeNewButton,randomCoverButton,saveCoverButton,false)
+  }); 
+ 
+  homeButton.addEventListener('click', function(event){
+    event.preventDefault();
+    locationUpdate(formSection,homeSection,makeNewButton,viewSavedButton,randomCoverButton,saveCoverButton)
+  }); 
   
-  // Event listener for "View Saved Covers" button
-  viewSavedButton.addEventListener('click', function () {
-    // Hide homepage, show saved covers view
-    homeSection.classList.add('hidden');
-    viewSavedButton.classList.remove('hidden');
-    
-    // Hide other buttons
-    makeNewButton.style.display = 'none';
-    randomCoverButton.style.display = 'none';
-    saveCoverButton.style.display = 'none';
-  });
-  
-  // Event listener for "Home" button
-  homeButton.addEventListener('click', function () {
-    // Show homepage, hide other views
-    homeSection.classList.remove('hidden');
-    formSection.classList.add('hidden');
-    //savedCoversSection.classList.add('hidden');
-    
-    // Show other buttons
-    makeNewButton.style.display = 'inline-block';
-    viewSavedButton.style.display = 'inline-block';
-    randomCoverButton.style.display = 'inline-block';
-    saveCoverButton.style.display = 'inline-block';
-  });
-});
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -60,7 +40,7 @@ var currentCover = document.querySelector('.main-cover');
 
 // Add your event listeners here 👇
 
-document.querySelector('.random-cover-button').addEventListener('click', createRandomCover)
+document.querySelector('.random-cover-button').addEventListener('click', createRandomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -75,6 +55,21 @@ function createRandomCover() {
   
 
   
+};
+function locationUpdate(page1,page2,button1,button2,button3,button4) {
+  page1.classList.add('hidden');
+  page2.classList.remove('hidden');
+  if (button4 === false){
+  button1.style.display = 'none';
+  button2.style.display = 'none';
+  button3.style.display = 'none';
+  }
+  else{
+    button1.style.display = 'inline-block';
+    button2.style.display = 'inline-block';
+    button3.style.display = 'inline-block';
+    button4.style.display = 'inline-block';
+  }
 }
 
 
@@ -119,6 +114,6 @@ document.querySelector('.create-new-book-button').addEventListener('click', func
 
   displayCover(newCover);
 });
-
-
 createRandomCover()
+});
+
