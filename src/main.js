@@ -23,7 +23,11 @@ var savedView = document.querySelector('.saved-view')
 
 //iteration 2 variables 
 
-var createNewBookButton = document.querySelector('.make-new-button')
+var coverInput = document.querySelector('.user-cover');
+var titleInput = document.querySelector('.user-title');
+var descriptor1Input = document.querySelector('.user-desc1');
+var descriptor2Input = document.querySelector('.user-desc2');
+var makeMyBookButton = document.querySelector('.create-new-book-button')
 
 
 // We've provided a few variables below
@@ -46,10 +50,11 @@ viewSavedButton.addEventListener('click', reactViewSaved)
 
 //iteration 2 event listeners
 
-// createNewBookButton.addEventListener('click', function(event) {
-//   event.preventDefault()
-  
-// }
+makeMyBookButton.addEventListener('click', createNewBook);
+// makeMyBookButton.addEventListener('click', personalCover)
+
+// iteration 3 event listeners
+
 // Create your event handlers and other functions here 👇
 
 // iteration 0 functions
@@ -104,6 +109,24 @@ function reactViewSaved(){
 }
 
 //iteration 2 functions 
+
+function createNewBook(event) {
+  
+  coverImage.src = coverInput.value;
+  coverTitle.innerText = titleInput.value;
+  tag1.innerText = descriptor1Input.value
+  tag2.innerText = descriptor2Input.value
+  var newCover = createCover(coverImage, coverTitle, tag1, tag2);
+  
+  covers.push(coverInput.value)
+  titles.push(titleInput.value)
+  descriptors.push(descriptor1Input.value, descriptor2Input.value)
+  // savedCovers.push(newCover);
+
+  reactHomeButton();
+  createCover(newCover)
+  event.preventDefault();
+}
 
 
 
