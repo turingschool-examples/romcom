@@ -5,6 +5,9 @@ var coverTag1 = document.querySelector('.tagline-1')
 var coverTag2 = document.querySelector('.tagline-2')
 var randCoverButton = document.querySelector('.random-cover-button')
 var makeCoverButton = document.querySelector('.make-new-button')
+var viewSavedCovers = document.querySelector('.view-saved-button')
+var homeButton = document.querySelector('.home-button')
+var saveCoversButton = document.querySelector('.saved-cover-button')
 
 // We've provided a few variables below
 var savedCovers = [
@@ -15,16 +18,37 @@ var currentCover;
 // Add your event listeners here 👇
 document.addEventListener('DOMContentLoaded', getRandomNovel);
 randCoverButton.addEventListener('click', getRandomNovel);
-makeCoverButton.addEventListener('click', showForm)
+makeCoverButton.addEventListener('click', makeCover)
+viewSavedCovers.addEventListener('click', showSavedCovers)
+homeButton.addEventListener('click', goHome)
+saveCoversButton.addEventListener('click', )
 
 // Create your event handlers and other functions here 👇
-function showForm(){
+function makeCover(){
   document.querySelector('.form-view').classList.toggle('hidden')
   document.querySelector('.home-view').classList.toggle('hidden')
   document.querySelector('.random-cover-button').classList.toggle('hidden')
   document.querySelector('.save-cover-button').classList.toggle('hidden')
   document.querySelector('.home-button').classList.toggle('hidden')
 }
+
+function showSavedCovers() {
+  document.querySelector('.saved-view').classList.toggle('hidden')
+  document.querySelector('.random-cover-button').classList.toggle('hidden')
+  document.querySelector('.home-button').classList.toggle('hidden')
+  document.querySelector('.home-view').classList.toggle('hidden')
+  document.querySelector('.save-cover-button').classList.toggle('hidden')
+}
+
+function goHome() {
+  document.querySelector('.home-view').classList.toggle('hidden')
+  document.querySelector('.form-view').classList.toggle('hidden')
+  document.querySelector('.home-button').classList.toggle('hidden')
+  document.querySelector('.save-cover-button').classList.toggle('hidden')
+  document.querySelector('.random-cover-button').classList.toggle('hidden')
+  document.querySelector('.view-saved-button').classList.remove('hidden')
+}
+
 
 
 
