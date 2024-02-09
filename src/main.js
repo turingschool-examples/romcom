@@ -14,18 +14,20 @@ document.addEventListener('DOMContentLoaded', function () {
   
   makeNewButton.addEventListener('click', function(event){
     event.preventDefault();
-    locationUpdate(homeSection,formSection,viewSavedButton,randomCoverButton,saveCoverButton,false)
+    locationUpdate(formSection, homeButton, homeSection, homeSection, saveCoverButton, randomCoverButton, true)
 
   });
  
   viewSavedButton.addEventListener('click', function(event){
     event.preventDefault();
-    locationUpdate(homeSection,viewSavedButton,makeNewButton,randomCoverButton,saveCoverButton,false)
+    locationUpdate(homeButton, viewSavedButton, homeSection, makeNewButton, randomCoverButton, saveCoverButton, true)
+    formSection.classList.add('hidden')
   }); 
  
   homeButton.addEventListener('click', function(event){
     event.preventDefault();
-    locationUpdate(formSection,homeSection,makeNewButton,viewSavedButton,randomCoverButton,saveCoverButton)
+    locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
+    makeNewButton.classList.remove('hidden')
   }); 
   
 
@@ -67,19 +69,24 @@ function displayCover(newCover){
 
   
 }
-function locationUpdate(page1,page2,button1,button2,button3,button4) {
-  page1.classList.add('hidden');
-  page2.classList.remove('hidden');
-  if (button4 === false){
-  button1.style.display = 'none';
-  button2.style.display = 'none';
-  button3.style.display = 'none';
+function locationUpdate(element1,element2,element3,element4,element5,element6,switchVar) {
+  if (switchVar === true){
+  element1.classList.remove('hidden')
+  element2.classList.remove('hidden')
+
+  element3.classList.add('hidden')
+  element4.classList.add('hidden')
+  element5.classList.add('hidden')
+  element6.classList.add('hidden')
   }
   else{
-    button1.style.display = 'inline-block';
-    button2.style.display = 'inline-block';
-    button3.style.display = 'inline-block';
-    button4.style.display = 'inline-block';
+  element1.classList.add('hidden')
+  element2.classList.add('hidden')
+
+  element3.classList.remove('hidden')
+  element4.classList.remove('hidden')
+  element5.classList.remove('hidden')
+  element6.classList.remove('hidden')
   }
 }
 
@@ -89,7 +96,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+function pushContent(item,passedArray){
+  console.log(passedArray)
+  passedArray.push(item)
+}
 
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
@@ -118,13 +128,15 @@ document.querySelector('.create-new-book-button').addEventListener('click', func
   var newCover = createCover(coverValue, titleValue, firstDescValue, secDescValue);
 
 
-  covers.push(coverValue);
+  //savedCovers.push(newCover);
+  covers.push(coverValue)
   titles.push(titleValue);
   descriptors.push(firstDescValue, secDescValue);
 
   locationUpdate(formSection,homeSection,makeNewButton,viewSavedButton,randomCoverButton,saveCoverButton)
   displayCover(newCover);
 });
+
 createRandomCover()
 });
 
