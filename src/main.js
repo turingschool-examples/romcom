@@ -96,11 +96,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function pushContent(item,passedArray){
-  console.log(passedArray)
-  passedArray.push(item)
-}
-
 
 function createCover(imgSrc, title, descriptor1, descriptor2) {
   var cover = {
@@ -112,10 +107,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 }
-
-// var covers = [];
-// var titles = [];
-// var descriptors = [];
 
 document.querySelector('.create-new-book-button').addEventListener('click', function(event) {
   event.preventDefault();
