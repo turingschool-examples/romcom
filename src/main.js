@@ -8,11 +8,15 @@ var makeCoverButton = document.querySelector('.make-new-button')
 var viewSavedCovers = document.querySelector('.view-saved-button')
 var homeButton = document.querySelector('.home-button')
 var saveCoversButton = document.querySelector('.saved-cover-button')
+var coverUrl = document.querySelector('.user-cover')
+var titleInputBox = document.querySelector('.user-title')
+var descriptorInputBox1 = document.querySelector('.user-desc1')
+var descriptorInputBox2 = document.querySelector('.user-desc2')
+var formView = document.querySelector('.form-view');
+var newBookButton = document.querySelector('.create-new-book-button')
 
 // We've provided a few variables below
-var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -21,7 +25,7 @@ randCoverButton.addEventListener('click', getRandomNovel);
 makeCoverButton.addEventListener('click', makeCover)
 viewSavedCovers.addEventListener('click', showSavedCovers)
 homeButton.addEventListener('click', goHome)
-saveCoversButton.addEventListener('click', )
+newBookButton.addEventListener('click',makeANovel)
 
 // Create your event handlers and other functions here 👇
 function makeCover(){
@@ -30,8 +34,8 @@ function makeCover(){
   document.querySelector('.random-cover-button').classList.add('hidden')
   document.querySelector('.save-cover-button').classList.add('hidden')
   document.querySelector('.home-button').classList.remove('hidden')
-  document.querySelector('.make-new-button').classList.add('hidden')
-  document.querySelector('.view-saved-button').classList.add('hidden')
+  document.querySelector('.make-new-button').classList.remove('hidden')
+  document.querySelector('.view-saved-button').classList.remove('hidden')
 }
 
 function showSavedCovers() {
@@ -40,7 +44,8 @@ function showSavedCovers() {
   document.querySelector('.home-button').classList.remove('hidden')
   document.querySelector('.home-view').classList.add('hidden')
   document.querySelector('.save-cover-button').classList.add('hidden')
-  document.querySelector('.view-saved-button').classList.add('hidden')
+  document.querySelector('.view-saved-button').classList.remove('hidden')
+  document.querySelector('.form-view').classList.add('hidden')
 }
 
 function goHome() {
@@ -51,6 +56,10 @@ function goHome() {
   document.querySelector('.random-cover-button').classList.remove('hidden')
   document.querySelector('.view-saved-button').classList.remove('hidden')
   document.querySelector('.make-new-button').classList.remove('hidden')
+}
+function changeFormView() {
+  document.querySelector('.form-view').classList.toggle('hidden');
+  document.querySelector('.home-view').classList.toggle('hidden');
 }
 
 
@@ -97,4 +106,16 @@ function getRandomNovel() {
   return currentCover;
 }
 
+function makeANovel (event){
+  if (event) event.preventDefault()
+  var userNovelDesign = createCover(coverUrl, title, descriptor1, descriptor2);
+    coverImage.setAttribute('src', userNovelDesign.coverImg.value);
+    coverTitle.innerText = userNovelDesign.title.value;
+    coverTag1.innerText = userNovelDesign.tagline1.value;
+    coverTag2.innerText = userNovelDesign.tagline2.value;
+    covers.push(userNovelDesign.coverImg);
+    titles.push(userNovelDesign.title);
+    descriptors.push([userNovelDesign.tagline1, userNovelDesign.tagline2]);
+    changeFormView()
+}
 
