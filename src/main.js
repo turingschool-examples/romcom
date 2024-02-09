@@ -17,12 +17,13 @@ var homeButton = document.querySelector('.home-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedButton = document.querySelector('.view-saved-button')
 
-var formView = document.querySelector('.form-view');
-var homeView = document.querySelector('.home-view');
+var formView = document.querySelector('.form-view')
+var homeView = document.querySelector('.home-view')
 var savedView = document.querySelector('.saved-view')
 
 //iteration 2 variables 
 
+var createNewBookButton = document.querySelector('.make-new-button')
 
 
 // We've provided a few variables below
@@ -45,6 +46,10 @@ viewSavedButton.addEventListener('click', reactViewSaved)
 
 //iteration 2 event listeners
 
+// createNewBookButton.addEventListener('click', function(event) {
+//   event.preventDefault()
+  
+// }
 // Create your event handlers and other functions here 👇
 
 // iteration 0 functions
@@ -76,6 +81,7 @@ function reactMakeNew(){
   coverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden')
+  viewSavedButton.classList.remove('hidden')
 }
 
 function reactHomeButton(){
@@ -84,14 +90,17 @@ function reactHomeButton(){
   coverButton.classList.remove('hidden');
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
+  viewSavedButton.classList.remove('hidden')
 }
 
 function reactViewSaved(){
   homeView.classList.add('hidden');
+  formView.classList.add('hidden')
   savedView.classList.remove('hidden');
   coverButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden')
 }
 
 //iteration 2 functions 
