@@ -56,6 +56,17 @@ function createRandomCover() {
 
   
 };
+function displayCover(newCover){
+  currentCover.innerHTML = 
+  `<img class="cover-image" src="${newCover.coverImg}">
+  <h2 class="cover-title">${newCover.title}</h2>
+  <h3 class="tagline">A tale of <span class="tagline-1">${newCover.tagline1}</span> and <span class="tagline-2">${newCover.tagline2}</span></h3>
+  <img class="price-tag" src="./assets/price.png">
+  <img class="overlay" src="./assets/overlay.png">`
+  
+
+  
+}
 function locationUpdate(page1,page2,button1,button2,button3,button4) {
   page1.classList.add('hidden');
   page2.classList.remove('hidden');
@@ -111,7 +122,7 @@ document.querySelector('.create-new-book-button').addEventListener('click', func
   titles.push(titleValue);
   descriptors.push(firstDescValue, secDescValue);
 
-
+  locationUpdate(formSection,homeSection,makeNewButton,viewSavedButton,randomCoverButton,saveCoverButton)
   displayCover(newCover);
 });
 createRandomCover()
