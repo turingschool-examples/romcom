@@ -30,6 +30,7 @@ var descriptor2Input = document.querySelector('.user-desc2');
 var makeMyBookButton = document.querySelector('.create-new-book-button');
 
 
+
 // We've provided a few variables below
 var savedCovers = []
   
@@ -55,6 +56,8 @@ makeMyBookButton.addEventListener('click', createNewBook);
 
 saveCoverButton.addEventListener('click', saveCurrentCover);
 viewSavedButton.addEventListener('click', viewSavedCovers);
+
+
 
 // Create your event handlers and other functions here 👇
 
@@ -141,6 +144,9 @@ function viewSavedCovers(){
     var img = document.createElement('img');
     img.classList.add('mini-cover');
     img.src = cover.coverImg; 
+    img.addEventListener('dblclick', function () { 
+      deleteSavedCover(cover.id) 
+    })
     coverElement.appendChild(img);
     
     var title = document.createElement('h2');
@@ -170,6 +176,20 @@ function saveCurrentCover() {
     savedCovers.push(currentCover);
   }
 }
+
+
+//iteration 4 functions
+
+// iteration 4 functions
+function deleteSavedCover(coverId) {
+    var coverToDelete = savedCovers.findIndex(function (cover) {
+      return cover.id === coverId
+    });
+    if (coverToDelete !== -1) {
+      savedCovers.splice(coverToDelete, 1);
+      viewSavedCovers();
+    }
+  }
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
