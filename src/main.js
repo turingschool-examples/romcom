@@ -104,29 +104,22 @@ function reactHomeButton(){
 //iteration 2 functions 
 
 function createNewBook(event) {
-  
   coverImage.src = coverInput.value;
   coverTitle.innerText = titleInput.value;
   tag1.innerText = descriptor1Input.value;
   tag2.innerText = descriptor2Input.value;
-  var newCover = createCover(coverImage, coverTitle, tag1, tag2);
+
+  currentCover = createCover(coverInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value);
   
   covers.push(coverInput.value);
   titles.push(titleInput.value);
   descriptors.push(descriptor1Input.value, descriptor2Input.value);
   
   reactHomeButton();
-  createCover(newCover);
   event.preventDefault();
 }
 
 //iteration 3 functions 
-
-// function saveCurrentCover() {
-//   if (!savedCovers.includes(currentCover)) {
-//     savedCovers.push(currentCover);
-//   }
-// }
 
 function viewSavedCovers(){
   homeView.classList.add('hidden');
