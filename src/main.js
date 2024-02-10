@@ -7,13 +7,15 @@ var randCoverButton = document.querySelector('.random-cover-button')
 var makeCoverButton = document.querySelector('.make-new-button')
 var viewSavedCovers = document.querySelector('.view-saved-button')
 var homeButton = document.querySelector('.home-button')
-var saveCoversButton = document.querySelector('.saved-cover-button')
+var saveCoversButton = document.querySelector('.save-cover-button')
 var coverUrl = document.querySelector('.user-cover')
 var titleInputBox = document.querySelector('.user-title')
 var descriptorInputBox1 = document.querySelector('.user-desc1')
 var descriptorInputBox2 = document.querySelector('.user-desc2')
 var formView = document.querySelector('.form-view');
 var newBookButton = document.querySelector('.create-new-book-button')
+var mainCover = document.querySelector('.main-cover')
+var savedCoversSection = document.querySelector('saved-covers-section')
 
 // We've provided a few variables below
 var savedCovers = [];
@@ -25,10 +27,11 @@ randCoverButton.addEventListener('click', getRandomNovel);
 makeCoverButton.addEventListener('click', makeCover)
 viewSavedCovers.addEventListener('click', showSavedCovers)
 homeButton.addEventListener('click', goHome)
-newBookButton.addEventListener('click',makeANovel)
+newBookButton.addEventListener('click', makeANovel)
+saveCoversButton.addEventListener('click', saveCurrentCover)
 
 // Create your event handlers and other functions here 👇
-function makeCover(){
+function makeCover() {
   document.querySelector('.form-view').classList.remove('hidden')
   document.querySelector('.home-view').classList.add('hidden')
   document.querySelector('.random-cover-button').classList.add('hidden')
@@ -63,9 +66,6 @@ function changeFormView() {
 }
 
 
-
-
-// We've provided two functions to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -81,8 +81,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
-
-
 function getRandomNovel() {
   var randomCoverIndex = getRandomIndex(covers);
   var randomTitleIndex = getRandomIndex(titles);
@@ -93,8 +91,7 @@ function getRandomNovel() {
     covers[randomCoverIndex],
     titles[randomTitleIndex],
     descriptors[randomDescriptorIndex],
-    descriptors[randomDescriptorIndex2]
-  );
+    descriptors[randomDescriptorIndex2]);
 
   currentCover = newNovel;
 
@@ -106,16 +103,29 @@ function getRandomNovel() {
   return currentCover;
 }
 
-function makeANovel (event){
+function makeANovel(event) {
   if (event) event.preventDefault()
   var userNovelDesign = createCover(coverUrl, title, descriptor1, descriptor2);
-    coverImage.setAttribute('src', userNovelDesign.coverImg.value);
-    coverTitle.innerText = userNovelDesign.title.value;
-    coverTag1.innerText = userNovelDesign.tagline1.value;
-    coverTag2.innerText = userNovelDesign.tagline2.value;
-    covers.push(userNovelDesign.coverImg);
-    titles.push(userNovelDesign.title);
-    descriptors.push([userNovelDesign.tagline1, userNovelDesign.tagline2]);
-    changeFormView()
+  coverImage.setAttribute('src', userNovelDesign.coverImg.value);
+  coverTitle.innerText = userNovelDesign.title.value;
+  coverTag1.innerText = userNovelDesign.tagline1.value;
+  coverTag2.innerText = userNovelDesign.tagline2.value;
+  covers.push(userNovelDesign.coverImg);
+  titles.push(userNovelDesign.title);
+  descriptors.push([userNovelDesign.tagline1, userNovelDesign.tagline2]);
+  changeFormView()
 }
 
+function saveCurrentCover() {
+  var isCoverSaved = savedCovers.some(function(savedCovers) {
+    return savedCovers.id === currentCover.id
+  })
+  if (!isCoverSaved) {
+      savedCovers.push(currentCover)
+  }
+}
+
+var 
+function collectSavedCovers() {
+ 
+}
