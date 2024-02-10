@@ -55,6 +55,9 @@ makeMyBookButton.addEventListener('click', createNewBook);
 
 // iteration 3 event listeners
 
+saveCoverButton.addEventListener('click', saveCurrentCover);
+viewSavedButton.addEventListener('click', viewSavedCovers)
+
 // Create your event handlers and other functions here 👇
 
 // iteration 0 functions
@@ -121,14 +124,47 @@ function createNewBook(event) {
   covers.push(coverInput.value)
   titles.push(titleInput.value)
   descriptors.push(descriptor1Input.value, descriptor2Input.value)
-  // savedCovers.push(newCover);
-
+  
   reactHomeButton();
   createCover(newCover)
   event.preventDefault();
 }
 
+//iteration 3 functions 
 
+// function saveCurrentCover() {
+//   if (!savedCovers.includes(currentCover)) {
+//     savedCovers.push(currentCover);
+//   }
+// }
+
+function viewSavedCovers(){
+  savedView.classList.remove('hidden')
+  savedCovers.shift();
+  savedView.innerHTML = '';
+
+  for (var i = 0; i < savedCovers.length; i++) {
+    var cover = savedCovers[i];
+    var coverElement = document.createElement('div');
+    coverElement.classList.add('saved-cover');
+    
+    var img = document.createElement('img');
+    img.src = cover.coverImg; // Corrected property name
+    coverElement.appendChild(img);
+    
+    var title = document.createElement('h2');
+    title.innerText = cover.title;
+    coverElement.appendChild(title);
+    
+    savedView.appendChild(coverElement);
+  }
+}
+
+function saveCurrentCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
+}
 
 // We've provided two functions to get you started
 function getRandomIndex(array) {
