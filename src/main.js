@@ -132,12 +132,6 @@ function createNewBook(event) {
 
 //iteration 3 functions 
 
-// function saveCurrentCover() {
-//   if (!savedCovers.includes(currentCover)) {
-//     savedCovers.push(currentCover);
-//   }
-// }
-
 function viewSavedCovers(){
   savedView.classList.remove('hidden')
   savedCovers.shift();
@@ -147,18 +141,27 @@ function viewSavedCovers(){
     var cover = savedCovers[i];
     var coverElement = document.createElement('div');
     coverElement.classList.add('saved-cover');
-    
+
     var img = document.createElement('img');
-    img.src = cover.coverImg; // Corrected property name
+    img.src = cover.coverImg; 
     coverElement.appendChild(img);
     
     var title = document.createElement('h2');
     title.innerText = cover.title;
     coverElement.appendChild(title);
     
+    var tagline1 = document.createElement('h3');
+    tagline1.innerText = cover.tagline1;
+    coverElement.appendChild(tagline1);
+
+    var tagline2 = document.createElement('h3');
+    tagline2.innerText = cover.tagline2;
+    coverElement.appendChild(tagline2);
+
     savedView.appendChild(coverElement);
   }
 }
+
 
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
