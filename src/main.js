@@ -16,6 +16,8 @@ var formView = document.querySelector(".form-view");
 var newBookButton = document.querySelector(".create-new-book-button");
 var savedCoversSection = document.querySelector(".saved-covers-section")
 
+
+
 // We've provided a few variables below
 var savedCovers = [];
 var currentCover;
@@ -31,6 +33,7 @@ viewSavedCovers.addEventListener('click', function() {
   showSavedCovers();
   displaySavedCovers();
 });
+
 
 
 // Create your event handlers and other functions here 👇
@@ -94,8 +97,7 @@ function getRandomNovel() {
     covers[randomCoverIndex],
     titles[randomTitleIndex],
     descriptors[randomDescriptorIndex],
-    descriptors[randomDescriptorIndex2]
-  );
+    descriptors[randomDescriptorIndex2]);
 
   currentCover = newNovel;
 
@@ -136,7 +138,8 @@ function saveCurrentCover() {
 }
 
 function displaySavedCovers() {
- savedCovers.forEach(function(savedCover) {
+  savedCoversSection.innerHTML = '';
+  savedCovers.forEach(function(savedCover) {
     var savedCoverElement = document.createElement('div');
     savedCoverElement.classList.add('mini-cover');
     savedCoverElement.innerHTML = `
@@ -144,6 +147,16 @@ function displaySavedCovers() {
       <h4 class="cover-title">${savedCover.title}</h4>
       <h5 class="tagline">A tale of ${savedCover.tagline1} and ${savedCover.tagline2}</h5>
     `;
+    savedCoverElement.addEventListener('dblclick', function() {
+      deleteSavedCover(savedCover, savedCoverElement);
+    });
     savedCoversSection.appendChild(savedCoverElement);
   });
+}
+
+function deleteSavedCover(cover, coverElement) {
+  savedCovers = savedCovers.filter(function(savedCover) {
+    return savedCover.id !== cover.id;
+  });
+  coverElement.remove();
 }
