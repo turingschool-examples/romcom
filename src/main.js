@@ -46,12 +46,11 @@ coverButton.addEventListener('click', createRandomCover)
 
 makeNewButton.addEventListener('click', reactMakeNew)
 homeButton.addEventListener('click', reactHomeButton)
-viewSavedButton.addEventListener('click', reactViewSaved)
+
 
 //iteration 2 event listeners
 
 makeMyBookButton.addEventListener('click', createNewBook);
-// makeMyBookButton.addEventListener('click', personalCover)
 
 // iteration 3 event listeners
 
@@ -99,17 +98,9 @@ function reactHomeButton(){
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   viewSavedButton.classList.remove('hidden')
+  savedView.classList.add('hidden')
 }
 
-function reactViewSaved(){
-  homeView.classList.add('hidden');
-  formView.classList.add('hidden')
-  savedView.classList.remove('hidden');
-  coverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  viewSavedButton.classList.remove('hidden')
-}
 
 //iteration 2 functions 
 
@@ -132,8 +123,22 @@ function createNewBook(event) {
 
 //iteration 3 functions 
 
+// function saveCurrentCover() {
+//   if (!savedCovers.includes(currentCover)) {
+//     savedCovers.push(currentCover);
+//   }
+// }
+
 function viewSavedCovers(){
+  homeView.classList.add('hidden');
+  formView.classList.add('hidden')
+  savedView.classList.remove('hidden');
+  coverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+  homeButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden')
   savedView.classList.remove('hidden')
+
   savedCovers.shift();
   savedView.innerHTML = '';
 
@@ -141,7 +146,7 @@ function viewSavedCovers(){
     var cover = savedCovers[i];
     var coverElement = document.createElement('div');
     coverElement.classList.add('saved-cover');
-
+    
     var img = document.createElement('img');
     img.src = cover.coverImg; 
     coverElement.appendChild(img);
@@ -161,7 +166,6 @@ function viewSavedCovers(){
     savedView.appendChild(coverElement);
   }
 }
-
 
 function saveCurrentCover() {
   if (!savedCovers.includes(currentCover)) {
