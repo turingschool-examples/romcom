@@ -1,43 +1,30 @@
-# RomCom
-
-A boilerplate repo. 
-
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
-
-You will not need to worry about importing/exporting the arrays from the data.js file because they are linked via the script in the `index.html` file.  
-
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
-
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
 
 # RomCom  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+[//]: <> This is a simple web application that generates random book covers. Users can also create custom book covers and save their favorite ones.
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+[//]: <> git clone git@github.com:baileyjarvis2814/romcom.git
+open index.html in preferred web browser
 
-### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+[//]: <> Upon opening the application in your web browser, you'll see a randomly generated book cover along with title and taglines. You can perform the following actions:
+
+Generate Random Cover: Clicking on the "Random Cover" button will generate a new random book cover.
+Create New Cover: Clicking on the "Make Your Own Cover" button will allow you to input custom details for a new book cover.
+Save Cover: Clicking on the "Save Cover" button will save the current cover to your collection of saved covers.
+View Saved Covers: Clicking on the "View Saved" button will display all the covers you've saved.
+
+We are in Mod 1 Week 2 of Turing, this project took approximately 15 hours to complete. 
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+[//]: <> Jarvis Bailey https://github.com/baileyjarvis2814
+Laurel Bonal https://github.com/laurelbonal
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+[//]: <> This project, our learning goal was to manipulate html and css with javascript.
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+[//]: <> the biggest win of this project was the ability to catch bugs before submitting. there were multiple times we thought that the code worked, come to find out we were missing little details. The biggest challenge in this project was manipulating css with javascript. 
