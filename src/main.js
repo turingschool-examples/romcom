@@ -1,11 +1,25 @@
 // Create variables targetting the relevant DOM elements here 👇
 
+  // Cover Elements:
+
 var cover = document.querySelector(".cover-image");
 var title = document.querySelector(".cover-title");
 var tagline1 = document.querySelector(".tagline-1");
 var tagline2 = document.querySelector(".tagline-2");
 
-var btnNewCover = document.querySelector(".random-cover-button");
+  // Views:
+
+var homeView = document.querySelector(".home-view");
+var formView = document.querySelector(".form-view");
+var savedView = document.querySelector(".saved-view");
+
+  // Buttons:
+
+var btnHome = document.querySelector(".home-button");
+var btnRandomCover = document.querySelector(".random-cover-button");
+var btnSaveCover = document.querySelector(".save-cover-button");
+var btnViewSaved = document.querySelector(".view-saved-button");
+var btnNewCover = document.querySelector(".make-new-button");
 
 
 // We've provided a few variables below
@@ -17,10 +31,16 @@ var currentCover;
 
 // Add your event listeners here 👇
 
-btnNewCover.addEventListener("click", () => {
+btnRandomCover.addEventListener("click", () => {
   createRandomCover();
   updateDisplay();
-})
+});
+
+btnHome.addEventListener("click", displayHome);
+
+btnNewCover.addEventListener("click", displayMakeOwnCover);
+
+btnViewSaved.addEventListener("click", displaySavedView);
 
 // Create your event handlers and other functions here 👇
 
@@ -40,8 +60,35 @@ function updateDisplay() {
   tagline2.innerText = currentCover.tagline2;
 }
 
+function displayHome() {
+  show(homeView);
+  hide(formView);
+  hide(savedView);
+  hide(btnHome);
+  show(btnRandomCover);
+  show(btnSaveCover);
+}
 
-// We've provided two functions to get you started
+function displayMakeOwnCover() {
+  hide(homeView);
+  show(formView);
+  hide(savedView);
+  show(btnHome);
+  hide(btnRandomCover);
+  hide(btnSaveCover);
+}
+
+function displaySavedView() {
+  hide(homeView);
+  hide(formView);
+  show(savedView);
+  show(btnHome);
+  hide(btnRandomCover);
+  hide(btnSaveCover);
+}
+
+// Helpful functions
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -57,8 +104,15 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   return cover
 }
 
+function hide(element) {
+  element.classList.add("hidden");
+}
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
 // Run on load
 
 createRandomCover();
 updateDisplay();
-
